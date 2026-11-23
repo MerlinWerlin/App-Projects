@@ -1,0 +1,9 @@
+{
+  "id": "bumblebee",
+  "prompt": "Precise anatomy edit. IMAGE1 is the EDIT TARGET, our original corn-husk bumblebee. IMAGE2 is our own first barnowl MATERIAL REFERENCE ONLY. Keep the target bee's broad dry CORNHUSK sheets, fine longitudinalplant ribs, gatheredpleats/curledthinlips, warmochre/cream/darkbrown colors, ONEhead/ONEthorax/ONEstripedabdomen, exactlyFOURwholewings(two largeforewings+two smallerhindwings), exactlyTWOantennae, bodypose/wingarrangement and clear whole silhouette. Change ONLY LEG ANATOMY: current target shows onlyFOURlegs. It needs EXACTLY SIX coherent attached legs as THREE PAIRS, each leg with a clearly visible complete bent shank and tinyclawedend outside body/wing silhouette. All6legs attach to THORAX, none to rearabdomen. Make the two missing middlelegs visibly extend outward into openalpha beneath/forward of wings, preserve existingleg style of thin rolledhusk with smalljointbindings. Space all6wholelegends so count is unambiguous, do not confuse2antennae withlegs. No detached legs, extrahead/body/wing/antenna or duplicatedfoot. Preserve target material/detail rather than redesign. Keep generous18percent truealpha exterior every side; whole all4wings/6legs/2antennae/abdomen ends contained, no clipping. TRUE transparentalpha background including internalgaps, no background/shadow/halo/text/numbers/UI/logo. No repaint/recolor/stylechange, no wholeowl or otherimage2subject. Deliver ONE completed corrected bee only.",
+  "referenced_image_paths": [
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-7c0634ab-b8ed-4c78-9ba3-01bd0c27e2cc.png",
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-4b28d6e6-05e1-4007-8a2f-3eb1262aa372.png"
+  ],
+  "transparent_background": true
+}

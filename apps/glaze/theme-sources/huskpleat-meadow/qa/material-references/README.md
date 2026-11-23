@@ -1,0 +1,1 @@
+Exact built-in requests/results for every separately generated artwork and wallpaper. Ordered own material/anatomy input hashes map to retained raw sources. No external neighbor image used as a generation input.

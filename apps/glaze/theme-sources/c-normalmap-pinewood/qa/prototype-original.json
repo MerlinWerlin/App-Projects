@@ -1,0 +1,14 @@
+{
+  "id": "pine-cone-direction",
+  "selected": true,
+  "sourceImage": "sources/pine-cone-direction.7c7b0249658a.png",
+  "sourceSha256": "7c7b0249658affcdb6c73de3f226765dd3246e9500048086115d06b913be5411",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "Use case: stylized-concept. Produce one original square transparent Artwork asset for Glaze Facetlight Pinewood. The subject is one whole familiar pine cone in a straight-on botanical specimen view with a gentle diagonal tilt. Give it a naturally tapered egg-shaped outline, a complete short stem, and about five staggered rows of broad overlapping scales with irregular rounded tips. Keep the whole cone and stem inside the central 70 percent of the square. Leave at least 15 percent true transparent exterior on each side. The subject should read as a pine cone immediately at 85 px.\n\nBuild the entire cone as a flat false-color image of surface direction, inspired by the appearance of an RGB normal map. Show one repeating direction relationship on each visible scale. A broad flat-facing center is periwinkle, a left-facing shoulder transitions to cyan, a right-facing shoulder transitions to warm rose, and an upward-facing lip carries a thin pale mint field. The same direction should receive the same color wherever it appears, regardless of the scale's height or distance from the center. Smooth matte changes within each scale reset crisply at the true visible overlap with the next scale. Make the directional colors readable in the central scales and tighter toward the side tips. Use a restrained, relatively even brightness across the image. Avoid a whole-cone rainbow sweep. Local color changes should trace the anatomy of individual scales, with no valleys painted as dark ambient shadows.\n\nThis is a flat direction image with fully opaque color fields inside the silhouette. Show the outline and scale forms through their contours and color changes. Keep it free of wood grain, paper fibers, pigment strokes, metal highlights, finish reflections, glossy gradients, glitter, specular spots, soft cast shadows, heavy borders, light halos or halo haze. Avoid pearlescent drainage swirls, irregular black windows, wavy stress fringes, thermographic gradients, shattered mosaic grains or a projected stripe pattern. The stem is short and simple, using the same direction colors. Do not make a pine cone assembled from plastic or carved stone. This is original artistic false color, with no real measurement, dataset, texture calibration, model or sensor readout.\n\nUse genuine alpha transparency outside the whole cone and stem. No backing rectangle, floor, frame, labels, coordinates, ruler, text, numbers, live widget readings, UI, logo or watermark. No external visual inputs.",
+  "generationTool": "built-in image_gen",
+  "externalReferences": [],
+  "selectionReason": "Unchanged first sample accepted by the coordinator after comparison review."
+}

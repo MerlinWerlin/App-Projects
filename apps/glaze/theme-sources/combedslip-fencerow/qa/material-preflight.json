@@ -1,0 +1,31 @@
+{
+  "id": "combedslip-fencerow",
+  "lane": "B48",
+  "category": "Nature",
+  "process": "Hand-shaped earthenware with broad alternating light and dark wet-clay slips drawn through with a comb to make repeated feathered passages.",
+  "status": "Coordinator accepted the exact waxwing first unchanged after actual 540/170/85, six own, ten coordinator and 53 app-selector comparator views. Four more independent siblings plus wallpaper may use only this first as the material reference. The backwater idea was dropped after a clay river turtle was observed in Billabong Clay.",
+  "subjects": [
+    "cedar-waxwing",
+    "groundhog",
+    "striped-skunk",
+    "black-swallowtail",
+    "milkweed-pods"
+  ],
+  "cornerCompanion": "Rolled clay seal form, cedar waxwing, pulled slip lines, cut hour ticks, leaf hands, shallow glaze-pool charge area and a folio calendar. The corner companion is three curved parallel slip trails bent across two perpendicular comb passages.",
+  "firstGateCriterion": "Repeated feather bends visibly pull across continuous thick alternating wet-clay trails on one fired earthenware body. At 85 px, the species, clay edge and combed light/dark field still read separately from matte clay or free-marbling neighbors.",
+  "retiredId": {
+    "id": "combedslip-backwater",
+    "generatedArtworks": 0,
+    "reason": "Actual Billabong Clay has a clay river turtle and water lily."
+  },
+  "technicalReferences": [
+    {
+      "url": "https://www.mountvernon.org/preservation/archaeology/archaeology-online/object/1722392",
+      "scope": "Mount Vernon excavated sherd and method description for trailed and perpendicularly combed wet slips, text only."
+    },
+    {
+      "url": "https://www.chipstone.org/article.php/8/Ceramics-in-America-2001/Dots,-Dashes,-and-Squiggles:-Early-English-Slipware-Technology-",
+      "scope": "Experimental archaeology of contrasting wet slips and comb dragging, text only."
+    }
+  ]
+}

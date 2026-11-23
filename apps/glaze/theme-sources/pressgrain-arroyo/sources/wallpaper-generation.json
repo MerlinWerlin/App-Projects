@@ -1,0 +1,30 @@
+{
+  "id": "wallpaper",
+  "prompt": "Make one small composition edit to our existing tall Pressgrain Arroyo wallpaper. The uploaded scene is the edit target. Keep the very tall phone proportions, quiet same plum background, same single flat collograph scene, exactly the same sizes and placements of the roadrunner, kit fox and cactus, and their original texture assignments. Only shorten the low dry-bank strip on the bottom LEFT. Its cream and rust tapered tongue currently extends all the way to the left canvas edge. Pull that little ribbon of bank inward so its NEW complete tapered torn ink point ends at least 8 percent of total canvas width away from the left edge, clearly left of the grass roots but separated from the frame by an unbroken plum margin. Shorten only that landscape tip and stray grit there. Keep the full roadrunner tail, crest, bill and two running feet, the whole kit fox with two ears, four paws and bushy tail, all three cactus pads with the original flower and two fruits, both grass tufts and the rest of the terrain. Leave a visible plum margin around the other sides also. Preserve all existing large grid, thick rust grit and ragged edge around the smooth ink reserves in a single flat print plane. Maintain the existing restrained colors and tall central composition. No enlarging the animal subjects, no new shapes, no added labels, framing, power or clock values.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.c5b5771e.png",
+  "sourceSha256": "c5b5771e5727a67fd356fdc97c0ab1f62d3fec9dc175b031ca5e7a977ecab1fe",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "fb123104098bcde676cb244929b464b624b7261540a92df83135725505100898",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.92635442.png",
+      "sha256": "926354423c98f65fd3f3b73a6da32109c543ec16c6844b6794e0694ecd5864c9",
+      "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

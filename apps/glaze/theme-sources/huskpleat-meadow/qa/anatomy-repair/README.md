@@ -1,0 +1,1 @@
+Two anatomy correction stages retained honestly. Initialbee4visiblelegs and firstrepair5visiblelegs are unselected and byte-preserved with exact tool requests/results. Selectedsecondrepair has6wholevisiblelegs,4wings,2antennae; materialfirstowl unchanged. Ordered portable input/output hashes map allstages; no further alpha/creative processing by packaging.

@@ -1,0 +1,18 @@
+{
+  "id": "fern-foldpath",
+  "selected": false,
+  "sourceImage": "intermediate-cutout-studies/fern-first.04c9bd31d116.png",
+  "sourceSha256": "04c9bd31d116c8bf494bcfb47f607b09e1feb5f3476472b678d35081915c39b7",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "Use case: stylized-concept. NEW original transparent square Glaze pure-art asset, FOLDPATH MEADOW. InputIMAGE1 is ONLY the exact OWN daffodil graphic-style/convention reference; invent the specified NEWsubject/pose, do not copy its flower geometry. Same clean scientific molecular SECONDARY-STRUCTURE RIBBON-CARTOON convention: a few LARGE continuous TEAL/CERULEAN BETA-STRAND ARROW sheets with obvious broadhead/shoulders, short CORAL/ORANGE three-turn ALPHA-HELIX ribbon segments, thin darkteal smooth LOOP connectors. Nearflat opaque colourfields, restrained secondtone on reverses to explain twists, negligible thickness, crisp thin darkedges. No scenelighting/castshadows/glossyhighlight/ambientocclusion. These diagramribbons SUPPLY the whole natureform; no normal animal/plant body underneath. Clear alpha gaps between parts. Large enough arrows/coils to read at85px, no tiny isolatedarrow swarm. Familiar whole nature silhouette first.\nSubject: ONE whole recognizable gently ARCING FERN FROND, longslender rachis/stalkcurve rising from fullbase and sweeping upperRIGHT. SIXunequal pairs of broad taperedleaflets alternate alongthe rachis, largest nearbasal/middle and smaller neartop. Each leaflet ONEcontinuousTEAL beta-arrow ribbon, large obviousarrowhead nearcomplete natural leaftip, not manydisconnectedvector glyphs. Rachis ONEsmooth darktealloopconnector. Tip terminates in ONEsmall CORAL three-turn alphahelix fiddlehead, fullcurl/end visible. Full naturalfern outline first, clearlyhierarchicalplant, no radialsunburst/arrowfield or physicalcutribbon/feathers.\nEntire complete form fits central70percent square, minimum15percent emptytransparent exterior eachside. TRUEalphaZERO outside exactwhole subject and in ribbon gaps, opaque diagramfields. No physical satin/metal/foil/fabric/paper/pasta/plastic/glass/clay, stitches/hem/skin/fur/feathertexture, 3Dobject/raisedmaterial/coiledwire toy, ballstick atoms/DNA/labapparatus, fluorescentmesh/projectedstripes/rainbow/neon. Generic original artistic scientific-cartoon CONVENTION only, not actualprotein/PDBidentity/sequence/atomicmodel/data/function/prediction or measuredanatomy. No externalimage/model or namedartist. No ground/rectangle/slab/sheet/backing/frame/haze/glow/shadow, text/numbers/labels/axes/scale/liveclock/date/battery/weather/UI/logo/watermark. One new independent whole nature asset, not a contactsheet panel.",
+  "ownMaterialStyleReference": {
+    "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+    "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+  },
+  "generationTool": "built-in image_gen",
+  "externalReferences": [],
+  "reason": "Fern graphic/whole form passes but diagonal pale/teal background haze visible on actualcomposite, rawframealpha15/alpha16boundsreachy3. One built-in cutout correction, no codealphaediting."
+}

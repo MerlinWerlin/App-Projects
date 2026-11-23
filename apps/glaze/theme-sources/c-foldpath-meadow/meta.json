@@ -1,0 +1,16 @@
+{
+  "name": "Foldpath Meadow",
+  "mood": "Whole meadow flowers follow clear folded paths and quiet connecting loops.",
+  "tags": [
+    "molecular-cartoon-inspired",
+    "secondary-structure-ribbons",
+    "whole-meadow-nature",
+    "diagram-image"
+  ],
+  "credits": "Original built-in image_gen artistic molecular-cartoon imagery, not real protein structures, sequences, atomic data or biological predictions.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole familiar natural forms in clean scientific ribboncartoon conventions: large beta-strand arrows, short alphahelix segments and smooth loopconnectors. No physical ribbon material or actual molecular model, exactprompts retained.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

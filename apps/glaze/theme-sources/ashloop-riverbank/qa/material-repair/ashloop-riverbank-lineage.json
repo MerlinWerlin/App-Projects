@@ -1,0 +1,21 @@
+{
+  "reason": "Original Ashloop Portage canoe was held as a conventional boatyard concept. The visible grain and steam-bent rib process were retained in one new original beaver composition using that exact own raw as its only input.",
+  "unselectedOriginalId": "ashloop-portage/canoe-building-frame",
+  "unselectedOriginalSource": "qa/material-repair/ashloop-portage-unselected.7d6cf2d0.png",
+  "unselectedOriginalSha256": "7d6cf2d085ba821f5cbaa741a8061ef37b102daae870a5be08de7c4993e192c8",
+  "acceptedSelectedId": "ashloop-riverbank/beaver",
+  "acceptedSelectedSource": "sources/beaver.6e1ae7cc.png",
+  "acceptedSelectedSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "ashloop-portage/canoe-building-frame",
+      "sha256": "7d6cf2d085ba821f5cbaa741a8061ef37b102daae870a5be08de7c4993e192c8",
+      "role": "Own held raw as material input for new nature composition."
+    }
+  ],
+  "exactPreviousRequest": "qa/material-repair/canoe-building-frame-request.json",
+  "exactPreviousResult": "qa/material-repair/canoe-building-frame-result.json",
+  "exactSelectedRequest": "qa/material-repair/beaver-request.json",
+  "exactSelectedResult": "qa/material-repair/beaver-result.json"
+}

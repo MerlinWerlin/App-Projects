@@ -1,0 +1,62 @@
+[
+  {
+    "id": "white-tailed-ptarmigan",
+    "kind": "art",
+    "image": "white-tailed-ptarmigan.5a10f65e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "White Tailed Ptarmigan"
+  },
+  {
+    "id": "american-pika",
+    "kind": "art",
+    "image": "american-pika.facd5355.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "American Pika"
+  },
+  {
+    "id": "mountain-goat",
+    "kind": "art",
+    "image": "mountain-goat.d500407e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mountain Goat"
+  },
+  {
+    "id": "alpine-willow",
+    "kind": "art",
+    "image": "alpine-willow.8c045612.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Alpine Willow"
+  },
+  {
+    "id": "alpine-forget-me-not",
+    "kind": "art",
+    "image": "alpine-forget-me-not.432e1c2e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Alpine Forget Me Not"
+  }
+]

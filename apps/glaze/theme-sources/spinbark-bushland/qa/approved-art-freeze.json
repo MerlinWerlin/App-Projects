@@ -1,0 +1,164 @@
+{
+  "themeId": "spinbark-bushland",
+  "scope": "Lane-local selected5artwork/raw/options/palette/meta byte snapshot after build/visual QA. Filename is existing QA convention; coordinator material review PENDING. First selected source unchanged. Lane-local candidate quality review. Coordinator material/integration review PENDING because messaging failed MCP-32000; deliveryunknown. Original human brief explicitly permits isolated collision-checked lane work during messaging outage. No coordinator/Jared approval, publication or installed-device claim.",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "files": {
+    "widgets/banksia.1b0ccf83.png": "1b0ccf836fb1d4402dd0685a0c28211444506e2bbe1f76dac81758858110301c",
+    "widgets/eucalyptus-gumnuts.7fc98036.png": "7fc9803690a914b1fdc2e409ef76b7e83b60884e750f4c6148cce3a524332a11",
+    "widgets/frilled-lizard.4318d8cb.png": "4318d8cb78234ddcde8b44b52bcb555e833cf67ff1af3adefd0e766416154cbb",
+    "widgets/laughing-kookaburra.411863de.png": "411863de2f9d95d77cf1ede6e0008677825ed6ef41c0bcbb2deac38b15445f3e",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/shortbeaked-echidna.90be83d9.png": "90be83d902a861b80b6120e07f7dce9db294c35a34df0a489cc5a42aaaf44ab6",
+    "widgets/widget-options.json": "ad79ca7e9dfd79e663bc8e8f16f14a4e101eef7f4d684a2749866559719bec20",
+    "sources/banksia-generation.json": "62a8b5ddffdd8712189c71841909e4c69dfc67a0e68f2920725c5d5f44e2313f",
+    "sources/banksia.27710d8e.png": "27710d8e6e9c142eb6972843e3705edce79e76d3bb78236afea7a6310c5c5bd2",
+    "sources/eucalyptus-gumnuts-generation.json": "322b7915cc4fa9c6f7cfe5412214b56e95ffffe3a6e381563fca6381d6dc772f",
+    "sources/eucalyptus-gumnuts.84a44c29.png": "84a44c294a98cc8695204e17a2e11e3331d861b3eef3a6154d63ffd312cae322",
+    "sources/frilled-lizard-generation.json": "09a8373a4d7936365ed8969e465217cc27f67c465502bb9147e3f91699d2868e",
+    "sources/frilled-lizard.68fd9142.png": "68fd9142d86e41c9219cdfe8bc204d414a97e2f113fdd19527c70f2a31bd091b",
+    "sources/laughing-kookaburra-generation.json": "57020caa6a9d8219bf1e20233ee346852d736288b5cf8e3334a0cac219cdde6a",
+    "sources/laughing-kookaburra.1310a212.png": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "sources/shortbeaked-echidna-generation.json": "2fab86724221ebd7a12804387a740ba9b7927b321ba25df90a1688eb10c7df88",
+    "sources/shortbeaked-echidna.52b7a3f7.png": "52b7a3f736036b532dcba6a69e8c021cb4927d4dc1959cc512564b42428034a3",
+    "palette.json": "d2df034aad987b54495c248e837292697abda754621a410016e8810e8df5b527",
+    "meta.json": "f14a724552182ff38f3c1c47c4b95e7f9fb8797b797e49db65f371556df8f63f"
+  },
+  "firstSelectedSourceSha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+  "artworkProvenance": [
+    {
+      "id": "laughing-kookaburra",
+      "prompt": "SPINBARK BUSHLAND, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL AUSTRALIAN bush animal/plant, natural coherent anatomy and whole recognizablesilhouette FIRST. Distinct physical craft is SPINDLE / OFF-AXIS LATHE-TURNED NATURAL SOLID WOOD: a few substantial ovoid/bulb/spindle components, tapered cones and half-shell sections joined by small fitted turned TENONS/COLLARS. Eachmajorpart visibly has3to5COARSE CIRCUMFERENTIAL PARTING/GROUPED GOUGE RINGS that wrap around thatpart's TURNING AXIS; curved concentric toolgrooves follow the actual 3Dturnedvolume, and cutendfaces show CIRCULAR END GRAIN/pithrings with fine short pores. Material grain direction CHANGES naturally at fittedjointboundaries. Rings are shallow real toolcut channels/stepped shoulders in SOLID WOOD, not painted stripes, printedfakewoodgrain, overlapping scalechips, stackedcoins, metalwirehoops or pencilshavingfans. Substantial continuoussmooth solidwoodfields remain betweenboldringgroups; smallgrainlines andturnedtoolgrooves distinct. The shaped COMPONENT PROFILES themselves are roundedlatheovoid/spindle/neckwaists, not a generichand-carved animal merely coatedwithwoodtexture. Natural warmcream HOLLY/MAPLE, honeywood, russet REDGUM and dark WALNUT fields, restrainedmattewaxpolish only, cleardrywoodpores/cutendgrain; no paintedbrightcolors/bluepatches/varnishedplasticshine/resin/gems. Coarsegrooves/turnedshoulders remainlegibleat85. Preservefamiliar naturalanatomy, not a mechanicaltoyrobot, lathe/toolworkshop display or abstractpileofwoodbeads. No open notchedWOOD-LATHlattice/lapnotches, flatmarquetry/veneerinlay, straw/cornhusk/paperpleats, serratedpaintedpencilshavings/excelsiorwoodwool, laserplywoodlayers, woodpyrographyburneddrawings, guillochemetalengraving/enamel, gold/metalparts/screws/nails or realanimalfur/feathers/skin underneath. Tiny darkeyes are flushsmall darkwoodinsets, not protrudingglass/gem/button eyes. Whole subject central64percent with18percent genuinelyemptyALPHA every side, completeallbill/ears/toes/tail/leaf/planttipends. Openlimb/branchgaps truealpha. No detachedwoodoffcuts/sawdust, backingplaque/rectangularpanel/base/ground/scenery/wreath/frame/medallion, jewellery/clasp/mount, exteriorcastshadow/halo/glow, text/letters/numbers/liveclock/date/battery/weatherreadings/UI/logo/signature. FIRST MATERIAL SAMPLE: ONE whole recognizable LAUGHING KOOKABURRA perched on ONE short slightlysloping solidwoodbranch, side-on facingRIGHT. Large naturalblockyhead, longstoutstraightpointed KINGFISHER-TYPE BILL aboutoneheadlength, modestshortneck, roundedstockybody, broadfoldedwing andwholelongmodesttail, exactlyTWOcoherentfeet/toesgripbranch. Head creammaple off-axisbulb withonewalnuteye-stripefield/flushsmalldarkwoodeye; bill one honey/russetturnedtaperedconewithsubtleclosedbillseam, notshortfinchbill/beakspoon. Breast one broadcreamyhollyovoid showing3or4CLEARCOARSECURVEDANNULARTOOLGROOVES arounditslowerhalf andfinecontinuousgrain between. Back/wing one darkwalnut/honey elongatedhalf-spindleshell with3strongpartinggrooves/steppedturnedshoulderatattachment, not individualfeathertiles; tail elongatedrussetturnedspindlehalf withwholepoint. Smallneckturnedtenoncollarvisiblyjoinsheadtobody, tinyroundendgraininshoulderjoint andbranchcutend. Feet naturalcoherentthinwoodpieces, nohingedrobotjoints. Allhead/bill/tail/2feet/toes/branchendswholly insidegenerousalpha. No flower/leaf/otheranimal/egg/nest/plaque orworkshoptools.",
+      "tool": "built-in image_gen",
+      "source": "sources/laughing-kookaburra.1310a212.png",
+      "sourceSha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/laughing-kookaburra.411863de.png",
+      "sha256": "411863de2f9d95d77cf1ede6e0008677825ed6ef41c0bcbb2deac38b15445f3e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "shortbeaked-echidna",
+      "prompt": "SPINBARK BUSHLAND, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL AUSTRALIAN bush animal/plant, natural coherent anatomy and whole recognizablesilhouette FIRST. Distinct physical craft is SPINDLE / OFF-AXIS LATHE-TURNED NATURAL SOLID WOOD: a few substantial ovoid/bulb/spindle components, tapered cones and half-shell sections joined by small fitted turned TENONS/COLLARS. Eachmajorpart visibly has3to5COARSE CIRCUMFERENTIAL PARTING/GROUPED GOUGE RINGS that wrap around thatpart's TURNING AXIS; curved concentric toolgrooves follow the actual 3Dturnedvolume, and cutendfaces show CIRCULAR END GRAIN/pithrings with fine short pores. Material grain direction CHANGES naturally at fittedjointboundaries. Rings are shallow real toolcut channels/stepped shoulders in SOLID WOOD, not painted stripes, printedfakewoodgrain, overlapping scalechips, stackedcoins, metalwirehoops or pencilshavingfans. Substantial continuoussmooth solidwoodfields remain betweenboldringgroups; smallgrainlines andturnedtoolgrooves distinct. The shaped COMPONENT PROFILES themselves are roundedlatheovoid/spindle/neckwaists, not a generichand-carved animal merely coatedwithwoodtexture. Natural warmcream HOLLY/MAPLE, honeywood, russet REDGUM and dark WALNUT fields, restrainedmattewaxpolish only, cleardrywoodpores/cutendgrain; no paintedbrightcolors/bluepatches/varnishedplasticshine/resin/gems. Coarsegrooves/turnedshoulders remainlegibleat85. Preservefamiliar naturalanatomy, not a mechanicaltoyrobot, lathe/toolworkshop display or abstractpileofwoodbeads. No open notchedWOOD-LATHlattice/lapnotches, flatmarquetry/veneerinlay, straw/cornhusk/paperpleats, serratedpaintedpencilshavings/excelsiorwoodwool, laserplywoodlayers, woodpyrographyburneddrawings, guillochemetalengraving/enamel, gold/metalparts/screws/nails or realanimalfur/feathers/skin underneath. Tiny darkeyes are flushsmall darkwoodinsets, not protrudingglass/gem/button eyes. Whole subject central64percent with18percent genuinelyemptyALPHA every side, completeallbill/ears/toes/tail/leaf/planttipends. Openlimb/branchgaps truealpha. No detachedwoodoffcuts/sawdust, backingplaque/rectangularpanel/base/ground/scenery/wreath/frame/medallion, jewellery/clasp/mount, exteriorcastshadow/halo/glow, text/letters/numbers/liveclock/date/battery/weatherreadings/UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole recognizable SHORT-BEAKED ECHIDNA walking side-on facingLEFT. Low stocky naturalbody, longnarrow tubular gentlytaperingsnout pointingdown-left, tinyflushdarkwoodeye, NO visiblelargeears. ExactlyFOURshortstoutlegs endingwholecurveddiggingclaws, feetcorrectlyattachedbeneathbody, tinyshorttail. Itsbackspines are about20to25wholeSOLID LATHE-TURNEDTAPERED WOOD SPINDLES, longslenderconeswidenatbaseandendinsmoothpoints, each3coarsecircumferentialpartinggrooves/steppedshoulderandvisiblelonggrain, mixedcreammaple/honey/russet/darkwalnutnaturalwood. Differentaxestiltspinesnaturallybackward, no hundredsfurfibres/straw/quills/paperleafspines; nothedgehog/pinecone/porcupineball. Lowerbody onebroadcreamwoodovoid with3coarsecurvedlathegrooves, snoutturnedslenderwoodcone andsmallfittedneckcollar. Wholeallsnout/spinetips/4legs/claws/tinytailextentcomfortablyinsidealpha, no ants/plants/base/ground/otheranimal. InputImage1ONLYownselectedkookaburra is material/craftreference: same substantialsolidwoodturnedcomponentprofiles, coarsecurvedpartinggrooves/steppedshoulders/circularendgrain andsmallfittedtenons, naturalwoodcolors. Create this entirelydifferentnatural subject/composition; nevercopybirdpose oraddbird.",
+      "tool": "built-in image_gen",
+      "source": "sources/shortbeaked-echidna.52b7a3f7.png",
+      "sourceSha256": "52b7a3f736036b532dcba6a69e8c021cb4927d4dc1959cc512564b42428034a3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/shortbeaked-echidna.90be83d9.png",
+      "sha256": "90be83d902a861b80b6120e07f7dce9db294c35a34df0a489cc5a42aaaf44ab6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "laughing-kookaburra",
+          "file": "sources/laughing-kookaburra.1310a212.png",
+          "sha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/shortbeaked-echidna-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/shortbeaked-echidna-exact-tool-result.json"
+    },
+    {
+      "id": "eucalyptus-gumnuts",
+      "prompt": "SPINBARK BUSHLAND, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL AUSTRALIAN bush animal/plant, natural coherent anatomy and whole recognizablesilhouette FIRST. Distinct physical craft is SPINDLE / OFF-AXIS LATHE-TURNED NATURAL SOLID WOOD: a few substantial ovoid/bulb/spindle components, tapered cones and half-shell sections joined by small fitted turned TENONS/COLLARS. Eachmajorpart visibly has3to5COARSE CIRCUMFERENTIAL PARTING/GROUPED GOUGE RINGS that wrap around thatpart's TURNING AXIS; curved concentric toolgrooves follow the actual 3Dturnedvolume, and cutendfaces show CIRCULAR END GRAIN/pithrings with fine short pores. Material grain direction CHANGES naturally at fittedjointboundaries. Rings are shallow real toolcut channels/stepped shoulders in SOLID WOOD, not painted stripes, printedfakewoodgrain, overlapping scalechips, stackedcoins, metalwirehoops or pencilshavingfans. Substantial continuoussmooth solidwoodfields remain betweenboldringgroups; smallgrainlines andturnedtoolgrooves distinct. The shaped COMPONENT PROFILES themselves are roundedlatheovoid/spindle/neckwaists, not a generichand-carved animal merely coatedwithwoodtexture. Natural warmcream HOLLY/MAPLE, honeywood, russet REDGUM and dark WALNUT fields, restrainedmattewaxpolish only, cleardrywoodpores/cutendgrain; no paintedbrightcolors/bluepatches/varnishedplasticshine/resin/gems. Coarsegrooves/turnedshoulders remainlegibleat85. Preservefamiliar naturalanatomy, not a mechanicaltoyrobot, lathe/toolworkshop display or abstractpileofwoodbeads. No open notchedWOOD-LATHlattice/lapnotches, flatmarquetry/veneerinlay, straw/cornhusk/paperpleats, serratedpaintedpencilshavings/excelsiorwoodwool, laserplywoodlayers, woodpyrographyburneddrawings, guillochemetalengraving/enamel, gold/metalparts/screws/nails or realanimalfur/feathers/skin underneath. Tiny darkeyes are flushsmall darkwoodinsets, not protrudingglass/gem/button eyes. Whole subject central64percent with18percent genuinelyemptyALPHA every side, completeallbill/ears/toes/tail/leaf/planttipends. Openlimb/branchgaps truealpha. No detachedwoodoffcuts/sawdust, backingplaque/rectangularpanel/base/ground/scenery/wreath/frame/medallion, jewellery/clasp/mount, exteriorcastshadow/halo/glow, text/letters/numbers/liveclock/date/battery/weatherreadings/UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: A plant-only compactnatural EUCALYPTUS SPRIG with THREEwholewoodyGUMNUTCAPSULES atdifferentangles ononeforkedbranch andTWOlongnarrowlanceolateleaves. Gumnuts are3smallSOLIDWOOD LATHE-TURNEDCUPFORMS, naturalbell/urn-shaped woodycapsules, broadroundedbody/shortbase/collar, openmouthshowing3smalltriangularraisedVALVETIPSinside, notsmoothemptyteacups/acorns/fruitbowls. Twoopenmouths faceviewer diagonally, thirdcapsule side-on; wholelips/valvescomplete. Eachgumnut has3coarsecircumferentialpartinggrooves andcircularendgraininsidecutlip; naturalrussetredgum/maple/honeywoodfields, notrealbark/planttissue. Twoleaves are thinlongsplit-lathe-spindle half-shells, roundedtaperinglanceolateprofile withsubtlecurvedtoolgrooves andlonggrain, oneleafslopesupperleft/oneupperright, notfern/roundedmapleleaf. Shortforkedsolidwoodstem withfittedsmalltenoncollars, allcapsules/stemtips/leafpointscompletewithtruealpha between. PlantONLY, no bird/echidna/lizard/eyes/insect/flowers/letters/pedestal. InputImage1ONLYownselectedkookaburra is material/craftreference: same substantialsolidwoodturnedcomponentprofiles, coarsecurvedpartinggrooves/steppedshoulders/circularendgrain andsmallfittedtenons, naturalwoodcolors. Create this entirelydifferentnatural subject/composition; nevercopybirdpose oraddbird.",
+      "tool": "built-in image_gen",
+      "source": "sources/eucalyptus-gumnuts.84a44c29.png",
+      "sourceSha256": "84a44c294a98cc8695204e17a2e11e3331d861b3eef3a6154d63ffd312cae322",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/eucalyptus-gumnuts.7fc98036.png",
+      "sha256": "7fc9803690a914b1fdc2e409ef76b7e83b60884e750f4c6148cce3a524332a11",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "laughing-kookaburra",
+          "file": "sources/laughing-kookaburra.1310a212.png",
+          "sha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/eucalyptus-gumnuts-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/eucalyptus-gumnuts-exact-tool-result.json"
+    },
+    {
+      "id": "frilled-lizard",
+      "prompt": "SPINBARK BUSHLAND, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL AUSTRALIAN bush animal/plant, natural coherent anatomy and whole recognizablesilhouette FIRST. Distinct physical craft is SPINDLE / OFF-AXIS LATHE-TURNED NATURAL SOLID WOOD: a few substantial ovoid/bulb/spindle components, tapered cones and half-shell sections joined by small fitted turned TENONS/COLLARS. Eachmajorpart visibly has3to5COARSE CIRCUMFERENTIAL PARTING/GROUPED GOUGE RINGS that wrap around thatpart's TURNING AXIS; curved concentric toolgrooves follow the actual 3Dturnedvolume, and cutendfaces show CIRCULAR END GRAIN/pithrings with fine short pores. Material grain direction CHANGES naturally at fittedjointboundaries. Rings are shallow real toolcut channels/stepped shoulders in SOLID WOOD, not painted stripes, printedfakewoodgrain, overlapping scalechips, stackedcoins, metalwirehoops or pencilshavingfans. Substantial continuoussmooth solidwoodfields remain betweenboldringgroups; smallgrainlines andturnedtoolgrooves distinct. The shaped COMPONENT PROFILES themselves are roundedlatheovoid/spindle/neckwaists, not a generichand-carved animal merely coatedwithwoodtexture. Natural warmcream HOLLY/MAPLE, honeywood, russet REDGUM and dark WALNUT fields, restrainedmattewaxpolish only, cleardrywoodpores/cutendgrain; no paintedbrightcolors/bluepatches/varnishedplasticshine/resin/gems. Coarsegrooves/turnedshoulders remainlegibleat85. Preservefamiliar naturalanatomy, not a mechanicaltoyrobot, lathe/toolworkshop display or abstractpileofwoodbeads. No open notchedWOOD-LATHlattice/lapnotches, flatmarquetry/veneerinlay, straw/cornhusk/paperpleats, serratedpaintedpencilshavings/excelsiorwoodwool, laserplywoodlayers, woodpyrographyburneddrawings, guillochemetalengraving/enamel, gold/metalparts/screws/nails or realanimalfur/feathers/skin underneath. Tiny darkeyes are flushsmall darkwoodinsets, not protrudingglass/gem/button eyes. Whole subject central64percent with18percent genuinelyemptyALPHA every side, completeallbill/ears/toes/tail/leaf/planttipends. Openlimb/branchgaps truealpha. No detachedwoodoffcuts/sawdust, backingplaque/rectangularpanel/base/ground/scenery/wreath/frame/medallion, jewellery/clasp/mount, exteriorcastshadow/halo/glow, text/letters/numbers/liveclock/date/battery/weatherreadings/UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole naturallyproportioned FRILL-NECKED LIZARD in recognizable alertthree-quarterpose, headraisedandfacingRIGHT, broadopenroundFRILLaroundneck, longslenderbody, exactlyFOURcoherentlimbs/wholefeetwithcompletefivesmalltoes/claws, twoforelegsraisedslightly andtwohindlegsplanted, longwholetailmakesonewideopenScurvetowardlowerLEFT. Frillis ONEthinwide LATHE-TURNEDANNULARWOODCOLLAR split/openjustbelowthroat, circularendgrain and3coarseconcentricpartinggrooves onitsfrontface; naturalfrilloutlinewithrestrainedshallowundulations andfewbroadradialslots, NOTa gear/saw/cog/sunflowerorfeathertiles. Headsmallnaturalreptilesnout/tinydarkwoodinseteyes, bodyfewsolidrusset/honey/mapleturnedspindleswith3coarsecircumferentialtoolgroovespermajorpart andsmallfittedtenonsatneck/limbs, no hingedrobotmechanisms/metal. Tailcontinuoussmoothwoodtaperwith3partinggroovegroups, notstackedwoodbeadsorsegmentedinsect. Keepnaturalrealreptileanatomy/quietartisanalfinish, no cartoonhumanface. Allfrillrim/4feet/toes/tailtip/headcompleteingeneroustruealpha, no branch/base/ground/otheranimal. InputImage1ONLYownselectedkookaburra is material/craftreference: same substantialsolidwoodturnedcomponentprofiles, coarsecurvedpartinggrooves/steppedshoulders/circularendgrain andsmallfittedtenons, naturalwoodcolors. Create this entirelydifferentnatural subject/composition; nevercopybirdpose oraddbird.",
+      "tool": "built-in image_gen",
+      "source": "sources/frilled-lizard.68fd9142.png",
+      "sourceSha256": "68fd9142d86e41c9219cdfe8bc204d414a97e2f113fdd19527c70f2a31bd091b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/frilled-lizard.4318d8cb.png",
+      "sha256": "4318d8cb78234ddcde8b44b52bcb555e833cf67ff1af3adefd0e766416154cbb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "laughing-kookaburra",
+          "file": "sources/laughing-kookaburra.1310a212.png",
+          "sha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/frilled-lizard-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/frilled-lizard-exact-tool-result.json"
+    },
+    {
+      "id": "banksia",
+      "prompt": "SPINBARK BUSHLAND, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL AUSTRALIAN bush animal/plant, natural coherent anatomy and whole recognizablesilhouette FIRST. Distinct physical craft is SPINDLE / OFF-AXIS LATHE-TURNED NATURAL SOLID WOOD: a few substantial ovoid/bulb/spindle components, tapered cones and half-shell sections joined by small fitted turned TENONS/COLLARS. Eachmajorpart visibly has3to5COARSE CIRCUMFERENTIAL PARTING/GROUPED GOUGE RINGS that wrap around thatpart's TURNING AXIS; curved concentric toolgrooves follow the actual 3Dturnedvolume, and cutendfaces show CIRCULAR END GRAIN/pithrings with fine short pores. Material grain direction CHANGES naturally at fittedjointboundaries. Rings are shallow real toolcut channels/stepped shoulders in SOLID WOOD, not painted stripes, printedfakewoodgrain, overlapping scalechips, stackedcoins, metalwirehoops or pencilshavingfans. Substantial continuoussmooth solidwoodfields remain betweenboldringgroups; smallgrainlines andturnedtoolgrooves distinct. The shaped COMPONENT PROFILES themselves are roundedlatheovoid/spindle/neckwaists, not a generichand-carved animal merely coatedwithwoodtexture. Natural warmcream HOLLY/MAPLE, honeywood, russet REDGUM and dark WALNUT fields, restrainedmattewaxpolish only, cleardrywoodpores/cutendgrain; no paintedbrightcolors/bluepatches/varnishedplasticshine/resin/gems. Coarsegrooves/turnedshoulders remainlegibleat85. Preservefamiliar naturalanatomy, not a mechanicaltoyrobot, lathe/toolworkshop display or abstractpileofwoodbeads. No open notchedWOOD-LATHlattice/lapnotches, flatmarquetry/veneerinlay, straw/cornhusk/paperpleats, serratedpaintedpencilshavings/excelsiorwoodwool, laserplywoodlayers, woodpyrographyburneddrawings, guillochemetalengraving/enamel, gold/metalparts/screws/nails or realanimalfur/feathers/skin underneath. Tiny darkeyes are flushsmall darkwoodinsets, not protrudingglass/gem/button eyes. Whole subject central64percent with18percent genuinelyemptyALPHA every side, completeallbill/ears/toes/tail/leaf/planttipends. Openlimb/branchgaps truealpha. No detachedwoodoffcuts/sawdust, backingplaque/rectangularpanel/base/ground/scenery/wreath/frame/medallion, jewellery/clasp/mount, exteriorcastshadow/halo/glow, text/letters/numbers/liveclock/date/battery/weatherreadings/UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: A plant-only whole recognizable BANKSIA SPRIG. ONElargeuprightcylindrical-to-ovoid woodyBANKSIASEEDCONE onone short diagonallyslopingstem, THREEelongatedsawtoothedbanksialeaves fanoutatdifferentheights. ConeisONEsubstantialLATHE-TURNEDRUSSETWOODOVOID withcoarsecircumferentialpartinggroovesdefining5broadhorizontalbands; smallnaturallyuneven OVALFOLLICLEOPENINGS carvedintoSOLIDwood atstaggeredpositions, trueblackrecessdepthonlynotbeads/metaldiscscales. Circularendgrainatroundedconetop andgrainfollowingvolume, fittedsmallturnednecktenonjoinsstem. Leaveslongnarrowanddeeplyserratedlikebanksia, shapedfromhalf-splitcream/honeylathe-spindleshellsections with3coarsecurvedtoolgrooves andnaturalgrain, secondarysawtoothleafoutlinecutafterturning; notpaperpleats/pencilshavings/flatmarquetry. Wholecone/follicles/serratedleafpoints/shortstemendscomfortablyinsidealpha, naturalplantbranching. PlantONLY, no bird/echidna/lizard/animalface/eyes/flowers/letters/base/plaque. InputImage1ONLYownselectedkookaburra is material/craftreference: same substantialsolidwoodturnedcomponentprofiles, coarsecurvedpartinggrooves/steppedshoulders/circularendgrain andsmallfittedtenons, naturalwoodcolors. Create this entirelydifferentnatural subject/composition; nevercopybirdpose oraddbird.",
+      "tool": "built-in image_gen",
+      "source": "sources/banksia.27710d8e.png",
+      "sourceSha256": "27710d8e6e9c142eb6972843e3705edce79e76d3bb78236afea7a6310c5c5bd2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/banksia.1b0ccf83.png",
+      "sha256": "1b0ccf836fb1d4402dd0685a0c28211444506e2bbe1f76dac81758858110301c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "laughing-kookaburra",
+          "file": "sources/laughing-kookaburra.1310a212.png",
+          "sha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/banksia-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/banksia-exact-tool-result.json"
+    }
+  ]
+}

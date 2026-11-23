@@ -1,0 +1,16 @@
+{
+  "name": "Pressgrain Arroyo",
+  "mood": "Arroyo wildlife in rust and indigo ink, with open cloth grids, gritty fields and torn board edges.",
+  "tags": [
+    "collograph-print",
+    "textured-print-plate",
+    "bookcloth-grid",
+    "arroyo-nature"
+  ],
+  "credits": "Glaze original artwork, built-in OpenAI image generation; original native widget geometry by lane B.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Make one small composition edit to our existing tall Pressgrain Arroyo wallpaper. The uploaded scene is the edit target. Keep the very tall phone proportions, quiet same plum background, same single flat collograph scene, exactly the same sizes and placements of the roadrunner, kit fox and cactus, and their original texture assignments. Only shorten the low dry-bank strip on the bottom LEFT. Its cream and rust tapered tongue currently extends all the way to the left canvas edge. Pull that little ribbon of bank inward so its NEW complete tapered torn ink point ends at least 8 percent of total canvas width away from the left edge, clearly left of the grass roots but separated from the frame by an unbroken plum margin. Shorten only that landscape tip and stray grit there. Keep the full roadrunner tail, crest, bill and two running feet, the whole kit fox with two ears, four paws and bushy tail, all three cactus pads with the original flower and two fruits, both grass tufts and the rest of the terrain. Leave a visible plum margin around the other sides also. Preserve all existing large grid, thick rust grit and ragged edge around the smooth ink reserves in a single flat print plane. Maintain the existing restrained colors and tall central composition. No enlarging the animal subjects, no new shapes, no added labels, framing, power or clock values.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

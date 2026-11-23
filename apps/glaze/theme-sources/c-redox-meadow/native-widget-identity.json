@@ -1,0 +1,22 @@
+{
+  "theme": "c-redox-meadow",
+  "art": {
+    "cRedoxOak": "M 30 91 Q 39 78 46 68 Q 30 73 27 63 Q 18 57 29 49 Q 18 42 30 35 Q 25 24 39 26 Q 37 13 50 17 Q 56 5 65 16 Q 79 11 79 25 Q 92 28 82 40 Q 91 49 78 56 Q 82 68 66 68 Q 57 78 49 71 Q 42 81 36 94 Z",
+    "cRedoxFronts": "M 30 50 C 17 49 17 31 30 29 C 43 26 49 43 38 47 C 31 50 27 43 31 40 M 56 30 C 48 15 67 10 73 21 C 80 34 62 42 59 32 C 57 26 65 24 67 29 M 58 69 C 47 59 59 48 69 54 C 80 61 70 76 62 68 C 58 64 65 59 67 64"
+  },
+  "recipe": [
+    "petal",
+    "cRedoxOak",
+    "cRedoxFronts",
+    "pearls",
+    "leaf",
+    "basin",
+    "folio"
+  ],
+  "ornament": "M 29 90 Q 37 78 45 68 M 45 69 Q 28 72 28 61 Q 17 54 31 47 Q 19 39 33 34 Q 27 23 41 25 Q 43 11 54 18 Q 65 10 71 22 Q 85 20 79 33 Q 91 40 78 47 Q 84 59 69 59 Q 66 72 52 68 Q 47 74 45 69 M 45 68 Q 55 49 65 28",
+  "direction": "Rounded petal clock chosen from broad oak lobes; original oak hero/threeopenfront detail. Quiet small plain oak header; no dense spiral diagram in corner. Calendar uses current restored shipped identity.outline, no badge-fitting/containment/equal-size design gates.",
+  "values": "Existing live Clock/Battery/Calendar, no baked raster readings.",
+  "registryIntegration": "Source-only lane candidate floor1.0.44. Root owns canonical/shared Swift/TypeScript/runtime and installed-device qualification. Source completion under original human messaging-unavailable fallback; coordinator material/integration review pending.",
+  "ornamentDirection": "Small plain oak leaf and petiole only; no miniature spiralwave chart in native corner.",
+  "ornamentProvenance": "Original authored100x100path,23November2026,following direct both-corner steering."
+}

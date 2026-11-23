@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "ringed-plover",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-69becdc2-8ce7-48a7-be6d-eeedde1c0ded.png",
+      "sha256": "16a8493a83fdb6239ceab15ca4430ad98c15300dd810fa861ccc2dcae220a726",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        31,
+        1240,
+        1231
+      ]
+    },
+    {
+      "id": "shore-crab",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-682c1ff1-3097-492b-bc42-c11559333608.png",
+      "sha256": "5c1672c647b2422db3ef524218a9b88eaa35cb5740bb23d1b7daf5d916b3819d",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        15,
+        1244,
+        1254
+      ]
+    },
+    {
+      "id": "cockle-shell",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-12f969e8-5732-49a6-ae27-57cd575c4267.png",
+      "sha256": "a168c2981625fdc1e15eabde47f39cc522b244c8791ec0de929493892268e99c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        9,
+        1218,
+        1254
+      ]
+    },
+    {
+      "id": "grey-seal",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-a4926ec6-c400-45cc-87c8-cefee832afbd.png",
+      "sha256": "308d068ae8fa70c5db175b6f932a3f7f2791519468cf6f553ee5dbec601a45c5",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        33,
+        1241,
+        1254
+      ]
+    },
+    {
+      "id": "sea-holly",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-38da3364-d521-4b88-9bab-9ce96911791e.png",
+      "sha256": "6aa00d977de745f42e7eef694d47a81841d83e1dbe471b469aedb713f14f525c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        21,
+        17,
+        1253,
+        1254
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "speckledwood-butterfly",
+  "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole natural SPECKLED WOOD BUTTERFLY with FOUR distinct complete wings spread open dorsally: exactly2broader forewings point upperleft/upperright and2rounded hindwings spread lowerleft/lowerright, narrow central segmentedbody and head, exactly2thinantennae with subtleclubends, exactly6tinycoherent legs attached to thorax. Forewings broad darkbrown-blackmarble fields with1or2broadivoryveins, hindwings honeyochrejasper fields withcoarsepaleveins; creamquartz irregularnaturalbutterflyspots are6to8large precisely flushinset fields across wings total, not regular tilegrid/goldcells/painteddecals. Left/rightwing silhouettes coherent and paired, no extra wings/tails. Body simple darkmarble. Four wings/spotinsets allONEcoplanarface; no translucentglass/metalwalls, no bulbous3Dgem insect. Whole antennaclubs/wings/legends contained in generous alpha, no flower/plaque/frame/detachedstones. Use input Image1 ONLY as own material/craft reference: preserve the broad flush opaque stonefields, coarse intrinsic veins and tight hand-cut joins. Create this completely different subject/composition, never copy bird pose or add bird.",
+  "tool": "built-in image_gen",
+  "source": "sources/speckledwood-butterfly.7ada730a.png",
+  "sourceSha256": "7ada730a65788fae89927104857d38132fe98aac9599603810507397d1df6464",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/speckledwood-butterfly.80859ae1.png",
+  "sha256": "80859ae1a96c6921e996d3c1088c7564ae4adc6ba6458110ec8eb0e93d1cb213",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "bullfinch-sprig",
+      "file": "sources/bullfinch-sprig.30587d72.png",
+      "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/speckledwood-butterfly-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/speckledwood-butterfly-exact-tool-result.json"
+}

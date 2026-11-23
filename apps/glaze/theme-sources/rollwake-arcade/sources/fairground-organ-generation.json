@@ -1,0 +1,18 @@
+{
+  "id": "fairground-organ",
+  "prompt": "ROLLWAKE ARCADE for Glaze. Use case: stylized-concept. One separate original square artwork on genuine transparent alpha. A familiar functioning-looking old fairground machine constructed from wide perforated PAPER MUSIC ROLL sculptures. Major surfaces are continuous WIDE warm buff oiled paper planes bent into shallow sweeping cylinders, flared ribs and sturdy folded supports, with restrained dull mulberry edges. Throughout the middle of each broad field, punch several ordered columns of elongated rounded rectangular holes of widely differing lengths. Four to seven clearly distinct INTERIOR note columns with irregular starts and lengths, broad unpunched side margins. The actual big through-slots leave true alpha when they open onto empty space. Where a separate clear paper part passes behind the holes, show real soft structural depth. The PAPER SURFACE area and broad interior perforations are the main visual identity, clear at 85 pixels. A few paper ends show many tightly wound edges in cross-section like a large music roll. Very fine flecks and fibres in the matte paper, with light wood end spindles and only tiny dark bronze axles if needed. Always coherent mechanically recognizable silhouette, big readable geometric regions and a few substantial through-slot planes. Natural perspective with soft raking light. No fine corrugation, origami origram panels, tiny confetti, obvious scalloped filigree, woven strips, lace, scattered vintage label paper, printed symbols, highly glossy plastic, film sprocket holes along the edge, film frames or photographic cells. No stacked black vinyl records, wire, punched sheet metal, actual music transcription, musical notes, numerals, writing or UI. Whole subject isolated inside roomy transparent margins, no base except its own integral supports, no ground, vignette, shadow, poster, text or logo. FIRST SUBJECT: A single clearly recognizable travelling FAIRGROUND PIPE ORGAN seen from front in a mild three-quarter view. A wide low integral pedestal, two stout end supports, a tall central arcadia crown and five visible vertical hollow flue pipes of graduated height form one working sculpture. The thick crown and high side cheeks are made from WIDE curved rectangular paper music roll surfaces, with at least five irregular longitudinal interior note-slot columns and a generous unperforated border. Each pipe is made by rolling a broad buff paper piece and may have a few perforated interior note slots. Visible open pipe mouths with one round wound paper end each. The broad lower front music roll feeds over two quietly visible parallel axles with big staggered interior holes, one tightly wound paper roll partly visible at its left side. Overall at least 75 percent visible buff paper surface. Tiny light wood spindles, sparing muted mulberry folds, some paper layers only at roll ends. No giant gold sheet, lettering, piano keys, human figure, loose roll or star ornament. Keep crown, both sides, both feeds, feet and all pipes whole with a comfortable transparent margin. One visually coherent small working fairground organ.",
+  "tool": "built-in image_gen",
+  "source": "sources/fairground-organ.db6b9951.png",
+  "sourceSha256": "db6b9951019941dff13a1ca3f18f0b4df1ec7b6cb64be43c1b42dec69f963d08",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fairground-organ.6b035955.png",
+  "sha256": "6b03595562334609ec40abcd20c9e9fa731849d13a41c575812449a7a34d7dcd",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

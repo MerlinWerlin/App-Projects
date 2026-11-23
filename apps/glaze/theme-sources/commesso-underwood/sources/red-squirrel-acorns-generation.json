@@ -1,0 +1,29 @@
+{
+  "id": "red-squirrel-acorns",
+  "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole recognizable EURASIAN RED SQUIRREL seated side-on facing RIGHT, small alert head with2pointed tufted ears, shortmuzzle, tinyflushdarkeye, exactly2forepaws clasp ONE whole acorn, exactly2coherent folded hindlegs/feet, one large complete plume-like tail curls UP behind its back into a broad open C. Tail is a single BROAD rust-redjasper field with3coarsewhiteveins, no many feather/mosaic chips. Body in2broad ochrejasper/rustjasper fields; creamybelly milkyquartz; head inwarmredjasper, ear tips darkmarble. About8to10broad opaque stonefields, tight flush joints and intrinsic mineralpattern, NO sculptedroundbelly/fluffy3Dfur or blackoutline. Tail/head/paws/acorn all ONE flat face, naturally coherent animal anatomy. All ears/tail/toetips/acorn wholly contained with generous truealpha, no twig/plaque/ground/extrafood. Use input Image1 ONLY as own material/craft reference: preserve the broad flush opaque stonefields, coarse intrinsic veins and tight hand-cut joins. Create this completely different subject/composition, never copy bird pose or add bird.",
+  "tool": "built-in image_gen",
+  "source": "sources/red-squirrel-acorns.893e7634.png",
+  "sourceSha256": "893e7634d40988cabb16450fba02b1fef6d7fb8e07b58ee23ec5d26b3c245313",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/red-squirrel-acorns.a0eee2d3.png",
+  "sha256": "a0eee2d3794c99dc452a6b6344c5f9fc5bbccf8cb07e8220316892e593eca463",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "bullfinch-sprig",
+      "file": "sources/bullfinch-sprig.30587d72.png",
+      "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/red-squirrel-acorns-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/red-squirrel-acorns-exact-tool-result.json"
+}

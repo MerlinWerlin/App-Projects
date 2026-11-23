@@ -1,0 +1,195 @@
+{
+  "theme": "c-foldpath-meadow",
+  "status": "Lane actualmaterialreviewpassed unchanged under originalhumanfallback; peer material/integration pending.",
+  "sample": {
+    "id": "daffodil-foldpath",
+    "selected": true,
+    "sourceSha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2",
+    "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FOLDPATH MEADOW. Subject ONE WHOLE instantly familiar DAFFODIL plant: exactlySIX broad pointed petals radiate around one short open central trumpet, flower facing slightly up-right, full gently curved slender stem descends to a natural base, TWO long full pointed leaves fan lowleft/lowright. Complete blossom/petalpoints/trumpet/stalkbase/leaftips, recognizable natural plant silhouette first, no abstract molecular blob or ordinary unrelated lab object. Whole plant inside central70percent square, at least15percent empty transparent exterior every side.\nVISUAL LANGUAGE: an ARTISTIC MOLECULAR SECONDARY-STRUCTURE RIBBON-CARTOON IMAGE. Each of the SIX broad petals is ONE clean continuous slightly twisted BETA-STRAND ARROW ribbon: a broad body leading to a conspicuous flared arrow shoulder and pointed arrowhead at the natural petaltip. Few LARGE arrow sheets, not dozens of tiny arrows. The central trumpet is ONE short OPEN THREE-TURN ALPHA-HELIX ribbon segment, warmcoral/orange, clear repeated helical turns/opencoilspace visible at85px, slightly tilted so its open mouth is visible. The full narrow stem is ONE smooth continuous darkteal LOOP connector following a natural stalkcurve, with one gentle small loop bend near the base; it is not a normalplantstalk under decoration. TWOlongbasalleaves are two elegant continuous BETA-STRAND ARROW ribbons with broad pointed heads near their full tips. Smooth thin loop connectors join the sixpetal arrows and centralhelix organically at one centre, no hovering separate components. The arrows/helix/loop conventions SUPPLY the plant, no natural flower/leaf tissue beneath. Clear open transparent negative gaps between ribbonparts, no backingleafplane. Delicate natural floral gesture, coherent complete growth, no regular compass/cogwheel or diagramarrow field.\nSoftware-like CLEAN SCIENTIFIC CARTOON representation: saturated but restrained TEAL/CERULEAN beta-sheets, warm CORAL/ORANGE centralhelix, darkteal thin connectingloops. Broad nearFLAT COLOUR FIELDS with only a subtle secondtone on reverse sides to explain ribbon turns, no scene lighting or castshadows, no glossy highlights/ambientocclusion. Thin crisp darker edge definition allowed, not thick cartooninkoutline. Negligible apparent ribbonthickness. No physical satin/foil/fabric or directional sheen, stitched/tucked lips, creasedpaper, hardpasta/tubes/shells, sculptedplastic/clay/metal/glass, reflective coppercoil or plumbingfittings. No microscope/beaker/ball-and-stick atoms, DNA doublehelix, numberedsequence, actual molecule/PDB identity/atomicbonds, labels or chemistryapparatus. A GENERIC original artistic translation of scientific ribbon-cartoon conventions, NOT an actual protein structure, sequence, model/atomic data, biomolecularfunction/anatomical claim or scientificprediction. No PDBmodel/image or externalvisual inputs, no namedartist style.\nNot a regular naturalflower photograph with a filter, fine featherpanel/satinflower, fluorescentcellwall mesh, projectedstripes, many tiny short vectorarrows, rainbowinterference, flowcurves, particletracks or glowingneonoutline. TruealphaZERO outside exactwhole plant and between diagramribbons; all ribbonfields opaque. No backgroundsquare/rectangle/slab/paper/sheet, ground/floor/shadow/glow/haze/frame, text/numbers/scales/axes, bakedclock/date/battery/weather/UI/logos/watermark. One complete beautiful daffodil as a clear molecular-cartoon image, generous transparent margins.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        196,
+        132,
+        1062,
+        1141
+      ],
+      "96": [
+        196,
+        132,
+        1062,
+        1141
+      ]
+    },
+    "edgeAlphaMaximum": 0
+  },
+  "neighbors": [
+    {
+      "theme": "ribbonrise-hedgerow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\foxglove-fern.b4389d09.png",
+      "sha256": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3"
+    },
+    {
+      "theme": "durumfold-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\durumfold-meadow\\widgets\\robin-twig.3a99a0a4.png",
+      "sha256": "3a99a0a4a78ea23f593c40aa67daf21fa5ad82c0af9468265fd6f6608e3f510d"
+    },
+    {
+      "theme": "lamellar-commons",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\bellows-pangolin.65b1496aa7dc.png",
+      "sha256": "65b1496aa7dc4fd50efa3db37395ae36193905fb63fb51a05e5b02474155d664"
+    },
+    {
+      "theme": "bobbinbound-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\orchard-songbranch.8591b0d3.png",
+      "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a"
+    },
+    {
+      "theme": "pipework-tearoom",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pipework-tearoom\\widgets\\fan-lid-samovar.16b9f737.png",
+      "sha256": "16b9f73779fd92f6d2996b214f37d1751d278df9dbf8baefcaee2a35ca96228a"
+    },
+    {
+      "theme": "c-quiver-riffles",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-quiver-riffles\\widgets\\fan-root-mangrove.ba37a0dac748.png",
+      "sha256": "ba37a0dac74805614dba8b83940b2567848ee93a7cf9333e00c80a8205e0d632"
+    },
+    {
+      "theme": "c-confocal-bridgeworks",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\widgets\\ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "vaneleaf-highland",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\vaneleaf-highland\\widgets\\ibex-bellflower.715f4342.png",
+      "sha256": "715f43428f9ac5aa499c6263a5b19f61685229677151d2939d9e32a6554aeaa2"
+    },
+    {
+      "theme": "chromatic-lab",
+      "optionId": "molecular-butterfly",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\widget-molecular-butterfly.6c1a553b.webp",
+      "sha256": "6c1a553b41da26bf6dbe7f4d5fd447df22efa4ab665e229c63fe3b4de347bd65",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\manifest.json",
+      "selectorProof": "outputs/foldpath-published-neighbor-selections.json"
+    },
+    {
+      "theme": "chromatic-lab",
+      "optionId": "spiral-glass",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\widget-spiral-glass.8fb4d7f3.webp",
+      "sha256": "8fb4d7f3ef9ff2c2fb91b1823eda4020c4ef44bcbd60888064da400e8cf61198",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\manifest.json",
+      "selectorProof": "outputs/foldpath-published-neighbor-selections.json"
+    },
+    {
+      "theme": "copper-circuit",
+      "optionId": "copper-coil",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-copper-coil.1bfbbc83.webp",
+      "sha256": "1bfbbc8320a7602745f53394cf771ff7ddb764d877ce700f8969903ba6bc3b74",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\manifest.json",
+      "selectorProof": "outputs/foldpath-published-neighbor-selections.json"
+    },
+    {
+      "theme": "copper-circuit",
+      "optionId": "copper-fin-array",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-copper-fin-array.b911c243.webp",
+      "sha256": "b911c243f62e30cf0621341432c3167d3451047f087fd5b647550b797749f4b8",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\manifest.json",
+      "selectorProof": "outputs/foldpath-published-neighbor-selections.json"
+    },
+    {
+      "theme": "blueprint-bureau",
+      "optionId": "compass-beetle",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\blueprint-bureau\\v9\\widget-compass-beetle.4c6ea18a.webp",
+      "sha256": "4c6ea18a0fef65c8d04675e66647c881b47419431eb2e834c3658385dd08e7f9",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\blueprint-bureau\\v9\\manifest.json",
+      "selectorProof": "outputs/foldpath-published-neighbor-selections.json"
+    },
+    {
+      "theme": "blueprint-bureau",
+      "optionId": "articulated-seahorse",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\blueprint-bureau\\v9\\widget-articulated-seahorse.bd715abf.webp",
+      "sha256": "bd715abf1346da645cc52da8d72919496ef5e35dca97fc7ec43ec41fb565a3f4",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\blueprint-bureau\\v9\\manifest.json",
+      "selectorProof": "outputs/foldpath-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Lane actual full17085/corner/15closest material comparisons passed unchanged. Whole sixpetal flower/fullstem/twoleaves with a shortopenhelix trumpet clear at85, some botanical simplification explicit. Few broad teal continuous beta-arrow sheets, short coralhelix and thin loop connectors visibly different from satinribbonwork/pastacraft/mycelium/lace/pipework/feathervanes, C19tinyisolatedarrowglyph fields, emittedcellwalls/projectedbars, glassmolecules/physicalcoppercoil/blueprintgear. Nearflat two-tone scientificcartoon drawing rather than physical craft; no realproteinmodel/data/function claim. Actual9source/15publishedunion viewed. Originalhuman messaging-unavailablefallback authorizes full isolated strictC source completion after lane actualreview; coordinator material/integration pending, no root/Jared artworkapproval inferred.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "1",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\foldpath-first-1-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "2",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\foldpath-first-2-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "3",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\foldpath-first-3-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "4",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\foldpath-first-4-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "5",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\foldpath-first-5-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ]
+}

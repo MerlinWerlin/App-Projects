@@ -1,0 +1,29 @@
+{
+  "id": "common-merganser",
+  "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke.  NEW SEPARATE SUBJECT. One whole female COMMON MERGANSER standing in near side-on profile with her head toward the right. Long tapered narrower bill with dark vermilion tint, a subtle rust-brown swept head crest, pale white throat break, long low slate-tinted wood body and tail. Two whole red-brown attached webbed feet press flat with clearly defined web edges just under the rump. A quiet carved head only, and the main torso is made from four broad continuous low ash bow strips with two obviously see-through body bays and a low wide backward pointing folded wing contour. Tiny pins spaced on side rails, continuous dark grain moving around the lean shoulder-to-rear form. Clear full neck, bill, crest, tail and both feet. No water splash, pond or twig. Not a glossy duck decoy. No separate pinhead confetti. The own exact beaver supplies only the material language: wide solid unsegmented wood ribbons, curves that retain direction of grain, clear through-gaps and modest dot pegs. Use the subject and entirely different silhouette above.",
+  "tool": "built-in image_gen",
+  "source": "sources/common-merganser.ffb06e9f.png",
+  "sourceSha256": "ffb06e9f4a723e2c5b1c41404ca4267e5b18d9b6dd083d3086dd09880e54ca4f",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/common-merganser.8a540f6c.png",
+  "sha256": "8a540f6cc6ce3e49a5e1cc34349f7e7136ecea895121b8a50cf5f539de70239e",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "beaver",
+      "file": "sources/beaver.6e1ae7cc.png",
+      "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/common-merganser-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/common-merganser-exact-tool-result.json"
+}

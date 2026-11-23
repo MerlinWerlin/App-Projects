@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "barn-owl",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-4b28d6e6-05e1-4007-8a2f-3eb1262aa372.png",
+      "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1240,
+        1254
+      ]
+    },
+    {
+      "id": "harvest-mouse",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-b700b07b-43b9-40e9-a228-0e263d3d535c.png",
+      "sha256": "3494bad681b180c3b6ed71d13abb9e188303072ed9313f5629733078c18c9659",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        23,
+        10,
+        1242,
+        1254
+      ]
+    },
+    {
+      "id": "hedgehog",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-f2968022-fe30-4712-8bcb-312012f1a3b6.png",
+      "sha256": "ee86f902edc134985bfd1b52ad5aedb4a6d1e77bb46725e0de5f91797dbdcb24",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        17,
+        1232,
+        1254
+      ]
+    },
+    {
+      "id": "dog-rose",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-a1c99ef2-278d-4756-b263-b7c02a617796.png",
+      "sha256": "243572b5311a79490637ccbe1d501d0494266188bd0ef5a09b7e30e7063bbe5f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        9,
+        1248,
+        1254
+      ]
+    },
+    {
+      "id": "bumblebee",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-3b62ad57-985b-4803-85a6-e3b1e133124a.png",
+      "sha256": "63021405e57bc735da116c1731739a51e212f877193914cbe383f87d69620faa",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        19,
+        1222,
+        1237
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "theme": "commesso-underwood",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Precisely contoured opaque natural hardstone inlay: broad jasper, marble and chalcedony pieces fitted flush in one plane with hairline joints and coarse intrinsic mineral veins",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect about0.4614. One coherent recognizable OAK UNDERWOOD scene made as an original FLAT COMMESSO natural HARDSTONE INTARSIA picture. Broad organically contoured OPAQUE red/rosejasper, honeyochrejasper, moss-greenserpentinite, smokygraychalcedony, blackmarble and milkyquartz pieces expertly fitted flush in ONE COPLANAR polishedface, tight hairline joints, coarse intrinsic irregular mineralveins/cloudyinclusions changing direction at each field boundary. Each leaf/animalanatomical field is a broad continuous stonepiece, not tiny mosaicchips. Image1 own bullfinch is material/bird reference; Image2 own oak/acorns is botanical/material reference; Image3 own squirrel is material/mammal reference. Integrate them into a new unified composition, no collage/panels. A recognizable whole EURASIAN RED SQUIRREL seated lowLEFT facinginwardRIGHT, one large whole plume-like tail curls upward behind into an open C,2smalltuftedears,2forepaws holdingoneacorn,2wholehindfeet. A slender natural oakbranch rises fromlowercenter diagonallytoward upperRIGHT and bears4to5broad rounded-lobed oakleaves and one attachedpair ofacorns. ONE whole male BULLFINCH perches on a shortfork near upperRIGHT, facesLEFT with short thick conicalbill, rose-redjasperbreast, blackcap/wings/tail, smokygreyback,2wholefeet gripbranch. Two small groundferns and low asymmetrical ochre/greenstone woodlandbanklip visually connect bottomscene. All organisms/branches/fern/bank cutfrombroad opaque mineralfields in ONE flatplane, tinycutedgeonly, not carved3Djade animal or piledgems; no volumetricbelly/plasticroundedsculpture/fur/feathers underneath. No metalframes/goldwire/grout, stainedglass/translucency/glow, regularceramictessera grid, shelliridescence/eggshellchips, agatebands/druzy, woodgrain/straw/fabric/paint/printedveinpattern. Coarse stoneveins readable across broadflatfaces, restrained small planar polishingglints. Quiet UNIFORM deep smokyGREEN #354742 background with barely visible matte texture, no photographic trees/scenery or busyveining outsideorganisms. Fuller substantial TALL scene spans about82to88percentwidth and60to64percentheight, roughly25to87percentcanvasheight; upper22percentquietforicons. All bullfinchbill/tail/2feet, squirrel2ears/tail/2paws/2feet/acorn, oakleaflobes/acorncups/branchtips, fern/groundbank ends wholly inside real6to9percentSIDE margins and12percentBOTTOM margin. No giant croppedcreature and no tinyisland in excessiveblankborder. No enclosingoval/arch/pictureframe/rectangularplaque, pedestal/displaybase, shadows/halo/glow. No letters/numbers/text, clockfaces/livevalues/dates/battery/weather, UI/phonemockup/logo/signature. Deliver onlyfinished tallwallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.01ecf1bd.png",
+      "sourceSha256": "01ecf1bd18b4a0b9aaf7745de32cdc64ebc25eae23f8458a8773779715ab6d87",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "f5e74a2551e4c763a500232f1a1bcaf97155b1c2db558119361e291125c7b47b",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "bullfinch-sprig",
+          "file": "sources/bullfinch-sprig.30587d72.png",
+          "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 2,
+          "id": "oak-acorns",
+          "file": "sources/oak-acorns.fe4bd798.png",
+          "sha256": "fe4bd7981aa3f9a8327fae14f28a07f93be8a6e7bd0a363d13caebc0cdfae6db",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 3,
+          "id": "red-squirrel-acorns",
+          "file": "sources/red-squirrel-acorns.893e7634.png",
+          "sha256": "893e7634d40988cabb16450fba02b1fef6d7fb8e07b58ee23ec5d26b3c245313",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "bullfinch-sprig",
+      "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. FIRST MATERIAL SAMPLE: ONE whole naturally proportioned male EURASIAN BULLFINCH perched facing LEFT on one short sloping leafy twig. Compact rounded bird silhouette, small modest head with black cap/face, short thick pointed CONICAL finch bill (not long kingfisherbill), stubby complete narrow tail, exactly TWO coherent feet/toes grip twig. Side-on natural pose but physically an ABSOLUTELY FLAT stone intarsia image, not a carved3Dstone bird. Breast ONE BROAD rose-red jasper field with obvious coarse pale mineral veins; back ONE smoky grey chalcedony field with cloudy quartz inclusion; cap/face, folded wing and tail broad blackmarble fields with sparse pale veins; short pale wingbar and rump in milkyquartz. Body uses about7to9contouredpieces TOTAL, few large natural anatomical fields, NOT many tiny polygon feather tiles. Tiny eye is a flush small blackstone recess/disc in plane, no protruding bead/gem/cartoon eye. Twig in two broad ochrejasper pieces, TWO small simple pointed oval greenstone leaves with intrinsic white mineral veins, no berries/extraobjects. All stone faces ONE FLAT coplanar surface with tight hairline joins; no rounded belly/sphericalhead/bill sticking out. Whole bill/tail/feet/claws/leaf/twig tips contained in generous true alpha. No goldoutline, glassshine, figurine pedestal or rectangular backing.",
+      "tool": "built-in image_gen",
+      "source": "sources/bullfinch-sprig.30587d72.png",
+      "sourceSha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bullfinch-sprig.9732bf92.png",
+      "sha256": "9732bf92aac6826c5a61f98d75f9faf813f6c28b6255eb1fe7ec64d5a9a55b5d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "red-squirrel-acorns",
+      "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole recognizable EURASIAN RED SQUIRREL seated side-on facing RIGHT, small alert head with2pointed tufted ears, shortmuzzle, tinyflushdarkeye, exactly2forepaws clasp ONE whole acorn, exactly2coherent folded hindlegs/feet, one large complete plume-like tail curls UP behind its back into a broad open C. Tail is a single BROAD rust-redjasper field with3coarsewhiteveins, no many feather/mosaic chips. Body in2broad ochrejasper/rustjasper fields; creamybelly milkyquartz; head inwarmredjasper, ear tips darkmarble. About8to10broad opaque stonefields, tight flush joints and intrinsic mineralpattern, NO sculptedroundbelly/fluffy3Dfur or blackoutline. Tail/head/paws/acorn all ONE flat face, naturally coherent animal anatomy. All ears/tail/toetips/acorn wholly contained with generous truealpha, no twig/plaque/ground/extrafood. Use input Image1 ONLY as own material/craft reference: preserve the broad flush opaque stonefields, coarse intrinsic veins and tight hand-cut joins. Create this completely different subject/composition, never copy bird pose or add bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/red-squirrel-acorns.893e7634.png",
+      "sourceSha256": "893e7634d40988cabb16450fba02b1fef6d7fb8e07b58ee23ec5d26b3c245313",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/red-squirrel-acorns.a0eee2d3.png",
+      "sha256": "a0eee2d3794c99dc452a6b6344c5f9fc5bbccf8cb07e8220316892e593eca463",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "bullfinch-sprig",
+          "file": "sources/bullfinch-sprig.30587d72.png",
+          "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/red-squirrel-acorns-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/red-squirrel-acorns-exact-tool-result.json"
+    },
+    {
+      "id": "common-toad",
+      "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole naturally proportioned COMMON TOAD in clear three-quarter-front squat, viewed orthographically as a flat fitted-stone picture. Broad short rounded snout, exactly2small flush darkeyes subtly set at sides of head, smallclosedmouth defined by one tight stonejoin, stoutbody, exactly4coherent legs: two short forelegs spread toward lowerleft/lowerright and two folded strong hindlegs splay laterally. Each frontfoot4small toes, hindfeet5toes simplified but whole and attached. Warm ochrejasper broadback with coarse creamyveins, broad moss-greenserpentinite hindlegfields and smokygraychalcedony frontlegfields, milkyquartzthroat, about8to10large organically contouredfields total. A few natural coarse mineralflecks evoke toadskin WITHOUT carvedwarts, beadclusters, tiny mosaicpatches or livingtoadskin texture. Flat coplanar opaque faces, NO 3Djade figurine or gem amphibian. Whole feet/toes complete in truealpha, no lilypond/flower/base/plaque/insect. Use input Image1 ONLY as own material/craft reference: preserve the broad flush opaque stonefields, coarse intrinsic veins and tight hand-cut joins. Create this completely different subject/composition, never copy bird pose or add bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/common-toad.b4d2f0bd.png",
+      "sourceSha256": "b4d2f0bdd2fbe83fc4e3c1cb026f5de356b23dd9e2f7b86dca05ee2a9e4957ac",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/common-toad.b3b4f718.png",
+      "sha256": "b3b4f7184c8a43422af34fbc2859d714f64305b3ceaef2ac69da8a8fadbc0806",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "bullfinch-sprig",
+          "file": "sources/bullfinch-sprig.30587d72.png",
+          "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/common-toad-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/common-toad-exact-tool-result.json"
+    },
+    {
+      "id": "oak-acorns",
+      "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: A plant-only compact natural SPRIG OF PEDUNCULATE OAK. ONE short forkedtwig bearing exactly THREE broad recognizable oakleaves with deep rounded lobes and ONE attached PAIR of whole acorns in little rounded cups. One leaf tilts upperleft, second broad leaf right, smaller third leaf lowleft; clear open alpha between leaves/twig and acorns. Each broad leaf is ONE moss-green serpentinite stonepiece with1or2coarse intrinsic pale mineralveins; NO painted centralvein, no many tiny polygons. Twig honeyochrejasper, acorns honeyjasper and darkmarble cupfields, about8to10broad opaque stonefields in total. Natural botanical branching and attached fruits, all one absolutely flat polished plane and hairline fitted joins. Whole leaflobes/stemtips/acorncups complete in generous alpha. Plant ONLY, no bird/animal/eye/butterfly/berries, no backing plaque or ground. Use input Image1 ONLY as own material/craft reference: preserve the broad flush opaque stonefields, coarse intrinsic veins and tight hand-cut joins. Create this completely different subject/composition, never copy bird pose or add bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/oak-acorns.fe4bd798.png",
+      "sourceSha256": "fe4bd7981aa3f9a8327fae14f28a07f93be8a6e7bd0a363d13caebc0cdfae6db",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/oak-acorns.73a0ff23.png",
+      "sha256": "73a0ff233beddbec45401cb93c33762bc40403c7f73d0d105ace071357feae8f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "bullfinch-sprig",
+          "file": "sources/bullfinch-sprig.30587d72.png",
+          "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/oak-acorns-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/oak-acorns-exact-tool-result.json"
+    },
+    {
+      "id": "speckledwood-butterfly",
+      "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL woodland fauna or plants, natural coherent anatomy and whole clear silhouette FIRST. An original FLAT COMMESSO / NATURAL HARDSTONE INTARSIA picture cut EXACTLY to organism outline. About6to10 BROAD ORGANICALLY CONTOURED OPAQUE stone pieces are expertly hand-cut and fitted FLUSH edge-to-edge in ONE ABSOLUTELY COPLANAR polished face; very thin tight HAIRLINE cut joints, no grout/black mortar/gold cell walls. Natural RED/ROSE JASPER, honey-ochre jasper, moss-green SERPENTINITE, smoky grey CHALCEDONY, black MARBLE with few ivory veins and milky QUARTZ, restrained natural material colors. EACH broad continuous stone field has real coarse intrinsic mineral flecks, cloudy quartz inclusions or1to3 broad irregular mineral VEINS; vein direction/pattern changes clearly at neighboring cut-piece boundaries. No uniform painted pattern over whole body. COARSE veins remain visible at85. Entire face in the SAME FLAT PLANE, viewed perfectly FRONT-ON / ORTHOGRAPHIC overhead, like a carefully hand-fitted miniature stone picture. Tiny1to2mm perimeter thickness and fine polished cut lip only; no bird/mammal volumetric sculpture, rounded3Dbody/raisedfeathers, carved fur relief or stuffedtoy under a stone coating. A thin slate support follows EXACT organism contour, never visible as extra plaque/rectangle/oval or backing beyond outline. Anatomy suggested by natural stone COLOR FIELDS and joins, no drawn/engraved/painted detail, no black hatch marks. Subtle small polishing glints on planar faces, no glossy plastic volume or gem sparkle. No regular tessera grid, many tiny mosaic chips, glazedceramictiles, firedporcelain, translucent stainedglass/coloredglass, metal partitions/wire/gold/silver, iridescent nacre/lacquer, eggshell crack network, fusedcaneglassrings/flowers, bandedagate/druzy, bondedmetalstrata, woodgrain/straw/fabric/paper or living animal skin/fur/feathers underneath. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Exterior/open branch/limb gaps true alpha. No jewellery pin/clasp/bail/chain/mount, ring/medallion/framedmosaic/ornamentalshield, displaybase/ground/scenery, detachedstones, halo/shadow/glow, letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole natural SPECKLED WOOD BUTTERFLY with FOUR distinct complete wings spread open dorsally: exactly2broader forewings point upperleft/upperright and2rounded hindwings spread lowerleft/lowerright, narrow central segmentedbody and head, exactly2thinantennae with subtleclubends, exactly6tinycoherent legs attached to thorax. Forewings broad darkbrown-blackmarble fields with1or2broadivoryveins, hindwings honeyochrejasper fields withcoarsepaleveins; creamquartz irregularnaturalbutterflyspots are6to8large precisely flushinset fields across wings total, not regular tilegrid/goldcells/painteddecals. Left/rightwing silhouettes coherent and paired, no extra wings/tails. Body simple darkmarble. Four wings/spotinsets allONEcoplanarface; no translucentglass/metalwalls, no bulbous3Dgem insect. Whole antennaclubs/wings/legends contained in generous alpha, no flower/plaque/frame/detachedstones. Use input Image1 ONLY as own material/craft reference: preserve the broad flush opaque stonefields, coarse intrinsic veins and tight hand-cut joins. Create this completely different subject/composition, never copy bird pose or add bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/speckledwood-butterfly.7ada730a.png",
+      "sourceSha256": "7ada730a65788fae89927104857d38132fe98aac9599603810507397d1df6464",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/speckledwood-butterfly.80859ae1.png",
+      "sha256": "80859ae1a96c6921e996d3c1088c7564ae4adc6ba6458110ec8eb0e93d1cb213",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "bullfinch-sprig",
+          "file": "sources/bullfinch-sprig.30587d72.png",
+          "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/speckledwood-butterfly-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/speckledwood-butterfly-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "materialReview": {
+    "status": "lane-local selected; coordinator review pending",
+    "record": "qa/material-sample/lane-local-review-pending-coordinator.json",
+    "authority": "Lane-local candidate quality review. Coordinator material/integration review pending because all3dispatches failed with MCP-32000; deliveryunknown. Original human brief explicitly permits isolated collision-checked lane work during messaging outage. No coordinator or Jared approval, publication or installed-device claim."
+  }
+}

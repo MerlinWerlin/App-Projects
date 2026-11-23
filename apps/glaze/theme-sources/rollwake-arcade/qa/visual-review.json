@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "artworkSubjects": 5,
+  "contactAnd85pxReadability": "reviewed",
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "finding": "The organ, traction engine, swing boats, spiral slide and hand-cranked perforator read as five distinct machines at 85 px. Their broad buff paper and staggered variable-length slots remain visible at both supported sizes. Two organ slots sit over structural backing and sample alpha 253. Selected open holes in the traction engine roof, swing valance and slide guard sample alpha 0 to 7. All five whole alpha composites read cleanly, and all ten final rounded layouts show the complete forms. The accepted organ and four separate siblings remain exact originals. The nine native layouts retain working clock, battery and calendar values, and four compact placements carry a short bent paper strip with three slots. The original scene and the single wallpaper-only pullback remain recorded, with 40 matching artwork and native evidence hashes across that edit.",
+  "calendarScope": "Shipped calendar and identity rendering retained.",
+  "scope": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts."
+}

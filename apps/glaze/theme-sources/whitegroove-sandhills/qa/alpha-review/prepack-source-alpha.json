@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "western-meadowlark",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-fca9bc6c-5a00-49b0-8d8b-3754b6e011ff.png",
+      "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+      "dimensions": [
+        1314,
+        1197
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        4,
+        1302,
+        1181
+      ]
+    },
+    {
+      "id": "swift-fox",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-a2253274-3a5e-45b8-9903-21af83020eb8.png",
+      "sha256": "11f45439966a1252f814649095e533e1e69ca9cc30f40332e2436b613f9ba94b",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1730,
+        887
+      ]
+    },
+    {
+      "id": "plains-spadefoot",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-9f54645e-8f3d-48fe-8174-841a3c937bb1.png",
+      "sha256": "879623f94a608c68f16a6f303125929c03f41e64d7ca5de085afee4b28ba025f",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        13,
+        1524,
+        1005
+      ]
+    },
+    {
+      "id": "purple-prairie-clover",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-ed29e77c-bab2-4796-8880-c1c50fce48bf.png",
+      "sha256": "901078ff7ba798c783e5618769cc0039392ccc25b7a348318c96463f604aef45",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "sand-bluestem",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-da9e78f0-a16a-43ae-833a-56a5d5419352.png",
+      "sha256": "d045630c2ee7ada57a73c9350a71f723a25fd1eb41563549ce0a75f5ca7263a0",
+      "dimensions": [
+        1127,
+        1396
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1126,
+        1396
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Read-only whole selected source composites on actual deepgreen background at240/170/85. Allfive visually clean; no alpha-only or other creative edit. Parent qa has final encoded/native/rounded/crop proof.

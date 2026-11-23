@@ -1,0 +1,67 @@
+[
+  {
+    "id": "oak-spiral-fronts",
+    "kind": "art",
+    "image": "oak-spiral-fronts.33f97832e855.png",
+    "sha256": "33f97832e85502aa79f60545bfba83e0041245fee54095630e68dc05b524c267",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Oak Spiral Fronts"
+  },
+  {
+    "id": "bullfinch-wavefronts",
+    "kind": "art",
+    "image": "bullfinch-wavefronts.6b9741f36f55.png",
+    "sha256": "6b9741f36f55613995c8ccbe7923ca7eda3c500770a22abef25f29863f7c6e3d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bullfinch Wavefronts"
+  },
+  {
+    "id": "hare-wavefronts",
+    "kind": "art",
+    "image": "hare-wavefronts.3078f83839b1.png",
+    "sha256": "3078f83839b12775d5146b19a7ec0f8836d8031f882a1c13a1ad3a1242f1e58d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hare Wavefronts"
+  },
+  {
+    "id": "iris-wavefronts",
+    "kind": "art",
+    "image": "iris-wavefronts.c08bacbb553e.png",
+    "sha256": "c08bacbb553e5c8c4092854fa1182b88bdc434e537afcc4ce8bddbb33ef66bda",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Iris Wavefronts"
+  },
+  {
+    "id": "snail-wavefronts",
+    "kind": "art",
+    "image": "snail-wavefronts.c4ebc4819834.png",
+    "sha256": "c4ebc4819834767f83ececcfa470956219e3b4e945614b432fb71f3f4a9a191d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Snail Wavefronts"
+  }
+]

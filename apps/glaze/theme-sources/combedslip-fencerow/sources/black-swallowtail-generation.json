@@ -1,0 +1,29 @@
+{
+  "id": "black-swallowtail",
+  "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side.  NEW SEPARATE SUBJECT. One whole EASTERN BLACK SWALLOWTAIL butterfly presented open-wing directly from above, with exactly two intact large triangular upper forewings and two smaller hindwings with exactly two single short hindwing tails, one tail on each hindwing. Exactly six small attached feet, two antennae and a slim body. Wings held apart enough at the body to count the legs, each leg tapered and fully connected. Wing body is broad shallow convex fired clay dominated by espresso. One clear feather-combed slip field per wing pair with broad honey and very dark clay trails, coordinated at diagonals but hand-drawn. Outside each combed field few tiny pale yellow spots in a natural row near the outer wing edges, very restrained blue hint before each hindwing tail and one tiny russet eyespot near each lower inside edge. Keep the outside profile naturally proportioned and the four wing boundaries legible. No background or stick. The own cedar waxwing is a material reference only. Transfer its fired satin clay, visible raw clay depth and broad curved honey-black slip continuity. Use the completely different subject and shape above.",
+  "tool": "built-in image_gen",
+  "source": "sources/black-swallowtail.d0f8e3e8.png",
+  "sourceSha256": "d0f8e3e8168c731d540ff27ce3a47f09433c07fcd44225e28cceeb76d74769a0",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/black-swallowtail.8bc5b83a.png",
+  "sha256": "8bc5b83a87f143e5518e96635e3654e206a36587db65706ad7381114ed76b8da",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "cedar-waxwing",
+      "file": "sources/cedar-waxwing.d7a8dc95.png",
+      "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/black-swallowtail-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/black-swallowtail-exact-tool-result.json"
+}

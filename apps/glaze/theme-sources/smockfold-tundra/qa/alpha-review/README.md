@@ -1,0 +1,1 @@
+Read-only whole selected source composites on intended theme background at240/170/85. Allfive visually clean; no alpha-only edit. Any actual creative correction is separately retained with exact history. Parentqa finalencoded/native/rounded/crop proof.

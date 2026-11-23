@@ -1,0 +1,39 @@
+{
+  "id": "huskpleat-meadow",
+  "lane": "B43",
+  "category": "Nature",
+  "status": "First wholeowl actualboards visually passed lane-local review, selected unchanged. Intent and material-gate dispatches failed; isolated expansion under original human fallback. Coordinator material/integration review pending.",
+  "process": "Broad dried corn-husk sheets softened, fan-pleated, pinched, rolled and tied into whole natural forms; matte longitudinal plant ribs, curled thin edges and gathered joins",
+  "subjects": [
+    "barn-owl",
+    "harvest-mouse",
+    "hedgehog",
+    "dog-rose",
+    "bumblebee"
+  ],
+  "world": "Meadow wildlife shaped from broad dry corn husks with gathered pleats, curled leaf edges and visible plant ribs.",
+  "cornerCompanion": "Natural barn owl and broad gathered corn-husk fans. Arch clock recalls two curved folded face panels, ray marks and leaf hands echo longitudinal ribs and tapering husk ends. Column battery and ticket calendar give long folded bands. Compact companion is only one short pleated husk tip with a two-turn binding; no whole owl, tall stalk, dense fanball or enclosing straw wreath. Retain shipped calendar/date/highlight/identity outlines, no date-containment design gate.",
+  "baselineSearch": "Exact corn-husk/maize-husk/huskpleat absent in currentRoot source/catalogue scan. Botanical skeletonization in C32 is exclusive and avoided: no exposed vein cages/cells. Actual craft neighbors require image comparison before first generation.",
+  "firstGateCriterion": "Broad real dry leaf sheets must show fan pleats/gathers, thin curled lips and longitudinal plant ribs at85, distinct from satinribbonstitches, flatstrawinlay, wickerwovenanimals, ragpulp, A18painted-pencilshavings and A17pasta. Wholeowl anatomy. One prototype then actual lane-local material review; coordinator review pending while messaging unavailable.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 intent dispatch failed",
+      "delivery": "unknown"
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 actual first-material-gate dispatch failed",
+      "delivery": "unknown"
+    }
+  ],
+  "coordinationFallbackAuthority": "Original human lane brief: If messaging is unavailable, stay strictly inside your assigned territory and use new, collision-checked IDs.",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "technicalReferences": [
+    {
+      "url": "https://americanindian.si.edu/sites/1/files/pdf/education/HaudenosauneeGuide.pdf",
+      "scope": "NMAI primary educational text only: dried husks soften inwater, broad sheets can fold/roll/gather and be tied, then dry. Only general physical material handling used; no doll design, cultural figure, motif, museum photo or artist composition copied."
+    }
+  ],
+  "neighborReview": "../outputs/huskpleat-meadow-candidate-neighbor-review.json"
+}

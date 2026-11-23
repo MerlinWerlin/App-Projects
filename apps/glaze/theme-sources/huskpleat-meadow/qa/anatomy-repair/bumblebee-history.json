@@ -1,0 +1,68 @@
+{
+  "reason": "Initial4visiblelegs; firstrepair5visiblelegs; finaltargetedoneleg-onlyrepair6visiblelegs. All4wings/2antennae/dryhuskmaterial retained. No alpha-only edit. Firstowl467770ba unchanged.",
+  "stages": [
+    {
+      "stage": 0,
+      "status": "unselected: only4clearlyvisiblelegs",
+      "visibleLegsVisuallyCounted": 4,
+      "exactToolRequest": "qa/anatomy-repair/bumblebee-initial-request.json",
+      "exactToolResult": "qa/anatomy-repair/bumblebee-original.json",
+      "output": "qa/anatomy-repair/bumblebee.initial.39b89b2e.png",
+      "sha256": "39b89b2e3fd9dd3ec4a92f0f7d951e349d6a2511f4f65e789f08c5d3efa4b7c1",
+      "orderedInputs": [
+        {
+          "order": 1,
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected first material reference only"
+        }
+      ]
+    },
+    {
+      "stage": 1,
+      "status": "unselected: only5clearlyvisiblelegs",
+      "visibleLegsVisuallyCounted": 5,
+      "exactToolRequest": "qa/anatomy-repair/bumblebee-anatomy-repair-request.json",
+      "exactToolResult": "qa/anatomy-repair/bumblebee-anatomy-repair-result.json",
+      "output": "qa/anatomy-repair/bumblebee.first-repair.d413e63e.png",
+      "sha256": "d413e63ea096c86d9794aa6759c3bd9676591b448640c2bb8089d828caeedc3f",
+      "orderedInputs": [
+        {
+          "order": 1,
+          "file": "qa/anatomy-repair/bumblebee.initial.39b89b2e.png",
+          "sha256": "39b89b2e3fd9dd3ec4a92f0f7d951e349d6a2511f4f65e789f08c5d3efa4b7c1",
+          "role": "Own unselected bee edit target"
+        },
+        {
+          "order": 2,
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected first material reference only"
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "status": "selected:6wholevisiblelegs/4wings/2antennae",
+      "visibleLegsVisuallyCounted": 6,
+      "exactToolRequest": "qa/anatomy-repair/bumblebee-second-anatomy-repair-request.json",
+      "exactToolResult": "qa/anatomy-repair/bumblebee-second-anatomy-repair-result.json",
+      "output": "sources/bumblebee.63021405.png",
+      "sha256": "63021405e57bc735da116c1731739a51e212f877193914cbe383f87d69620faa",
+      "orderedInputs": [
+        {
+          "order": 1,
+          "file": "qa/anatomy-repair/bumblebee.first-repair.d413e63e.png",
+          "sha256": "d413e63ea096c86d9794aa6759c3bd9676591b448640c2bb8089d828caeedc3f",
+          "role": "Own unselected bee edit target"
+        },
+        {
+          "order": 2,
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected first material reference only"
+        }
+      ]
+    }
+  ]
+}

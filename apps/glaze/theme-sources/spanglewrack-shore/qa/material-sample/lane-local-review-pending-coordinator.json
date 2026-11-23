@@ -1,0 +1,19 @@
+{
+  "status": "accepted for lane-local expansion; coordinator review pending",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "sourceSha256": "16a8493a83fdb6239ceab15ca4430ad98c15300dd810fa861ccc2dcae220a726",
+  "selectedSource": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-69becdc2-8ce7-48a7-be6d-eeedde1c0ded.png",
+  "scope": "Actual whole540/170/85 properalpha and6own+all5Purlwake/all5Linkmere+33actualbaseline imageboards viewed. Broad filled shallow thin metaldisc faces, smallcenterpunch/threadanchors andoverlappingrims remainvisibleat85; distinctfromopenwiremailrings/helicalpurltubes/cylindricalglassbeads/wovenmetal/solidchasedtin/enamelwalls/shellchips/stonefields. Wholeplover2legs/2feet/bill/tail clear. Firstunchanged, lane-local material selection only; coordinator/Jared approval notclaimed. Originalhumanbrief explicitlypermitsisolated collisioncheckedlane work duringmessagingoutage.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 B43readyhandoff+B44intent dispatch failed",
+      "delivery": "unknown"
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 B44actual firstmaterial-gate dispatch failed",
+      "delivery": "unknown"
+    }
+  ]
+}

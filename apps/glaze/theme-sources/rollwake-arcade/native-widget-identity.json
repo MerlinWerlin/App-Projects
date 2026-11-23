@@ -1,0 +1,18 @@
+{
+  "themeId": "rollwake-arcade",
+  "recipe": [
+    "arch",
+    "rollwakeOrgan",
+    "rollwakeSlots",
+    "dash",
+    "baton",
+    "column",
+    "ticket"
+  ],
+  "art": {
+    "rollwakeOrgan": "M 12 84 L 12 38 Q 15 25 24 25 L 29 25 Q 46 8 64 25 L 74 25 Q 86 27 88 38 L 88 84 Z M 13 71 L 87 71 M 24 67 L 24 45 L 32 45 L 32 67 M 39 67 L 39 38 L 47 38 L 47 67 M 54 67 L 54 38 L 62 38 L 62 67 M 69 67 L 69 45 L 77 45 L 77 67 M 19 78 L 81 78 M 21 84 L 17 93 M 79 84 L 83 93 M 33 84 Q 48 95 64 84 M 32 24 Q 48 18 64 24",
+    "rollwakeSlots": "M 11 26 Q 32 34 58 22 L 78 12 M 17 38 Q 42 46 67 34 L 85 25 M 25 30 L 27 34 M 34 32 L 36 37 M 43 31 L 45 37 M 51 29 L 53 32 M 60 26 L 63 31 M 69 21 L 72 26 M 80 49 Q 90 63 79 75 M 84 50 Q 97 65 85 80 M 21 52 L 21 57 M 28 52 L 28 60 M 35 50 L 35 54 M 56 47 L 56 53 M 64 44 L 64 49"
+  },
+  "ornament": "M 18 57 Q 41 62 53 52 Q 60 45 73 44 M 23 67 Q 44 71 59 61 Q 67 54 78 54 M 30 59 L 31 64 M 42 59 L 43 65 M 54 54 L 56 60",
+  "direction": "Arched organ frame, short slot marks, baton hands, roll advance battery column and a ticket calendar. The corner companion is a short bend in one paper roll with three slots."
+}

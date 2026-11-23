@@ -1,0 +1,67 @@
+[
+  {
+    "id": "beech-bandlight",
+    "kind": "art",
+    "image": "beech-bandlight.61cafa0ba753.png",
+    "sha256": "61cafa0ba75361810b9a9776a02863649488f08564d8a8091be32039fd7a0bcc",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Beech Bandlight"
+  },
+  {
+    "id": "songbird-bandlight",
+    "kind": "art",
+    "image": "songbird-bandlight.4e47a90e2714.png",
+    "sha256": "4e47a90e2714ce96bc095ff6ba49c70a7abd72b9826867bc79e1eb65baf45a3d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Songbird Bandlight"
+  },
+  {
+    "id": "mushrooms-bandlight",
+    "kind": "art",
+    "image": "mushrooms-bandlight.7d34e9f91fce.png",
+    "sha256": "7d34e9f91fcebed338a8b71a607ba251f964ca76f3c80799e8719dea5834976d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mushrooms Bandlight"
+  },
+  {
+    "id": "hedgehog-bandlight",
+    "kind": "art",
+    "image": "hedgehog-bandlight.3253c38208ed.png",
+    "sha256": "3253c38208ed4de999999661ff89398d88fcc6d4d24717f18244315cc687d7a1",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hedgehog Bandlight"
+  },
+  {
+    "id": "primrose-bandlight",
+    "kind": "art",
+    "image": "primrose-bandlight.0c644b490289.png",
+    "sha256": "0c644b4902891d7c36e3fccc21c32c8e83757e724b09b2adda0b3779fb573faa",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Primrose Bandlight"
+  }
+]

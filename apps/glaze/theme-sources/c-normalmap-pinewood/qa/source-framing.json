@@ -1,0 +1,100 @@
+{
+  "review": "All five selected source artworks are 1254-square PNGs with their full visible subject bounds inside the raw frame. Maximum raw frame alpha is 0 or 1. The whole sources fit proportionally within 900 px on a 1024-square transparent canvas. The selected 852x1846 wallpaper is center-fitted to 1290x2796 and retains all main subjects in all three encoded crops.",
+  "assets": [
+    {
+      "id": "pine-cone-direction",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          260,
+          167,
+          969,
+          1148
+        ],
+        "96": [
+          260,
+          167,
+          968,
+          1147
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "woodpecker-direction",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          330,
+          149,
+          999,
+          1129
+        ],
+        "96": [
+          330,
+          150,
+          999,
+          1128
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "squirrel-direction",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          179,
+          190,
+          1049,
+          1071
+        ],
+        "96": [
+          179,
+          191,
+          1049,
+          1070
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "shelf-fungi-direction",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          233,
+          164,
+          1009,
+          1089
+        ],
+        "96": [
+          233,
+          165,
+          1008,
+          1088
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "columbine-direction",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          200,
+          141,
+          1027,
+          1151
+        ],
+        "96": [
+          200,
+          141,
+          1026,
+          1150
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

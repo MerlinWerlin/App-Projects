@@ -1,0 +1,30 @@
+{
+  "id": "wallpaper",
+  "prompt": "PRECISE LAYOUT-ONLY EDIT of this OWN CORN-HUSK MEADOW WALLPAPER, Image1 EDIT TARGET. Keep1290x2796 verytallportrait aspect0.4614, samequietmutedplum#514151 background, sameoriginalbroad drycornhusk sheets/longitudinalplant ribs/gatheredpleats/curledthinlips andcream/ochre/russet/olive materialcolors. Keep the WHOLE BARN OWL atmidRIGHT and upper DOGROSE branch/TWO5petalblooms/ONEbud atsame substantialsizes, allcurrentanatomy; keep face/beak/2feet/tail and botanically coherentleaves. ChangeONLYLOWERLAYOUT: current bottomgatheredhuskleafbank extends too low andgetsclipped in shorterphonecrop. Move ENTIRE BOTTOM HUSKLEAFBANK UPWARD about7percentTOTALCANVASHEIGHT so everylowestleafpoint ends at orABOVE84percentcanvasheight, leavingatleast16percent genuinelyquietPLUM BELOW ALLFOREGROUND. Move whole HARVEST MOUSE anditsgrassstalk/seedhead upwardabout5percentcanvasheight, preserve itsoriginalsize/2roundedears/4grippingpaws/onewholecurledtail. Shortenonlylowerconnectinggrass/branchstem segments tokeepnaturalconnections tothenowhigherbank; preserve allwholeleaftips/grassblades. No whole-scenescale-down, no smallerowl/flowers/mouse and no excessiveblankborder; maintainlivelytallhabitat. Keep wholeforeground at least7percentfromSIDEedges. Allowlbill/wing/feet/toes/tail, rosepetals/bud/serratedleaflets/thorns, mouseears/paws/seedhead/tail, grassblades/bankendtips retained whole. No style/redesign/recolor/newsubjects, no newflowers, no touchingbackgroundedges, no enclosingwreath/frame/plaque, no droppedanimal. Preservequietupperbackground. No shadows/halo/glow/text/numbers/clock/date/battery/weather/UI/logo/signature. Deliver only finished coherent tall wallpaper with lowerhabitat repositioned upward andallforegroundendsclearlyinside84percentheight.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.81fbe6ab.png",
+  "sourceSha256": "81fbe6ab7906d37ca58a95ce3b69a31c7340693981c0adcc073dd4fba83cbb21",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "8ba4d0cb690423373102b402b693a89ab8c3ad69841e00b0a08ddbe7a1a8ec4d",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.4eeb1b62.png",
+      "sha256": "4eeb1b629b427391da4297f697d54b7b9cc2cb283143d63374e01b9df8234fb4",
+      "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "smallmouth-bass",
+  "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke.  NEW SEPARATE SUBJECT. One full left-facing broad SMALLMOUTH BASS suspended in side profile at a calm slight upward angle. Natural broad head and tapered body, one small clear eye, mouth corner only as far back as around mid eye, connected dorsal fin in two close lobes, one clear visible pectoral fin, low pelvic and anal fins attached and a whole mildly forked tail. The wide torso and lower flank are five opposing broad steam bent ash and cedar bows, each moving smoothly from back to belly and tapering in size toward the tail. Use natural subdued sage stain and amber wood to keep it recognizably bronzeback. Clearly visible large alpha bays through the bowed body with two natural narrow structural rails, a simple curved upper fin shape, low natural grain. No repeated fish scales, wire grate, silhouette drop shadow, shoreline or printed markings. Balanced isolated filled head and visible continuous true-alpha openings behind it. The own exact beaver supplies only the material language: wide solid unsegmented wood ribbons, curves that retain direction of grain, clear through-gaps and modest dot pegs. Use the subject and entirely different silhouette above.",
+  "tool": "built-in image_gen",
+  "source": "sources/smallmouth-bass.7d571c06.png",
+  "sourceSha256": "7d571c06cd78cad4646744ffed13fd1efd974dd68fc1340cdbf2d69b45e79ae7",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "selectedFile": "widgets/smallmouth-bass.348bea35.png",
+  "sha256": "348bea351f148f99f30875a84cc26b3c003ae6d5a9cc61afdec52a6931a33621",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "beaver",
+      "file": "sources/beaver.6e1ae7cc.png",
+      "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/smallmouth-bass-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/smallmouth-bass-exact-tool-result.json"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Facetlight Pinewood",
+  "mood": "Whole pine woodland forms mapped in soft directional color.",
+  "tags": [
+    "surface direction",
+    "normal map inspired",
+    "pine woodland"
+  ],
+  "credits": "Original built-in image generation and native artwork. Artistic false color inspired by normal maps.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Recognizable woodland forms with softly repeating directional color fields and clean changes at scale or surface boundaries.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

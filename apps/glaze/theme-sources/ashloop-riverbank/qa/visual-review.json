@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "artworkSubjects": 5,
+  "contactAnd85pxReadability": "reviewed",
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "finding": "All five species have independent complete readable silhouettes at 85 px, with broad continuous bowed wood grain, real open bays and small tacks. The original open canoe is retained as the exact unselected material input for the accepted beaver. Two front paws and the near hind foot are visible on the beaver, with the far hind foot occluded. The other four artworks use precisely the accepted beaver as their sole reference and show full webbed feet on the merganser, four paws and a narrow tail on the mink, intact fins on the bass, and three bloom clusters above the bent arrowhead leaves. The central gaps and clean edges remain visible in both rounded artwork sizes. Real clock, battery and calendar layouts passed all nine live reads and the small paired bow with one tack appears in four compact placements. One wallpaper-only pullback preserves 40 checked artwork and native evidence files byte-for-byte across the edit. A coordinator-requested wallpaper-only follow-up establishes taller presence, with a larger foreground beaver, high right merganser, taller arrowhead foliage and complete asymmetric bank. Earlier clipped and undersized wallpaper scenes are retained. The current 40 art and native file hashes match the prior commit.",
+  "calendarScope": "Shipped calendar and identity rendering retained.",
+  "scope": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts.",
+  "updatedWallpaperReview": "qa/vertical-layout-repair/wallpaper-history.json"
+}

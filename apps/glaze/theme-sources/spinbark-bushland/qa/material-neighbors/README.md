@@ -1,0 +1,1 @@
+Actual observed images and independently checked source/manifest hashes. Historical pre-PR307 cached selections and accepted unpublished PR307 snapshot remain separate. No current-live R2, new publication or external-neighbor generation-input claim.

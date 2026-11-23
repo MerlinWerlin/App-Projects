@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "fairground-organ",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-c7b08f83-6de4-4ad5-8caa-fee5f5aa1d33.png",
+      "sha256": "db6b9951019941dff13a1ca3f18f0b4df1ec7b6cb64be43c1b42dec69f963d08",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1237,
+        1254
+      ]
+    },
+    {
+      "id": "showmans-engine",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-8508d622-80b5-4c9b-a327-6d5ffe9b1dfc.png",
+      "sha256": "eb5157fc28f763fda2375e3be07cd1563fc0ba96fd8bfdd3062ad00a121183f5",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1522,
+        1024
+      ]
+    },
+    {
+      "id": "swing-boats",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-1b8f1326-498e-4edc-8984-ce0015b18c77.png",
+      "sha256": "1d9ad6b056323b5e8df9ca8ab3c0e54cbb34a19901618609330579d49a60ae28",
+      "dimensions": [
+        1427,
+        1102
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1427,
+        1102
+      ]
+    },
+    {
+      "id": "helter-skelter",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-5af60ad6-d9e6-4927-923c-74aae1551072.png",
+      "sha256": "fb09c4b9ed351eed2c9e615184b993a04242038eb87fa8906f9ddacf98cf1b3b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1242,
+        1254
+      ]
+    },
+    {
+      "id": "roll-perforator",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-81436000-5294-4bb3-95fe-6a58d0cff20c.png",
+      "sha256": "d85f4280abc41f8b9c8d5352b822a392fab8f7d43860c4e892964b019b370800",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1523,
+        1024
+      ]
+    }
+  ]
+}

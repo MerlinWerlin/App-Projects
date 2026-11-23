@@ -1,0 +1,1 @@
+One wallpaper-only horizontal spacing correction restores the full fox and plant silhouette while retaining the depth of the composition. Original raw, exact initial own first reference, and exact edit request/result retained. All5standaloneart/native/palette unchanged by hash; finalactualcropreview inparentqa. No standaloneartchange or coordinator/Jaredapproval.

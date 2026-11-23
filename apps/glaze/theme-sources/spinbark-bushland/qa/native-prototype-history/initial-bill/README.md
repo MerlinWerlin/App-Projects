@@ -1,0 +1,1 @@
+APPS A2 B45 unselected provisional native study before correcting kookaburra bill direction. Original renderer outputs/spec retained; no raster theme artwork generated at this stage. Current native-study supersedes this initial geometry.
