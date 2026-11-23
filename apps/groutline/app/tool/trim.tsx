@@ -1,8 +1,9 @@
 // Trim & edging: lengths to buy with a cut list that reuses offcuts.
-import { Ionicons } from '@expo/vector-icons';
 import { Pressable, View } from 'react-native';
 import { calcTrim } from '../../src/core/trim.ts';
 import { editableLength, formatLength } from '../../src/core/units.ts';
+import { count } from '../../src/core/steps.ts';
+import { Icon } from '../../src/ui/Icon.tsx';
 import { useApp } from '../../src/state/AppState.tsx';
 import { SPACE, useTheme } from '../../src/theme/theme.ts';
 import { plural, useUnits } from '../../src/ui/fields.tsx';
@@ -24,14 +25,13 @@ export default function TrimTool() {
     allowanceMm: u.parse(s.allowance as string, 'joint', true) ?? NaN, system: u.system,
   });
   const F = (mm: number) => formatLength(mm, u.system);
-  const summary = r.ok ? [`${r.value.lengths} ${plural('length', r.value.lengths)} of ${F(u.parse(s.stock as string, 'room') ?? 0)}`, `${F(r.value.totalRun)} of edge`] : null;
+  const summary = r.ok ? [`${count(r.value.lengths)} ${plural('length', r.value.lengths)} of ${F(u.parse(s.stock as string, 'room') ?? 0)}`, `${F(r.value.totalRun)} of edge`] : null;
 
   return (
     <ToolScreen tool="trim" inputs={s} job={job} summary={summary} steps={r.ok ? r.steps : []} intro={`${c.terms.trim}, edge strips, cove or movement-joint profiles: add each edge, get the lengths to buy.`}
       result={r.ok ? (
         <Card>
-          <Txt v="footnote" tone="ink2" style={{ fontWeight: '700' }}>LENGTHS TO BUY</Txt>
-          <Num value={String(r.value.lengths)} unit={plural('length', r.value.lengths)} size={72} />
+          <Num value={count(r.value.lengths)} unit={`${plural('length', r.value.lengths)} to buy`} size={72} />
           <Row gap={SPACE.lg}>
             <Stat label="Total edge" value={F(r.value.totalRun)} />
             <Stat label="Offcut left" value={F(r.value.offcut)} />
@@ -65,7 +65,7 @@ export default function TrimTool() {
               <Field flex={1} label={`Edge ${i + 1}`} value={v} onChangeText={x => setRuns(runs.map((y, j) => (j === i ? x : y)))} unit={u.unit('room')} keyboard={u.keyboard} />
               {runs.length > 1 ? (
                 <Pressable accessibilityRole="button" accessibilityLabel={`Remove edge ${i + 1}`} onPress={() => setRuns(runs.filter((_, j) => j !== i))} style={{ width: 48, height: 56, alignItems: 'center', justifyContent: 'center' }}>
-                  <Ionicons name="close-circle" size={26} color={t.ink3} />
+                  <Icon name="remove" size={24} color={t.ink3} />
                 </Pressable>
               ) : null}
             </View>

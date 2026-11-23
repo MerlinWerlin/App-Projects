@@ -11,7 +11,7 @@
  * raised by the same amount, and the top riser shrinks by it when the landing isn't tiled.
  */
 import { calcTrim } from './trim.ts';
-import { ceilSafe, fail, type CalcResult, type Problem, type Step } from './steps.ts';
+import { ceilSafe, fail, fmt, type CalcResult, type Problem, type Step } from './steps.ts';
 import { formatArea, formatLength, type UnitSystem } from './units.ts';
 
 export interface StairLimits { riserMin: number; riserMax: number; goingMin: number; goingMax: number; twoRGMin?: number; twoRGMax?: number; source: string }
@@ -71,8 +71,8 @@ export function calcStairs(input: StairInput): CalcResult<StairResult> {
     { label: 'Tiles per tread', working: `⌈${F(w)} ÷ ${F(tl + j)}⌉ × ⌈${F(g)} ÷ ${F(tw + j)}⌉`, result: `${perTread}` },
   ];
   if (input.tileRisers) steps.push({ label: 'Tiles per riser', working: `⌈${F(w)} ÷ ${F(tl + j)}⌉ × ⌈${F(r)} ÷ ${F(tw + j)}⌉`, result: `${perRiser}` });
-  steps.push({ label: 'Tiles for the flight', working: `${n} × (${perTread}${input.tileRisers ? ` + ${perRiser}` : ''})`, result: `${tiles} tiles` });
-  steps.push({ label: 'Nosing lengths', working: `${n} treads of ${F(w)} cut from ${formatLength(input.nosingStockMm, system)} lengths`, result: `${nosing} lengths` });
+  steps.push({ label: 'Tiles for the flight', working: `${n} × (${perTread}${input.tileRisers ? ` + ${perRiser}` : ''})`, result: `${fmt(tiles, 0)} tiles` });
+  steps.push({ label: 'Nosing lengths', working: `${n} treads of ${F(w)} cut from ${formatLength(input.nosingStockMm, system)} lengths`, result: `${fmt(nosing, 0)} lengths` });
   steps.push({ label: 'Bottom riser after tiling', working: input.floorRaisedAtFoot ? `${F(r)} (floor at the foot raised the same)` : `${F(r)} + ${F(input.buildUpMm)} build-up`, result: F(bottom) });
   steps.push({ label: 'Top riser after tiling', working: input.landingTiled ? `${F(r)} (landing tiled the same)` : `${F(r)} − ${F(input.buildUpMm)} build-up`, result: F(top) });
 

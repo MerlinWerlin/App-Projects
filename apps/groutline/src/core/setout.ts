@@ -142,7 +142,7 @@ export function calcSetout(input: SetoutInput): CalcResult<SetoutResult> {
   };
   axisSteps('Length', x, tx);
   axisSteps('Width', y, ty);
-  steps.push({ label: 'Tiles on the grid', working: `${cols} × ${rows} pieces (${fullTiles} full + ${cutTiles} cut)`, result: `${tilesNeeded} tiles` });
+  steps.push({ label: 'Tiles on the grid', working: `${fmt(cols, 0)} × ${fmt(rows, 0)} pieces (${fmt(fullTiles, 0)} full + ${fmt(cutTiles, 0)} cut)`, result: `${fmt(tilesNeeded, 0)} tiles` });
   const notes: string[] = [];
   const half = (t: number) => t / 2;
   if (x.cutStart > 0 && x.cutStart < half(tx) || x.cutEnd > 0 && x.cutEnd < half(tx)) notes.push(`Length cuts are under half a tile (${L(Math.min(minCut(x)))}). Try the other centring option, or move the start line.`);

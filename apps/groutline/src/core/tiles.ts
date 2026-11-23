@@ -90,14 +90,14 @@ export function calcTiles(input: TileInput): CalcResult<TileResult> {
   steps.push({ label: 'Area to tile', working: cut > 0 ? `${A(gross)} − ${A(cut)} cut-outs` : rects.filter(r => !r.subtract).map(r => `${formatLength(r.widthMm, system)} × ${formatLength(r.heightMm, system)}`).join(' + '), result: A(net) });
   steps.push({ label: 'Area per tile with joint', working: `(${formatLength(L, system, 'tile')} + ${formatLength(j, system, 'joint')}) × (${formatLength(W, system, 'tile')} + ${formatLength(j, system, 'joint')})`, result: system === 'metric' ? `${fmt(tileM2, 4)} m²` : `${fmt(tileM2 / M2_PER_SQFT, 3)} sq ft` });
   steps.push({ label: 'Tiles before waste', working: `${A(net)} ÷ ${system === 'metric' ? `${fmt(tileM2, 4)} m²` : `${fmt(tileM2 / M2_PER_SQFT, 3)} sq ft`}`, result: fmt(exact, 2) });
-  steps.push({ label: `Add ${fmt(waste, 1)}% waste (${layout.name.toLowerCase()})`, working: `${fmt(exact, 2)} × ${fmt(1 + waste / 100, 3)} = ${fmt(withWaste, 2)}, rounded up`, result: `${tiles} tiles` });
+  steps.push({ label: `Add ${fmt(waste, 1)}% waste (${layout.name.toLowerCase()})`, working: `${fmt(exact, 2)} × ${fmt(1 + waste / 100, 3)} = ${fmt(withWaste, 2)}, rounded up`, result: `${fmt(tiles, 0)} tiles` });
   const orderM2 = net * (1 + waste / 100);
   if (input.perBox) {
     boxes = ceilSafe(tiles / input.perBox);
-    steps.push({ label: cap(pl(bw, 2)), working: `${tiles} ÷ ${input.perBox} per ${bw}, rounded up`, result: `${boxes} ${pl(bw, boxes)}` });
+    steps.push({ label: cap(pl(bw, 2)), working: `${fmt(tiles, 0)} ÷ ${input.perBox} per ${bw}, rounded up`, result: `${fmt(boxes, 0)} ${pl(bw, boxes)}` });
   } else if (input.boxM2) {
     boxes = ceilSafe(orderM2 / input.boxM2 - 1e-9);
-    steps.push({ label: cap(pl(bw, 2)), working: `${A(orderM2)} ÷ ${A(input.boxM2)} per ${bw}, rounded up`, result: `${boxes} ${pl(bw, boxes)}` });
+    steps.push({ label: cap(pl(bw, 2)), working: `${A(orderM2)} ÷ ${A(input.boxM2)} per ${bw}, rounded up`, result: `${fmt(boxes, 0)} ${pl(bw, boxes)}` });
   }
   const notes = [...layout.notes, ...layoutWarnings(input.layout, L, W)];
   return { ok: true, value: { netM2: net, grossM2: gross, cutOutM2: cut, tileM2, tilesNoWaste: exact, wastePct: waste, tiles, boxes, orderM2 }, steps, notes };

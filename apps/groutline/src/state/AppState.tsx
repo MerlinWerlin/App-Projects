@@ -15,6 +15,7 @@ import { isFree, type ToolId } from '../plus/entitlement.ts';
 import { createPurchaseProvider, type PurchaseProvider, type PurchaseResult, type StoreAccess } from '../plus/purchases.ts';
 import { readStoredTrial, saveStoredTrial, trialState, type TrialState } from '../plus/trial.ts';
 import { parseJobs, type Job } from './jobs.ts';
+import { setHapticsEnabled } from '../ui/kit.tsx';
 
 const PREFS_KEY = 'groutline.prefs.v1';
 const JOBS_KEY = 'groutline.jobs.v1';
@@ -127,6 +128,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setJobs(prev => { const next = prev.filter(j => j.id !== id); persistJobs(next); return next; });
   }, []);
 
+  useEffect(() => { setHapticsEnabled(prefs.haptics); }, [prefs.haptics]);
   const trial = trialState(access.trialStart, now);
   const unlocked = access.plus || trial.active;
   const country = getCountry(prefs.country ?? suggestedCountry.code);

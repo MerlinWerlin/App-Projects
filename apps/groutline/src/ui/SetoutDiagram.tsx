@@ -36,7 +36,9 @@ export function SetoutDiagram({ x, y, system, tileX, tileY }: { x: AxisPlan; y: 
                   fill={full(px, tileX) && full(py, tileY) ? t.tile : t.tileCut} />
               )))}
             </G>
-          ) : null}
+          ) : (
+            <SvgText x={ox + W / 2} y={oy + H / 2 - 12} fill={t.ink2} fontSize={13} textAnchor="middle" fontFamily={FONT_FAMILY}>{`${x.pieces.length.toLocaleString('en-US')} × ${y.pieces.length.toLocaleString('en-US')} tiles: too many to draw`}</SvgText>
+          )}
           <Rect x={ox} y={oy} width={W} height={H} fill="none" stroke={t.ink} strokeWidth={2} />
           {x.mode !== 'wall' ? <Line x1={ox + W / 2} y1={oy - 8} x2={ox + W / 2} y2={oy + H + 8} stroke={t.accent} strokeWidth={2} strokeDasharray="6 5" /> : null}
           {y.mode !== 'wall' ? <Line x1={ox - 8} y1={oy + H / 2} x2={ox + W + 8} y2={oy + H / 2} stroke={t.accent} strokeWidth={2} strokeDasharray="6 5" /> : null}

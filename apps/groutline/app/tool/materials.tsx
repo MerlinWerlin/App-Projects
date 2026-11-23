@@ -5,6 +5,7 @@ import { calcAdhesive, calcGrout, calcMembrane, wetAreaSurfaces, type MembraneSu
 import { BACK_BUTTER_KG_PER_M2, IMPERIAL_NOTCHES, NOTCHES, recommendNotch } from '../../src/core/notch.ts';
 import { fmt, type Step } from '../../src/core/steps.ts';
 import { editableLength, KG_PER_LB, L_PER_USGAL, M2_PER_SQFT } from '../../src/core/units.ts';
+import { count } from '../../src/core/steps.ts';
 import { useApp } from '../../src/state/AppState.tsx';
 import { SPACE } from '../../src/theme/theme.ts';
 import { plural, TileInputs, useUnits } from '../../src/ui/fields.tsx';
@@ -44,8 +45,8 @@ export default function MaterialsTool() {
       jointMm: u.parse(s.joint as string, 'joint') ?? NaN, density: g ? g.density : Number(s.groutK), bagKg: g ? g.bagKg : toKg(s.groutBag as string),
       extraPct: (s.groutExtra as string).trim() ? Number(s.groutExtra) : extraDefault, system: u.system,
     });
-    result = r.ok ? { ok: true, big: String(r.value.bags), bigUnit: plural('bag', r.value.bags), stats: [['Grout', fmt(imperial ? r.value.kgWithExtra / KG_PER_LB : r.value.kgWithExtra, 1), massUnit], ['Per ' + u.areaUnit, fmt(imperial ? (r.value.kgPerM2 / KG_PER_LB) * M2_PER_SQFT : r.value.kgPerM2, 3), massUnit]], steps: r.steps, notes: [...r.notes, ...(g?.verified === false ? ['This grout\'s own factor isn\'t published: the generic 1.6 kg/L is used. Check the bag\'s coverage chart.'] : []), ...(g?.kind === 'epoxy' ? ['Epoxy densities vary a lot by brand: check the kit\'s chart.'] : [])] } : r;
-    if (r.ok) summary = [`${r.value.bags} ${plural('bag', r.value.bags)} grout`, `${fmt(imperial ? r.value.kgWithExtra / KG_PER_LB : r.value.kgWithExtra, 1)} ${massUnit}`];
+    result = r.ok ? { ok: true, big: count(r.value.bags), bigUnit: plural('bag', r.value.bags), stats: [['Grout', fmt(imperial ? r.value.kgWithExtra / KG_PER_LB : r.value.kgWithExtra, 1), massUnit], ['Per ' + u.areaUnit, fmt(imperial ? (r.value.kgPerM2 / KG_PER_LB) * M2_PER_SQFT : r.value.kgPerM2, 3), massUnit]], steps: r.steps, notes: [...r.notes, ...(g?.verified === false ? ['This grout\'s own factor isn\'t published: the generic 1.6 kg/L is used. Check the bag\'s coverage chart.'] : []), ...(g?.kind === 'epoxy' ? ['Epoxy densities vary a lot by brand: check the kit\'s chart.'] : [])] } : r;
+    if (r.ok) summary = [`${count(r.value.bags)} ${plural('bag', r.value.bags)} grout`, `${fmt(imperial ? r.value.kgWithExtra / KG_PER_LB : r.value.kgWithExtra, 1)} ${massUnit}`];
   } else if (mode === 'adhesive') {
     const a = c.catalogue.adhesives.find(x => x.id === s.adhId) ?? null;
     const list = imperial ? IMPERIAL_NOTCHES : NOTCHES;
@@ -64,8 +65,8 @@ export default function MaterialsTool() {
       ...(rec ? [`Suggested notch: ${recNotch?.label}${rec.backButter ? ' plus back-buttering' : ''} (${rec.why.toLowerCase()}). Lift a tile and check the contact.`] : []),
       c.contactRule,
     ];
-    result = r.ok ? { ok: true, big: String(r.value.bags), bigUnit: plural('bag', r.value.bags), stats: [[c.terms.adhesive, fmt(imperial ? r.value.kgWithExtra / KG_PER_LB : r.value.kgWithExtra, 1), massUnit]], steps: r.steps, notes } : r;
-    if (r.ok) summary = [`${r.value.bags} ${plural('bag', r.value.bags)} ${c.terms.adhesive.toLowerCase()}`, `${notch.label} notch`];
+    result = r.ok ? { ok: true, big: count(r.value.bags), bigUnit: plural('bag', r.value.bags), stats: [[c.terms.adhesive, fmt(imperial ? r.value.kgWithExtra / KG_PER_LB : r.value.kgWithExtra, 1), massUnit]], steps: r.steps, notes } : r;
+    if (r.ok) summary = [`${count(r.value.bags)} ${plural('bag', r.value.bags)} ${c.terms.adhesive.toLowerCase()}`, `${notch.label} notch`];
     var notchUI = { list, notch, recNotch };
   } else {
     const m = c.catalogue.membranes.find(x => x.id === s.wpId) ?? null;
@@ -88,8 +89,8 @@ export default function MaterialsTool() {
       surfaces, litresPerM2PerCoat, coats: rateIn || !m ? Number(s.wpCoats) : m.coats, packLitres: packIn ? Number(packIn) * (imperial ? L_PER_USGAL : 1) : m?.packL ?? NaN,
       primerM2PerLitre: c.extras.primerM2PerLitre, primerPackLitres: null, tapeRunMm: tape, tapeRollMm: c.extras.tapeRollMm, system: u.system, packUnit: rateIn ? 'L' : m?.packUnit ?? 'L',
     });
-    result = r.ok ? { ok: true, big: String(r.value.packs), bigUnit: plural('pack', r.value.packs), stats: [[c.terms.membrane, ...(m?.packUnit === 'kg' && !rateIn ? [fmt(imperial ? r.value.litres / KG_PER_LB : r.value.litres, 1), massUnit] as [string, string] : [fmt(imperial ? r.value.litres / L_PER_USGAL : r.value.litres, imperial ? 2 : 1), imperial ? 'gal' : 'L'] as [string, string])], ['Area', u.showArea(r.value.areaM2).split(' ')[0], u.areaUnit], ...(tape ? [['Tape / bond breaker', fmt(imperial ? tape / 304.8 : tape / 1000, 1), imperial ? 'ft' : 'm'] as [string, string, string]] : [])], steps: r.steps, notes: [c.membraneHeights.label, ...(m?.note ? [m.note] : []), 'Coverage is the maker\'s figure for the film thickness the system needs: don\'t thin it out to make a pack go further.'] } : r;
-    if (r.ok) summary = [`${r.value.packs} ${plural('pack', r.value.packs)} ${c.terms.membrane.toLowerCase()}`, u.showArea(r.value.areaM2)];
+    result = r.ok ? { ok: true, big: count(r.value.packs), bigUnit: plural('pack', r.value.packs), stats: [[c.terms.membrane, ...(m?.packUnit === 'kg' && !rateIn ? [fmt(imperial ? r.value.litres / KG_PER_LB : r.value.litres, 1), massUnit] as [string, string] : [fmt(imperial ? r.value.litres / L_PER_USGAL : r.value.litres, imperial ? 2 : 1), imperial ? 'gal' : 'L'] as [string, string])], ['Area', u.showArea(r.value.areaM2).split(' ')[0], u.areaUnit], ...(tape ? [['Tape / bond breaker', fmt(imperial ? tape / 304.8 : tape / 1000, 1), imperial ? 'ft' : 'm'] as [string, string, string]] : [])], steps: r.steps, notes: [c.membraneHeights.label, ...(m?.note ? [m.note] : []), 'Coverage is the maker\'s figure for the film thickness the system needs: don\'t thin it out to make a pack go further.'] } : r;
+    if (r.ok) summary = [`${count(r.value.packs)} ${plural('pack', r.value.packs)} ${c.terms.membrane.toLowerCase()}`, u.showArea(r.value.areaM2)];
   }
 
   const grout = c.catalogue.grouts.find(x => x.id === s.groutId) ?? null;
@@ -102,8 +103,7 @@ export default function MaterialsTool() {
     <ToolScreen tool="materials" title="Materials" inputs={s} job={job} summary={summary} steps={result.ok ? result.steps : []}
       result={result.ok ? (
         <Card>
-          <Txt v="footnote" tone="ink2" style={{ fontWeight: '700' }}>{mode === 'grout' ? 'GROUT TO BUY' : mode === 'adhesive' ? `${c.terms.adhesive.toUpperCase()} TO BUY` : `${c.terms.membrane.toUpperCase()} TO BUY`}</Txt>
-          <Num value={result.big} unit={result.bigUnit} size={72} />
+          <Num value={result.big} unit={`${result.bigUnit} of ${mode === 'grout' ? 'grout' : mode === 'adhesive' ? c.terms.adhesive.toLowerCase() : c.terms.membrane.toLowerCase()}`} size={72} />
           <Row gap={SPACE.lg}>{result.stats.map(([l, v, un]) => <Stat key={l} label={l} value={v} unit={un} />)}</Row>
           <Notes notes={result.notes} />
           <Steps steps={result.steps} />

@@ -2,6 +2,7 @@
 import { View } from 'react-native';
 import { calcSetout, MODE_NAME, type SetoutMode } from '../../src/core/setout.ts';
 import { editableLength, formatLength } from '../../src/core/units.ts';
+import { count } from '../../src/core/steps.ts';
 import { useApp } from '../../src/state/AppState.tsx';
 import { SPACE, useTheme } from '../../src/theme/theme.ts';
 import { TileInputs, useUnits } from '../../src/ui/fields.tsx';
@@ -28,18 +29,17 @@ export default function SetoutTool() {
     modeX: mode(s.modeX), modeY: mode(s.modeY), system: u.system,
   });
   const L = (mm: number) => formatLength(mm, u.system, 'tile');
-  const cut = (a: number, b: number) => (a || b ? (a === b || !b ? L(a || b) : `${L(a)} / ${L(b)}`) : 'none');
-  const summary = r.ok ? [`Cuts ${cut(r.value.x.cutStart, r.value.x.cutEnd)} × ${cut(r.value.y.cutStart, r.value.y.cutEnd)}`, `${r.value.tilesNeeded} tiles on the grid`] : null;
+  const cut = (a: number, b: number) => { const c = [a, b].filter(v => v > 0); return !c.length ? 'none' : c.length === 1 || Math.abs(c[0] - c[1]) < 0.5 ? L(c[0]) : `${L(c[0])} / ${L(c[1])}`; };
+  const summary = r.ok ? [`Cuts ${cut(r.value.x.cutStart, r.value.x.cutEnd)} × ${cut(r.value.y.cutStart, r.value.y.cutEnd)}`, `${count(r.value.tilesNeeded)} tiles on the grid`] : null;
   const firstLine = (p: { pieces: Array<[number, number]>; cutStart: number }) => (p.pieces.length > 1 ? p.pieces[0][1] + (u.parse(s.joint as string, 'joint', true) ?? 0) / 2 : null);
 
   return (
     <ToolScreen tool="setout" inputs={s} job={job} summary={summary} steps={r.ok ? r.steps : []} intro={`Where to start so the cuts at the walls are even and as big as possible.`}
       result={r.ok ? (
         <Card>
-          <Txt v="footnote" tone="ink2" style={{ fontWeight: '700' }}>EDGE CUTS</Txt>
           <Row gap={SPACE.lg}>
-            <View><Txt v="footnote" tone="ink2">Along the length</Txt><Num value={cut(r.value.x.cutStart, r.value.x.cutEnd)} size={44} /></View>
-            <View><Txt v="footnote" tone="ink2">Across the width</Txt><Num value={cut(r.value.y.cutStart, r.value.y.cutEnd)} size={44} /></View>
+            <View><Txt v="footnote" tone="ink2" style={{ fontWeight: '600' }}>Edge cut along the length</Txt><Num value={cut(r.value.x.cutStart, r.value.x.cutEnd)} size={44} /></View>
+            <View><Txt v="footnote" tone="ink2" style={{ fontWeight: '600' }}>Edge cut across the width</Txt><Num value={cut(r.value.y.cutStart, r.value.y.cutEnd)} size={44} /></View>
           </Row>
           <Txt v="subhead" tone="ink2" style={{ marginTop: 4 }}>{`${MODE_NAME[r.value.x.mode]} (length), ${MODE_NAME[r.value.y.mode].toLowerCase()} (width).`}</Txt>
           <View style={{ marginTop: SPACE.md, marginHorizontal: -SPACE.xs }}>
@@ -49,9 +49,9 @@ export default function SetoutTool() {
             <Legend color={t.tile} label="Full tile" /><Legend color={t.tileCut} label="Cut" /><Legend color={t.accent} label="Centre line" dashed />
           </View>
           <Row gap={SPACE.lg}>
-            <Stat label="Full tiles" value={String(r.value.fullTiles)} />
-            <Stat label="Cut pieces" value={String(r.value.cutTiles)} />
-            <Stat label="Tiles on grid" value={String(r.value.tilesNeeded)} />
+            <Stat label="Full tiles" value={count(r.value.fullTiles)} />
+            <Stat label="Cut pieces" value={count(r.value.cutTiles)} />
+            <Stat label="Tiles on grid" value={count(r.value.tilesNeeded)} />
           </Row>
           {firstLine(r.value.x) != null && firstLine(r.value.y) != null ? (
             <Txt v="subhead" style={{ marginTop: SPACE.sm }}>{`First joint lines: ${L(firstLine(r.value.x)!)} from the start wall along the length, ${L(firstLine(r.value.y)!)} from the back wall across.`}</Txt>

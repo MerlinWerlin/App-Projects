@@ -2,6 +2,7 @@
 import { View } from 'react-native';
 import { calcStairs } from '../../src/core/stairs.ts';
 import { editableLength, formatLength } from '../../src/core/units.ts';
+import { count } from '../../src/core/steps.ts';
 import { useApp } from '../../src/state/AppState.tsx';
 import { SPACE } from '../../src/theme/theme.ts';
 import { plural, TileInputs, useUnits } from '../../src/ui/fields.tsx';
@@ -25,19 +26,18 @@ export default function StairsTool() {
     floorRaisedAtFoot: !!s.footRaised, landingTiled: !!s.landingTiled, nosingStockMm: u.parse(s.nosing as string, 'room') ?? NaN, limits: c.stairs, system: u.system,
   });
   const F = (mm: number) => formatLength(mm, u.system, 'tile');
-  const summary = r.ok ? [`${r.value.tiles} tiles`, `${r.value.nosingLengths} nosing ${plural('length', r.value.nosingLengths)}`] : null;
+  const summary = r.ok ? [`${count(r.value.tiles)} tiles`, `${count(r.value.nosingLengths)} nosing ${plural('length', r.value.nosingLengths)}`] : null;
   return (
     <ToolScreen tool="stairs" inputs={s} job={job} summary={summary} steps={r.ok ? r.steps : []}
       intro={c.stairs ? `Checks against ${c.stairs.source}.` : 'No stair rules are set for this country: tile counts only.'}
       result={r.ok ? (
         <Card>
-          <Txt v="footnote" tone="ink2" style={{ fontWeight: '700' }}>TILES FOR THE FLIGHT</Txt>
-          <Num value={String(r.value.tiles)} unit="tiles" size={72} />
+          <Num value={count(r.value.tiles)} unit="tiles for the flight" size={72} />
           <Txt v="footnote" tone="ink3">Each piece counted from its own tile. Add your usual breakage allowance.</Txt>
           <Row gap={SPACE.lg}>
-            <Stat label="Per tread" value={String(r.value.tilesPerTread)} />
-            {s.tileRisers ? <Stat label="Per riser" value={String(r.value.tilesPerRiser)} /> : null}
-            <Stat label="Nosing lengths" value={String(r.value.nosingLengths)} />
+            <Stat label="Per tread" value={count(r.value.tilesPerTread)} />
+            {s.tileRisers ? <Stat label="Per riser" value={count(r.value.tilesPerRiser)} /> : null}
+            <Stat label="Nosing lengths" value={count(r.value.nosingLengths)} />
           </Row>
           <Row gap={SPACE.lg}>
             <Stat label="Bottom riser" value={F(r.value.bottomRiser)} />

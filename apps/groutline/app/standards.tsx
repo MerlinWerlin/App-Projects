@@ -15,7 +15,7 @@ export default function Standards() {
   const insets = useSafeAreaInsets();
   return (
     <ScrollView style={{ backgroundColor: t.ground }} contentContainerStyle={{ padding: SPACE.gutter, paddingBottom: insets.bottom + SPACE.xl }}>
-      <Txt v="title" accessibilityRole="header">{`${c.flag} ${c.name}`}</Txt>
+      <Txt v="title" accessibilityRole="header">{c.flag ? `${c.flag} ${c.name}` : c.name}</Txt>
       <Txt v="subhead" tone="ink2" style={{ marginTop: 4 }}>
         {c.guided ? 'What Groutline uses for this country. Standards change and councils add their own rules: the current documents always win.' : 'Generic guidance only: we have not checked the local rules for your country.'}
       </Txt>
