@@ -1,0 +1,187 @@
+{
+  "id": "c-lenslet-maple",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "maple-viewpoints",
+    "fox-glade",
+    "wren-glade",
+    "acorn-glade",
+    "comma-glade"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.cf696233.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 11104,
+    "sha256": "cf696233d959185dacffb9888c986d48b7f9860a01a3577df8b5d2348f0d33ca",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Reviewed the maple, resting red fox, twig-perched wren, acorn and scalloped comma butterfly together and at the actual encoded 85 px size. All five remain recognizable. The maple and fox clearly show a left-to-overlap-to-right change in the pale cap relative to the distant trunk. The acorn and butterfly use four quadrant views with variable offsets. Preserve all selected originals.",
+    "wallpaper": "All three actual fully rendered phone crops retain the maple and full visible curved stem, wren and tail, butterfly, resting fox and acorn. The attached supporting branch enters from the left edge, and the moss floor frames the acorn naturally. The principal subject group occupies about 82 percent of the width and 54 percent of the height and starts about 30 percent down the portrait. The wallpaper keeps the optical views strongest within the leaf, with the four companions illustrated naturally. One exact own maple reference, no image edit.",
+    "native": "Reviewed all nine official current-coordinator renderer previews of the three live layouts. The compact clock and calendar headers use a plain angular maple with one vein and room around it. The larger figures combine the maple with a simplified mushroom row. Changing values, null and boundary battery cases, and ornament parsing passed.",
+    "roundedArtworkCorners": "Each deep spruce Artwork tile has room around the complete silhouette, including the fine butterfly antennae, maple and acorn stems, and fox ear tips. All 200 lane C encoded artworks retained visible alpha 16 in the common rounded layout simulation."
+  },
+  "ownerSteeringReview": "Recognizable autumn plants and woodland wildlife, open spruce Artwork corners, and a simple matching maple outline in compact native headers.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-lenslet-maple",
+    "backgroundStops": [
+      "#293E36",
+      "#20332C"
+    ],
+    "pieces": [
+      {
+        "id": "maple-viewpoints",
+        "sha256": "455a66d6493aed15f99cb1b54a661b0e5d188f4f9778478dd191fe4310412059",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fox-glade",
+        "sha256": "6972c468e1d232cc7798db8b4f24e14295d697728d80f63a56be29a76f000b80",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "wren-glade",
+        "sha256": "fbcc3241a2e66fc14c9680ba32cf7d03deaa4c373a4315c838257ab0de257293",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "acorn-glade",
+        "sha256": "add63e90aea29c60c1ffc292c80ea17c7b024e7de5012037bd1d54b548a3a6fd",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "comma-glade",
+        "sha256": "2fd710fccea7f0a24683f75f43e3cefd564a050baa5a7620f82a685b3d04b2f1",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 1,
+  "wallpaperDistinctReferenceImages": 1,
+  "artworkOwnStudyReferenceHashesMatched": 4,
+  "packTestEvidence": "Builder v1 produced 9 encoded assets at minApp 1.0.44, totaling 547896 bytes. All source, normalized and encoded images decoded completely and matched dimensions, sizes and hashes. Actual parser, five Artwork selections, nine native layouts, battery boundaries, provenance, exact own reference hashes and Nature routing passed.",
+  "encodedBytes": 547896,
+  "minAppVersion": "1.0.44",
+  "selectedFirstPrototypeSha256": "9bef9150496c0be8116cb7115303df022a6d2634c291beb15f76c347bdf3fcd9",
+  "selectedFirstRawUnchanged": true,
+  "newImageOutputs": 6,
+  "sourceOutputCount": 6,
+  "creativeRasterEdits": 0,
+  "unselectedGenerations": 0,
+  "artworkOwnStudyDistinctReferenceImages": 1,
+  "fullSelectedSourceDecode": true,
+  "localNativePreviewOnly": true,
+  "paletteContrast": {
+    "glyphOnTile": 11.257855504774817,
+    "textOnBackground": 9.589691707044564
+  },
+  "all40LaneCThemes200ArtRetainVisibleAlpha16": true
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "maple-viewpoints",
+    "kind": "art",
+    "image": "maple-viewpoints.0337bc986b83.png",
+    "sha256": "0337bc986b83d9ddca4d0aea09eac1400d4a0690cbdc88486149b5574e717f03",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Maple Viewpoints"
+  },
+  {
+    "id": "fox-glade",
+    "kind": "art",
+    "image": "fox-glade.4947ba80ab2e.png",
+    "sha256": "4947ba80ab2e1ad3435c0efa5b6617a08c6a7085f0a52840ce016ce898768600",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Red Fox Glade"
+  },
+  {
+    "id": "wren-glade",
+    "kind": "art",
+    "image": "wren-glade.d3e430a4315b.png",
+    "sha256": "d3e430a4315b5edd59d2126bd1d4016593bddfafff375355bb12968e7c9a8ba1",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Wren Glade"
+  },
+  {
+    "id": "acorn-glade",
+    "kind": "art",
+    "image": "acorn-glade.87409cce89b1.png",
+    "sha256": "87409cce89b162a52711668438d61333aa50b31272aa0d47cf521505b7ea95a0",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Acorn Glade"
+  },
+  {
+    "id": "comma-glade",
+    "kind": "art",
+    "image": "comma-glade.a18a503995c8.png",
+    "sha256": "a18a503995c824c8894d2c1ccc987e920e40cb8e6afe8c69fc3b8905ca2a8bd1",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Comma Butterfly Glade"
+  }
+]

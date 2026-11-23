@@ -1,0 +1,100 @@
+{
+  "review": "All five source cutouts decode as square 1254 px transparent PNGs. Their maximum frame alpha is 1. The raw maple filled about 96 percent of its width and 97 percent of its height with all tips inside. Each whole raw square was fitted into 900 px on a 1024 transparent tile without cropping. Wallpaper from 852x1847 to standard 1290x2796 center fit.",
+  "assets": [
+    {
+      "id": "maple-viewpoints",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          42,
+          20,
+          1241,
+          1238
+        ],
+        "96": [
+          42,
+          21,
+          1241,
+          1238
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "fox-glade",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          55,
+          151,
+          1224,
+          1127
+        ],
+        "96": [
+          55,
+          152,
+          1223,
+          1126
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "wren-glade",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          127,
+          157,
+          1105,
+          1185
+        ],
+        "96": [
+          127,
+          157,
+          1105,
+          1185
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "acorn-glade",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          187,
+          97,
+          1076,
+          1157
+        ],
+        "96": [
+          188,
+          98,
+          1075,
+          1157
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "comma-glade",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          118,
+          212,
+          1160,
+          1051
+        ],
+        "96": [
+          119,
+          213,
+          1159,
+          1050
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "maple-viewpoints",
+  "selected": true,
+  "sourceImage": "sources/maple-viewpoints.9bef9150496c.png",
+  "sourceSha256": "9bef9150496c0be8116cb7115303df022a6d2634c291beb15f76c347bdf3fcd9",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "sourcePathFromGenerator": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-952c-7b31-bf3d-c5d132645a30\\exec-c2cb48d1-7819-418b-a9d4-87eb1fc5ab1b.png",
+  "prompt": "Use case: stylized-concept. Create one original square nature cutout for Glaze, Lensleaf Glade. The first thing someone sees at small size is one familiar whole five-lobed autumn maple leaf, facing forward on a slight clockwise tilt, with complete sharp lobe tips, a coherent copper-orange perimeter and a complete slender curved stem. The complete leaf and stem fit inside the central 76 percent of the image. True transparent alpha outside the whole leaf. The leaf is flat in the image, with a restrained amber edge and clear silhouette.\n\nInside the leaf, lay a coarse two-row, three-column register of six broad, flat, touching optical views. They all show the same tiny woodland scene in the same light and the same warm colors: ONE highly simplified pale ivory mushroom with a single broad cap and thick stalk, a spruce-green far vertical tree trunk, and one broad moss slope. No other miniature objects. Leave the edge of the leaf uninterrupted where it clips the outer windows. Keep the six views adjacent with very thin or invisible seams. Use a strong value difference between the ivory mushroom and the dark trunk so they can both be seen in a tiny preview. Give each window the same warm amber earth and dark natural evergreen. The near mushroom shifts progressively to the right relative to the far trunk as you look from left to center to right within each row. It partly overlaps the trunk in the center. The near mushroom sits slightly lower relative to the distant trunk in the second row. Preserve one clear cap in every full view. The relative positions, rather than differences in colors, let the viewer see six different directions on the same scene. This is invented artistic integral imaging, without actual capture or reconstruction.\n\nKeep the outer maple shape visibly uninterrupted and strong even at 85 px. Broad bold forms and restrained tonal detail, with two or three secondary shade transitions per window. No tile bevels, glass beads, shiny lens surfaces, metal leading, dark grid border, bright cut-paper seams, unrelated samples, checkerboard colors, photographic leaf veins sprawling over the little views, labels, text, logo, watermark, noise overlay, haze, outline glow or exterior shadows. No rectangular background, stand, frame, room or device. One square pure piece of original art with a completely transparent exterior. No external source images.",
+  "generationTool": "built-in image_gen",
+  "externalReferences": [],
+  "alpha16Bounds": [
+    42,
+    20,
+    1241,
+    1238
+  ],
+  "edgeAlphaMaximum": 1,
+  "sourceCoverage": {
+    "widthPercent": 95.6140350877193,
+    "heightPercent": 97.1291866028708
+  },
+  "selectionReason": "Coordinator accepted the exact first unchanged after full, 170 px, 85 px and all seven comparison boards. The left to overlap to right shift of the mushroom against the dark trunk reads inside the whole maple. The rows remain vertically similar. Keep an artistic multi-view illustration and preserve the first source."
+}

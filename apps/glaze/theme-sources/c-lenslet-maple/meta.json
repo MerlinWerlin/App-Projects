@@ -1,0 +1,15 @@
+{
+  "name": "Lensleaf Glade",
+  "mood": "Autumn leaves and small woodland views in warm copper and spruce.",
+  "tags": [
+    "woodland",
+    "autumn maple",
+    "integral imaging inspired"
+  ],
+  "credits": "Original built-in image generation. Artistic viewpoints inspired by integral imaging.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole natural forms and a few broad repeated views of one woodland scene.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}
