@@ -108,7 +108,7 @@ export function Segmented<T extends string>({ value, options, onChange, tone = '
               if (!on) void Haptics.selectionAsync().catch(() => {});
               onChange(o.value);
             }}
-            style={{ flex: 1, minHeight: TOUCH - 8, borderRadius: RADIUS.sm + 2, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? active : 'transparent', paddingHorizontal: 6 }}
+            style={({ pressed }) => ({ flex: 1, minHeight: TOUCH - 8, borderRadius: RADIUS.sm + 2, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? active : 'transparent', paddingHorizontal: 6, transform: [{ scale: pressed ? 0.97 : 1 }] })}
           >
             <Text numberOfLines={1} adjustsFontSizeToFit style={{ fontSize: 16, fontWeight: '700', color: on ? onActive : p.text2 }}>{o.label}</Text>
           </Pressable>
@@ -185,7 +185,8 @@ function StepButton({ icon, text, label, onPress, color, narrow }: { icon?: keyo
       accessibilityRole="button"
       accessibilityLabel={label}
       onPress={onPress}
-      style={({ pressed }) => ({ width: narrow ? 48 : TOUCH, minHeight: TOUCH + 12, borderRadius: RADIUS.md, backgroundColor: pressed ? p.line : p.surface2, alignItems: 'center', justifyContent: 'center' })}
+      pressRetentionOffset={16}
+      style={({ pressed }) => ({ width: narrow ? 48 : TOUCH, minHeight: TOUCH + 12, borderRadius: RADIUS.md, backgroundColor: pressed ? p.line : p.surface2, alignItems: 'center', justifyContent: 'center', transform: [{ scale: pressed ? 0.97 : 1 }] })}
     >
       {icon ? <Ionicons name={icon} size={28} color={color} /> : <Text style={{ fontSize: 24, fontWeight: '800', color }}>{text}</Text>}
     </Pressable>
@@ -205,7 +206,8 @@ export function Button({ title, onPress, kind = 'primary', icon, disabled, tone 
       accessibilityState={{ disabled: !!disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => ({ minHeight: TOUCH, borderRadius: RADIUS.md, backgroundColor: bg, opacity: disabled ? 0.45 : pressed ? 0.8 : 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.sm, paddingHorizontal: SPACE.lg })}
+      style={({ pressed }) => ({ minHeight: TOUCH, borderRadius: RADIUS.md, backgroundColor: bg, opacity: disabled ? 0.45 : pressed ? 0.85 : 1, transform: [{ scale: pressed && !disabled ? 0.97 : 1 }], flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.sm, paddingHorizontal: SPACE.lg })}
+      pressRetentionOffset={16}
     >
       {icon ? <Ionicons name={icon} size={22} color={fg} /> : null}
       <Text style={{ fontSize: 17, fontWeight: '700', color: fg, textAlign: 'center' }}>{title}</Text>

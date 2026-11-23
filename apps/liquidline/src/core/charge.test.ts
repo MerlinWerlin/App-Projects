@@ -108,3 +108,18 @@ test('target liquid line temperature', () => {
   assert.ok(Math.abs(t - 35) < 0.01);
   assert.equal(targetLiquidLineC('R32', -1, 5), null);
 });
+
+test('worst cases: typo line temperatures are refused, extreme results are flagged, absurd lengths refused', () => {
+  const g = satPressure('R32', 5)! - 101.325;
+  const typo = superheat('R32', g, 1022, metric);
+  assert.ok(!typo.ok && /looks wrong/.test(typo.error));
+  assert.ok(!subcooling('R32', 2000, -200, metric).ok);
+  const high = superheat('R32', g, 45, metric);
+  assert.ok(high.ok && high.verdict === 'high' && /starved/.test(high.note ?? ''));
+  const highSc = subcooling('R32', satPressure('R32', 45)! - 101.325, 5, metric);
+  assert.ok(highSc.ok && highSc.verdict === 'high');
+  assert.ok(!additionalCharge(5000, 10, 20).ok);
+  assert.ok(!additionalCharge(20, 10, 9000).ok);
+  // Imperial typo: 1022 °F is refused too.
+  assert.ok(!superheat('R32', 118, 1022, imperial).ok);
+});

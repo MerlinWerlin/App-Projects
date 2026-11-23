@@ -8,6 +8,13 @@ import {
   pressureFromKpa, pressureToKpa, rateFromGPerM, tempFromC, tempToC, type LengthUnit, type MassUnit, type PressureUnit, type TempUnit,
 } from './units.ts';
 
+/** Line temperatures a probe on refrigerant pipe can plausibly read (°C). Outside this is a typo or a bad probe. */
+export const LINE_MIN_C = -60;
+export const LINE_MAX_C = 150;
+const lineOk = (c: number) => c >= LINE_MIN_C && c <= LINE_MAX_C;
+const lineError = (p: { temp: TempUnit }) =>
+  `That line temperature looks wrong (outside ${fmt(tempFromC(LINE_MIN_C, p.temp), 0)} to ${fmt(tempFromC(LINE_MAX_C, p.temp), 0)} ${TEMP_LABEL[p.temp]}). Check the number and the probe.`;
+
 export type Prefs = { pressure: PressureUnit; temp: TempUnit; gauge: boolean; atmKpa: number };
 export type Step = { label: string; value: string };
 export type Verdict = 'ok' | 'low' | 'high' | 'warn';
@@ -45,6 +52,7 @@ export function superheat(id: string, suctionReading: number, lineTemp: number, 
   const sat = satTemp(id, abs, 'dew');
   if (sat == null) return { ok: false, error: 'That pressure is outside this refrigerant’s table. Check the refrigerant and the reading.' };
   const lineC = tempToC(lineTemp, p.temp);
+  if (!lineOk(lineC)) return { ok: false, error: lineError(p) };
   const sh = lineC - sat;
   const steps = [
     ...pressureSteps(suctionReading, abs, p),
@@ -60,6 +68,9 @@ export function superheat(id: string, suctionReading: number, lineTemp: number, 
   } else if (sh < 1.5) {
     note = 'Very low superheat: risk of liquid floodback. Check airflow, metering device and charge.';
     verdict = 'low';
+  } else if (sh > 30) {
+    note = 'Very high superheat: a starved evaporator (low charge, restriction or metering fault) or a misread. Recheck before acting.';
+    verdict = 'high';
   }
   if (targetK != null && Number.isFinite(targetK) && verdict !== 'warn') {
     const diff = sh - targetK;
@@ -78,6 +89,7 @@ export function subcooling(id: string, liquidReading: number, lineTemp: number, 
   const sat = satTemp(id, abs, 'bubble');
   if (sat == null) return { ok: false, error: 'That pressure is outside this refrigerant’s table. Check the refrigerant and the reading.' };
   const lineC = tempToC(lineTemp, p.temp);
+  if (!lineOk(lineC)) return { ok: false, error: lineError(p) };
   const sc = sat - lineC;
   const steps = [
     ...pressureSteps(liquidReading, abs, p),
@@ -87,6 +99,10 @@ export function subcooling(id: string, liquidReading: number, lineTemp: number, 
   ];
   let note: string | null = null;
   let verdict: Verdict | null = null;
+  if (sc > 30) {
+    note = 'Very high subcooling: check for overcharge, a restriction, or a misread pressure.';
+    verdict = 'high';
+  }
   if (sc < 0) {
     note = 'Negative subcooling: the line reads warmer than saturation. Recheck the probe and reading; flash gas or a very low charge is possible.';
     verdict = 'warn';
@@ -128,6 +144,8 @@ export type ExtraCharge = {
 export function additionalCharge(totalM: number, prechargedM: number, gPerM: number, maxM?: number | null, disp: { length: LengthUnit; mass: MassUnit } = { length: 'm', mass: 'g' }): ExtraCharge {
   if (![totalM, prechargedM, gPerM].every(Number.isFinite)) return { ok: false, error: 'Enter the line length, the pre-charged length and the charge rate.' };
   if (totalM < 0 || prechargedM < 0 || gPerM < 0) return { ok: false, error: 'Lengths and the rate cannot be negative.' };
+  if (totalM > 300 || prechargedM > 300) return { ok: false, error: 'That run is longer than any split or VRF line set (over 300 m). Check the length and its unit.' };
+  if (gPerM > 500) return { ok: false, error: 'That charge rate is far above any liquid line (over 500 g/m). Check the rate and its unit.' };
   const extraLengthM = Math.max(0, totalM - prechargedM);
   const extraG = extraLengthM * gPerM;
   const L = (m: number) => `${fmt(lengthFromM(m, disp.length), 1)} ${LENGTH_LABEL[disp.length]}`;

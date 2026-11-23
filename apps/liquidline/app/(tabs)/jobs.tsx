@@ -45,7 +45,7 @@ export default function JobsScreen() {
               style={({ pressed }) => ({ backgroundColor: p.surface, borderRadius: RADIUS.lg, padding: SPACE.lg, gap: 6, borderWidth: 1, borderColor: p.line, opacity: pressed ? 0.7 : 1 })}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.sm }}>
-                <Text style={{ flex: 1, fontSize: 18, fontWeight: '800', color: p.text }} numberOfLines={1}>{jobTitle(j)}</Text>
+                <Text style={{ flex: 1, fontSize: 18, fontWeight: '800', color: p.text }} numberOfLines={2}>{jobTitle(j)}</Text>
                 <Ionicons name="chevron-forward" size={20} color={p.text3} />
               </View>
               <View style={{ flexDirection: 'row', gap: SPACE.sm, alignItems: 'center', flexWrap: 'wrap' }}>

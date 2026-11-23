@@ -7,7 +7,7 @@ import { RADIUS, SPACE, TOUCH, usePalette } from '../../src/theme/tokens.ts';
 import { Button, Card, Label, Screen, Small } from '../../src/ui/kit.tsx';
 import { dateText } from '../(tabs)/jobs.tsx';
 
-function Field({ label, value, onChange, multiline, placeholder }: { label: string; value: string; onChange: (s: string) => void; multiline?: boolean; placeholder?: string }) {
+function Field({ label, value, onChange, multiline, placeholder, max }: { label: string; value: string; onChange: (s: string) => void; multiline?: boolean; placeholder?: string; max: number }) {
   const p = usePalette();
   return (
     <View style={{ gap: 4 }}>
@@ -16,10 +16,12 @@ function Field({ label, value, onChange, multiline, placeholder }: { label: stri
         accessibilityLabel={label}
         value={value}
         onChangeText={onChange}
-        multiline={multiline}
+        multiline
+        maxLength={max}
+        scrollEnabled={false}
         placeholder={placeholder}
         placeholderTextColor={p.text3}
-        style={{ minHeight: multiline ? 110 : TOUCH, backgroundColor: p.surface2, borderRadius: RADIUS.md, paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm, fontSize: 17, color: p.text, textAlignVertical: multiline ? 'top' : 'center' }}
+        style={{ minHeight: multiline ? 110 : TOUCH, backgroundColor: p.surface2, borderRadius: RADIUS.md, paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm, fontSize: 17, color: p.text, textAlignVertical: 'top' }}
       />
     </View>
   );
@@ -56,11 +58,11 @@ export default function JobScreen() {
         }}
       />
       <Card>
-        <Field label="Job title" value={job.title} onChange={(title) => set({ title })} placeholder="e.g. Smith – lounge split" />
-        <Field label="Site" value={job.site} onChange={(site) => set({ site })} placeholder="Address or site name" />
-        <Field label="Equipment" value={job.equipment} onChange={(equipment) => set({ equipment })} placeholder="Make, model, serial" />
-        <Field label="Refrigerant" value={job.refrigerant} onChange={(refrigerant) => set({ refrigerant: refrigerant.slice(0, 20) })} />
-        <Field label="Notes" value={job.notes} onChange={(notes) => set({ notes })} multiline placeholder="Faults found, work done, refrigerant recovered or added" />
+        <Field label="Job title" value={job.title} onChange={(title) => set({ title })} placeholder="e.g. Smith – lounge split" max={200} />
+        <Field label="Site" value={job.site} onChange={(site) => set({ site })} placeholder="Address or site name" max={300} />
+        <Field label="Equipment" value={job.equipment} onChange={(equipment) => set({ equipment })} placeholder="Make, model, serial" max={300} />
+        <Field label="Refrigerant" value={job.refrigerant} onChange={(refrigerant) => set({ refrigerant: refrigerant.slice(0, 20) })} max={20} />
+        <Field label="Notes" value={job.notes} onChange={(notes) => set({ notes })} multiline placeholder="Faults found, work done, refrigerant recovered or added" max={2000} />
       </Card>
       <Label>{`Readings (${job.readings.length})`}</Label>
       {job.readings.length === 0 ? <Card><Small>Tap “Save to a job” on any calculator to add a reading here.</Small></Card> : null}

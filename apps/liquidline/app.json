@@ -13,7 +13,8 @@
       "bundleIdentifier": "com.jared797.liquidline",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "CADisableMinimumFrameDurationOnPhone": true
       },
       "config": {
         "usesNonExemptEncryption": false

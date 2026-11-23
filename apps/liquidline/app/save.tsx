@@ -1,4 +1,5 @@
 // "Save to a job" sheet: pick a job (most recent first) or start a new one. Saving needs the trial or unlock.
+import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { addReading, jobTitle, newJob } from '../src/core/jobs.ts';
@@ -24,6 +25,7 @@ export default function SaveSheet() {
     if (!base) return;
     const j = addReading(base, reading);
     saveJob(j);
+    void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
     clearStash();
     router.replace({ pathname: '/job/[id]', params: { id: j.id } });
   };
