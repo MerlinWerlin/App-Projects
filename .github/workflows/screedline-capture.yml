@@ -1,0 +1,117 @@
+name: Screedline capture
+# Screedline on iPhone simulators from an unsigned Release build:
+#  A. the normal build: first launch on a 6.9-inch iPhone (launch check, locked tools, paywall without store products);
+#  B. the same code with EXPO_PUBLIC_SCREEDLINE_CAPTURE=1 at bundle time (every tool open, invented demo jobs) for
+#     the App Store screenshots in light and dark, plus layout checks on the smallest iPhone and at the largest text size.
+# Simulator only: no signing, nothing shipped. Raw captures are uploaded as an artifact; captions are added on the PC.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/concrete-app', 'claude/screedline-*']
+    paths: ['.github/workflows/screedline-capture.yml', 'apps/screedline/store/capture/**']
+concurrency:
+  group: screedline-capture-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: apps/screedline
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      RCT_NO_LAUNCH_PACKAGER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Select current Xcode
+        run: |
+          set -euo pipefail
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - name: Install
+        run: npm ci --no-audit --no-fund > "$RUNNER_TEMP/install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/install.log"; exit 1; }
+      - name: Generate the iOS project
+        run: |
+          set -euo pipefail
+          npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/prebuild.log"; exit 1; }
+          cd ios && pod install > "$RUNNER_TEMP/pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/pods.log"; exit 1; }
+          find . -maxdepth 2 -name Info.plist -exec grep -l UIApplicationSceneManifest {} + || echo "no scene manifest in Info.plist"
+      - name: Build A (normal) and B (capture) unsigned Release simulator apps
+        run: |
+          set -euo pipefail
+          WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          build() {
+            xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/build-$1.log" 2>&1 || { grep -E "error:" "$RUNNER_TEMP/build-$1.log" | head -40; tail -120 "$RUNNER_TEMP/build-$1.log"; exit 1; }
+            APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+            rm -rf "$RUNNER_TEMP/app-$1" && mkdir -p "$RUNNER_TEMP/app-$1" && cp -R "$APP" "$RUNNER_TEMP/app-$1/"
+          }
+          build a
+          EXPO_PUBLIC_SCREEDLINE_CAPTURE=1 build b
+      - name: Install Maestro
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+      - name: Launch check, store captures, layout checks
+        timeout-minutes: 80
+        run: |
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/screedline-captures"; mkdir -p "$OUT/raw" "$OUT/checks"
+          APP_A=$(ls -d "$RUNNER_TEMP"/app-a/*.app); APP_B=$(ls -d "$RUNNER_TEMP"/app-b/*.app)
+          BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP_A")
+          codesign --force --deep --sign - "$APP_A"; codesign --force --deep --sign - "$APP_B"
+          pick() { xcrun simctl list devices available -j | python3 -c 'import json,sys; want=sys.argv[1]; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next((x["udid"] for x in xs if want in x["name"]), ""))' "$1"; }
+          BIG=$(pick "Pro Max"); SMALL=$(pick "iPhone SE"); [ -n "$SMALL" ] || SMALL=$(pick "iPhone 16e")
+          echo "6.9-inch: $BIG  small: $SMALL"
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          boot() { xcrun simctl boot "$1" 2>/dev/null || true; xcrun simctl bootstatus "$1" -b; xcrun simctl status_bar "$1" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true; }
+
+          # A: normal build, first launch must stay up and draw
+          boot "$BIG"; xcrun simctl ui "$BIG" appearance light
+          xcrun simctl install "$BIG" "$APP_A"
+          xcrun simctl launch "$BIG" "$BUNDLE"; sleep 25
+          if xcrun simctl spawn "$BIG" launchctl list | grep -q "$BUNDLE"; then echo "LAUNCH OK: still running after 25 s"; else echo "::error::app not running 25 s after launch"; fi
+          xcrun simctl io "$BIG" screenshot "$OUT/checks/a-first-launch.png"
+          (cd store/capture && maestro --device "$BIG" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-locked" locked-flow.yaml || echo "locked flow failed")
+          xcrun simctl uninstall "$BIG" "$BUNDLE"
+
+          # B: store captures, light and dark
+          xcrun simctl install "$BIG" "$APP_B"
+          cd store/capture
+          for MODE in light dark; do
+            xcrun simctl ui "$BIG" appearance "$MODE"
+            for TRY in 1 2; do
+              maestro --device "$BIG" test -e APP_ID="$BUNDLE" -e MODE="$MODE" --test-output-dir "$OUT/maestro-$MODE" store-flow.yaml && break
+              echo "flow failed on try $TRY"
+            done
+          done
+          xcrun simctl ui "$BIG" appearance light
+          xcrun simctl ui "$BIG" content_size accessibility-extra-extra-extra-large || true
+          maestro --device "$BIG" test -e APP_ID="$BUNDLE" -e TAG=bigtext -e COUNTRY=AU --test-output-dir "$OUT/maestro-bigtext" check-flow.yaml || echo "big text flow failed"
+          xcrun simctl ui "$BIG" content_size large || true
+          xcrun simctl shutdown "$BIG" || true
+          if [ -n "$SMALL" ]; then
+            boot "$SMALL"; xcrun simctl ui "$SMALL" appearance light
+            xcrun simctl install "$SMALL" "$APP_B"
+            maestro --device "$SMALL" test -e APP_ID="$BUNDLE" -e TAG=se -e COUNTRY=US --test-output-dir "$OUT/maestro-se" check-flow.yaml || echo "small phone flow failed"
+          fi
+          find "$OUT" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
+          cp ./*.png "$OUT/raw/" 2>/dev/null || true
+          ls -la "$OUT/raw" "$OUT/checks"
+          printf 'Source: %s\nSimulators: %s (6.9-inch), %s (small). Build B has EXPO_PUBLIC_SCREEDLINE_CAPTURE=1 (invented demo jobs).\n' "$GITHUB_SHA" "$BIG" "$SMALL" > "$OUT/README.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screedline-captures
+          path: |
+            ${{ runner.temp }}/screedline-captures
+            ${{ runner.temp }}/build-a.log
+          retention-days: 14

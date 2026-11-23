@@ -1,0 +1,3 @@
+This app adopts the UIScene life cycle and passed the "iOS 27 launch check" workflow on 23 Nov 2026
+(run 45090591793, Xcode 27, iOS 27 simulator: still running 30 s after launch).
+ship-mac may build it with the iOS 27 SDK (runner xcode-27). Remove this file if a launch check ever fails.

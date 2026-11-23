@@ -1,0 +1,41 @@
+# Layout checks (small iPhone, largest text): home, slab and the paywall. -e TAG=se|bigtext
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: "country-continue"
+    timeout: 60000
+- takeScreenshot: c0-country-${TAG}
+- tapOn:
+    id: "country-${COUNTRY}"
+- tapOn:
+    id: "country-continue"
+- waitForAnimationToEnd
+- takeScreenshot: c1-home-${TAG}
+- scrollUntilVisible:
+    element:
+      id: "tool-slab"
+    direction: DOWN
+    centerElement: true
+    timeout: 30000
+- tapOn:
+    id: "tool-slab"
+- waitForAnimationToEnd
+- takeScreenshot: c2-slab-${TAG}
+- scrollUntilVisible:
+    element:
+      id: "show-working"
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    id: "show-working"
+- scroll
+- takeScreenshot: c3-working-${TAG}
+- stopApp
+- launchApp
+- tapOn:
+    id: "tab-settings"
+- waitForAnimationToEnd
+- takeScreenshot: c4-settings-${TAG}

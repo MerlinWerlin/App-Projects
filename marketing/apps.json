@@ -392,6 +392,49 @@
       ],
       "note": "Docs in apps/hollowhue/docs (PLAN.md). iPad-first infinite-zoom colouring; adults and kids. Turn on by setting stage to prelaunch.",
       "accent": "#B5523B"
+    },
+    {
+      "slug": "screedline",
+      "name": "Screedline",
+      "storeName": "Screedline: Concrete & Pavers",
+      "tagline": "Concrete and landscape quantities, with the working shown",
+      "stage": "building",
+      "nameLocked": true,
+      "ascAppId": "6838129072",
+      "appStoreUrl": "",
+      "testflightUrl": "",
+      "playUrl": "",
+      "pinSource": {
+        "kind": "screenshots"
+      },
+      "boards": [
+        "Concrete Driveway Ideas",
+        "Backyard Paving",
+        "DIY Landscaping"
+      ],
+      "reddit": {
+        "queries": [
+          "concrete calculator app",
+          "how much concrete do i need",
+          "slab mesh how many sheets",
+          "road base tonnes per m3",
+          "paver calculator"
+        ],
+        "subs": [
+          "Concrete",
+          "landscaping",
+          "AusRenovation",
+          "AusPropertyChat",
+          "DIY"
+        ]
+      },
+      "avoid": [
+        "any competitor app name",
+        "claims of engineering certification or code compliance",
+        "exact supplier prices"
+      ],
+      "note": "apps/screedline. Australian concreters and landscapers; metric first. Free core + Full Unlock A$4.99 + free 7-day Trial.",
+      "accent": "#FFB300"
     }
   ]
 }

@@ -1,0 +1,62 @@
+{
+  "locale": "en-AU",
+  "version": "1.0.0",
+  "releaseType": "AFTER_APPROVAL",
+  "attachBuild": "latest",
+  "name": "Screedline: Concrete & Pavers",
+  "subtitle": "Slab, mesh, falls & landscape",
+  "promotionalText": "Concrete, mesh, falls, pavers and road base quantities with the working shown, set up for your country. Big buttons for gloves. No subscription.",
+  "keywords": "concrete,slab,mesh,rebar,footing,pier,falls,gradient,pavers,roadbase,retaining,formwork,tonnes",
+  "description": "Screedline works out concrete and landscape quantities on site, and shows you exactly how it got there.\n\nPick where you work and Screedline sets itself up for it: Australia, New Zealand, the UK, Ireland, the US or Canada get local units, the bag, mesh, bar, paver and block sizes local suppliers actually stock, and local rules in the notes. Anywhere else gets metric with generic sizes. Big buttons you can hit with gloves on, and a Sun mode for reading in full sunlight.\n\nCONCRETE\n• Slabs, paths and driveways, with a thickened edge beam\n• Strip footings and pad footings\n• Round piers, post holes and columns\n• Solid steps, with the NCC rise and going check\n• Odd shapes: add rectangles, triangles and circles, take out cut-outs\n• Your own waste allowance on every pour\n\nORDERING\n• Truck order rounded to the plant's 0.2 m³ steps and split into loads\n• Bagged concrete counts for your country's bag sizes (20 kg, 80 lb and more), using the makers' yields\n• Site mix: cement bags, sand and aggregate for 1:2:3, 1:2:4 and 1:3:6\n\nSTEEL AND FORMS\n• Mesh sheets with laps (SL, SE, A-series, 6×6 wire mesh), turned whichever way uses fewer sheets\n• Bar chairs for your spacing\n• Bar stock lengths, laps and weight (N, D, H, #, M bars)\n• Trench mesh with end and corner laps\n• Form boards, joints and pegs\n\nGROUND AND LANDSCAPE\n• Falls as %, 1 : n and mm drop, with peg heights along a string line\n• Pavers per m², bedding sand and road base\n• Gravel, soil, sand, road base and mulch in m³ and tonnes\n• Tonnes ↔ m³ by material density\n• Retaining wall blocks, caps, drainage gravel, levelling pad and ag pipe\n\nPOUR DAY\n• Evaporation rate and cracking risk for the temperature, humidity and wind\n• Pour and curing checklist, ticked off per job\n\nCHECK THE WORKING\nEvery answer has Show the working, so you can check it against your own sums. Defaults like densities, laps, bag yields and truck sizes are editable, and the sources are listed in the app. Quantities are estimates: confirm with your supplier, and with your engineer for anything structural.\n\nJOBS\nSave calculations to a job and share a job sheet with your supplier or client. Jobs stay on your phone.\n\nPRICE\nFree to download with the slab, truck order, premix bags, falls, tonnes ↔ m³ and checklist tools. Start an optional free 7-day Trial to use every tool; it never turns into a charge. Full Unlock is a single payment, not a subscription.\n\nPRIVATE\nNo account, no ads, no tracking. The app collects no data.",
+  "whatsNew": "Welcome to Screedline: concrete, mesh, falls, pavers and road base quantities with the working shown.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "PRODUCTIVITY",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/screedline/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/screedline/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/screedline/",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.screedline.full",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Full Unlock",
+      "displayName": "Full Unlock",
+      "description": "Every tool and unlimited jobs",
+      "reviewNote": "One-time non-consumable. Open Settings > Full Unlock > Unlock (or tap any tool with a lock). Restore purchases is on the same screen and in Settings. Unlocks footings, piers, steps, odd shapes, site mix, mesh and chairs, bars and laps, trench mesh, formwork, pavers, bulk materials, retaining walls, pour weather, and unlimited jobs. Slab, truck order, premix bags, falls, tonnes to m3, the checklist and one job stay free. The separate free 7-day Trial item is user-started; nothing is ever charged automatically.",
+      "price": {
+        "territory": "AUS",
+        "amount": "4.99"
+      },
+      "availability": "all",
+      "reviewScreenshot": "apps/screedline/store/native/review/unlock.png",
+      "replaceReviewScreenshot": true
+    },
+    {
+      "productId": "com.jared797.screedline.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
+      "description": "Try every tool for 7 days. No auto-charge.",
+      "reviewNote": "Free user-started non-consumable trial (guideline 3.1.1). Settings > Full Unlock > Start free 7-day trial opens the Apple confirmation. Seven days are counted from the original store transaction date, including after Restore or reinstall. After it ends the locked tools need the separate Full Unlock purchase. There is no subscription and no automatic charge.",
+      "price": {
+        "territory": "AUS",
+        "amount": "0.00"
+      },
+      "availability": "all",
+      "reviewScreenshot": "apps/screedline/store/native/review/unlock.png",
+      "replaceReviewScreenshot": true
+    }
+  ],
+  "ageRating": "none",
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "Purpose and audience: Screedline is a quantity calculator for concreters, landscapers and DIY builders: concrete volumes and truck orders, reinforcing mesh, falls, pavers, bulk materials, retaining walls and pour-day weather.\n\nSetup: No account or login. Open the app and tap any tool; answers update as you type. Tap Show the working under an answer to see the arithmetic. Save to job keeps calculations on the device; Share sends a text job sheet through the system share sheet.\n\nPurchases: Settings > Full Unlock (also reached from any tool with a lock) has Unlock (one-time non-consumable Full Unlock), Start free 7-day trial (a separate free non-consumable named 7-day Trial) and Restore purchases. Trial access starts only after Apple confirms the free item, is measured from the original transaction date, and never charges. After seven days the locked tools need Full Unlock. Please test both products with the submitted build.\n\nData: Everything is stored on the device. No server of our own, no analytics, no ads, no tracking, no permissions requested. App Privacy: Data Not Collected. No over-the-air code updates (no Expo Updates); the reviewed build is the build users get.\n\nAccuracy: Formulas and default densities are cited in Settings > Sources and formulas. The app tells users to confirm quantities with their supplier and anything structural with their engineer; it does not give engineering certification.\n\nRegional differences: Metric by default with an imperial toggle; Australian terms. Regulated services and third-party content: not applicable.",
+  "reviewContactFromApp": "backspin",
+  "ageRatingExtra": {
+    "socialMedia": false,
+    "socialMediaAgeRestricted": false
+  },
+  "screenshots": {
+    "APP_IPHONE_67": "apps/screedline/store/native/iphone"
+  }
+}
