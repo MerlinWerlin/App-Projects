@@ -52,14 +52,19 @@ jobs:
           BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
           DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS" in r for x in xs if x["name"].startswith("iPhone") and "Pro Max" in x["name"]];print(a[0]["udid"])')
           xcrun simctl list devices available | grep "$DEVICE"
+          # Pre-approve trammel:// so `simctl openurl` doesn't stop at iOS's "Open in Trammel?" prompt.
+          PREFS=~/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences
+          mkdir -p "$PREFS"
+          /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->trammel string $BID" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
           xcrun simctl boot "$DEVICE"; xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl spawn "$DEVICE" defaults write com.apple.launchservices.schemeapproval "com.apple.CoreSimulator.CoreSimulatorBridge-->trammel" -string "$BID" || true
           xcrun simctl status_bar "$DEVICE" override --time 9:41 --dataNetwork wifi --wifiBars 3 --cellularBars 4 --batteryState charged --batteryLevel 100 || true
           xcrun simctl install "$DEVICE" "$APP"
           OUT="$RUNNER_TEMP/out"; mkdir -p "$OUT"
           # Every simulator call gets a time limit (macOS has no `timeout`), so a hang fails fast instead of stalling.
           t() { perl -e 'alarm shift; exec @ARGV' "$@"; }
-          running() { t 20 xcrun simctl spawn "$DEVICE" launchctl list | grep -q "UIKitApplication:$BID"; }
-          crashlog() { find ~/Library/Logs/DiagnosticReports -newer "$APP" -name '*.ips' -exec cp {} "$OUT/" \; 2>/dev/null; ls "$OUT"/*.ips 2>/dev/null && head -c 4000 "$OUT"/*.ips; }
+          running() { for _ in 1 2 3; do t 20 xcrun simctl spawn "$DEVICE" launchctl list 2>/dev/null | grep -q "UIKitApplication:$BID" && return 0; sleep 3; done; return 1; }
+          crashlog() { find ~/Library/Logs/DiagnosticReports -newer "$APP" -name '*.ips' -exec cp {} "$OUT/" \; 2>/dev/null || true; ls "$OUT"/*.ips 2>/dev/null && head -c 4000 "$OUT"/*.ips || echo "no crash report"; }
           FAIL=0
           for MODE in light dark; do
             t 30 xcrun simctl ui "$DEVICE" appearance $MODE || true
@@ -68,12 +73,13 @@ jobs:
             sleep 15
             if running; then echo "LAUNCH OK ($MODE)"; else echo "::error::Trammel is not running 15 s after launch ($MODE)"; crashlog; exit 1; fi
             t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-00-home.png" || true
-            i=1
+            i=1; PREV=""
             for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall welcome 'rafter?locked=1'; do
               N=$(echo "$R" | sed 's/?locked=1/-locked/')
               t 30 xcrun simctl openurl "$DEVICE" "trammel:///$R" || echo "::warning::openurl $R timed out"
               sleep 5
               t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$N.png" || true
+              CUR="$OUT/$MODE-$(printf %02d $i)-$N.png"; if [ -n "${PREV:-}" ] && cmp -s "$PREV" "$CUR"; then echo "::error::$N ($MODE) looks the same as the screen before: the deep link did not open"; FAIL=1; fi; PREV="$CUR"
               if ! running; then echo "::error::Trammel exited on $N ($MODE)"; FAIL=1; crashlog; t 60 xcrun simctl launch "$DEVICE" "$BID" || true; sleep 8; fi
               i=$((i+1))
             done
