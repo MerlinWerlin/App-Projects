@@ -72,10 +72,10 @@ export default function Tools() {
   return (
     <ScrollView style={{ backgroundColor: theme.ground }} contentContainerStyle={{ paddingTop: insets.top + SPACE.sm, paddingHorizontal: SPACE.gutter, paddingBottom: SPACE.xxl, gap: SPACE.md }}>
       <View style={st.head}>
-        <Text style={[TYPE.display, { color: theme.ink, flex: 1 }]} accessibilityRole="header">Eaveline</Text>
+        <Text style={[TYPE.display, { color: theme.ink, flex: 1 }]} accessibilityRole="header" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1.2}>Eaveline</Text>
         <Pressable testID="country-chip" accessibilityRole="button" accessibilityLabel={`Country: ${country.name}. Change`} onPress={() => router.push('/onboarding')}
           hitSlop={8} style={({ pressed }) => [st.chip, { borderColor: theme.ink, transform: [{ scale: pressed ? 0.97 : 1 }] }]}>
-          <Text style={TYPE.headline}>{flag(country.code)}</Text>
+          <Text style={TYPE.headline} maxFontSizeMultiplier={1.3}>{flag(country.code)}</Text>
           <Txt v="headline">{country.guided ? country.code : 'Other'}</Txt>
         </Pressable>
       </View>

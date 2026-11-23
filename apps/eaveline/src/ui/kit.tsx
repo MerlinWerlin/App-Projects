@@ -14,9 +14,11 @@ import { RADIUS, SPACE, TOUCH, TYPE, type Theme } from '../theme/theme';
 
 export type Tone = 'ink' | 'ink2' | 'ink3' | 'danger' | 'ok' | 'onAccent' | 'steel';
 
+/** Display styles grow up to 1.3× with Dynamic Type, reading text up to 1.8×: big enough to help, small enough to keep words whole. */
+const DISPLAY = new Set<keyof typeof TYPE>(['hero', 'display', 'title', 'title2', 'label']);
 export function Txt({ v = 'body', tone = 'ink', style, ...rest }: TextProps & { v?: keyof typeof TYPE; tone?: Tone; style?: StyleProp<TextStyle> }) {
   const { theme } = useApp();
-  return <Text {...rest} style={[TYPE[v], { color: theme[tone] }, style]} />;
+  return <Text maxFontSizeMultiplier={DISPLAY.has(v) ? 1.3 : 1.8} {...rest} style={[TYPE[v], { color: theme[tone] }, style]} />;
 }
 
 export function Screen({ children, pad = true }: { children: ReactNode; pad?: boolean }) {

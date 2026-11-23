@@ -67,8 +67,8 @@ export function RoofCard({ need = true }: { need?: boolean }) {
     <Pressable testID="roof-card" accessibilityRole="button" accessibilityLabel={ready ? `Roof: ${roof.type}, ${ctx.dim(roof.lengthMm)} by ${ctx.dim(roof.widthMm)}, pitch ${ctx.pitch(roof.pitchDeg)}. Change` : 'Set up the roof'}
       onPress={() => { tap(prefs.haptics); router.push('/roof'); }}
       style={({ pressed }) => [st.roofCard, { backgroundColor: theme.sheet, borderColor: ready ? theme.line : theme.ink, borderWidth: ready ? StyleSheet.hairlineWidth : 2, opacity: pressed ? 0.85 : 1 }]}>
-      <RoofDiagram type={roof.type} size={0.36} label={false} />
-      <View style={{ flex: 1, gap: 2 }}>
+      <RoofDiagram type={roof.type} size={0.3} label={false} />
+      <View style={{ flex: 1, gap: 2, minWidth: 0 }}>
         {ready && g?.ok ? (
           <>
             <Txt v="headline">{cap(roof.type)} roof, {ctx.dim(roof.lengthMm)} × {ctx.dim(roof.widthMm)}</Txt>
