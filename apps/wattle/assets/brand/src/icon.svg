@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="g" cx="30%" cy="22%" r="95%">
+      <stop offset="0" stop-color="#FFD94D"/>
+      <stop offset="0.55" stop-color="#FFC21A"/>
+      <stop offset="1" stop-color="#F0A200"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#g)"/>
+  <!-- wattle blossom puffs -->
+  <g fill="#FFF1A6">
+    <circle cx="196" cy="214" r="58"/><circle cx="302" cy="150" r="40"/><circle cx="318" cy="262" r="34"/><circle cx="130" cy="318" r="28"/><circle cx="398" cy="196" r="22"/>
+  </g>
+  <!-- conduit offset bend that reads as a bolt -->
+  <path d="M-20 760 H430 L594 372 H1044" fill="none" stroke="#15120A" stroke-width="128" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="8"/>
+  <!-- bend marks -->
+  <g stroke="#FFFFFF" stroke-width="22" stroke-linecap="round">
+    <line x1="430" y1="660" x2="430" y2="860"/>
+    <line x1="594" y1="272" x2="594" y2="472"/>
+  </g>
+  <!-- active / neutral / earth stripe -->
+  <g>
+    <rect x="96" y="906" width="250" height="40" fill="#8E4E22"/>
+    <rect x="346" y="906" width="250" height="40" fill="#1F63CC"/>
+    <rect x="596" y="906" width="250" height="40" fill="#23913F"/>
+    <rect x="846" y="906" width="82" height="40" fill="#F5D000"/>
+  </g>
+</svg>
