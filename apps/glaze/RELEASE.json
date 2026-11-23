@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.43: Dreamroom redesign (DESIGN.md): a stage of large theme art opens Themes, each theme page takes its own room colour, Unbounded display type, neutral chrome with one cobalt accent, no gradients, eyebrows or tinted icon circles.",
+  "note": "Glaze 1.0.44: 111 new themes, each with five artworks, a wallpaper and its own Clock, Battery and Calendar designs. 1.0.44 reads catalog-v2.json (the 141 themes plus the new ones); catalog.json stays frozen for older builds.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
