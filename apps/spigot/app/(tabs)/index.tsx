@@ -4,7 +4,8 @@ import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { CAPTURE, useApp } from '../../src/state/AppState';
-import { TOOLS, isLocked, toolHref, toolInfo } from '../../src/ui/tools';
+import { TOOLS, isLocked, toolHref, toolInfo, toolTitle } from '../../src/ui/tools';
+import { useCountry } from '../../src/country/useCountry';
 import { Button, H, useTap } from '../../src/ui/kit';
 import { font, radius, space, usePalette } from '../../src/ui/theme';
 import { ART } from '../../src/ui/art';
@@ -22,6 +23,7 @@ function ago(ms: number) {
 export default function ToolsHome() {
   const c = usePalette();
   const app = useApp();
+  const country = useCountry();
   const insets = useSafeAreaInsets();
   const tap = useTap();
   const { width, fontScale } = useWindowDimensions();
@@ -63,14 +65,14 @@ export default function ToolsHome() {
         {TOOLS.map(t => {
           const locked = isLocked(t.id, app.unlocked);
           return (
-            <Pressable key={t.id} accessibilityRole="button" accessibilityLabel={`${t.title}. ${t.blurb}${locked ? '. Needs the free trial or Full Unlock' : ''}`}
+            <Pressable key={t.id} accessibilityRole="button" accessibilityLabel={`${toolTitle(t.id, country)}. ${t.blurb}${locked ? '. Needs the free trial or Full Unlock' : ''}`}
               onPress={() => { tap(); router.push(locked ? { pathname: '/unlock', params: { from: t.id } } : toolHref(t.id)); }}
               style={({ pressed }) => ({ width: cols === 1 ? '100%' : '47.9%', flexGrow: 1, minHeight: 150, borderRadius: radius.l, padding: space.l, backgroundColor: t.free ? c.vis : c.surface, borderWidth: t.free ? 0 : 1, borderColor: c.line, gap: space.s, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] })}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Ionicons name={t.icon} size={34} color={t.free ? c.onVis : c.copper} />
                 {locked ? <Ionicons name="lock-closed" size={20} color={c.ink3} /> : null}
               </View>
-              <Text style={{ fontFamily: font.displayHeavy, fontSize: 28, lineHeight: 30, color: t.free ? c.onVis : c.ink, textTransform: 'uppercase' }}>{t.title}</Text>
+              <Text style={{ fontFamily: font.displayHeavy, fontSize: 28, lineHeight: 30, color: t.free ? c.onVis : c.ink, textTransform: 'uppercase' }}>{toolTitle(t.id, country)}</Text>
               <Text style={{ fontSize: 14, lineHeight: 19, color: t.free ? c.onVis : c.ink3 }}>{t.blurb}</Text>
             </Pressable>
           );
@@ -88,7 +90,7 @@ export default function ToolsHome() {
             <Ionicons name={toolInfo(r.tool).icon} size={24} color={c.copper} />
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 16, fontWeight: '600', color: c.ink }} numberOfLines={2}>{r.summary}</Text>
-              <Text style={{ fontSize: 13, color: c.ink3 }}>{toolInfo(r.tool).title} · {ago(r.createdAt)}</Text>
+              <Text style={{ fontSize: 13, color: c.ink3 }}>{toolTitle(r.tool, country)} · {ago(r.createdAt)}</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color={c.ink3} />
           </Pressable>

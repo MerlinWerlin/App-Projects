@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Stack } from 'expo-router';
+import { Stack, router, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, BarlowCondensed_600SemiBold, BarlowCondensed_700Bold, BarlowCondensed_800ExtraBold } from '@expo-google-fonts/barlow-condensed';
@@ -12,10 +12,14 @@ void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function Root() {
   const c = usePalette();
-  const { loaded } = useApp();
+  const { loaded, prefs } = useApp();
+  const segments = useSegments();
   const [fontsLoaded, fontError] = useFonts({ BarlowCondensed_600SemiBold, BarlowCondensed_700Bold, BarlowCondensed_800ExtraBold });
   const ready = loaded && (fontsLoaded || !!fontError);
   useEffect(() => { if (ready) void SplashScreen.hideAsync().catch(() => undefined); }, [ready]);
+  // First launch: ask where the person works before anything else (one step, device region pre-selected).
+  const needsCountry = ready && prefs.country === null && segments[0] !== 'welcome';
+  useEffect(() => { if (needsCountry) router.replace('/welcome'); }, [needsCountry]);
   if (!ready) return null;
   return (
     <>
@@ -32,6 +36,7 @@ function Root() {
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false, title: 'Tools' }} />
         <Stack.Screen name="unlock" options={{ presentation: 'modal', title: 'Spigot Full Unlock' }} />
+        <Stack.Screen name="welcome" options={{ headerShown: false, gestureEnabled: false, animation: 'fade' }} />
       </Stack>
     </>
   );

@@ -15,7 +15,8 @@
       "icon": "./assets/brand/icon.png",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "UIViewControllerBasedStatusBarAppearance": true
+        "UIViewControllerBasedStatusBarAppearance": true,
+        "CADisableMinimumFrameDurationOnPhone": true
       },
       "config": {
         "usesNonExemptEncryption": false
@@ -39,10 +40,14 @@
           "imageWidth": 160,
           "resizeMode": "contain",
           "backgroundColor": "#F4F1EA",
-          "dark": { "image": "./assets/brand/splash-icon.png", "backgroundColor": "#0E1012" }
+          "dark": {
+            "image": "./assets/brand/splash-icon.png",
+            "backgroundColor": "#0E1012"
+          }
         }
       ],
-      "expo-status-bar"
+      "expo-status-bar",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": false

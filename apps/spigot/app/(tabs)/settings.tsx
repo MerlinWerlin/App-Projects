@@ -3,6 +3,7 @@ import { Alert, Linking, Switch } from 'react-native';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
 import { useApp } from '../../src/state/AppState';
+import { useCountry } from '../../src/country/useCountry';
 import { Body, Card, Divider, FieldLabel, Row, Screen, Segmented } from '../../src/ui/kit';
 import { usePalette } from '../../src/ui/theme';
 
@@ -11,9 +12,14 @@ export default function Settings() {
   const app = useApp();
   const { prefs, setPrefs } = app;
   const version = Constants.expoConfig?.version ?? '1.0.0';
+  const country = useCountry();
   const unlockSub = app.owned ? 'Unlocked. Thank you!' : app.trial.active ? `Free trial: ${app.trial.daysLeft} ${app.trial.daysLeft === 1 ? 'day' : 'days'} left` : 'Free 7-day trial, then a one-time unlock';
   return (
     <Screen>
+      <Card>
+        <FieldLabel>Country</FieldLabel>
+        <Row icon="earth-outline" title={country.name} subtitle={`${country.codeName}. Sets units, codes and materials`} onPress={() => router.push('/country')} />
+      </Card>
       <Card>
         <Segmented label="Units" value={prefs.unit} onChange={unit => setPrefs({ unit })} options={[{ value: 'metric', label: 'Millimetres (mm, m)' }, { value: 'imperial', label: 'Inches (ft, in)' }]} />
         <Body muted style={{ fontSize: 14 }}>Inches show to the nearest 1/16″. Flow stays in litres and m/s.</Body>

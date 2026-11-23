@@ -90,7 +90,7 @@ export default function CutListScreen() {
         <Button label="Add to list" icon="add" disabled={num(0) === undefined || !!errs[0] || !!errs[1]} onPress={add} />
         {lines.length ? (
           <View style={{ gap: space.s }}>
-            <FieldLabel>{`Your list (${lines.reduce((s, l) => s + l.qty, 0)} pieces)`}</FieldLabel>
+            <FieldLabel>{(() => { const n = lines.reduce((s, l) => s + l.qty, 0); return `Your list (${n} ${n === 1 ? 'piece' : 'pieces'})`; })()}</FieldLabel>
             {lines.map((l, i) => (
               <View key={i} style={{ minHeight: HIT, flexDirection: 'row', alignItems: 'center', gap: space.m, backgroundColor: c.surface2, borderRadius: radius.m, paddingLeft: space.l }}>
                 <Text style={{ flex: 1, fontFamily: font.display, fontSize: 24, color: c.ink }}>{formatLength(l.length, u)}</Text>
@@ -113,7 +113,7 @@ export default function CutListScreen() {
       {plan ? (
         <View style={{ gap: space.m }}>
           <H>Cutting plan</H>
-          {plan.bars.map((b, i) => <BarView key={i} index={i} bar={b} stock={num(2)!} unit={u} />)}
+          {groupBars(plan.bars).map((g, i) => <BarView key={i} index={g.first} count={g.count} bar={g.bar} stock={num(2)!} unit={u} />)}
           <Button kind="secondary" icon="share-outline" label="Share cut list" onPress={() => { void Share.share({ message: shareText() }).catch(() => undefined); }} />
           <Note>{plan.optimal ? 'This is the fewest lengths possible for this list.' : 'Very good plan for a long list.'} Waste is kept in as few long offcuts as possible so they’re still usable.</Note>
         </View>
@@ -123,13 +123,26 @@ export default function CutListScreen() {
   );
 }
 
-function BarView({ bar, index, stock, unit }: { bar: { pieces: { length: number }[]; offcut: number }; index: number; stock: number; unit: 'metric' | 'imperial' }) {
+type BarLike = { pieces: { length: number }[]; offcut: number };
+/** Identical bars (same pieces, same offcut) collapse into one row "× n", so a long list stays readable. */
+function groupBars(bars: BarLike[]): { bar: BarLike; count: number; first: number }[] {
+  const out: { bar: BarLike; count: number; first: number; key: string }[] = [];
+  bars.forEach((bar, i) => {
+    const key = bar.pieces.map(p => p.length.toFixed(2)).join('+') + '|' + bar.offcut.toFixed(2);
+    const last = out[out.length - 1];
+    if (last && last.key === key) last.count += 1;
+    else out.push({ bar, count: 1, first: i, key });
+  });
+  return out;
+}
+
+function BarView({ bar, index, count, stock, unit }: { bar: BarLike; index: number; count: number; stock: number; unit: 'metric' | 'imperial' }) {
   const c = usePalette();
   const colours = [c.copper, c.vis, '#4F9DDE', '#58B368'];
   return (
     <Card style={{ gap: space.s }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Text style={{ fontFamily: font.display, fontSize: 20, color: c.ink }}>LENGTH {index + 1}</Text>
+        <Text style={{ fontFamily: font.display, fontSize: 20, color: c.ink }}>{count > 1 ? `LENGTHS ${index + 1}–${index + count}  × ${count}` : `LENGTH ${index + 1}`}</Text>
         <Text style={{ fontSize: 15, color: c.ink3 }}>Offcut {formatLength(bar.offcut, unit)}</Text>
       </View>
       <View accessible accessibilityLabel={`Length ${index + 1}: ${bar.pieces.map(p => formatLength(p.length, unit)).join(', ')}, offcut ${formatLength(bar.offcut, unit)}`} style={{ flexDirection: 'row', height: 36, borderRadius: 8, overflow: 'hidden', backgroundColor: c.surface2, gap: 2 }}>

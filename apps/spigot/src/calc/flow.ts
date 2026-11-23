@@ -9,7 +9,7 @@
  * and the US EPA "EPANET 2 Users Manual" (EPA/600/R-00/057), Table 3.1 (head-loss formula, SI coefficient 10.67).
  * Pressure from head: p = ρ g h; for water ρ = 1000 kg/m³, g = 9.80665 m/s² -> 9.807 kPa per metre of head.
  * Hazen–Williams is only valid for water (not steam/gas), roughly 5–25 °C, turbulent flow; treat it as an estimate.
- * AS/NZS 3500.1 limits the velocity in water services (see reference.ts); check against the manufacturer's data.
+ * Velocity limits come from the person's country profile (src/country); with none verified, only generic advice shows.
  */
 import { L, fail, isPos, type CalcResult, type Step, type Value } from './steps';
 
@@ -49,6 +49,8 @@ export interface FlowInput {
   /** Optional: length and Hazen–Williams C for friction loss. */
   length?: number;
   c?: number;
+  /** Max cold-water velocity for the person's country, m/s, and the code that sets it (null = no verified limit). */
+  limit?: { max: number; code: string } | null;
 }
 
 export interface FlowResult {
@@ -81,7 +83,11 @@ export function flow(input: FlowInput): CalcResult<FlowResult> {
   }
   const value: FlowResult = { lpm: q * 60000, lps: q * 1000, velocity: v };
   const warnings: string[] = [];
-  if (v > 3) warnings.push('Over 3 m/s: faster than AS/NZS 3500.1 allows in water services. Expect noise and water hammer; go up a size.');
+  if (input.limit && v > input.limit.max) {
+    warnings.push(`Over ${input.limit.max} m/s: faster than ${input.limit.code} allows for cold water. Expect noise and water hammer; go up a size.`);
+  } else if (!input.limit && v > 3) {
+    warnings.push('Over 3 m/s: fast for a water service. Expect noise and water hammer; check your local code and consider going up a size.');
+  }
   if (input.length !== undefined || input.c !== undefined) {
     if (!isPos(input.length)) return fail('Enter the pipe length for the pressure loss', 'length');
     if (!isPos(input.c) || input.c > 200) return fail('Hazen–Williams C must be between 1 and 200', 'c');

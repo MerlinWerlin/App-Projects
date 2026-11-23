@@ -6,6 +6,7 @@ import { useApp } from '../../src/state/AppState';
 import { Body, Button, Card, H, Screen, TextBox } from '../../src/ui/kit';
 import { font, radius, space, usePalette } from '../../src/ui/theme';
 import { toolHref, toolInfo } from '../../src/ui/tools';
+import { SwipeRow } from '../../src/ui/SwipeRow';
 
 export default function JobScreen() {
   const c = usePalette();
@@ -54,7 +55,8 @@ export default function JobScreen() {
       )}
       <H>{recs.length ? `Saved (${recs.length})` : 'Saved'}</H>
       {recs.length ? recs.map(r => (
-        <Pressable key={r.id} accessibilityRole="button" accessibilityHint="Opens this calculation" onPress={() => router.push({ pathname: toolHref(r.tool), params: { record: r.id } })}
+        <SwipeRow key={r.id} label="Remove" onDelete={() => Alert.alert('Remove from job?', r.summary, [{ text: 'Cancel', style: 'cancel' }, { text: 'Remove', style: 'destructive', onPress: () => app.deleteRecord(r.id) }])}>
+        <Pressable accessibilityRole="button" accessibilityHint="Opens this calculation. Swipe left to remove" onPress={() => router.push({ pathname: toolHref(r.tool), params: { record: r.id } })}
           onLongPress={() => Alert.alert('Remove from job?', r.summary, [{ text: 'Cancel', style: 'cancel' }, { text: 'Remove', style: 'destructive', onPress: () => app.deleteRecord(r.id) }])}
           style={({ pressed }) => ({ flexDirection: 'row', gap: space.m, alignItems: 'center', backgroundColor: c.surface, borderRadius: radius.m, padding: space.l, opacity: pressed ? 0.85 : 1 })}>
           <Ionicons name={toolInfo(r.tool).icon} size={26} color={c.copper} />
@@ -65,8 +67,9 @@ export default function JobScreen() {
           </View>
           <Ionicons name="chevron-forward" size={20} color={c.ink3} />
         </Pressable>
+        </SwipeRow>
       )) : <Body muted>Nothing saved yet. Open a tool, work something out, then tap Save to job.</Body>}
-      <Body muted style={{ fontSize: 14 }}>Touch and hold a saved result to remove it.</Body>
+      <Body muted style={{ fontSize: 14 }}>Swipe left on a saved result to remove it.</Body>
       <Button kind="danger" icon="trash-outline" label="Delete job" onPress={() => Alert.alert('Delete this job?', `“${job.name}” and its ${recs.length} saved results will be deleted from this phone. This can’t be undone.`, [{ text: 'Cancel', style: 'cancel' }, { text: 'Delete job', style: 'destructive', onPress: () => { app.deleteJob(job.id); router.back(); } }])} />
     </Screen>
   );

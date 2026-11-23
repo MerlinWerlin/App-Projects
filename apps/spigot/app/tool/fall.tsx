@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import { Stack } from 'expo-router';
-import { COMMON_GRADES, fall, gradeFromDrop, trim, type FallResult, type GradeInput } from '../../src/calc/fall';
+import { fall, gradeFromDrop, trim, type FallResult, type GradeInput } from '../../src/calc/fall';
 import { formatLength, lengthToInput } from '../../src/calc/units';
 import { useApp } from '../../src/state/AppState';
 import { Card, Chips, Field, Note, ResultPanel, Segmented, Working, readField, useKeypad, type NumField } from '../../src/ui/kit';
 import { ToolFrame, useOpenedRecord } from '../../src/ui/ToolFrame';
 import { FallDiagram } from '../../src/ui/diagrams';
+import { useCountry } from '../../src/country/useCountry';
 import { fmtNumber } from '../../src/ui/format';
 
 type Mode = 'drop' | 'check';
@@ -13,6 +14,8 @@ type GradeKind = GradeInput['kind'];
 
 export default function FallScreen() {
   const { prefs } = useApp();
+  const country = useCountry();
+  const T = country.terms;
   const u = prefs.unit;
   const rec = useOpenedRecord();
   const ri = rec?.inputs ?? {};
@@ -30,7 +33,7 @@ export default function FallScreen() {
     mode === 'drop'
       ? { label: gradeKind === 'ratio' ? 'Grade 1 :' : gradeKind === 'percent' ? 'Grade (percent)' : 'Fall per metre', text: gradeText, setText: setGradeText, kind: gradeKind === 'mmPerM' && u === 'imperial' ? 'length' : 'number', suffix: gradeSuffix, hint: gradeKind === 'ratio' ? 'The N in 1:N, e.g. 60' : undefined }
       : { label: 'Measured drop', text: dropText, setText: setDropText, hint: 'Difference in level over that length' },
-    { label: 'Start invert level', text: start, setText: setStart, kind: 'number', suffix: 'm', optional: true, hint: 'Reduced level in metres, e.g. 10.250' },
+    { label: 'Start invert level', text: start, setText: setStart, kind: 'number', signed: true, suffix: 'm', optional: true, hint: 'Reduced level in metres, e.g. 10.250' },
   ];
   const kp = useKeypad(mode === 'drop' ? fields : fields.slice(0, 2));
   const parsed = fields.map(f => readField(f, u));
@@ -67,14 +70,15 @@ export default function FallScreen() {
     summary: `${formatLength(num(1)!, u)} over ${formatLength(num(0)!, u, { metres: true })} = 1:${trim(check.n)}`,
   } : null;
 
-  const minGradeWarn = drop && drop.n > 100 ? 'Flatter than 1:100 (1 %). AS/NZS 3500.2 sets minimum grades by pipe size; check the table in Reference.' : null;
+  const flattest = country.minGrades ? Math.max(...country.minGrades.rules.map(r => r.n)) : null;
+  const minGradeWarn = drop && flattest !== null && drop.n > flattest ? `Flatter than any minimum ${T.fallLower} in ${country.codeName} (1:${trim(flattest)}). Check the table in Reference.` : drop && flattest === null && drop.n > 100 ? `Flatter than 1:100 (1 %). Check the minimum ${T.fallLower} in your local code.` : null;
 
   return (
     <ToolFrame tool="fall" snapshot={snapshot}>
-      <Stack.Screen options={{ title: 'Fall' }} />
-      <Segmented value={mode} onChange={setMode} options={[{ value: 'drop', label: 'Fall from a grade' }, { value: 'check', label: 'Check a grade' }]} />
+      <Stack.Screen options={{ title: T.fall }} />
+      <Segmented value={mode} onChange={setMode} options={[{ value: 'drop', label: `${T.fall} from a grade` }, { value: 'check', label: 'Check a grade' }]} />
       <ResultPanel
-        main={drop ? { label: 'Total fall', value: formatLength(drop.drop, u) } : check ? { label: 'Grade', value: `1 : ${trim(check.n)}` } : null}
+        main={drop ? { label: `Total ${T.fallLower}`, value: formatLength(drop.drop, u) } : check ? { label: 'Grade', value: `1 : ${trim(check.n)}` } : null}
         rest={drop ? [
           { label: 'Grade', value: `1 : ${trim(drop.n)}` },
           { label: 'Percent', value: `${fmtNumber(drop.percent, 2)} %` },
@@ -89,7 +93,7 @@ export default function FallScreen() {
         {mode === 'drop' ? (
           <>
             <Segmented label="Grade as" value={gradeKind} onChange={k => { setGradeKind(k); setGradeText(''); }} options={[{ value: 'ratio', label: '1 : N' }, { value: 'percent', label: 'Percent' }, { value: 'mmPerM', label: perLabel }]} />
-            {gradeKind === 'ratio' ? <Chips label="Common grades" options={COMMON_GRADES} value={num(1) ?? null} onChange={n => setGradeText(String(n))} format={n => `1:${n}`} /> : null}
+            {gradeKind === 'ratio' ? <Chips label="Common grades" options={country.commonGrades} value={num(1) ?? null} onChange={n => setGradeText(String(n))} format={n => `1:${n}`} /> : null}
             <Field field={fields[1]!} onOpen={() => kp.openAt(1)} error={errs[1]} />
           </>
         ) : (
@@ -104,7 +108,7 @@ export default function FallScreen() {
         </Card>
       ) : null}
       {result && result.ok ? <Working title={snapshot?.summary ?? 'Fall'} steps={result.steps} /> : null}
-      <Note>Minimum grades depend on pipe size and use. Check AS/NZS 3500.2, your state’s rules and the pipe manufacturer.</Note>
+      <Note>{`Minimum grades depend on pipe size and use. Check ${country.codeName} and the pipe manufacturer.`}</Note>
       {kp.element}
     </ToolFrame>
   );

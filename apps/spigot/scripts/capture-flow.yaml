@@ -4,8 +4,18 @@ appId: com.jared797.spigot
 - launchApp:
     clearState: true
 - extendedWaitUntil:
-    visible: "SPIGOT"
+    visible: "WHERE DO YOU WORK?"
     timeout: 60000
+- waitForAnimationToEnd:
+    timeout: 3000
+- tapOn:
+    text: "Australia\..*"
+- takeScreenshot: 00-country
+- tapOn:
+    text: "Continue.*"
+- extendedWaitUntil:
+    visible: "SPIGOT"
+    timeout: 20000
 - waitForAnimationToEnd:
     timeout: 5000
 - waitForAnimationToEnd:
@@ -93,7 +103,7 @@ appId: com.jared797.spigot
 - takeScreenshot: 04-cutlist
 - scrollUntilVisible:
     element:
-      text: "LENGTH 1"
+      text: "LENGTHS? 1.*"
     direction: DOWN
 - waitForAnimationToEnd:
     timeout: 3000

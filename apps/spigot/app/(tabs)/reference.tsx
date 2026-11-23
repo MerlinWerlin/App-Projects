@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { offsetMultiplier, FITTING_ANGLES } from '../../src/calc/offset';
-import { HAZEN_C, MAX_VELOCITY, MIN_GRADES, PIPES, pipeId } from '../../src/calc/reference';
+import { HAZEN_C, pipeId } from '../../src/calc/reference';
+import { useCountry } from '../../src/country/useCountry';
+import { trim } from '../../src/calc/fall';
 import { area } from '../../src/calc/flow';
 import { formatLength } from '../../src/calc/units';
 import { useApp } from '../../src/state/AppState';
@@ -43,42 +45,42 @@ function Table({ head, rows }: { head: string[]; rows: (string | number)[][] }) 
 
 export default function Reference() {
   const { prefs } = useApp();
+  const country = useCountry();
+  const PIPES = country.pipes;
+  const materials = [...new Set(PIPES.map(p => p.material))];
   const u = prefs.unit;
   const lpm = (id: number) => fmtNumber(area(id) * 1000, 3);
   const pipeRows = (material: string) => PIPES.filter(p => p.material === material).map(p => [p.size, formatLength(p.od_mm, u, { decimals: 2 }), formatLength(pipeId(p), u, { decimals: 2 }), lpm(pipeId(p))]);
   return (
     <Screen>
-      <Body muted>Quick cards for the van. Typical published values: always check the manufacturer’s data and the current standard.</Body>
+      <Body muted>{`Quick cards for ${country.code === 'OTHER' ? 'the van' : country.name}. Typical published values: always check the manufacturer’s data and ${country.codeName}.`}</Body>
       <Section title="Offset multipliers" initiallyOpen>
         <Table head={['Fitting', 'Travel ×', 'Run ×']} rows={FITTING_ANGLES.map(a => [`${a}°`, fmtNumber(offsetMultiplier(a), 3), fmtNumber(a === 90 ? 0 : 1 / Math.tan((a * Math.PI) / 180), 3)])} />
         <Body muted style={{ fontSize: 14 }}>Travel = offset × the multiplier (1 ÷ sin θ). Run = offset × 1 ÷ tan θ.</Body>
       </Section>
-      <Section title="Minimum drain grades">
-        <Table head={['Drain', 'Min grade', 'Ratio']} rows={MIN_GRADES.map(g => [`DN${g.dn}`, `${g.pct} %`, g.ratio])} />
-        {MIN_GRADES.filter(g => g.note).map(g => <Body key={g.dn} muted style={{ fontSize: 14 }}>{`DN${g.dn}: ${g.note}.`}</Body>)}
-        <Note tone="warn">From AS/NZS 3500.2:2003, Table 3.2. Check the current edition (2025) and your state’s rules: reduced grades are allowed in some cases.</Note>
+      <Section title={`Minimum drain ${country.terms.fallLower}s`}>
+        {country.minGrades ? (
+          <>
+            <Table head={['Drain', 'Ratio', 'Percent']} rows={country.minGrades.rules.map(g => [g.size, `1:${trim(g.n)}`, `${fmtNumber(100 / g.n, 2)} %`])} />
+            {country.minGrades.rules.filter(g => g.note).map(g => <Body key={g.size} muted style={{ fontSize: 14 }}>{`${g.size}: ${g.note}.`}</Body>)}
+            <Note tone="warn">{country.minGrades.source}</Note>
+          </>
+        ) : <Note>Minimum grades depend on your local code and pipe size. Spigot couldn’t verify them for your country, so it doesn’t show any: check your code.</Note>}
       </Section>
-      <Section title="Copper tube Type B">
-        <Table head={['Size', 'OD', 'Bore', 'L/m']} rows={pipeRows('Copper B')} />
-        <Body muted style={{ fontSize: 14 }}>AS 1432 (MM Kembla, Austral Wright). DN15 is 12.70 mm OD; DN18 is 15.88 mm.</Body>
-      </Section>
-      <Section title="Copper tube Type A">
-        <Table head={['Size', 'OD', 'Bore', 'L/m']} rows={pipeRows('Copper A')} />
-      </Section>
-      <Section title="PVC DWV">
-        <Table head={['Size', 'OD', 'Bore', 'L/m']} rows={pipeRows('PVC DWV')} />
-        <Body muted style={{ fontSize: 14 }}>AS/NZS 1260, Iplex mean bore. DN100 SN6, DN150 SN4.</Body>
-      </Section>
-      <Section title="PE-X (SDR 9)">
-        <Table head={['Size', 'OD', 'Bore', 'L/m']} rows={pipeRows('PE-X')} />
-        <Body muted style={{ fontSize: 14 }}>Reece Auspex figures; bore is the middle of the published range. Other brands differ.</Body>
-      </Section>
-      <Section title="Steel, AS 1074 Medium">
-        <Table head={['Size', 'OD', 'Bore', 'L/m']} rows={pipeRows('Steel')} />
-      </Section>
+      {materials.map(m => (
+        <Section key={m} title={m}>
+          <Table head={['Size', 'OD', 'Bore', 'L/m']} rows={pipeRows(m)} />
+          <Body muted style={{ fontSize: 14 }}>{PIPES.find(p => p.material === m)?.note}</Body>
+        </Section>
+      ))}
+      {!country.materialsVerified ? <Note>{country.materialsNote}</Note> : null}
       <Section title="Water velocity limits">
-        <Table head={['Service', 'Max']} rows={MAX_VELOCITY.map(v => [v.service, `${v.max} m/s`])} />
-        <Body muted style={{ fontSize: 14 }}>Cold water: NCC Volume Three, B1P2 (not over 3.0 m/s for more than 1 % of the peak hour). Heated water: MM Kembla copper guide.</Body>
+        {country.maxVelocity ? (
+          <>
+            <Table head={['Service', 'Max']} rows={country.maxVelocity.rules.map(v => [v.service, `${v.max} m/s`])} />
+            <Body muted style={{ fontSize: 14 }}>{country.maxVelocity.source}</Body>
+          </>
+        ) : <Note>Spigot couldn’t verify a velocity limit for your country. Around 3 m/s is a common upper limit for water services; check your local code.</Note>}
       </Section>
       <Section title="Hazen–Williams C">
         <Table head={['Pipe', 'C']} rows={Object.entries(HAZEN_C).map(([k, v]) => [k, v])} />

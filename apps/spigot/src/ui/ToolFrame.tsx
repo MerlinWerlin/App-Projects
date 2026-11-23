@@ -42,8 +42,8 @@ export function ToolFrame({ tool, snapshot, children }: { tool: ToolId; snapshot
     <>
       <Screen footer={
         <View style={{ flexDirection: 'row', gap: space.s }}>
-          <Button style={{ flex: 1 }} icon={saved ? 'checkmark-circle' : 'folder-open-outline'} label={saved ? `Saved to ${saved}` : 'Save to job'} disabled={!snapshot} onPress={() => setSaving(true)}
-            accessibilityHint={snapshot ? 'Saves this result to a job on this phone' : 'Enter the measurements first'} />
+          <Button style={{ flex: 1 }} icon={saved ? 'checkmark-circle' : 'folder-open-outline'} label={saved ? 'Saved to job' : 'Save to job'} disabled={!snapshot} onPress={() => setSaving(true)}
+            accessibilityHint={saved ? `Saved to ${saved}. Tap to save again` : snapshot ? 'Saves this result to a job on this phone' : 'Enter the measurements first'} />
         </View>
       }>
         {children}

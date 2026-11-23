@@ -6,6 +6,8 @@ test('corrupt or missing data falls back safely', () => {
   expect(parsePrefs(null)).toEqual(DEFAULT_PREFS);
   expect(parsePrefs('{bad json')).toEqual(DEFAULT_PREFS);
   expect(parsePrefs(JSON.stringify({ unit: 'imperial', stock: -5, kerf: 999, appearance: 'neon' }))).toEqual({ ...DEFAULT_PREFS, unit: 'imperial' });
+  expect(parsePrefs(JSON.stringify({ country: 'NZ' })).country).toBe('NZ');
+  expect(parsePrefs(JSON.stringify({ country: 'Mars' })).country).toBeNull();
   expect(parseJobs('"x"')).toEqual([]);
   expect(parseJobs(JSON.stringify([{ id: 'a', createdAt: 5, name: '' }, { nope: 1 }]))).toEqual([{ id: 'a', name: 'Untitled job', notes: '', createdAt: 5, updatedAt: 5 }]);
   expect(parseRecords(JSON.stringify([rec('r1'), { id: 'x', tool: 'laser', createdAt: 1, inputs: {} }]))).toHaveLength(1);

@@ -2,7 +2,8 @@ import React, { useMemo, useState } from 'react';
 import { Alert, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { FITTINGS, fittingById, type FittingSpec } from '../calc/reference';
+import { fittingById, type FittingSpec } from '../calc/reference';
+import { useCountry } from '../country/useCountry';
 import { takeoff, validFitting } from '../calc/cut';
 import { formatLength } from '../calc/units';
 import { useApp } from '../state/AppState';
@@ -25,7 +26,6 @@ export function useResolveFitting() {
   };
 }
 
-const GROUPS = [...new Set(FITTINGS.map(f => f.group))];
 
 export function FittingSheet({ visible, onClose, onPick }: { visible: boolean; onClose: () => void; onPick: (key: string) => void }) {
   const c = usePalette();
@@ -33,13 +33,16 @@ export function FittingSheet({ visible, onClose, onPick }: { visible: boolean; o
   const insets = useSafeAreaInsets();
   const tap = useTap();
   const u = app.prefs.unit;
-  const [group, setGroup] = useState<string>(GROUPS[0]!);
+  const country = useCountry();
+  const FITTINGS = country.fittings;
+  const GROUPS = useMemo(() => [...new Set(FITTINGS.map(f => f.group))], [FITTINGS]);
+  const [group, setGroup] = useState<string>(GROUPS[0] ?? '');
   const [size, setSize] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   const [name, setName] = useState('');
   const [c2e, setC2e] = useState('');
   const [eng, setEng] = useState('');
-  const sizes = useMemo(() => [...new Set(FITTINGS.filter(f => f.group === group).map(f => f.size))], [group]);
+  const sizes = useMemo(() => [...new Set(FITTINGS.filter(f => f.group === group).map(f => f.size))], [group, FITTINGS]);
   const list: FittingSpec[] = FITTINGS.filter(f => f.group === group && (size === null || f.size === size));
   const fields: NumField[] = [
     { label: 'Centre to end (face)', text: c2e, setText: setC2e, hint: 'Centre line of the fitting to its mouth' },
@@ -121,7 +124,7 @@ export function FittingSheet({ visible, onClose, onPick }: { visible: boolean; o
                 </View>
               </Pressable>
             ))}
-            <Note tone="warn">{group === 'PVC DWV' ? 'Iplex figures (AS/NZS 1260). Other brands differ by a few millimetres: check your fitting or the maker’s catalogue.' : group.startsWith('Copper') ? 'US-pattern fittings that fit AU tube of the same OD. Australian AS 3688 fittings can differ: measure yours or add it above.' : 'US NPT malleable fittings with approximate make-up. Australian BSPT fittings can differ: measure yours or add it above.'}</Note>
+            <Note tone="warn">{(list[0]?.note ?? list[0]?.source ?? '') + (country.materialsVerified ? '' : ` ${country.materialsNote}`) + ' Brands differ: check your fitting, or add your own above.'}</Note>
           </View>
         </ScrollView>
         {kp.element}

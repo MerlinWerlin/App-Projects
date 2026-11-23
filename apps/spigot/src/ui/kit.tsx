@@ -8,6 +8,7 @@ import { useApp } from '../state/AppState';
 import { parseLength, unitLabel, type UnitSystem } from '../calc/units';
 import type { Step } from '../calc/steps';
 import { fmtValue, stepLine, stepsAsText } from './format';
+import { useCountry } from '../country/useCountry';
 
 export function useTap() {
   const { prefs } = useApp();
@@ -59,7 +60,7 @@ export function Button({ label, onPress, kind = 'primary', icon, disabled, style
       accessibilityHint={accessibilityHint}
       disabled={disabled}
       onPress={() => { tap(); onPress(); }}
-      style={({ pressed }) => [{ minHeight: HIT, borderRadius: radius.m, backgroundColor: bg, opacity: disabled ? 0.45 : pressed ? 0.8 : 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: space.s, paddingHorizontal: space.l, borderWidth: kind === 'quiet' || kind === 'danger' ? 1.5 : 0, borderColor: kind === 'danger' ? c.danger : c.line }, style]}
+      style={({ pressed }) => [{ minHeight: HIT, borderRadius: radius.m, backgroundColor: bg, opacity: disabled ? 0.45 : pressed ? 0.88 : 1, transform: [{ scale: pressed && !disabled ? 0.97 : 1 }], flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: space.s, paddingHorizontal: space.l, borderWidth: kind === 'quiet' || kind === 'danger' ? 1.5 : 0, borderColor: kind === 'danger' ? c.danger : c.line }, style]}
     >
       {icon ? <Ionicons name={icon} size={22} color={fg} /> : null}
       <Text style={{ fontFamily: font.display, fontSize: 21, letterSpacing: 0.4, color: fg, textTransform: 'uppercase' }}>{label}</Text>
@@ -78,7 +79,7 @@ export function Chips<T extends string | number>({ options, value, onChange, lab
           const on = o === value;
           return (
             <Pressable key={String(o)} accessibilityRole="radio" accessibilityState={{ selected: on }} onPress={() => { tap(); onChange(o); }}
-              style={({ pressed }) => ({ minHeight: HIT - 4, minWidth: 64, paddingHorizontal: space.m, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? c.ink : c.surface2, opacity: pressed ? 0.8 : 1 })}>
+              style={({ pressed }) => ({ minHeight: HIT - 4, minWidth: 64, paddingHorizontal: space.m, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? c.ink : c.surface2, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] })}>
               <Text style={{ fontFamily: font.display, fontSize: 22, color: on ? c.bg : c.ink }}>{format ? format(o) : String(o)}</Text>
             </Pressable>
           );
@@ -126,6 +127,8 @@ export interface NumField {
   suffix?: string;
   hint?: string;
   optional?: boolean;
+  /** Number fields that may be negative (levels below datum). */
+  signed?: boolean;
 }
 
 /** Parses a field; null when empty, or an error string. */
@@ -188,12 +191,13 @@ export function Keypad({ field, visible, onClose, onNext }: { field: NumField | 
     tap();
     if (k === '⌫') setText(s => s.slice(0, -1));
     else if (k === 'C') setText('');
+    else if (k === '±') setText(s => (s.startsWith('-') ? s.slice(1) : '-' + s));
     else if (FRACTIONS.includes(k)) setText(s => (s.replace(/\s*\d+\/\d+$/, '').trim() + ' ' + k).trim());
     else setText(s => (s + k).slice(0, 24));
   };
   const keys = imperial
     ? [['7', '8', '9', '⌫'], ['4', '5', '6', "'"], ['1', '2', '3', '/'], ['.', '0', ' ', 'C']]
-    : [['7', '8', '9', '⌫'], ['4', '5', '6', 'C'], ['1', '2', '3', kind === 'length' ? 'm' : '−'], ['.', '0', '00', '']];
+    : [['7', '8', '9', '⌫'], ['4', '5', '6', 'C'], ['1', '2', '3', kind === 'length' ? 'm' : field.signed ? '±' : '−'], ['.', '0', '00', '']];
   const keyLabel = (k: string) => (k === ' ' ? 'space' : k === "'" ? 'ft ′' : k);
   const suffix = kind === 'length' && /[a-z'"′″]\s*$/i.test(text.trim()) ? '' : field.suffix ?? (kind === 'length' ? unitLabel(prefs.unit) : '');
   return (
@@ -213,7 +217,7 @@ export function Keypad({ field, visible, onClose, onNext }: { field: NumField | 
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.s }}>
             {FRACTIONS.map(f => (
               <Pressable key={f} accessibilityRole="button" accessibilityLabel={`plus ${f} inch`} onPress={() => press(f)} style={({ pressed }) => ({ minHeight: 52, minWidth: 64, borderRadius: radius.s, backgroundColor: c.surface2, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.7 : 1 })}>
-                <Text style={{ fontFamily: font.display, fontSize: 22, color: c.ink }}>{f}</Text>
+                <Text maxFontSizeMultiplier={1.3} style={{ fontFamily: font.display, fontSize: 22, color: c.ink }}>{f}</Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -222,9 +226,9 @@ export function Keypad({ field, visible, onClose, onNext }: { field: NumField | 
           {keys.map((row, i) => (
             <View key={i} style={{ flexDirection: 'row', gap: space.s }}>
               {row.map((k, j) => k === '' || (k === '−') ? <View key={`blank-${j}`} style={{ flex: 1 }} /> : (
-                <Pressable key={k} accessibilityRole="button" accessibilityLabel={k === '⌫' ? 'Delete' : k === 'C' ? 'Clear all' : keyLabel(k)} onPress={() => press(k)}
-                  style={({ pressed }) => ({ flex: 1, height: 64, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: pressed ? c.line : k === '⌫' || k === 'C' ? c.surface2 : c.bg })}>
-                  {k === '⌫' ? <Ionicons name="backspace-outline" size={30} color={c.ink} /> : <Text style={{ fontFamily: font.display, fontSize: k.length > 2 ? 22 : 32, color: c.ink }}>{keyLabel(k)}</Text>}
+                <Pressable key={k} accessibilityRole="button" accessibilityLabel={k === '⌫' ? 'Delete' : k === 'C' ? 'Clear all' : k === '±' ? 'Plus or minus' : keyLabel(k)} onPress={() => press(k)}
+                  style={({ pressed }) => ({ flex: 1, height: 64, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: pressed ? c.line : k === '⌫' || k === 'C' || k === '±' ? c.surface2 : c.bg, transform: [{ scale: pressed ? 0.96 : 1 }] })}>
+                  {k === '⌫' ? <Ionicons name="backspace-outline" size={30} color={c.ink} /> : <Text maxFontSizeMultiplier={1.3} style={{ fontFamily: font.display, fontSize: k.length > 2 ? 22 : 32, color: c.ink }}>{keyLabel(k)}</Text>}
                 </Pressable>
               ))}
             </View>
@@ -325,7 +329,8 @@ export function Note({ children, tone = 'info' }: { children: React.ReactNode; t
 }
 
 export function CheckNote() {
-  return <Note>Check against the fitting manufacturer’s data and your local plumbing code (AS/NZS 3500 and your state’s rules) before you cut.</Note>;
+  const country = useCountry();
+  return <Note>{country.checkNote}</Note>;
 }
 
 export function Row({ title, subtitle, onPress, right, icon, destructive }: { title: string; subtitle?: string; onPress?: () => void; right?: React.ReactNode; icon?: keyof typeof Ionicons.glyphMap; destructive?: boolean }) {

@@ -66,7 +66,7 @@ export const PIPES: PipeSize[] = [
   })),
   ...PEX.map(([od, w, lo, hi]): PipeSize => ({
     id: `pex-${od}`, material: 'PE-X', size: `${od} mm`, od_mm: od, wall_mm: w, bore_mm: (lo + hi) / 2, id_mm: (lo + hi) / 2,
-    note: `SDR 9 (Reece Auspex manual). Bore ${lo}–${hi} mm; middle used. Other brands differ.`,
+    note: `SDR 9 (AS/NZS 2492 pipe, manufacturer figures). Bore ${lo}–${hi} mm; middle used. Other brands differ.`,
   })),
   ...STEEL.map(([dn, od, w]): PipeSize => ({
     id: `st-${dn}`, material: 'Steel', size: `DN${dn}`, od_mm: od, wall_mm: w, id_mm: Math.round((od - 2 * w) * 100) / 100,

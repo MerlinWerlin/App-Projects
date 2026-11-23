@@ -4,6 +4,9 @@
  */
 import type { UnitSystem } from '../calc/units';
 
+export const COUNTRY_CODES = ['AU', 'NZ', 'GB', 'IE', 'US', 'CA', 'OTHER'] as const;
+export type CountryCode = (typeof COUNTRY_CODES)[number];
+
 export interface KvStore {
   getItem(key: string): Promise<string | null>;
   setItem(key: string, value: string): Promise<void>;
@@ -26,9 +29,11 @@ export interface Prefs {
   kerf: number;
   haptics: boolean;
   onboarded: boolean;
+  /** Chosen at first launch (null until then); decides units, codes, terms and the materials on offer. */
+  country: CountryCode | null;
 }
 
-export const DEFAULT_PREFS: Prefs = { version: 1, unit: 'metric', appearance: 'system', stock: 6000, kerf: 2, haptics: true, onboarded: false };
+export const DEFAULT_PREFS: Prefs = { version: 1, unit: 'metric', appearance: 'system', stock: 6000, kerf: 2, haptics: true, onboarded: false, country: null };
 
 export interface Job {
   id: string;
@@ -90,6 +95,7 @@ export function parsePrefs(raw: string | null): Prefs {
     kerf: kerf !== null && kerf >= 0 && kerf <= 50 ? kerf : DEFAULT_PREFS.kerf,
     haptics: d.haptics !== false,
     onboarded: d.onboarded === true,
+    country: COUNTRY_CODES.find(c => c === d.country) ?? null,
   };
 }
 

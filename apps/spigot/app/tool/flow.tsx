@@ -3,7 +3,8 @@ import { Pressable, Text, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { flow, volume } from '../../src/calc/flow';
 import { formatLength, lengthToInput } from '../../src/calc/units';
-import { PIPES, HAZEN_C, pipeById, pipeId, type PipeSize } from '../../src/calc/reference';
+import { HAZEN_C, pipeById, pipeId, type PipeSize } from '../../src/calc/reference';
+import { useCountry } from '../../src/country/useCountry';
 import { useApp } from '../../src/state/AppState';
 import { Card, CheckNote, Field, FieldLabel, Note, ResultPanel, Segmented, Working, readField, useKeypad, useTap, type NumField } from '../../src/ui/kit';
 import { ToolFrame, useOpenedRecord } from '../../src/ui/ToolFrame';
@@ -16,6 +17,7 @@ type FlowBy = 'lpm' | 'velocity';
 export function PipePicker({ value, onChange }: { value: string | null; onChange: (p: PipeSize | null) => void }) {
   const c = usePalette();
   const tap = useTap();
+  const { pipes: PIPES, materialsNote, materialsVerified } = useCountry();
   const [material, setMaterial] = useState(() => (value ? pipeById(value)?.material : undefined) ?? PIPES[0]!.material);
   const materials = [...new Set(PIPES.map(p => p.material))];
   const sizes = PIPES.filter(p => p.material === material);
@@ -42,12 +44,14 @@ export function PipePicker({ value, onChange }: { value: string | null; onChange
           );
         })}
       </View>
+      {!materialsVerified ? <Text style={{ fontSize: 14, color: c.ink3 }}>{materialsNote}</Text> : null}
     </View>
   );
 }
 
 export default function FlowScreen() {
   const { prefs } = useApp();
+  const country = useCountry();
   const u = prefs.unit;
   const rec = useOpenedRecord();
   const ri = rec?.inputs ?? {};
@@ -79,9 +83,10 @@ export default function FlowScreen() {
     const r = num(2);
     if (r === undefined) return null;
     const l = num(1);
-    return flow({ id, ...(by === 'lpm' ? { lpm: r } : { velocity: r }), ...(l !== undefined ? { length: l, c: cValue ?? 140 } : {}) });
+    const cold = country.maxVelocity?.rules.find(x => /cold/i.test(x.service));
+    return flow({ id, ...(by === 'lpm' ? { lpm: r } : { velocity: r }), ...(l !== undefined ? { length: l, c: cValue ?? 140 } : {}), limit: cold ? { max: cold.max, code: country.codeName } : null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, id, length, by, rate, cText, pipe, u]);
+  }, [mode, id, length, by, rate, cText, pipe, u, country.code]);
 
   const vol = result && result.ok && 'litres' in result.value ? result.value : null;
   const fl = result && result.ok && 'velocity' in result.value ? result.value : null;

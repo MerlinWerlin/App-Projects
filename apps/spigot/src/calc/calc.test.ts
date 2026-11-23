@@ -204,10 +204,16 @@ describe('volume and flow', () => {
     expect(r.velocity).toBeCloseTo(1.0610, 4);
     expect(r.lps).toBeCloseTo(0.3333, 4);
   });
-  test('velocity to flow and the 3 m/s warning', () => {
+  test('velocity to flow, and the warning follows the country limit', () => {
     const r = flow({ id: 20, velocity: 3.5 });
     expect(r.ok && r.value.lpm).toBeCloseTo(65.97, 2);
-    expect(r.ok && r.warnings.some(w => w.includes('3 m/s'))).toBe(true);
+    expect(r.ok && r.warnings.some(w => w.includes('check your local code'))).toBe(true);
+    const au = flow({ id: 20, velocity: 3.5, limit: { max: 3, code: 'the NCC (B1P2)' } });
+    expect(au.ok && au.warnings.some(w => w.includes('NCC'))).toBe(true);
+    const slow = flow({ id: 20, velocity: 2.9, limit: { max: 3, code: 'the NCC (B1P2)' } });
+    expect(slow.ok && slow.warnings).toEqual([]);
+    const tight = flow({ id: 20, velocity: 2.6, limit: { max: 2.4, code: 'X' } });
+    expect(tight.ok && tight.warnings.length).toBe(1);
   });
   test('Hazen–Williams agrees with the independent US-units form (psi per ft = 4.52 Q^1.85 / (C^1.85 d^4.87))', () => {
     // 100 m of 100 mm bore, Q = 0.01 m³/s (600 L/min), C 130. SI form by hand: 10.67 × 100 × 1.977e-4 / (8231 × 1.346e-5) = 1.904 m.
