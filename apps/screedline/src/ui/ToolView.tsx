@@ -8,7 +8,9 @@ import { fmtField, fromMetric, parseNumber, toMetric, unitLabel, type FieldKind,
 import { useApp } from '../state/AppState';
 import { BOLD, FONT, RADIUS, SPACE, TARGET } from '../theme/theme';
 import { defaults, type Field, type Run, type Tool, type Values, visible } from '../tools/registry';
-import { line, showOut } from '../tools/present';
+import { line, show, showOut } from '../tools/present';
+import { diagramFor } from '../tools/diagram';
+import { DiagramView } from './DiagramView';
 import { Button, Card, Choice, DONE_ID, DoneBar, FieldShell, Icon, NumberInput, T } from './kit';
 import { BlurView } from 'expo-blur';
 
@@ -91,6 +93,10 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
   useEffect(() => { app.setDraft(tool.id, values); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [values]);
 
   const locked = !app.canUse(tool.id);
+  const diagram = useMemo(() => {
+    const fmtS = (kind: 'len' | 'mm', m: number) => { const s = show(kind, m, sys, kind === 'len' ? 2 : 0); return `${s.value} ${s.unit}`; };
+    try { return diagramFor(tool.id, values, run, { len: m => fmtS('len', m), mm: m => fmtS('mm', m) }); } catch { return null; }
+  }, [tool.id, values, run, sys]);
   const errors = run && !run.ok ? run.errors : {};
 
   const setChoice = (f: Extract<Field, { type: 'choice' }>, val: string) => {
@@ -212,6 +218,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
 
           {locked ? <UnlockCard tool={tool} /> : null}
           {run && run.ok ? <Veil on={locked}><Outputs run={run} /></Veil> : null}
+          {diagram ? <Veil on={locked}><DiagramView d={diagram} /></Veil> : null}
 
           {run && run.ok && run.notes.length ? (
             <Card alt style={{ gap: SPACE.s }}>
