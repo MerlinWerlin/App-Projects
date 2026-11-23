@@ -29,6 +29,8 @@ appId: ${APP_ID}
       id: "sheets-answer"
     direction: DOWN
     centerElement: true
+    timeout: 30000
+    optional: true
 - takeScreenshot: 01-sheets-${MODE}
 
 - openLink: eaveline://roof
@@ -39,6 +41,8 @@ appId: ${APP_ID}
       id: "roof-answer"
     direction: DOWN
     centerElement: true
+    timeout: 30000
+    optional: true
 - takeScreenshot: 02-roof-${MODE}
 
 - openLink: eaveline://tiles
@@ -49,6 +53,8 @@ appId: ${APP_ID}
       id: "tiles-answer"
     direction: DOWN
     centerElement: true
+    timeout: 30000
+    optional: true
 - takeScreenshot: 03-tiles-${MODE}
 
 - openLink: eaveline://downpipes
@@ -59,6 +65,8 @@ appId: ${APP_ID}
       id: "downpipes-answer"
     direction: DOWN
     centerElement: true
+    timeout: 30000
+    optional: true
 - takeScreenshot: 04-downpipes-${MODE}
 
 - openLink: eaveline://flashings
@@ -69,6 +77,8 @@ appId: ${APP_ID}
       id: "flashings-answer"
     direction: DOWN
     centerElement: true
+    timeout: 30000
+    optional: true
 - takeScreenshot: 07-flashings-${MODE}
 
 - openLink: eaveline://pitch
@@ -80,6 +90,8 @@ appId: ${APP_ID}
 - tapOn:
     id: "pitch-run"
 - inputText: "1000"
-- hideKeyboard
+- tapOn:
+    text: "Done"
+    optional: true
 - waitForAnimationToEnd
 - takeScreenshot: 08-pitch-${MODE}
