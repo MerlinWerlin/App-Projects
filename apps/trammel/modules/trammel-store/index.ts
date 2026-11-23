@@ -1,0 +1,24 @@
+// Typed wrapper for the TrammelStore native module (iOS builds only, 1.0.0). App code must NOT import this file:
+// go through src/native/store.ts, which reports "stub" in Expo Go, on Android and in builds without the module,
+// and never throws.
+import { requireOptionalNativeModule } from 'expo';
+
+export type TrammelStoreProduct = { id: string; displayPrice: string; displayName: string };
+export type TrammelStorePurchase = { status: 'purchased' | 'cancelled' | 'pending' | 'failed'; code?: string; message?: string };
+/** One verified transaction the person owns: product id, purchase time (ms since 1970) and whether it was revoked. */
+export type TrammelStoreEntitlement = { productId: string; purchaseDate: number; revoked: boolean };
+
+export type TrammelStoreNative = {
+  isAvailable(): Promise<boolean>;
+  /** The products App Store Connect returns (missing ids are left out). */
+  getProducts(ids: string[]): Promise<TrammelStoreProduct[]>;
+  /** Shows Apple's purchase sheet. Always resolves with a status. */
+  purchase(id: string): Promise<TrammelStorePurchase>;
+  /** Verified transactions for these ids: Transaction.currentEntitlements, then Transaction.all for any id not found. */
+  entitlements(ids: string[]): Promise<TrammelStoreEntitlement[]>;
+  /** AppStore.sync() then entitlements(ids). Rejects only when the sync fails and nothing is owned. */
+  restore(ids: string[]): Promise<TrammelStoreEntitlement[]>;
+  addListener?(event: 'onEntitlementChange', cb: (e: { productId?: string }) => void): { remove(): void };
+};
+
+export default requireOptionalNativeModule<TrammelStoreNative>('TrammelStore');

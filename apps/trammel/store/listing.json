@@ -1,0 +1,59 @@
+{
+  "locale": "en-AU",
+  "primaryLocale": "en-AU",
+  "dropLocales": [
+    "en-US"
+  ],
+  "version": "1.0.0",
+  "name": "Trammel: Carpentry Calculator",
+  "subtitle": "Stairs, rafters, mitres, cuts",
+  "promotionalText": "The chippy's calculator for Australia, New Zealand, the UK, Ireland, the US and Canada: stairs checked against your local code, rafters, hips, mitres, layouts, decking and cut lists from local timber sizes.",
+  "keywords": "chippy,carpenter,stair,stringer,rafter,pitch,mitre,cornice,decking,stud,cutlist,framing,timber,joist",
+  "description": "Trammel is a job-site calculator built for carpenters. Tell it where you build and it speaks your trade: metric or imperial, mitre or miter, noggin, dwang or blocking, and the timber sizes your local yard actually stocks. Big buttons you can hit with gloves on, high-contrast numbers you can read in full sun, and every answer shows how it was worked out.\n\nSTAIRS\n- Riser count and height, going, 2R+G, total going, pitch, step length and pitch line.\n- Checked against the stair rules where you build: the NCC in Australia, NZBC D1/AS1 in New Zealand, Approved Document K in England, TGD K in Ireland, the IRC and IBC in the US and the NBC in Canada. Riser, going, 2R+G, pitch and flight limits, each with its clause.\n- Fit a flight to the floor space you have, or set the risers and going yourself.\n- Stringer throat: how much timber is left under each notch.\n\nROOF\n- Common rafter length, rise, eave length, plumb and seat cuts.\n- Birdsmouth: plumb cut, notch depth and height above plate, with the one-third check.\n- Hip and valley for regular roofs: hip pitch, hip length and every creeper length.\n- Pitch in degrees, rise per 1000, percent and x in 12.\n\nTRIM\n- Mitre for any corner, inside or outside, and any polygon.\n- Cornice and crown: bevel and mitre settings for any spring angle and corner, or the nested setting.\n\nFRAMING AND DECKING\n- Stud, joist, rafter and batten layouts at any centres, with every mark from the end and the noggin lengths.\n- Decking: boards across, the rip on the last board, linear metres, lengths to buy, joists and screws.\n- Cut list: tell it your stock lengths and the pieces you need, and it plans the cuts to buy as little timber as it can, allowing for the saw kerf.\n\nSET-OUT\n- Square check from the diagonals, and the 3-4-5 marks for any size.\n- Arch and radius from a span and rise: the radius to set your trammel to, the arc length, and offsets every few hundred mm.\n- Fractions to mm and back, feet and inches, to 1/8, 1/16 or 1/32.\n\nJOBS\n- Save calculations to a job and share a job sheet by message or email.\n\nMetric or imperial, set by your country and changeable any time. Cut lists start from the sections and lengths sold where you are, and add up the cost in your currency. No account, no ads, no tracking: everything stays on your phone.\n\nFREE TRIAL\nThe converter, square check, mitres and roof pitch are free for good. Try every other tool free for 7 days, then unlock them all with one purchase. No subscription.\n\nTrammel is a calculator: check every result against the plans, the engineer's details and the codes that apply where you build.",
+  "primaryCategory": "PRODUCTIVITY",
+  "secondaryCategory": "UTILITIES",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/trammel/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/trammel/support.html",
+  "ageRating": "none",
+  "screenshots": {
+    "APP_IPHONE_67": "apps/trammel/store/screenshots/6.9"
+  },
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login is needed, and Trammel has no over-the-air updates. On first launch the app asks which country you build in (the phone's region is pre-selected); this sets units, trade words, the stair code checked and the timber sizes offered, and can be changed in Settings.\n\nIn-app purchases: Settings > Trammel Full Unlock, or open any tool marked with a lock (for example Stairs). Start 7-day free trial starts a free non-consumable trial (Guideline 3.1.1); Unlock buys the one-time Full Unlock; Restore purchases restores both. The converter, square check, mitre and roof pitch tools are always free.\n\nWhere to look: the Tools tab lists every calculator. Stairs: enter a floor-to-floor rise (try 2700 mm) to see risers, going and the NCC checks. Cut list: enter stock lengths and pieces to see the cutting plan. Jobs tab: saved calculations.\n\nApp Review information:\n1. Purpose and audience: a calculator for carpenters and builders (stairs, roof framing, mitres, layouts, decking, cut lists).\n2. Setup: none. No login.\n3. External services: none. The app makes no network requests; payments are Apple in-app purchases only.\n4. Regional differences: none. Metric by default with an imperial setting.\n5. Regulated or third-party material: the stair checks quote the public limits of Australia's National Construction Code 2022 and are labelled as guidance to verify against plans and local codes.\n6. Permissions: none.",
+  "reviewContactFromApp": "linework",
+  "price": "free",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.trammel.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
+      "description": "Try every Trammel tool free for 7 days.",
+      "reviewNote": "Free non-consumable that starts the 7-day free trial (Guideline 3.1.1). Settings > Trammel Full Unlock, then Start 7-day free trial. Restore purchases brings it back with its original start date.",
+      "price": {
+        "territory": "AUS",
+        "amount": "0"
+      },
+      "reviewScreenshot": "apps/trammel/store/iap/paywall.jpg",
+      "availability": "all"
+    },
+    {
+      "productId": "com.jared797.trammel.unlock",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Trammel Full Unlock",
+      "displayName": "Trammel Full Unlock",
+      "description": "Every tool, forever. One-time, no subscription.",
+      "reviewNote": "Non-consumable one-time unlock of every tool and saving jobs. The converter, square check, mitre and roof pitch tools are always free. Settings > Trammel Full Unlock, then Unlock; Restore purchases is on the same screen.",
+      "familySharable": true,
+      "price": {
+        "territory": "AUS",
+        "amount": "4.99"
+      },
+      "reviewScreenshot": "apps/trammel/store/iap/paywall.jpg",
+      "availability": "all"
+    }
+  ],
+  "attachBuild": "latest"
+}

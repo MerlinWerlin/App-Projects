@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2EFE8">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0E0D">
+<meta name="color-scheme" content="light dark">
+<title>Trammel Support</title>
+<style>
+  :root { --paper:#F2EFE8; --card:#FFFFFF; --line:#D3CEC2; --ink:#151412; --muted:#5A564E; --blade:#FFC21A; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#0E0E0D; --card:#1A1A18; --line:#34332F; --ink:#F4F1EA; --muted:#B2ADA2; } }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  a { touch-action: manipulation; }
+  .btn { min-height:44px; user-select:none; -webkit-user-select:none; transition: transform 120ms cubic-bezier(0.23,1,0.32,1); }
+  .btn:active { transform: scale(0.97); }
+  body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width:680px; margin:0 auto; padding:calc(32px + env(safe-area-inset-top, 0px)) calc(16px + env(safe-area-inset-right, 0px)) calc(64px + env(safe-area-inset-bottom, 0px)) calc(16px + env(safe-area-inset-left, 0px)); }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 4px; letter-spacing:.3px; }
+  h2 { font-size:20px; margin:32px 0 8px; }
+  p, li { margin:0 0 12px; }
+  ul { padding-left:22px; }
+  .meta { color:var(--muted); font-size:15px; margin-bottom:24px; }
+  .badge { display:inline-block; background:var(--blade); color:#111; border-radius:999px; padding:4px 14px; font-weight:700; font-size:15px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:16px 0; }
+  a { color:inherit; text-decoration-thickness:2px; text-decoration-color:var(--blade); }
+  .btn { display:inline-block; background:var(--ink); color:var(--paper); text-decoration:none; border-radius:12px; padding:12px 18px; font-weight:700; }
+  footer { color:var(--muted); font-size:14px; margin-top:40px; border-top:1px solid var(--line); padding-top:16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Trammel Support</h1>
+  <p class="meta">Carpentry calculator for iPhone: stairs, rafters, mitres, layouts, decking and cut lists.</p>
+  <div class="card">
+    <p><strong>Need help or found a wrong number?</strong> Tell us what you entered, what Trammel showed and what you expected, plus your iPhone model and the Trammel version from Settings.</p>
+    <p><a class="btn" href="https://github.com/MerlinWerlin/App-Projects/issues/new?title=Trammel%3A%20">Contact support</a></p>
+    <p class="meta">Opens a support request on GitHub (a free GitHub account is needed). Please don't include personal details.</p>
+  </div>
+  <h2>Common questions</h2>
+  <h2>How do I start the free trial?</h2>
+  <p>Open any tool with a lock (for example Stairs), or go to Settings &gt; Trammel Full Unlock, and tap <em>Start 7-day free trial</em>. Apple shows the free item; nothing is charged and nothing renews. After 7 days you can unlock every tool with one purchase.</p>
+  <h2>Which tools are free?</h2>
+  <p>Fractions &harr; mm, Square check, Mitre and Roof pitch are free for good, and saved jobs always open.</p>
+  <h2>I bought Full Unlock on another iPhone</h2>
+  <p>Settings &gt; Trammel Full Unlock &gt; <em>Restore purchases</em>, signed in with the same Apple Account.</p>
+  <h2>Can I type feet and inches?</h2>
+  <p>Yes. Any field takes 2400, 2.4m, 240cm, 54 1/2, 54-1/2" or 4' 6 1/2". Switch the units Trammel shows in Settings.</p>
+  <h2>Where do the stair limits come from?</h2>
+  <p>The National Construction Code 2022 (ABCB): Housing Provisions 11.2.2 for houses and Volume One D3D14 for public and private stairways. Trammel's results are guidance: always check them against the plans, the engineer's details and the codes and state variations that apply where you build.</p>
+  <h2>Does Trammel collect my data?</h2>
+  <p>No. See the <a href="privacy.html">privacy policy</a>.</p>
+  <footer>Trammel: carpentry calculator for iPhone.</footer>
+</main>
+</body>
+</html>
