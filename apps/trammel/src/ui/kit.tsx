@@ -6,6 +6,7 @@ import { Platform, Pressable, ScrollView, Text, TextInput, View, type KeyboardTy
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { Check, Step } from '../core/result.ts';
 import { Icon, type IconName } from './Icon.tsx';
+import { useTick } from './useTick.ts';
 
 // The package's class typings predate React 19's JSX types; the component itself is fine.
 const SegmentedControl = RNSegmentedControl as unknown as (p: Record<string, unknown>) => React.ReactElement;
@@ -95,7 +96,7 @@ export function Field({ label, value, onChange, kind = 'length', placeholder, hi
           accessibilityLabel={label}
           accessibilityHint={hint}
           maxFontSizeMultiplier={1.6}
-          style={{ flex: 1, fontFamily: fonts.display, fontSize: 30, color: t.ink, paddingVertical: Platform.OS === 'ios' ? 10 : 6 }}
+          style={{ flex: 1, minWidth: 0, fontFamily: fonts.display, fontSize: 30, color: t.ink, paddingVertical: Platform.OS === 'ios' ? 10 : 6 }}
         />
         {unit ? <Text style={{ ...sys.bodyBold, fontSize: 17, color: t.muted }}>{unit}</Text> : null}
       </View>
@@ -110,6 +111,11 @@ export function Field({ label, value, onChange, kind = 'length', placeholder, hi
  */
 export function Segment<T extends string | number>({ label, options, value, onChange, chips }: { label?: string; options: { value: T; label: string }[]; value: T; onChange: (v: T) => void; chips?: boolean }) {
   const t = useTheme();
+  const tick = useTick();
+  const pick = (v: T) => {
+    if (v !== value) tick();
+    onChange(v);
+  };
   const native = !chips && options.length >= 2 && options.length <= 4 && options.every((o) => o.label.length <= 16);
   const idx = options.findIndex((o) => o.value === value);
   return (
@@ -119,7 +125,7 @@ export function Segment<T extends string | number>({ label, options, value, onCh
         <SegmentedControl
           values={options.map((o) => o.label)}
           selectedIndex={idx}
-          onChange={(e: { nativeEvent: { selectedSegmentIndex: number } }) => onChange(options[e.nativeEvent.selectedSegmentIndex].value)}
+          onChange={(e: { nativeEvent: { selectedSegmentIndex: number } }) => pick(options[e.nativeEvent.selectedSegmentIndex].value)}
           appearance={t.dark ? 'dark' : 'light'}
           fontStyle={{ fontSize: 15, color: t.ink }}
           activeFontStyle={{ fontSize: 15, fontWeight: '600', color: t.ink }}
@@ -133,10 +139,10 @@ export function Segment<T extends string | number>({ label, options, value, onCh
             return (
               <Pressable
                 key={String(o.value)}
-                onPress={() => onChange(o.value)}
+                onPress={() => pick(o.value)}
                 accessibilityRole="radio"
                 accessibilityState={{ selected: on }}
-                style={({ pressed }) => ({ minHeight: 44, paddingHorizontal: space.l, borderRadius: 999, justifyContent: 'center', backgroundColor: on ? t.ink : t.card, borderWidth: 1.5, borderColor: on ? t.ink : t.line, opacity: pressed ? 0.75 : 1 })}
+                style={({ pressed }) => ({ minHeight: 44, paddingHorizontal: space.l, borderRadius: 999, justifyContent: 'center', backgroundColor: on ? t.ink : t.card, borderWidth: 1.5, borderColor: on ? t.ink : t.line, transform: [{ scale: pressed ? 0.97 : 1 }] })}
               >
                 <Text style={{ ...sys.bodyBold, fontSize: 16, color: on ? t.bg : t.ink }}>{o.label}</Text>
               </Pressable>
@@ -150,13 +156,17 @@ export function Segment<T extends string | number>({ label, options, value, onCh
 
 export function Stepper({ label, value, onChange, min = 0, max = 999 }: { label: string; value: number; onChange: (n: number) => void; min?: number; max?: number }) {
   const t = useTheme();
+  const tick = useTick();
   const btn = (d: number, icon: 'minus' | 'plus') => (
     <Pressable
-      onPress={() => onChange(Math.min(max, Math.max(min, value + d)))}
+      onPress={() => {
+        tick();
+        onChange(Math.min(max, Math.max(min, value + d)));
+      }}
       disabled={(d < 0 && value <= min) || (d > 0 && value >= max)}
       accessibilityRole="button"
       accessibilityLabel={`${d < 0 ? 'Fewer' : 'More'} ${label.toLowerCase()}`}
-      style={({ pressed }) => ({ width: TOUCH + 8, height: TOUCH, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: t.ink, opacity: pressed ? 0.7 : (d < 0 && value <= min) || (d > 0 && value >= max) ? 0.3 : 1 })}
+      style={({ pressed }) => ({ width: TOUCH + 8, height: TOUCH, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: t.ink, opacity: (d < 0 && value <= min) || (d > 0 && value >= max) ? 0.3 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] })}
     >
       <Icon name={icon} size={28} color={t.bg} />
     </Pressable>
@@ -187,6 +197,12 @@ function Ticks() {
   );
 }
 
+/** Long results start smaller so they fit without relying on auto-shrink (which web and some layouts don't do). */
+function bladeSize(v: string): number {
+  const n = v.length;
+  return n <= 9 ? 64 : n <= 12 ? 52 : n <= 16 ? 42 : 34;
+}
+
 /** The hero result: black condensed numerals on blade yellow. */
 export function Blade({ label, value, sub, children }: { label: string; value: string; sub?: string; children?: ReactNode }) {
   const t = useTheme();
@@ -194,7 +210,7 @@ export function Blade({ label, value, sub, children }: { label: string; value: s
     <View accessible accessibilityLabel={`${label}: ${value}${sub ? `. ${sub}` : ''}`} style={{ backgroundColor: t.blade, borderRadius: radius.l, padding: space.l, gap: 2, overflow: 'hidden' }}>
       <Ticks />
       <Text style={{ ...sys.bodyBold, fontSize: 15, letterSpacing: 0.6, textTransform: 'uppercase', color: t.bladeInk }}>{label}</Text>
-      <Text adjustsFontSizeToFit numberOfLines={1} minimumFontScale={0.5} maxFontSizeMultiplier={1.2} style={{ fontFamily: fonts.displayHeavy, fontSize: 64, lineHeight: 70, color: t.bladeInk }}>
+      <Text adjustsFontSizeToFit numberOfLines={1} minimumFontScale={0.5} maxFontSizeMultiplier={1.2} style={{ fontFamily: fonts.displayHeavy, fontSize: bladeSize(value), lineHeight: bladeSize(value) * 1.1, letterSpacing: -0.5, color: t.bladeInk }}>
         {value}
       </Text>
       {sub ? <Text style={{ ...sys.bodyMedium, fontSize: 17, color: t.bladeInk }}>{sub}</Text> : null}
@@ -289,7 +305,7 @@ export function Button({ label, onPress, kind = 'primary', icon, disabled, hint 
       accessibilityRole="button"
       accessibilityHint={hint}
       accessibilityState={{ disabled: !!disabled }}
-      style={({ pressed }) => ({ minHeight: TOUCH, borderRadius: radius.m, paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', justifyContent: kind === 'quiet' || kind === 'danger' ? 'flex-start' : 'center', gap: space.s, backgroundColor: bg, borderWidth: kind === 'secondary' ? 2 : 0, borderColor: t.ink, opacity: disabled ? 0.4 : pressed ? 0.75 : 1 })}
+      style={({ pressed }) => ({ minHeight: TOUCH, borderRadius: radius.m, paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', justifyContent: kind === 'quiet' || kind === 'danger' ? 'flex-start' : 'center', gap: space.s, backgroundColor: bg, borderWidth: kind === 'secondary' ? 2 : 0, borderColor: t.ink, opacity: disabled ? 0.4 : 1, transform: [{ scale: pressed && !disabled ? 0.97 : 1 }] })}
     >
       {icon ? <Icon name={icon} size={20} color={fg} /> : null}
       <Text style={{ ...sys.bodyBold, fontSize: 18, color: fg, flexShrink: 1 }}>{label}</Text>

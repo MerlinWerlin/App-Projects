@@ -7,7 +7,7 @@ import { defaultFraming, materialsFor } from '../src/core/materials.ts';
 import { lengthToInput } from '../src/core/units.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { fonts, radius, space, TOUCH, useTheme, sys } from '../src/theme/theme.ts';
-import { CutBars } from '../src/ui/diagrams.tsx';
+import { CutBars, cutSummary, groupBars } from '../src/ui/diagrams.tsx';
 import { Blade, Button, Card, Checks, ErrorCard, Field, H, P, Readouts, Segment, StepsCard, useReaders } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
@@ -59,7 +59,7 @@ export default function CutList() {
   );
   const plan = res.ok ? res.value : null;
   const planText = plan
-    ? [`Cut list (kerf ${vals.kerf} mm)`, ...plan.bars.map((b, i) => `#${i + 1} ${fmt.len(b.stock)}: ${b.cuts.map((c) => `${fmt.len(c.length)}${c.label ? ` ${c.label}` : ''}`).join(' + ')} (offcut ${fmt.len(b.offcut)})`), `Buy: ${plan.byStock.map((s) => `${s.count} x ${fmt.len(s.length)}`).join(', ')}`].join('\n')
+    ? [`Cut list (kerf ${vals.kerf} mm)`, ...groupBars(plan.bars).map(({ bar: b, count }) => `${count} x ${fmt.len(b.stock)}: ${cutSummary(b, fmt.len)} (offcut ${fmt.len(b.offcut)})`), `Buy: ${plan.byStock.map((s) => `${s.count} x ${fmt.len(s.length)}`).join(', ')}`].join('\n')
     : '';
   const save = plan ? { title: `Cut list: ${plan.bars.length} lengths`, summary: `Buy ${plan.byStock.map((s) => `${s.count} x ${fmt.len(s.length)}`).join(', ')}; ${fmt.num(plan.yieldPct, 1)}% used, ${fmt.len(plan.offcutTotal)} offcut`, inputs: vals } : null;
   return (
@@ -98,8 +98,8 @@ export default function CutList() {
           <Field label="End trim" optional value={vals.trim} onChange={set('trim')} />
         </View>
       </View>
-      {!res.ok || !plan ? (
-        <ErrorCard text={res.ok ? '' : res.error} />
+      {!res.ok || !plan || plan.bars.length === 0 ? (
+        <ErrorCard text={!res.ok ? res.error : 'None of these pieces fit the stock you can get. Add a longer length or allow more lengths.'} />
       ) : (
         <>
           <Blade label="Buy" value={`${plan.bars.length} length${plan.bars.length === 1 ? '' : 's'}`} sub={`${plan.byStock.map((s) => `${s.count} × ${fmt.len(s.length)}`).join(' + ')}\n${fmt.num(plan.yieldPct, 1)}% of the timber used · ${fmt.len(plan.offcutTotal)} offcut`} />
@@ -147,7 +147,10 @@ function RowEditor({ row, onChange, onRemove, named, qtyHint, priced }: { row: R
         ) : null}
       </View>
       {priced !== undefined ? (
-        <TextInput value={row.p ?? ''} onChangeText={(p) => onChange({ ...row, p: p.replace(/[^0-9.]/g, '') })} placeholder={`Price each${priced ? ` (${priced})` : ''}, optional`} placeholderTextColor={t.muted} keyboardType="decimal-pad" accessibilityLabel="Price for one length" style={{ minHeight: 44, ...sys.bodyMedium, fontSize: 16, color: t.ink, paddingHorizontal: space.s }} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, paddingHorizontal: space.s }}>
+          <Text style={{ ...sys.body, fontSize: 15, color: t.muted }}>{`Price each${priced ? ` (${priced})` : ''}`}</Text>
+          <TextInput value={row.p ?? ''} onChangeText={(p) => onChange({ ...row, p: p.replace(/[^0-9.]/g, '') })} placeholder="optional" placeholderTextColor={t.muted} keyboardType="decimal-pad" accessibilityLabel="Price for one length" style={{ flex: 1, minHeight: 44, ...sys.bodyBold, fontSize: 17, color: t.ink }} />
+        </View>
       ) : null}
       {named ? <TextInput value={row.n ?? ''} onChangeText={(n) => onChange({ ...row, n })} placeholder="Name (optional), e.g. Studs" placeholderTextColor={t.muted} accessibilityLabel="Piece name" style={{ minHeight: 44, ...sys.bodyMedium, fontSize: 16, color: t.ink, paddingHorizontal: space.s }} /> : null}
       {bad ? <Text style={{ ...sys.bodyBold, fontSize: 14, color: t.bad }}>Can’t read that length</Text> : null}

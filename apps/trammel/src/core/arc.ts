@@ -5,7 +5,10 @@
 //  - Arc length = r x central angle (radians).
 //  - Offset from the chord at distance x from the centre of the span: y(x) = sqrt(r^2 - x^2) - (r - h).
 import { toDeg, type Fmt } from './units.ts';
-import { fail, positive, type Calc, type Step } from './result.ts';
+import { fail, positive, type Calc, type Check, type Step } from './result.ts';
+
+/** Beyond this a trammel or string line isn't practical on site (mm). */
+export const FLAT_RADIUS = 10000;
 
 export type ArcResult = { radius: number; angle: number; arcLength: number; offsets: { x: number; fromEnd: number; y: number }[] };
 
@@ -32,5 +35,8 @@ export function arcFromChord(input: { chord: number; rise: number; divisions?: n
     { label: 'Arc length', working: `${f.len(radius)} x ${f.num(theta, 4)} rad = ${f.len(arcLength)}` },
     { label: 'Offsets', working: `sqrt(r² - x²) - (r - rise), every ${f.len(c / div)} along the span` },
   ];
-  return { ok: true, value: { radius, angle: toDeg(theta), arcLength, offsets }, steps, checks: [{ level: 'ok', text: `Set the trammel points ${f.len(radius)} apart; the centre is ${f.len(Math.abs(radius - h))} ${radius >= h ? 'below' : 'above'} the middle of the span line` }] };
+  const checks: Check[] = [];
+  if (radius > FLAT_RADIUS) checks.push({ level: 'warn', text: `A ${f.len(radius)} radius is too big to swing: mark the offsets below and spring a batten through them` });
+  else checks.push({ level: 'ok', text: `Set the trammel points ${f.len(radius)} apart; the centre is ${f.len(Math.abs(radius - h))} ${radius >= h ? 'below' : 'above'} the middle of the span line` });
+  return { ok: true, value: { radius, angle: toDeg(theta), arcLength, offsets }, steps, checks };
 }

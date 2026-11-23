@@ -31,7 +31,7 @@ export default function Tools() {
     <ScrollView style={{ flex: 1, backgroundColor: t.bg }} contentContainerStyle={{ paddingTop: insets.top + space.l, paddingHorizontal: space.l, paddingBottom: space.xxl, gap: space.l }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
         <Image source={require('../../assets/icon.png')} style={{ width: 48, height: 48, borderRadius: 11 }} accessibilityIgnoresInvertColors />
-        <Text accessibilityRole="header" style={{ flex: 1, fontFamily: fonts.displayHeavy, fontSize: 40, lineHeight: 44, color: t.ink, letterSpacing: 0.5 }}>
+        <Text accessibilityRole="header" style={{ flex: 1, fontFamily: fonts.displayHeavy, fontSize: 40, lineHeight: 44, color: t.ink, letterSpacing: 0 }}>
           TRAMMEL
         </Text>
       </View>

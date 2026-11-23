@@ -17,7 +17,7 @@ function Frame({ label, children, height = 200 }: { label: string; children: Rea
 
 export function StairDiagram({ risers, riser, going }: { risers: number; riser: number; going: number }) {
   const t = useTheme();
-  const n = Math.max(1, Math.min(risers, 24));
+  const n = Math.max(1, Math.min(risers, 60));
   const W = 320;
   const H = 180;
   const totalRun = going * (n - 1) + going * 0.9;
@@ -166,16 +166,42 @@ export function LayoutDiagram({ length, centres, thickness }: { length: number; 
   );
 }
 
+/** "5 × 1,100 mm Cripple stud · 450 mm Sill trimmer": a bar's cuts with repeats counted, in cutting order. */
+export function cutSummary(b: Bar, label: (mm: number) => string): string {
+  const parts: { text: string; n: number }[] = [];
+  for (const c of b.cuts) {
+    const text = `${label(c.length)}${c.label ? ` ${c.label}` : ''}`;
+    const last = parts[parts.length - 1];
+    if (last && last.text === text) last.n++;
+    else parts.push({ text, n: 1 });
+  }
+  return parts.map((p) => (p.n > 1 ? `${p.n} × ${p.text}` : p.text)).join('  ·  ');
+}
+
+/** Bars cut the same way are drawn once with a count, so a 100-length plan stays a short list. */
+export function groupBars(bars: Bar[]): { bar: Bar; count: number }[] {
+  const out: { bar: Bar; count: number; key: string }[] = [];
+  for (const b of bars) {
+    const key = `${b.stock}|${b.cuts.map((c) => `${c.length}:${c.label ?? ''}`).join(',')}`;
+    const hit = out.find((g) => g.key === key);
+    if (hit) hit.count++;
+    else out.push({ bar: b, count: 1, key });
+  }
+  return out;
+}
+
 export function CutBars({ bars, label }: { bars: Bar[]; label: (mm: number) => string }) {
   const t = useTheme();
   const longest = Math.max(...bars.map((b) => b.stock));
+  const groups = groupBars(bars);
   return (
-    <View style={{ gap: space.m }}>
-      {bars.map((b, i) => (
-        <View key={i} accessible accessibilityLabel={`Length ${i + 1}, ${label(b.stock)}: cut ${b.cuts.map((c) => label(c.length)).join(', ')}; offcut ${label(b.offcut)}`} style={{ gap: space.xs }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.ink }}>
-              #{i + 1} · {label(b.stock)}
+    <View style={{ gap: space.l }}>
+      {groups.map(({ bar: b, count }, i) => (
+        <View key={i} accessible accessibilityLabel={`${count} length${count === 1 ? '' : 's'} of ${label(b.stock)}, each cut into ${b.cuts.map((c) => label(c.length)).join(', ')}; offcut ${label(b.offcut)}`} style={{ gap: space.xs }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', gap: space.s }}>
+            <Text style={{ flexShrink: 1, ...sys.bodyBold, fontSize: 15, color: t.ink }}>
+              {count > 1 ? `${count} × ` : ''}
+              {label(b.stock)}
             </Text>
             <Text style={{ ...sys.body, fontSize: 15, color: t.muted }}>offcut {label(b.offcut)}</Text>
           </View>
@@ -189,6 +215,9 @@ export function CutBars({ bars, label }: { bars: Bar[]; label: (mm: number) => s
             ))}
             <View style={{ flexGrow: Math.max(0, b.stock - b.used), flexBasis: 0 }} />
           </View>
+          <Text style={{ ...sys.body, fontSize: 14, lineHeight: 19, color: t.muted }}>
+            {cutSummary(b, label)}
+          </Text>
         </View>
       ))}
     </View>

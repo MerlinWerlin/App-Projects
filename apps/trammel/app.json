@@ -18,7 +18,8 @@
       },
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "CADisableMinimumFrameDurationOnPhone": true
       },
       "privacyManifests": {
         "NSPrivacyTracking": false,

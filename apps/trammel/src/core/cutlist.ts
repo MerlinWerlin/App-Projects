@@ -90,9 +90,10 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
     total += p.qty;
   }
   if (total > MAX_PIECES) return fail(`Up to ${MAX_PIECES} pieces at a time.`);
+  const kerfFit = Math.ceil(kerf - 1e-9);
   const longest = Math.max(...stock.map((s) => s.length)) - trim;
   const tooLong = pieces.filter((p) => Math.ceil(p.length - 1e-9) > longest);
-  if (tooLong.length) return fail(`${tooLong.map((p) => f.len(p.length)).join(', ')} won’t fit in your longest stock (${f.len(longest)} after trim). Join it, or add a longer length.`);
+  if (tooLong.length) return fail(`${[...new Set(tooLong.map((p) => f.len(p.length)))].join(', ')} won’t fit in your longest stock (${f.len(longest)} after trim). Join it, or add a longer length.`);
 
   // Group equal lengths; longest first so the reconstruction lists long pieces first on each bar.
   const map = new Map<string, Group>();
@@ -113,10 +114,11 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
       if (stockLeft[i] <= 0) continue;
       const usable = stock[i].length - trim;
       if (usable <= 0) continue;
-      const counts = bestFill(groups, usable + kerf, kerf);
+      // The fit works in whole millimetres: the kerf is rounded up (3.2 -> 4), so a plan never relies on a fraction.
+      const counts = bestFill(groups, usable + kerfFit, kerfFit);
       const n = counts.reduce((a, b) => a + b, 0);
       if (!n) continue;
-      const used = counts.reduce((a, k, g) => a + k * groups[g].w, 0) + (n - 1) * kerf;
+      const used = counts.reduce((a, k, g) => a + k * groups[g].w, 0) + (n - 1) * kerfFit;
       const ratio = used / stock[i].length;
       if (!best || ratio > best.ratio + 1e-12 || (Math.abs(ratio - best.ratio) < 1e-12 && used > best.used)) best = { idx: i, counts, used, ratio };
     }
@@ -136,7 +138,7 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
 
   // Move each bar to the shortest stock that still holds it.
   for (const bar of bars) {
-    const need = bar.cuts.reduce((a, c) => a + Math.ceil(c.length - 1e-9), 0) + (bar.cuts.length - 1) * kerf + trim;
+    const need = bar.cuts.reduce((a, c) => a + Math.ceil(c.length - 1e-9), 0) + (bar.cuts.length - 1) * kerfFit + trim;
     let bestIdx = bar.stockIndex;
     for (let i = 0; i < stock.length; i++) {
       if (stock[i].length >= need && stock[i].length < stock[bestIdx].length && stockLeft[i] > 0) bestIdx = i;

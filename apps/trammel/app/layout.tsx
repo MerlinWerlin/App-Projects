@@ -8,6 +8,8 @@ import { LayoutDiagram } from '../src/ui/diagrams.tsx';
 import { Blade, Card, Checks, ErrorCard, Field, H, P, Readouts, Segment, StepsCard, useReaders, Verify } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
+const MAX_MARKS = 120;
+
 export default function Layout() {
   const t = useTheme();
   const { fmt, settings, country } = useSettings();
@@ -37,12 +39,13 @@ export default function Layout() {
             <Segment options={[{ value: 'edge', label: 'Leading edge' }, { value: 'centre', label: 'Centre' }]} value={vals.mark} onChange={set('mark')} />
             <P muted small>{vals.mark === 'edge' ? 'Hook the tape on the end, mark each number and put the member on the far side of the line.' : 'Centre of each member from the end.'}</P>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
-              {marks.map((m, i) => (
+              {marks.slice(0, MAX_MARKS).map((m, i) => (
                 <View key={i} style={{ backgroundColor: i === 0 || i === marks.length - 1 ? t.sunk : t.blade, borderRadius: radius.s, paddingVertical: space.xs, paddingHorizontal: space.m, minWidth: 72, alignItems: 'center' }}>
                   <Text style={{ fontFamily: fonts.display, fontSize: 22, color: i === 0 || i === marks.length - 1 ? t.ink : t.bladeInk }}>{fmt.len(m).replace(' mm', '')}</Text>
                 </View>
               ))}
             </View>
+            {marks.length > MAX_MARKS ? <P muted small>{`…and ${marks.length - MAX_MARKS} more marks, every ${fmt.len(r.len(vals.spacing) ?? 0)}, to ${fmt.len(marks[marks.length - 1])}.`}</P> : null}
           </Card>
           <Readouts rows={[{ label: `${country.terms.noggin.charAt(0).toUpperCase()}${country.terms.noggin.slice(1)}, full bay`, value: fmt.len(res.value.gaps[1] ?? res.value.gaps[0] ?? 0) }, { label: 'First bay', value: fmt.len(res.value.gaps[0] ?? 0) }, { label: 'Last bay', value: fmt.len(res.value.gaps[res.value.gaps.length - 1] ?? 0) }]} />
           <Checks checks={res.checks} />

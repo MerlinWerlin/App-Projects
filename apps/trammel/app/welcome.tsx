@@ -30,7 +30,7 @@ export default function Welcome() {
       <ScrollView contentContainerStyle={{ paddingTop: insets.top + space.xl, paddingHorizontal: space.l, paddingBottom: space.xl, gap: space.l }}>
         <Image source={require('../assets/icon.png')} style={{ width: 72, height: 72, borderRadius: 16 }} accessibilityIgnoresInvertColors />
         <View style={{ gap: space.s }}>
-          <Text accessibilityRole="header" style={{ fontFamily: fonts.displayHeavy, fontSize: 40, lineHeight: 42, color: t.ink }}>
+          <Text accessibilityRole="header" style={{ fontFamily: fonts.displayHeavy, fontSize: 40, lineHeight: 42, letterSpacing: -0.4, color: t.ink }}>
             Where do you build?
           </Text>
           <Text style={{ ...sys.body, fontSize: 17, lineHeight: 24, color: t.muted }}>

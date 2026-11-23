@@ -376,3 +376,19 @@ test('square: in imperial the 3-4-5 marks are whole feet (9 ft x 12 ft frame -> 
   const v = ok(squareCheck({ a: 108 * 25.4, b: 144 * 25.4, imperial: true }, F));
   assert.deepEqual(v.triple && [v.triple.a, v.triple.b, v.triple.c].map((x) => Math.round(x / 304.8)), [9, 12, 15]);
 });
+
+test('cut list: a fractional kerf (3.2 mm blade) still packs, and plans stay valid', () => {
+  const v = validPlan({ stock: [{ length: 6000 }], pieces: [{ length: 2400, qty: 5 }, { length: 1100, qty: 4 }], kerf: 3.2 });
+  assert.ok(v.bars.length >= 3);
+  assert.equal(v.unplaced.length, 0);
+  // a usable trim that isn't whole millimetres
+  validPlan({ stock: [{ length: 5400 }, { length: 6000 }], pieces: [{ length: 812, qty: 40 }, { length: 450, qty: 7 }], kerf: 2.5, trim: 7.5 });
+});
+
+test('arc: a very flat arch says to use offsets instead of a trammel', () => {
+  const r = arcFromChord({ chord: 14400, rise: 3 }, F);
+  assert.ok(r.ok && r.value.radius > 8e6);
+  assert.ok(r.ok && r.checks.some((c) => c.level === 'warn' && /too big to swing/.test(c.text)));
+  const ok2 = arcFromChord({ chord: 1200, rise: 200 }, F);
+  assert.ok(ok2.ok && ok2.checks[0].level === 'ok');
+});
