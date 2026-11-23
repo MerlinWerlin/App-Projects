@@ -1,10 +1,9 @@
 [
   { "name": "working", "raw": "04-working-light.png", "title": "Concrete to order, with the working", "sub": "Every answer shows its sums. Check it before you ring the plant.", "dark": true },
   { "name": "country", "raw": "00-country-light.png", "title": "Set up for where you work", "sub": "Local units, bag sizes, mesh, bars and rules for AU, NZ, UK, IE, US and Canada", "dark": false },
-  { "name": "mesh", "raw": "05-mesh-dark.png", "title": "Mesh, chairs and laps", "sub": "Sheets turned whichever way uses fewer", "dark": true },
-  { "name": "falls", "raw": "07-falls-pegs-light.png", "title": "Falls and peg heights", "sub": "%, 1 : n and drop along the string line", "dark": false },
-  { "name": "pavers", "raw": "08-pavers-dark.png", "title": "Pavers, sand and base", "sub": "Plus gravel, soil, mulch, and weight to volume", "dark": true },
-  { "name": "retaining", "raw": "09-retaining-light.png", "title": "Retaining walls", "sub": "Blocks, courses, drainage gravel and drain pipe", "dark": false },
-  { "name": "weather", "raw": "10-weather-dark.png", "title": "Pour-day weather", "sub": "Evaporation and cracking risk, plus a curing checklist", "dark": true },
-  { "name": "job", "raw": "13-job-items-light.png", "title": "Jobs and job sheets", "sub": "Saved on your phone. Share with your supplier.", "dark": false }
+  { "name": "tools", "raw": "02-tools-dark.png", "title": "19 tools for the slab and the yard", "sub": "Concrete, steel and forms, ground and landscape, pour day", "dark": true },
+  { "name": "mesh", "raw": "05-mesh-light.png", "title": "Mesh, chairs and laps", "sub": "Sheets turned whichever way uses fewer", "dark": false },
+  { "name": "falls", "raw": "07-falls-pegs-dark.png", "title": "Falls and peg heights", "sub": "%, 1 : n and drop along the string line", "dark": true },
+  { "name": "pavers", "raw": "08-pavers-light.png", "title": "Pavers, sand and base", "sub": "Plus gravel, soil, mulch, and weight to volume", "dark": false },
+  { "name": "retaining", "raw": "09-retaining-dark.png", "title": "Retaining walls", "sub": "Blocks, caps, drainage gravel and ag pipe", "dark": true }
 ]

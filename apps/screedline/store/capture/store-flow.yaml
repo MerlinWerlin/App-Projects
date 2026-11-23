@@ -112,7 +112,8 @@ appId: ${APP_ID}
     element:
       id: "tool-weather"
     direction: DOWN
-    centerElement: true
+# last rows can't be centred: scroll to the end so the row sits clear of the tab bar
+- scroll
 - tapOn:
     id: "tool-weather"
 - waitForAnimationToEnd
