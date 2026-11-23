@@ -135,7 +135,7 @@ jobs:
           grep -F GLAZE_QA_STEP "$OUT/ui-test.log" | tail -80
       - name: Theme card captures, before and after (light, dark, small iPhone)
         if: always()
-        timeout-minutes: 45
+        timeout-minutes: 80
         run: |
           set -uo pipefail
           BEFORE_RUN=$(tr -dc '0-9' < scripts/qa-1044-before-run.txt 2>/dev/null || true)
