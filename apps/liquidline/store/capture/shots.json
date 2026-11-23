@@ -1,0 +1,8 @@
+[
+  { "capture": "01-pt", "tag": "17 refrigerants", "title": "Gauge reading in. Saturation out.", "sub": "R32, R410A, R454B, R290 and more, checked against NIST and the makers’ tables", "accent": "low" },
+  { "capture": "02-superheat", "tag": "Superheat & subcooling", "title": "Every step of the working shown", "sub": "Dew point for superheat, bubble point for subcooling, targets from the nameplate", "accent": "low" },
+  { "capture": "03-glide", "tag": "Blends with glide", "title": "Dew and bubble, side by side", "sub": "R407C, R454B, R448A and R449A done properly", "accent": "high" },
+  { "capture": "04-extra", "tag": "Long line sets", "title": "Extra charge in grams, not guesswork", "sub": "Length, pre-charge and the g/m rate, plus the cost of the gas", "accent": "high" },
+  { "capture": "05-evac", "tag": "Evacuation", "title": "Pull, hold, and know if it’s a leak", "sub": "Checklist, vacuum target and a decay-test timer", "accent": "low" },
+  { "capture": "06-country", "tag": "Your country", "title": "Set up for where you work", "sub": "Units, licence and standards names, and the pair coils your wholesaler stocks", "accent": "high" }
+]

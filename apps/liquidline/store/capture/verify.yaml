@@ -1,0 +1,30 @@
+# StoreKit build checks (no products on a simulator): the paywall offers the free trial, the calculators are gated,
+# the PT tab is free. Screens saved for the purchase review screenshot.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+    clearState: true
+- waitForAnimationToEnd:
+    timeout: 15000
+- tapOn:
+    id: "country-AU"
+- tapOn:
+    id: "onboarding-next"
+- tapOn:
+    id: "onboarding-agree"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "pt-sat"
+- openLink: liquidline://charge
+- waitForAnimationToEnd
+- assertVisible:
+    id: "gate-open-paywall"
+- takeScreenshot: v1-gate
+- tapOn:
+    id: "gate-open-paywall"
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible:
+    id: "start-trial"
+- takeScreenshot: v2-paywall

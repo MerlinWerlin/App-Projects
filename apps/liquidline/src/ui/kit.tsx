@@ -3,7 +3,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
+import { InputAccessoryView, Keyboard, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FONT, RADIUS, SPACE, TOUCH, usePalette, type Palette } from '../theme/tokens.ts';
 
@@ -34,9 +34,21 @@ export function Screen({ title, subtitle, children, right, tab = true }: { title
         </View>
       ) : null}
       {children}
+      {Platform.OS === 'ios' ? (
+        <InputAccessoryView nativeID={DONE_BAR}>
+          <View style={{ flexDirection: 'row', justifyContent: 'flex-end', backgroundColor: p.surface2, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: p.line, paddingHorizontal: SPACE.lg }}>
+            <Pressable accessibilityRole="button" onPress={() => Keyboard.dismiss()} style={{ minHeight: 48, justifyContent: 'center', paddingHorizontal: SPACE.sm }}>
+              <Text style={{ fontSize: 18, fontWeight: '700', color: p.text }}>Done</Text>
+            </Pressable>
+          </View>
+        </InputAccessoryView>
+      ) : null}
     </ScrollView>
   );
 }
+
+/** The iOS number pad has no return key: every number field gets this Done bar above the keyboard. */
+export const DONE_BAR = 'liquidline-done';
 
 export function Card({ children, style, tone }: { children: ReactNode; style?: StyleProp<ViewStyle>; tone?: Tone }) {
   const p = usePalette();
@@ -120,6 +132,7 @@ export function NumberField({ label, value, onChange, unit, step = 1, tone = 'ne
             value={value}
             onChangeText={(s) => onChange(s.replace(/[^0-9.,\-]/g, ''))}
             keyboardType="decimal-pad"
+            inputAccessoryViewID={DONE_BAR}
             returnKeyType="done"
             selectTextOnFocus
             placeholder="–"
