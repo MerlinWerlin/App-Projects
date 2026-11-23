@@ -85,7 +85,7 @@ export function Paywall() {
               Talking to the App Store…
             </Text>
           ) : null}
-          {canStartTrial ? <Button label="Start 7-day free trial" kind="blade" icon="time" hint="Free. Nothing renews." onPress={() => run(TRIAL_SKU)} /> : null}
+          {canStartTrial && unlock.enabled ? <Button label="Start 7-day free trial" kind="blade" icon="time" hint="Free. Nothing renews." onPress={() => run(TRIAL_SKU)} /> : null}
           {unlock.enabled && unlock.price ? (
             <Button label={`Unlock everything · ${unlock.price}`} kind={canStartTrial ? 'secondary' : 'primary'} icon="unlock" onPress={() => run(UNLOCK_SKU)} />
           ) : (
@@ -94,7 +94,7 @@ export function Paywall() {
               <Button label="Try again" kind="quiet" icon="refresh" onPress={() => void refreshProducts()} />
             </>
           )}
-          <P muted small>One-time purchase. No subscription.</P>
+          <P muted small>{unlock.price ? `After the free week, Full Unlock is ${unlock.price}, one time. No subscription.` : 'One-time purchase. No subscription.'}</P>
         </View>
       )}
       <Button label="Restore purchases" kind="quiet" icon="refresh" onPress={doRestore} />

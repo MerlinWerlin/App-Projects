@@ -218,6 +218,11 @@ const US: Catalogue = {
 // https://rona.ca/en/product/2-in-x-4-in-x-92-5-8-in-spf-select-lumber-034-02005-0971267
 // https://www.homehardware.ca/en/2-x-4-x-12-grade-2-better-kiln-dried-spruce-lumber/p/2832431
 // https://www.homehardware.ca/en/2-x-8-x-12-grade-2-better-kiln-dried-spruce/p/2832463
+// https://www.rona.ca/en/product/2-in-x-6-in-x-10-ft-spf-pro-grade-2-btr-lumber-ep2610s-0971053
+// https://rona.ca/en/product/2-in-x-12-in-x-16-ft-spf-2-better-grade-lumber-ep21216s-0971070
+// https://rona.ca/en/product/2-in-x-8-in-x-18-ft-spf-2-better-grade-lumber-0971259
+// Only lengths read from a listing are given (2x10 at 8 and 10 ft); other lengths are usually stocked but weren't read.
+// US 2x8, 2x10 and 2x12 aren't listed because their stocked lengths couldn't be read from the chains' pages: use Custom.
 // https://www.homedepot.ca/product/micropro-sienna-5-4-x-6-x-12-treated-wood-decking/1000680736
 // https://www.rona.ca/en/product/5-4-in-x-6-in-x-10-ft-western-red-cedar-d4s-rcd54610kd-8552016
 // https://www.homedepot.ca/product/cgc-sheetrock-1-2-in-x-4-ft-x-8-ft-ultralight-drywall-panel/1000686028
@@ -227,7 +232,10 @@ const CA: Catalogue = {
   verified: true,
   framing: [
     { id: 'ca-2x4', name: '2x4 (38 x 89)', w: 89, d: 38, grades: 'SPF #2 & Btr, stud, select', lengths: [Math.round(92.625 * IN), Math.round(104.625 * IN), ...ft(8, 10, 12, 14, 16, 20)] },
-    { id: 'ca-2x8', name: '2x8', w: 184, d: 38, grades: 'SPF #2 & Btr', lengths: ft(8, 10, 12, 18) },
+    { id: 'ca-2x6', name: '2x6 (38 x 140)', w: 140, d: 38, grades: 'SPF #2 & Btr', lengths: ft(10) },
+    { id: 'ca-2x8', name: '2x8 (38 x 184)', w: 184, d: 38, grades: 'SPF #2 & Btr', lengths: ft(8, 10, 12, 18) },
+    { id: 'ca-2x10', name: '2x10 (38 x 235)', w: 235, d: 38, grades: 'SPF #2 & Btr', lengths: ft(8, 10) },
+    { id: 'ca-2x12', name: '2x12 (38 x 286)', w: 286, d: 38, grades: 'SPF #2 & Btr', lengths: ft(16) },
   ],
   decking: [
     { id: 'ca-d-54x6pt', name: '5/4 x 6 treated', w: 5.5 * IN, t: 1 * IN, material: 'Pressure-treated, brown', lengths: ft(8, 10, 12, 14, 16) },

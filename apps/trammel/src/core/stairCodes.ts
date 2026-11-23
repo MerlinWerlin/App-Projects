@@ -49,9 +49,10 @@ const NZ: StairLimits[] = [
 // https://assets.publishing.service.gov.uk/media/60d5bdcde90e07716f516cfd/Approved_Document_K.pdf
 const GB_NOTES = ['Open risers: treads overlap at least 16 mm and no gap that lets a 100 mm sphere through', 'At least 2.0 m of headroom (loft conversions: 1.9 m at the centre)', 'England only: Wales, Scotland and Northern Ireland have their own stair rules'];
 const GB: StairLimits[] = [
-  { id: 'gb-private', name: 'Private (one dwelling)', rMin: 150, rMax: 220, gMin: 220, gMax: 300, sMin: 550, sMax: 700, maxPitch: 42, maxRisers: null, minRisers: 2, source: 'Approved Document K (England), Table 1.1 (private stair)', binding: true, notes: GB_NOTES },
-  { id: 'gb-utility', name: 'Utility stair', rMin: 150, rMax: 190, gMin: 250, gMax: 400, sMin: 550, sMax: 700, maxPitch: null, maxRisers: 16, minRisers: 2, source: 'Approved Document K (England), Table 1.1 (utility stair)', binding: true, notes: GB_NOTES.slice(1) },
-  { id: 'gb-general', name: 'General access', rMin: 150, rMax: 170, gMin: 250, gMax: 400, sMin: 550, sMax: 700, maxPitch: null, maxRisers: 12, minRisers: 2, source: 'Approved Document K (England), Table 1.1 (general access stair)', binding: true, notes: GB_NOTES.slice(1) },
+  { id: 'gb-private', name: 'England: private', rMin: 150, rMax: 220, gMin: 220, gMax: 300, sMin: 550, sMax: 700, maxPitch: 42, maxRisers: null, minRisers: 2, source: 'Approved Document K (England), Table 1.1 (private stair)', binding: true, notes: GB_NOTES },
+  { id: 'gb-utility', name: 'England: utility', rMin: 150, rMax: 190, gMin: 250, gMax: 400, sMin: 550, sMax: 700, maxPitch: null, maxRisers: 16, minRisers: 2, source: 'Approved Document K (England), Table 1.1 (utility stair)', binding: true, notes: GB_NOTES.slice(1) },
+  { id: 'gb-general', name: 'England: general access', rMin: 150, rMax: 170, gMin: 250, gMax: 400, sMin: 550, sMax: 700, maxPitch: null, maxRisers: 12, minRisers: 2, source: 'Approved Document K (England), Table 1.1 (general access stair)', binding: true, notes: GB_NOTES.slice(1) },
+  { id: 'gb-other', name: 'Scotland, Wales or NI', rMin: null, rMax: null, gMin: null, gMax: null, sMin: 600, sMax: 650, maxPitch: null, maxRisers: null, minRisers: 2, source: 'Comfort guide only (2R+G 600-650 mm): Scotland, Wales and Northern Ireland have their own stair rules, not checked here', binding: false, notes: ['Check the Scottish Technical Handbook, Approved Document K (Wales) or Technical Booklet H (Northern Ireland)'] },
 ];
 
 // ---------- Ireland ----------
@@ -75,7 +76,7 @@ const IE: StairLimits[] = [
 // https://codes.iccsafe.org/content/IBC2024P1/chapter-10-means-of-egress
 const US_TOL = 'Keep risers and treads within 3/8 in (9.5 mm) of each other';
 const US: StairLimits[] = [
-  { id: 'us-irc', name: 'Dwelling (IRC)', rMin: null, rMax: 196.85, gMin: 254, gMax: null, sMin: null, sMax: null, maxPitch: null, maxRisers: null, minRisers: 2, maxFlightRise: 3835.4, source: '2024 IRC R318.7 (R311.7 in earlier editions)', binding: true, notes: [US_TOL, 'Open risers more than 30 in up: no gap that passes a 4 in sphere', 'At least 6 ft 8 in of headroom', 'Check your state or city amendments'] },
+  { id: 'us-irc', name: 'Dwelling (IRC)', rMin: null, rMax: 196.85, gMin: 254, gMax: null, sMin: null, sMax: null, maxPitch: null, maxRisers: null, minRisers: 2, maxFlightRise: 3835.4, nosingBelow: { going: 279.4, text: 'Treads under 11 in need a 3/4 to 1 1/4 in nosing on solid-riser stairs (IRC R318.7.5.3)' }, source: '2024 IRC R318.7 (R311.7 in earlier editions)', binding: true, notes: [US_TOL, 'Open risers more than 30 in up: no gap that passes a 4 in sphere', 'At least 6 ft 8 in of headroom', 'Check your state or city amendments'] },
   { id: 'us-ibc', name: 'Commercial (IBC)', rMin: 101.6, rMax: 177.8, gMin: 279.4, gMax: null, sMin: null, sMax: null, maxPitch: null, maxRisers: null, minRisers: 2, maxFlightRise: 3657.6, source: '2024 IBC 1011.5.2', binding: true, notes: [US_TOL, 'At least 80 in of headroom', 'Check your state or city amendments'] },
 ];
 

@@ -1,7 +1,7 @@
 import { flatMitre, polygonMitre } from '../src/core/mitre.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { MitreDiagram } from '../src/ui/diagrams.tsx';
-import { Blade, Checks, ErrorCard, Field, Readouts, Segment, StepsCard, useReaders } from '../src/ui/kit.tsx';
+import { Blade, Checks, ErrorCard, Field, Readouts, Segment, StepsCard, useReaders, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
 export default function Mitre() {
@@ -10,7 +10,9 @@ export default function Mitre() {
   const { vals, set } = useToolInputs('mitre', () => ({ mode: 'corner', corner: '90', sides: '6' }));
   const corner = vals.mode === 'corner';
   const sides = r.num(vals.sides);
-  const res = corner ? flatMitre(r.num(vals.corner) ?? NaN, fmt) : polygonMitre(sides ?? NaN, fmt);
+  const res0 = corner ? flatMitre(r.num(vals.corner) ?? NaN, fmt) : polygonMitre(sides ?? NaN, fmt);
+  const bad = useBadField(vals);
+  const res: typeof res0 = bad ? { ok: false, error: bad } : res0;
   const mitre = res.ok ? ('corner' in res.value ? res.value.mitre : res.value.mitre) : 0;
   const drawCorner = res.ok ? ('corner' in res.value ? res.value.corner : res.value.interior) : 90;
   const save = res.ok ? { title: corner ? `Mitre for a ${fmt.deg(drawCorner)} corner` : `${sides}-sided frame`, summary: `Saw at ${fmt.deg(mitre)} off square on each piece`, inputs: vals } : null;

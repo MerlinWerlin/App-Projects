@@ -216,10 +216,13 @@ test('stud layout: 3000 wall, 450 centres, 45 studs', () => {
   assert.ok(Math.max(...v.gaps) <= 450 - 45 + 1e-9);
 });
 
-test('stud layout: a mark that would clash with the end stud is dropped', () => {
-  // 2730: 6 x 450 = 2700 would sit 2677.5-2722.5, overlapping the end stud at 2685-2730
-  const v = ok(layoutMembers({ length: 2730, spacing: 450, thickness: 45 }, F));
-  assert.deepEqual(v.centres, [22.5, 450, 900, 1350, 1800, 2250, 2707.5]);
+test('stud layout: a mark that would clash with the end stud is dropped, and the wide last bay gets an extra member', () => {
+  // 2730: 6 x 450 = 2700 would sit 2677.5-2722.5, overlapping the end stud at 2685-2730. Without it the last bay is
+  // 457.5 on centre (wider than 450), so a member goes hard against the end one at 2662.5.
+  const r = layoutMembers({ length: 2730, spacing: 450, thickness: 45 }, F);
+  const v = ok(r);
+  assert.deepEqual(v.centres, [22.5, 450, 900, 1350, 1800, 2250, 2662.5, 2707.5]);
+  assert.ok(r.ok && r.checks[0].level === 'ok');
   err(layoutMembers({ length: 3000, spacing: 50, thickness: 45 }, F));
   err(layoutMembers({ length: 80, spacing: 450, thickness: 45 }, F));
   err(layoutMembers({ length: 3000, spacing: 0, thickness: 45 }, F));
@@ -391,4 +394,81 @@ test('arc: a very flat arch says to use offsets instead of a trammel', () => {
   assert.ok(r.ok && r.checks.some((c) => c.level === 'warn' && /too big to swing/.test(c.text)));
   const ok2 = arcFromChord({ chord: 1200, rise: 200 }, F);
   assert.ok(ok2.ok && ok2.checks[0].level === 'ok');
+});
+
+test('decking: never hides a big leftover in the gaps; a too-thin leftover rips both edge boards', () => {
+  // 110 wide, 90 boards, 5 gaps: one full board leaves 20, too thin for a board after its gap -> two edge boards
+  let v = ok(decking({ deckWidth: 110, deckLength: 1000, boardWidth: 90, gap: 5 }, F));
+  assert.equal(v.boards, 2);
+  near(v.edgeRip!, 52.5);
+  // 207 wide: 2 full boards (185) leave 22; 22 - 5 = 17 is under 20 and 22 is over the 2 mm gap cap -> edges
+  v = ok(decking({ deckWidth: 207, deckLength: 1000, boardWidth: 90, gap: 5 }, F));
+  assert.equal(v.gapAdjust, 0);
+  assert.equal(v.boards, 3);
+  near(v.edgeRip! * 2 + 90 + 2 * 5, 207);
+});
+
+test('decking: butt joins add their own screws and a join note', () => {
+  const r = decking({ deckWidth: 2900, deckLength: 4800, boardWidth: 86, gap: 4, joistSpacing: 600, stockLength: 2450 }, F);
+  const v = ok(r);
+  // 4800 / 2450 -> 2 lengths a row; joists = ceil(8) + 1 = 9; boards = 32 (31 full + rip)
+  assert.equal(v.joists, 9);
+  assert.equal(v.fixings, 9 * v.boards * 2 + 2 * 2 * 1 * v.boards);
+  assert.ok(r.ok && r.checks.some((c) => /Butt joins/.test(c.text)));
+});
+
+test('stairs: auto never picks more risers than a flight allows, and flags a landing when nothing fits', () => {
+  const v = ok(planStair({ limits: HOUSE, totalRise: 3300 }, F));
+  assert.equal(v.risers, 18);
+  assert.equal(v.needsLanding, false);
+  assert.ok(v.options.every((o) => o.risers <= 18));
+  const big = ok(planStair({ limits: HOUSE, totalRise: 3700 }, F));
+  assert.equal(big.needsLanding, true);
+});
+
+test('stairs: a set going that overruns the floor space fails, saying by how much', () => {
+  const r = planStair({ limits: HOUSE, totalRise: 2700, totalRun: 3600, going: 300 }, F);
+  assert.ok(r.ok && r.checks.some((c) => c.level === 'fail' && /more than the floor space/.test(c.text)));
+});
+
+test('stairs: bottom riser cut drops by the tread thickness', () => {
+  const v = ok(planStair({ limits: HOUSE, totalRise: 2700, treadThickness: 32 }, F));
+  near(v.bottomRiserCut!, 148);
+});
+
+test('square: equal diagonals that do not fit the sides fail; a lone second diagonal is used; 3-4-5 marks follow the sides', () => {
+  const r = squareCheck({ a: 3000, b: 4000, d1: 4000, d2: 4000 }, F);
+  assert.ok(r.ok && r.checks.some((c) => c.level === 'fail' && /don.t fit/.test(c.text)));
+  const lone = ok(squareCheck({ a: 3000, b: 4000, d2: 5000 }, F));
+  near(lone.measured!.corner, 90, 1e-9);
+  const swapped = ok(squareCheck({ a: 4000, b: 3000 }, F));
+  assert.deepEqual([swapped.triple!.a, swapped.triple!.b], [4000, 3000]);
+});
+
+test('arc: no offset table for an arch taller than a semicircle', () => {
+  const r = arcFromChord({ chord: 1200, rise: 1000, divisions: 2 }, F);
+  assert.ok(r.ok && r.value.offsets.length === 0 && r.checks.some((c) => /semicircle/.test(c.text)));
+});
+
+test('cut list: fits to 0.1 mm with the real kerf (5 x 476.9 with a 3.1 kerf is one 2400 length)', () => {
+  const v = validPlan({ stock: [{ length: 2400 }], pieces: [{ length: 476.9, qty: 5 }], kerf: 3.1 });
+  assert.equal(v.bars.length, 1);
+});
+
+test('cut list: keeps the better of two methods (this mix needs 4 lengths of 2000, not 5)', () => {
+  const v = validPlan({ stock: [{ length: 2000 }], pieces: [1400, 1100, 1100, 1000, 1000, 800, 700, 500].map((length) => ({ length, qty: 1 })), kerf: 0 });
+  assert.equal(v.bars.length, 4);
+});
+
+test('cut list: a units slip (lengths over 30 m) is refused instead of locking up', () => {
+  err(optimiseCuts({ stock: [{ length: 60000000 }], pieces: [{ length: 2400, qty: 2 }] }, F));
+  err(optimiseCuts({ stock: [{ length: 6000 }], pieces: [{ length: 1e24, qty: 1 }] }, F));
+});
+
+test('birdsmouth: the one-third rule is a note, never a green tick; a US overhang with under 3 1/2 in left fails', () => {
+  const r = commonRafter({ span: 6000, pitchDeg: 22.5, rafterDepth: 190, seat: 90 }, F);
+  assert.ok(r.ok && !r.checks.some((c) => c.level === 'ok'));
+  near(ok(r).birdsmouth!.left, 190 - 34.4415, 0.001);
+  const us = commonRafter({ span: 4000, pitchDeg: 15, overhang: 300, rafterDepth: 88.9, seat: 88.9, minLeftOnOverhang: { mm: 88.9, text: 'IRC: 3 1/2 in' } }, F);
+  assert.ok(us.ok && us.checks.some((c) => c.level === 'fail' && c.text === 'IRC: 3 1/2 in'));
 });

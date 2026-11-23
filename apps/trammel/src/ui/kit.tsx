@@ -93,7 +93,7 @@ export function Field({ label, value, onChange, kind = 'length', placeholder, hi
           autoCorrect={false}
           autoCapitalize="none"
           selectTextOnFocus
-          accessibilityLabel={label}
+          accessibilityLabel={`${label}${unit ? `, ${unit === 'mm' ? 'millimetres' : unit === 'in' ? 'inches' : 'degrees'}` : ''}`}
           accessibilityHint={hint}
           maxFontSizeMultiplier={1.6}
           style={{ flex: 1, minWidth: 0, fontFamily: fonts.display, fontSize: 30, color: t.ink, paddingVertical: Platform.OS === 'ios' ? 10 : 6 }}
@@ -320,4 +320,27 @@ export function useReaders() {
     len: (s: string | undefined) => (s && s.trim() ? parseLength(s, settings.units) : null),
     num: (s: string | undefined) => (s && s.trim() ? parseNumber(s) : null),
   };
+}
+
+const NOT_INPUT = new Set(['code', 'mode', 'section', 'boardId', 'mark', 'as', 'kind', '__units', '__country']);
+
+/**
+ * The first filled-in field that can't be read, as a message, or null. A typo must stop the result (and Save), not
+ * quietly count as blank or zero. Row lists (cut list) check every row.
+ */
+export function useBadField(vals: Record<string, string>): string | null {
+  const { settings } = useSettings();
+  const readable = (v: string) => !v.trim() || parseLength(v, settings.units) != null || parseNumber(v) != null;
+  for (const [k, v] of Object.entries(vals)) {
+    if (NOT_INPUT.has(k) || typeof v !== 'string') continue;
+    if (v.trim().startsWith('[')) {
+      try {
+        const rows = JSON.parse(v) as Record<string, unknown>[];
+        for (const r of rows) for (const f of ['l', 'q', 'p']) if (typeof r?.[f] === 'string' && !readable(r[f] as string)) return 'One of the lengths, quantities or prices can’t be read. Fix the field marked in red.';
+      } catch {
+        // ignore
+      }
+    } else if (!readable(v)) return 'A field can’t be read. Fix the one marked in red to see the result.';
+  }
+  return null;
 }

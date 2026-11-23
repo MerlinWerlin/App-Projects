@@ -23,7 +23,9 @@ export function arcFromChord(input: { chord: number; rise: number; divisions?: n
   const theta = h > radius ? 2 * Math.PI - 2 * half : 2 * half;
   const arcLength = radius * theta;
   const offsets: ArcResult['offsets'] = [];
-  for (let i = 0; i <= div; i++) {
+  // Offsets from the chord only describe arches up to a semicircle; a taller arch bulges past the chord ends, so
+  // only the radius and centre are given for it.
+  for (let i = 0; i <= div && h <= radius + 1e-9; i++) {
     const fromEnd = (c * i) / div;
     const x = fromEnd - c / 2;
     const y = Math.sqrt(Math.max(0, radius * radius - x * x)) - (radius - h);
@@ -36,6 +38,7 @@ export function arcFromChord(input: { chord: number; rise: number; divisions?: n
     { label: 'Offsets', working: `sqrt(r² - x²) - (r - rise), every ${f.len(c / div)} along the span` },
   ];
   const checks: Check[] = [];
+  if (h > radius + 1e-9) checks.push({ level: 'warn', text: 'Taller than a semicircle: the arch bulges past the ends of the span, so set it out from the centre with the trammel' });
   if (radius > FLAT_RADIUS) checks.push({ level: 'warn', text: `A ${f.len(radius)} radius is too big to swing: mark the offsets below and spring a batten through them` });
   else checks.push({ level: 'ok', text: `Set the trammel points ${f.len(radius)} apart; the centre is ${f.len(Math.abs(radius - h))} ${radius >= h ? 'below' : 'above'} the middle of the span line` });
   return { ok: true, value: { radius, angle: toDeg(theta), arcLength, offsets }, steps, checks };

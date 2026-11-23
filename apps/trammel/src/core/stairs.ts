@@ -37,6 +37,8 @@ export type StairLimits = {
   minRisers: number | null;
   /** Most rise one flight may climb before a landing (NZ, US and Canada limit flights this way), mm. */
   maxFlightRise?: number | null;
+  /** Treads shallower than this need a nosing (US IRC); warned, with the text. */
+  nosingBelow?: { going: number; text: string } | null;
   /** Short citation shown under the result. */
   source: string;
   /** false for generic guidance: outside a range is a note, not a fail. */
@@ -63,6 +65,8 @@ export type StairInput = {
   totalRun?: number | null;
   /** Stringer board width, for the throat check. */
   stringerWidth?: number | null;
+  /** Tread thickness, for the dropped bottom riser on a cut stringer. */
+  treadThickness?: number | null;
 };
 
 export type StairResult = {
@@ -82,6 +86,10 @@ export type StairResult = {
   goingRange: { min: number; max: number } | null;
   limits: StairLimits;
   options: { risers: number; riser: number; goingMin: number; goingMax: number }[];
+  /** True when no single flight can meet the code here (too many risers or too much rise): add a landing. */
+  needsLanding: boolean;
+  /** Bottom riser on a cut stringer: riser less one tread thickness (so the first step isn't high). */
+  bottomRiserCut: number | null;
 };
 
 /** Goings that keep both the going and 2R+G inside the limits for this riser height. */
@@ -97,7 +105,10 @@ export function goingRangeFor(riser: number, L: StairLimits): { min: number; max
 export function stairOptions(totalRise: number, L: StairLimits) {
   const out: StairResult['options'] = [];
   const lo = Math.max(L.minRisers ?? 2, Math.ceil(totalRise / (L.rMax ?? COMFORT_RISER_MAX) - 1e-9));
-  const hi = Math.floor(totalRise / (L.rMin ?? COMFORT_RISER_MIN) + 1e-9);
+  let hi = Math.floor(totalRise / (L.rMin ?? COMFORT_RISER_MIN) + 1e-9);
+  if (L.maxRisers != null) hi = Math.min(hi, L.maxRisers);
+  // Too much rise for one flight: no count passes; the stair needs a landing.
+  if (L.maxFlightRise != null && totalRise > L.maxFlightRise + 1e-9) return out;
   for (let n = lo; n <= hi && out.length < 6; n++) {
     const r = goingRangeFor(totalRise / n, L);
     if (r) out.push({ risers: n, riser: totalRise / n, goingMin: r.min, goingMax: r.max });
@@ -119,7 +130,8 @@ export function planStair(input: StairInput, f: Fmt, goingWord = 'Going'): Calc<
   const rMaxEff = L.rMax ?? COMFORT_RISER_MAX;
   const rMinEff = L.rMin ?? COMFORT_RISER_MIN;
   const nLo = Math.max(L.minRisers ?? 2, Math.ceil(rise / rMaxEff - 1e-9));
-  const nHi = Math.floor(rise / rMinEff + 1e-9);
+  // Counts over the code's risers-per-flight are never picked (they would need a landing).
+  const nHi = Math.min(Math.floor(rise / rMinEff + 1e-9), L.maxRisers ?? Infinity);
   const steps: Step[] = [];
   let n: number;
   if (input.risers) {
@@ -131,9 +143,11 @@ export function planStair(input: StairInput, f: Fmt, goingWord = 'Going'): Calc<
     let bestScore = Infinity;
     for (let k = nLo; k <= nHi; k++) {
       const r = rise / k;
-      const g = input.totalRun / (k - 1);
+      // With a going you set, the flight must also fit the floor space.
+      const g = input.going ?? input.totalRun / (k - 1);
+      const over = Math.max(0, g * (k - 1) - input.totalRun);
       const range = goingRangeFor(r, L);
-      const outBy = range ? Math.max(0, range.min - g, g - range.max) : 1e6;
+      const outBy = (range ? Math.max(0, range.min - g, g - range.max) : 1e6) + over;
       const score = outBy * 1000 + Math.abs(2 * r + g - COMFORT_2RG);
       if (score < bestScore) {
         bestScore = score;
@@ -141,7 +155,7 @@ export function planStair(input: StairInput, f: Fmt, goingWord = 'Going'): Calc<
       }
     }
     n = best;
-    steps.push({ label: 'Risers', working: `${n}: the count whose going fits ${f.len(input.totalRun)} of run best` });
+    steps.push({ label: 'Risers', working: `${n}: the count that fits ${f.len(input.totalRun)} of floor space best` });
   } else {
     n = Math.max(L.minRisers ?? 2, Math.round(rise / COMFORT_RISER));
     if (nLo <= nHi) n = Math.min(nHi, Math.max(nLo, n));
@@ -197,15 +211,23 @@ export function planStair(input: StairInput, f: Fmt, goingWord = 'Going'): Calc<
     const fits = rise <= L.maxFlightRise + 1e-9;
     checks.push({ level: fits ? 'ok' : bad, text: fits ? `Flight rise ${f.len(rise)} (at most ${f.len(L.maxFlightRise)} between landings)` : `Flight rise ${f.len(rise)} is more than ${f.len(L.maxFlightRise)}: add a landing` });
   }
+  if (input.totalRun && totalGoing > input.totalRun + 0.5) checks.push({ level: 'fail', text: `Total ${goingWord.toLowerCase()} ${f.len(totalGoing)} is ${f.len(totalGoing - input.totalRun)} more than the floor space` });
+  if (L.nosingBelow && going < L.nosingBelow.going - 1e-9) checks.push({ level: 'warn', text: L.nosingBelow.text });
   if (throat != null) {
     if (throat <= 0) checks.push({ level: 'fail', text: 'The notches cut right through this stringer: use a wider board or a housed stringer' });
     else checks.push({ level: 'warn', text: `${f.len(throat)} of stringer left under each notch: check it against the span tables or engineer` });
   }
   for (const note of L.notes) checks.push({ level: 'warn', text: note });
+  const needsLanding = (L.maxRisers != null && n > L.maxRisers) || (L.maxFlightRise != null && rise > L.maxFlightRise + 1e-9);
+  let bottomRiserCut: number | null = null;
+  if (input.treadThickness && input.treadThickness > 0) {
+    bottomRiserCut = riser - input.treadThickness;
+    steps.push({ label: 'Bottom riser cut (dropped)', working: `${f.num(riser, 1)} - ${f.len(input.treadThickness)} tread = ${f.num(bottomRiserCut, 1)} mm` });
+  }
 
   return {
     ok: true,
-    value: { risers: n, treads, riser, going, twoRG, totalGoing, angle, step, pitchLine, stringerEstimate, throat, goingRange: range, limits: L, options: stairOptions(rise, L) },
+    value: { risers: n, treads, riser, going, twoRG, totalGoing, angle, step, pitchLine, stringerEstimate, throat, goingRange: range, limits: L, options: stairOptions(rise, L), needsLanding, bottomRiserCut },
     steps,
     checks,
   };

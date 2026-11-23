@@ -8,6 +8,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { localTool, toolById, type ToolId } from '../core/tools.ts';
+import { COUNTRIES, type CountryCode } from '../core/country.ts';
 import { inputsInUnits, UNITS_KEY } from '../core/inputs.ts';
 import { lengthToInput, type UnitSystem } from '../core/units.ts';
 import { useAccess } from '../state/access.ts';
@@ -56,13 +57,16 @@ export function useToolInputs(tool: ToolId, defaults: DefaultsFn) {
   const [vals, setVals] = useState<Record<string, string>>(() => {
     const saved = calc ? findCalc(calc) : undefined;
     const stored = saved && saved.tool === tool ? saved.inputs : last[tool];
-    const base = { ...defaults(d), [UNITS_KEY]: settings.units };
+    const base = { ...defaults(d), [UNITS_KEY]: settings.units, __country: settings.country ?? 'OTHER' };
     return stored ? { ...base, ...inputsInUnits(stored, lengthKeys.current!, settings.units, settings.denom) } : base;
   });
   // Switching units while a tool is open converts every typed length (2700 mm becomes 106 5/16", not 2700").
   useEffect(() => {
     setVals((v) => (v[UNITS_KEY] === settings.units ? v : inputsInUnits(v, lengthKeys.current!, settings.units, settings.denom)));
   }, [settings.units, settings.denom]);
+  // A job saved in another country is re-checked against the current one; say so.
+  const savedCountry = calc ? findCalc(calc)?.inputs.__country : undefined;
+  const countryNote = savedCountry && savedCountry !== (settings.country ?? 'OTHER') && savedCountry in COUNTRIES ? `Saved for ${COUNTRIES[savedCountry as CountryCode].name}: now checked for ${COUNTRIES[settings.country ?? 'OTHER'].name}.` : null;
   const set = (key: string) => (s: string) =>
     setVals((v) => {
       const next = { ...v, [key]: s };
@@ -80,7 +84,7 @@ export function useToolInputs(tool: ToolId, defaults: DefaultsFn) {
       remember(tool, next);
       return next;
     });
-  return { vals, set, reset, setAll };
+  return { vals, set, reset, setAll, countryNote };
 }
 
 export function useLocked(tool: ToolId): boolean {

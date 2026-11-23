@@ -8,7 +8,7 @@ export const TOOLS: readonly ToolInfo[] = Object.freeze([
   { id: 'stairs', name: 'Stairs', blurb: 'Risers, going, 2R+G, stringer', free: false, group: 'Frame' },
   { id: 'layout', name: 'Stud & joist layout', blurb: 'Marks at 450 / 600 centres', free: false, group: 'Frame' },
   { id: 'decking', name: 'Decking', blurb: 'Boards, rip, lengths, screws', free: false, group: 'Frame' },
-  { id: 'cutlist', name: 'Cut list', blurb: 'Fewest lengths, least offcut', free: false, group: 'Frame' },
+  { id: 'cutlist', name: 'Cut list', blurb: 'Kerf-aware cutting plan', free: false, group: 'Frame' },
   { id: 'rafter', name: 'Common rafter', blurb: 'Length, plumb cut, birdsmouth', free: false, group: 'Roof' },
   { id: 'hip', name: 'Hip & valley', blurb: 'Hip pitch, length, creepers', free: false, group: 'Roof' },
   { id: 'pitch', name: 'Roof pitch', blurb: 'Degrees, rise/run, x in 12', free: true, group: 'Roof' },

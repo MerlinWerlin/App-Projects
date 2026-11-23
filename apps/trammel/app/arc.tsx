@@ -3,7 +3,7 @@ import { arcFromChord } from '../src/core/arc.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { fonts, space, useTheme, sys } from '../src/theme/theme.ts';
 import { ArcDiagram } from '../src/ui/diagrams.tsx';
-import { Blade, Card, Checks, ErrorCard, Field, H, P, Stepper, StepsCard, useReaders } from '../src/ui/kit.tsx';
+import { Blade, Card, Checks, ErrorCard, Field, H, P, Stepper, StepsCard, useReaders, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 import { useFine } from '../src/ui/useFine.ts';
 
@@ -16,7 +16,9 @@ export default function Arc() {
   const div = Math.round(r.num(vals.div) ?? 8);
   const chord = r.len(vals.chord) ?? NaN;
   const rise = r.len(vals.rise) ?? NaN;
-  const res = arcFromChord({ chord, rise, divisions: div }, fmt);
+  const res0 = arcFromChord({ chord, rise, divisions: div }, fmt);
+  const bad = useBadField(vals);
+  const res: typeof res0 = bad ? { ok: false, error: bad } : res0;
   const save = res.ok ? { title: `Arch ${fmt.len(chord)} x ${fmt.len(rise)}`, summary: `Radius ${fine(res.value.radius)}, arc ${fmt.len(res.value.arcLength)}; offsets ${res.value.offsets.map((o) => fine(o.y)).join(', ')}`, inputs: vals } : null;
   return (
     <ToolShell tool="arc" save={save}>
@@ -35,6 +37,7 @@ export default function Arc() {
           <Blade label="Trammel radius" value={fine(res.value.radius)} sub={`arc length ${fmt.len(res.value.arcLength)} · ${fmt.deg(res.value.angle)}`} />
           <ArcDiagram chord={chord} rise={rise} radius={res.value.radius} />
           <Checks checks={res.checks} />
+          {res.value.offsets.length ? (
           <Card>
             <H>Offsets from the span line</H>
             <P muted small>Measure along the span from one end, then square up by the offset. Join the points with a batten.</P>
@@ -46,6 +49,7 @@ export default function Arc() {
               </View>
             ))}
           </Card>
+          ) : null}
           <StepsCard steps={res.steps} />
         </>
       )}

@@ -3,7 +3,7 @@ import { decking } from '../src/core/layout.ts';
 import { materialsFor } from '../src/core/materials.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { space } from '../src/theme/theme.ts';
-import { Blade, Checks, ErrorCard, Field, P, Readouts, Segment, StepsCard, useReaders, Verify } from '../src/ui/kit.tsx';
+import { Blade, Checks, ErrorCard, Field, P, Readouts, Segment, StepsCard, useReaders, Verify, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 import { useFine } from '../src/ui/useFine.ts';
 import { lengthToInput } from '../src/core/units.ts';
@@ -15,7 +15,9 @@ export default function Decking() {
   const fine = useFine();
   const r = useReaders();
   const { vals, set, setAll } = useToolInputs('decking', (d) => ({ width: d.len(3000, 144), length: d.len(4800, 192), boardId: first.id, board: d.len(first.w), gap: d.len(5, 0.1875), joists: d.len(country.spacings[d.units === 'imperial' ? 1 : Math.min(2, country.spacings.length - 1)]), stock: first.lengths.length ? d.len(Math.max(...first.lengths)) : '', waste: '10' }));
-  const res = decking({ deckWidth: r.len(vals.width) ?? NaN, deckLength: r.len(vals.length) ?? NaN, boardWidth: r.len(vals.board) ?? NaN, gap: r.len(vals.gap) ?? 0, joistSpacing: r.len(vals.joists), stockLength: r.len(vals.stock), wastePct: r.num(vals.waste) ?? 0 }, fmt);
+  const res0 = decking({ deckWidth: r.len(vals.width) ?? NaN, deckLength: r.len(vals.length) ?? NaN, boardWidth: r.len(vals.board) ?? NaN, gap: r.len(vals.gap) ?? 0, joistSpacing: r.len(vals.joists), stockLength: r.len(vals.stock), wastePct: r.num(vals.waste) ?? 0 }, fmt);
+  const bad = useBadField(vals);
+  const res: typeof res0 = bad ? { ok: false, error: bad } : res0;
   const v = res.ok ? res.value : null;
   const save = v ? { title: `Deck: ${v.boards} boards`, summary: `${v.boards} boards${v.ripped ? `, last ripped to ${fine(v.lastBoard)}` : ''}; ${fmt.num(v.withWaste, 1)} m with waste${v.stockPieces ? `, ${v.stockPieces} lengths` : ''}${v.fixings ? `, ${v.fixings} screws` : ''}`, inputs: vals } : null;
   const pair = (a: React.ReactNode, b: React.ReactNode) => (
@@ -47,14 +49,14 @@ export default function Decking() {
         <ErrorCard text={res.ok ? '' : res.error} />
       ) : (
         <>
-          <Blade label="Boards across" value={String(v.boards)} sub={v.ripped ? `last board ripped to ${fine(v.lastBoard)}` : v.gapAdjust * (v.boards - 1) >= 3 ? `open each gap ${fine(v.gapAdjust)} to finish flush` : v.gapAdjust > 0 ? `finishes ${fine(v.gapAdjust * (v.boards - 1))} short of the edge` : 'finishes on a full board'} />
+          <Blade label="Boards across" value={String(v.boards)} sub={v.edgeRip ? `rip both edge boards to ${fine(v.edgeRip)}` : v.ripped ? `last board ripped to ${fine(v.lastBoard)}` : v.gapAdjust > 0.05 ? `open each gap ${fine(v.gapAdjust)} to finish flush` : 'finishes on a full board'} />
           <Readouts
             rows={[
               { label: 'Linear metres', value: `${fmt.num(v.linearMetres, 1)} m` },
               { label: 'With waste', value: `${fmt.num(v.withWaste, 1)} m`, strong: true },
               ...(v.stockPieces ? [{ label: `Lengths of ${fmt.len(r.len(vals.stock) ?? 0)}`, value: String(v.stockPieces), strong: true }] : []),
               ...(v.joists ? [{ label: 'Joists', value: String(v.joists) }] : []),
-              ...(v.fixings ? [{ label: 'Screws (2 per joist)', value: String(v.fixings) }] : []),
+              ...(v.fixings ? [{ label: 'Screws (incl. butt joins)', value: String(v.fixings) }] : []),
             ]}
           />
           <Checks checks={res.checks} />

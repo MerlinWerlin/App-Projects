@@ -3,6 +3,7 @@
 // StoreKit is asked at launch, on any transaction update, and after every purchase or restore.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useSyncExternalStore } from 'react';
+import { AppState } from 'react-native';
 import { ACCESS_CACHE_KEY, accessOf, mergeEntitlements, parseAccessCache, type Access, type Entitlements } from '../core/access.ts';
 import { loadProducts, onEntitlementChange, purchase, readEntitlements, restore, storeKind, type PurchaseResult, type StoreProduct } from '../native/store.ts';
 
@@ -60,6 +61,19 @@ function start() {
   void refreshAccess();
   void refreshProducts();
   onEntitlementChange(() => void refreshAccess());
+  // iOS often resumes the app without relaunching it: re-read the clock (and StoreKit) when it comes back, and
+  // re-check once a minute while it's open, so a trial ends on time even if the app never restarts.
+  AppState.addEventListener('change', (st) => {
+    if (st === 'active') {
+      emit();
+      void refreshAccess();
+    }
+  });
+  setInterval(() => {
+    const before = current().state;
+    const now = build();
+    if (now.state !== before || now.daysLeft !== current().daysLeft) emit();
+  }, 60_000);
 }
 
 const subscribe = (l: () => void) => {

@@ -1,14 +1,15 @@
 // Cut-list optimiser: cut pieces from stock lengths with as little offcut as possible, allowing for the saw kerf.
 //
-// Method (one-dimensional cutting stock, "best-fit" heuristic): while pieces are left, for every stock length still
-// available find the combination of remaining pieces that fills it best (an exact bounded subset-sum, so each bar
-// is filled as fully as it can be), take the stock length with the highest fill ratio, cut it, and repeat. Then each
-// bar is moved to the shortest stock length that still holds its pieces. This is the classic sequential heuristic
+// Method (one-dimensional cutting stock, two heuristics, the better plan kept): (A) "best fit": while pieces are left,
+// for every stock length still available find the combination of remaining pieces that fills it best (an exact
+// bounded subset-sum), take the stock with the highest fill ratio, cut it, repeat; (B) first-fit decreasing into the
+// longest stock when stock is unlimited. Each bar is then moved to the shortest stock that still holds its pieces,
+// and the plan buying less timber (then fewer lengths) wins. This is the classic sequential heuristic
 // for the cutting-stock problem (Gilmore & Gomory 1961 frame the problem; sequential heuristic procedures as in
 // Haessler 1975). It is not guaranteed to be the global optimum, but every bar it produces is a valid cut plan.
 //
-// Kerf: n pieces from one bar need n - 1 saw cuts between them, plus one more if an offcut is left. Pieces are
-// rounded UP to the next whole millimetre for the fit, so a plan never relies on a fraction of a millimetre.
+// Kerf: n pieces from one bar need n - 1 saw cuts between them, plus one more if an offcut is left. Pieces and the
+// kerf are rounded UP to the next 0.1 mm for the fit.
 // End trim (squaring a factory end) is taken off each bar before cutting.
 import { type Fmt } from './units.ts';
 import { fail, type Calc, type Check, type Step } from './result.ts';
@@ -34,6 +35,8 @@ export type CutResult = {
 };
 
 const MAX_PIECES = 1000;
+/** Longest stock or piece accepted (mm): anything longer is almost always a units slip, and would be slow to plan. */
+export const MAX_LENGTH = 30000;
 
 type Group = { w: number; len: number; label?: string; left: number };
 
@@ -90,9 +93,17 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
     total += p.qty;
   }
   if (total > MAX_PIECES) return fail(`Up to ${MAX_PIECES} pieces at a time.`);
-  const kerfFit = Math.ceil(kerf - 1e-9);
+  const maxLen = Math.max(...stock.map((s) => s.length), ...pieces.map((p) => p.length));
+  if (maxLen > MAX_LENGTH) return fail(`A length over ${f.len(MAX_LENGTH)}: check the units (2400 mm is 2.4 m).`);
+  // Fitting works in whole units of 0.1 mm (1 mm for stock over 7.4 m, to keep the fill table small), with each piece
+  // and the kerf rounded up to a unit, so a plan never relies on a fraction smaller than the display shows.
+  const Q = Math.max(...stock.map((s) => s.length)) <= 7400 ? 10 : 1;
+  const up = (mm: number) => Math.ceil(mm * Q - 1e-6);
+  const kerfQ = up(kerf);
+  const trimQ = up(trim);
+  const capQ = (len: number) => Math.floor(len * Q + 1e-6) - trimQ;
   const longest = Math.max(...stock.map((s) => s.length)) - trim;
-  const tooLong = pieces.filter((p) => Math.ceil(p.length - 1e-9) > longest);
+  const tooLong = pieces.filter((p) => up(p.length) > Math.max(...stock.map((s) => capQ(s.length))));
   if (tooLong.length) return fail(`${[...new Set(tooLong.map((p) => f.len(p.length)))].join(', ')} won’t fit in your longest stock (${f.len(longest)} after trim). Join it, or add a longer length.`);
 
   // Group equal lengths; longest first so the reconstruction lists long pieces first on each bar.
@@ -101,55 +112,89 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
     const key = `${p.length}|${p.label ?? ''}`;
     const g = map.get(key);
     if (g) g.left += p.qty;
-    else map.set(key, { w: Math.ceil(p.length - 1e-9), len: p.length, label: p.label, left: p.qty });
+    else map.set(key, { w: up(p.length), len: p.length, label: p.label, left: p.qty });
   }
-  const groups = [...map.values()].sort((a, b) => b.w - a.w);
-  const stockLeft = stock.map((s) => (s.qty == null ? Infinity : s.qty));
-  const bars: Bar[] = [];
-  const remaining = () => groups.reduce((n, g) => n + g.left, 0);
+  const proto = [...map.values()].sort((a, b) => b.w - a.w);
+  const need = (cuts: { w: number }[]) => cuts.reduce((a, c) => a + c.w, 0) + (cuts.length - 1) * kerfQ;
 
-  while (remaining() > 0) {
-    let best: { idx: number; counts: number[]; used: number; ratio: number } | null = null;
-    for (let i = 0; i < stock.length; i++) {
-      if (stockLeft[i] <= 0) continue;
-      const usable = stock[i].length - trim;
-      if (usable <= 0) continue;
-      // The fit works in whole millimetres: the kerf is rounded up (3.2 -> 4), so a plan never relies on a fraction.
-      const counts = bestFill(groups, usable + kerfFit, kerfFit);
-      const n = counts.reduce((a, b) => a + b, 0);
-      if (!n) continue;
-      const used = counts.reduce((a, k, g) => a + k * groups[g].w, 0) + (n - 1) * kerfFit;
-      const ratio = used / stock[i].length;
-      if (!best || ratio > best.ratio + 1e-12 || (Math.abs(ratio - best.ratio) < 1e-12 && used > best.used)) best = { idx: i, counts, used, ratio };
+  // Plan A: fill one bar at a time as fully as possible (exact subset-sum per bar).
+  const planBestFill = () => {
+    const groups = proto.map((g) => ({ ...g }));
+    const left = stock.map((s) => (s.qty == null ? Infinity : s.qty));
+    const out: { idx: number; items: Group[] }[] = [];
+    while (groups.some((g) => g.left > 0)) {
+      let best: { idx: number; counts: number[]; used: number; ratio: number } | null = null;
+      for (let i = 0; i < stock.length; i++) {
+        if (left[i] <= 0 || capQ(stock[i].length) <= 0) continue;
+        const counts = bestFill(groups, capQ(stock[i].length) + kerfQ, kerfQ);
+        const n = counts.reduce((x, y) => x + y, 0);
+        if (!n) continue;
+        const used = counts.reduce((x, k, g) => x + k * groups[g].w, 0) + (n - 1) * kerfQ;
+        const ratio = used / (stock[i].length * Q);
+        if (!best || ratio > best.ratio + 1e-12 || (Math.abs(ratio - best.ratio) < 1e-12 && used > best.used)) best = { idx: i, counts, used, ratio };
+      }
+      if (!best) break;
+      left[best.idx]--;
+      const items: Group[] = [];
+      best.counts.forEach((k, g) => {
+        for (let m = 0; m < k; m++) items.push(groups[g]);
+        groups[g].left -= k;
+      });
+      out.push({ idx: best.idx, items });
     }
-    if (!best) break;
-    stockLeft[best.idx]--;
+    return { bars: out, left, unplaced: groups.filter((g) => g.left > 0).map((g) => ({ length: g.len, qty: g.left, label: g.label })) };
+  };
+
+  // Plan B: first-fit decreasing into the longest stock (only when every stock length is unlimited).
+  const planFFD = () => {
+    if (stock.some((s) => s.qty != null)) return null;
+    const idx = stock.reduce((bi, s, i) => (capQ(s.length) > capQ(stock[bi].length) ? i : bi), 0);
+    const cap = capQ(stock[idx].length);
+    const out: { idx: number; items: Group[] }[] = [];
+    for (const g of proto) {
+      for (let m = 0; m < g.left; m++) {
+        const bin = out.find((b) => need([...b.items, g]) <= cap);
+        if (bin) bin.items.push(g);
+        else out.push({ idx, items: [g] });
+      }
+    }
+    return { bars: out, left: stock.map(() => Infinity), unplaced: [] as { length: number; qty: number; label: string | undefined }[] };
+  };
+
+  // Move each bar to the shortest stock that still holds it, then keep the plan that buys the least timber.
+  const finish = (plan: { bars: { idx: number; items: Group[] }[]; left: number[] }) => {
+    for (const bar of plan.bars) {
+      let bestIdx = bar.idx;
+      for (let i = 0; i < stock.length; i++) {
+        if (need(bar.items) <= capQ(stock[i].length) && stock[i].length < stock[bestIdx].length && plan.left[i] > 0) bestIdx = i;
+      }
+      if (bestIdx !== bar.idx) {
+        plan.left[bar.idx]++;
+        plan.left[bestIdx]--;
+        bar.idx = bestIdx;
+      }
+    }
+    return plan.bars.reduce((a, b) => a + stock[b.idx].length, 0);
+  };
+  let plan = planBestFill();
+  let boughtA = finish(plan);
+  const alt = planFFD();
+  if (alt) {
+    const boughtB = finish(alt);
+    if (plan.unplaced.length === 0 && (boughtB < boughtA - 1e-6 || (Math.abs(boughtB - boughtA) < 1e-6 && alt.bars.length < plan.bars.length))) {
+      plan = alt;
+      boughtA = boughtB;
+    }
+  }
+  const bars: Bar[] = plan.bars.map((b) => {
     const cuts: Cut[] = [];
     let pos = trim;
-    best.counts.forEach((k, g) => {
-      for (let m = 0; m < k; m++) {
-        cuts.push({ length: groups[g].len, label: groups[g].label, start: pos });
-        pos += groups[g].len + kerf;
-      }
-      groups[g].left -= k;
-    });
-    bars.push({ stock: stock[best.idx].length, stockIndex: best.idx, cuts, used: 0, offcut: 0 });
-  }
-
-  // Move each bar to the shortest stock that still holds it.
-  for (const bar of bars) {
-    const need = bar.cuts.reduce((a, c) => a + Math.ceil(c.length - 1e-9), 0) + (bar.cuts.length - 1) * kerfFit + trim;
-    let bestIdx = bar.stockIndex;
-    for (let i = 0; i < stock.length; i++) {
-      if (stock[i].length >= need && stock[i].length < stock[bestIdx].length && stockLeft[i] > 0) bestIdx = i;
+    for (const g of b.items) {
+      cuts.push({ length: g.len, label: g.label, start: pos });
+      pos += g.len + kerf;
     }
-    if (bestIdx !== bar.stockIndex) {
-      stockLeft[bar.stockIndex]++;
-      stockLeft[bestIdx]--;
-      bar.stockIndex = bestIdx;
-      bar.stock = stock[bestIdx].length;
-    }
-  }
+    return { stock: stock[b.idx].length, stockIndex: b.idx, cuts, used: 0, offcut: 0 };
+  });
 
   let piecesLength = 0;
   let offcutTotal = 0;
@@ -170,7 +215,7 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
   for (const b of bars) counts.set(b.stock, (counts.get(b.stock) ?? 0) + 1);
   const byStock = [...counts.entries()].sort((a, b) => b[0] - a[0]).map(([length, count]) => ({ length, count }));
   const bought = bars.reduce((a, b) => a + b.stock, 0);
-  const unplaced = groups.filter((g) => g.left > 0).map((g) => ({ length: g.len, qty: g.left, label: g.label }));
+  const unplaced = plan.unplaced;
   const yieldPct = bought ? (piecesLength / bought) * 100 : 0;
   const prices = bars.map((b) => stock[b.stockIndex].price);
   const cost = bars.length && prices.every((p) => typeof p === 'number' && Number.isFinite(p) && p >= 0) ? prices.reduce((a: number, p) => a + (p as number), 0) : null;

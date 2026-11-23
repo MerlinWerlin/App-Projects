@@ -55,6 +55,10 @@ test('every guided country checks a real code with a source; anywhere else is gu
     const codes = stairCodesFor(c);
     assert.ok(codes.length >= 2, c);
     for (const l of codes) {
+      if (l.id === 'gb-other') {
+        assert.equal(l.binding, false); // Scotland, Wales, NI: not checked, guidance only
+        continue;
+      }
       assert.equal(l.binding, true, l.id);
       assert.ok(l.source.length > 8, l.id);
       assert.ok(l.rMax != null && l.gMin != null, `${l.id} sets a max riser and min going`);

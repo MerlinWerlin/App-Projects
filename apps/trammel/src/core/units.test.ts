@@ -63,3 +63,11 @@ test('formatting', () => {
   assert.equal(formatLength(2400, 'imperial'), `7' 10 1/2"`);
   assert.equal(formatLength(100, 'imperial', 8), '3 7/8"'); // 3.937 in is nearer 3 7/8 than 4
 });
+
+test('limits round the safe way: a 220 mm minimum is never shown as 8 5/8 in', async () => {
+  const { formatLimit } = await import('./units.ts');
+  assert.equal(formatLimit(220, 'imperial', 8, 'min'), '8 3/4"'); // 8.661 in -> up to 8 3/4
+  assert.equal(formatLimit(355, 'imperial', 8, 'max'), '13 7/8"'); // 13.976 in -> down to 13 7/8
+  assert.equal(formatLimit(239.2, 'metric', 16, 'min'), '240 mm');
+  assert.equal(formatLimit(340.8, 'metric', 16, 'max'), '340 mm');
+});

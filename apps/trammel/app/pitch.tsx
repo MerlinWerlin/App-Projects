@@ -2,14 +2,15 @@ import { View } from 'react-native';
 import { pitchFromDegrees, pitchFromRiseRun } from '../src/core/roof.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { space } from '../src/theme/theme.ts';
-import { Blade, ErrorCard, Field, Readouts, Segment, useReaders, Verify } from '../src/ui/kit.tsx';
+import { Blade, ErrorCard, Field, Readouts, Segment, useReaders, Verify, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
 export default function Pitch() {
   const { fmt } = useSettings();
   const r = useReaders();
   const { vals, set } = useToolInputs('pitch', (d) => ({ mode: 'deg', deg: '22.5', rise: d.len(250, 6), run: d.len(1000, 12) }));
-  const p = vals.mode === 'deg' ? pitchFromDegrees(r.num(vals.deg) ?? NaN) : pitchFromRiseRun(r.len(vals.rise) ?? NaN, r.len(vals.run) ?? NaN);
+  const bad = useBadField(vals);
+  const p = bad ? null : vals.mode === 'deg' ? pitchFromDegrees(r.num(vals.deg) ?? NaN) : pitchFromRiseRun(r.len(vals.rise) ?? NaN, r.len(vals.run) ?? NaN);
   const save = p ? { title: `Pitch ${fmt.deg(p.deg)}`, summary: `${fmt.deg(p.deg)} = ${fmt.num(p.per1000, 0)} per 1000 = ${fmt.num(p.in12, 2)} in 12 = ${fmt.num(p.percent, 1)}%`, inputs: vals } : null;
   return (
     <ToolShell tool="pitch" save={save}>
@@ -27,7 +28,7 @@ export default function Pitch() {
         </View>
       )}
       {!p ? (
-        <ErrorCard text={vals.mode === 'deg' ? 'Enter a pitch between 0° and 90°.' : 'Enter a rise and a run, both more than zero.'} />
+        <ErrorCard text={bad ? bad : vals.mode === 'deg' ? 'Enter a pitch between 0° and 90°.' : 'Enter a rise and a run, both more than zero.'} />
       ) : (
         <>
           <Blade label="Pitch" value={fmt.deg(p.deg)} sub={`${fmt.num(p.in12, 2)} in 12 · 1 : ${fmt.num(p.ratio, 2)}`} />

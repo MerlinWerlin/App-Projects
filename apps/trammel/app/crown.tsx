@@ -1,6 +1,6 @@
 import { compoundMitre } from '../src/core/mitre.ts';
 import { useSettings } from '../src/state/settings.tsx';
-import { Blade, Checks, ErrorCard, Field, P, Readouts, Segment, StepsCard, useReaders } from '../src/ui/kit.tsx';
+import { Blade, Checks, ErrorCard, Field, P, Readouts, Segment, StepsCard, useReaders, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
 const SPRINGS = [
@@ -13,7 +13,9 @@ export default function Crown() {
   const { fmt } = useSettings();
   const r = useReaders();
   const { vals, set } = useToolInputs('crown', () => ({ spring: '45', corner: '90' }));
-  const res = compoundMitre(r.num(vals.spring) ?? NaN, r.num(vals.corner) ?? NaN, fmt);
+  const res0 = compoundMitre(r.num(vals.spring) ?? NaN, r.num(vals.corner) ?? NaN, fmt);
+  const bad = useBadField(vals);
+  const res: typeof res0 = bad ? { ok: false, error: bad } : res0;
   const save = res.ok ? { title: `Cornice, ${fmt.deg(res.value.corner)} corner`, summary: `Spring ${fmt.deg(res.value.tilt)}: bevel ${fmt.deg(res.value.bevel)}, mitre ${fmt.deg(res.value.mitre)} flat; or nested mitre ${fmt.deg(res.value.nestedMitre)}`, inputs: vals } : null;
   return (
     <ToolShell tool="crown" save={save}>

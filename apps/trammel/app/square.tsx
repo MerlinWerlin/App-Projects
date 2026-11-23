@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { squareCheck } from '../src/core/square.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { space } from '../src/theme/theme.ts';
-import { Blade, Checks, ErrorCard, Field, H, Readouts, StepsCard, useReaders } from '../src/ui/kit.tsx';
+import { Blade, Checks, ErrorCard, Field, H, Readouts, StepsCard, useReaders, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 import { useFine } from '../src/ui/useFine.ts';
 
@@ -11,7 +11,9 @@ export default function Square() {
   const fine = useFine();
   const r = useReaders();
   const { vals, set } = useToolInputs('square', (d) => ({ a: d.len(3000, 108), b: d.len(4000, 144), d1: '', d2: '' }));
-  const res = squareCheck({ a: r.len(vals.a) ?? NaN, b: r.len(vals.b) ?? NaN, d1: r.len(vals.d1), d2: r.len(vals.d2), imperial: settings.units === 'imperial' }, fmt);
+  const res0 = squareCheck({ a: r.len(vals.a) ?? NaN, b: r.len(vals.b) ?? NaN, d1: r.len(vals.d1), d2: r.len(vals.d2), imperial: settings.units === 'imperial' }, fmt);
+  const bad = useBadField(vals);
+  const res: typeof res0 = bad ? { ok: false, error: bad } : res0;
   const save = res.ok ? { title: `Square ${fmt.len(r.len(vals.a) ?? 0)} x ${fmt.len(r.len(vals.b) ?? 0)}`, summary: `Diagonal ${fine(res.value.diagonal)}${res.value.measured ? `; measured corner ${fmt.deg(res.value.measured.corner)}` : ''}`, inputs: vals } : null;
   return (
     <ToolShell tool="square" save={save}>
@@ -31,8 +33,8 @@ export default function Square() {
           {res.value.triple ? (
             <Readouts
               rows={[
-                { label: '3-4-5: mark along A', value: fmt.len(res.value.triple.a) },
-                { label: 'mark along B', value: fmt.len(res.value.triple.b) },
+                { label: '3-4-5: mark along side A', value: fmt.len(res.value.triple.a) },
+                { label: 'mark along side B', value: fmt.len(res.value.triple.b) },
                 { label: 'between the marks', value: fmt.len(res.value.triple.c), strong: true },
               ]}
             />

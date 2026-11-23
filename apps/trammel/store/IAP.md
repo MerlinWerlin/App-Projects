@@ -7,7 +7,7 @@ person starts, so there are two non-consumables. `scripts/asc/asc.py apply tramm
 
 | Product ID (exact, can't change later) | Type | Reference name | Price | Display name | Description |
 |---|---|---|---|---|---|
-| `com.jared797.trammel.trial7` | Non-Consumable | 7-Day Free Trial | Free (price 0, every country) | 7-Day Free Trial | Try every Trammel tool free for 7 days. |
+| `com.jared797.trammel.trial7` | Non-Consumable | 7-day Trial | Free (price 0, every country) | 7-day Trial | Try every Trammel tool free for 7 days. |
 | `com.jared797.trammel.unlock` | Non-Consumable | Trammel Full Unlock | A$4.99 base (Apple's equivalents elsewhere) | Trammel Full Unlock | Every tool, forever. One-time, no subscription. |
 
 Code: `src/core/access.ts` (ids and rules, tested in `src/core/access.test.ts`), the StoreKit 2 module

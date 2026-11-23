@@ -150,7 +150,8 @@ export function formatDeg(deg: number, decimals = 1): string {
 export function lengthToInput(mm: number, system: UnitSystem, denom: FractionDenom = 16): string {
   if (!isNum(mm)) return '';
   if (system === 'metric') return String(Math.round(mm * 10) / 10);
-  return formatInches(mm, denom);
+  // Inputs keep 1/32 in so switching units back and forth doesn't drift (255 mm stays 255, not 254).
+  return formatInches(mm, denom >= 32 ? denom : 32);
 }
 
 /** A formatter bundle so the maths can describe its steps in the person's units. */
@@ -165,3 +166,15 @@ export function makeFmt(system: UnitSystem, denom: FractionDenom = 16): Fmt {
 }
 
 export const METRIC: Fmt = makeFmt('metric');
+
+/**
+ * A limit shown in the units in use, rounded the safe way: a minimum rounds up and a maximum down to the tape
+ * fraction (or whole mm), so the number shown never lets a cut pass that the code would fail.
+ */
+export function formatLimit(mm: number, system: UnitSystem, denom: FractionDenom, dir: 'min' | 'max'): string {
+  if (!isNum(mm)) return '-';
+  if (system === 'metric') return formatMm(dir === 'min' ? Math.ceil(mm - 1e-9) : Math.floor(mm + 1e-9));
+  const ticks = (mm / MM_PER_INCH) * denom;
+  const t = dir === 'min' ? Math.ceil(ticks - 1e-9) : Math.floor(ticks + 1e-9);
+  return formatInches((t / denom) * MM_PER_INCH, denom);
+}

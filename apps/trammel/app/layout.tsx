@@ -5,7 +5,7 @@ import { lengthToInput } from '../src/core/units.ts';
 import { useSettings } from '../src/state/settings.tsx';
 import { fonts, radius, space, useTheme } from '../src/theme/theme.ts';
 import { LayoutDiagram } from '../src/ui/diagrams.tsx';
-import { Blade, Card, Checks, ErrorCard, Field, H, P, Readouts, Segment, StepsCard, useReaders, Verify } from '../src/ui/kit.tsx';
+import { Blade, Card, Checks, ErrorCard, Field, H, P, Readouts, Segment, StepsCard, useReaders, Verify, useBadField } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
 const MAX_MARKS = 120;
@@ -15,7 +15,9 @@ export default function Layout() {
   const { fmt, settings, country } = useSettings();
   const r = useReaders();
   const { vals, set } = useToolInputs('layout', (d) => ({ length: d.len(3600, 144), spacing: d.len(country.spacings[d.units === 'imperial' ? 1 : Math.min(2, country.spacings.length - 1)]), thickness: d.len(Math.round(defaultFraming(country.code).d * 10) / 10), mark: 'edge' }));
-  const res = layoutMembers({ length: r.len(vals.length) ?? NaN, spacing: r.len(vals.spacing) ?? NaN, thickness: r.len(vals.thickness) ?? NaN }, fmt);
+  const res0 = layoutMembers({ length: r.len(vals.length) ?? NaN, spacing: r.len(vals.spacing) ?? NaN, thickness: r.len(vals.thickness) ?? NaN }, fmt);
+  const bad = useBadField(vals);
+  const res: typeof res0 = bad ? { ok: false, error: bad } : res0;
   // One-tap centres for this country (src/core/country.ts), shown in the units in use.
   const thicknesses = [...new Set(materialsFor(country.code).framing.map((f) => Math.round(f.d * 10) / 10))].sort((a, b) => a - b).map((mm) => lengthToInput(mm, settings.units, settings.denom));
   const presets = country.spacings.map((mm) => lengthToInput(mm, settings.units, settings.denom));

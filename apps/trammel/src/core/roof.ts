@@ -41,6 +41,8 @@ export type RafterInput = {
   overhang?: number | null;
   rafterDepth?: number | null;
   seat?: number | null;
+  /** A code minimum for timber left above the notch where the rafter overhangs (US IRC R802.7.1.1: 3 1/2 in). */
+  minLeftOnOverhang?: { mm: number; text: string } | null;
 };
 
 export type RafterResult = {
@@ -51,7 +53,7 @@ export type RafterResult = {
   total: number;
   plumbAngle: number;
   seatAngle: number;
-  birdsmouth: { plumbHeight: number; depthSquare: number; hap: number; overThird: boolean } | null;
+  birdsmouth: { plumbHeight: number; depthSquare: number; hap: number; overThird: boolean; left: number } | null;
 };
 
 export function commonRafter(input: RafterInput, f: Fmt): Calc<RafterResult> {
@@ -85,13 +87,18 @@ export function commonRafter(input: RafterInput, f: Fmt): Calc<RafterResult> {
     const depthSquare = S * Math.sin(toRad(p.deg));
     const hap = D / c - plumbHeight;
     const overThird = depthSquare > D / 3 + 1e-9;
-    birdsmouth = { plumbHeight, depthSquare, hap, overThird };
+    const left = D - depthSquare;
+    birdsmouth = { plumbHeight, depthSquare, hap, overThird, left };
     steps.push({ label: 'Birdsmouth plumb cut', working: `${f.len(S)} seat x tan ${f.deg(p.deg)} = ${f.len(plumbHeight)}` });
     steps.push({ label: 'Notch depth (square to edge)', working: `${f.len(S)} x sin ${f.deg(p.deg)} = ${f.len(depthSquare)}` });
+    steps.push({ label: 'Rafter left above the notch', working: `${f.len(D)} - ${f.len(depthSquare)} = ${f.len(left)}` });
     steps.push({ label: 'Height above plate', working: `${f.len(D)} / cos ${f.deg(p.deg)} - ${f.len(plumbHeight)} = ${f.len(hap)}` });
     if (hap <= 0) checks.push({ level: 'fail', text: 'The seat is too long for this rafter: the birdsmouth cuts through it' });
     else if (overThird) checks.push({ level: 'fail', text: `Notch is ${f.len(depthSquare)} deep, more than a third of the ${f.len(D)} rafter. Shorten the seat or check your framing code` });
-    else checks.push({ level: 'ok', text: `Notch ${f.len(depthSquare)} deep, within a third of the rafter depth` });
+    // One third is a common rule of thumb, not a code limit: never a green tick.
+    else checks.push({ level: 'warn', text: `Notch ${f.len(depthSquare)} deep (rule of thumb: no more than a third of the rafter). Check your framing code` });
+    const min = input.minLeftOnOverhang;
+    if (hap > 0 && min && over > 0 && left < min.mm - 1e-9) checks.push({ level: 'fail', text: min.text });
   } else if (D > 0 || S > 0) {
     checks.push({ level: 'warn', text: 'Enter both rafter depth and seat length to work out the birdsmouth' });
   }
@@ -105,6 +112,9 @@ export function commonRafter(input: RafterInput, f: Fmt): Calc<RafterResult> {
 }
 
 export type HipInput = { run: number; pitchDeg: number; spacing?: number | null };
+
+/** Most creeper lengths listed (more than this is a units slip). */
+export const MAX_CREEPERS = 400;
 export type HipResult = {
   rise: number;
   hipRun: number;
@@ -139,7 +149,7 @@ export function regularHip(input: HipInput, f: Fmt): Calc<HipResult> {
     creeperStep = input.spacing / c;
     steps.push({ label: 'Each creeper is shorter by', working: `${f.len(input.spacing)} / cos ${f.deg(p.deg)} = ${f.len(creeperStep)}` });
     // Creeper k stands k x spacing along the plate from the corner, so its run is k x spacing.
-    for (let k = 1; k * input.spacing < input.run - 1e-9 && creepers.length < 60; k++) creepers.push(k * creeperStep);
+    for (let k = 1; k * input.spacing < input.run - 1e-9 && creepers.length < MAX_CREEPERS; k++) creepers.push(k * creeperStep);
   }
   return {
     ok: true,
