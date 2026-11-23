@@ -24,13 +24,15 @@ export function bestTriple(a: number, b: number, unit = 100) {
   return { k, a: 3 * k, b: 4 * k, c: 5 * k };
 }
 
-export function squareCheck(input: { a: number; b: number; d1?: number | null; d2?: number | null }, f: Fmt): Calc<SquareResult> {
+/** unit: the step for the 3-4-5 multiple (mm). Metric 100 mm (10 mm on small frames); imperial 1 ft (1 in on small frames). */
+export function squareCheck(input: { a: number; b: number; d1?: number | null; d2?: number | null; imperial?: boolean }, f: Fmt): Calc<SquareResult> {
   const e = positive('first side', input.a) || positive('second side', input.b);
   if (e) return fail(e);
   const { a, b } = input;
   const diagonal = Math.hypot(a, b);
   const steps: Step[] = [{ label: 'Diagonal when square', working: `sqrt(${f.len(a)}² + ${f.len(b)}²) = ${f.len(diagonal)}` }];
-  const triple = bestTriple(a, b, a < 1000 || b < 1000 ? 10 : 100);
+  const small = a < 1000 || b < 1000;
+  const triple = bestTriple(a, b, input.imperial ? (small ? 25.4 : 304.8) : small ? 10 : 100);
   if (triple) steps.push({ label: '3-4-5 set-out', working: `mark ${f.len(triple.a)} and ${f.len(triple.b)} from the corner; between the marks = ${f.len(triple.c)}` });
   const checks: Check[] = [];
   let measured: SquareResult['measured'] = null;

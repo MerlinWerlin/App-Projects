@@ -371,3 +371,8 @@ test('cut list: prices per length add up to a total, and any missing price gives
   const none = validPlan({ stock: [{ length: 6000, price: 18.5 }, { length: 4800 }], pieces: [{ length: 4500, qty: 2 }], kerf: 3 });
   assert.equal(none.cost, null);
 });
+
+test('square: in imperial the 3-4-5 marks are whole feet (9 ft x 12 ft frame -> 9, 12, 15 ft)', () => {
+  const v = ok(squareCheck({ a: 108 * 25.4, b: 144 * 25.4, imperial: true }, F));
+  assert.deepEqual(v.triple && [v.triple.a, v.triple.b, v.triple.c].map((x) => Math.round(x / 304.8)), [9, 12, 15]);
+});

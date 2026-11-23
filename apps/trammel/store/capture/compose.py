@@ -12,12 +12,13 @@ Y, K = (255, 194, 26), (17, 17, 17)
 W, H = 1320, 2868
 
 SHOTS = [
-    ('light-01-stairs.png', 'STAIRS, CHECKED\nAGAINST THE NCC', 'Risers, going and 2R+G in one go'),
-    ('light-08-cutlist.png', 'CUT LISTS THAT\nWASTE LESS', 'Fewest lengths, kerf allowed for'),
-    ('light-02-rafter.png', 'RAFTERS AND\nBIRDSMOUTHS', 'Length, plumb cut, height above plate'),
-    ('light-04-crown.png', 'CORNICE CUTS,\nANY CORNER', 'Bevel and mitre straight to the saw'),
-    ('light-06-layout.png', 'STUD AND JOIST\nLAYOUTS', 'Every mark from the end at 450 or 600'),
-    ('dark-00-home.png', 'EVERY TOOL A\nCHIPPY NEEDS', 'Big buttons, every step shown'),
+    # Headline lines are separated by "|".
+    ('light-01-stairs.png', 'STAIRS, CHECKED|AGAINST YOUR CODE', 'Risers, going and 2R+G in one go'),
+    ('light-16-welcome.png', 'BUILT FOR WHERE|YOU BUILD', 'Local codes, trade words and timber sizes'),
+    ('light-08-cutlist.png', 'CUT LISTS THAT|WASTE LESS', 'From the lengths your yard stocks'),
+    ('light-02-rafter.png', 'RAFTERS AND|BIRDSMOUTHS', 'Length, plumb cut, height above plate'),
+    ('light-04-crown.png', 'CORNICE CUTS,|ANY CORNER', 'Bevel and mitre straight to the saw'),
+    ('dark-00-home.png', 'EVERY TOOL A|CHIPPY NEEDS', 'Big buttons, every step shown'),
 ]
 
 def ticks(d, y0, up=True):
@@ -33,7 +34,7 @@ def compose(raw, title, sub, out):
     d = ImageDraw.Draw(bg)
     ticks(d, 0, up=False)
     y = 190
-    for line in title.split('\n'):
+    for line in title.split('|'):
         tw = d.textlength(line, font=HEAD)
         d.text(((W - tw) / 2, y), line, font=HEAD, fill=K)
         y += 140
