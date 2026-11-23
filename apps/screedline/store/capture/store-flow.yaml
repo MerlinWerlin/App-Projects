@@ -1,0 +1,127 @@
+# Store screenshots for Screedline (capture build: every tool open, invented demo jobs).
+# Run by .github/workflows/screedline-capture.yml with -e APP_ID=... -e MODE=light|dark
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Numbers you can check on site"
+    timeout: 60000
+- waitForAnimationToEnd
+- takeScreenshot: 01-home-${MODE}
+- tapOn: "Got it"
+- scrollUntilVisible:
+    element:
+      id: "tool-mesh"
+    direction: DOWN
+- takeScreenshot: 02-tools-${MODE}
+
+# Slab: result and working
+- stopApp
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "tool-slab"
+    timeout: 30000
+- tapOn:
+    id: "tool-slab"
+- extendedWaitUntil:
+    visible: "Length"
+    timeout: 15000
+- waitForAnimationToEnd
+- takeScreenshot: 03-slab-${MODE}
+- scrollUntilVisible:
+    element:
+      id: "show-working"
+    direction: DOWN
+- tapOn:
+    id: "show-working"
+- scroll
+- waitForAnimationToEnd
+- takeScreenshot: 04-working-${MODE}
+
+- stopApp
+- launchApp
+- scrollUntilVisible:
+    element:
+      id: "tool-mesh"
+    direction: DOWN
+- tapOn:
+    id: "tool-mesh"
+- waitForAnimationToEnd
+- takeScreenshot: 05-mesh-${MODE}
+
+- stopApp
+- launchApp
+- scrollUntilVisible:
+    element:
+      id: "tool-falls"
+    direction: DOWN
+- tapOn:
+    id: "tool-falls"
+- waitForAnimationToEnd
+- takeScreenshot: 06-falls-${MODE}
+- scrollUntilVisible:
+    element: "Peg heights below the high end"
+    direction: DOWN
+- scroll
+- takeScreenshot: 07-falls-pegs-${MODE}
+
+- stopApp
+- launchApp
+- scrollUntilVisible:
+    element:
+      id: "tool-pavers"
+    direction: DOWN
+- tapOn:
+    id: "tool-pavers"
+- waitForAnimationToEnd
+- takeScreenshot: 08-pavers-${MODE}
+
+- stopApp
+- launchApp
+- scrollUntilVisible:
+    element:
+      id: "tool-retaining"
+    direction: DOWN
+- tapOn:
+    id: "tool-retaining"
+- waitForAnimationToEnd
+- takeScreenshot: 09-retaining-${MODE}
+
+- stopApp
+- launchApp
+- scrollUntilVisible:
+    element:
+      id: "tool-weather"
+    direction: DOWN
+- tapOn:
+    id: "tool-weather"
+- waitForAnimationToEnd
+- takeScreenshot: 10-weather-${MODE}
+
+- stopApp
+- launchApp
+- tapOn:
+    id: "tab-jobs"
+- waitForAnimationToEnd
+- takeScreenshot: 11-jobs-${MODE}
+- tapOn:
+    id: "job-0"
+- waitForAnimationToEnd
+- takeScreenshot: 12-job-${MODE}
+- scrollUntilVisible:
+    element: "Saved calculations"
+    direction: DOWN
+- scroll
+- takeScreenshot: 13-job-items-${MODE}
+
+- stopApp
+- launchApp
+- tapOn:
+    id: "tab-settings"
+- waitForAnimationToEnd
+- takeScreenshot: 14-settings-${MODE}
+- tapOn: "Full Unlock, .*"
+- waitForAnimationToEnd
+- takeScreenshot: 15-unlock-${MODE}

@@ -1,0 +1,14 @@
+﻿{
+  "generator": "ChatGPT desktop (Codex) image generation, 23 Nov 2026, new chat 'Generate Screedline app images'",
+  "style": "Bold flat geometric vector illustration, subtle concrete grain, palette charcoal #15171A, warm greys #EEECE6 #C9C5BA #8C887E, one hi-vis amber #FFB300. No text, letters, numbers, logos, brand names or real people.",
+  "files": {
+    "brand/icon.png": "Charcoal background, fresh concrete slab block in three-quarter view, thick amber screed bar resting level across its top leaving one crisp line. Padded to 86% by Claude.",
+    "brand/splash-icon.png": "Same art as the icon.",
+    "art/welcome.jpg": "Two-person concreting crew in amber hi-vis screeding a fresh driveway at early morning, truck chute behind.",
+    "art/welcome-ground.jpg": "Landscaper laying pavers beside a low block retaining wall, gravel and wheelbarrow.",
+    "art/empty-jobs.jpg": "Clipboard with a blank sheet on a fresh slab, float, string line and two pegs, on #EEECE6.",
+    "../store/art/store-bg-dark.jpg": "1290x2796 broom-finished charcoal concrete with one glowing amber diagonal screed line.",
+    "../store/art/store-bg-light.jpg": "1290x2796 light trowelled concrete with an amber string line and pegs."
+  },
+  "reviewedBy": "Claude (visual check: original, on palette, no text or logos)"
+}
