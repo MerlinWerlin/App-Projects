@@ -9,7 +9,8 @@ import { stairCodesFor } from '../../src/core/stairCodes.ts';
 import { useAccess } from '../../src/state/access.ts';
 import { useSettings } from '../../src/state/settings.tsx';
 import { fonts, radius, space, useTheme, sys } from '../../src/theme/theme.ts';
-import { Icon, type IconName } from '../../src/ui/Icon.tsx';
+import { Icon } from '../../src/ui/Icon.tsx';
+import { ToolGlyph } from '../../src/ui/ToolGlyph.tsx';
 
 const GROUPS = ['Frame', 'Roof', 'Trim', 'Set-out'] as const;
 
@@ -65,8 +66,8 @@ export default function Tools() {
                   accessibilityLabel={`${name}. ${blurb}${lock ? '. Locked, part of Full Unlock' : ''}`}
                   style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: space.m, minHeight: 68, paddingHorizontal: space.l, paddingVertical: space.s, borderTopWidth: i ? 1 : 0, borderTopColor: t.line, backgroundColor: pressed ? t.sunk : 'transparent' })}
                 >
-                  <View style={{ width: 40, height: 40, borderRadius: 9, backgroundColor: t.blade, alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon name={tool.id as IconName} size={22} color={t.bladeInk} />
+                  <View style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: t.blade, alignItems: 'center', justifyContent: 'center' }}>
+                    <ToolGlyph id={tool.id} size={26} color={t.bladeInk} />
                   </View>
                   <View style={{ flex: 1, gap: 1 }}>
                     <Text style={{ fontFamily: fonts.display, fontSize: 21, lineHeight: 24, color: t.ink }}>{name}</Text>

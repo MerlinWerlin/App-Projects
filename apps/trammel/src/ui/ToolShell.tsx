@@ -102,7 +102,10 @@ export function ToolShell({ tool, children, save }: { tool: ToolId; children: Re
       <Stack.Screen options={{ title: local.name }} />
       {locked ? (
         <Screen>
-          <LockedCard name={local.name} blurb={local.blurb} expired={a.state === 'expired'} />
+          <LockedPreview>{children}</LockedPreview>
+          <View style={{ marginTop: -120 }}>
+            <LockedCard name={local.name} blurb={local.blurb} expired={a.state === 'expired'} />
+          </View>
         </Screen>
       ) : (
         <Screen
@@ -122,6 +125,22 @@ export function ToolShell({ tool, children, save }: { tool: ToolId; children: Re
       )}
       {save ? <SaveSheet visible={sheet} onClose={() => setSheet(false)} tool={tool} payload={save} /> : null}
     </>
+  );
+}
+
+/**
+ * The real tool, worked out with its example numbers, shown faded and untouchable above the unlock card, so a locked
+ * tool shows exactly what the unlock gives (the result, the drawing, the checks) instead of a bare padlock.
+ */
+function LockedPreview({ children }: { children: ReactNode }) {
+  const t = useTheme();
+  return (
+    <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ height: 640, overflow: 'hidden' }}>
+      <View style={{ gap: space.l, opacity: 0.55 }}>{children}</View>
+      {[0.35, 0.6, 0.85, 1].map((o, i) => (
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, bottom: (3 - i) * 40, height: 40, backgroundColor: t.bg, opacity: o }} />
+      ))}
+    </View>
   );
 }
 
