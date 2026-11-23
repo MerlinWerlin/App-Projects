@@ -101,14 +101,17 @@ import Darwin
       settle(2)
       shot(app, "\(slug)-downloading")
     }
-    XCTAssertTrue(use.waitForExistence(timeout: 150), "\(name) did not finish downloading\n" + app.debugDescription)
-    shot(app, "\(slug)-downloaded")
-    _ = reveal(use, in: app)
-    use.tap()
-    settle(1.5)
-    let yes = app.buttons["Yes, use it"].firstMatch
-    if yes.waitForExistence(timeout: 10) { shot(app, "\(slug)-use-prompt"); yes.tap() }
     let next = app.staticTexts["Next steps"].firstMatch
+    let yes = app.buttons["Yes, use it"].firstMatch
+    // A download started from the theme bar applies the theme by itself and opens Next steps.
+    let ready = Date().addingTimeInterval(150)
+    while Date() < ready && !next.exists && !yes.exists && !use.exists { settle(2) }
+    XCTAssertTrue(next.exists || yes.exists || use.exists, "\(name) did not finish downloading\n" + app.debugDescription)
+    shot(app, "\(slug)-downloaded")
+    if !next.exists {
+      if !yes.exists { _ = reveal(use, in: app); use.tap(); settle(1.5) }
+      if yes.waitForExistence(timeout: 10) { shot(app, "\(slug)-use-prompt"); yes.tap() }
+    }
     XCTAssertTrue(next.waitForExistence(timeout: 30) || app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "In use")).firstMatch.exists, "\(name) was not applied\n" + app.debugDescription)
     settle(2)
     shot(app, "\(slug)-applied")
