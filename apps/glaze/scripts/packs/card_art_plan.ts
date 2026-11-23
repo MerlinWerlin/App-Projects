@@ -2,7 +2,8 @@
 // actualy suit the themes ... maje the split 50/50 betweem clocks and art"): decides, once and for good,
 // which theme cards show the theme's Clock widget and which show one of its Artwork widgets. Neighbours
 // should differ wherever people see them side by side: in each category rail (weight 5), in the All
-// themes grid rows (catalogue order, 3 a row; weight 1), the Free rails and the stage (weight 1). That is
+// themes grid rows (catalogue order, 3 a row; weight 1), the Free section (weight 5, the first thing a
+// free user sees) and the stage (weight 3). That is
 // each rail alternates exactly, and the phase of each rail is picked (all 2^n tried) to keep the
 // grid rows and the 50/50 total. Run: node scripts/packs/card_art_plan.ts <catalog-v2.json> <scores.json> > plan.json
 import { readFileSync } from 'node:fs';
@@ -31,8 +32,12 @@ for (let i = 0; i < ids.length; i++) {
 const free = FREE_THEME_IDS.filter((id) => ids.includes(id));
 const featured = new Set(FEATURED_FREE_IDS);
 const rest = free.filter((id) => !featured.has(id));
-for (let i = 1; i < rest.length; i++) edge(rest[i - 1], rest[i], 1);
-edge(FEATURED_FREE_IDS[0], FEATURED_FREE_IDS[1], 1);
+for (let i = 1; i < rest.length; i++) edge(rest[i - 1], rest[i], 5);
+edge(FEATURED_FREE_IDS[0], FEATURED_FREE_IDS[1], 5);
+// The stage (the large prints that open the tab for free users): the bundled starters, which are the
+// free themes, in catalogue order, at most 8 (app/(tabs)/themes.tsx STAGE_MAX).
+const stageIds = ids.filter((id) => free.includes(id)).slice(0, 8);
+for (let i = 1; i < stageIds.length; i++) edge(stageIds[i - 1], stageIds[i], 3);
 const eligible = new Set(ids.filter((id) => (scores[id] ?? []).some((c) => !c.func)));
 const adj = new Map<string, [string, number][]>();
 for (const [k, w] of W) {

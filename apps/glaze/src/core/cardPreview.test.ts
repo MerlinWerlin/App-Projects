@@ -11,6 +11,7 @@ import { groupByCategory } from './themeBrowse.ts';
 import { remoteArtTheme } from './remoteCatalog.ts';
 import { parseCatalog } from './packCatalog.ts';
 import { THEMES } from './themes.ts';
+import { FEATURED_FREE_IDS, FREE_THEME_IDS } from './freeThemes.ts';
 import { identityForTheme } from './widgetIdentity.ts';
 
 const APP = join(import.meta.dirname, '..', '..');
@@ -104,4 +105,12 @@ test('neighbouring cards in every category rail alternate Clock and Artwork (pub
       assert.notEqual(cardWidgetKind(s.themes[i - 1].id), cardWidgetKind(s.themes[i].id), `${s.id}: ${s.themes[i - 1].id} and ${s.themes[i].id}`);
     }
   }
+});
+
+test('the Free section alternates too: the two featured cards differ, and so does every pair in the rail after them', () => {
+  const kinds = (ids: readonly string[]) => ids.map((id) => cardWidgetKind(id));
+  const [a, b] = kinds(FEATURED_FREE_IDS);
+  assert.notEqual(a, b, 'featured pair');
+  const rest = kinds(FREE_THEME_IDS.filter((id) => !FEATURED_FREE_IDS.includes(id)));
+  for (let i = 1; i < rest.length; i++) assert.notEqual(rest[i], rest[i - 1], `free rail ${i - 1}/${i}`);
 });
