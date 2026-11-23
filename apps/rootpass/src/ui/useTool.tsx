@@ -97,7 +97,7 @@ export function ToolScreen({ tool, onSave, jobName, children }: { tool: ToolId; 
     <>
       <Stack.Screen
         options={{
-          title: jobName ?? meta.title,
+          title: jobName ?? app.sp(meta.title),
           headerRight: open && onSave ? () => (
             <Pressable onPress={onSave} accessibilityRole="button" accessibilityLabel="Save job" hitSlop={10} style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
               <Icon name="bookmark" size={24} color={C.accent} />

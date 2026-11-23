@@ -31,7 +31,7 @@ appId: ${APP_ID}
     visible: "Cut list"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Stock lengths"
+    element: "Stock lengths.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: r04-cutlist-${TAG}

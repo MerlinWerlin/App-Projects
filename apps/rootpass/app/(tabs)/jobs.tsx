@@ -39,7 +39,7 @@ export default function Jobs() {
           <Pressable
             onPress={() => router.push({ pathname: `/tool/${j.tool}`, params: { job: j.id } })}
             accessibilityRole="button"
-            accessibilityLabel={`${j.name}, ${TOOL_META[j.tool].title}`}
+            accessibilityLabel={app.sp(`${j.name}, ${TOOL_META[j.tool].title}`)}
             style={({ pressed }) => ({ flex: 1, flexDirection: 'row', alignItems: 'center', gap: SPACE.md, padding: SPACE.lg, opacity: pressed ? 0.8 : 1, minHeight: 76 })}
           >
             <Glyph tool={j.tool} size={40} />

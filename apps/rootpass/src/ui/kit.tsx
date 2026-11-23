@@ -159,6 +159,7 @@ export function Btn({ label, onPress, kind = 'primary', icon, disabled }: { labe
       onPress={onPress}
       disabled={disabled}
       accessibilityRole="button"
+      accessibilityLabel={sp(label)}
       accessibilityState={{ disabled: !!disabled }}
       style={({ pressed }) => [st.btn, { backgroundColor: bg, opacity: disabled ? 0.45 : 1, transform: [{ scale: pressed && !disabled ? 0.97 : 1 }] }]}
     >
@@ -170,8 +171,9 @@ export function Btn({ label, onPress, kind = 'primary', icon, disabled }: { labe
 
 /** The answer, big. */
 export function Big({ label, value, sub, tone = 'ink' }: { label: string; value: string; sub?: string; tone?: 'ink' | 'accent' | 'arc' }) {
+  const { sp } = useApp();
   return (
-    <View style={{ gap: 2, minWidth: 140, flex: 1 }} accessible accessibilityLabel={`${label}: ${value}${sub ? `, ${sub}` : ''}`}>
+    <View style={{ gap: 2, minWidth: 140, flex: 1 }} accessible accessibilityLabel={sp(`${label}: ${value}${sub ? `, ${sub}` : ''}`)}>
       <Txt v="label" tone="ink3">{label}</Txt>
       <Txt v="number" tone={tone} selectable>{value}</Txt>
       {sub ? <Txt v="small" tone="ink2">{sub}</Txt> : null}

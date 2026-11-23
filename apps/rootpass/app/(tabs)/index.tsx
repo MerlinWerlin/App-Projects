@@ -45,7 +45,7 @@ export default function Tools() {
       <Pressable
         onPress={() => router.push('/tool/saddle')}
         accessibilityRole="button"
-        accessibilityLabel={`${TOOL_META.saddle.title}. ${TOOL_META.saddle.short}${app.can('saddle') ? '' : '. In Full Unlock'}`}
+        accessibilityLabel={app.sp(`${TOOL_META.saddle.title}. ${TOOL_META.saddle.short}${app.can('saddle') ? '' : '. In Full Unlock'}`)}
         style={({ pressed }) => [st.feature, { opacity: pressed ? 0.9 : 1 }]}
       >
         <SaddleCurve width={width - SPACE.gutter * 2 - 2} />
@@ -70,7 +70,7 @@ export default function Tools() {
                   key={id}
                   onPress={() => router.push(`/tool/${id}`)}
                   accessibilityRole="button"
-                  accessibilityLabel={`${m.title}. ${m.short}${locked ? '. In Full Unlock' : ''}`}
+                  accessibilityLabel={app.sp(`${m.title}. ${m.short}${locked ? '. In Full Unlock' : ''}`)}
                   style={({ pressed }) => [st.row, k > 0 && st.rowLine, pressed && { backgroundColor: C.raised }]}
                 >
                   <Glyph tool={id} size={40} />

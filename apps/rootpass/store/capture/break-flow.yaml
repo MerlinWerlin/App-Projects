@@ -28,7 +28,7 @@ appId: ${APP_ID}
     visible: "Saddle cut"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Swap them round"
+    element: ".*Swap them round.*"
     direction: DOWN
     centerElement: true
     optional: true
@@ -39,7 +39,7 @@ appId: ${APP_ID}
     visible: "Lobster-back"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Cut each face"
+    element: "Cut each face.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: b04-lobster-40-${TAG}
@@ -49,7 +49,7 @@ appId: ${APP_ID}
     visible: "Cut list"
     timeout: 20000
 - scrollUntilVisible:
-    element: "Stock lengths"
+    element: "Stock lengths.*"
     direction: DOWN
     centerElement: true
     timeout: 30000
@@ -63,7 +63,7 @@ appId: ${APP_ID}
     visible: "Steel weight"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Total"
+    element: "Total.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: b07-weight-huge-${TAG}
@@ -73,17 +73,17 @@ appId: ${APP_ID}
     visible: "Bolt circle"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Hole to hole"
+    element: "Hole to hole.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: b08-pcd-72-${TAG}
 # 24-sided polygon frame
 - openLink: rootpass://tool/frame?kind=polygon&sides=24&size=3000&member=100&sizeKind=outsideCorners
 - extendedWaitUntil:
-    visible: "Frame mitres"
+    visible: "Frame mi(tres|ters)"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Mitre both ends"
+    element: "Mi(tre|ter) both ends.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: b09-frame-24-${TAG}
@@ -93,7 +93,7 @@ appId: ${APP_ID}
     visible: "Weld metal"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Filler to buy"
+    element: "Filler to buy.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: b10-weld-huge-${TAG}
@@ -103,7 +103,7 @@ appId: ${APP_ID}
     visible: "Sheet bending"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Flat blank"
+    element: "Flat blank.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: b11-bend-8-${TAG}

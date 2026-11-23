@@ -4,6 +4,7 @@
  */
 import { Ionicons } from '@expo/vector-icons';
 import { SymbolView, type SFSymbol } from 'expo-symbols';
+import { View } from 'react-native';
 
 const MAP = {
   construct: ['wrench.and.screwdriver.fill', 'construct'],
@@ -11,7 +12,7 @@ const MAP = {
   settings: ['gearshape.fill', 'settings-sharp'],
   lock: ['lock.fill', 'lock-closed'],
   flash: ['bolt.fill', 'flash'],
-  location: ['mappin.and.ellipse', 'location-outline'],
+  location: ['globe', 'globe-outline'],
   add: ['plus', 'add'],
   remove: ['minus', 'remove'],
   close: ['xmark', 'close'],
@@ -38,7 +39,9 @@ export type IconName = keyof typeof MAP;
 
 export function Icon({ name, size = 22, color }: { name: IconName; size?: number; color: string }) {
   const [sf, ion] = MAP[name];
+  // Decorative: hidden from VoiceOver so a button reads "Print template", not "print, Print template".
   return (
+    <View accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
     <SymbolView
       name={sf as SFSymbol}
       size={size}
@@ -48,5 +51,6 @@ export function Icon({ name, size = 22, color }: { name: IconName; size?: number
       style={{ width: size, height: size }}
       fallback={<Ionicons name={ion} size={size} color={color} />}
     />
+    </View>
   );
 }

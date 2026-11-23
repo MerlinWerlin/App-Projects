@@ -6,7 +6,7 @@ appId: ${APP_ID}
 - extendedWaitUntil:
     visible: "Where do you work?"
     timeout: 30000
-- tapOn: "Australia"
+- tapOn: "Australia.*"
 - waitForAnimationToEnd
 - takeScreenshot: 01-welcome
 - tapOn: "Continue"
@@ -44,7 +44,7 @@ appId: ${APP_ID}
     visible: "Lobster-back"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Cut each face"
+    element: "Cut each face.*"
     direction: DOWN
     centerElement: true
 - waitForAnimationToEnd
@@ -54,7 +54,7 @@ appId: ${APP_ID}
     visible: "Cut list"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Stock lengths"
+    element: "Stock lengths.*"
     direction: DOWN
     centerElement: true
 - waitForAnimationToEnd
@@ -65,7 +65,7 @@ appId: ${APP_ID}
     timeout: 15000
 - takeScreenshot: 09-weight-top
 - scrollUntilVisible:
-    element: "Total"
+    element: "Total.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: 10-weight
@@ -74,17 +74,17 @@ appId: ${APP_ID}
     visible: "Bolt circle"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Hole to hole"
+    element: "Hole to hole.*"
     direction: DOWN
     centerElement: true
 - waitForAnimationToEnd
 - takeScreenshot: 11-pcd
 - openLink: rootpass://tool/frame?kind=polygon
 - extendedWaitUntil:
-    visible: "Frame mitres"
+    visible: "Frame mi(tres|ters)"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Mitre both ends"
+    element: "Mi(tre|ter) both ends.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: 12-frame
@@ -93,7 +93,7 @@ appId: ${APP_ID}
     visible: "Weld metal"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Filler to buy"
+    element: "Filler to buy.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: 13-weld
@@ -102,7 +102,7 @@ appId: ${APP_ID}
     visible: "Sheet bending"
     timeout: 15000
 - scrollUntilVisible:
-    element: "Flat blank"
+    element: "Flat blank.*"
     direction: DOWN
     centerElement: true
 - takeScreenshot: 14-bend
