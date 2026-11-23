@@ -289,6 +289,8 @@ import Darwin
     }
     tab(app, "Themes")
     tab(app, "Themes")
+    let allChip = app.buttons["All themes"].firstMatch
+    if allChip.waitForExistence(timeout: 5) && reveal(allChip, in: app, tries: 4) { allChip.tap(); settle(2) }
     search(app, "Grove")
     settle(3)
     if app.keyboards.count > 0, app.keyboards.buttons["Search"].exists { app.keyboards.buttons["Search"].tap() }

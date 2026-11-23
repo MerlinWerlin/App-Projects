@@ -33,6 +33,11 @@ export type CardPreviewLayout = {
 
 const r1 = (n: number) => Math.round(n * 2) / 2; // half points: crisp on 2x / 3x
 
+/** Top of the widget: a status-bar band, at least clear of the corner badge (8 pt inset + 22 pt pill). */
+export function widgetTop(width: number): number {
+  return Math.max(36, width * 0.17);
+}
+
 /**
  * Geometry of the mini Home Screen over an art print of `width` × `height`, on the iPhone's own grid:
  * four columns between side margins, the widget two cells (plus one gap) square, a dock one cell tall
@@ -53,7 +58,9 @@ export function cardPreviewLayout(width: number, height: number): CardPreviewLay
   const icons = [0, 1, 2].map((i) => ({ x: r1(iconsX + i * (cell + iconGap)), y: r1(dockY + dockPad), size: r1(cell) }));
   const side = cell * 2 + gap;
   return {
-    widget: { x: r1(margin), y: r1(dockY - gap * 1.3 - side), size: r1(side) },
+    // Top-left like a real Home Screen, under a status-bar-high band that also clears the Plus badge;
+    // catalogue art keeps its subject low and centred, so the top is mostly background.
+    widget: { x: r1(margin), y: r1(widgetTop(width)), size: r1(side) },
     widgetRadius: r1(side * 0.22),
     dock: { x: r1(dockInset), y: r1(dockY), w: r1(width - dockInset * 2), h: r1(dockH), radius: r1(dockH * 0.42) },
     icons,
@@ -62,9 +69,10 @@ export function cardPreviewLayout(width: number, height: number): CardPreviewLay
 
 /** The dock's glass over this theme's art: lighter over dark art, a touch denser over light art. */
 export function dockFill(luminance: number): { fill: string; edge: string } {
-  return luminance < 0.45
-    ? { fill: 'rgba(255,255,255,0.24)', edge: 'rgba(255,255,255,0.32)' }
-    : { fill: 'rgba(255,255,255,0.42)', edge: 'rgba(255,255,255,0.55)' };
+  if (luminance < 0.45) return { fill: 'rgba(255,255,255,0.24)', edge: 'rgba(255,255,255,0.32)' };
+  if (luminance < 0.75) return { fill: 'rgba(255,255,255,0.42)', edge: 'rgba(255,255,255,0.55)' };
+  // Pale art: white glass would vanish, so the edge turns to a faint ink line.
+  return { fill: 'rgba(255,255,255,0.5)', edge: 'rgba(0,0,0,0.1)' };
 }
 
 /** Phone, Messages and Camera in this theme's default icon style (what applying it gives). */

@@ -35,13 +35,15 @@ test('geometry: widget above a three-icon dock, inside the print, at every card 
     assert.ok(l.dock.y + l.dock.h <= h && l.dock.x + l.dock.w <= w);
     assert.ok(l.icons.every((b) => b.y >= l.dock.y && b.y + b.size <= l.dock.y + l.dock.h), `${w}: icon outside the dock`);
     assert.ok(l.icons[1].x - (l.icons[0].x + l.icons[0].size) > 2, `${w}: icons touch`);
-    // The top of the print stays the art (and room for the Plus badge).
-    assert.ok(l.widget.y > h * 0.4, `${w}: preview climbs into the art`);
+    // Top-left under the badge row (8 pt + 22 pt pill), leaving the middle of the print to the art.
+    assert.ok(l.widget.y >= 34 && l.widget.y + l.widget.size < h * 0.55, `${w}: widget out of the top band`);
+    assert.ok(l.dock.y - (l.widget.y + l.widget.size) > h * 0.2, `${w}: no art left between widget and dock`);
   }
 });
 
 test('the dock reads over dark and light art', () => {
-  assert.notEqual(dockFill(0.05).fill, dockFill(0.9).fill);
+  assert.notEqual(dockFill(0.05).fill, dockFill(0.6).fill);
+  assert.match(dockFill(0.95).edge, /rgba\(0,0,0/);
 });
 
 test('all catalogued themes (141 + 111) and bundled starters get a clock and Phone, Messages, Camera without a download', () => {
