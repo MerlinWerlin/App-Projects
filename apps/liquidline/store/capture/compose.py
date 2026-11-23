@@ -68,7 +68,7 @@ def compose(shot, raw, out):
     head = font('BarlowCondensed_800ExtraBold.ttf', 136)
     sub = font('BarlowCondensed_600SemiBold.ttf', 62)
     y = 170
-    tag = shot.get('tag')
+    tag = None  # no eyebrow pill above the headline (impeccable craft floor)
     if tag:
         tf = font('BarlowCondensed_700Bold.ttf', 50)
         tw = d.textlength(tag.upper(), font=tf)
@@ -81,7 +81,7 @@ def compose(shot, raw, out):
         d.text(((W - w) / 2, y), line, font=head, fill=INK)
         y += 140
     if shot.get('sub'):
-        y += 10
+        y += 34
         for line in wrap(d, shot['sub'], sub, 1120):
             w = d.textlength(line, font=sub)
             d.text(((W - w) / 2, y), line, font=sub, fill=MUTED)

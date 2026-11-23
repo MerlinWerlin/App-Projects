@@ -1,57 +1,72 @@
-import { Ionicons } from '@expo/vector-icons';
+// Tools: two inset grouped lists, the iOS shape for a menu of destinations. On-the-job calculators first, reference
+// after. Blue marks the low-side tool (evacuation), red the high-side one (room load).
 import { router, type Href } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 import { useAccess } from '../../src/state/access.ts';
 import { useCountry } from '../../src/state/prefs.ts';
-import { RADIUS, SPACE, usePalette } from '../../src/theme/tokens.ts';
-import { Card, Label, Screen, Small } from '../../src/ui/kit.tsx';
+import { RADIUS, SPACE, TOUCH, usePalette } from '../../src/theme/tokens.ts';
+import { Icon, type IconName } from '../../src/ui/Icon.tsx';
+import { Screen, Small } from '../../src/ui/kit.tsx';
 import { SettingsButton } from './index.tsx';
 
-type Tool = { href: Href; title: string; detail: string; icon: keyof typeof Ionicons.glyphMap; free?: boolean; tone?: 'low' | 'high' };
+type Tool = { href: Href; title: string; detail: string; icon: IconName; free?: boolean; tone?: 'low' | 'high' };
 
-export default function ToolsScreen() {
+function Group({ title, tools, locked }: { title: string; tools: Tool[]; locked: boolean }) {
   const p = usePalette();
-  const c = useCountry();
-  const a = useAccess();
-  const tools: Tool[] = [
-    { href: '/evac', title: 'Evacuation', detail: 'Checklist, vacuum target and decay test timer', icon: 'timer-outline', tone: 'low' },
-    { href: '/lineset', title: 'Line set & pipe', detail: `Sizes by capacity, ${c.lineSetWord} lengths stocked in ${c.name}`, icon: 'git-merge-outline' },
-    { href: '/load', title: 'Room load', detail: 'Rough cooling and heating estimate', icon: 'home-outline', tone: 'high' },
-    { href: '/flare', title: 'Flare torque', detail: 'Typical nut torque by tube size', icon: 'build-outline' },
-    { href: '/convert', title: 'Converter', detail: 'Pressure, temperature, vacuum, capacity, airflow', icon: 'swap-horizontal-outline', free: true },
-    { href: '/chart', title: 'PT chart', detail: 'Printable-style chart for any refrigerant', icon: 'grid-outline', free: true },
-    { href: '/info', title: 'Refrigerant facts', detail: 'Safety class, GWP, glide, uses', icon: 'flask-outline', free: true },
-    { href: '/sources', title: `Rules in ${c.name}`, detail: 'Licence, standards and sources', icon: 'shield-checkmark-outline', free: true },
-  ];
   return (
-    <Screen title="Tools" subtitle={c.guided ? `Set up for ${c.name}` : 'Generic metric defaults'} right={<SettingsButton />}>
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.md }}>
-        {tools.map((t) => {
-          const color = t.tone === 'low' ? p.low : t.tone === 'high' ? p.high : p.text;
-          const locked = !t.free && !a.canCalc;
+    <View style={{ gap: SPACE.sm }}>
+      <Text accessibilityRole="header" style={{ fontSize: 20, fontWeight: '800', color: p.text, marginLeft: 4 }}>{title}</Text>
+      <View style={{ backgroundColor: p.surface, borderRadius: RADIUS.lg, borderWidth: 1, borderColor: p.line, overflow: 'hidden' }}>
+        {tools.map((t, i) => {
+          const tint = t.tone === 'low' ? p.low : t.tone === 'high' ? p.high : p.text;
+          const tile = t.tone === 'low' ? p.lowSoft : t.tone === 'high' ? p.highSoft : p.surface2;
+          const isLocked = !t.free && locked;
           return (
             <Pressable
               key={String(t.href)}
               testID={`tool-${String(t.href).slice(1)}`}
               accessibilityRole="button"
-              accessibilityLabel={`${t.title}. ${t.detail}${locked ? '. Needs the free trial or unlock' : ''}`}
+              accessibilityLabel={`${t.title}. ${t.detail}${isLocked ? '. Needs the free trial or unlock' : ''}`}
               onPress={() => router.push(t.href)}
-              style={({ pressed }) => ({ width: '47.5%', flexGrow: 1, minHeight: 150, backgroundColor: p.surface, borderRadius: RADIUS.lg, padding: SPACE.lg, gap: SPACE.sm, borderWidth: 1, borderColor: p.line, opacity: pressed ? 0.7 : 1 })}
+              style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: SPACE.md, minHeight: TOUCH + 16, paddingHorizontal: SPACE.lg, paddingVertical: SPACE.sm, backgroundColor: pressed ? p.surface2 : 'transparent' })}
             >
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Ionicons name={t.icon} size={34} color={color} />
-                {locked ? <Ionicons name="lock-closed" size={18} color={p.text3} /> : null}
+              <View style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: tile, alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name={t.icon} size={24} color={tint} />
               </View>
-              <Text style={{ fontSize: 18, fontWeight: '800', color: p.text }}>{t.title}</Text>
-              <Text style={{ fontSize: 14, lineHeight: 18, color: p.text2 }}>{t.detail}</Text>
+              <View style={{ flex: 1, gap: 2 }}>
+                <Text style={{ fontSize: 17, fontWeight: '700', color: p.text }}>{t.title}</Text>
+                <Text style={{ fontSize: 14, lineHeight: 18, color: p.text2 }}>{t.detail}</Text>
+              </View>
+              {isLocked ? <Icon name="lock-closed" size={16} color={p.text3} /> : null}
+              <Icon name="chevron-forward" size={18} color={p.text3} />
             </Pressable>
           );
         })}
       </View>
-      <Card>
-        <Label>Always check</Label>
-        <Small>Liquidline is an aid for licensed technicians. The equipment manufacturer’s data and your local regulations take precedence over anything shown here.</Small>
-      </Card>
+    </View>
+  );
+}
+
+export default function ToolsScreen() {
+  const c = useCountry();
+  const a = useAccess();
+  const job: Tool[] = [
+    { href: '/evac', title: 'Evacuation', detail: 'Checklist, vacuum target, decay test timer', icon: 'timer-outline', tone: 'low' },
+    { href: '/lineset', title: 'Line set & pipe', detail: `Pipe sizes, ${c.lineSetWord} lengths stocked in ${c.name}`, icon: 'git-merge-outline' },
+    { href: '/load', title: 'Room load', detail: 'Rough cooling and heating estimate', icon: 'home-outline', tone: 'high' },
+    { href: '/flare', title: 'Flare torque', detail: 'Typical nut torque by tube size', icon: 'build-outline' },
+  ];
+  const ref: Tool[] = [
+    { href: '/chart', title: 'PT chart', detail: 'Any refrigerant, 1, 2 or 5 degree steps', icon: 'grid-outline', free: true },
+    { href: '/info', title: 'Refrigerant facts', detail: 'Safety class, GWP, glide, uses', icon: 'flask-outline', free: true },
+    { href: '/convert', title: 'Converter', detail: 'Pressure, vacuum, capacity, airflow, charge', icon: 'swap-horizontal-outline', free: true },
+    { href: '/sources', title: `Rules in ${c.name}`, detail: 'Licence, standards and sources', icon: 'shield-checkmark-outline', free: true },
+  ];
+  return (
+    <Screen title="Tools" subtitle={c.guided ? `Set up for ${c.name}` : 'Generic metric defaults'} right={<SettingsButton />}>
+      <Group title="On the job" tools={job} locked={!a.canCalc} />
+      <Group title="Reference" tools={ref} locked={!a.canCalc} />
+      <Small>Liquidline is an aid for licensed technicians. The equipment manufacturer’s data and your local regulations take precedence over anything shown here.</Small>
     </Screen>
   );
 }

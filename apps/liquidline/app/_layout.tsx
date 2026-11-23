@@ -52,7 +52,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false, title: 'Back' }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false, animation: 'fade' }} />
         <Stack.Screen name="refrigerants" options={{ presentation: 'modal', headerLeft: () => <Close label="Cancel" />, title: 'Refrigerant' }} />
-        <Stack.Screen name="paywall" options={{ presentation: 'modal', headerLeft: () => <Close label="Close" />, title: 'Liquidline Full Unlock' }} />
+        <Stack.Screen name="paywall" options={{ presentation: 'modal', headerLeft: () => <Close label="Close" />, title: '' }} />
         <Stack.Screen name="settings" options={{ title: 'Settings' }} />
         <Stack.Screen name="load" options={{ title: 'Room load estimate' }} />
         <Stack.Screen name="lineset" options={{ title: 'Line set & pipe' }} />

@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../../src/ui/Icon.tsx';
 import { Tabs } from 'expo-router';
 import { usePalette } from '../../src/theme/tokens.ts';
 

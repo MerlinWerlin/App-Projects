@@ -7,7 +7,7 @@ import { Alert, Linking, Text, View } from 'react-native';
 import { TRIAL_SKU, UNLOCK_SKU, unlockButton } from '../core/access.ts';
 import { buy, refreshProducts, restorePurchases, useAccess } from '../state/access.ts';
 import { FONT, SPACE, usePalette } from '../theme/tokens.ts';
-import { Body, Button, Card, Small } from './kit.tsx';
+import { Body, Button, Card, Checklist, Small } from './kit.tsx';
 
 export const PRIVACY_URL = 'https://merlinwerlin.github.io/App-Projects/liquidline/privacy.html';
 export const SUPPORT_URL = 'https://merlinwerlin.github.io/App-Projects/liquidline/support.html';
@@ -61,7 +61,7 @@ export function Paywall() {
       <Text accessibilityRole="header" style={{ fontFamily: FONT.display, fontSize: 34, color: p.text }}>Liquidline Full Unlock</Text>
       <Body>{accessLine(a)}</Body>
       <Body dim>One payment opens every calculator for good:</Body>
-      <Body>{'• Superheat and subcooling with targets\n• Extra charge for long line sets, with cost\n• Evacuation checklist and decay test\n• Line set planner and pipe sizes\n• Room load estimate and flare torque\n• Saving readings to jobs and sharing job sheets'}</Body>
+      <Checklist items={['Superheat and subcooling with targets', 'Extra charge for long line sets, with cost', 'Evacuation checklist and decay test', 'Line set planner and pipe sizes', 'Room load estimate and flare torque', 'Saving readings to jobs and sharing job sheets']} />
       <Small>Always free: PT lookups and charts, refrigerant facts, the converter and your saved jobs.</Small>
       {a.state === 'unlocked' || a.state === 'stub' ? null : (
         <View style={{ gap: SPACE.sm }}>

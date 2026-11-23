@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../../src/ui/Icon.tsx';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { Alert, Pressable, Share, Text, TextInput, View } from 'react-native';
 import { jobText, removeReading, type Job } from '../../src/core/jobs.ts';

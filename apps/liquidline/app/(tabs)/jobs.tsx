@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../../src/ui/Icon.tsx';
 import { router } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 import { jobTitle, newJob } from '../../src/core/jobs.ts';

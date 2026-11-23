@@ -1,6 +1,6 @@
 // Evacuation: a tick-off checklist, the vacuum target in the person's unit, and a decay (standing vacuum) test with
 // a timer and a reading log. The screen stays awake while the decay timer runs.
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../src/ui/Icon.tsx';
 import { router } from 'expo-router';
 import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import { useEffect, useRef, useState } from 'react';

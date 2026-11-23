@@ -1,5 +1,5 @@
 // PT: saturation temperature from a gauge pressure, or pressure from a temperature. Free in every state.
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../../src/ui/Icon.tsx';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Pressable, View } from 'react-native';

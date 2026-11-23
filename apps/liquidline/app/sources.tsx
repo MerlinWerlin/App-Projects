@@ -1,5 +1,5 @@
 // Rules, licences and standards for the person's country, and where the app's numbers come from.
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../src/ui/Icon.tsx';
 import { Text, View } from 'react-native';
 import { useCountry } from '../src/state/prefs.ts';
 import { SPACE, usePalette } from '../src/theme/tokens.ts';
@@ -23,7 +23,7 @@ export default function SourcesScreen() {
   const p = usePalette();
   return (
     <Screen tab={false}>
-      <Text accessibilityRole="header" style={{ fontSize: 28, fontWeight: '800', color: p.text }}>{`${c.flag} ${c.name}`}</Text>
+      <Text accessibilityRole="header" style={{ fontSize: 28, fontWeight: '800', color: p.text }}>{c.name}</Text>
       {!c.guided ? <Notice kind="info" text="Generic guidance: Liquidline doesn’t hold checked local data for your country yet. Follow your local licensing rules and standards." /> : null}
       <Card>
         <Label>Licence and certification</Label>

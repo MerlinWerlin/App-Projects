@@ -8,7 +8,7 @@ import { countryFromRegion, withCountry } from '../src/core/settings.ts';
 import { deviceRegion, updateSettings, useSettings } from '../src/state/store.ts';
 import { FONT, SPACE, usePalette } from '../src/theme/tokens.ts';
 import { CountryList } from '../src/ui/CountryList.tsx';
-import { Body, Button, Card, Label, Notice, Screen, Small } from '../src/ui/kit.tsx';
+import { Body, Button, Card, Heading, Notice, Screen, Small } from '../src/ui/kit.tsx';
 import { Hero } from '../src/ui/Hero.tsx';
 
 export default function Onboarding() {
@@ -35,14 +35,14 @@ export default function Onboarding() {
     <Screen>
       <Text accessibilityRole="header" style={{ fontFamily: FONT.display, fontSize: 44, lineHeight: 46, color: p.text }}>Before you start</Text>
       <Card>
-        <Label>An aid for licensed technicians</Label>
+        <Heading>An aid for licensed technicians</Heading>
         <Body>Liquidline helps you check readings and do the sums on the job. The equipment manufacturer’s data and your local regulations always take precedence.</Body>
         {c.licence.slice(0, 1).map((l, i) => <Small key={i}>{`${c.name}: ${l.text}`}</Small>)}
       </Card>
       <Card>
-        <Label tone="low">Blue is the low side</Label>
+        <Heading tone="low">Blue is the low side</Heading>
         <Small>Suction pressure, superheat, dew point.</Small>
-        <Label tone="high">Red is the high side</Label>
+        <Heading tone="high">Red is the high side</Heading>
         <Small>Liquid pressure, subcooling, bubble point.</Small>
       </Card>
       <Notice text="Flammable refrigerants (A2L such as R32 and R454B, A3 such as R290) need the right training, tools and charge limits. Liquidline reminds you when one is selected." />

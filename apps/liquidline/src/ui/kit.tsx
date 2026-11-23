@@ -1,6 +1,6 @@
 // Shared building blocks. Glove-first: every control is at least TOUCH (56 pt) tall, steppers are big, numbers are
 // big condensed numerals. Text uses system styles that scale with Dynamic Type (allowFontScaling stays on).
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from './Icon.tsx';
 import * as Haptics from 'expo-haptics';
 import { useState, type ReactNode } from 'react';
 import { InputAccessoryView, Keyboard, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
@@ -53,12 +53,32 @@ export const DONE_BAR = 'liquidline-done';
 export function Card({ children, style, tone }: { children: ReactNode; style?: StyleProp<ViewStyle>; tone?: Tone }) {
   const p = usePalette();
   const border = tone === 'low' ? p.low : tone === 'high' ? p.high : p.line;
-  return <View style={[{ backgroundColor: p.surface, borderRadius: RADIUS.lg, padding: SPACE.lg, gap: SPACE.md, borderWidth: StyleSheet.hairlineWidth, borderColor: border }, tone ? { borderLeftWidth: 5 } : null, style]}>{children}</View>;
+  return <View style={[{ backgroundColor: p.surface, borderRadius: RADIUS.lg, padding: SPACE.lg, gap: SPACE.md, borderWidth: tone ? 1.5 : StyleSheet.hairlineWidth, borderColor: border }, style]}>{children}</View>;
 }
 
 export function Label({ children, tone = 'neutral' }: { children: ReactNode; tone?: Tone }) {
   const p = usePalette();
   return <Text style={[styles.label, { color: tone === 'neutral' ? p.text2 : toneColor(p, tone) }]}>{children}</Text>;
+}
+
+export function Heading({ children, tone = 'neutral' }: { children: ReactNode; tone?: Tone }) {
+  const p = usePalette();
+  return <Text accessibilityRole="header" style={{ fontSize: 19, lineHeight: 24, fontWeight: '800', color: toneColor(p, tone) }}>{children}</Text>;
+}
+
+/** A list of what's included, with a check for each line. */
+export function Checklist({ items }: { items: string[] }) {
+  const p = usePalette();
+  return (
+    <View style={{ gap: 8 }}>
+      {items.map((t) => (
+        <View key={t} style={{ flexDirection: 'row', gap: SPACE.sm, alignItems: 'flex-start' }}>
+          <Ionicons name="checkmark-circle" size={20} color={p.ok} style={{ marginTop: 1 }} />
+          <Text style={[styles.body, { color: p.text, flex: 1 }]}>{t}</Text>
+        </View>
+      ))}
+    </View>
+  );
 }
 
 export function Body({ children, dim }: { children: ReactNode; dim?: boolean }) {
@@ -141,7 +161,7 @@ export function NumberField({ label, value, onChange, unit, step = 1, tone = 'ne
           />
           {unit ? (
             <Pressable disabled={!onUnitPress} onPress={onUnitPress} accessibilityRole={onUnitPress ? 'button' : 'text'} accessibilityLabel={onUnitPress ? `Unit ${unit}, change` : unit} hitSlop={10}>
-              <Text style={{ fontSize: 17, fontWeight: '700', color: p.text2 }}>{unit}{onUnitPress ? ' ▾' : ''}</Text>
+              <Text style={{ fontSize: 17, fontWeight: '700', color: p.text2 }}>{unit}</Text>
             </Pressable>
           ) : null}
         </View>

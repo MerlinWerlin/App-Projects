@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from './Icon.tsx';
 import { Pressable, Text, View } from 'react-native';
 import { COUNTRIES, type CountryCode } from '../core/countries.ts';
 import { RADIUS, SPACE, TOUCH, usePalette } from '../theme/tokens.ts';
@@ -20,7 +20,9 @@ export function CountryList({ value, onPick, detected }: { value: CountryCode; o
             onPress={() => onPick(c.code)}
             style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: SPACE.md, minHeight: TOUCH + 8, paddingHorizontal: SPACE.lg, backgroundColor: on ? p.surface2 : pressed ? p.surface2 : 'transparent', borderTopWidth: i ? 1 : 0, borderTopColor: p.line })}
           >
-            <Text style={{ fontSize: 30 }}>{c.flag}</Text>
+            <View style={{ width: 48, height: 34, borderRadius: 8, backgroundColor: on ? p.accent : p.surface2, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 15, fontWeight: '800', letterSpacing: 0.5, color: on ? p.onAccent : p.text2 }}>{c.code === 'OTHER' ? '···' : c.code === 'GB' ? 'UK' : c.code}</Text>
+            </View>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 18, fontWeight: '700', color: p.text }}>{c.name}</Text>
               <Text style={{ fontSize: 14, color: p.text2 }}>

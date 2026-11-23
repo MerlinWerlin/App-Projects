@@ -1,5 +1,5 @@
 // The refrigerant chooser shown at the top of each calculator: name, safety class and the safety reminder.
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from './Icon.tsx';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';

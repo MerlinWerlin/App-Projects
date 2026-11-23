@@ -1,5 +1,5 @@
 // Refrigerant picker: the ones common in the person's country first, then the rest.
-import { Ionicons } from '@expo/vector-icons';
+import { Icon as Ionicons } from '../src/ui/Icon.tsx';
 import { router } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 import { refrigerant, SAFETY_LABEL } from '../src/core/refrigerants.ts';

@@ -24,7 +24,7 @@ export default function SettingsScreen() {
     <Screen tab={false}>
       <Card>
         <Label>Country</Label>
-        <Row testID="settings-country" icon="globe-outline" title={`${c.flag}  ${c.name}`} detail={c.guided ? 'Units, refrigerants, rules and stocked sizes' : 'Generic metric guidance'} onPress={() => setPickCountry(!pickCountry)} last />
+        <Row testID="settings-country" icon="globe-outline" title={c.name} detail={c.guided ? 'Units, refrigerants, rules and stocked sizes' : 'Generic metric guidance'} onPress={() => setPickCountry(!pickCountry)} last />
         {pickCountry ? (
           <>
             <CountryList value={s.country} detected={countryFromRegion(deviceRegion())} onPick={(code) => { updateSettings((cur) => withCountry(cur, code)); setPickCountry(false); }} />
