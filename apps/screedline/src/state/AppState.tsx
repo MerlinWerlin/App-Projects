@@ -109,6 +109,22 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     if (p) setPrice(p);
   }, [store, kv, secure]);
   useEffect(() => { if (loaded) void refresh(); }, [loaded, refresh]);
+  // Ask to Buy and other late approvals: apply them while the app is open, and re-check whenever it comes back.
+  useEffect(() => {
+    if (!loaded) return;
+    const stop = store.watch(live => {
+      setAccess(prev => {
+        const dates = [prev.trialStart, live.trialStart].filter((x): x is number => x !== null);
+        const next = { full: prev.full || live.full, trialStart: dates.length ? Math.min(...dates) : null };
+        kv.setItem(ACCESS_KEY, JSON.stringify(next)).catch(() => undefined);
+        if (next.trialStart) secure?.setItem(TRIAL_KEY, String(next.trialStart)).catch(() => undefined);
+        return next;
+      });
+      setNow(Date.now());
+    });
+    const sub = RNAppState.addEventListener('change', s => { if (s === 'active') void refresh(); });
+    return () => { stop(); sub.remove(); };
+  }, [loaded, store, kv, secure, refresh]);
   useEffect(() => {
     const sub = RNAppState.addEventListener('change', s => { if (s === 'active') setNow(Date.now()); });
     const id = setInterval(() => setNow(Date.now()), 60_000);

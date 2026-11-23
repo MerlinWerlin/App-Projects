@@ -29,7 +29,10 @@ export function pourWeather(i: WeatherInput): Calc<WeatherResult> {
   const rh = check(e, 'humidityPct', i.humidityPct, { label: 'Humidity', min: 0, exclusive: false, max: 100 });
   const V = check(e, 'windKmh', i.windKmh, { label: 'Wind', min: 0, exclusive: false, max: 200 });
   if (hasErrors(e)) return fail(e);
+  // The Uno formula is only defined above −18 °C ((T + 18)^2.5); below that there is no estimate, never a 'low' one.
+  if (Ta <= -18 || Tc <= -18) return fail({ [Ta <= -18 ? 'airC' : 'concreteC']: 'Too cold to estimate evaporation. Don’t pour: keep concrete above 5 °C.' });
   const E = evaporationRate(Tc, Ta, rh / 100, V);
+  if (!Number.isFinite(E)) return fail({ airC: 'Evaporation estimate not available for these conditions.' });
   const risk: Risk = E >= 1 ? 'high' : E >= 0.5 ? 'moderate' : 'low';
   const steps: Step[] = [
     { label: 'Concrete term', working: `(${fmt(Tc, 1)} + 18)^2.5`, result: fmt((Tc + 18) ** 2.5, 0) },

@@ -47,8 +47,8 @@ function addWaste(errors: Errors, net: number, wastePct: number | null | undefin
 
 export interface SlabInput {
   length: number | null; width: number | null; depth: number | null; wastePct: number | null;
-  /** Optional thickened edge (edge beam): its width and its total depth from the top of the slab. */
-  edgeWidth?: number | null; edgeDepth?: number | null;
+  /** Thickened edge (edge beam): when `edge` is true its width and total depth from the top of the slab are required. */
+  edge?: boolean; edgeWidth?: number | null; edgeDepth?: number | null;
 }
 
 export function slab(i: SlabInput): Calc<VolumeResult> {
@@ -56,7 +56,7 @@ export function slab(i: SlabInput): Calc<VolumeResult> {
   const L = check(e, 'length', i.length, { label: 'Length', max: 1000 });
   const W = check(e, 'width', i.width, { label: 'Width', max: 1000 });
   const D = check(e, 'depth', i.depth, { label: 'Depth', max: 5 });
-  const useEdge = (i.edgeWidth ?? 0) > 0 || (i.edgeDepth ?? 0) > 0;
+  const useEdge = i.edge ?? ((i.edgeWidth ?? 0) > 0 || (i.edgeDepth ?? 0) > 0);
   let bw = 0, bd = 0;
   if (useEdge) {
     bw = check(e, 'edgeWidth', i.edgeWidth, { label: 'Edge beam width' });
@@ -126,7 +126,7 @@ export function pier(i: PierInput): Calc<VolumeResult> {
   return r ? ok(r, steps) : fail(e);
 }
 
-export interface StairRule { riser: [number, number]; going: [number, number]; twoRG?: [number, number]; code: string }
+export interface StairRule { riser: [number, number]; going: [number, number]; twoRG?: [number, number]; code: string; maxRisers?: number; maxPitchDeg?: number }
 export interface StepsInput { steps: number | null; rise: number | null; going: number | null; width: number | null; wastePct: number | null; rule?: StairRule }
 
 export function stairs(i: StepsInput): Calc<VolumeResult> {
@@ -152,6 +152,9 @@ export function stairs(i: StepsInput): Calc<VolumeResult> {
     if (G < rule.going[0] || G > rule.going[1]) notes.push(`Going ${mmr(G)} mm: ${rule.code} asks for ${range(rule.going)}.`);
     const two = 2 * R + G;
     if (rule.twoRG && (two < rule.twoRG[0] || two > rule.twoRG[1])) notes.push(`2 × rise + going is ${mmr(two)} mm; ${rule.code} asks for ${mmr(rule.twoRG[0])}–${mmr(rule.twoRG[1])} mm.`);
+    if (rule.maxRisers && n > rule.maxRisers) notes.push(`${n} risers in one flight; ${rule.code} allows at most ${rule.maxRisers}. Add a landing.`);
+    const pitch = (Math.atan2(R, G) * 180) / Math.PI;
+    if (rule.maxPitchDeg && pitch > rule.maxPitchDeg + 1e-9) notes.push(`Pitch is ${fmt(pitch, 1)}°; ${rule.code} allows at most ${rule.maxPitchDeg}°.`);
   }
   const r = addWaste(e, net, i.wastePct, steps);
   return r ? ok(r, steps, notes) : fail(e);
@@ -203,20 +206,23 @@ export interface TruckResult { order: number; loads: number; loadSizes: number[]
 export function truckOrder(i: TruckInput): Calc<TruckResult> {
   const e: Errors = {};
   const v = check(e, 'volume', i.volume, { label: 'Volume', max: 10000 });
-  const step = check(e, 'increment', i.increment, { label: 'Order step', max: 5 });
-  const cap = check(e, 'truckCapacity', i.truckCapacity, { label: 'Truck size', max: 20 });
+  const step = check(e, 'increment', i.increment, { label: 'Order step', min: 0.05, exclusive: false, max: 5 });
+  const cap = check(e, 'truckCapacity', i.truckCapacity, { label: 'Truck size', min: 0.5, exclusive: false, max: 20 });
   if (hasErrors(e)) return fail(e);
   if (cap < step) return fail({ truckCapacity: 'Truck size must be at least the order step.' });
   const order = ceilTo(v, step);
-  const loads = ceilCount(order / cap);
-  // Even loads, each a multiple of the order step (plants batch whole steps), largest first.
+  // Plants batch whole steps, so a truck carries at most ⌊cap ÷ step⌋ steps; loads are split evenly in whole steps.
+  const perTruck = Math.floor(cap / step + 1e-9);
   const unitsTotal = Math.round(order / step);
+  const loads = ceilCount(unitsTotal / perTruck);
   const base = Math.floor(unitsTotal / loads);
   const rem = unitsTotal - base * loads;
   const loadSizes = Array.from({ length: loads }, (_, k) => Number(((base + (k < rem ? 1 : 0)) * step).toFixed(6)));
+  const dp = step < 0.1 || Math.abs(step * 10 - Math.round(step * 10)) > 1e-9 ? 2 : 1;
   const steps: Step[] = [
-    { label: `Round up to ${fmt(step, 1)} m³ steps`, working: `${m3(v)} → next ${fmt(step, 1)} m³`, result: `${fmt(order, 1)} m³` },
-    { label: 'Truck loads', working: `${fmt(order, 1)} m³ ÷ ${fmt(cap, 1)} m³ per truck, rounded up`, result: `${loads}` },
+    { label: `Round up to ${fmt(step, dp)} m³ steps`, working: `${m3(v)} → next ${fmt(step, dp)} m³`, result: `${fmt(order, dp)} m³` },
+    { label: 'Most per truck', working: `⌊${fmt(cap, 2)} ÷ ${fmt(step, dp)}⌋ steps × ${fmt(step, dp)} m³`, result: `${fmt(perTruck * step, dp)} m³` },
+    { label: 'Truck loads', working: `${unitsTotal} steps ÷ ${perTruck} per truck, rounded up`, result: `${loads}` },
   ];
   const notes: string[] = [];
   if (order < 3) notes.push('Small loads often carry a short-load fee. Ask the plant.');

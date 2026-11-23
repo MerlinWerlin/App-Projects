@@ -246,7 +246,8 @@ test('retaining wall: 10 m × 600 mm with 150 mm buried', () => {
   assert.equal(v.caps, 25);
   close(v.drainM3, 2.25);
   close(v.padM3, 0.9);
-  assert.ok(c.ok && !c.notes.some(n => n.includes('council')));
+  // the approval caveat shows at every height (boundaries, buildings, loads)
+  assert.ok(c.ok && c.notes.some(n => n.includes('council')));
   const tall = retainingWall({ length: 10, height: 1.2, buried: 0.15, blockLength: 0.4, blockHeight: 0.2, blockDepth: 0.3, capLength: 0, wastePct: 0, drainWidth: 0.3 });
   assert.ok(tall.ok && tall.notes.some(n => n.includes('council')));
 });
@@ -265,4 +266,41 @@ test('evaporation is never negative and flags high risk', () => {
   assert.ok(value(pourWeather({ airC: 3, concreteC: 4, humidityPct: 80, windKmh: 5, delivery: { min: 5, max: 35, source: 'AS 1379' } })).warnings.some(w => w.includes('AS 1379')));
   assert.ok(!value(pourWeather({ airC: 3, concreteC: 4, humidityPct: 80, windKmh: 5 })).warnings.some(w => w.includes('AS 1379')));
   assert.ok(errors(pourWeather({ airC: 20, concreteC: 20, humidityPct: 120, windKmh: 5 })).humidityPct);
+});
+
+// ---------- review fixes (GPT-6.2 Sol, verified) ----------
+test('truck loads never exceed the truck: NZ 12.75 m³ in 0.25 steps on 6.4 m³ trucks', () => {
+  // 6.4 / 0.25 = 25.6 → 25 steps (6.25 m³) per truck; 51 steps → 3 loads of 17 steps = 4.25 m³
+  const v = value(truckOrder({ volume: 12.75, increment: 0.25, truckCapacity: 6.4 }));
+  assert.equal(v.loads, 3);
+  assert.deepEqual(v.loadSizes, [4.25, 4.25, 4.25]);
+  for (const s of v.loadSizes) assert.ok(s <= 6.4);
+  assert.ok(errors(truckOrder({ volume: 2, increment: 0.01, truckCapacity: 6 })).increment);
+  assert.ok(errors(truckOrder({ volume: 2, increment: 0.2, truckCapacity: 0.3 })).truckCapacity);
+});
+test('edge beam chosen but empty is an error, not a plain slab', () => {
+  const e = errors(slab({ length: 6, width: 4, depth: 0.1, wastePct: 5, edge: true, edgeWidth: null, edgeDepth: null }));
+  assert.ok(e.edgeWidth && e.edgeDepth);
+  close(value(slab({ length: 6, width: 4, depth: 0.1, wastePct: 0, edge: false, edgeWidth: null, edgeDepth: null })).net, 2.4);
+});
+test('pour weather never calls a non-estimate "low"', () => {
+  assert.ok(errors(pourWeather({ airC: -20, concreteC: 10, humidityPct: 50, windKmh: 10 })).airC);
+  assert.ok(errors(pourWeather({ airC: 5, concreteC: -19, humidityPct: 50, windKmh: 10 })).concreteC);
+});
+test('stairs: risers per flight and pitch', () => {
+  const ncc = { riser: [0.115, 0.19] as [number, number], going: [0.24, 0.355] as [number, number], twoRG: [0.55, 0.7] as [number, number], code: 'NCC', maxRisers: 18 };
+  const many = stairs({ steps: 19, rise: 0.17, going: 0.28, width: 1, wastePct: 0, rule: ncc });
+  assert.ok(many.ok && many.notes.some(n => n.includes('at most 18')));
+  const adk = { riser: [0.15, 0.22] as [number, number], going: [0.22, 0.3] as [number, number], twoRG: [0.55, 0.7] as [number, number], code: 'Approved Document K', maxPitchDeg: 42 };
+  const steep = stairs({ steps: 3, rise: 0.22, going: 0.22, width: 1, wastePct: 0, rule: adk });
+  assert.ok(steep.ok && steep.notes.some(n => n.includes('45.0°')));
+});
+test('numbers: thousands separators and decimal commas', () => {
+  assert.equal(parseNumber('1,500'), 1500);
+  assert.equal(parseNumber('12,500.5'), 12500.5);
+  assert.equal(parseNumber('1,234,567'), 1234567);
+  assert.equal(parseNumber('1,5'), 1.5);
+  assert.equal(parseNumber('12,25'), 12.25);
+  close(toMetric('tonnes', 1, 'imperial'), 0.90718474);
+  close(fromMetric('tonnes', 1, 'imperial'), 1.10231131, 1e-6);
 });

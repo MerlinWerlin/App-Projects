@@ -82,7 +82,7 @@ export function FieldShell({ label, help, error, children }: { label: string; he
   );
 }
 
-export function NumberInput({ value, onChange, unit, label, integer, negative, error, placeholder }: { value: string; onChange: (s: string) => void; unit: string; label: string; integer?: boolean; negative?: boolean; error?: boolean; placeholder?: string }) {
+export function NumberInput({ value, onChange, unit, label, integer, negative, error, hint, onBlur, placeholder }: { value: string; onChange: (s: string) => void; unit: string; label: string; integer?: boolean; negative?: boolean; error?: boolean; hint?: string; onBlur?: () => void; placeholder?: string }) {
   const { theme } = useApp();
   const [focus, setFocus] = useState(false);
   return (
@@ -97,7 +97,8 @@ export function NumberInput({ value, onChange, unit, label, integer, negative, e
         placeholder={placeholder}
         placeholderTextColor={theme.ink2}
         onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onBlur={() => { setFocus(false); onBlur?.(); }}
+        accessibilityHint={hint}
         maxFontSizeMultiplier={1.5}
         style={{ flex: 1, minWidth: 0, fontFamily: FONT.num, fontSize: 30, color: theme.ink, paddingVertical: 0, minHeight: 60 }}
       />

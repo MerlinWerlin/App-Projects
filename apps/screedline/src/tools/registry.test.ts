@@ -147,3 +147,22 @@ test('jobs: save, remove, rename, survive bad storage, and print a sheet', () =>
   assert.deepEqual(parseJobs('not json'), []);
   assert.deepEqual(parseJobs(JSON.stringify([{ id: 1 }, null, { id: 'x', name: 'ok', items: [{ bad: true }] }])).map(j => j.items.length), [0]);
 });
+
+test('review fixes in the tools: nibbed pavers, Versawall caps, NZ mesh laps, weather caption', () => {
+  // UK block paving 200 × 100 nibbed: 50 per m² (488 per 9.76 m²), so 10 m² + 5 % = 525
+  const gb = toolById('pavers', 'GB')!;
+  const g = gb.run!(defaults(gb, { area: 10 }));
+  assert.ok(g.ok && g.headline.value === 525, JSON.stringify(g.ok && g.headline));
+  // AU Versawall: caps at 300 mm → 10 m wall = 34 caps
+  const au = toolById('retaining', 'AU')!;
+  const w = au.run!(defaults(au));
+  assert.ok(w.ok && w.outputs.some(o => o.label === 'Capping units' && o.value === 34));
+  // NZ SE62 uses 250 mm laps on wire-to-wire sizes
+  const nz = toolById('mesh', 'NZ')!;
+  const lap = nz.fields.find(f => f.key === 'lap');
+  assert.ok(lap && lap.type === 'num' && lap.def === 0.25);
+  // weather caption reads on its own when shared
+  const wx = toolById('weather', 'AU')!;
+  const cool = wx.run!(defaults(wx, { airC: 15, concreteC: 15, humidityPct: 80, windKmh: 5 }));
+  assert.ok(cool.ok && cool.headline.caption === 'Low evaporation risk');
+});

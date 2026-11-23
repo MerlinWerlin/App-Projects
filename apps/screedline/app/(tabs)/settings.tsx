@@ -1,8 +1,11 @@
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
-import { Alert, ScrollView, Switch, Text, View } from 'react-native';
+import { Alert, Linking, ScrollView, Switch, Text, View } from 'react-native';
+
+const PRIVACY_URL = 'https://merlinwerlin.github.io/App-Projects/screedline/privacy.html';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { parseNumber } from '../../src/core/units';
+import { accessMessage } from '../../src/plus/entitlement';
 import { useApp } from '../../src/state/AppState';
 import { FONT, SPACE } from '../../src/theme/theme';
 import { Choice, FieldShell, Group, NumberInput, Row, ScreedLine, SectionHeader, T, StatusBarBackdrop } from '../../src/ui/kit';
@@ -18,7 +21,8 @@ export default function SettingsScreen() {
   const status = access.full ? 'Unlocked. Thank you!' : trial.active ? `Trial: ${trial.daysLeft} ${trial.daysLeft === 1 ? 'day' : 'days'} left` : trial.started ? 'Trial ended' : 'Free version';
   const restore = async () => {
     const r = await app.restore();
-    Alert.alert(r.ok ? 'Restored' : 'Restore purchases', r.ok ? (r.access.full ? 'Full Unlock is back on this phone.' : 'Your trial was found.') : r.message);
+    const m = r.ok ? accessMessage(r.access, Date.now()) : null;
+    Alert.alert(m ? m.title : 'Restore purchases', m ? m.body : (r as { message: string }).message);
   };
   return (
     <View style={{ flex: 1, backgroundColor: theme.ground }}>
@@ -58,7 +62,7 @@ export default function SettingsScreen() {
       <SectionHeader>About</SectionHeader>
       <Group>
         <Row icon="book-open-variant" title="Sources and formulas" subtitle="Where every number comes from" onPress={() => router.push('/sources')} />
-        <Row icon="shield-check-outline" title="Privacy" subtitle="No account, no ads, no tracking. Jobs stay on this phone." />
+        <Row icon="shield-check-outline" title="Privacy policy" subtitle="No account, no ads, no tracking. Jobs stay on this phone." onPress={() => Linking.openURL(PRIVACY_URL).catch(() => undefined)} />
       </Group>
       <T kind="small" style={{ marginTop: SPACE.l, textAlign: 'center' }}>Screedline {Constants.expoConfig?.version ?? ''} · Quantities are estimates. Confirm with your supplier, and with your engineer for anything structural.</T>
     </ScrollView>

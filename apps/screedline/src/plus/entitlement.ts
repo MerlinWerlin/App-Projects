@@ -40,6 +40,15 @@ export function trialStartFromPurchase(purchase: Record<string, unknown>, now: n
   return null;
 }
 
+/** What to tell someone after Restore or Start trial, from the access the store actually returned. */
+export function accessMessage(a: Access, now: number): { title: string; body: string } {
+  if (a.full) return { title: 'Unlocked', body: 'Full Unlock is on this phone. Every tool is open.' };
+  const t = trialState(a.trialStart, now);
+  if (t.active) return { title: 'Trial active', body: `Every tool is open for ${t.daysLeft} more ${t.daysLeft === 1 ? 'day' : 'days'}. Nothing is charged when it ends.` };
+  if (t.started) return { title: 'Trial ended', body: 'Your free trial has ended. Full Unlock opens every tool again.' };
+  return { title: 'Nothing to restore', body: 'No purchases found for this Apple ID.' };
+}
+
 export function parseStamp(raw: string | null | undefined): number | null {
   if (raw == null || raw.trim() === '') return null;
   const v = Number(raw);

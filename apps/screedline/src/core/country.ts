@@ -14,11 +14,11 @@ export type Catalogue = 'bags' | 'mesh' | 'bars' | 'pavers' | 'blocks' | 'materi
 export interface Bag { id: string; label: string; kg: number; /** m³ per bag stated by the maker, if known. */ yieldM3?: number }
 export interface MeshSheet { id: string; label: string; length: number; width: number; /** Default lap, m. */ lap: number }
 export interface Bar { id: string; label: string; /** Nominal diameter, mm. */ d: number; /** Stock length, m. */ stock: number }
-export interface Paver { id: string; label: string; length: number; width: number }
+export interface Paver { id: string; label: string; length: number; width: number; /** Joint, m. 0 for nibbed blocks whose spacer nibs make the joint. Default 3 mm. */ joint?: number }
 export interface Block { id: string; label: string; length: number; height: number; depth: number; /** Cap unit length, 0 = none listed. */ cap: number }
 export interface BulkMaterial { id: string; name: string; density: number; compactPct: number }
 export interface FallPreset { label: string; ratio: number; detail: string }
-export interface StairRule { riser: [number, number]; going: [number, number]; twoRG?: [number, number]; code: string }
+export interface StairRule { riser: [number, number]; going: [number, number]; twoRG?: [number, number]; code: string; maxRisers?: number; maxPitchDeg?: number }
 
 export interface CountryProfile {
   code: CountryCode;
@@ -111,7 +111,8 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
       { id: '400x400', label: '400 × 400', length: 0.4, width: 0.4 },
     ],
     // Bunnings: Adbri Versawall standard block 400 × 200 × 215 mm (L × H × D); max unreinforced 800 mm + cap.
-    blocks: [{ id: 'std', label: 'Wall block 400 × 200 × 215', length: 0.4, height: 0.2, depth: 0.215, cap: 0 }],
+    // Matching capping unit about 300 mm long, 3.3 per lineal metre (Nuway / Adbri Versawall sheet).
+    blocks: [{ id: 'std', label: 'Wall block 400 × 200 × 215', length: 0.4, height: 0.2, depth: 0.215, cap: 0.3 }],
     // Nuway (Logan) price list: road base ≈1.6, washed sand and brickies loam ≈1.5 t/m³.
     // ANL figures (via whatsthedamage.com.au): blue metal 1.45, river gravel 1.55, turf underlay 1.4 t/m³.
     materials: [
@@ -133,7 +134,8 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
       buildingNote: 'NCC: ground next to a building falls at least 50 mm over the first 1 m (25 mm for paving in low-rainfall areas).',
     },
     // ABCB Housing Provisions 2022 cl. 11.2.2, Table 11.2.2a.
-    stairs: { riser: [0.115, 0.19], going: [0.24, 0.355], twoRG: [0.55, 0.7], code: 'NCC' },
+    // At most 18 risers per flight (Housing Provisions 11.2.2).
+    stairs: { riser: [0.115, 0.19], going: [0.24, 0.355], twoRG: [0.55, 0.7], code: 'NCC', maxRisers: 18 },
     standards: { readyMix: 'AS 1379', structural: 'AS 3600', residential: 'AS 2870 and the NCC', curing: 'AS 3600' },
     // AS 1379 cl. 4.2.5 (90 min, via Austroads ATS 5335); 5–35 °C at delivery (Holcim data sheet DS2004).
     readyMix: { dischargeMinutes: 90, delivery: { min: 5, max: 35 } },
@@ -149,13 +151,16 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
     order: { increment: 0.25, truck: 6.4 },
     // Firth Dricon brochure 2020: 25 kg bag makes 0.012 m³, 40 kg makes 0.019 m³ (Mitre 10 stocks 25 kg).
     bags: [{ id: '25kg', label: '25 kg', kg: 25, yieldM3: 0.012 }, { id: '40kg', label: '40 kg', kg: 40, yieldM3: 0.019 }],
-    // Steel & Tube spec sheets (Aug 2025): SE62, SE72 at 200 mm pitch, 6040 × 2440 mm. Mitre 10: 665 large sheet
-    // 6.06 × 2.42 m, small 4.56 × 1.97 m. Lap: generic 225 mm (check NZS 3604 / your engineer).
+    // Steel & Tube spec sheets (Aug 2025): SE62, SE72 at 200 mm pitch, 6040 × 2440 mm overall with 50 mm end and
+    // 20 mm side overhangs, so 5.94 × 2.40 m wire-to-wire. NZS 3101 cl. 8.7.6(a) (MBIE guidance): lap one mesh space
+    // + 50 mm = 250 mm on the wires (= the sheet's 350 mm end / 290 mm side overlap on overall sizes).
+    // Mitre 10: 665 large 6.06 × 2.42 m, small 4.56 × 1.97 m; pitch and overhangs not published, so overall sizes with
+    // the conservative 350 mm overlap.
     mesh: [
-      { id: 'SE62', label: 'SE62 (6.04 × 2.44 m)', length: 6.04, width: 2.44, lap: 0.225 },
-      { id: 'SE72', label: 'SE72 (6.04 × 2.44 m)', length: 6.04, width: 2.44, lap: 0.225 },
-      { id: '665L', label: '665 large (6.06 × 2.42 m)', length: 6.06, width: 2.42, lap: 0.225 },
-      { id: '665S', label: '665 small (4.56 × 1.97 m)', length: 4.56, width: 1.97, lap: 0.225 },
+      { id: 'SE62', label: 'SE62 (6.04 × 2.44 m)', length: 5.94, width: 2.4, lap: 0.25 },
+      { id: 'SE72', label: 'SE72 (6.04 × 2.44 m)', length: 5.94, width: 2.4, lap: 0.25 },
+      { id: '665L', label: '665 large (6.06 × 2.42 m)', length: 6.06, width: 2.42, lap: 0.35 },
+      { id: '665S', label: '665 small (4.56 × 1.97 m)', length: 4.56, width: 1.97, lap: 0.35 },
     ],
     // Mitre 10 D12-300 6 m; Bunnings NZ D12 500 HD 6 m (AS/NZS 4671 nominal mass).
     bars: [
@@ -191,7 +196,7 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
       buildingNote: 'NZ Building Code: keep the floor at least 150 mm above finished ground (E1/AS1); E2/AS1 slab clearances are 100–150 mm above paving. Fall paving away from the house.',
     },
     // BRANZ (external stairs for houses), D1/AS1 main private stair: riser at most 190 mm, tread at least 280 mm.
-    stairs: { riser: [0, 0.19], going: [0.28, 9], code: 'NZBC D1/AS1' },
+    stairs: { riser: [0, 0.19], going: [0.28, 9], code: 'NZBC D1/AS1', maxPitchDeg: 37 },
     standards: { readyMix: 'NZS 3104', structural: 'NZS 3101', residential: 'NZS 3604', curing: 'NZS 3109' },
     terms: { barChairs: 'Bar chairs', roadBase: 'Basecourse', agPipe: 'Drain coil', premix: 'Bagged concrete', formwork: 'Boxing', mesh: 'Mesh' },
   },
@@ -209,7 +214,8 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
     trenchMesh: undefined,
     // Wickes: Marshalls block paving 200 × 100 × 50 (488 = 9.76 m²); Toolstation: 600 × 600 slabs.
     pavers: [
-      { id: '200x100', label: '200 × 100 block paving', length: 0.2, width: 0.1 },
+      // Nibbed blocks: 488 per 9.76 m² = 50 per m², so no extra joint.
+      { id: '200x100', label: '200 × 100 block paving', length: 0.2, width: 0.1, joint: 0 },
       { id: '600x600', label: '600 × 600 slab', length: 0.6, width: 0.6 },
     ],
     // MOT Type 1: 850 kg bulk bag covers about 5 m² at 100 mm (Mainland Aggregates) = 1.7 t per compacted m³.
@@ -227,7 +233,8 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
       buildingNote: 'Approved Document H: lay paving to a fall that avoids ponding. Keep paving at least 150 mm below the damp-proof course.',
     },
     // Approved Document K Table 1.1, private stair.
-    stairs: { riser: [0.15, 0.22], going: [0.22, 0.3], twoRG: [0.55, 0.7], code: 'Approved Document K' },
+    // Approved Document K Table 1.1: private stair pitch at most 42°.
+    stairs: { riser: [0.15, 0.22], going: [0.22, 0.3], twoRG: [0.55, 0.7], code: 'Approved Document K', maxPitchDeg: 42 },
     standards: { readyMix: 'BS 8500 / BS EN 206', structural: 'BS EN 1992', residential: 'the Building Regulations', curing: 'BS 8500' },
     terms: { barChairs: 'Chairs', roadBase: 'Sub-base', agPipe: 'Land drain', premix: 'Bagged concrete', formwork: 'Formwork', mesh: 'Mesh' },
   },
@@ -245,7 +252,8 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
     bars: [10, 12, 16].map(d => ({ id: `${d}mm`, label: `${d} mm (B500)`, d, stock: 6 })),
     trenchMesh: undefined,
     // McMahons: Kilsaran Slane 200 × 100 × 50, 50 per m².
-    pavers: [{ id: '200x100', label: '200 × 100 block paving', length: 0.2, width: 0.1 }],
+    // Kilsaran Slane: "50 pieces per m2" (nibbed), so no extra joint.
+    pavers: [{ id: '200x100', label: '200 × 100 block paving', length: 0.2, width: 0.1, joint: 0 }],
     // Roadstone Clause 804: one tonne covers about 10–12 m² at 50 mm = 1.7–2.0 t per compacted m³ (1.8 used).
     materials: [
       { id: 'c804', name: 'Clause 804 sub-base', density: 1.8, compactPct: 0 },

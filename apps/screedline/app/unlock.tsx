@@ -4,7 +4,7 @@ import { ActivityIndicator, Alert, Image, Pressable, ScrollView, Text, useWindow
 
 const GROUND = require('../assets/art/welcome-ground.jpg');
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { FULL_AUSTRALIA_PRICE } from '../src/plus/entitlement';
+import { accessMessage, FULL_AUSTRALIA_PRICE, unlocked } from '../src/plus/entitlement';
 import type { PurchaseResult } from '../src/plus/purchases';
 import { useApp } from '../src/state/AppState';
 import { FONT, RADIUS, SPACE } from '../src/theme/theme';
@@ -18,12 +18,15 @@ export default function UnlockScreen() {
   const { width } = useWindowDimensions();
   const [busy, setBusy] = useState<null | 'buy' | 'trial' | 'restore'>(null);
   const paid = app.tools.filter(t => !t.free);
+  // The A$ fallback is only right in Australia; elsewhere wait for the App Store's own price.
+  const price = app.price ?? (app.country.code === 'AU' ? FULL_AUSTRALIA_PRICE : null);
   const act = async (kind: 'buy' | 'trial' | 'restore', fn: () => Promise<PurchaseResult>) => {
     setBusy(kind);
     const r = await fn();
     setBusy(null);
     if (r.ok) {
-      Alert.alert(r.access.full ? 'Unlocked' : 'Trial started', r.access.full ? 'Every tool is yours. Thank you!' : 'Every tool is open for 7 days. Nothing is charged when it ends.', [{ text: 'OK', onPress: () => router.back() }]);
+      const m = accessMessage(r.access, Date.now());
+      Alert.alert(m.title, m.body, [{ text: 'OK', onPress: () => { if (unlocked(r.access, Date.now())) router.back(); } }]);
     } else if (r.reason !== 'cancelled') {
       Alert.alert(kind === 'restore' ? 'Restore purchases' : 'Not completed', r.message);
     }
@@ -40,14 +43,15 @@ export default function UnlockScreen() {
           </View>
           <Text maxFontSizeMultiplier={1.4} style={{ fontFamily: FONT.numBold, fontSize: 44, lineHeight: 48, color: theme.onSlab }}>Full Unlock</Text>
           <Text maxFontSizeMultiplier={1.5} style={{ fontFamily: FONT.body, fontSize: 18, lineHeight: 25, color: theme.onSlab2 }}>
-            {access.full ? 'You own Full Unlock. Every tool is open.' : `Every tool, unlimited jobs. One payment of ${app.price ?? FULL_AUSTRALIA_PRICE}, no subscription.`}
+            {access.full ? 'You own Full Unlock. Every tool is open.' : price ? `Every tool, unlimited jobs. One payment of ${price}, no subscription.` : 'Every tool, unlimited jobs. One payment, no subscription.'}
           </Text>
         </View>
 
         <View style={{ padding: SPACE.l }}>
           {!access.full ? (
             <View style={{ gap: SPACE.m, }}>
-              <Button disabled={!!busy} icon="lock-open-variant" label={busy === 'buy' ? 'Opening the App Store…' : `Unlock for ${app.price ?? FULL_AUSTRALIA_PRICE}`} onPress={() => void act('buy', app.buy)} />
+              <Button disabled={!!busy} icon="lock-open-variant" label={busy === 'buy' ? 'Opening the App Store…' : price ? `Unlock for ${price}` : 'Unlock Full'} onPress={() => void act('buy', app.buy)} />
+              {!price ? <T kind="small" style={{ textAlign: 'center' }}>Price loads from the App Store.</T> : null}
               {!trial.started ? (
                 <Button disabled={!!busy} kind="secondary" icon="timer-sand" label={busy === 'trial' ? 'Opening the App Store…' : 'Start free 7-day trial'} onPress={() => void act('trial', app.startTrial)} />
               ) : (

@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ActionSheetIOS, Alert, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
+import { AccessibilityInfo, ActionSheetIOS, Alert, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { Shape, ShapeKind } from '../core/concrete';
 import { SUPPLIER_NOTE } from '../core/jobs';
@@ -64,7 +64,30 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
   }, [sys]);
 
   const values = useMemo(() => valuesFrom(tool, texts, choices, shapes, sys), [tool, texts, choices, shapes, sys]);
-  const run: Run | null = useMemo(() => (tool.run ? tool.run(values) : null), [tool, values]);
+  const raw: Run | null = useMemo(() => (tool.run ? tool.run(values) : null), [tool, values]);
+  // Text that isn't a number is an error even in optional boxes; only truly empty boxes fall back to defaults.
+  const bad = useMemo(() => {
+    const e: Record<string, string> = {};
+    for (const f of tool.fields) {
+      if (!visible(f, values)) continue;
+      const s = (texts[f.key] ?? '').trim();
+      if (f.type === 'num' && s && parseNumber(s) === null) e[f.key] = `${f.label} needs a number.`;
+      if (f.type === 'list' && s && s.split(/[,;\s]+/).filter(Boolean).some(x => parseNumber(x) === null)) e[f.key] = 'Each side needs a number, separated by commas.';
+    }
+    shapes.forEach((sh, k) => {
+      if (sh.a.trim() && parseNumber(sh.a) === null) e[`s${k}a`] = 'Needs a number.';
+      if (sh.kind !== 'circle' && sh.b.trim() && parseNumber(sh.b) === null) e[`s${k}b`] = 'Needs a number.';
+    });
+    return e;
+  }, [tool, texts, shapes, values]);
+  const run: Run | null = useMemo(() => (Object.keys(bad).length ? { ok: false, errors: { ...(raw && !raw.ok ? raw.errors : {}), ...bad } } : raw), [raw, bad]);
+  const announce = (key?: string) => {
+    if (key && errors[key]) { AccessibilityInfo.announceForAccessibility(errors[key]!); return; }
+    if (run && run.ok) {
+      const h = showOut(run.headline, sys);
+      AccessibilityInfo.announceForAccessibility(locked ? `${run.headline.label} is part of Full Unlock` : `${run.headline.label} ${h.value} ${h.unit}`);
+    }
+  };
   useEffect(() => { app.setDraft(tool.id, values); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [values]);
 
   const locked = !app.canUse(tool.id);
@@ -106,6 +129,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
       ...(run.table ? run.table.rows.map(([a, b]) => `${showOut(a, sys).value} ${showOut(a, sys).unit}: ${showOut(b, sys).value} ${showOut(b, sys).unit}`) : []),
       ...(shapeLine ? [shapeLine] : []),
       `Inputs: ${inputs.join(', ')}`,
+      ...(run.notes.length ? ['Notes:', ...run.notes.map(n => `- ${n}`)] : []),
     ];
   };
 
@@ -157,7 +181,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
             if (f.type === 'num') {
               return (
                 <FieldShell key={f.key} label={f.label} help={f.help} error={errors[f.key]}>
-                  <NumberInput label={f.label} value={texts[f.key] ?? ''} onChange={s => setTexts(t => ({ ...t, [f.key]: s }))} unit={unitLabel(f.kind, sys)} integer={f.kind === 'count'} negative={f.kind === 'temp'} error={!!errors[f.key]} placeholder={f.optional ? 'Optional' : undefined} />
+                  <NumberInput label={f.label} value={texts[f.key] ?? ''} onChange={s => setTexts(t => ({ ...t, [f.key]: s }))} unit={unitLabel(f.kind, sys)} integer={f.kind === 'count'} negative={f.kind === 'temp'} error={!!errors[f.key]} hint={errors[f.key]} onBlur={() => announce(f.key)} placeholder={f.optional ? 'Optional' : undefined} />
                 </FieldShell>
               );
             }

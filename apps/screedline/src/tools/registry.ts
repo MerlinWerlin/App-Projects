@@ -100,7 +100,7 @@ export function toolsFor(c: CountryProfile): Tool[] {
         { type: 'num', key: 'edgeDepth', label: 'Edge beam depth (from top)', kind: 'thick', def: 0.4, when: v => v.edge === 'yes' },
         waste,
       ],
-      run: v => volumeRun(slab({ length: n(v, 'length'), width: n(v, 'width'), depth: n(v, 'depth'), wastePct: n(v, 'waste'), ...(v.edge === 'yes' ? { edgeWidth: n(v, 'edgeWidth'), edgeDepth: n(v, 'edgeDepth') } : {}) })),
+      run: v => volumeRun(slab({ length: n(v, 'length'), width: n(v, 'width'), depth: n(v, 'depth'), wastePct: n(v, 'waste'), edge: v.edge === 'yes', edgeWidth: n(v, 'edgeWidth'), edgeDepth: n(v, 'edgeDepth') })),
     },
     {
       id: 'footing', group: 'concrete', title: 'Footings', blurb: 'Strip footings and square pad footings', icon: 'view-sequential-outline', free: false,
@@ -350,10 +350,10 @@ export function toolsFor(c: CountryProfile): Tool[] {
       id: 'pavers', group: 'ground', title: 'Pavers', blurb: `Pavers, bedding sand and ${c.terms.roadBase.toLowerCase()}`, icon: 'view-grid-outline', free: false,
       fields: [
         { type: 'num', key: 'area', label: 'Area', kind: 'area', def: 20 },
-        { type: 'choice', key: 'size', label: 'Paver size', def: c.pavers[0]!.id, options: opt(c.pavers), apply: (id): Values => { const p = pick(c.pavers, id); return p ? { paverLength: p.length, paverWidth: p.width } : {}; } },
+        { type: 'choice', key: 'size', label: 'Paver size', def: c.pavers[0]!.id, options: opt(c.pavers), apply: (id): Values => { const p = pick(c.pavers, id); return p ? { paverLength: p.length, paverWidth: p.width, joint: p.joint ?? 0.003 } : {}; } },
         { type: 'num', key: 'paverLength', label: 'Paver length', kind: 'size', def: c.pavers[0]!.length },
         { type: 'num', key: 'paverWidth', label: 'Paver width', kind: 'size', def: c.pavers[0]!.width },
-        { type: 'num', key: 'joint', label: 'Joint', kind: 'size', def: 0.003, help: '2–5 mm.' },
+        { type: 'num', key: 'joint', label: 'Joint', kind: 'size', def: c.pavers[0]!.joint ?? 0.003, help: '2–5 mm. 0 for nibbed blocks, whose nibs set the joint.' },
         { type: 'num', key: 'waste', label: 'Waste', kind: 'pct', def: 5, help: '5 % straight lay, 10 % or more for herringbone.' },
         { type: 'num', key: 'beddingDepth', label: 'Bedding sand', kind: 'thick', def: 0.03, optional: true },
         { type: 'num', key: 'baseDepth', label: `${c.terms.roadBase} depth`, kind: 'thick', def: 0.1, optional: true, help: '100 mm for paths; driveways need more.' },
@@ -411,7 +411,7 @@ export function toolsFor(c: CountryProfile): Tool[] {
         { type: 'choice', key: 'material', label: 'Material', def: c.materials[0]!.id, options: opt(c.materials), apply: id => ({ density: pick(c.materials, id)?.density ?? 1.6 }) },
         { type: 'choice', key: 'from', label: 'Convert', def: 'm3', options: [{ value: 'm3', label: 'Volume → weight' }, { value: 't', label: 'Weight → volume' }] },
         { type: 'num', key: 'm3', label: 'Volume', kind: 'vol', def: 2, when: v => v.from !== 't' },
-        { type: 'num', key: 't', label: 'Tonnes', kind: 'num', def: 3, when: v => v.from === 't' },
+        { type: 'num', key: 't', label: 'Weight', kind: 'tonnes', def: 3, when: v => v.from === 't' },
         { type: 'num', key: 'density', label: 'Density', kind: 'density', def: c.materials[0]!.density },
       ],
       run: v => {
@@ -419,7 +419,7 @@ export function toolsFor(c: CountryProfile): Tool[] {
         const r0 = convert({ value: n(v, from), from, density: n(v, 'density') });
         if (!r0.ok) { const e = { ...r0.errors }; if (e.value) { e[from] = e.value; delete e.value; } return { ok: false, errors: e }; }
         return from === 'm3'
-          ? { ok: true, headline: { label: 'Weight', value: r0.value.t, kind: 't', dp: 2, caption: 'metric tonnes' }, outputs: [], steps: r0.steps, notes: r0.notes }
+          ? { ok: true, headline: { label: 'Weight', value: r0.value.t, kind: 't', dp: 2, caption: pick(c.materials, s(v, 'material'))?.name ?? 'material' }, outputs: [], steps: r0.steps, notes: r0.notes }
           : { ok: true, headline: { label: 'Volume', value: r0.value.m3, kind: 'vol', dp: 2, caption: 'loose volume' }, outputs: [], steps: r0.steps, notes: r0.notes };
       },
     },
@@ -467,7 +467,7 @@ export function toolsFor(c: CountryProfile): Tool[] {
         const r0 = pourWeather({ airC: n(v, 'airC'), concreteC: n(v, 'concreteC'), humidityPct: n(v, 'humidityPct'), windKmh: n(v, 'windKmh'), delivery: d ? { ...d, source: c.standards.readyMix } : undefined });
         if (!r0.ok) return r0;
         const r = r0.value;
-        const label = r.risk === 'high' ? 'High cracking risk' : r.risk === 'moderate' ? 'Take precautions' : 'Low risk';
+        const label = r.risk === 'high' ? 'High cracking risk' : r.risk === 'moderate' ? 'Moderate risk: take precautions' : 'Low evaporation risk';
         return {
           ok: true,
           headline: { label: 'Evaporation', value: r.evaporation, kind: 'kgph', dp: 2, caption: label },

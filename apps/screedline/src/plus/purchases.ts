@@ -28,6 +28,8 @@ export interface PurchaseProvider {
   restore(): Promise<PurchaseResult>;
   /** null means the store could not be read: keep the last verified access. */
   refresh(): Promise<Access | null>;
+  /** Long-lived listener: purchases approved later (Ask to Buy) or finished outside a buy() call. Returns unsubscribe. */
+  watch(onAccess: (a: Access) => void): () => void;
 }
 
 export const MESSAGES = {
@@ -177,6 +179,21 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
       if (!access.full && access.trialStart === null) return { ok: false, reason: 'empty', message: MESSAGES.nothing };
       return { ok: true, access };
     }),
+    watch(onAccess) {
+      let sub: Subscription | null = null;
+      let stopped = false;
+      void connect().then(ok => {
+        if (!ok || !iap || stopped) return;
+        try {
+          sub = iap.purchaseUpdatedListener(purchase => {
+            if (!SKUS.some(sku => matches(purchase, sku))) return;
+            void Promise.resolve().then(() => iap.finishTransaction({ purchase, isConsumable: false })).catch(() => undefined);
+            void owned().then(list => onAccess(accessFromPurchases(list && list.length ? list : [purchase], now())));
+          });
+        } catch { /* listener unavailable: refresh on foreground still applies access */ }
+      });
+      return () => { stopped = true; try { sub?.remove(); } catch { /* ignore */ } };
+    },
     async refresh() {
       if (busy || !(await connect())) return null;
       const list = await owned();
