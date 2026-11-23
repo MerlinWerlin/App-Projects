@@ -1,0 +1,37 @@
+# Normal build (no capture flag): a locked tool shows a blurred live preview and the unlock card.
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: "country-continue"
+    timeout: 60000
+- tapOn:
+    id: "country-AU"
+- tapOn:
+    id: "country-continue"
+- extendedWaitUntil:
+    visible: "Numbers you can check on site"
+    timeout: 30000
+- tapOn: "Got it"
+- takeScreenshot: l0-tools-locked
+- scrollUntilVisible:
+    element:
+      id: "tool-footing"
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    id: "tool-footing"
+- waitForAnimationToEnd
+- takeScreenshot: l1-footing-locked
+- scrollUntilVisible:
+    element:
+      id: "locked-unlock"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: l2-footing-unlock-card
+- tapOn:
+    id: "locked-unlock"
+- waitForAnimationToEnd
+- takeScreenshot: l3-paywall

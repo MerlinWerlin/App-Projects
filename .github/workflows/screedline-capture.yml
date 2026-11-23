@@ -80,6 +80,7 @@ jobs:
           xcrun simctl launch "$BIG" "$BUNDLE"; sleep 25
           if xcrun simctl spawn "$BIG" launchctl list | grep -q "$BUNDLE"; then echo "LAUNCH OK: still running after 25 s"; else echo "::error::app not running 25 s after launch"; fi
           xcrun simctl io "$BIG" screenshot "$OUT/checks/a-first-launch.png"
+          (cd store/capture && maestro --device "$BIG" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-locked" locked-flow.yaml || echo "locked flow failed")
           xcrun simctl uninstall "$BIG" "$BUNDLE"
 
           # B: store captures, light and dark

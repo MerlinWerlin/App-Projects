@@ -2,16 +2,18 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEECE6">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1012">
 <meta name="color-scheme" content="light dark">
 <title>Screedline Privacy Policy</title>
 <link rel="icon" href="img/icon.png">
 <style>
 :root{--paper:#EEECE6;--card:#FFFFFF;--line:#D6D2C7;--text:#15171A;--muted:#4B4F56;--amber:#FFB300}
 @media (prefers-color-scheme: dark){:root{--paper:#0E1012;--card:#191C20;--line:#2F343A;--text:#F3F1EA;--muted:#B7BBC2}}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}a{touch-action:manipulation}summary{touch-action:manipulation;user-select:none;-webkit-user-select:none}
 body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+main{max-width:720px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right)) 64px max(16px,env(safe-area-inset-left))}
 h1{font-size:2rem;line-height:1.15;margin:0 0 4px}h2{font-size:1.15rem;margin:32px 0 8px}
 .bar{width:56px;height:6px;border-radius:3px;background:var(--amber);margin:0 0 16px}
 .meta{color:var(--muted);margin:0 0 24px}
