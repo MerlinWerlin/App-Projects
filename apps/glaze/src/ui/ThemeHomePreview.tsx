@@ -52,7 +52,7 @@ export const ThemeHomePreview = memo(function ThemeHomePreview({ theme, width, h
 const styles = StyleSheet.create({
   // No shadow: Home Screen widgets sit flat on the wallpaper, and a shadow costs a frame while scrolling.
   lift: { position: 'absolute' },
-  clip: { ...StyleSheet.absoluteFillObject, overflow: 'hidden' },
+  clip: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' },
   dock: { position: 'absolute', borderWidth: StyleSheet.hairlineWidth },
   icon: { position: 'absolute' },
 });
