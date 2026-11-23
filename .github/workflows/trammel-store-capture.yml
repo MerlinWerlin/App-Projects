@@ -18,7 +18,7 @@ jobs:
   capture:
     # GitHub's hosted Mac (Xcode 26, iOS 26 simulators): the shared xcode-27 runner takes one job at a time.
     runs-on: macos-latest
-    timeout-minutes: 100
+    timeout-minutes: 60
     defaults:
       run:
         working-directory: apps/trammel
@@ -56,19 +56,24 @@ jobs:
           xcrun simctl status_bar "$DEVICE" override --time 9:41 --dataNetwork wifi --wifiBars 3 --cellularBars 4 --batteryState charged --batteryLevel 100 || true
           xcrun simctl install "$DEVICE" "$APP"
           OUT="$RUNNER_TEMP/out"; mkdir -p "$OUT"
+          # Every simulator call gets a time limit (macOS has no `timeout`), so a hang fails fast instead of stalling.
+          t() { perl -e 'alarm shift; exec @ARGV' "$@"; }
+          running() { t 20 xcrun simctl spawn "$DEVICE" launchctl list | grep -q "UIKitApplication:$BID"; }
+          crashlog() { find ~/Library/Logs/DiagnosticReports -newer "$APP" -name '*.ips' -exec cp {} "$OUT/" \; 2>/dev/null; ls "$OUT"/*.ips 2>/dev/null && head -c 4000 "$OUT"/*.ips; }
           FAIL=0
           for MODE in light dark; do
-            xcrun simctl ui "$DEVICE" appearance $MODE
-            xcrun simctl terminate "$DEVICE" "$BID" 2>/dev/null || true
-            L=$(xcrun simctl launch "$DEVICE" "$BID"); PID=${L##* }
-            sleep 12
-            xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-00-home.png"
+            t 30 xcrun simctl ui "$DEVICE" appearance $MODE || true
+            t 30 xcrun simctl terminate "$DEVICE" "$BID" 2>/dev/null || true
+            t 60 xcrun simctl launch "$DEVICE" "$BID" || { echo "::error::launch command failed"; FAIL=1; }
+            sleep 15
+            if running; then echo "LAUNCH OK ($MODE)"; else echo "::error::Trammel is not running 15 s after launch ($MODE)"; crashlog; exit 1; fi
+            t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-00-home.png" || true
             i=1
             for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall welcome; do
-              xcrun simctl openurl "$DEVICE" "trammel:///$R"
+              t 30 xcrun simctl openurl "$DEVICE" "trammel:///$R" || echo "::warning::openurl $R timed out"
               sleep 5
-              xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$R.png"
-              if ! xcrun simctl spawn "$DEVICE" launchctl list | grep -q "$BID"; then echo "::error::Trammel exited on $R ($MODE)"; FAIL=1; L=$(xcrun simctl launch "$DEVICE" "$BID"); sleep 8; fi
+              t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$R.png" || true
+              if ! running; then echo "::error::Trammel exited on $R ($MODE)"; FAIL=1; crashlog; t 60 xcrun simctl launch "$DEVICE" "$BID" || true; sleep 8; fi
               i=$((i+1))
             done
           done
