@@ -1,22 +1,27 @@
 import { useMemo } from 'react';
-import { PROCESSES, weldFiller, type Joint, type ProcessId } from '../../src/core/weld.ts';
-import { fmt, mass } from '../../src/core/units.ts';
+import { legFromThroat, PROCESSES, weldFiller, type Joint, type ProcessId } from '../../src/core/weld.ts';
+import { useApp } from '../../src/state/AppState.tsx';
+import { fmt, lenShort, mass } from '../../src/core/units.ts';
 import { Big, Card, Note, NumField, Row, Section, Segmented, Txt, Working } from '../../src/ui/kit.tsx';
 import { ToolScreen, useTool } from '../../src/ui/useTool.tsx';
 
-const DEFAULTS = { joint: 'fillet', legA: '6', legB: '6', t: '10', gap: '2', face: '1.5', angle: '60', length: '10000', reinf: '10', process: 'gmaw', eff: '' };
-const LENGTHS = ['legA', 'legB', 't', 'gap', 'face', 'length'] as const;
+const DEFAULTS = { joint: 'fillet', size: 'leg', throat: '4', legA: '6', legB: '6', t: '10', gap: '2', face: '1.5', angle: '60', length: '10000', reinf: '10', process: 'gmaw', eff: '' };
+const LENGTHS = ['throat', 'legA', 'legB', 't', 'gap', 'face', 'length'] as const;
 
 export default function WeldTool() {
-  const t = useTool('weld', DEFAULTS, LENGTHS);
+  const app = useApp();
+  // ISO 2553 drawings (UK, Ireland) size fillets by throat a; AS 1554 and AWS usually by leg.
+  const sizeDefault = app.country.code === 'GB' || app.country.code === 'IE' ? 'throat' : 'leg';
+  const t = useTool('weld', { ...DEFAULTS, size: sizeDefault }, LENGTHS, { joint: ['fillet', 'singleV', 'doubleV', 'squareButt'], process: Object.keys(PROCESSES), size: ['leg', 'throat'] });
+  const byThroat = t.v.size === 'throat';
   const U = t.units;
   const kind = t.v.joint as Joint['kind'];
   const joint: Joint = kind === 'fillet'
-    ? { kind, legA: t.mm('legA'), legB: t.mm('legB') }
+    ? (byThroat ? { kind, legA: legFromThroat(t.mm('throat')), legB: legFromThroat(t.mm('throat')) } : { kind, legA: t.mm('legA'), legB: t.mm('legB') })
     : kind === 'squareButt'
       ? { kind, thickness: t.mm('t'), gap: t.mm('gap') }
       : { kind, thickness: t.mm('t'), gap: t.mm('gap'), rootFace: t.mm('face'), includedDeg: t.num('angle') };
-  const process = t.v.process as ProcessId;
+  const process = (t.v.process in PROCESSES ? t.v.process : 'gmaw') as ProcessId;
   const eff = t.v.eff.trim() === '' ? undefined : t.num('eff') / 100;
   const input = { joint, length: t.mm('length'), reinforcementPct: t.v.reinf.trim() === '' ? 0 : t.num('reinf'), process, efficiency: eff };
   const r = useMemo(() => weldFiller(input), [JSON.stringify(input)]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -37,10 +42,18 @@ export default function WeldTool() {
       <Segmented value={kind} onChange={t.set('joint')} options={[{ value: 'fillet', label: 'Fillet' }, { value: 'singleV', label: 'Single V' }, { value: 'doubleV', label: 'Double V' }, { value: 'squareButt', label: 'Square' }]} />
       <Section title="Joint">
         {kind === 'fillet' ? (
-          <Row>
-            <NumField label="Leg A" value={t.v.legA} onChange={t.set('legA')} unit={t.u} invalid={t.invalid('legA')} />
-            <NumField label="Leg B" value={t.v.legB} onChange={t.set('legB')} unit={t.u} invalid={t.invalid('legB')} />
-          </Row>
+          <>
+            <Segmented label="Size by" value={t.v.size as 'leg' | 'throat'} onChange={t.set('size')} options={[{ value: 'leg', label: 'Leg length' }, { value: 'throat', label: 'Throat (a)' }]} />
+            {byThroat ? (
+              <NumField label="Throat a" value={t.v.throat} onChange={t.set('throat')} unit={t.u} invalid={t.invalid('throat')}
+                hint={`Equal-leg 90° fillet: leg = a × √2 = ${Number.isFinite(t.mm('throat')) ? lenShort(legFromThroat(t.mm('throat')), U, 1) : '–'} ${t.u}`} />
+            ) : (
+              <Row>
+                <NumField label="Leg A" value={t.v.legA} onChange={t.set('legA')} unit={t.u} invalid={t.invalid('legA')} />
+                <NumField label="Leg B" value={t.v.legB} onChange={t.set('legB')} unit={t.u} invalid={t.invalid('legB')} />
+              </Row>
+            )}
+          </>
         ) : (
           <>
             <Row>

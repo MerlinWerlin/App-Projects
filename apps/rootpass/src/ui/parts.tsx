@@ -1,12 +1,19 @@
 import { Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, G, Line, Polyline, Rect, Text as SvgText } from 'react-native-svg';
 import { fromMm, fmt, type UnitSystem } from '../core/units.ts';
+import type { PipeSize } from '../core/country.ts';
 import { useApp } from '../state/AppState.tsx';
 import { Txt } from './kit.tsx';
 import { C, FONT, RADIUS, SPACE } from './theme.ts';
 
 /** The country's pipe series (src/core/country.ts): ISO / AS / EN DN sizes, or ASME B36.10M NPS. */
-export function PipeChips({ units, onPick, selectedMm }: { units: UnitSystem; onPick(display: string): void; selectedMm: number }) {
+/** The series wall a pipe is usually bought in: Medium (AS 1074, EN 10255) or Sch 40 (ASME), else the first listed. */
+export function usualWall(p: PipeSize): number | null {
+  if (!p.walls) return null;
+  return p.walls.Medium ?? p.walls['Sch 40'] ?? Object.values(p.walls)[0] ?? null;
+}
+
+export function PipeChips({ units, onPick, selectedMm, onPickWall }: { units: UnitSystem; onPick(display: string): void; selectedMm: number; onPickWall?: (display: string) => void }) {
   const { country } = useApp();
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: SPACE.sm, paddingVertical: 2 }} keyboardShouldPersistTaps="handled">
@@ -16,7 +23,11 @@ export function PipeChips({ units, onPick, selectedMm }: { units: UnitSystem; on
         return (
           <Pressable
             key={p.label}
-            onPress={() => onPick(units === 'imperial' ? fmt(p.od / 25.4, 3) : String(p.od))}
+            onPress={() => {
+              onPick(units === 'imperial' ? fmt(p.od / 25.4, 3) : String(p.od));
+              const w = usualWall(p);
+              if (onPickWall && w !== null) onPickWall(units === 'imperial' ? fmt(w / 25.4, 3) : fmt(w, 1));
+            }}
             accessibilityRole="button"
             accessibilityLabel={`${p.label}, ${shown} ${units === 'imperial' ? 'inches' : 'millimetres'} outside diameter`}
             style={{ minHeight: 48, minWidth: 64, paddingHorizontal: SPACE.md, borderRadius: RADIUS.sm, justifyContent: 'center', backgroundColor: on ? C.accent : C.raised }}
@@ -70,20 +81,24 @@ export function WrapPreview({ points, circumference, maxDepth, ordinates, labels
 }
 
 /** Wall chips for the selected pipe in the local series (AS 1074 Light/Medium/Heavy, EN 10255, ASME schedules). */
-export function ScheduleChips({ odMm, units, onPick }: { odMm: number; units: UnitSystem; onPick(display: string): void }) {
+export function ScheduleChips({ odMm, units, onPick, wallMm }: { odMm: number; units: UnitSystem; onPick(display: string): void; wallMm: number }) {
   const { country } = useApp();
   const p = country.pipes.find(x => Math.abs(x.od - odMm) < 0.05);
   if (!p?.walls || !Object.keys(p.walls).length) return null;
   const show = (mm: number) => (units === 'imperial' ? fmt(mm / 25.4, 3) : fmt(mm, 1));
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm }}>
-      {Object.entries(p.walls).map(([n, w]) => (
-        <Pressable key={n} onPress={() => onPick(show(w))} accessibilityRole="button" accessibilityLabel={`${n} wall, ${show(w)}`}
-          style={({ pressed }) => ({ minHeight: 52, minWidth: 92, flexGrow: 1, paddingHorizontal: SPACE.md, borderRadius: RADIUS.sm, justifyContent: 'center', backgroundColor: pressed ? C.line : C.raised })}>
-          <Txt v="label" tone="ink2" style={{ fontSize: 12 }}>{n}</Txt>
-          <Txt v="headline">{show(w)}</Txt>
-        </Pressable>
-      ))}
+      {Object.entries(p.walls).map(([n, w]) => {
+        // Selected when the wall field matches this series wall (to the displayed precision).
+        const on = Math.abs(wallMm - w) < (units === 'imperial' ? 0.02 : 0.06);
+        return (
+          <Pressable key={n} onPress={() => onPick(show(w))} accessibilityRole="button" accessibilityState={{ selected: on }} accessibilityLabel={`${n} wall, ${show(w)}`}
+            style={({ pressed }) => ({ minHeight: 52, minWidth: 92, flexGrow: 1, paddingHorizontal: SPACE.md, borderRadius: RADIUS.sm, justifyContent: 'center', backgroundColor: on ? C.accent : pressed ? C.line : C.raised })}>
+            <Txt v="label" tone={on ? 'accentInk' : 'ink2'} style={{ fontSize: 12 }}>{n}</Txt>
+            <Txt v="headline" tone={on ? 'accentInk' : 'ink'}>{show(w)}</Txt>
+          </Pressable>
+        );
+      })}
     </View>
   );
 }

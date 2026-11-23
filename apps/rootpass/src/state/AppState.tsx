@@ -114,10 +114,11 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  // Write first: a failed save or delete leaves the list as it was (the caller shows the error).
   const persistJobs = useCallback(async (list: Job[]) => {
+    await kv.setItem(JOBS_KEY, JSON.stringify(list));
     jobsRef.current = list;
     setJobs(list);
-    await kv.setItem(JOBS_KEY, JSON.stringify(list));
   }, []);
 
   const value = useMemo<App>(() => {

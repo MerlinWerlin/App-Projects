@@ -41,9 +41,12 @@ export function cutList(i: CutInput): Result<CutResult> {
   if (!Number.isFinite(i.trim) || i.trim < 0 || i.trim >= i.stock) return fail('End trim must be 0 or more and less than the stock length.');
   const usable = i.stock - i.trim;
   const items: Item[] = [];
+  let pieces = 0;
   for (const p of i.parts) {
     if (!Number.isFinite(p.length) || p.length <= 0) return fail('Every part needs a length more than 0.');
     if (!Number.isInteger(p.qty) || p.qty < 1) return fail('Quantities must be whole numbers, 1 or more.');
+    pieces += p.qty;
+    if (pieces > 500) return fail('Up to 500 pieces per cut list.');
     if (p.length > usable + 1e-9) return fail(`A ${fmt(p.length, 0)} mm part is longer than the usable stock (${fmt(usable, 0)} mm).`);
     for (let q = 0; q < p.qty; q++) items.push({ size: p.length + i.kerf, length: p.length, label: p.label });
   }

@@ -46,9 +46,9 @@ const SHAPE_WORD: Record<ShapeId, string> = { plate: 'plate thicknesses', flat: 
 
 export default function WeightTool() {
   const app = useApp();
-  const t = useTool('weight', DEFAULTS, LENGTHS);
+  const t = useTool('weight', DEFAULTS, LENGTHS, { shape: Object.keys(SHAPES), material: Object.keys(MATERIALS) });
   const U = t.units;
-  const shape = t.v.shape as ShapeId;
+  const shape = (t.v.shape in SHAPES ? t.v.shape : 'shs') as ShapeId;
   const dimNames = SHAPES[shape].dims;
   const price = t.v.price.trim() === '' ? undefined : t.num('price');
   const input = { shape, material: t.v.material as MaterialId, dims: dimNames.map((_, k) => t.mm(`d${k}`)), length: t.mm('length'), qty: t.num('qty'), pricePerKg: price };

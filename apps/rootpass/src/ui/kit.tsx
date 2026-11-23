@@ -97,7 +97,8 @@ export function NumField({ label, value, onChange, unit, hint, step, min, intege
           onChangeText={onChange}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          keyboardType={integer ? 'number-pad' : allowNegative ? 'numbers-and-punctuation' : 'decimal-pad'}
+          // Inches take fractions (3 1/2, 1/4), which the decimal pad cannot type.
+          keyboardType={integer ? 'number-pad' : allowNegative || unit === 'in' ? 'numbers-and-punctuation' : 'decimal-pad'}
           returnKeyType="done"
           selectTextOnFocus
           accessibilityLabel={`${label}${unit ? ` in ${unit}` : ''}`}

@@ -80,6 +80,18 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     acknowledging.set(key, work);
     return work;
   };
+  // iOS: a purchase that arrives outside a buy (Ask to Buy approved later, app closed mid-purchase) is picked up by
+  // refresh(); finish it once so StoreKit stops re-delivering it. Errors are ignored and retried on the next read.
+  const finishedIos = new Set<string>();
+  const finishIos = (purchase: StorePurchase): Promise<void> => {
+    if (platform !== 'ios' || !skus.some(sku => matches(purchase, sku))) return Promise.resolve();
+    const key = String(purchase.transactionId ?? purchase.id ?? purchase.productId);
+    if (finishedIos.has(key)) return Promise.resolve();
+    finishedIos.add(key);
+    return Promise.resolve().then(() => bounded(iap!.finishTransaction({ purchase, isConsumable: false }), 5000))
+      .then(() => undefined)
+      .catch(() => { finishedIos.delete(key); });
+  };
   const connect = (): Promise<boolean> => {
     if (!iap) return Promise.resolve(false);
     connection ??= Promise.resolve().then(() => bounded(iap.initConnection(), 20_000)).then(ok => {
@@ -92,7 +104,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     try {
       const list = await bounded(iap!.getAvailablePurchases(), 10_000);
       if (!Array.isArray(list)) return null;
-      await Promise.all(list.map(purchase => acknowledgeAndroid(purchase, true)));
+      await Promise.all(list.map(purchase => (platform === 'android' ? acknowledgeAndroid(purchase, true) : finishIos(purchase))));
       return list;
     } catch { return null; }
   };
@@ -133,7 +145,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
         // Settle once before acknowledgement: event and return may be the same transaction.
         finish({ ok: true, access });
         if (platform === 'android') void acknowledgeAndroid(purchase);
-        else void Promise.resolve().then(() => iap.finishTransaction({ purchase, isConsumable: false })).catch(() => undefined);
+        else void finishIos(purchase);
       };
       const onError = (e: unknown) => {
         if (/cancel/i.test(codeOf(e))) return finish({ ok: false, reason: 'cancelled', message: t('plus.cancelled') });

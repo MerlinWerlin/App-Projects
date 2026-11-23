@@ -58,7 +58,13 @@ export function bend(i: BendInput): Result<BendResult> {
   if (i.flanges && i.flanges.length) {
     if (i.flanges.length < 2) return fail('Enter at least two flange lengths (one bend).');
     for (const f of i.flanges) if (!Number.isFinite(f) || f <= 0) return fail('Every flange length must be more than 0.');
-    for (const f of i.flanges) if (f < ossb) return fail(`Each outside flange must be longer than the setback (${fmt(ossb, 1)} mm).`);
+    // An end flange has one setback; an interior flange has one at each bend (Machinery's Handbook flat-pattern layout).
+    for (let k = 0; k < i.flanges.length; k++) {
+      const ends = k === 0 || k === i.flanges.length - 1 ? 1 : 2;
+      if (i.flanges[k] <= ends * ossb + 1e-9) {
+        return fail(`Flange ${k + 1} needs more than ${fmt(ends * ossb, 1)} mm (${ends === 1 ? 'the setback' : 'a setback each side'}).`);
+      }
+    }
     const bends = i.flanges.length - 1;
     const sum = i.flanges.reduce((a, b) => a + b, 0);
     value.flat = sum - bends * bd;

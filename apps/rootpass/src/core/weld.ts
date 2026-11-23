@@ -51,6 +51,13 @@ export interface WeldResult {
   perMetreKg: number; // filler per metre of weld
 }
 
+/**
+ * Equal-leg 90° fillet: throat a = leg z / √2, so z = a·√2 (ISO 2553 sizes fillets by a; AS 1554 and AWS often by leg).
+ */
+export function legFromThroat(a: number): number {
+  return a * Math.SQRT2;
+}
+
 export function jointArea(j: Joint): Result<{ area: number; step: Step }> {
   if (j.kind === 'fillet') {
     const bad = positive('leg A', j.legA) ?? positive('leg B', j.legB);

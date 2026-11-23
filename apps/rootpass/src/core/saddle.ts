@@ -122,7 +122,7 @@ export function saddle(i: SaddleInput): Result<SaddleResult> {
   ];
   const warnings: string[] = [];
   if (i.angleDeg < 30) warnings.push('Shallow laterals under 30° are hard to fit and weld at the toe. Check the toe gap on a mock-up.');
-  if (i.contact === 'outside' && i.branchWall > 0) warnings.push('Line worked out on the outside of the branch wall: the inside edge will stand off the header at the sides. Bevel to suit.');
+  if (i.contact === 'outside') warnings.push(OUTSIDE_NOTE);
 
   const value: SaddleResult = { circumference: C, maxDepth: tMax - tMin, points, ordinates, tMin, tMax, contactRadius: r };
   const H = i.heightFromCentre ?? 0;
@@ -134,6 +134,12 @@ export function saddle(i: SaddleInput): Result<SaddleResult> {
   }
   return { ok: true, value, steps, warnings };
 }
+
+/**
+ * Worked on the outside radius, a square cut leaves the bore reaching further toward the header at the sides
+ * (t = √(R² − r²) is larger for the smaller inside radius), so the inside edge fouls the header there.
+ */
+export const OUTSIDE_NOTE = 'Line worked on the outside of the wall: the inside edge will foul the header at the sides unless you bevel it back. For a set-on branch, use Inside of wall.';
 
 /** Where the four quarter lines fall, for labels on the template. */
 export const QUARTER_LABELS: Record<number, string> = { 0: 'SIDE', 90: 'HEEL', 180: 'SIDE', 270: 'TOE', 360: 'SIDE' };

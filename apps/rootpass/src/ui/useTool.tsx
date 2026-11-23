@@ -14,7 +14,14 @@ import { Btn, Card, Screen, Txt } from './kit.tsx';
 import { C, RADIUS, SPACE } from './theme.ts';
 import { TOOL_META } from './tools.ts';
 
-export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKeys: readonly string[]) {
+/** Drops values outside a key's allowed set (a stale job or a hand-typed link) back to the default. */
+function cleanEnums(values: Record<string, string>, defaults: Record<string, string>, enums: Record<string, readonly string[]>): Record<string, string> {
+  const out = { ...values };
+  for (const [k, allowed] of Object.entries(enums)) if (!allowed.includes(out[k])) out[k] = defaults[k];
+  return out;
+}
+
+export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKeys: readonly string[], enums: Record<string, readonly string[]> = {}) {
   const app = useApp();
   const router = useRouter();
   const units = app.prefs.units;
@@ -28,7 +35,7 @@ export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKe
       const p = params[k];
       if (typeof p === 'string' && p.length <= 40) preset[k] = p;
     }
-    return { units, values: convertValues({ ...defaults, ...preset }, lengthKeys, 'metric', units) };
+    return { units, values: convertValues(cleanEnums({ ...defaults, ...preset }, defaults, enums), lengthKeys, 'metric', units) };
   });
   const loadedJob = useRef<string | null>(null);
 
@@ -40,7 +47,7 @@ export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKe
     loadedJob.current = id;
     setJobId(job.id);
     setJobName(job.name);
-    setState({ units, values: convertValues({ ...defaults, ...job.values }, lengthKeys, job.units, units) });
+    setState({ units, values: convertValues(cleanEnums({ ...defaults, ...job.values }, defaults, enums), lengthKeys, job.units, units) });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.job, app.jobs]);
 

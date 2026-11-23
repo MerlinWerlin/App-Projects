@@ -28,6 +28,7 @@ export function pcd(i: PcdInput): Result<PcdResult> {
   const bad = positive('PCD', i.pcd);
   if (bad) return fail(bad);
   if (!Number.isInteger(i.holes) || i.holes < 2 || i.holes > 72) return fail('Holes must be a whole number from 2 to 72.');
+  if (i.holeDia !== undefined && (!Number.isFinite(i.holeDia) || i.holeDia < 0)) return fail('Hole size must be 0 (centres only) or more.');
   const rot = i.extraRotationDeg ?? 0;
   if (!Number.isFinite(rot)) return fail('Enter the rotation (0 for none).');
   const n = i.holes;

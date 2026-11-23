@@ -11,7 +11,7 @@ const DEFAULTS = { kind: 'rect', w: '1200', h: '600', member: '50', measured: 'o
 const LENGTHS = ['w', 'h', 'member', 'size'] as const;
 
 export default function FrameTool() {
-  const t = useTool('frame', DEFAULTS, LENGTHS);
+  const t = useTool('frame', DEFAULTS, LENGTHS, { kind: ['rect', 'polygon', 'corner'], measured: ['outside', 'inside'], sizeKind: ['outsideSide', 'insideSide', 'outsideFlats', 'insideFlats', 'outsideCorners'] });
   const { width } = useWindowDimensions();
   const U = t.units;
   const kind = t.v.kind as 'rect' | 'polygon' | 'corner';

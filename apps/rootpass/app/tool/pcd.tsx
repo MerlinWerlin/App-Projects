@@ -14,7 +14,7 @@ const LENGTHS = ['pcd', 'hole'] as const;
 
 export default function PcdTool() {
   const app = useApp();
-  const t = useTool('pcd', DEFAULTS, LENGTHS);
+  const t = useTool('pcd', DEFAULTS, LENGTHS, { layout: ['straddle', 'onCentre'] });
   const exportPdf = usePdfExport();
   const { width } = useWindowDimensions();
   const U = t.units;

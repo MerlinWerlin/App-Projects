@@ -608,6 +608,14 @@ export const CATALOGUES: CatalogueSet = {
   },
   "plate": {
    "items": [
+    1.0,
+    1.2,
+    1.5,
+    1.6,
+    2.0,
+    2.5,
+    3.0,
+    4.0,
     5,
     6,
     8,
@@ -622,7 +630,7 @@ export const CATALOGUES: CatalogueSet = {
    ],
    "src": "https://www.infrabuild.com/steel/products/plate/grade-250-structural-steel-plate/",
    "verified": true,
-   "note": "3 and 4 mm plate not confirmed on this page (only floor plate / one Edcon 1200x2400 8 mm listing seen)."
+   "note": "3 and 4 mm plate not confirmed on this page (only floor plate / one Edcon 1200x2400 8 mm listing seen). Sheet under 5 mm added 23 Nov from InfraBuild Steel Centre sheet tables (hot-rolled (HA1S formable, HA3 pickled, Brightform), cold-rolled, galvanised (Galvabond)): https://www.infrabuild.com/steel/products/sheet-and-coil/hot-rolled-steel-sheet-and-coil/"
   },
   "round": {
    "items": [
@@ -3538,10 +3546,190 @@ export const CATALOGUES: CatalogueSet = {
    "note": "Russel Metals (Atlantic) HSS product page: a size/weight table, not explicitly a stock list; grades/lengths not stated there. Weights spot-checked as consistent for SHS."
   },
   "rhs": {
-   "items": [],
-   "src": "",
-   "verified": false,
-   "note": "Russel's rectangular HSS table is mis-aligned (rows repeat other sizes' weights), so not used. Sureway range only: 2x1x.065 to 8x6x.250."
+   "items": [
+    {
+     "a": 1.5,
+     "b": 1.0,
+     "walls": [
+      0.125
+     ]
+    },
+    {
+     "a": 2.0,
+     "b": 1.0,
+     "walls": [
+      0.125,
+      0.188
+     ]
+    },
+    {
+     "a": 2.0,
+     "b": 1.5,
+     "walls": [
+      0.125
+     ]
+    },
+    {
+     "a": 2.5,
+     "b": 1.5,
+     "walls": [
+      0.125,
+      0.188
+     ]
+    },
+    {
+     "a": 3.0,
+     "b": 1.0,
+     "walls": [
+      0.125
+     ]
+    },
+    {
+     "a": 3.0,
+     "b": 1.5,
+     "walls": [
+      0.125,
+      0.188
+     ]
+    },
+    {
+     "a": 3.0,
+     "b": 2.0,
+     "walls": [
+      0.125,
+      0.188,
+      0.25
+     ]
+    },
+    {
+     "a": 3.5,
+     "b": 2.5,
+     "walls": [
+      0.188
+     ]
+    },
+    {
+     "a": 4.0,
+     "b": 2.0,
+     "walls": [
+      0.125,
+      0.188,
+      0.25
+     ]
+    },
+    {
+     "a": 4.0,
+     "b": 3.0,
+     "walls": [
+      0.125,
+      0.188,
+      0.25,
+      0.375
+     ]
+    },
+    {
+     "a": 5.0,
+     "b": 2.0,
+     "walls": [
+      0.125,
+      0.188,
+      0.25
+     ]
+    },
+    {
+     "a": 5.0,
+     "b": 2.5,
+     "walls": [
+      0.188,
+      0.25
+     ]
+    },
+    {
+     "a": 5.0,
+     "b": 3.0,
+     "walls": [
+      0.188,
+      0.25,
+      0.375
+     ]
+    },
+    {
+     "a": 6.0,
+     "b": 2.0,
+     "walls": [
+      0.125,
+      0.188,
+      0.25
+     ]
+    },
+    {
+     "a": 6.0,
+     "b": 3.0,
+     "walls": [
+      0.125,
+      0.188,
+      0.25,
+      0.375
+     ]
+    },
+    {
+     "a": 6.0,
+     "b": 4.0,
+     "walls": [
+      0.188,
+      0.25,
+      0.375
+     ]
+    },
+    {
+     "a": 7.0,
+     "b": 3.0,
+     "walls": [
+      0.25
+     ]
+    },
+    {
+     "a": 7.0,
+     "b": 5.0,
+     "walls": [
+      0.25
+     ]
+    },
+    {
+     "a": 8.0,
+     "b": 3.0,
+     "walls": [
+      0.188,
+      0.25
+     ]
+    },
+    {
+     "a": 8.0,
+     "b": 4.0,
+     "walls": [
+      0.188,
+      0.25,
+      0.375
+     ]
+    },
+    {
+     "a": 8.0,
+     "b": 6.0,
+     "walls": [
+      0.375
+     ]
+    },
+    {
+     "a": 16.0,
+     "b": 8.0,
+     "walls": [
+      0.375
+     ]
+    }
+   ],
+   "src": "https://metalsrus.ca/collections/rectangle-tube",
+   "verified": true,
+   "note": "Metals R Us (metalsrus.ca) CSA 44W rectangle tube list, read 23 Nov 2026."
   },
   "chs": {
    "items": [],

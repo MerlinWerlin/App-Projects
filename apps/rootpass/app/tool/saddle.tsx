@@ -12,7 +12,7 @@ const LENGTHS = ['header', 'branch', 'wall', 'offset', 'height'] as const;
 
 export default function SaddleTool() {
   const app = useApp();
-  const t = useTool('saddle', DEFAULTS, LENGTHS);
+  const t = useTool('saddle', DEFAULTS, LENGTHS, { contact: ['inside', 'outside'] });
   const exportPdf = usePdfExport();
   const input = {
     headerOD: t.mm('header'),
@@ -65,7 +65,7 @@ export default function SaddleTool() {
       </Section>
       <Section title="Branch (the pipe you cut)">
         <NumField label="Outside diameter" value={t.v.branch} onChange={t.set('branch')} unit={t.u} invalid={t.invalid('branch')} />
-        <PipeChips units={U} selectedMm={input.branchOD} onPick={t.set('branch')} />
+        <PipeChips units={U} selectedMm={input.branchOD} onPick={t.set('branch')} onPickWall={t.set('wall')} />
         <Segmented
           label="Line sits on"
           value={t.v.contact as 'inside' | 'outside'}
@@ -75,7 +75,7 @@ export default function SaddleTool() {
         {t.v.contact === 'inside' ? (
           <NumField label="Branch wall" value={t.v.wall} onChange={t.set('wall')} unit={t.u} hint="Set-on branch: the bore sits on the header, so the line is worked on the inside of the wall." invalid={t.invalid('wall')} />
         ) : null}
-        {t.v.contact === 'inside' ? <ScheduleChips odMm={input.branchOD} units={U} onPick={t.set('wall')} /> : null}
+        {t.v.contact === 'inside' ? <ScheduleChips odMm={input.branchOD} units={U} onPick={t.set('wall')} wallMm={t.mm('wall')} /> : null}
       </Section>
       <Section title="Position">
         <Row>

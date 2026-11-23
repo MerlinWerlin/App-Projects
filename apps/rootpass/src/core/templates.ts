@@ -6,12 +6,32 @@
 import { lobster, mitreCutBack, type LobsterInput } from './lobster.ts';
 import { PAPER, PdfDoc, type Page, type PaperId } from './pdf.ts';
 import { pcd, type PcdInput } from './pcd.ts';
-import { saddle, saddleT, contactRadius, type SaddleInput } from './saddle.ts';
+import { OUTSIDE_NOTE, saddle, saddleT, contactRadius, type SaddleInput } from './saddle.ts';
 import { DEG, fmt, inchFraction, MM_PER_IN, type UnitSystem } from './units.ts';
 
 export const MARGIN = 10; // mm, unprintable edge most printers need (≥ 6 mm)
 export const HEADER = 34; // mm band for title, notes and ruler
 export const RULER_MM = 100;
+/** More sheets than this is almost always a typo in a size; refuse rather than build thousands of pages. */
+export const MAX_SHEETS = 60;
+
+export class TooManySheets extends Error {
+  readonly sheets: number;
+  constructor(sheets: number) {
+    super(`This would print ${sheets} sheets. Check the sizes: templates stop at ${MAX_SHEETS} sheets.`);
+    this.sheets = sheets;
+  }
+}
+
+/** Runs a template builder and turns a sheet-count refusal into an ordinary error result. */
+function guarded<T>(build: () => T): { ok: true; value: T } | { ok: false; error: string } {
+  try {
+    return { ok: true, value: build() };
+  } catch (e) {
+    if (e instanceof TooManySheets) return { ok: false, error: e.message };
+    throw e;
+  }
+}
 
 export interface TileLayout {
   paper: PaperId;
@@ -83,8 +103,9 @@ export interface TiledInput {
 
 export function tiledDocument(i: TiledInput): { doc: PdfDoc; layout: TileLayout } {
   const L = planTiles(i.contentW, i.contentH, i.paper, i.landscape);
-  const doc = new PdfDoc(i.title);
   const total = L.cols * L.rows;
+  if (total > MAX_SHEETS) throw new TooManySheets(total);
+  const doc = new PdfDoc(i.title);
   for (let row = 0; row < L.rows; row++) {
     for (let col = 0; col < L.cols; col++) {
       const pg = doc.addPage(L.pageW, L.pageH);
@@ -217,12 +238,12 @@ export function saddleTemplate(i: SaddleInput, units: UnitSystem, paper: PaperId
   const th = i.angleDeg * DEG;
   const tMin = r.value.tMin;
   const L = (mm: number) => (units === 'imperial' ? `${fmt(mm / MM_PER_IN, 3)} in` : `${fmt(mm, 1)} mm`);
-  const out = wrapTemplate({
+  const out = guarded(() => wrapTemplate({
     title: `Saddle template: ${L(i.branchOD)} branch on ${L(i.headerOD)} header`,
     lines: [
       `Branch angle ${fmt(i.angleDeg, 1)}°, offset ${L(i.offset)}, line worked on the ${i.contact} of the branch wall${i.contact === 'inside' ? ` (wall ${L(i.branchWall)})` : ''}.`,
       `Template width = branch circumference ${L(r.value.circumference)}. Deepest cut ${L(r.value.maxDepth)}.`,
-      'Made with Rootpass. Check fit-up on the job; the welder is responsible for the final cut.',
+      i.contact === 'outside' ? OUTSIDE_NOTE : 'Made with Rootpass. Check fit-up on the job; the welder is responsible for the final cut.',
     ],
     odMm: i.branchOD,
     depthAt: phi => saddleT(phi, R, rc, i.offset, th) - tMin,
@@ -231,8 +252,9 @@ export function saddleTemplate(i: SaddleInput, units: UnitSystem, paper: PaperId
     labels: deg => saddleQuarterLabel(deg, i.angleDeg),
     units,
     paper,
-  });
-  return { ok: true as const, value: { ...out, saddle: r.value } };
+  }));
+  if (!out.ok) return out;
+  return { ok: true as const, value: { ...out.value, saddle: r.value } };
 }
 
 export function mitreTemplate(i: LobsterInput, units: UnitSystem, paper: PaperId) {
@@ -240,7 +262,7 @@ export function mitreTemplate(i: LobsterInput, units: UnitSystem, paper: PaperId
   if (!r.ok) return r;
   const beta = r.value.cutDeg * DEG;
   const L = (mm: number) => (units === 'imperial' ? `${fmt(mm / MM_PER_IN, 3)} in` : `${fmt(mm, 1)} mm`);
-  const out = wrapTemplate({
+  const out = guarded(() => wrapTemplate({
     title: `Mitre cut template: ${L(i.od)} OD at ${fmt(r.value.cutDeg, 2)}° off square`,
     lines: [
       `${i.pieces}-piece ${fmt(i.bendDeg, 1)}° bend, centreline radius ${L(i.radius)}. Each weld turns ${fmt(r.value.weldDeg, 2)}°.`,
@@ -254,8 +276,9 @@ export function mitreTemplate(i: LobsterInput, units: UnitSystem, paper: PaperId
     labels: deg => (deg === 0 || deg === 360 ? 'LONG SIDE' : deg === 180 ? 'SHORT SIDE' : deg === 90 || deg === 270 ? 'SIDE' : null),
     units,
     paper,
-  });
-  return { ok: true as const, value: { ...out, lobster: r.value } };
+  }));
+  if (!out.ok) return out;
+  return { ok: true as const, value: { ...out.value, lobster: r.value } };
 }
 
 /* ---------------- Bolt circle drilling template ---------------- */
@@ -264,11 +287,12 @@ export function pcdTemplate(i: PcdInput, units: UnitSystem, paper: PaperId) {
   const r = pcd(i);
   if (!r.ok) return r;
   const hole = i.holeDia && i.holeDia > 0 ? i.holeDia : 0;
+  if (hole && hole >= r.value.chord) return { ok: false as const, error: `The ${fmt(hole, 1)} mm holes overlap at this PCD (centres ${fmt(r.value.chord, 1)} mm apart). Clear the hole size to print centres only.` };
   const pad = 12;
   const size = i.pcd + hole + 2 * pad;
   const c = size / 2;
   const L = (mm: number) => (units === 'imperial' ? `${fmt(mm / MM_PER_IN, 3)} in` : `${fmt(mm, 1)} mm`);
-  const out = tiledDocument({
+  const out = guarded(() => tiledDocument({
     title: `Bolt circle: ${i.holes} holes on ${L(i.pcd)} PCD`,
     lines: [
       `${i.layout === 'straddle' ? 'Holes straddle the centrelines' : 'First hole on the 12 o\'clock centreline'}${i.extraRotationDeg ? `, turned ${fmt(i.extraRotationDeg, 1)}°` : ''}. Holes ${hole ? L(hole) : 'marked as centres'}.`,
@@ -302,6 +326,7 @@ export function pcdTemplate(i: PcdInput, units: UnitSystem, paper: PaperId) {
         pg.text(lx, ly + 1.5, 7, String(h.n), { align: 'center', bold: true });
       }
     },
-  });
-  return { ok: true as const, value: { ...out, pcd: r.value, size, centre: c } };
+  }));
+  if (!out.ok) return out;
+  return { ok: true as const, value: { ...out.value, pcd: r.value, size, centre: c } };
 }
