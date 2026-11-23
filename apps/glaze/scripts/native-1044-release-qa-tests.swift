@@ -79,6 +79,100 @@ import Darwin
     if app.keyboards.buttons["Done"].exists { app.keyboards.buttons["Done"].tap() }
   }
 
+  // ---- Home Screen (the native Clock / Battery / Calendar and Artwork 1-5 widgets draw there)
+  private let galleryNote = "Takes on your Glaze theme once added."
+  private let homeWidgets = ["Clock", "Battery", "Calendar", "Artwork 1", "Artwork 2", "Artwork 3", "Artwork 4", "Artwork 5"]
+
+  private func homeShot(_ name: String) {
+    step += 1
+    let s = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+    s.name = String(format: "%02d-%@", step, name)
+    s.lifetime = .keepAlways
+    add(s)
+    print("GLAZE_QA_STEP \(s.name ?? name)"); fflush(stdout)
+  }
+
+  private func springboard() -> XCUIApplication {
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
+    return spring
+  }
+
+  private func openGlazeGallery(_ spring: XCUIApplication) {
+    XCUIDevice.shared.press(.home)
+    settle(1)
+    var icon: XCUIElement?
+    for direction in ["right", "left"] {
+      for _ in 0..<7 {
+        icon = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+        if icon != nil { break }
+        if direction == "right" { spring.swipeRight() } else { spring.swipeLeft() }
+        settle(0.5)
+      }
+      if icon != nil { break }
+    }
+    guard let glaze = icon else { XCTFail("no Glaze icon on the Home Screen\n" + spring.debugDescription); return }
+    glaze.press(forDuration: 1.5)
+    let editHome = spring.buttons["Edit Home Screen"].firstMatch
+    XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
+    editHome.tap()
+    let edit = spring.buttons["Edit"].firstMatch
+    if edit.waitForExistence(timeout: 5) { edit.tap() }
+    let addWidget = spring.buttons["Add Widget"].firstMatch
+    XCTAssertTrue(addWidget.waitForExistence(timeout: 10), spring.debugDescription)
+    addWidget.tap()
+    let search = spring.searchFields.firstMatch
+    XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
+    search.tap()
+    if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) { search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap() }
+    let ready = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+    for _ in 0..<5 {
+      search.typeText("Glaze")
+      let key = spring.keyboards.buttons["Search"].firstMatch
+      if key.exists && key.isHittable { key.tap() }
+      let cell = spring.cells.matching(NSPredicate(format: "label == %@", "Glaze")).firstMatch
+      if cell.waitForExistence(timeout: 5) { cell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap(); if ready.waitForExistence(timeout: 10) { return } }
+      if let row = spring.buttons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable }) {
+        row.tap(); if ready.waitForExistence(timeout: 10) { return }
+      }
+      if let row = spring.staticTexts.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable && $0.frame.width > 1 }) {
+        row.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap(); if ready.waitForExistence(timeout: 10) { return }
+      }
+      if !search.exists && ready.waitForExistence(timeout: 20) { return }
+      let clear = spring.buttons["Clear text"].firstMatch
+      if clear.exists { clear.tap() }
+      search.tap(); settle(3)
+    }
+    XCTFail("Glaze did not appear in the widget picker\n" + spring.debugDescription)
+  }
+
+  private func addHomeWidget(_ name: String, _ spring: XCUIApplication) {
+    openGlazeGallery(spring)
+    let label = spring.staticTexts[name].firstMatch
+    let themed = name.hasPrefix("Artwork") ? nil : spring.staticTexts[galleryNote].firstMatch
+    for _ in 0..<45 {
+      if label.exists && label.isHittable && (themed?.exists ?? true) { break }
+      spring.swipeLeft(); settle(0.4)
+    }
+    XCTAssertTrue(label.exists && (themed?.exists ?? true), "\(name) is not in the Glaze widget gallery\n" + spring.debugDescription)
+    homeShot("gallery-\(name.lowercased().replacingOccurrences(of: " ", with: "-"))")
+    let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+    XCTAssertTrue(add.waitForExistence(timeout: 5), spring.debugDescription)
+    add.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 3) { done.tap() } }
+    settle(4)
+  }
+
+  private func showHomeScreens(_ slug: String) {
+    let spring = springboard()
+    XCUIDevice.shared.press(.home)
+    settle(12) // widget timelines reload after the theme change
+    for _ in 0..<6 { spring.swipeRight(); settle(0.4) }
+    homeShot("\(slug)-home-1")
+    for page in 2...3 { spring.swipeLeft(); settle(2); homeShot("\(slug)-home-\(page)") }
+    let t = XCTAttachment(string: spring.debugDescription); t.name = "tree-\(slug)-home"; t.lifetime = .keepAlways; add(t)
+  }
+
   /// Search, open, download, apply, then the Widgets tab with the three designs and Artwork 1-5.
   private func downloadAndApply(_ app: XCUIApplication, query: String, name: String, slug: String) {
     tab(app, "Themes")
@@ -123,23 +217,14 @@ import Darwin
     }
     settle(4)
     shot(app, "\(slug)-widgets-tab")
-    for kind in ["clock", "battery", "calendar"] {
-      let choose = app.buttons["designed-" + kind]
-      XCTAssertTrue(choose.waitForExistence(timeout: 30) && reveal(choose, in: app), "no \(kind) design on the Widgets tab\n" + app.debugDescription)
-      choose.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
-      settle(1.5)
-      let preview = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH[c] %@", kind == "clock" ? "Clock" : kind == "battery" ? "Battery" : "Calendar")).firstMatch
-      _ = reveal(preview, in: app, tries: 6)
-      shot(app, "\(slug)-\(kind)")
-    }
-    // Artwork 1-5 (My widget art): wait out "Preparing", then page through the list.
+    // Artwork 1-5 in the app (My widget art): wait out "Preparing", then page through the list.
     let art = app.staticTexts["My widget art"].firstMatch
     _ = reveal(art, in: app)
     let deadline = Date().addingTimeInterval(90)
     while Date() < deadline && app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Preparing")).count > 0 { settle(3) }
-    shot(app, "\(slug)-artwork-1")
-    tree(app, "\(slug)-artwork")
-    for page in 2...4 { swipeUp(app); shot(app, "\(slug)-artwork-\(page)") }
+    shot(app, "\(slug)-my-widget-art")
+    tree(app, "\(slug)-my-widget-art")
+    swipeUp(app); shot(app, "\(slug)-my-widget-art-2")
     print("GLAZE_QA_APPLIED \(slug)"); fflush(stdout)
   }
 
@@ -168,9 +253,15 @@ import Darwin
     }
     tab(app, "Themes")
     downloadAndApply(app, query: "Ashloop", name: "Ashloop Riverbank", slug: "ashloop-riverbank")
+    let spring = springboard()
+    for name in homeWidgets { addHomeWidget(name, spring) }
+    showHomeScreens("ashloop-riverbank")
+    app.activate(); settle(3)
     tab(app, "Themes")
     clearSearch(app)
     downloadAndApply(app, query: "Anaglyph", name: "Anaglyph Crossing", slug: "anaglyph-crossing")
+    showHomeScreens("anaglyph-crossing")
+    app.activate(); settle(2)
     XCTAssertTrue(app.wait(for: .runningForeground, timeout: 5), "Glaze is no longer running")
     print("GLAZE_QA_1044_DONE"); fflush(stdout)
   }
