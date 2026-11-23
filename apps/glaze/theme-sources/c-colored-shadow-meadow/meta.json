@@ -1,0 +1,15 @@
+{
+  "name": "Shadowlight Meadow",
+  "mood": "Meadow wildlife and plants cast broad muted shadows in three colors.",
+  "tags": [
+    "meadow",
+    "cast shadows",
+    "colored light"
+  ],
+  "credits": "Original built-in image generation. Artistic colored shadows.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "A whole natural subject, three colored ground shadows, quiet pale stone background.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

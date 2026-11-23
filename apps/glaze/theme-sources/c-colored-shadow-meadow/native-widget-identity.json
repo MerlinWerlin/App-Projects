@@ -1,0 +1,21 @@
+{
+  "theme": "c-colored-shadow-meadow",
+  "art": {
+    "cShadowQuail": "M 29 70 Q 12 61 25 44 Q 33 34 46 34 Q 43 18 58 15 Q 69 12 76 24 L 86 29 L 75 33 Q 75 52 62 63 Q 53 73 39 72 L 23 80 L 27 73 Z M 61 15 Q 65 5 74 8 Q 79 10 78 14 M 66 24 L 67 24 M 51 70 L 48 84 L 59 84 M 61 66 L 65 82 L 76 82",
+    "cShadowGround": "M 50 59 Q 35 53 16 57 Q 7 62 17 67 Q 36 69 50 59 M 50 59 Q 66 49 84 52 Q 95 56 86 61 Q 67 69 50 59 M 50 59 Q 46 72 31 82 Q 21 85 24 77 Q 33 64 50 59"
+  },
+  "recipe": [
+    "oval",
+    "cShadowQuail",
+    "cShadowGround",
+    "dash",
+    "needle",
+    "basin",
+    "ledger"
+  ],
+  "ornament": "M 24 88 Q 51 66 66 23 M 45 68 Q 36 52 25 47 M 49 62 Q 58 56 74 53 M 59 46 Q 48 36 49 24 Q 58 27 61 41 M 62 36 Q 72 28 80 27 Q 76 38 64 42 M 67 24 Q 62 11 69 10 Q 76 17 67 24",
+  "ornamentDirection": "A single naturally curved meadow grass seedhead, with a clean small outline and ample room near the live values.",
+  "values": "Existing native clock, battery and calendar values.",
+  "ornamentProvenance": "Original authored vector.",
+  "registryIntegration": "Source candidate for minApp 1.0.44 if complete. Coordinator owns canonical and on-device review."
+}
