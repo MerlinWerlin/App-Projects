@@ -1,0 +1,59 @@
+{
+  "locale": "en-AU",
+  "primaryLocale": "en-AU",
+  "dropLocales": [
+    "en-US"
+  ],
+  "version": "1.0.0",
+  "name": "Liquidline: HVAC/R Toolkit",
+  "subtitle": "PT chart, superheat & charge",
+  "promotionalText": "Pressure–temperature, superheat, subcooling and extra charge for 17 refrigerants, set up for your country. Works offline. No account, no ads, no tracking.",
+  "keywords": "refrigeration,aircon,superheat,subcooling,refrigerant,R32,R410A,R454B,vacuum,fridgie,technician",
+  "description": "A service-van toolkit for licensed air-conditioning and refrigeration technicians. Pick your country first and Liquidline sets your units, the refrigerants you’ll actually see, your licence and standards names, and the pair coils or line sets your wholesaler stocks.\n\nPRESSURE ⇄ TEMPERATURE\n- 17 refrigerants: R32, R410A, R454B, R290, R134a, R404A, R407C, R22, R600a, R1234yf, R1234ze(E), R448A, R449A, R513A, R507A, R744 and R717.\n- Type your gauge reading, get the saturation temperature, or the other way round.\n- Blends with glide show dew and bubble points side by side.\n- A full PT chart in 1, 2 or 5 degree steps, gauge or absolute, with altitude correction.\n\nCHARGING\n- Superheat and subcooling with every step of the working shown.\n- Targets: enter the nameplate figure, or use the fixed-orifice rule of thumb from indoor wet bulb and outdoor dry bulb.\n- Extra refrigerant for long line sets from the length, the factory pre-charge and the g/m (or oz/ft) rate, with the cost of the gas.\n\nON THE JOB\n- Evacuation checklist, vacuum target and a decay-test timer that tells a leak from moisture.\n- Line set planner: typical pipe sizes by capacity and which stocked coil lengths cover the run.\n- Rough room heating and cooling load, flare nut torques and a converter for pressure, temperature, vacuum, capacity, airflow and charge.\n- Save readings to a job and share a tidy job sheet.\n\nBUILT FOR GLOVES AND SUNLIGHT\n- Big buttons, big numbers, steppers on every field. Blue is the low side, red is the high side.\n- Flammable-refrigerant reminders for A2L and A3 gases.\n\nYOUR COUNTRY\nAustralia, New Zealand, the United Kingdom, Ireland, the United States and Canada are fully set up; anywhere else gets metric units and generic guidance.\n\nACCURATE AND OPEN ABOUT IT\nSaturation data comes from open reference equations of state, checked against the NIST Chemistry WebBook and the refrigerant makers’ published tables. Liquidline is an aid for licensed technicians: the equipment manufacturer’s data and your local regulations always take precedence.\n\nPRIVATE\nNo account, no ads, no tracking. Jobs stay on your iPhone.\n\nFREE TRIAL\nFree 7-day trial, then a one-time unlock. No subscription. PT lookups, the PT chart, refrigerant facts, the converter and your saved jobs stay free.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "REFERENCE",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/liquidline/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/liquidline/support.html",
+  "ageRating": "none",
+  "screenshots": {
+    "APP_IPHONE_67": "apps/liquidline/store/screenshots/6.9"
+  },
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login is needed. Liquidline works offline and has no over-the-air updates.\n\nIn-app purchases: Settings (gear icon, top right) > Liquidline Full Unlock, or open any calculator (Charge tab). Start 7-day free trial starts a free non-consumable trial (Guideline 3.1.1); Unlock buys the one-time unlock; Restore purchases restores both. The PT tab, PT chart, refrigerant facts, converter and saved jobs are always free.\n\nOn first launch the app asks the person's country (pre-selected from the device region) and shows a short note that it is an aid for licensed technicians.\n\nApp Review information:\n1. Purpose and audience: a calculator toolkit for licensed air-conditioning and refrigeration technicians (pressure-temperature, superheat, subcooling, extra charge, evacuation, line sets, load estimate).\n2. Setup: none. No login.\n3. External services: none. No server, analytics, ads or tracking. Payments are Apple in-app purchases only.\n4. Regional differences: the chosen country sets units and shows local licence and standards names; all features are available everywhere.\n5. Regulated material: the app gives engineering calculations only and states that manufacturer data and local regulations take precedence. Refrigerant data comes from open reference equations of state.",
+  "reviewContactFromApp": "linework",
+  "price": "free",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.liquidline.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-Day Free Trial",
+      "displayName": "7-Day Free Trial",
+      "description": "Try every Liquidline tool free for 7 days.",
+      "reviewNote": "Free non-consumable that starts the 7-day free trial (Guideline 3.1.1). Settings > Liquidline Full Unlock, then Start 7-day free trial. Restore purchases brings it back with its original start date.",
+      "price": {
+        "territory": "AUS",
+        "amount": "0"
+      },
+      "reviewScreenshot": "apps/liquidline/store/iap/paywall.png",
+      "availability": "all"
+    },
+    {
+      "productId": "com.jared797.liquidline.unlock",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Liquidline Full Unlock",
+      "displayName": "Liquidline Full Unlock",
+      "description": "One-time unlock. No subscription.",
+      "reviewNote": "Non-consumable one-time unlock of the calculators after the free trial. Settings > Liquidline Full Unlock, then Unlock; Restore purchases on the same screen.",
+      "familySharable": true,
+      "price": {
+        "territory": "AUS",
+        "amount": "4.99"
+      },
+      "reviewScreenshot": "apps/liquidline/store/iap/paywall.png",
+      "availability": "all"
+    }
+  ],
+  "attachBuild": "latest"
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Liquidline Support</title>
+<style>
+  :root {
+    --paper: #F2F1EC; --card: #FFFFFF; --line: #DED8CC; --ink: #14213D; --muted: #6B7280;
+    --accent: #1559C9; --accent-soft: #DCE7FB; --sea: #1559C9; --warn: #A2620F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0E1013; --card: #161C2C; --line: #2A3247; --ink: #EEF1F7; --muted: #A3ABBD;
+      --accent: #F29A5C; --accent-soft: #3A2516; --sea: #5B9BFF; --warn: #F0B45C;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p { margin: 0 0 12px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 600; padding: 14px 0; min-height: 48px; list-style-position: outside; }
+  details[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  details p:last-child { padding-bottom: 6px; }
+  .warn { border-left: 4px solid var(--warn); padding-left: 12px; }
+  a { color: var(--sea); }
+  footer { color: var(--muted); font-size: 14px; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Liquidline Support</h1>
+  <p>Liquidline is a service-van toolkit for licensed air-conditioning and refrigeration technicians: pressure–temperature lookups, superheat and subcooling, extra charge for long line sets, evacuation, line sets, room load and more, set up for your country.</p>
+  <p class="warn">Liquidline is an aid for licensed technicians. The equipment manufacturer’s data and your local regulations always take precedence.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Gauge or absolute pressure?</summary><p>By default you type what your manifold shows (gauge). Liquidline adds the atmosphere before looking up the tables. At altitude, set your site altitude in Settings so the atmosphere is right. Switch to absolute in Settings if your tools read absolute.</p></details>
+  <details><summary>Why are there two temperatures for some refrigerants?</summary><p>Blends such as R407C, R454B, R448A and R449A boil over a range (glide). Use the <strong>dew point</strong> for superheat (suction line) and the <strong>bubble point</strong> for subcooling (liquid line). Liquidline does this for you and shows both on the PT screen.</p></details>
+  <details><summary>Where do the PT values come from?</summary><p>From open-source reference equations of state (CoolProp 8, the same equations NIST REFPROP uses for pure refrigerants). The app’s tests check them against the NIST Chemistry WebBook and the refrigerant makers’ published tables; R454B, R448A, R449A and R513A are calibrated to the makers’ published points.</p></details>
+  <details><summary>Can I change my country or units?</summary><p>Yes: Settings &gt; Country. Units, the refrigerants listed first, licence and standards names, and the pair coil or line set sizes follow your country. You can still change any unit yourself.</p></details>
+  <details><summary>Where are my jobs saved?</summary><p>Only on your iPhone. Liquidline has no account and no server. Share a job sheet from the job screen to send it to yourself or the office.</p></details>
+  <details><summary>How does the free trial work?</summary><p>Tap <strong>Start 7-day free trial</strong>: every tool opens for 7 days, nothing is charged and nothing renews. After that, a one-time <strong>Full Unlock</strong> keeps the calculators. PT lookups and charts, refrigerant facts, the converter and your saved jobs stay free. <strong>Restore purchases</strong> is in Settings.</p></details>
+
+  <h2>Contact</h2>
+  <p>Email <a href="mailto:jaredbradley272@gmail.com">jaredbradley272@gmail.com</a>. Please include your iPhone model, iOS version and the Liquidline version from Settings. If a value looks wrong, tell us the refrigerant, the reading and what you expected.</p>
+  <footer><a href="privacy.html">Privacy policy</a></footer>
+</main>
+</body>
+</html>

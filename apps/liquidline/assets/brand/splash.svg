@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1C222B"/><stop offset="1" stop-color="#0B0D10"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6FA8FF"/><stop offset="1" stop-color="#1D5FD6"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF7A5C"/><stop offset="1" stop-color="#C8261B"/>
+    </linearGradient>
+    <linearGradient id="cu" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9A5A2A"/><stop offset="0.5" stop-color="#E8A56B"/><stop offset="1" stop-color="#9A5A2A"/>
+    </linearGradient>
+    <clipPath id="drop"><path d="M512 150 C 512 150 270 430 270 610 C 270 750 378 860 512 860 C 646 860 754 750 754 610 C 754 430 512 150 512 150 Z"/></clipPath>
+  </defs>
+  
+  <g clip-path="url(#drop)">
+    <rect x="200" y="100" width="312" height="800" fill="url(#blue)"/>
+    <rect x="512" y="100" width="320" height="800" fill="url(#red)"/>
+    <path d="M200 560 Q 512 470 830 560 L 830 900 L 200 900 Z" fill="#000" opacity="0.12"/>
+  </g>
+  <!-- copper liquid line running through the drop -->
+  <rect x="96" y="586" width="832" height="56" rx="28" fill="url(#cu)"/>
+  <rect x="130" y="590" width="764" height="12" rx="6" fill="#FFD6AE" opacity="0.45"/>
+  <!-- flare nuts -->
+  <rect x="150" y="566" width="70" height="96" rx="14" fill="#C9CED6"/>
+  <rect x="804" y="566" width="70" height="96" rx="14" fill="#C9CED6"/>
+  <rect x="150" y="566" width="70" height="20" rx="8" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="804" y="566" width="70" height="20" rx="8" fill="#FFFFFF" opacity="0.5"/>
+  <!-- highlight on drop -->
+  <path d="M430 300 C 380 380 340 450 330 520" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" fill="none" opacity="0.55"/>
+</svg>
