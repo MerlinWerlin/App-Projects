@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "name": "Trammel: Carpentry Calculator",
   "subtitle": "Stairs, rafters, mitres, cuts",
-  "promotionalText": "The chippy's calculator for Australia, New Zealand, the UK, Ireland, the US and Canada: stairs checked against your local code, rafters, hips, mitres, layouts, decking and cut lists from local timber sizes.",
+  "promotionalText": "Stairs checked against your local code, rafters, hips, mitres, decking and cut lists from the timber your yard stocks. Try every tool free for 7 days.",
   "keywords": "chippy,carpenter,stair,stringer,rafter,pitch,mitre,cornice,decking,stud,cutlist,framing,timber,joist",
   "description": "Trammel is a job-site calculator built for carpenters. Tell it where you build and it speaks your trade: metric or imperial, mitre or miter, noggin, dwang or blocking, and the timber sizes your local yard actually stocks. Big buttons you can hit with gloves on, high-contrast numbers you can read in full sun, and every answer shows how it was worked out.\n\nSTAIRS\n- Riser count and height, going, 2R+G, total going, pitch, step length and pitch line.\n- Checked against the stair rules where you build: the NCC in Australia, NZBC D1/AS1 in New Zealand, Approved Document K in England, TGD K in Ireland, the IRC and IBC in the US and the NBC in Canada. Riser, going, 2R+G, pitch and flight limits, each with its clause.\n- Fit a flight to the floor space you have, or set the risers and going yourself.\n- Stringer throat: how much timber is left under each notch.\n\nROOF\n- Common rafter length, rise, eave length, plumb and seat cuts.\n- Birdsmouth: plumb cut, notch depth and height above plate, with the one-third check.\n- Hip and valley for regular roofs: hip pitch, hip length and every creeper length.\n- Pitch in degrees, rise per 1000, percent and x in 12.\n\nTRIM\n- Mitre for any corner, inside or outside, and any polygon.\n- Cornice and crown: bevel and mitre settings for any spring angle and corner, or the nested setting.\n\nFRAMING AND DECKING\n- Stud, joist, rafter and batten layouts at any centres, with every mark from the end and the noggin lengths.\n- Decking: boards across, the rip on the last board, linear metres, lengths to buy, joists and screws.\n- Cut list: tell it your stock lengths and the pieces you need, and it plans the cuts to buy as little timber as it can, allowing for the saw kerf.\n\nSET-OUT\n- Square check from the diagonals, and the 3-4-5 marks for any size.\n- Arch and radius from a span and rise: the radius to set your trammel to, the arc length, and offsets every few hundred mm.\n- Fractions to mm and back, feet and inches, to 1/8, 1/16 or 1/32.\n\nJOBS\n- Save calculations to a job and share a job sheet by message or email.\n\nMetric or imperial, set by your country and changeable any time. Cut lists start from the sections and lengths sold where you are, and add up the cost in your currency. No account, no ads, no tracking: everything stays on your phone.\n\nFREE TRIAL\nThe converter, square check, mitres and roof pitch are free for good. Try every other tool free for 7 days, then unlock them all with one purchase. No subscription.\n\nTrammel is a calculator: check every result against the plans, the engineer's details and the codes that apply where you build.",
   "primaryCategory": "PRODUCTIVITY",
@@ -16,6 +16,10 @@
   "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/trammel/privacy.html",
   "supportUrl": "https://merlinwerlin.github.io/App-Projects/trammel/support.html",
   "ageRating": "none",
+  "ageRatingExtra": {
+    "socialMedia": false,
+    "socialMediaAgeRestricted": false
+  },
   "screenshots": {
     "APP_IPHONE_67": "apps/trammel/store/screenshots/6.9"
   },
