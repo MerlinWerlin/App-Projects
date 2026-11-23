@@ -1,13 +1,54 @@
 {
   "note": "Wattle 1.0.0 App Store screenshots, 6.9-inch (1320 x 2868). raw = a capture from wattle-store-capture.yml build B (example inputs). Compose with compose.py.",
   "shots": [
-    { "n": 1, "slug": "offset", "raw": "02-bend-result-dark", "title": "Bending marks, from the end of the stick", "sub": "Offsets with multiplier and shrink, in mm or inches." },
-    { "n": 2, "slug": "saddles", "raw": "03-saddle-dark", "title": "Saddles, kicks and 90° stubs", "sub": "A diagram with every numbered mark." },
-    { "n": 3, "slug": "voltage-drop", "raw": "05-drop-result-dark", "title": "Voltage drop, pass or fail", "sub": "mV/A·m or from conductor size. Single- and three-phase." },
-    { "n": 4, "slug": "working", "raw": "05b-drop-working-dark", "title": "Every answer shows its working", "sub": "Check each step before you pull a single cable." },
-    { "n": 5, "slug": "fill", "raw": "07-fill-result-dark", "title": "Conduit fill at a glance", "sub": "Mixed cables, how many fit and a jam-ratio check." },
-    { "n": 6, "slug": "power", "raw": "09b-power-result-dark", "title": "kW, kVA and amps in one go", "sub": "Ohm’s law and the three-phase power triangle." },
-    { "n": 7, "slug": "runs", "raw": "11-runs-result-dark", "title": "Cut plans that save cable", "sub": "What to order and which drum each run comes off." },
-    { "n": 8, "slug": "sunlight", "raw": "02-bend-result-light", "title": "Readable in full sun", "sub": "Big numbers and glove-sized buttons, in light or dark." }
+    {
+      "n": 1,
+      "slug": "offset",
+      "raw": "02-bend-result-dark",
+      "title": "Bending marks, from the end of the stick",
+      "sub": "Offsets with multiplier and shrink, in mm or inches."
+    },
+    {
+      "n": 2,
+      "slug": "saddles",
+      "raw": "03-saddle-dark",
+      "title": "Saddles, kicks and 90° stubs",
+      "sub": "A diagram with every numbered mark."
+    },
+    {
+      "n": 3,
+      "slug": "voltage-drop",
+      "raw": "05-drop-result-dark",
+      "title": "Voltage drop, pass or fail",
+      "sub": "mV/A·m or from conductor size. Single- and three-phase."
+    },
+    {
+      "n": 4,
+      "slug": "fill",
+      "raw": "07-fill-result-dark",
+      "title": "Conduit fill at a glance",
+      "sub": "Mixed cables, how many fit and a jam-ratio check."
+    },
+    {
+      "n": 5,
+      "slug": "power",
+      "raw": "09b-power-result-dark",
+      "title": "kW, kVA and amps in one go",
+      "sub": "Ohm’s law and the three-phase power triangle."
+    },
+    {
+      "n": 6,
+      "slug": "runs",
+      "raw": "11-runs-result-dark",
+      "title": "Cut plans that save cable",
+      "sub": "What to order and which drum each run comes off."
+    },
+    {
+      "n": 7,
+      "slug": "sunlight",
+      "raw": "02-bend-result-light",
+      "title": "Readable in full sun",
+      "sub": "Big numbers and glove-sized buttons, in light or dark."
+    }
   ]
 }

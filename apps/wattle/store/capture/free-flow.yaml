@@ -21,9 +21,8 @@ appId: ${APP_ID}
     optional: true
 - scrollUntilVisible:
     element:
-      text: "1027 mm"
-- assertVisible: "200 mm"
-- assertVisible: "1027 mm"
+      text: ".*Mark 2 from end 1027 mm.*"
+- assertVisible: ".*Distance between marks 200 mm.*Shrink 26.8 mm.*Mark 1 from end 827 mm.*"
 - takeScreenshot: 31-free-offset-result
 - openLink: wattle://drop
 - waitForAnimationToEnd:
