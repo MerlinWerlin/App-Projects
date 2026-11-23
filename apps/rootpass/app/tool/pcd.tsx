@@ -14,7 +14,7 @@ const LENGTHS = ['pcd', 'hole'] as const;
 
 export default function PcdTool() {
   const app = useApp();
-  const t = useTool('pcd', DEFAULTS, LENGTHS, { layout: ['straddle', 'onCentre'] });
+  const t = useTool('pcd', DEFAULTS, LENGTHS, { layout: ['straddle', 'onCentre'] }, { pcd: '7.5', hole: '0.75' });
   const exportPdf = usePdfExport();
   const { width } = useWindowDimensions();
   const U = t.units;
@@ -54,7 +54,7 @@ export default function PcdTool() {
                 return (
                   <G key={h.n}>
                     <Circle cx={x} cy={y} r={hr} stroke={C.accent} strokeWidth={2.5} fill={C.accentDim} />
-                    <SvgText x={lx} y={ly + 5} fill={C.ink} fontSize={14} fontFamily={FONT.display} textAnchor="middle">{h.n}</SvgText>
+                    {(h.n - 1) % Math.max(1, Math.ceil(r.value.holes.length / 24)) === 0 ? <SvgText x={lx} y={ly + 5} fill={C.ink} fontSize={14} fontFamily={FONT.display} textAnchor="middle">{h.n}</SvgText> : null}
                   </G>
                 );
               })}

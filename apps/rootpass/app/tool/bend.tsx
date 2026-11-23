@@ -12,7 +12,7 @@ const DEFAULTS: Record<string, string> = { t: '2', r: '2', angle: '90', k: '', f
 const LENGTHS = ['t', 'r', ...Array.from({ length: MAX }, (_, k) => `f${k}`)] as const;
 
 export default function BendTool() {
-  const t = useTool('bend', DEFAULTS, LENGTHS);
+  const t = useTool('bend', DEFAULTS, LENGTHS, {}, { t: '0.0625', r: '0.0625', f0: '2', f1: '1.25' });
   const U = t.units;
   const T = t.mm('t'), R = t.mm('r');
   const autoK = Number.isFinite(T) && Number.isFinite(R) && T > 0 ? defaultK(R, T) : 0.4;

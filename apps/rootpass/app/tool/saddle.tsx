@@ -4,7 +4,7 @@ import { saddleQuarterLabel, saddleTemplate } from '../../src/core/templates.ts'
 import { fmt, len, lenShort } from '../../src/core/units.ts';
 import { useApp } from '../../src/state/AppState.tsx';
 import { Big, Btn, Card, Note, NumField, Row, Section, Segmented, TableRows, Txt, VerifyNote, Working } from '../../src/ui/kit.tsx';
-import { PipeChips, ScheduleChips, WrapPreview } from '../../src/ui/parts.tsx';
+import { PipeChips, ScheduleChips, usualWall, WrapPreview } from '../../src/ui/parts.tsx';
 import { ToolScreen, usePdfExport, useTool } from '../../src/ui/useTool.tsx';
 
 const DEFAULTS = { header: '114.3', branch: '88.9', wall: '5.5', angle: '90', offset: '0', contact: 'inside', height: '', divisions: '16' };
@@ -12,7 +12,11 @@ const LENGTHS = ['header', 'branch', 'wall', 'offset', 'height'] as const;
 
 export default function SaddleTool() {
   const app = useApp();
-  const t = useTool('saddle', DEFAULTS, LENGTHS, { contact: ['inside', 'outside'] });
+  // The default 88.9 branch starts on its usual series wall (AS 1074 / EN 10255 Medium 4.0 mm; NPS 3 Sch 40 0.216 in).
+  const branchPipe = app.country.pipes.find(p => Math.abs(p.od - 88.9) < 0.05);
+  const wall = branchPipe ? usualWall(branchPipe) : null;
+  const t = useTool('saddle', { ...DEFAULTS, wall: wall ? String(Math.round(wall * 100) / 100) : DEFAULTS.wall }, LENGTHS, { contact: ['inside', 'outside'] },
+    { header: '4.5', branch: '3.5', wall: wall ? String(Math.round((wall / 25.4) * 1000) / 1000) : '0.216' });
   const exportPdf = usePdfExport();
   const input = {
     headerOD: t.mm('header'),

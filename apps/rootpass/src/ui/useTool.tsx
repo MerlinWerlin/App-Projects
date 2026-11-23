@@ -21,7 +21,7 @@ function cleanEnums(values: Record<string, string>, defaults: Record<string, str
   return out;
 }
 
-export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKeys: readonly string[], enums: Record<string, readonly string[]> = {}) {
+export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKeys: readonly string[], enums: Record<string, readonly string[]> = {}, inchDefaults: Record<string, string> = {}) {
   const app = useApp();
   const router = useRouter();
   const units = app.prefs.units;
@@ -35,7 +35,9 @@ export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKe
       const p = params[k];
       if (typeof p === 'string' && p.length <= 40) preset[k] = p;
     }
-    return { units, values: convertValues(cleanEnums({ ...defaults, ...preset }, defaults, enums), lengthKeys, 'metric', units) };
+    const base = convertValues(defaults, lengthKeys, 'metric', units);
+    const local = units === 'imperial' ? { ...base, ...inchDefaults } : base;
+    return { units, values: cleanEnums({ ...local, ...convertValues(preset, lengthKeys, 'metric', units) }, defaults, enums) };
   });
   const loadedJob = useRef<string | null>(null);
 

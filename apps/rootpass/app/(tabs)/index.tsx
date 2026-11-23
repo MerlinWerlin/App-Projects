@@ -38,7 +38,7 @@ export default function Tools() {
 
       <Pressable onPress={() => router.push('/settings')} accessibilityRole="button" accessibilityLabel={`Set up for ${app.country.name}. Change country`} style={st.where}>
         <Icon name="location" size={18} color={C.ink2} />
-        <Txt v="small" tone="ink2" style={{ flex: 1 }}>Set up for {app.country.name}{app.country.standards ? ` · ${app.country.standards.hollow} sizes` : ' · common sizes'}</Txt>
+        <Txt v="small" tone="ink2" style={{ flex: 1 }}>Set up for {app.country.name}{app.country.standards ? ` · ${app.country.standards.hollow.replace('/', '/\u2060')} sizes` : ' · common sizes'}</Txt>
         <Txt v="small" tone="accent">Change</Txt>
       </Pressable>
 

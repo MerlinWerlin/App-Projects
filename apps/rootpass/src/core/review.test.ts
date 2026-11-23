@@ -96,3 +96,12 @@ test('catalogue gaps filled: AU sheet under 5 mm, Canadian RHS', async () => {
   assert.equal(caBox.partial, false);
   assert.ok(caBox.sizes.some(s => s.label === '3 × 2"'), 'CA 3x2 RHS');
 });
+
+test('big results are grouped for display, never in fields', async () => {
+  const u = await import('./units.ts');
+  assert.equal(u.fmtGrouped(14385600, 1), '14,385,600.0');
+  assert.equal(u.fmtGrouped(9999.9, 1), '9999.9');
+  assert.equal(u.fmtGrouped(-12345.67, 2), '-12,345.67');
+  assert.equal(u.mass(14385600, 'metric'), '14,385,600.0 kg');
+  assert.equal(u.fmt(14385600, 1), '14385600.0'); // fields keep plain numbers (parseNum reads "," as a decimal point)
+});

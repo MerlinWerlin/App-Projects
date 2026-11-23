@@ -2,7 +2,7 @@ import { Icon } from '../../src/ui/Icon.tsx';
 import { useMemo } from 'react';
 import { Pressable, View } from 'react-native';
 import { cutList, type Part } from '../../src/core/cutlist.ts';
-import { lenShort, parseNum, toMm } from '../../src/core/units.ts';
+import { fmtGrouped, lenShort, parseNum, toMm } from '../../src/core/units.ts';
 import { Big, Btn, Card, Note, NumField, Row, Section, Txt, VerifyNote, Working } from '../../src/ui/kit.tsx';
 import { C, RADIUS, SPACE } from '../../src/ui/theme.ts';
 import { ToolScreen, useTool } from '../../src/ui/useTool.tsx';
@@ -18,7 +18,7 @@ export default function CutListTool() {
   const app = useApp();
   // The country's usual tube length becomes the default stock (AU/NZ 6.5 m, GB 7.5 m, IE 7.6 m, US/CA 20 ft).
   const lengths = [...new Set([...stockLengths(app.country.code, 'tube'), ...stockLengths(app.country.code, 'bar')])].sort((a, b) => a - b);
-  const t = useTool('cutlist', { ...DEFAULTS, stock: String(stockLengths(app.country.code, 'tube')[0] ?? 6000) }, LENGTHS);
+  const t = useTool('cutlist', { ...DEFAULTS, stock: String(stockLengths(app.country.code, 'tube')[0] ?? 6000) }, LENGTHS, {}, { kerf: '0.125', trim: '0.375', l0: '72', l1: '36', l2: '24' });
   const U = t.units;
   const rows = Math.min(MAX_ROWS, Math.max(1, t.num('rows') || 1));
   const parts: Part[] = [];
@@ -42,7 +42,7 @@ export default function CutListTool() {
     <Card>
       <Row>
         <Big label="Stock lengths" value={String(r.value.bars.length)} sub={r.value.optimal ? 'fewest possible' : `at least ${r.value.lowerBound} needed`} tone="accent" />
-        <Big label="Pieces" value={String(r.value.pieces)} sub={`${lenShort(r.value.partsLength, U)} ${t.u} of parts`} />
+        <Big label="Pieces" value={String(r.value.pieces)} sub={`${U === "imperial" ? lenShort(r.value.partsLength, U) : fmtGrouped(r.value.partsLength, 1)} ${t.u} of parts`} />
       </Row>
       {r.value.bars.map((b, k) => (
         <View key={k} style={{ gap: 6 }}>

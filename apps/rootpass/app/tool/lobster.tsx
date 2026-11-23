@@ -15,7 +15,7 @@ const LENGTHS = ['od', 'radius', 'tangent'] as const;
 
 export default function LobsterTool() {
   const app = useApp();
-  const t = useTool('lobster', DEFAULTS, LENGTHS);
+  const t = useTool('lobster', DEFAULTS, LENGTHS, {}, { od: '4.5', radius: '6.75' });
   const exportPdf = usePdfExport();
   const { width } = useWindowDimensions();
   const input = { od: t.mm('od'), bendDeg: t.num('bend'), pieces: t.num('pieces'), radius: t.mm('radius'), tangent: t.v.tangent.trim() === '' ? 0 : t.mm('tangent') };

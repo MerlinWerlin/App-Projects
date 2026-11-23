@@ -102,7 +102,7 @@ export function NumField({ label, value, onChange, unit, hint, step, min, intege
           returnKeyType="done"
           selectTextOnFocus
           accessibilityLabel={`${label}${unit ? ` in ${unit}` : ''}`}
-          placeholder="0"
+          placeholder=""
           placeholderTextColor={C.ink3}
           maxFontSizeMultiplier={1.3}
           style={st.input}
@@ -142,7 +142,7 @@ export function Segmented<T extends string>({ value, options, onChange, label }:
               accessibilityState={{ selected: on }}
               style={[st.segItem, on && { backgroundColor: C.accent }]}
             >
-              <Txt v="headline" tone={on ? 'accentInk' : 'ink2'} style={{ textAlign: 'center' }} numberOfLines={2}>{o.label}</Txt>
+              <Txt v="headline" tone={on ? 'accentInk' : 'ink2'} style={{ textAlign: 'center' }} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.7}>{o.label}</Txt>
             </Pressable>
           );
         })}
@@ -176,7 +176,7 @@ export function Big({ label, value, sub, tone = 'ink' }: { label: string; value:
   return (
     <View style={{ gap: 2, minWidth: 140, flex: 1 }} accessible accessibilityLabel={sp(`${label}: ${value}${sub ? `, ${sub}` : ''}`)}>
       <Txt v="label" tone="ink3">{label}</Txt>
-      <Txt v="number" tone={tone} selectable>{value}</Txt>
+      <Txt v="number" tone={tone} selectable numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.45}>{value}</Txt>
       {sub ? <Txt v="small" tone="ink2">{sub}</Txt> : null}
     </View>
   );

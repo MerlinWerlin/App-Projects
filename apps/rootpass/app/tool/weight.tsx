@@ -46,7 +46,7 @@ const SHAPE_WORD: Record<ShapeId, string> = { plate: 'plate thicknesses', flat: 
 
 export default function WeightTool() {
   const app = useApp();
-  const t = useTool('weight', DEFAULTS, LENGTHS, { shape: Object.keys(SHAPES), material: Object.keys(MATERIALS) });
+  const t = useTool('weight', DEFAULTS, LENGTHS, { shape: Object.keys(SHAPES), material: Object.keys(MATERIALS) }, { d0: '2', d1: '2', d2: '0.125', length: '240' });
   const U = t.units;
   const shape = (t.v.shape in SHAPES ? t.v.shape : 'shs') as ShapeId;
   const dimNames = SHAPES[shape].dims;

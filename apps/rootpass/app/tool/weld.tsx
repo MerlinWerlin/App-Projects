@@ -12,7 +12,7 @@ export default function WeldTool() {
   const app = useApp();
   // ISO 2553 drawings (UK, Ireland) size fillets by throat a; AS 1554 and AWS usually by leg.
   const sizeDefault = app.country.code === 'GB' || app.country.code === 'IE' ? 'throat' : 'leg';
-  const t = useTool('weld', { ...DEFAULTS, size: sizeDefault }, LENGTHS, { joint: ['fillet', 'singleV', 'doubleV', 'squareButt'], process: Object.keys(PROCESSES), size: ['leg', 'throat'] });
+  const t = useTool('weld', { ...DEFAULTS, size: sizeDefault }, LENGTHS, { joint: ['fillet', 'singleV', 'doubleV', 'squareButt'], process: Object.keys(PROCESSES), size: ['leg', 'throat'] }, { throat: '0.1875', legA: '0.25', legB: '0.25', t: '0.375', gap: '0.0625', face: '0.0625', length: '400' });
   const byThroat = t.v.size === 'throat';
   const U = t.units;
   const kind = t.v.joint as Joint['kind'];

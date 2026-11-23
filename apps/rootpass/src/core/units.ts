@@ -67,13 +67,24 @@ export function inchFraction(inches: number, denominator = 16): string {
 }
 
 /** A length for display: "123.5 mm" or `4.862 in (4 7/8")`. */
+/** fmt with thousands separators for display only (12,345.6). Never written back into an input field. */
+export function fmtGrouped(v: number, dp = 1): string {
+  const s = fmt(v, dp);
+  const [int, dec] = s.split('.');
+  const neg = int.startsWith('-');
+  const digits = neg ? int.slice(1) : int;
+  if (digits.length < 5) return s;
+  const grouped = digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return `${neg ? '-' : ''}${grouped}${dec !== undefined ? `.${dec}` : ''}`;
+}
+
 export function len(mm: number, units: UnitSystem, dp = 1): string {
   if (!Number.isFinite(mm)) return '–';
   if (units === 'imperial') {
     const inches = mm / MM_PER_IN;
-    return `${fmt(inches, 3)} in (${inchFraction(inches)}")`;
+    return `${fmtGrouped(inches, 3)} in (${inchFraction(inches)}")`;
   }
-  return `${fmt(mm, dp)} mm`;
+  return `${fmtGrouped(mm, dp)} mm`;
 }
 
 /** Short length (no fraction), for tables. */
@@ -87,8 +98,8 @@ export function unitLabel(units: UnitSystem): string {
 
 export function mass(kg: number, units: UnitSystem): string {
   if (!Number.isFinite(kg)) return '–';
-  if (units === 'imperial') return `${fmt(kg / KG_PER_LB, kg / KG_PER_LB < 10 ? 2 : 1)} lb`;
-  return `${fmt(kg, kg < 10 ? 2 : 1)} kg`;
+  if (units === 'imperial') return `${fmtGrouped(kg / KG_PER_LB, kg / KG_PER_LB < 10 ? 2 : 1)} lb`;
+  return `${fmtGrouped(kg, kg < 10 ? 2 : 1)} kg`;
 }
 
 /** One line of the "show the working" list on every result. */

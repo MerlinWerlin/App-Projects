@@ -15,6 +15,7 @@
  */
 import { CATALOGUES } from './catalogue.ts';
 import type { PaperId } from './pdf.ts';
+import { fmtGrouped } from './units.ts';
 import type { Spelling } from './spell.ts';
 import type { UnitSystem } from './units.ts';
 
@@ -99,6 +100,6 @@ export function codeNote(c: CountryInfo): string {
 }
 
 export function money(amount: number, c: CountryInfo): string {
-  const v = amount.toFixed(2);
+  const v = fmtGrouped(amount, 2);
   return c.currency ? `${c.currency.symbol}${v}` : v;
 }
