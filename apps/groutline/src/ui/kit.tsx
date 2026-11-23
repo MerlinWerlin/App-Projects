@@ -157,13 +157,13 @@ export function Row({ children, gap = SPACE.sm }: { children: ReactNode; gap?: n
 }
 
 /**
- * Equal-width segmented choice on one track (up to 3 options) or a grid of equal cells (3 per row). 56 pt tall for
+ * Equal-width segmented choice on one track (up to 3 options) or a grid of equal cells (2 per row for four, 3 per row otherwise). 56 pt tall for
  * gloves rather than the 32 pt system control.
  */
 export function Segmented<T extends string>({ options, value, onChange, label }: { options: Array<{ id: T; label: string }>; value: T; onChange(v: T): void; label: string }) {
   const t = useTheme();
   const { fontScale } = useWindowDimensions();
-  const perRow = fontScale > 1.3 ? 2 : 3;
+  const perRow = fontScale > 1.3 || options.length === 4 ? 2 : 3;
   const rows: Array<typeof options> = [];
   for (let i = 0; i < options.length; i += perRow) rows.push(options.slice(i, i + perRow));
   return (
