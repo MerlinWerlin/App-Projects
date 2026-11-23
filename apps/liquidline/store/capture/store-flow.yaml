@@ -23,6 +23,11 @@ appId: ${APP_ID}
 - tapOn:
     id: "refrigerant-button"
 - waitForAnimationToEnd
+- scrollUntilVisible:
+    element:
+      id: "pick-R407C"
+    direction: DOWN
+    timeout: 8000
 - tapOn:
     id: "pick-R407C"
 - waitForAnimationToEnd
@@ -37,6 +42,11 @@ appId: ${APP_ID}
 - tapOn:
     id: "refrigerant-button"
 - waitForAnimationToEnd
+- scrollUntilVisible:
+    element:
+      id: "pick-R32"
+    direction: DOWN
+    timeout: 8000
 - tapOn:
     id: "pick-R32"
 - waitForAnimationToEnd
@@ -56,6 +66,11 @@ appId: ${APP_ID}
 - tapOn:
     text: "Extra charge"
 - waitForAnimationToEnd
+- scrollUntilVisible:
+    element:
+      id: "extra-length"
+    direction: DOWN
+    timeout: 8000
 - tapOn:
     id: "extra-length"
 - eraseText: 10

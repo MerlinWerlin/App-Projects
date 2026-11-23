@@ -21,18 +21,30 @@ export default function Onboarding() {
 
   if (step === 0) {
     return (
-      <Screen>
+      <Screen footer={<Button testID="onboarding-next" title={`Continue with ${c.name}`} onPress={() => { updateSettings((cur) => withCountry(cur, country)); setStep(1); }} />}>
         <Hero />
         <Text accessibilityRole="header" style={{ fontFamily: FONT.display, fontSize: 44, lineHeight: 46, color: p.text }}>Where do you work?</Text>
         <Body dim>Liquidline sets units, the refrigerants you’ll see, licence and standards names, and the pair coils and line sets wholesalers stock, for your country. You can change it any time in Settings.</Body>
         <CountryList value={country} onPick={setCountry} detected={detected} />
         {!c.guided ? <Notice kind="info" text="Other countries get metric units and generic guidance. Check your local rules and stocked sizes." /> : null}
-        <Button testID="onboarding-next" title={`Continue with ${c.name}`} onPress={() => { updateSettings((cur) => withCountry(cur, country)); setStep(1); }} />
       </Screen>
     );
   }
+  const footer = (
+    <>
+      <Button
+        testID="onboarding-agree"
+        title="I understand, open Liquidline"
+        onPress={() => {
+          updateSettings({ onboarded: true, acknowledged: true });
+          router.replace('/');
+        }}
+      />
+      <Button kind="plain" title="Back" onPress={() => setStep(0)} />
+    </>
+  );
   return (
-    <Screen>
+    <Screen footer={footer}>
       <Text accessibilityRole="header" style={{ fontFamily: FONT.display, fontSize: 44, lineHeight: 46, color: p.text }}>Before you start</Text>
       <Card>
         <Heading>An aid for licensed technicians</Heading>
@@ -46,17 +58,6 @@ export default function Onboarding() {
         <Small>Liquid pressure, subcooling, bubble point.</Small>
       </Card>
       <Notice text="Flammable refrigerants (A2L such as R32 and R454B, A3 such as R290) need the right training, tools and charge limits. Liquidline reminds you when one is selected." />
-      <View style={{ gap: SPACE.sm }}>
-        <Button
-          testID="onboarding-agree"
-          title="I understand, open Liquidline"
-          onPress={() => {
-            updateSettings({ onboarded: true, acknowledged: true });
-            router.replace('/');
-          }}
-        />
-        <Button kind="plain" title="Back" onPress={() => setStep(0)} />
-      </View>
     </Screen>
   );
 }

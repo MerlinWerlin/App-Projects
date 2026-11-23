@@ -13,10 +13,10 @@ export function toneColor(p: Palette, tone: Tone) {
   return tone === 'low' ? p.low : tone === 'high' ? p.high : p.text;
 }
 
-export function Screen({ title, subtitle, children, right, tab = true }: { title?: string; subtitle?: string; children: ReactNode; right?: ReactNode; tab?: boolean }) {
+export function Screen({ title, subtitle, children, right, tab = true, footer }: { title?: string; subtitle?: string; children: ReactNode; right?: ReactNode; tab?: boolean; footer?: ReactNode }) {
   const p = usePalette();
   const insets = useSafeAreaInsets();
-  return (
+  const body = (
     <ScrollView
       style={{ flex: 1, backgroundColor: p.bg }}
       contentContainerStyle={{ paddingTop: tab ? insets.top + SPACE.md : SPACE.lg, paddingBottom: SPACE.xxl + (tab ? 0 : insets.bottom), paddingHorizontal: SPACE.lg, gap: SPACE.lg }}
@@ -44,6 +44,16 @@ export function Screen({ title, subtitle, children, right, tab = true }: { title
         </InputAccessoryView>
       ) : null}
     </ScrollView>
+  );
+  if (!footer) return body;
+  // The main action stays pinned within thumb reach above the home indicator; content scrolls behind it.
+  return (
+    <View style={{ flex: 1, backgroundColor: p.bg }}>
+      {body}
+      <View style={{ paddingHorizontal: SPACE.lg, paddingTop: SPACE.md, paddingBottom: Math.max(insets.bottom, SPACE.lg), gap: SPACE.sm, backgroundColor: p.bg, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: p.line }}>
+        {footer}
+      </View>
+    </View>
   );
 }
 
