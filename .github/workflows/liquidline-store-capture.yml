@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/hvac-app']
-    paths: ['.github/workflows/liquidline-store-capture.yml', 'apps/liquidline/store/capture/**']
+    paths: ['.github/workflows/liquidline-store-capture.yml', 'apps/liquidline/store/capture/**', 'apps/liquidline/package.json']
 concurrency:
   group: liquidline-store-capture-${{ github.ref }}
   cancel-in-progress: true
