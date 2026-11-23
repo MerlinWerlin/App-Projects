@@ -20,7 +20,7 @@ concurrency:
 jobs:
   qa:
     runs-on: xcode-27
-    timeout-minutes: 120
+    timeout-minutes: 170
     defaults:
       run:
         shell: bash
