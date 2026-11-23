@@ -1,4 +1,5 @@
 # Spigot store captures (simulator, EXPO_PUBLIC_SPIGOT_CAPTURE=1 build). Every number is typed through the real keypad.
+# Screens are opened with spigot:// links (Maestro's back is Android-only).
 appId: com.jared797.spigot
 ---
 - launchApp:
@@ -18,8 +19,6 @@ appId: com.jared797.spigot
     timeout: 20000
 - waitForAnimationToEnd:
     timeout: 5000
-- waitForAnimationToEnd:
-    timeout: 3000
 - takeScreenshot: 00-home-welcome
 - scrollUntilVisible:
     element:
@@ -35,8 +34,7 @@ appId: com.jared797.spigot
 - takeScreenshot: 01-home
 
 # Offset: 300 mm at 45° with 18 mm take-offs
-- tapOn:
-    text: "Offset\\..*"
+- openLink: "spigot://tool/offset"
 - tapOn:
     text: "Offset \\(centre to centre\\).*"
 - tapOn: "3"
@@ -61,11 +59,9 @@ appId: com.jared797.spigot
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 03-offset-working
-- back
 
 # Cut list: 1450 × 5, 875 × 7, 2210 × 3
-- tapOn:
-    text: "Cut list\\..*"
+- openLink: "spigot://tool/cutlist"
 - tapOn:
     text: "Piece length.*"
 - tapOn: "1"
@@ -108,11 +104,9 @@ appId: com.jared797.spigot
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 05-cutlist-plan
-- back
 
-# Fall: 12 m at 1:60 from RL 10.500
-- tapOn:
-    text: "Fall\\..*"
+# Fall: 12 m at the first common grade (1:40 in Australia) from RL 10.500
+- openLink: "spigot://tool/fall"
 - tapOn:
     text: "Length of run.*"
 - tapOn: "1"
@@ -129,11 +123,9 @@ appId: com.jared797.spigot
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 06-fall
-- back
 
 # Cut length: 1000 mm, DN100 88° bend centre to a bare end
-- tapOn:
-    text: "Cut length\\..*"
+- openLink: "spigot://tool/cut"
 - tapOn:
     text: "Measurement.*"
 - tapOn: "1"
@@ -152,16 +144,14 @@ appId: com.jared797.spigot
     index: 1
 - scrollUntilVisible:
     element:
-      text: "CUT THE PIPE TO"
+      text: "Cut the pipe to.*"
     direction: UP
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 07-cut
-- back
 
 # Volume: DN20 Type B copper, 25 m
-- tapOn:
-    text: "Volume & flow\\..*"
+- openLink: "spigot://tool/flow"
 - tapOn:
     text: "DN20, inside .*"
 - tapOn:
@@ -173,25 +163,21 @@ appId: com.jared797.spigot
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 08-volume
-- back
 
-# Reference
-- tapOn:
-    text: "Reference(, tab.*)?"
+# Reference and jobs
+- openLink: "spigot://reference"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 09-reference
-- tapOn:
-    text: "Jobs(, tab.*)?"
+- openLink: "spigot://jobs"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 10-jobs-empty
-- tapOn:
-    text: "Tools(, tab.*)?"
-- tapOn:
-    text: "Units:.*"
-- tapOn:
-    text: "Offset\\..*"
+
+# Inches: switch units in Settings, then an offset typed with a fraction key
+- openLink: "spigot://settings"
+- tapOn: "Inches (ft, in)"
+- openLink: "spigot://tool/offset"
 - tapOn:
     text: "Offset \\(centre to centre\\).*"
 - tapOn: "1"
@@ -201,13 +187,23 @@ appId: com.jared797.spigot
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 11-offset-inches
-- back
-- tapOn:
-    text: "Settings(, tab.*)?"
+- openLink: "spigot://settings"
+- tapOn: "Millimetres (mm, m)"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 12-settings
-- tapOn: "Full Unlock and restore"
+
+# Paywall (capture build: the Australian list price, no App Store on a simulator)
+- openLink: "spigot://unlock"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 13-unlock
+
+# Locked tool preview (capture-only link): the real sample result, blurred, with the unlock card
+- openLink: "spigot://tool/cutlist?preview=1"
+- extendedWaitUntil:
+    visible: "CUT LIST IS IN FULL UNLOCK"
+    timeout: 20000
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 14-locked-preview

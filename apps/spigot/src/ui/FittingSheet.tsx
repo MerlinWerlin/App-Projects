@@ -63,7 +63,7 @@ export function FittingSheet({ visible, onClose, onPick }: { visible: boolean; o
           <Text accessibilityRole="header" style={{ fontSize: 17, fontWeight: '700', color: c.ink }}>Choose fitting</Text>
           <View style={{ width: 56 }} />
         </View>
-        <ScrollView contentContainerStyle={{ padding: space.l, paddingTop: 0, paddingBottom: insets.bottom + 40, gap: space.l }} keyboardShouldPersistTaps="handled">
+        <ScrollView contentContainerStyle={{ padding: space.l, paddingTop: 0, paddingBottom: insets.bottom + 40, gap: space.l }} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets keyboardDismissMode="interactive">
           <View style={{ gap: space.s }}>
             <FieldLabel>Your fittings</FieldLabel>
             {app.fittings.map(f => (

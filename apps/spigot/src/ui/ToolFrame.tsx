@@ -4,7 +4,7 @@ import { BlurView } from 'expo-blur';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useApp } from '../state/AppState';
+import { CAPTURE, useApp } from '../state/AppState';
 import { sortJobs, type CalcRecord, type ToolId } from '../state/data';
 import { Button, FieldLabel, Screen, TextBox, useTap } from './kit';
 import { HIT, font, radius, space, usePalette } from './theme';
@@ -12,6 +12,12 @@ import { isLocked, sampleInputs, toolTitle } from './tools';
 import { useCountry } from '../country/useCountry';
 
 export interface Snapshot { inputs: Record<string, unknown>; summary: string }
+
+/** Capture builds only: spigot://tool/<id>?preview=1 shows the locked preview for the store screenshot set. */
+function usePreviewParam(): boolean {
+  const { preview } = useLocalSearchParams<{ preview?: string }>();
+  return CAPTURE && preview === '1';
+}
 
 /**
  * The record a tool was opened from (?record=<id>), for restoring its inputs. A locked tool opens with a sample
@@ -21,9 +27,10 @@ export function useOpenedRecord(tool: ToolId): CalcRecord | undefined {
   const { record } = useLocalSearchParams<{ record?: string }>();
   const { records, unlocked } = useApp();
   const country = useCountry();
+  const forcePreview = usePreviewParam();
   const ref = useRef<CalcRecord | undefined>(undefined);
   if (ref.current === undefined) {
-    if (isLocked(tool, unlocked)) ref.current = { id: 'sample', tool, createdAt: 0, summary: '', jobId: null, inputs: sampleInputs(tool, country) };
+    if (isLocked(tool, unlocked) || forcePreview) ref.current = { id: 'sample', tool, createdAt: 0, summary: '', jobId: null, inputs: sampleInputs(tool, country) };
     else if (record) ref.current = records.find(r => r.id === record);
   }
   return ref.current;
@@ -41,12 +48,15 @@ export function ToolFrame({ tool, snapshot, children }: { tool: ToolId; snapshot
   latest.current = snapshot;
   const recordRecent = useRef(app.recordRecent);
   recordRecent.current = app.recordRecent;
-  const locked = isLocked(tool, app.unlocked);
+  const forcePreview = usePreviewParam();
+  const locked = isLocked(tool, app.unlocked) || forcePreview;
   const appRef = useRef(app);
   appRef.current = app;
+  const forcePreviewRef = useRef(forcePreview);
+  forcePreviewRef.current = forcePreview;
 
   useEffect(() => { setSaved(null); }, [snapshot?.summary]);
-  useEffect(() => () => { if (latest.current && !isLocked(tool, appRef.current.unlocked)) recordRecent.current(tool, latest.current.inputs, latest.current.summary); }, [tool]);
+  useEffect(() => () => { if (latest.current && !isLocked(tool, appRef.current.unlocked) && !forcePreviewRef.current) recordRecent.current(tool, latest.current.inputs, latest.current.summary); }, [tool]);
   if (locked) return <LockedPreview tool={tool}>{children}</LockedPreview>;
 
   return (
@@ -86,7 +96,7 @@ function SaveSheet({ visible, onClose, onSave }: { visible: boolean; onClose: ()
           <Text accessibilityRole="header" style={{ fontSize: 17, fontWeight: '700', color: c.ink }}>Save to job</Text>
           <View style={{ width: 56 }} />
         </View>
-        <ScrollView contentContainerStyle={{ padding: space.l, paddingBottom: insets.bottom + 40, gap: space.l }} keyboardShouldPersistTaps="handled">
+        <ScrollView contentContainerStyle={{ padding: space.l, paddingBottom: insets.bottom + 40, gap: space.l }} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets keyboardDismissMode="interactive">
           <TextBox label="Note (optional)" value={note} onChangeText={setNote} placeholder="e.g. Ensuite waste, under the vanity" />
           <View style={{ gap: space.s }}>
             <TextBox label="New job" value={name} onChangeText={setName} placeholder="e.g. 14 Smith St reno" />

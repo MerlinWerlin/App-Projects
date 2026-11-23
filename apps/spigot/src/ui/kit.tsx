@@ -25,7 +25,7 @@ export function Screen({ children, footer }: { children: React.ReactNode; footer
   const insets = useSafeAreaInsets();
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
-      <ScrollView contentInsetAdjustmentBehavior="automatic" keyboardShouldPersistTaps="handled" contentContainerStyle={{ padding: space.l, paddingBottom: (footer ? 120 : 40) + insets.bottom, gap: space.l }}>
+      <ScrollView contentInsetAdjustmentBehavior="automatic" keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets keyboardDismissMode="interactive" contentContainerStyle={{ padding: space.l, paddingBottom: (footer ? 120 : 40) + insets.bottom, gap: space.l }}>
         {children}
       </ScrollView>
       {footer ? <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: space.l, paddingTop: space.m, paddingBottom: Math.max(insets.bottom, space.m), backgroundColor: c.bg, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.line }}>{footer}</View> : null}
@@ -366,7 +366,7 @@ export function TextBox({ value, onChangeText, placeholder, multiline, label, au
   return (
     <View style={{ gap: 6 }}>
       <FieldLabel>{label}</FieldLabel>
-      <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} placeholderTextColor={c.ink3} multiline={multiline} autoFocus={autoFocus} accessibilityLabel={label}
+      <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} placeholderTextColor={c.ink3} multiline={multiline} autoFocus={autoFocus} accessibilityLabel={label} returnKeyType={multiline ? "default" : "done"} autoCapitalize="sentences" enablesReturnKeyAutomatically={!multiline}
         style={{ minHeight: multiline ? 110 : HIT, borderRadius: radius.m, borderWidth: 2, borderColor: c.line, backgroundColor: c.surface, paddingHorizontal: space.l, paddingVertical: space.m, fontSize: 18, color: c.ink, textAlignVertical: multiline ? 'top' : 'center' }} />
     </View>
   );
