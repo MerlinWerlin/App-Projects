@@ -17,6 +17,7 @@ import { roofReady, type ToolId } from '../../src/state/model';
 import { RADIUS, SPACE, TOUCH, TYPE } from '../../src/theme/theme';
 import { tap, Txt } from '../../src/ui/kit';
 import { RoofCard, SafetyLine } from '../../src/ui/parts';
+import { ToolIcon } from '../../src/ui/ToolIcon';
 
 interface Tool { id: ToolId; title: string; icon: keyof typeof Ionicons.glyphMap; value?: string | null; sub: string }
 
@@ -99,8 +100,8 @@ export default function Tools() {
                   accessibilityLabel={`${t.title}${t.value && !locked ? `, ${t.value}` : ''}. ${t.sub}${locked ? '. Part of the Full Unlock' : ''}`}
                   onPress={() => { tap(prefs.haptics); router.push(`/${t.id}` as Href); }}
                   style={({ pressed }) => [st.row, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderColor: theme.line }, pressed && { backgroundColor: theme.sheet2 }]}>
-                  <View style={[st.icon, { backgroundColor: theme.sheet2 }]}>
-                    <Ionicons name={t.icon} size={24} color={theme.ink} />
+                  <View style={st.icon}>
+                    <ToolIcon id={t.id} size={28} color="#F4F1EA" accent="#FFD21F" />
                   </View>
                   <View style={{ flex: 1, gap: 1 }}>
                     <Txt v="headline">{t.title}</Txt>
@@ -127,6 +128,6 @@ const st = StyleSheet.create({
   trial: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, paddingHorizontal: SPACE.md, minHeight: TOUCH.big },
   group: { borderRadius: RADIUS.l, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden' },
   row: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, minHeight: TOUCH.huge + 8, paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm },
-  icon: { width: 44, height: 44, borderRadius: RADIUS.s, alignItems: 'center', justifyContent: 'center' },
+  icon: { width: 48, height: 48, borderRadius: RADIUS.m, alignItems: 'center', justifyContent: 'center', backgroundColor: '#1D2025' },
   value: { fontVariant: ['tabular-nums'], maxWidth: '42%' },
 });

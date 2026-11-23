@@ -1,7 +1,8 @@
 /** App-specific pieces: roof diagram, current-roof card, save-to-job, trial gate, safety line. */
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { BlurView } from 'expo-blur';
+import { Children, useState } from 'react';
 import { Alert, Pressable, StyleSheet, View } from 'react-native';
 import Svg, { Line, Path, Text as SvgText } from 'react-native-svg';
 import type { RoofType } from '../core/geometry';
@@ -113,22 +114,36 @@ export function SaveToJob({ tool, title, lines, disabled }: { tool: ToolId; titl
   );
 }
 
-/** Shown instead of a paid calculator's result before the trial or unlock. */
+/**
+ * Paid results before the trial or unlock: the real result renders underneath, blurred and not interactive, with the
+ * unlock prompt over it, so people see exactly what they would get. With no result yet, just the prompt.
+ */
 export function Gate({ tool, children }: { tool: ToolId; children: React.ReactNode }) {
   const app = useApp();
   const router = useRouter();
   if (app.can(tool)) return <>{children}</>;
-  return (
-    <Card style={{ gap: SPACE.sm, paddingVertical: SPACE.lg, borderColor: app.theme.ink, borderWidth: 2 }}>
-      <Ionicons name="lock-closed" size={28} color={app.theme.ink} />
-      <Txt v="title2">{app.trial.started ? 'Your free trial has ended' : 'Try every calculator free for 7 days'}</Txt>
+  const hasPreview = Children.toArray(children).length > 0;
+  const prompt = (
+    <View style={[st.gateCard, { backgroundColor: app.theme.sheet, borderColor: app.theme.ink }]}>
+      <Ionicons name="lock-closed" size={26} color={app.theme.ink} />
+      <Txt v="title2">{app.trial.started ? 'Your free trial has ended' : 'Your answer is ready'}</Txt>
       <Txt v="body" tone="ink2">
         {app.trial.started
-          ? 'Unlock Eaveline once to keep using this calculator and saved jobs. The pitch tools and gutter fall stay free.'
-          : 'This calculator is part of the Full Unlock. Start the free trial: nothing is charged, and the pitch tools and gutter fall are always free.'}
+          ? 'Unlock Eaveline once to see this result and keep every calculator and saved jobs. Pitch, the phone level and gutter fall stay free.'
+          : 'Start the free 7-day trial to see it, with every calculator and saved jobs. Nothing is charged.'}
       </Txt>
       <Btn testID="gate-unlock" label={app.trial.started ? 'See unlock options' : 'Start free trial'} onPress={() => router.push('/unlock')} />
-    </Card>
+    </View>
+  );
+  if (!hasPreview) return prompt;
+  return (
+    <View style={st.gate}>
+      <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ gap: SPACE.md }}>
+        {children}
+      </View>
+      <BlurView intensity={app.theme.dark ? 40 : 32} tint={app.theme.dark ? 'dark' : 'light'} style={StyleSheet.absoluteFill} />
+      <View style={st.gateOver}>{prompt}</View>
+    </View>
   );
 }
 
@@ -149,6 +164,9 @@ export function SafetyLine() {
 }
 
 const st = StyleSheet.create({
+  gate: { maxHeight: 520, overflow: 'hidden', borderRadius: RADIUS.l },
+  gateOver: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', padding: SPACE.md },
+  gateCard: { gap: SPACE.sm, padding: SPACE.lg, borderRadius: RADIUS.l, borderWidth: 2 },
   roofCard: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, padding: SPACE.sm, minHeight: TOUCH.huge },
   safety: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, borderWidth: StyleSheet.hairlineWidth, paddingLeft: SPACE.sm, minHeight: TOUCH.huge },
   badge: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
