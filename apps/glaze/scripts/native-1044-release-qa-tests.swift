@@ -270,4 +270,30 @@ import Darwin
     XCTAssertTrue(app.wait(for: .runningForeground, timeout: 5), "Glaze is no longer running")
     print("GLAZE_QA_1044_DONE"); fflush(stdout)
   }
+  /// Theme cards in the Themes browse (before/after captures): the top, the rails, a See all grid and search.
+  func testThemeCardsCapture() throws {
+    continueAfterFailure = true
+    let app = makeApp()
+    let tag = ProcessInfo.processInfo.environment["GLAZE_QA_TAG"] ?? "cards"
+    app.launch()
+    XCTAssertTrue(app.buttons["Themes"].firstMatch.waitForExistence(timeout: 60), app.debugDescription)
+    tab(app, "Themes")
+    settle(12)
+    shot(app, "\(tag)-themes-top")
+    for page in 1...4 { swipeUp(app); settle(1.5); shot(app, "\(tag)-themes-\(page)") }
+    let seeAll = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "See all")).firstMatch
+    if seeAll.waitForExistence(timeout: 5) && reveal(seeAll, in: app, tries: 6) {
+      seeAll.tap(); settle(4)
+      shot(app, "\(tag)-see-all")
+      swipeUp(app); settle(1.5); shot(app, "\(tag)-see-all-2")
+    }
+    tab(app, "Themes")
+    tab(app, "Themes")
+    search(app, "Grove")
+    settle(3)
+    if app.keyboards.count > 0, app.keyboards.buttons["Search"].exists { app.keyboards.buttons["Search"].tap() }
+    settle(1.5)
+    shot(app, "\(tag)-search")
+  }
+
 }

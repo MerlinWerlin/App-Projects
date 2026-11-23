@@ -17,6 +17,7 @@ import { HeartButton } from './HeartButton';
 import { PressableScale } from './PressableScale';
 import { RemoteArtImage } from './RemoteArtImage';
 import { ThemeWallpaper } from './ThemeWallpaper';
+import { ThemeHomePreview } from './ThemeHomePreview';
 import { noMirror, textStyleFor } from './i18nLayout';
 
 /** Height of the name row under the art (fixed, so every card in the grid is the same height). */
@@ -61,6 +62,7 @@ export const ThemeThumbCard = memo(function ThemeThumbCard({ theme, width, artHe
             ) : (
               <ThemeWallpaper theme={theme} width={width} height={artHeight} maxGrain={60} />
             )}
+            <ThemeHomePreview theme={theme} width={width} height={artHeight} />
             {badge ? <View style={styles.badge}>{badge}</View> : null}
           </View>
           <View style={styles.label}>

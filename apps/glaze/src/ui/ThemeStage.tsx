@@ -19,6 +19,7 @@ import { displayStyle } from './displayType';
 import { PressableScale } from './PressableScale';
 import { RemoteArtImage } from './RemoteArtImage';
 import { ThemeWallpaper } from './ThemeWallpaper';
+import { ThemeHomePreview } from './ThemeHomePreview';
 import { noMirror, textStyleFor } from './i18nLayout';
 
 /** Share of the screen width one print takes (the neighbours peek in at both sides). */
@@ -105,6 +106,7 @@ const StagePrint = memo(function StagePrint({
           pointerEvents="none"
         >
           {art}
+          <ThemeHomePreview theme={theme} width={cardW} height={artH} />
           {badge ? <View style={styles.badge}>{badge}</View> : null}
         </View>
         <View style={styles.label}>
