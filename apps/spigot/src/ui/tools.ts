@@ -27,6 +27,18 @@ export function isLocked(id: ToolId, unlocked: boolean) {
 
 import type { CountryProfile } from '../country/types';
 
+/** Sample inputs a locked tool shows (blurred) so people see the real output before they unlock. Values in mm. */
+export function sampleInputs(id: ToolId, country: CountryProfile): Record<string, unknown> {
+  switch (id) {
+    case 'rolling': return { rise: 300, roll: 400, angle: 45 };
+    case 'cut': return { measured: 1000, qty: 1, refA: 'centre', refB: 'centre', ...(country.fittings[0] ? { fitA: country.fittings[0].id, fitB: country.fittings[0].id } : { refA: 'none', refB: 'none' }) };
+    case 'flow': return { mode: 'volume', pipe: country.pipes[0]?.id, length: 25000 };
+    case 'cutlist': return { pieces: [{ length: 1450, qty: 5 }, { length: 875, qty: 7 }, { length: 2210, qty: 3 }], stock: country.stockLengthMm, kerf: 3, trim: 0 };
+    case 'offset': return { offset: 300, angle: 45 };
+    case 'fall': return { mode: 'drop', length: 12000, gradeKind: 'ratio', grade: country.commonGrades[0] ?? 60 };
+  }
+}
+
 /** Tool name in the person's trade words (US/CA say slope, others fall). */
 export function toolTitle(id: ToolId, country: Pick<CountryProfile, 'terms'>): string {
   return id === 'fall' ? country.terms.fall : toolInfo(id).title;

@@ -56,7 +56,7 @@ export default function FlowScreen() {
   const u = prefs.unit;
   const fu = u === 'imperial' && country.usGallons ? 'imperial' : 'metric';
   const FU = flowUnits(fu);
-  const rec = useOpenedRecord();
+  const rec = useOpenedRecord('flow');
   const ri = rec?.inputs ?? {};
   const [mode, setMode] = useState<Mode>(ri.mode === 'flow' ? 'flow' : 'volume');
   const [pipe, setPipe] = useState<string | null>(typeof ri.pipe === 'string' && pipeById(ri.pipe) ? ri.pipe : null);

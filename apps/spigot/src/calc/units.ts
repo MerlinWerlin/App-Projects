@@ -93,6 +93,7 @@ export function formatFeetInches(mm: number, den = 16): string {
   const rest = (totalSixteenths - feet * perFoot) / den;
   const inches = formatInches(rest, den);
   if (feet === 0) return `${neg ? '−' : ''}${inches}`;
+  if (rest === 0) return `${neg ? '−' : ''}${feet}′`;
   return `${neg ? '−' : ''}${feet}′ ${inches}`;
 }
 

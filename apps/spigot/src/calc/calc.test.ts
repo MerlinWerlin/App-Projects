@@ -41,6 +41,7 @@ describe('units', () => {
     expect(formatInches(6.99)).toBe('7″'); // 6.99 rounds to 7 0/16
     expect(formatInches(1.03125)).toBe('1 1/16″'); // 1 1/32 rounds half up to 1/16
     expect(formatFeetInches(1600.2)).toBe('5′ 3″');
+    expect(formatFeetInches(3657.6)).toBe('12′'); // a 12 ft stock length
     expect(formatLength(1600.2, 'imperial')).toBe('5′ 3″');
     expect(formatLength(254, 'imperial')).toBe('10″');
   });

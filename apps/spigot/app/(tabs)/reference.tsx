@@ -18,7 +18,7 @@ function Section({ title, children, initiallyOpen }: { title: string; children: 
   const [open, setOpen] = useState(!!initiallyOpen);
   return (
     <Card style={{ padding: 0, gap: 0 }}>
-      <Pressable accessibilityRole="button" accessibilityState={{ expanded: open }} onPress={() => { tap(); setOpen(o => !o); }} style={{ minHeight: HIT + 8, flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.l, gap: space.m }}>
+      <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{ expanded: open }} onPress={() => { tap(); setOpen(o => !o); }} style={{ minHeight: HIT + 8, flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.l, gap: space.m }}>
         <Text style={{ flex: 1, fontFamily: font.display, fontSize: 24, color: c.ink, textTransform: 'uppercase' }}>{title}</Text>
         <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={22} color={c.ink3} />
       </Pressable>

@@ -9,6 +9,7 @@ import { useCountry } from '../../src/country/useCountry';
 import { Button, H, useTap } from '../../src/ui/kit';
 import { font, radius, space, usePalette } from '../../src/ui/theme';
 import { ART } from '../../src/ui/art';
+import { ToolArt } from '../../src/ui/ToolArt';
 
 function ago(ms: number) {
   const m = Math.round((Date.now() - ms) / 60000);
@@ -54,7 +55,7 @@ export default function ToolsHome() {
       ) : null}
 
       {status ? (
-        <Pressable accessibilityRole="button" onPress={() => router.push('/unlock')} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: space.s, backgroundColor: c.surface2, borderRadius: radius.m, padding: space.m, opacity: pressed ? 0.8 : 1 })}>
+        <Pressable accessibilityRole="button" accessibilityLabel={status} onPress={() => router.push('/unlock')} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: space.s, backgroundColor: c.surface2, borderRadius: radius.m, padding: space.m, opacity: pressed ? 0.8 : 1 })}>
           <Ionicons name={app.trial.active ? 'time-outline' : 'lock-open-outline'} size={22} color={c.copper} />
           <Text style={{ flex: 1, fontSize: 16, fontWeight: '700', color: c.ink }}>{status}</Text>
           <Ionicons name="chevron-forward" size={20} color={c.ink3} />
@@ -65,11 +66,11 @@ export default function ToolsHome() {
         {TOOLS.map(t => {
           const locked = isLocked(t.id, app.unlocked);
           return (
-            <Pressable key={t.id} accessibilityRole="button" accessibilityLabel={`${toolTitle(t.id, country)}. ${t.blurb}${locked ? '. Needs the free trial or Full Unlock' : ''}`}
-              onPress={() => { tap(); router.push(locked ? { pathname: '/unlock', params: { from: t.id } } : toolHref(t.id)); }}
+            <Pressable key={t.id} accessibilityRole="button" accessibilityLabel={`${toolTitle(t.id, country)}. ${t.blurb}${locked ? '. Shows a sample; needs the free trial or Full Unlock' : ''}`}
+              onPress={() => { tap(); router.push(toolHref(t.id)); }}
               style={({ pressed }) => ({ width: cols === 1 ? '100%' : '47.9%', flexGrow: 1, minHeight: 150, borderRadius: radius.l, padding: space.l, backgroundColor: t.free ? c.vis : c.surface, borderWidth: t.free ? 0 : 1, borderColor: c.line, gap: space.s, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] })}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Ionicons name={t.icon} size={34} color={t.free ? c.onVis : c.copper} />
+                <ToolArt id={t.id} size={62} ink={t.free ? '#121417' : c.ink} />
                 {locked ? <Ionicons name="lock-closed" size={20} color={c.ink3} /> : null}
               </View>
               <Text style={{ fontFamily: font.displayHeavy, fontSize: 28, lineHeight: 30, color: t.free ? c.onVis : c.ink, textTransform: 'uppercase' }}>{toolTitle(t.id, country)}</Text>
@@ -85,7 +86,7 @@ export default function ToolsHome() {
           {recents.length ? <Pressable accessibilityRole="button" hitSlop={12} onPress={() => app.clearRecents()}><Text style={{ color: c.copper, fontSize: 16, fontWeight: '600' }}>Clear</Text></Pressable> : null}
         </View>
         {recents.length ? recents.map(r => (
-          <Pressable key={r.id} accessibilityRole="button" accessibilityHint="Opens this calculation again" onPress={() => router.push({ pathname: toolHref(r.tool), params: { record: r.id } })}
+          <Pressable key={r.id} accessibilityRole="button" accessibilityLabel={`${toolTitle(r.tool, country)}: ${r.summary}`} accessibilityHint="Opens this calculation again" onPress={() => router.push({ pathname: toolHref(r.tool), params: { record: r.id } })}
             style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: space.m, backgroundColor: c.surface, borderRadius: radius.m, padding: space.m, minHeight: 60, opacity: pressed ? 0.8 : 1 })}>
             <Ionicons name={toolInfo(r.tool).icon} size={24} color={c.copper} />
             <View style={{ flex: 1 }}>

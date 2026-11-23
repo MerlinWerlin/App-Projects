@@ -17,7 +17,7 @@ export default function FallScreen() {
   const country = useCountry();
   const T = country.terms;
   const u = prefs.unit;
-  const rec = useOpenedRecord();
+  const rec = useOpenedRecord('fall');
   const ri = rec?.inputs ?? {};
   const [mode, setMode] = useState<Mode>(ri.mode === 'check' ? 'check' : 'drop');
   const [length, setLength] = useState(typeof ri.length === 'number' ? lengthToInput(ri.length, u) : '');

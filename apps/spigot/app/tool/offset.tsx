@@ -13,7 +13,7 @@ const angleLabel = (a: number) => (a === 11.25 ? '11¼°' : a === 22.5 ? '22½°
 export default function OffsetScreen() {
   const { prefs } = useApp();
   const u = prefs.unit;
-  const rec = useOpenedRecord();
+  const rec = useOpenedRecord('offset');
   const init = (k: string) => (typeof rec?.inputs[k] === 'number' ? lengthToInput(rec.inputs[k] as number, u) : '');
   const [offset, setOffset] = useState(init('offset'));
   const [ta, setTa] = useState(init('takeoffA'));

@@ -16,7 +16,7 @@ export default function CutListScreen() {
   const tap = useTap();
   const { prefs, setPrefs } = useApp();
   const u = prefs.unit;
-  const rec = useOpenedRecord();
+  const rec = useOpenedRecord('cutlist');
   const ri = rec?.inputs ?? {};
   const [lines, setLines] = useState<Line[]>(() => Array.isArray(ri.pieces) ? (ri.pieces as Line[]).filter(p => typeof p?.length === 'number' && typeof p?.qty === 'number') : []);
   const [stock, setStock] = useState(lengthToInput(typeof ri.stock === 'number' ? ri.stock : prefs.stock, u));

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { Modal, Pressable, ScrollView, Text, View, useColorScheme } from 'react-native';
+import { BlurView } from 'expo-blur';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -7,16 +8,24 @@ import { useApp } from '../state/AppState';
 import { sortJobs, type CalcRecord, type ToolId } from '../state/data';
 import { Button, FieldLabel, Screen, TextBox, useTap } from './kit';
 import { HIT, font, radius, space, usePalette } from './theme';
-import { isLocked } from './tools';
+import { isLocked, sampleInputs, toolTitle } from './tools';
+import { useCountry } from '../country/useCountry';
 
 export interface Snapshot { inputs: Record<string, unknown>; summary: string }
 
-/** The record a tool was opened from (?record=<id>), for restoring its inputs. */
-export function useOpenedRecord(): CalcRecord | undefined {
+/**
+ * The record a tool was opened from (?record=<id>), for restoring its inputs. A locked tool opens with a sample
+ * instead, so the person sees a real result (blurred) before they unlock.
+ */
+export function useOpenedRecord(tool: ToolId): CalcRecord | undefined {
   const { record } = useLocalSearchParams<{ record?: string }>();
-  const { records } = useApp();
+  const { records, unlocked } = useApp();
+  const country = useCountry();
   const ref = useRef<CalcRecord | undefined>(undefined);
-  if (ref.current === undefined && record) ref.current = records.find(r => r.id === record);
+  if (ref.current === undefined) {
+    if (isLocked(tool, unlocked)) ref.current = { id: 'sample', tool, createdAt: 0, summary: '', jobId: null, inputs: sampleInputs(tool, country) };
+    else if (record) ref.current = records.find(r => r.id === record);
+  }
   return ref.current;
 }
 
@@ -33,10 +42,12 @@ export function ToolFrame({ tool, snapshot, children }: { tool: ToolId; snapshot
   const recordRecent = useRef(app.recordRecent);
   recordRecent.current = app.recordRecent;
   const locked = isLocked(tool, app.unlocked);
+  const appRef = useRef(app);
+  appRef.current = app;
 
   useEffect(() => { setSaved(null); }, [snapshot?.summary]);
-  useEffect(() => () => { if (latest.current) recordRecent.current(tool, latest.current.inputs, latest.current.summary); }, [tool]);
-  useEffect(() => { if (app.loaded && locked) router.replace({ pathname: '/unlock', params: { from: tool } }); }, [app.loaded, locked, tool]);
+  useEffect(() => () => { if (latest.current && !isLocked(tool, appRef.current.unlocked)) recordRecent.current(tool, latest.current.inputs, latest.current.summary); }, [tool]);
+  if (locked) return <LockedPreview tool={tool}>{children}</LockedPreview>;
 
   return (
     <>
@@ -97,5 +108,35 @@ function SaveSheet({ visible, onClose, onSave }: { visible: boolean; onClose: ()
         </ScrollView>
       </View>
     </Modal>
+  );
+}
+
+/**
+ * A locked tool shows its real result for a sample job, softly blurred and not touchable, with the unlock card on top.
+ * Nothing is saved or recorded from a preview.
+ */
+function LockedPreview({ tool, children }: { tool: ToolId; children: React.ReactNode }) {
+  const c = usePalette();
+  const app = useApp();
+  const country = useCountry();
+  const insets = useSafeAreaInsets();
+  const scheme = useColorScheme();
+  const title = toolTitle(tool, country);
+  const trialText = app.trial.started ? 'See Full Unlock' : 'Try it free for 7 days';
+  return (
+    <View style={{ flex: 1, backgroundColor: c.bg }}>
+      <View style={{ flex: 1 }} pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <Screen>{children}</Screen>
+      </View>
+      <BlurView intensity={10} tint={scheme === 'dark' ? 'dark' : 'light'} style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }} />
+      <View style={{ position: 'absolute', left: space.l, right: space.l, bottom: Math.max(insets.bottom, space.l), backgroundColor: c.panel, borderRadius: radius.l, padding: space.l, gap: space.m, shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 18, shadowOffset: { width: 0, height: 8 } }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
+          <Ionicons name="lock-closed" size={20} color={c.vis} />
+          <Text accessibilityRole="header" style={{ flex: 1, fontFamily: font.displayHeavy, fontSize: 26, color: c.onPanel }}>{`${title.toUpperCase()} IS IN FULL UNLOCK`}</Text>
+        </View>
+        <Text style={{ fontSize: 16, lineHeight: 22, color: c.onPanel2 }}>That’s a real result for a sample job. Unlock to use it on yours, with the working shown and Save to job.</Text>
+        <Button label={trialText} icon="lock-open-outline" onPress={() => router.push({ pathname: '/unlock', params: { from: tool } })} />
+      </View>
+    </View>
   );
 }

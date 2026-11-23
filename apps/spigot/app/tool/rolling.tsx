@@ -14,7 +14,7 @@ const ANGLES = FITTING_ANGLES.filter(a => a !== 90);
 export default function RollingScreen() {
   const { prefs } = useApp();
   const u = prefs.unit;
-  const rec = useOpenedRecord();
+  const rec = useOpenedRecord('rolling');
   const init = (k: string) => (typeof rec?.inputs[k] === 'number' ? lengthToInput(rec.inputs[k] as number, u) : '');
   const [rise, setRise] = useState(init('rise'));
   const [roll, setRoll] = useState(init('roll'));

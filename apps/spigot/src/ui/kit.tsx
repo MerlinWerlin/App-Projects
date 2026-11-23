@@ -56,13 +56,14 @@ export function Button({ label, onPress, kind = 'primary', icon, disabled, style
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={label}
       accessibilityState={{ disabled }}
       accessibilityHint={accessibilityHint}
       disabled={disabled}
       onPress={() => { tap(); onPress(); }}
       style={({ pressed }) => [{ minHeight: HIT, borderRadius: radius.m, backgroundColor: bg, opacity: disabled ? 0.45 : pressed ? 0.88 : 1, transform: [{ scale: pressed && !disabled ? 0.97 : 1 }], flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: space.s, paddingHorizontal: space.l, borderWidth: kind === 'quiet' || kind === 'danger' ? 1.5 : 0, borderColor: kind === 'danger' ? c.danger : c.line }, style]}
     >
-      {icon ? <Ionicons name={icon} size={22} color={fg} /> : null}
+      {icon ? <Ionicons name={icon} size={22} color={fg} accessible={false} importantForAccessibility="no" /> : null}
       <Text style={{ fontFamily: font.display, fontSize: 21, letterSpacing: 0.4, color: fg, textTransform: 'uppercase' }}>{label}</Text>
     </Pressable>
   );
@@ -295,7 +296,7 @@ export function Working({ steps, title }: { steps: Step[]; title: string }) {
   if (!steps.length) return null;
   return (
     <Card style={{ gap: 0, padding: 0 }}>
-      <Pressable accessibilityRole="button" accessibilityState={{ expanded: open }} onPress={() => { tap(); setOpen(o => !o); }} style={{ minHeight: HIT, flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.l, gap: space.s }}>
+      <Pressable accessibilityRole="button" accessibilityLabel="Show working" accessibilityState={{ expanded: open }} onPress={() => { tap(); setOpen(o => !o); }} style={{ minHeight: HIT, flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.l, gap: space.s }}>
         <Ionicons name="calculator-outline" size={22} color={c.copper} />
         <Text style={{ flex: 1, fontSize: 17, fontWeight: '700', color: c.ink }}>Show working</Text>
         <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={22} color={c.ink3} />
@@ -345,7 +346,7 @@ export function Row({ title, subtitle, onPress, right, icon, destructive }: { ti
       {right ?? (onPress ? <Ionicons name="chevron-forward" size={20} color={c.ink3} /> : null)}
     </View>
   );
-  return onPress ? <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}>{content}</Pressable> : content;
+  return onPress ? <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityHint={subtitle} onPress={onPress} style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}>{content}</Pressable> : content;
 }
 
 export function Divider() {

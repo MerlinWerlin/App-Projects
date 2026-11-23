@@ -56,7 +56,7 @@ export default function JobScreen() {
       <H>{recs.length ? `Saved (${recs.length})` : 'Saved'}</H>
       {recs.length ? recs.map(r => (
         <SwipeRow key={r.id} label="Remove" onDelete={() => Alert.alert('Remove from job?', r.summary, [{ text: 'Cancel', style: 'cancel' }, { text: 'Remove', style: 'destructive', onPress: () => app.deleteRecord(r.id) }])}>
-        <Pressable accessibilityRole="button" accessibilityHint="Opens this calculation. Swipe left to remove" onPress={() => router.push({ pathname: toolHref(r.tool), params: { record: r.id } })}
+        <Pressable accessibilityRole="button" accessibilityLabel={`${toolInfo(r.tool).title}: ${r.summary}${r.note ? `. ${r.note}` : ''}`} accessibilityHint="Opens this calculation. Swipe left to remove" onPress={() => router.push({ pathname: toolHref(r.tool), params: { record: r.id } })}
           onLongPress={() => Alert.alert('Remove from job?', r.summary, [{ text: 'Cancel', style: 'cancel' }, { text: 'Remove', style: 'destructive', onPress: () => app.deleteRecord(r.id) }])}
           style={({ pressed }) => ({ flexDirection: 'row', gap: space.m, alignItems: 'center', backgroundColor: c.surface, borderRadius: radius.m, padding: space.l, opacity: pressed ? 0.85 : 1 })}>
           <Ionicons name={toolInfo(r.tool).icon} size={26} color={c.copper} />

@@ -44,7 +44,7 @@ function EndPicker({ tag, refValue, setRef, fitting, onChoose }: { tag: 'A' | 'B
 export default function CutScreen() {
   const { prefs } = useApp();
   const u = prefs.unit;
-  const rec = useOpenedRecord();
+  const rec = useOpenedRecord('cut');
   const ri = rec?.inputs ?? {};
   const resolve = useResolveFitting();
   const asRef = (x: unknown): EndRef => (x === 'face' || x === 'none' ? x : 'centre');
