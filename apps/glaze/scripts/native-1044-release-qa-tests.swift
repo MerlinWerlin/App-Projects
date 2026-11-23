@@ -280,22 +280,26 @@ import Darwin
     tab(app, "Themes")
     settle(12)
     shot(app, "\(tag)-themes-top")
-    for page in 1...4 { swipeUp(app); settle(1.5); shot(app, "\(tag)-themes-\(page)") }
-    let seeAll = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "See all")).firstMatch
-    if seeAll.waitForExistence(timeout: 5) && reveal(seeAll, in: app, tries: 6) {
-      seeAll.tap(); settle(4)
-      shot(app, "\(tag)-see-all")
-      swipeUp(app); settle(1.5); shot(app, "\(tag)-see-all-2")
-    }
+    for page in 1...5 { swipeUp(app); settle(1.5); shot(app, "\(tag)-themes-\(page)") }
+    // Search first (a fresh tab, no category chip to clear), then a See all grid.
     tab(app, "Themes")
     tab(app, "Themes")
-    let allChip = app.buttons["All themes"].firstMatch
-    if allChip.waitForExistence(timeout: 5) && reveal(allChip, in: app, tries: 4) { allChip.tap(); settle(2) }
     search(app, "Grove")
     settle(3)
     if app.keyboards.count > 0, app.keyboards.buttons["Search"].exists { app.keyboards.buttons["Search"].tap() }
     settle(1.5)
     shot(app, "\(tag)-search")
+    app.terminate()
+    app.launch()
+    XCTAssertTrue(app.buttons["Themes"].firstMatch.waitForExistence(timeout: 60), app.debugDescription)
+    tab(app, "Themes")
+    settle(6)
+    let seeAll = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "See all")).firstMatch
+    if seeAll.waitForExistence(timeout: 5) && reveal(seeAll, in: app, tries: 8) {
+      seeAll.tap(); settle(4)
+      shot(app, "\(tag)-see-all")
+      swipeUp(app); settle(1.5); shot(app, "\(tag)-see-all-2")
+    }
   }
 
 }
