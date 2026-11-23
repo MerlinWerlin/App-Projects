@@ -58,7 +58,8 @@ export function cutList(i: CutInput): Result<CutResult> {
   let best = ffd(items, cap);
   let optimal = best.length === lowerBound;
   if (!optimal) {
-    const limit = i.nodeLimit ?? 200_000;
+    // Searches stay under ~50 ms on a phone: big lists get a smaller budget (the FFD plan is the floor).
+    const limit = i.nodeLimit ?? (items.length <= 60 ? 200_000 : 20_000);
     let nodes = 0;
     const assign: number[][] = [];
     const room: number[] = [];

@@ -2,7 +2,8 @@
  * Full Unlock: what stays free first, one clear one-time price, the free trial, Restore, and a close that is
  * always visible. Purchase logic lives in src/plus (adapted from Cue's reviewed flow).
  */
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../src/ui/Icon.tsx';
+import * as Haptics from 'expo-haptics';
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, AppState, Pressable, ScrollView, View } from 'react-native';
@@ -53,6 +54,7 @@ export default function Unlock() {
     setBusy(false);
     void reloadPrice();
     if (r.ok) {
+      void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
       const msg = r.access.plus ? 'Rootpass is unlocked for good. Thank you!' : trialState(r.access.trialStart, Date.now()).active ? 'Your free 7-day trial has started. Everything is open.' : 'Your free trial has already ended. Full Unlock keeps everything open.';
       Alert.alert(r.access.plus ? 'Unlocked' : 'Trial', msg);
       if (r.access.plus || trialState(r.access.trialStart, Date.now()).active) router.back();
@@ -63,18 +65,15 @@ export default function Unlock() {
     <View style={{ flex: 1, backgroundColor: C.ground }}>
       <ScrollView contentContainerStyle={{ padding: SPACE.gutter, paddingTop: SPACE.xl, paddingBottom: insets.bottom + SPACE.xl, gap: SPACE.lg }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <View style={{ flex: 1, gap: 4 }}>
-            <Txt v="label" tone="accent">Rootpass</Txt>
-            <Txt v="display" accessibilityRole="header">Full Unlock</Txt>
-          </View>
+          <Txt v="display" accessibilityRole="header" style={{ flex: 1 }}>Full Unlock</Txt>
           <Pressable onPress={() => router.back()} accessibilityRole="button" accessibilityLabel="Close" hitSlop={8} style={{ width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center', backgroundColor: C.raised }}>
-            <Ionicons name="close" size={26} color={C.ink} />
+            <Icon name="close" size={26} color={C.ink} />
           </Pressable>
         </View>
         <Txt v="body" tone="ink2">One payment, yours for good. No subscription, no account, no ads.</Txt>
         {app.trial.active && !app.owned ? (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, backgroundColor: C.accentDim, padding: SPACE.md, borderRadius: RADIUS.md }}>
-            <Ionicons name="time-outline" size={20} color={C.accent} />
+            <Icon name="time" size={20} color={C.accent} />
             <Txt v="headline" tone="accent">Free trial: {app.trial.daysLeft} day{app.trial.daysLeft === 1 ? '' : 's'} left</Txt>
           </View>
         ) : null}

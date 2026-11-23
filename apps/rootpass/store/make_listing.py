@@ -37,6 +37,11 @@ SHEET BENDING
 BOLT CIRCLES
 • PCD hole positions, hole-to-hole check distance, and a true-scale drilling template.
 
+SET UP FOR YOUR COUNTRY
+• Choose where you work: Australia, New Zealand, the UK, Ireland, the USA, Canada or anywhere else.
+• Pick from the steel sections, pipe sizes, walls and stock lengths local steel suppliers commonly stock, or type any size.
+• Local units, pipe series (DN or NPS with schedules), welding code names, currency and spelling.
+
 BUILT FOR THE WORKSHOP
 • Big buttons and number fields you can use with gloves, in a dark, high-contrast design.
 • Millimetres or inches (with 1/16 fractions). Type fractions like 3 1/2.
@@ -58,7 +63,7 @@ Purchases: Settings > Full Unlock (also the Unlock button on the Tools screen) h
 
 Privacy: No data is collected. Inputs and saved jobs stay on the device. No ads, analytics, accounts or server. Nothing is downloaded or switched on remotely: the build contains no over-the-air update mechanism, so the reviewed build is the build users get.
 
-Regional differences: none apart from localised store prices. Metric and imperial units are both built in. Regulated services and third-party content: not applicable."""
+Regional differences: on first launch the app asks where the user works (device region preselected) and shows that country's common steel sizes, units, pipe series and welding code names; changeable in Settings. Store prices are localised. Regulated services and third-party content: not applicable."""
 
 UNLOCK_NOTE = ("One-time non-consumable. Settings > Full Unlock > Unlock. Restore purchase is on the same screen. Unlocks Saddle cut, "
                "Lobster-back, Cut list, Weld metal, printable PDF templates and saved jobs. Steel weight, Frame mitres, Sheet bending and "

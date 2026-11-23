@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon, type IconName } from '../../src/ui/Icon.tsx';
 import Constants from 'expo-constants';
 import * as Linking from 'expo-linking';
 import { useRouter } from 'expo-router';
@@ -6,15 +6,17 @@ import { Pressable, View } from 'react-native';
 import { useApp } from '../../src/state/AppState.tsx';
 import { Card, Screen, Section, Segmented, Txt } from '../../src/ui/kit.tsx';
 import { C, RADIUS, SPACE } from '../../src/ui/theme.ts';
+import { CountryList } from '../../src/ui/Welcome.tsx';
+import { COUNTRIES } from '../../src/core/country.ts';
 
 const SITE = 'https://merlinwerlin.github.io/App-Projects/rootpass/';
 
-function LinkRow({ icon, label, onPress }: { icon: keyof typeof Ionicons.glyphMap; label: string; onPress(): void }) {
+function LinkRow({ icon, label, onPress }: { icon: IconName; label: string; onPress(): void }) {
   return (
     <Pressable onPress={onPress} accessibilityRole="button" style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: SPACE.md, minHeight: 56, paddingHorizontal: SPACE.lg, backgroundColor: pressed ? C.raised : C.surface })}>
-      <Ionicons name={icon} size={22} color={C.accent} />
+      <Icon name={icon} size={22} color={C.accent} />
       <Txt v="headline" style={{ flex: 1 }}>{label}</Txt>
-      <Ionicons name="chevron-forward" size={20} color={C.ink3} />
+      <Icon name="chevronRight" size={20} color={C.ink3} />
     </Pressable>
   );
 }
@@ -25,6 +27,10 @@ export default function Settings() {
   const version = Constants.expoConfig?.version ?? '';
   return (
     <Screen>
+      <Section title="Country">
+        <CountryList value={app.prefs.country ?? 'OTHER'} onPick={c => app.setPrefs({ country: c, units: COUNTRIES[c].units, paper: COUNTRIES[c].paper })} />
+        <Txt v="small" tone="ink3">Sets stocked sizes, standards, currency and spelling. Changing it also resets units and paper to that country's usual; change them below if you prefer.</Txt>
+      </Section>
       <Section title="Units">
         <Segmented value={app.prefs.units} onChange={u => app.setPrefs({ units: u })} options={[{ value: 'metric', label: 'Millimetres' }, { value: 'imperial', label: 'Inches' }]} />
         <Txt v="small" tone="ink3">Inches show decimals and the nearest 1/16. Open jobs convert when you switch.</Txt>
@@ -44,9 +50,9 @@ export default function Settings() {
       </Section>
       <Section title="About">
         <View style={{ borderRadius: RADIUS.lg, overflow: 'hidden', gap: 1, backgroundColor: C.line }}>
-          <LinkRow icon="help-buoy-outline" label="Help and support" onPress={() => void Linking.openURL(`${SITE}support.html`)} />
-          <LinkRow icon="shield-checkmark-outline" label="Privacy" onPress={() => void Linking.openURL(`${SITE}privacy.html`)} />
-          <LinkRow icon="book-outline" label="Formulas and sources" onPress={() => void Linking.openURL(`${SITE}formulas.html`)} />
+          <LinkRow icon="help" label="Help and support" onPress={() => void Linking.openURL(`${SITE}support.html`)} />
+          <LinkRow icon="privacy" label="Privacy" onPress={() => void Linking.openURL(`${SITE}privacy.html`)} />
+          <LinkRow icon="book" label="Formulas and sources" onPress={() => void Linking.openURL(`${SITE}formulas.html`)} />
         </View>
         <Txt v="small" tone="ink3">Rootpass {version}. No account, no ads, no tracking: jobs stay on this phone. Answers are worked from published formulas and shown step by step, but they are a guide for skilled tradespeople. Check every cut and fit-up, and follow the design code for pressure and structural work.</Txt>
       </Section>

@@ -1,4 +1,5 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from './Icon.tsx';
+import * as Haptics from 'expo-haptics';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { ActionSheetIOS, Alert, Platform, Pressable, View } from 'react-native';
@@ -67,6 +68,7 @@ export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKe
       const job: Job = { id: jobId ?? newJobId(Date.now()), tool, name: name.trim() || TOOL_META[tool].title, units: state.units, values: state.values, savedAt: Date.now() };
       try {
         await app.saveJob(job);
+        void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
         setJobId(job.id);
         setJobName(job.name);
       } catch {
@@ -98,7 +100,7 @@ export function ToolScreen({ tool, onSave, jobName, children }: { tool: ToolId; 
           title: jobName ?? meta.title,
           headerRight: open && onSave ? () => (
             <Pressable onPress={onSave} accessibilityRole="button" accessibilityLabel="Save job" hitSlop={10} style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
-              <Ionicons name="bookmark-outline" size={24} color={C.accent} />
+              <Icon name="bookmark" size={24} color={C.accent} />
             </Pressable>
           ) : undefined,
         }}
@@ -106,7 +108,7 @@ export function ToolScreen({ tool, onSave, jobName, children }: { tool: ToolId; 
       {open ? <Screen>{children}</Screen> : (
         <Screen>
           <Card tone="accent">
-            <Ionicons name="lock-closed" size={28} color={C.accent} />
+            <Icon name="lock" size={28} color={C.accent} />
             <Txt v="title">{meta.title} is in Full Unlock</Txt>
             <Txt v="body" tone="ink2">{meta.pitch}</Txt>
             <Txt v="body" tone="ink2">Try everything free for 7 days, then a single payment unlocks it for good. No subscription.</Txt>

@@ -15,7 +15,8 @@
       "bundleIdentifier": "com.jared797.rootpass",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
-        "CFBundleAllowMixedLocalizations": true
+        "CFBundleAllowMixedLocalizations": true,
+        "CADisableMinimumFrameDurationOnPhone": true
       },
       "config": {
         "usesNonExemptEncryption": false
@@ -74,7 +75,8 @@
           "backgroundColor": "#0D0F12"
         }
       ],
-      "../../scripts/expo-plugins/withSceneLifecycle.js"
+      "../../scripts/expo-plugins/withSceneLifecycle.js",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": false

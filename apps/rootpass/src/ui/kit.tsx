@@ -1,24 +1,29 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon, type IconName } from './Icon.tsx';
 import * as Haptics from 'expo-haptics';
 import { useState, type ReactNode } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type TextProps, type TextStyle, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { Step } from '../core/units.ts';
+import { codeNote } from '../core/country.ts';
+import { useApp } from '../state/AppState.tsx';
 import { C, FONT, HIT, RADIUS, SPACE } from './theme.ts';
 
 type Variant = 'display' | 'title' | 'headline' | 'body' | 'label' | 'small' | 'number';
 const V: Record<Variant, TextStyle> = {
   display: { fontFamily: FONT.display, fontSize: 40, lineHeight: 42, letterSpacing: 0.2 },
   title: { fontFamily: FONT.display, fontSize: 26, lineHeight: 30 },
-  headline: { fontFamily: FONT.bodyBold, fontSize: 17, lineHeight: 22 },
-  body: { fontFamily: FONT.body, fontSize: 16, lineHeight: 22 },
+  headline: { fontFamily: FONT.bodyBold, fontWeight: '600', fontSize: 17, lineHeight: 22 },
+  body: { fontFamily: FONT.body, fontSize: 17, lineHeight: 23 },
   label: { fontFamily: FONT.displayMed, fontSize: 15, lineHeight: 18, letterSpacing: 1.1, textTransform: 'uppercase' },
-  small: { fontFamily: FONT.body, fontSize: 13, lineHeight: 18 },
+  small: { fontFamily: FONT.body, fontSize: 14, lineHeight: 19 },
   number: { fontFamily: FONT.display, fontSize: 34, lineHeight: 38, fontVariant: ['tabular-nums'] },
 };
 
-export function Txt({ v = 'body', tone = 'ink', style, ...rest }: TextProps & { v?: Variant; tone?: 'ink' | 'ink2' | 'ink3' | 'accent' | 'arc' | 'warn' | 'bad' | 'accentInk' }) {
-  return <Text maxFontSizeMultiplier={v === 'display' || v === 'number' ? 1.4 : 1.8} {...rest} style={[V[v], { color: C[tone] }, style]} />;
+export function Txt({ v = 'body', tone = 'ink', style, children, ...rest }: TextProps & { v?: Variant; tone?: 'ink' | 'ink2' | 'ink3' | 'accent' | 'arc' | 'warn' | 'bad' | 'accentInk' }) {
+  const { sp } = useApp();
+  // Copy follows the user's country spelling; numbers and non-string children pass through.
+  const kids = Array.isArray(children) ? children.map(c => (typeof c === 'string' ? sp(c) : c)) : typeof children === 'string' ? sp(children) : children;
+  return <Text maxFontSizeMultiplier={v === 'display' || v === 'number' ? 1.4 : 1.8} {...rest} style={[V[v], { color: C[tone] }, style]}>{kids}</Text>;
 }
 
 export function Screen({ children, footer }: { children: ReactNode; footer?: ReactNode }) {
@@ -111,8 +116,8 @@ export function NumField({ label, value, onChange, unit, hint, step, min, intege
 
 function Stepper({ icon, label, onPress }: { icon: 'add' | 'remove'; label: string; onPress(): void }) {
   return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label} hitSlop={4} style={({ pressed }) => [st.stepper, pressed && { backgroundColor: C.line }]}>
-      <Ionicons name={icon} size={26} color={C.ink} />
+    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label} hitSlop={4} style={({ pressed }) => [st.stepper, pressed && { backgroundColor: C.line, transform: [{ scale: 0.95 }] }]}>
+      <Icon name={icon} size={26} color={C.ink} />
     </Pressable>
   );
 }
@@ -145,7 +150,8 @@ export function Segmented<T extends string>({ value, options, onChange, label }:
   );
 }
 
-export function Btn({ label, onPress, kind = 'primary', icon, disabled }: { label: string; onPress(): void; kind?: 'primary' | 'secondary' | 'plain'; icon?: keyof typeof Ionicons.glyphMap; disabled?: boolean }) {
+export function Btn({ label, onPress, kind = 'primary', icon, disabled }: { label: string; onPress(): void; kind?: 'primary' | 'secondary' | 'plain'; icon?: IconName; disabled?: boolean }) {
+  const { sp } = useApp();
   const bg = kind === 'primary' ? C.accent : kind === 'secondary' ? C.raised : 'transparent';
   const fg = kind === 'primary' ? C.accentInk : kind === 'plain' ? C.accent : C.ink;
   return (
@@ -154,10 +160,10 @@ export function Btn({ label, onPress, kind = 'primary', icon, disabled }: { labe
       disabled={disabled}
       accessibilityRole="button"
       accessibilityState={{ disabled: !!disabled }}
-      style={({ pressed }) => [st.btn, { backgroundColor: bg, opacity: disabled ? 0.45 : pressed ? 0.8 : 1 }]}
+      style={({ pressed }) => [st.btn, { backgroundColor: bg, opacity: disabled ? 0.45 : 1, transform: [{ scale: pressed && !disabled ? 0.97 : 1 }] }]}
     >
-      {icon ? <Ionicons name={icon} size={22} color={fg} /> : null}
-      <Text maxFontSizeMultiplier={1.5} style={{ fontFamily: FONT.display, fontSize: 21, color: fg, letterSpacing: 0.4 }}>{label}</Text>
+      {icon ? <Icon name={icon} size={22} color={fg} /> : null}
+      <Text maxFontSizeMultiplier={1.5} style={{ fontFamily: FONT.display, fontSize: 21, color: fg, letterSpacing: 0.4 }}>{sp(label)}</Text>
     </Pressable>
   );
 }
@@ -179,16 +185,16 @@ export function Working({ steps }: { steps: Step[] }) {
   return (
     <View style={{ borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.line, paddingTop: SPACE.sm }}>
       <Pressable onPress={() => setOpen(o => !o)} accessibilityRole="button" accessibilityState={{ expanded: open }} style={st.workingHead}>
-        <Ionicons name="calculator-outline" size={20} color={C.arc} />
+        <Icon name="working" size={20} color={C.arc} />
         <Txt v="headline" tone="arc" style={{ flex: 1 }}>{open ? 'Hide the working' : 'Show the working'}</Txt>
-        <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={20} color={C.arc} />
+        <Icon name={open ? 'chevronUp' : 'chevronDown'} size={20} color={C.arc} />
       </Pressable>
       {open ? (
         <View style={{ gap: SPACE.md, paddingTop: SPACE.sm }}>
           {steps.map((s, k) => (
             <View key={k} style={{ gap: 2 }}>
               <Txt v="small" tone="ink2">{k + 1}. {s.label}</Txt>
-              {s.formula ? <Txt v="small" tone="arc" selectable style={{ fontFamily: FONT.bodyBold }}>{s.formula}</Txt> : null}
+              {s.formula ? <Txt v="small" tone="arc" selectable style={{ fontFamily: FONT.bodyBold, fontWeight: '600' }}>{s.formula}</Txt> : null}
               <Txt v="body" selectable>{s.value}</Txt>
             </View>
           ))}
@@ -200,20 +206,26 @@ export function Working({ steps }: { steps: Step[] }) {
 
 export function Note({ kind = 'verify', children }: { kind?: 'verify' | 'warn' | 'error' | 'info'; children: ReactNode }) {
   const map = {
-    verify: { bg: C.warnDim, fg: C.warn, icon: 'warning-outline' as const },
-    warn: { bg: C.warnDim, fg: C.warn, icon: 'alert-circle-outline' as const },
-    error: { bg: '#341714', fg: C.bad, icon: 'close-circle-outline' as const },
-    info: { bg: C.arcDim, fg: C.arc, icon: 'information-circle-outline' as const },
+    verify: { bg: C.warnDim, fg: C.warn, icon: 'warning' as const },
+    warn: { bg: C.warnDim, fg: C.warn, icon: 'alert' as const },
+    error: { bg: '#341714', fg: C.bad, icon: 'error' as const },
+    info: { bg: C.arcDim, fg: C.arc, icon: 'info' as const },
   }[kind];
   return (
     <View style={[st.note, { backgroundColor: map.bg }]} accessibilityRole={kind === 'error' ? 'alert' : undefined}>
-      <Ionicons name={map.icon} size={22} color={map.fg} style={{ marginTop: 1 }} />
+      <Icon name={map.icon} size={22} color={map.fg} />
       <Txt v="body" style={{ flex: 1, color: map.fg }}>{children}</Txt>
     </View>
   );
 }
 
 export const VERIFY = 'Verify before cutting: check one length with a tape and tack-fit before welding out.';
+
+/** "Verify before cutting" plus the user's local welding code. */
+export function VerifyNote() {
+  const { country } = useApp();
+  return <Note>{`${VERIFY} ${codeNote(country)}`}</Note>;
+}
 
 export function TableRows({ head, rows }: { head: string[]; rows: (string | number)[][] }) {
   return (

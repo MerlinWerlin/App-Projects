@@ -1,18 +1,24 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../../src/ui/Icon.tsx';
 import { useMemo } from 'react';
 import { Pressable, View } from 'react-native';
 import { cutList, type Part } from '../../src/core/cutlist.ts';
 import { lenShort, parseNum, toMm } from '../../src/core/units.ts';
-import { Big, Btn, Card, Note, NumField, Row, Section, Txt, VERIFY, Working } from '../../src/ui/kit.tsx';
+import { Big, Btn, Card, Note, NumField, Row, Section, Txt, VerifyNote, Working } from '../../src/ui/kit.tsx';
 import { C, RADIUS, SPACE } from '../../src/ui/theme.ts';
 import { ToolScreen, useTool } from '../../src/ui/useTool.tsx';
+import { stockLengths } from '../../src/core/stock.ts';
+import { useApp } from '../../src/state/AppState.tsx';
+import { fmt } from '../../src/core/units.ts';
 
 const MAX_ROWS = 12;
 const DEFAULTS: Record<string, string> = { stock: '6500', kerf: '3', trim: '10', rows: '3', l0: '1800', q0: '4', l1: '950', q1: '6', l2: '600', q2: '4' };
 const LENGTHS = ['stock', 'kerf', 'trim', ...Array.from({ length: MAX_ROWS }, (_, k) => `l${k}`)] as const;
 
 export default function CutListTool() {
-  const t = useTool('cutlist', DEFAULTS, LENGTHS);
+  const app = useApp();
+  // The country's usual tube length becomes the default stock (AU/NZ 6.5 m, GB 7.5 m, IE 7.6 m, US/CA 20 ft).
+  const lengths = [...new Set([...stockLengths(app.country.code, 'tube'), ...stockLengths(app.country.code, 'bar')])].sort((a, b) => a - b);
+  const t = useTool('cutlist', { ...DEFAULTS, stock: String(stockLengths(app.country.code, 'tube')[0] ?? 6000) }, LENGTHS);
   const U = t.units;
   const rows = Math.min(MAX_ROWS, Math.max(1, t.num('rows') || 1));
   const parts: Part[] = [];
@@ -35,7 +41,25 @@ export default function CutListTool() {
   return (
     <ToolScreen tool="cutlist" onSave={t.save} jobName={t.jobName}>
       <Section title="Stock">
-        <NumField label="Stock length" value={t.v.stock} onChange={t.set('stock')} unit={t.u} hint="Most RHS, SHS and angle comes in 6.5 m or 8 m lengths." invalid={t.invalid('stock')} />
+        <NumField label="Stock length" value={t.v.stock} onChange={t.set('stock')} unit={t.u} invalid={t.invalid('stock')} />
+        {lengths.length ? (
+          <View style={{ gap: 6 }}>
+            <Txt v="small" tone="ink3">Lengths sold in {app.country.name}:</Txt>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm }}>
+              {lengths.map(mm => {
+                const label = U === 'imperial' ? `${fmt(mm / 304.8, mm % 304.8 ? 1 : 0)} ft` : `${fmt(mm / 1000, mm % 100 ? 2 : 1)} m`;
+                const value = U === 'imperial' ? String(Math.round((mm / 25.4) * 1000) / 1000) : String(mm);
+                const on = Math.abs(input.stock - mm) < 0.5;
+                return (
+                  <Pressable key={mm} onPress={() => t.set('stock')(value)} accessibilityRole="button" accessibilityState={{ selected: on }}
+                    style={({ pressed }) => ({ minHeight: 48, minWidth: 72, paddingHorizontal: SPACE.md, borderRadius: RADIUS.sm, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? C.accent : pressed ? C.line : C.raised })}>
+                    <Txt v="headline" tone={on ? 'accentInk' : 'ink'}>{label}</Txt>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+        ) : null}
         <Row>
           <NumField label="Blade kerf" value={t.v.kerf} onChange={t.set('kerf')} unit={t.u} invalid={t.invalid('kerf')} />
           <NumField label="End trim" value={t.v.trim} onChange={t.set('trim')} unit={t.u} hint="Squared off each new length." invalid={t.invalid('trim')} />
@@ -48,7 +72,7 @@ export default function CutListTool() {
             <View style={{ flex: 1.1 }}><NumField label="Qty" value={t.v[`q${k}`] ?? ''} onChange={t.set(`q${k}`)} integer invalid={t.invalid(`q${k}`)} /></View>
             {rows > 1 ? (
               <Pressable onPress={() => removeRow(k)} accessibilityRole="button" accessibilityLabel={`Remove part ${k + 1}`} style={{ width: 48, height: 64, alignItems: 'center', justifyContent: 'center' }}>
-                <Ionicons name="trash-outline" size={24} color={C.ink3} />
+                <Icon name="trash" size={24} color={C.ink3} />
               </Pressable>
             ) : null}
           </View>
@@ -81,7 +105,7 @@ export default function CutListTool() {
           <Working steps={r.steps} />
         </Card>
       )}
-      <Note>{VERIFY}</Note>
+      <VerifyNote />
     </ToolScreen>
   );
 }

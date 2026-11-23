@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../../src/ui/Icon.tsx';
 import { useRouter } from 'expo-router';
 import { Alert, Pressable, View } from 'react-native';
 import { useApp } from '../../src/state/AppState.tsx';
@@ -49,7 +49,7 @@ export default function Jobs() {
             </View>
           </Pressable>
           <Pressable onPress={() => remove(j.id, j.name)} accessibilityRole="button" accessibilityLabel={`Delete ${j.name}`} style={{ width: 60, minHeight: 76, alignItems: 'center', justifyContent: 'center' }}>
-            <Ionicons name="trash-outline" size={24} color={C.ink3} />
+            <Icon name="trash" size={24} color={C.ink3} />
           </Pressable>
         </View>
       ))}

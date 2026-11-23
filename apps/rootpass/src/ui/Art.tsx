@@ -2,7 +2,8 @@
  * Rootpass illustrations, original vector art drawn in code: a branch pipe saddled onto a header with a
  * glowing root pass running round the joint (home and welcome), and an empty bench for empty states.
  */
-import Svg, { Defs, Ellipse, G, Line, LinearGradient, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Defs, Ellipse, G, Line, LinearGradient, Path, Polyline, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { saddle } from '../core/saddle.ts';
 import { C } from './theme.ts';
 
 /** A saddle joint mid-weld: header pipe, branch pipe, the bead along the cope line and a spark of arc light. */
@@ -80,6 +81,36 @@ export function EmptyBenchArt({ width = 260, height = 140 }: { width?: number; h
       <Rect x={178} y={78} width={40} height={8} rx={4} fill={C.ink2} transform="rotate(-12 198 82)" />
       <Path d="M70 60 Q108 38 146 60" stroke={C.arc} strokeWidth={2} strokeDasharray="5 5" fill="none" />
       <Path d="M142 54 L148 61 L139 63" stroke={C.arc} strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
+  );
+}
+
+/** A real saddle cut line (76.1 branch on 114.3 header at 60°), drawn like the printed template: the feature art. */
+export function SaddleCurve({ width, height = 132 }: { width: number; height?: number }) {
+  const r = saddle({ headerOD: 114.3, branchOD: 76.1, branchWall: 0, angleDeg: 60, offset: 0, contact: 'outside' });
+  if (!r.ok) return null;
+  const { points, circumference: C0, maxDepth } = r.value;
+  const padX = 18, top = 30, bottom = 22;
+  const X = (x: number) => padX + (x / C0) * (width - 2 * padX);
+  const Y = (h: number) => top + (h / maxDepth) * (height - top - bottom);
+  const pts = points.map(p => `${X(p.x).toFixed(1)},${Y(p.h).toFixed(1)}`).join(' ');
+  const low = points.reduce((a, b) => (b.h > a.h ? b : a));
+  return (
+    <Svg width={width} height={height} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+      <Defs>
+        <RadialGradient id="spark" cx="0.5" cy="0.5" r="0.5">
+          <Stop offset="0" stopColor="#FFF3D6" />
+          <Stop offset="0.3" stopColor={C.accent} stopOpacity="0.8" />
+          <Stop offset="1" stopColor={C.accent} stopOpacity="0" />
+        </RadialGradient>
+      </Defs>
+      <Rect x={0} y={0} width={width} height={height} fill="#111418" />
+      {Array.from({ length: 17 }, (_, k) => (
+        <Line key={k} x1={X((C0 * k) / 16)} y1={top} x2={X((C0 * k) / 16)} y2={height - 8} stroke={k % 4 === 0 ? C.ink3 : C.arc} strokeOpacity={k % 4 === 0 ? 0.7 : 0.35} strokeWidth={k % 4 === 0 ? 1.5 : 1} strokeDasharray={k % 4 === 0 ? undefined : '3 4'} />
+      ))}
+      <Line x1={X(0)} y1={top} x2={X(C0)} y2={top} stroke={C.ink3} strokeDasharray="5 4" />
+      <Polyline points={pts} fill="none" stroke={C.accent} strokeWidth={4} strokeLinejoin="round" strokeLinecap="round" />
+      <Ellipse cx={X(low.x)} cy={Y(low.h)} rx={26} ry={26} fill="url(#spark)" />
     </Svg>
   );
 }

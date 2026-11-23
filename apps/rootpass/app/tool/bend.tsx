@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../../src/ui/Icon.tsx';
 import { useMemo } from 'react';
 import { Pressable, View } from 'react-native';
 import { bend, defaultK } from '../../src/core/bend.ts';
@@ -44,7 +44,7 @@ export default function BendTool() {
           {n < MAX ? <View style={{ flex: 1 }}><Btn kind="secondary" icon="add" label="Add a bend" onPress={() => t.setMany({ flanges: String(n + 1), [`f${n}`]: '' })} /></View> : null}
           {n > 2 ? (
             <Pressable onPress={() => t.setMany({ flanges: String(n - 1), [`f${n - 1}`]: '' })} accessibilityRole="button" accessibilityLabel="Remove the last bend" style={{ width: 60, minHeight: 60, alignItems: 'center', justifyContent: 'center' }}>
-              <Ionicons name="remove-circle-outline" size={28} color={C.ink3} />
+              <Icon name="removeCircle" size={28} color={C.ink3} />
             </Pressable>
           ) : null}
         </View>

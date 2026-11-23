@@ -1,6 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AppState as RNAppState } from 'react-native';
+import { COUNTRIES, type CountryInfo } from '../core/country.ts';
+import { spell } from '../core/spell.ts';
 import { DEFAULT_PREFS, JOBS_KEY, PREFS_KEY, parseJobs, parsePrefs, upsertJob, type Job, type Prefs } from '../core/jobs.ts';
 import type { KvStore } from '../core/kv.ts';
 import { loadSecureStore } from '../native/secureStore.ts';
@@ -22,6 +24,10 @@ const kv: KvStore = {
 interface App {
   loaded: boolean;
   prefs: Prefs;
+  /** The chosen country's guidance (OTHER until chosen). */
+  country: CountryInfo;
+  /** Copy in the country's spelling (US: meter, miter, aluminum...). */
+  sp(s: string): string;
   setPrefs(p: Partial<Prefs>): void;
   jobs: Job[];
   saveJob(job: Job): Promise<void>;
@@ -115,8 +121,10 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const value = useMemo<App>(() => {
     const trial = trialState(trialStart, tick);
     const unlocked = owned || trial.active || CAPTURE;
+    const country = COUNTRIES[prefs.country ?? 'OTHER'];
     return {
-      loaded, prefs, setPrefs, jobs,
+      loaded, prefs, setPrefs, jobs, country,
+      sp: (str: string) => spell(str, country.spelling),
       saveJob: job => persistJobs(upsertJob(jobsRef.current, job)),
       deleteJob: id => persistJobs(jobsRef.current.filter(j => j.id !== id)),
       owned, trial, unlocked,

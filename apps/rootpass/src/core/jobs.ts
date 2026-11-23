@@ -1,5 +1,6 @@
 /** Saved jobs and preferences, kept on the phone only (AsyncStorage). Corrupt data is ignored, never fatal. */
 import type { ToolId } from '../plus/entitlement.ts';
+import { parseCountry, type CountryCode } from './country.ts';
 import type { PaperId } from './pdf.ts';
 import { fmt, fromMm, parseNum, toMm, type UnitSystem } from './units.ts';
 
@@ -12,11 +13,12 @@ export interface Job {
   savedAt: number;
 }
 
-export interface Prefs { units: UnitSystem; paper: PaperId; welcomed: boolean }
+/** country null = not chosen yet: the first-launch country question shows. */
+export interface Prefs { units: UnitSystem; paper: PaperId; welcomed: boolean; country: CountryCode | null }
 
 export const JOBS_KEY = 'rootpass.jobs.v1';
 export const PREFS_KEY = 'rootpass.prefs.v1';
-export const DEFAULT_PREFS: Prefs = { units: 'metric', paper: 'a4', welcomed: false };
+export const DEFAULT_PREFS: Prefs = { units: 'metric', paper: 'a4', welcomed: false, country: null };
 const TOOLS: ToolId[] = ['saddle', 'lobster', 'frame', 'weight', 'weld', 'bend', 'cutlist', 'pcd'];
 
 export function parsePrefs(raw: string | null): Prefs {
@@ -27,6 +29,7 @@ export function parsePrefs(raw: string | null): Prefs {
         units: d.units === 'imperial' ? 'imperial' : 'metric',
         paper: d.paper === 'letter' ? 'letter' : 'a4',
         welcomed: d.welcomed === true,
+        country: parseCountry(d.country),
       };
     }
   } catch { /* fall through */ }

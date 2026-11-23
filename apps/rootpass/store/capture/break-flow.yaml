@@ -1,0 +1,109 @@
+# break-ui pass: realistic worst-case inputs on every calculator (values a real job could produce, or the input
+# limits the core accepts), checked for clipping, overflow, unreadable tables and slow renders.
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "ROOTPASS"
+    timeout: 30000
+# 48" (1219.2 mm) pipe, 12° lateral, 25.4 mm wall, very long branch: widest template, biggest numbers
+- openLink: rootpass://tool/saddle?header=1219.2&branch=1219.2&angle=12&wall=25.4&height=9999&divisions=24
+- extendedWaitUntil:
+    visible: "Saddle cut"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Print true-scale template"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b01-saddle-huge-${TAG}
+- scrollUntilVisible:
+    element: "Cut back"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b02-saddle-24-ordinates-${TAG}
+# Branch bigger than the header: the error state
+- openLink: rootpass://tool/saddle?header=60.3&branch=114.3
+- extendedWaitUntil:
+    visible: "Saddle cut"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Swap them round"
+    direction: DOWN
+    centerElement: true
+    optional: true
+- takeScreenshot: b03-saddle-error-${TAG}
+# 40-piece 180° lobster-back on 610 mm pipe
+- openLink: rootpass://tool/lobster?od=610&bend=180&pieces=40&radius=3000&tangent=1500
+- extendedWaitUntil:
+    visible: "Lobster-back"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Cut each face"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b04-lobster-40-${TAG}
+# Cut list: 12 rows, 480 pieces, 12 m stock, 6 mm kerf
+- openLink: rootpass://tool/cutlist?stock=12000&kerf=6&trim=25&rows=12&l0=5999&q0=40&l1=4875.5&q1=40&l2=3333&q2=40&l3=2440&q3=40&l4=1830&q4=40&l5=1234.5&q5=40&l6=999&q6=40&l7=640&q7=40&l8=455&q8=40&l9=300&q9=40&l10=150&q10=40&l11=45&q11=40
+- extendedWaitUntil:
+    visible: "Cut list"
+    timeout: 20000
+- scrollUntilVisible:
+    element: "Stock lengths"
+    direction: DOWN
+    centerElement: true
+    timeout: 30000
+- takeScreenshot: b05-cutlist-480-${TAG}
+- scroll
+- scroll
+- takeScreenshot: b06-cutlist-bars-${TAG}
+# Plate: big, many, priced
+- openLink: rootpass://tool/weight?shape=plate&material=ss316&d0=3000&d1=50&length=12000&qty=999&price=12.99
+- extendedWaitUntil:
+    visible: "Steel weight"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Total"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b07-weight-huge-${TAG}
+# 72 holes on a 2 m PCD
+- openLink: rootpass://tool/pcd?pcd=2000&holes=72&hole=24
+- extendedWaitUntil:
+    visible: "Bolt circle"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Hole to hole"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b08-pcd-72-${TAG}
+# 24-sided polygon frame
+- openLink: rootpass://tool/frame?kind=polygon&sides=24&size=3000&member=100&sizeKind=outsideCorners
+- extendedWaitUntil:
+    visible: "Frame mitres"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Mitre both ends"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b09-frame-24-${TAG}
+# Weld: 40 mm double-V, 250 m of weld, stick
+- openLink: rootpass://tool/weld?joint=doubleV&t=40&gap=3&face=2&angle=60&length=250000&process=mmaw
+- extendedWaitUntil:
+    visible: "Weld metal"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Filler to buy"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b10-weld-huge-${TAG}
+# Bend: 8 flanges
+- openLink: rootpass://tool/bend?t=12&r=1&angle=135&flanges=8&f0=50&f1=1200&f2=35.5&f3=999&f4=40&f5=2400&f6=60&f7=75
+- extendedWaitUntil:
+    visible: "Sheet bending"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Flat blank"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: b11-bend-8-${TAG}

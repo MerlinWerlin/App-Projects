@@ -1,4 +1,3 @@
-import { Barlow_500Medium, Barlow_700Bold } from '@expo-google-fonts/barlow';
 import { BarlowCondensed_600SemiBold, BarlowCondensed_700Bold } from '@expo-google-fonts/barlow-condensed';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -8,11 +7,12 @@ import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppStateProvider, useApp } from '../src/state/AppState.tsx';
 import { C, FONT } from '../src/ui/theme.ts';
+import { Welcome } from '../src/ui/Welcome.tsx';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 export default function RootLayout() {
-  const [fontsLoaded, fontError] = useFonts({ Barlow_500Medium, Barlow_700Bold, BarlowCondensed_600SemiBold, BarlowCondensed_700Bold });
+  const [fontsLoaded, fontError] = useFonts({ BarlowCondensed_600SemiBold, BarlowCondensed_700Bold });
   return (
     <SafeAreaProvider>
       <AppStateProvider>
@@ -24,7 +24,7 @@ export default function RootLayout() {
 
 /** The splash stays until prefs, jobs and fonts are ready (2.5 s safety net: never an endless splash). */
 function Shell({ fontsReady }: { fontsReady: boolean }) {
-  const { loaded } = useApp();
+  const { loaded, prefs } = useApp();
   const [timedOut, setTimedOut] = useState(false);
   const ready = (loaded && fontsReady) || timedOut;
   useEffect(() => {
@@ -35,6 +35,7 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
     return () => clearTimeout(id);
   }, []);
   if (!ready) return null;
+  if (!prefs.country) return (<><StatusBar style="light" /><Welcome /></>);
   return (
     <>
       <StatusBar style="light" />

@@ -5,7 +5,7 @@ import { bendOutline, lobster } from '../../src/core/lobster.ts';
 import { mitreTemplate } from '../../src/core/templates.ts';
 import { fmt, len, lenShort } from '../../src/core/units.ts';
 import { useApp } from '../../src/state/AppState.tsx';
-import { Big, Btn, Card, Note, NumField, Row, Section, TableRows, Txt, VERIFY, Working } from '../../src/ui/kit.tsx';
+import { Big, Btn, Card, Note, NumField, Row, Section, TableRows, Txt, VerifyNote, Working } from '../../src/ui/kit.tsx';
 import { PipeChips } from '../../src/ui/parts.tsx';
 import { C, SPACE } from '../../src/ui/theme.ts';
 import { ToolScreen, usePdfExport, useTool } from '../../src/ui/useTool.tsx';
@@ -88,7 +88,7 @@ export default function LobsterTool() {
             <Working steps={r.steps} />
           </Card>
           {r.warnings.map(w => <Note key={w} kind="warn">{w}</Note>)}
-          <Note>{VERIFY}</Note>
+          <VerifyNote />
         </>
       )}
     </ToolScreen>

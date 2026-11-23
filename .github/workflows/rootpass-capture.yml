@@ -80,6 +80,7 @@ jobs:
           BIG=$(pick "Pro Max"); xcrun simctl list devices available | grep "$BIG"
           prep "$BIG"
           run "$BIG" store-flow.yaml store
+          run "$BIG" break-flow.yaml break -e TAG=big
           xcrun simctl terminate "$BIG" "$BUNDLE" || true
           xcrun simctl ui "$BIG" content_size accessibility-extra-extra-extra-large || true
           run "$BIG" review-flow.yaml ax -e TAG=ax
@@ -89,6 +90,7 @@ jobs:
           xcrun simctl list devices available | grep "$SMALL"
           prep "$SMALL"
           run "$SMALL" review-flow.yaml small -e TAG=small
+          run "$SMALL" break-flow.yaml break-small -e TAG=small
           find "$OUT" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
           find . -maxdepth 1 -name '*.png' -exec mv {} "$OUT/raw/" \; 2>/dev/null || true
           find "$OUT" -maxdepth 3 -name '*.png' -not -path "$OUT/raw/*" -exec cp {} "$OUT/raw/" \; 2>/dev/null || true

@@ -3,8 +3,8 @@ import { saddle } from '../../src/core/saddle.ts';
 import { saddleQuarterLabel, saddleTemplate } from '../../src/core/templates.ts';
 import { fmt, len, lenShort } from '../../src/core/units.ts';
 import { useApp } from '../../src/state/AppState.tsx';
-import { Big, Btn, Card, Note, NumField, Row, Section, Segmented, TableRows, Txt, VERIFY, Working } from '../../src/ui/kit.tsx';
-import { PipeChips, WrapPreview } from '../../src/ui/parts.tsx';
+import { Big, Btn, Card, Note, NumField, Row, Section, Segmented, TableRows, Txt, VerifyNote, Working } from '../../src/ui/kit.tsx';
+import { PipeChips, ScheduleChips, WrapPreview } from '../../src/ui/parts.tsx';
 import { ToolScreen, usePdfExport, useTool } from '../../src/ui/useTool.tsx';
 
 const DEFAULTS = { header: '114.3', branch: '88.9', wall: '5.5', angle: '90', offset: '0', contact: 'inside', height: '', divisions: '16' };
@@ -45,6 +45,7 @@ export default function SaddleTool() {
         {t.v.contact === 'inside' ? (
           <NumField label="Branch wall" value={t.v.wall} onChange={t.set('wall')} unit={t.u} hint="Set-on branch: the bore sits on the header, so the line is worked on the inside of the wall." invalid={t.invalid('wall')} />
         ) : null}
+        {t.v.contact === 'inside' ? <ScheduleChips odMm={input.branchOD} units={U} onPick={t.set('wall')} /> : null}
       </Section>
       <Section title="Position">
         <Row>
@@ -100,7 +101,7 @@ export default function SaddleTool() {
             />
             <Txt v="small" tone="ink3">Divide the branch into equal lines starting at a SIDE (0°). "Round" is the distance round the outside from line 1. Mark each cut-back from a square line, join the marks with a smooth curve.</Txt>
           </Section>
-          <Note>{VERIFY}</Note>
+          <VerifyNote />
         </>
       )}
     </ToolScreen>

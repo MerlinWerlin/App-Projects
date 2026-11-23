@@ -25,8 +25,9 @@ export const C = {
 export const FONT = {
   display: 'BarlowCondensed_700Bold',
   displayMed: 'BarlowCondensed_600SemiBold',
-  body: 'Barlow_500Medium',
-  bodyBold: 'Barlow_700Bold',
+  /** San Francisco carries body copy and controls (iOS HIG); Barlow Condensed is the display voice only. */
+  body: 'System',
+  bodyBold: 'System',
 };
 
 export const SPACE = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32, gutter: 16 };

@@ -1,34 +1,27 @@
 import { Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import Svg, { Circle, G, Line, Polyline, Rect, Text as SvgText } from 'react-native-svg';
 import { fromMm, fmt, type UnitSystem } from '../core/units.ts';
+import { useApp } from '../state/AppState.tsx';
 import { Txt } from './kit.tsx';
 import { C, FONT, RADIUS, SPACE } from './theme.ts';
 
-/**
- * Common pipe and CHS outside diameters (mm): AS 1074 / AS/NZS 1163 / ISO 4200 series and ASME B36.10 (168.3).
- */
-export const PIPE_SIZES: { dn: string; od: number }[] = [
-  { dn: 'DN15', od: 21.3 }, { dn: 'DN20', od: 26.9 }, { dn: 'DN25', od: 33.7 }, { dn: 'DN32', od: 42.4 },
-  { dn: 'DN40', od: 48.3 }, { dn: 'DN50', od: 60.3 }, { dn: 'DN65', od: 76.1 }, { dn: 'DN80', od: 88.9 },
-  { dn: 'DN90', od: 101.6 }, { dn: 'DN100', od: 114.3 }, { dn: 'DN125', od: 139.7 }, { dn: 'DN150', od: 165.1 },
-  { dn: '6" NPS', od: 168.3 }, { dn: 'DN200', od: 219.1 }, { dn: 'DN250', od: 273.1 }, { dn: 'DN300', od: 323.9 },
-];
-
+/** The country's pipe series (src/core/country.ts): ISO / AS / EN DN sizes, or ASME B36.10M NPS. */
 export function PipeChips({ units, onPick, selectedMm }: { units: UnitSystem; onPick(display: string): void; selectedMm: number }) {
+  const { country } = useApp();
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: SPACE.sm, paddingVertical: 2 }} keyboardShouldPersistTaps="handled">
-      {PIPE_SIZES.map(p => {
+      {country.pipes.map(p => {
         const on = Math.abs(selectedMm - p.od) < 0.05;
         const shown = units === 'imperial' ? fmt(fromMm(p.od, units), 3) : fmt(p.od, 1);
         return (
           <Pressable
-            key={p.dn}
+            key={p.label}
             onPress={() => onPick(units === 'imperial' ? fmt(p.od / 25.4, 3) : String(p.od))}
             accessibilityRole="button"
-            accessibilityLabel={`${p.dn}, ${shown} ${units === 'imperial' ? 'inches' : 'millimetres'} outside diameter`}
+            accessibilityLabel={`${p.label}, ${shown} ${units === 'imperial' ? 'inches' : 'millimetres'} outside diameter`}
             style={{ minHeight: 48, minWidth: 64, paddingHorizontal: SPACE.md, borderRadius: RADIUS.sm, justifyContent: 'center', backgroundColor: on ? C.accent : C.raised }}
           >
-            <Txt v="label" tone={on ? 'accentInk' : 'ink2'} style={{ fontSize: 12 }}>{p.dn}</Txt>
+            <Txt v="label" tone={on ? 'accentInk' : 'ink2'} style={{ fontSize: 12 }}>{p.label}</Txt>
             <Txt v="headline" tone={on ? 'accentInk' : 'ink'}>{shown}</Txt>
           </Pressable>
         );
@@ -72,6 +65,25 @@ export function WrapPreview({ points, circumference, maxDepth, ordinates, labels
         {ordinates.map((o, k) => <Circle key={k} cx={X(o.x)} cy={Y(o.h)} r={3} fill={C.arc} />)}
       </Svg>
       <Txt v="small" tone="ink3">Pipe end at the top (dashed). Waste is above the orange line.</Txt>
+    </View>
+  );
+}
+
+/** Wall chips for the selected pipe in the local series (AS 1074 Light/Medium/Heavy, EN 10255, ASME schedules). */
+export function ScheduleChips({ odMm, units, onPick }: { odMm: number; units: UnitSystem; onPick(display: string): void }) {
+  const { country } = useApp();
+  const p = country.pipes.find(x => Math.abs(x.od - odMm) < 0.05);
+  if (!p?.walls || !Object.keys(p.walls).length) return null;
+  const show = (mm: number) => (units === 'imperial' ? fmt(mm / 25.4, 3) : fmt(mm, 1));
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm }}>
+      {Object.entries(p.walls).map(([n, w]) => (
+        <Pressable key={n} onPress={() => onPick(show(w))} accessibilityRole="button" accessibilityLabel={`${n} wall, ${show(w)}`}
+          style={({ pressed }) => ({ minHeight: 52, minWidth: 92, flexGrow: 1, paddingHorizontal: SPACE.md, borderRadius: RADIUS.sm, justifyContent: 'center', backgroundColor: pressed ? C.line : C.raised })}>
+          <Txt v="label" tone="ink2" style={{ fontSize: 12 }}>{n}</Txt>
+          <Txt v="headline">{show(w)}</Txt>
+        </Pressable>
+      ))}
     </View>
   );
 }

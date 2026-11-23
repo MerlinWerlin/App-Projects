@@ -3,7 +3,7 @@ import { useWindowDimensions, View } from 'react-native';
 import Svg, { Line, Polygon } from 'react-native-svg';
 import { cornerMitre, polygonFrame, rectFrame, type PolygonSize } from '../../src/core/mitre.ts';
 import { fmt, lenShort } from '../../src/core/units.ts';
-import { Big, Card, Note, NumField, Row, Section, Segmented, TableRows, Txt, VERIFY, Working } from '../../src/ui/kit.tsx';
+import { Big, Card, Note, NumField, Row, Section, Segmented, TableRows, Txt, VerifyNote, Working } from '../../src/ui/kit.tsx';
 import { C, SPACE } from '../../src/ui/theme.ts';
 import { ToolScreen, useTool } from '../../src/ui/useTool.tsx';
 
@@ -98,7 +98,7 @@ export default function FrameTool() {
           </Card>
         )
       ) : null}
-      <Note>{VERIFY}</Note>
+      <VerifyNote />
     </ToolScreen>
   );
 }

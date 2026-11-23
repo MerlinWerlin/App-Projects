@@ -4,13 +4,19 @@ appId: ${APP_ID}
 - launchApp:
     clearState: false
 - extendedWaitUntil:
-    visible: "ROOTPASS"
+    visible: "Where do you work?"
     timeout: 30000
+- tapOn: "Australia"
 - waitForAnimationToEnd
-- takeScreenshot: 01-home-welcome
-- tapOn: "Got it"
+- takeScreenshot: 01-welcome
+- tapOn: "Continue"
+- extendedWaitUntil:
+    visible: "ROOTPASS"
+    timeout: 15000
 - waitForAnimationToEnd
 - takeScreenshot: 02-home-tools
+- scroll
+- takeScreenshot: 02b-home-scrolled
 - openLink: rootpass://tool/saddle?header=114.3&branch=88.9&angle=60&wall=5.5
 - extendedWaitUntil:
     visible: "Saddle cut"
@@ -104,9 +110,9 @@ appId: ${APP_ID}
 - waitForAnimationToEnd
 - takeScreenshot: 15-unlock
 - tapOn: "Close"
-- tapOn: "Jobs"
+- openLink: rootpass://jobs
 - waitForAnimationToEnd
 - takeScreenshot: 16-jobs-empty
-- tapOn: "Settings"
+- openLink: rootpass://settings
 - waitForAnimationToEnd
 - takeScreenshot: 17-settings
