@@ -12,7 +12,7 @@ export default function TabLayout() {
         headerShown: false,
         tabBarActiveTintColor: theme.ink,
         tabBarInactiveTintColor: theme.ink2,
-        tabBarStyle: { backgroundColor: theme.card, borderTopColor: theme.line, borderTopWidth: theme.name === 'sun' ? 2 : StyleSheet.hairlineWidth, height: 92, paddingTop: 8 },
+        tabBarStyle: { backgroundColor: theme.card, borderTopColor: theme.line, borderTopWidth: theme.name === 'sun' ? 2 : StyleSheet.hairlineWidth, paddingTop: 6 },
         tabBarLabelStyle: { fontFamily: FONT.bold, fontSize: 13 },
         tabBarAllowFontScaling: false,
       }}

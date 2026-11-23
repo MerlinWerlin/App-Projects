@@ -35,7 +35,7 @@ export function Card({ children, style, alt }: { children: ReactNode; style?: St
 }
 
 export function Button({ label, onPress, kind = 'primary', icon, disabled, a11y, style }: { label: string; onPress: () => void; kind?: 'primary' | 'secondary' | 'plain' | 'danger'; icon?: string; disabled?: boolean; a11y?: string; style?: StyleProp<ViewStyle> }) {
-  const { theme, prefs } = useApp();
+  const { theme } = useApp();
   const bg = kind === 'primary' ? theme.amber : 'transparent';
   const fg = kind === 'primary' ? theme.onAmber : kind === 'danger' ? theme.danger : theme.ink;
   const border = kind === 'secondary' ? theme.ink : kind === 'danger' ? theme.danger : 'transparent';
@@ -43,7 +43,7 @@ export function Button({ label, onPress, kind = 'primary', icon, disabled, a11y,
     <Pressable
       accessibilityRole="button" accessibilityLabel={a11y ?? label} accessibilityState={{ disabled: !!disabled }}
       disabled={disabled}
-      onPress={() => { haptic.tap(prefs.haptics); onPress(); }}
+      onPress={onPress}
       style={({ pressed }) => [{ minHeight: TARGET, borderRadius: RADIUS.m, backgroundColor: bg, borderWidth: kind === 'plain' ? 0 : 2, borderColor: kind === 'primary' ? theme.amber : border, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: SPACE.l, gap: SPACE.s, opacity: disabled ? 0.45 : pressed ? 0.8 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }, style]}
     >
       {icon ? <Icon name={icon} size={22} color={fg} /> : null}
@@ -83,7 +83,7 @@ export function FieldShell({ label, help, error, children }: { label: string; he
   );
 }
 
-export function NumberInput({ value, onChange, unit, label, integer, error, placeholder }: { value: string; onChange: (s: string) => void; unit: string; label: string; integer?: boolean; error?: boolean; placeholder?: string }) {
+export function NumberInput({ value, onChange, unit, label, integer, negative, error, placeholder }: { value: string; onChange: (s: string) => void; unit: string; label: string; integer?: boolean; negative?: boolean; error?: boolean; placeholder?: string }) {
   const { theme } = useApp();
   const [focus, setFocus] = useState(false);
   return (
@@ -92,7 +92,7 @@ export function NumberInput({ value, onChange, unit, label, integer, error, plac
         accessibilityLabel={`${label}${unit ? ' in ' + unit : ''}`}
         value={value}
         onChangeText={onChange}
-        keyboardType={integer ? 'number-pad' : 'decimal-pad'}
+        keyboardType={negative ? 'numbers-and-punctuation' : integer ? 'number-pad' : 'decimal-pad'}
         inputAccessoryViewID={DONE_ID}
         selectTextOnFocus
         placeholder={placeholder}
@@ -143,14 +143,14 @@ export function ScreedLine({ width = 44, theme }: { width?: number; theme: Theme
 }
 
 export function Row({ title, subtitle, icon, onPress, right, a11y, testID }: { title: string; subtitle?: string; icon?: string; onPress?: () => void; right?: ReactNode; a11y?: string; testID?: string }) {
-  const { theme, prefs } = useApp();
+  const { theme } = useApp();
   return (
     <Pressable
       disabled={!onPress}
       testID={testID}
       accessibilityRole={onPress ? 'button' : undefined}
       accessibilityLabel={a11y ?? [title, subtitle].filter(Boolean).join(', ')}
-      onPress={() => { haptic.tap(prefs.haptics); onPress?.(); }}
+      onPress={onPress}
       style={({ pressed }) => ({ minHeight: TARGET + 8, flexDirection: 'row', alignItems: 'center', gap: SPACE.m, paddingVertical: SPACE.m, paddingHorizontal: SPACE.l, backgroundColor: pressed ? theme.cardAlt : theme.card })}
     >
       {icon ? <Icon name={icon} size={26} color={theme.ink} /> : null}

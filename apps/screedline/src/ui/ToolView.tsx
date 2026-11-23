@@ -156,7 +156,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
             if (f.type === 'num') {
               return (
                 <FieldShell key={f.key} label={f.label} help={f.help} error={errors[f.key]}>
-                  <NumberInput label={f.label} value={texts[f.key] ?? ''} onChange={s => setTexts(t => ({ ...t, [f.key]: s }))} unit={unitLabel(f.kind, sys)} integer={f.kind === 'count'} error={!!errors[f.key]} placeholder={f.optional ? 'Optional' : undefined} />
+                  <NumberInput label={f.label} value={texts[f.key] ?? ''} onChange={s => setTexts(t => ({ ...t, [f.key]: s }))} unit={unitLabel(f.kind, sys)} integer={f.kind === 'count'} negative={f.kind === 'temp'} error={!!errors[f.key]} placeholder={f.optional ? 'Optional' : undefined} />
                 </FieldShell>
               );
             }
