@@ -38,6 +38,21 @@ test('country changes the catalogue and the notes', () => {
   assert.ok(usOrder.ok && Math.abs(usOrder.headline.value - 3 * 0.764554857984) < 1e-6 && usOrder.headline.caption === 'one truck');
 });
 
+test('break-ui worst cases stay readable', () => {
+  // 9,999 m³ on 6 m³ trucks: 1,667 loads collapse into at most two rows
+  const o = toolById('order', 'AU')!;
+  const r = o.run!(defaults(o, { volume: 9999 }));
+  assert.ok(r.ok && r.outputs.length <= 4, JSON.stringify(r.ok && r.outputs));
+  assert.ok(r.ok && r.headline.caption === '1,667 trucks');
+  // 10 m run with pegs every 50 mm: capped table plus a note
+  const f = toolById('falls', 'AU')!;
+  const fr = f.run!(defaults(f, { station: 0.05 }));
+  assert.ok(fr.ok && fr.table!.rows.length === 50 && fr.notes.some(n => n.includes('first 50 pegs')));
+  // one truck reads naturally
+  const one = o.run!(defaults(o, { volume: 2 }));
+  assert.ok(one.ok && one.outputs.some(x => x.label === 'The truck'));
+});
+
 test('falls show mm per metre, or inches per foot', () => {
   const t = toolById('falls', 'AU')!;
   const r = t.run!(defaults(t, { preset: '1:100' }));

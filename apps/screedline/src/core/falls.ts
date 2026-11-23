@@ -14,6 +14,7 @@ import { type Calc, type Errors, type Step, check, fail, hasErrors, ok } from '.
 import { fmt } from './units.ts';
 
 export type FallMode = 'pct' | 'ratio' | 'drop';
+export const MAX_STATIONS = 50;
 export interface FallInput {
   run: number | null;
   mode: FallMode;
@@ -55,11 +56,12 @@ export function falls(i: FallInput): Calc<FallResult> {
   steps.push({ label: 'Per metre', working: `${fmt(drop * 1000, 0)} mm ÷ ${fmt(run, 2)} m`, result: `${fmt(mmPerM, 1)} mm/m` });
   const stations: Station[] = [];
   if (st > 0) {
-    const count = Math.min(200, Math.floor(run / st + 1e-9));
+    const count = Math.min(MAX_STATIONS, Math.floor(run / st + 1e-9));
     for (let k = 1; k <= count; k++) stations.push({ at: k * st, below: k * st * (drop / run) });
-    if (stations.length && Math.abs(stations[stations.length - 1]!.at - run) > 1e-6 && count < 200) stations.push({ at: run, below: drop });
+    if (stations.length && Math.abs(stations[stations.length - 1]!.at - run) > 1e-6 && count < MAX_STATIONS) stations.push({ at: run, below: drop });
   }
   const notes: string[] = [];
+  if (st > 0 && run / st > MAX_STATIONS + 1e-9) notes.push(`Showing the first ${MAX_STATIONS} pegs. Use a wider peg spacing to see the whole run.`);
   if (pct < 1) notes.push('Flatter than 1 % (1:100). Water may pond on paving.');
   return ok({ pct, ratio, drop, mmPerM, degrees, stations }, steps, notes);
 }

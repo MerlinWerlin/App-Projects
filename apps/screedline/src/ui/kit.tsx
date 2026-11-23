@@ -42,7 +42,7 @@ export function Button({ label, onPress, kind = 'primary', icon, disabled, a11y,
       accessibilityRole="button" accessibilityLabel={a11y ?? label} accessibilityState={{ disabled: !!disabled }}
       disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => [{ minHeight: TARGET, borderRadius: RADIUS.m, backgroundColor: bg, borderWidth: kind === 'plain' ? 0 : 2, borderColor: kind === 'primary' ? theme.amber : border, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: SPACE.l, gap: SPACE.s, opacity: disabled ? 0.45 : pressed ? 0.8 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }, style]}
+      style={({ pressed }) => [{ minHeight: TARGET, borderRadius: RADIUS.m, backgroundColor: bg, borderWidth: kind === 'plain' ? 0 : 2, borderColor: kind === 'primary' ? theme.amber : border, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: SPACE.l, gap: SPACE.s, opacity: disabled ? 0.45 : pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] }, style]}
     >
       {icon ? <Icon name={icon} size={22} color={fg} /> : null}
       <Text maxFontSizeMultiplier={1.6} style={{ ...BOLD, fontSize: 18, color: fg, flexShrink: 1, textAlign: 'center' }}>{label}</Text>

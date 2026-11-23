@@ -71,6 +71,13 @@ function volumeRun(c: ReturnType<typeof slab>): Run {
   };
 }
 
+/** [[size, count], …] largest first, e.g. [3.8, 3.6, 3.6] → [[3.8, 1], [3.6, 2]]. */
+export function groupLoads(sizes: number[]): [number, number][] {
+  const m = new Map<number, number>();
+  for (const s of sizes) m.set(s, (m.get(s) ?? 0) + 1);
+  return [...m.entries()].sort((a, b) => b[0] - a[0]);
+}
+
 export function toolsFor(c: CountryProfile): Tool[] {
   const waste: NumField = { type: 'num', key: 'waste', label: 'Waste allowance', kind: 'pct', def: 5, help: 'Spillage, uneven ground and form bulge. 5–10 % is usual.' };
   const meshDef = c.mesh[0]!;
@@ -154,10 +161,11 @@ export function toolsFor(c: CountryProfile): Tool[] {
         const mins = c.readyMix?.dischargeMinutes;
         return {
           ok: true,
-          headline: { label: 'Order', value: r.order, kind: 'vol', dp: 2, caption: r.loads === 1 ? 'one truck' : `${r.loads} trucks` },
+          headline: { label: 'Order', value: r.order, kind: 'vol', dp: 2, caption: r.loads === 1 ? 'one truck' : `${r.loads.toLocaleString('en-AU')} trucks` },
           outputs: [
             { label: 'Truck loads', value: r.loads, kind: 'count' },
-            ...r.loadSizes.map((x, k) => ({ label: `Truck ${k + 1}`, value: x, kind: 'vol' as const, dp: 2 })),
+            // Loads differ by at most one ordering step, so they group into one or two sizes.
+            ...groupLoads(r.loadSizes).map(([size, count]) => ({ label: count === 1 ? (r.loads === 1 ? 'The truck' : 'One truck of') : `${count.toLocaleString('en-AU')} trucks of`, value: size, kind: 'vol' as const, dp: 2 })),
             { label: 'Spare over what you need', value: r.extra, kind: 'vol', dp: 2 },
           ],
           steps: r0.steps,
