@@ -1,0 +1,165 @@
+# Spigot store captures (simulator, EXPO_PUBLIC_SPIGOT_CAPTURE=1 build). Every number is typed through the real keypad.
+appId: com.jared797.spigot
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "SPIGOT"
+    timeout: 60000
+- takeScreenshot: 00-home-welcome
+- tapOn: "Got it"
+- takeScreenshot: 01-home
+
+# Offset: 300 mm at 45° with 18 mm take-offs
+- tapOn:
+    text: "Offset\\..*"
+- tapOn:
+    text: "Offset \\(centre to centre\\).*"
+- tapOn: "3"
+- tapOn: "0"
+- tapOn: "0"
+- tapOn: "Next"
+- tapOn: "Next"
+- tapOn: "1"
+- tapOn: "8"
+- tapOn: "Next"
+- tapOn: "1"
+- tapOn: "8"
+- tapOn: "Done"
+- takeScreenshot: 02-offset
+- scrollUntilVisible:
+    element:
+      text: "Show working"
+    direction: DOWN
+- tapOn: "Show working"
+- takeScreenshot: 03-offset-working
+- back
+
+# Cut list: 1450 × 5, 875 × 7, 2210 × 3
+- tapOn:
+    text: "Cut list\\..*"
+- tapOn:
+    text: "Piece length.*"
+- tapOn: "1"
+- tapOn: "4"
+- tapOn: "5"
+- tapOn: "0"
+- tapOn: "Next"
+- tapOn: "Clear all"
+- tapOn: "5"
+- tapOn: "Done"
+- tapOn: "Add to list"
+- tapOn:
+    text: "Piece length.*"
+- tapOn: "8"
+- tapOn: "7"
+- tapOn: "5"
+- tapOn: "Next"
+- tapOn: "Clear all"
+- tapOn: "7"
+- tapOn: "Done"
+- tapOn: "Add to list"
+- tapOn:
+    text: "Piece length.*"
+- tapOn: "2"
+- tapOn: "2"
+- tapOn: "1"
+- tapOn: "0"
+- tapOn: "Next"
+- tapOn: "Clear all"
+- tapOn: "3"
+- tapOn: "Done"
+- tapOn: "Add to list"
+- takeScreenshot: 04-cutlist
+- scrollUntilVisible:
+    element:
+      text: "LENGTH 1"
+    direction: DOWN
+- takeScreenshot: 05-cutlist-plan
+- back
+
+# Fall: 12 m at 1:60 from RL 10.500
+- tapOn:
+    text: "Fall\\..*"
+- tapOn:
+    text: "Length of run.*"
+- tapOn: "1"
+- tapOn: "2"
+- tapOn: "m"
+- tapOn: "Done"
+- tapOn:
+    text: "Start invert level.*"
+- tapOn: "1"
+- tapOn: "0"
+- tapOn: "."
+- tapOn: "5"
+- tapOn: "Done"
+- takeScreenshot: 06-fall
+- back
+
+# Cut length: 1000 mm, DN100 88° bend centre to a bare end
+- tapOn:
+    text: "Cut length\\..*"
+- tapOn:
+    text: "Measurement.*"
+- tapOn: "1"
+- tapOn: "0"
+- tapOn: "00"
+- tapOn: "Done"
+- tapOn: "Choose fitting A"
+- tapOn:
+    text: "DN100 88° bend, take-off.*"
+- scrollUntilVisible:
+    element:
+      text: "Choose fitting B"
+    direction: DOWN
+- tapOn:
+    text: "Pipe end / wall"
+    index: 1
+- scrollUntilVisible:
+    element:
+      text: "CUT THE PIPE TO"
+    direction: UP
+- takeScreenshot: 07-cut
+- back
+
+# Volume: DN20 Type B copper, 25 m
+- tapOn:
+    text: "Volume & flow\\..*"
+- tapOn:
+    text: "DN20, inside .*"
+- tapOn:
+    text: "Length of pipe.*"
+- tapOn: "2"
+- tapOn: "5"
+- tapOn: "m"
+- tapOn: "Done"
+- takeScreenshot: 08-volume
+- back
+
+# Reference
+- tapOn:
+    text: "Reference(, tab.*)?"
+- takeScreenshot: 09-reference
+- tapOn:
+    text: "Jobs(, tab.*)?"
+- takeScreenshot: 10-jobs-empty
+- tapOn:
+    text: "Tools(, tab.*)?"
+- tapOn:
+    text: "Units:.*"
+- tapOn:
+    text: "Offset\\..*"
+- tapOn:
+    text: "Offset \\(centre to centre\\).*"
+- tapOn: "1"
+- tapOn: "2"
+- tapOn: "plus 1/2 inch"
+- tapOn: "Done"
+- takeScreenshot: 11-offset-inches
+- back
+- tapOn:
+    text: "Settings(, tab.*)?"
+- takeScreenshot: 12-settings
+- tapOn: "Full Unlock and restore"
+- takeScreenshot: 13-unlock
