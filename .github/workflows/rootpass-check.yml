@@ -1,0 +1,42 @@
+# Rootpass: install, typecheck, unit tests (formulas, true-scale PDF, purchases, release config) and an iOS bundle,
+# on every push and pull request that touches the app. Nothing here ships anything.
+name: rootpass-check
+
+on:
+  push:
+    branches-ignore: [main]
+    paths: ['apps/rootpass/**', '.github/workflows/rootpass-check.yml']
+  pull_request:
+    paths: ['apps/rootpass/**', '.github/workflows/rootpass-check.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: rootpass-check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/rootpass
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: npm ci --no-audit --no-fund
+      - name: Expo SDK versions line up
+        run: npx expo install --check
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Tests
+        if: success() || failure()
+        run: npm test
+      - name: Bundle for iOS
+        if: success() || failure()
+        run: npx expo export --platform ios --output-dir "$RUNNER_TEMP/export"

@@ -1,0 +1,103 @@
+name: Rootpass capture
+# Rootpass on iPhone simulators from an unsigned Release build with EXPO_PUBLIC_ROOTPASS_CAPTURE=1 at bundle time
+# (everything open, as during the trial; nothing bought). Captures every screen on a 6.9-inch iPhone for the design
+# review and App Store screenshots, then the main screens again at the largest accessibility text size and on the
+# smallest iPhone available. Simulator only: no signing, nothing shipped.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/welder-app', 'claude/rootpass-*']
+    paths: ['.github/workflows/rootpass-capture.yml', 'apps/rootpass/app/**', 'apps/rootpass/src/**', 'apps/rootpass/store/capture/**', 'apps/rootpass/assets/**', 'apps/rootpass/app.json']
+concurrency:
+  group: rootpass-capture-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: apps/rootpass
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      RCT_NO_LAUNCH_PACKAGER: '1'
+      EXPO_PUBLIC_ROOTPASS_CAPTURE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Select current Xcode
+        run: |
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - name: Install
+        run: npm ci --no-audit --no-fund > "$RUNNER_TEMP/install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/install.log"; exit 1; }
+      - name: Generate the iOS project
+        run: |
+          set -euo pipefail
+          npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/prebuild.log"; exit 1; }
+          cd ios && pod install > "$RUNNER_TEMP/pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/pods.log"; exit 1; }
+      - name: Build unsigned Release simulator app
+        run: |
+          set -euo pipefail
+          WS=$(ls -d ios/*.xcworkspace | head -1); SCHEME=$(basename "$WS" .xcworkspace)
+          xcodebuild -workspace "$WS" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/build.log" 2>&1 || { grep -E "error:" "$RUNNER_TEMP/build.log" | head -40; tail -160 "$RUNNER_TEMP/build.log"; exit 1; }
+      - name: Install Maestro
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+      - name: Capture
+        timeout-minutes: 75
+        run: |
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/rootpass-captures"; mkdir -p "$OUT/raw"
+          APP=$(ls -d "$RUNNER_TEMP"/build/Build/Products/Release-iphonesimulator/*.app | head -1)
+          BUNDLE=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
+          codesign --force --deep --sign - "$APP"
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          pick() { xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d['devices'].items(),reverse=True) if 'iOS' in k for x in v if x['name'].startswith('iPhone')]; m=[x for x in xs if '$1' in x['name']]; print((m or xs)[0]['udid'])"; }
+          prep() {
+            DEV="$1"
+            PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEV/data/Library/Preferences"; mkdir -p "$PREFS"
+            /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->rootpass string $BUNDLE" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
+            xcrun simctl boot "$DEV" || true; xcrun simctl bootstatus "$DEV" -b
+            xcrun simctl status_bar "$DEV" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
+            xcrun simctl ui "$DEV" appearance dark
+            xcrun simctl install "$DEV" "$APP"
+          }
+          run() { # device flow dir extra-env...
+            DEV="$1"; FLOW="$2"; DIR="$3"; shift 3
+            for TRY in 1 2; do
+              maestro --device "$DEV" test -e APP_ID="$BUNDLE" "$@" --test-output-dir "$OUT/$DIR" "store/capture/$FLOW" && break
+              echo "maestro failure on try $TRY"
+            done
+          }
+          BIG=$(pick "Pro Max"); xcrun simctl list devices available | grep "$BIG"
+          prep "$BIG"
+          run "$BIG" store-flow.yaml store
+          xcrun simctl terminate "$BIG" "$BUNDLE" || true
+          xcrun simctl ui "$BIG" content_size accessibility-extra-extra-extra-large || true
+          run "$BIG" review-flow.yaml ax -e TAG=ax
+          xcrun simctl ui "$BIG" content_size large || true
+          xcrun simctl shutdown "$BIG" || true
+          SMALL=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d['devices'].items(),reverse=True) if 'iOS' in k for x in v if x['name'].startswith('iPhone')]; pref=[x for x in xs if 'SE' in x['name'] or '16e' in x['name'] or 'mini' in x['name']]; print((pref or [x for x in xs if 'Pro' not in x['name'] and 'Plus' not in x['name'] and 'Air' not in x['name']] or xs)[0]['udid'])")
+          xcrun simctl list devices available | grep "$SMALL"
+          prep "$SMALL"
+          run "$SMALL" review-flow.yaml small -e TAG=small
+          find "$OUT" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
+          find . -maxdepth 1 -name '*.png' -exec mv {} "$OUT/raw/" \; 2>/dev/null || true
+          find "$OUT" -maxdepth 3 -name '*.png' -not -path "$OUT/raw/*" -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
+          ls -la "$OUT/raw"
+          printf 'Source: %s\n' "$GITHUB_SHA" > "$OUT/README.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rootpass-captures
+          path: ${{ runner.temp }}/rootpass-captures
+          if-no-files-found: warn
+          retention-days: 14

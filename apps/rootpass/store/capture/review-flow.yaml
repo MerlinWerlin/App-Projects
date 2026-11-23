@@ -1,0 +1,32 @@
+# Review pass: the same screens at the largest accessibility text size or on a small iPhone.
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "ROOTPASS"
+    timeout: 30000
+- waitForAnimationToEnd
+- takeScreenshot: r01-home-${TAG}
+- openLink: rootpass://tool/saddle
+- extendedWaitUntil:
+    visible: "Saddle cut"
+    timeout: 15000
+- takeScreenshot: r02-saddle-${TAG}
+- scrollUntilVisible:
+    element: "Print true-scale template"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: r03-saddle-result-${TAG}
+- openLink: rootpass://tool/cutlist
+- extendedWaitUntil:
+    visible: "Cut list"
+    timeout: 15000
+- scrollUntilVisible:
+    element: "Stock lengths"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: r04-cutlist-${TAG}
+- openLink: rootpass://unlock
+- waitForAnimationToEnd
+- takeScreenshot: r05-unlock-${TAG}
