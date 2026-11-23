@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="How Rootpass calculates saddles, mitres, weights, weld metal, bends and bolt circles, with sources.">
+<title>Rootpass Formulas and Sources</title>
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--paper:#F4F2EE;--card:#FFFFFF;--line:#E2DED6;--text:#16181C;--muted:#5E6470;--ink:#B4520C;--soft:#FBE6D6}
+@media (prefers-color-scheme: dark){:root{--paper:#0D0F12;--card:#171A1F;--line:#30353E;--text:#F4F1EA;--muted:#A3A9B3;--ink:#FF8A33;--soft:#3A230F}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:740px;margin:0 auto;padding:32px 16px 64px}
+h1{font:800 2rem/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:1.15rem;margin:32px 0 8px}p,li{overflow-wrap:anywhere}a{color:var(--ink)}
+.meta,.sub{color:var(--muted)}.sub{font-size:1.15rem;margin:2px 0 0}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.badge .tick{flex:none;width:40px;height:40px;border-radius:50%;background:var(--soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:22px}
+.badge strong{display:block;font-size:1.2rem}
+header{display:flex;gap:18px;align-items:center;margin:8px 0 18px}header img{width:84px;height:84px;border-radius:19px}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0}summary{cursor:pointer;padding:14px 18px;font-weight:600}
+details>div{padding:0 18px 14px}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.lead h3{margin:0 0 4px;font-size:1.05rem}.lead p{margin:0;color:var(--muted)}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:560px}td,th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+footer{color:var(--muted);font-size:.9rem;margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 18px}
+</style>
+</head>
+<body>
+<main>
+<h1>Formulas and sources</h1>
+<p class="meta">How Rootpass works its answers out. The app shows these steps on every result.</p>
+<div class="scroll"><table>
+<tr><th>Tool</th><th>Formula</th><th>Source</th></tr>
+<tr><td>Saddle</td><td>t(φ) = (√(R² − (e + r·cos φ)²) − r·sin φ·cos θ) / sin θ; cut-back h = t − min t; wrap x = (OD/2)·φ</td><td>Intersection of two cylinders, as in Frankland, <em>The Pipe Fitter's and Pipe Welder's Handbook</em>; checked in the tests against an independent numeric solution</td></tr>
+<tr><td>Lobster-back</td><td>α = bend / (pieces − 1); cut β = α/2; middle = 2·Rc·tan β; long/short = 2·(Rc ± OD/2)·tan β</td><td>ASME B31.3 304.2.3 (mitre bends); Frankland</td></tr>
+<tr><td>Frames</td><td>Mitre = 180°/sides; short point = long point − 2·w·tan(180°/n)</td><td>Machinery's Handbook, regular polygons</td></tr>
+<tr><td>Weight</td><td>Mass = area × length × density; SHS/RHS area = 2t(B + H − 2t) − (4 − π)(ro² − ri²)</td><td>EN 10219-2 Annex B; densities AS/NZS 3679.1 (7850), EN 10088-1 (stainless), Aluminum Association</td></tr>
+<tr><td>Weld metal</td><td>Fillet A = a·b/2; single-V A = g·t + (t − f)²·tan(α/2); filler = deposited / efficiency</td><td>Lincoln Electric <em>Procedure Handbook of Arc Welding</em>, estimating weld metal</td></tr>
+<tr><td>Sheet bending</td><td>BA = π/180·A·(R + K·T); OSSB = tan(A/2)·(R + T); BD = 2·OSSB − BA</td><td>Machinery's Handbook; ASM Handbook vol. 14B</td></tr>
+<tr><td>Cut list</td><td>Exact branch-and-bound bin packing with kerf: Σ(part + kerf) ≤ usable + kerf</td><td>Martello &amp; Toth, <em>Knapsack Problems</em> (1990)</td></tr>
+<tr><td>Bolt circle</td><td>X = PCD/2·sin a, Y = PCD/2·cos a; chord = PCD·sin(180°/n)</td><td>Machinery's Handbook, hole circles</td></tr>
+<tr><td>Templates</td><td>1 mm = 72/25.4 pt in the PDF; every sheet carries a 100 mm ruler</td><td>ISO 32000-1 (PDF); scale checked by automated tests</td></tr>
+</table></div>
+<footer>Rootpass · <a href="index.html">About</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> · <a href="formulas.html">Formulas and sources</a></footer>
+</main>
+</body>
+</html>
