@@ -28,7 +28,7 @@ export default function Welcome() {
         <CountryList selected={pick} suggested={app.suggestedCountry.code} onPick={setPick} />
       </ScrollView>
       <View style={{ paddingHorizontal: SPACE.gutter, paddingTop: SPACE.sm, paddingBottom: insets.bottom + SPACE.sm, borderTopWidth: 0.5, borderTopColor: t.line, backgroundColor: t.ground }}>
-        <Btn label="Start tiling" onPress={go} icon="arrow-forward" />
+        <Btn label="Start tiling" onPress={go} icon="arrowRight" />
       </View>
     </View>
   );

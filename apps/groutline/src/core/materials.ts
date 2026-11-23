@@ -50,7 +50,7 @@ export function calcGrout(input: GroutInput): CalcResult<GroutResult> {
     { label: 'Grout per m²', working: `(${T(A)} + ${T(B)}) ÷ (${T(A)} × ${T(B)}) × ${T(C)} deep × ${T(D)} wide × ${fmt(rho, 2)} kg/L`, result: `${fmt(perM2, 3)} kg/m²` },
     { label: 'Grout for the area', working: `${fmt(perM2, 3)} kg/m² × ${formatArea(areaM2, system)}`, result: M(kg) },
     { label: `Add ${fmt(extraPct, 0)}% for mixing and clean-up`, working: `${M(kg)} × ${fmt(1 + extraPct / 100, 2)}`, result: M(withExtra) },
-    { label: 'Bags', working: `${M(withExtra)} ÷ ${M(bagKg)} bag, rounded up`, result: `${bags} bags` },
+    { label: 'Bags', working: `${M(withExtra)} ÷ ${M(bagKg)} bag, rounded up`, result: `${fmt(bags, 0)} bags` },
   ];
   const notes = [`About ${fmt(jointLengthM, 0)} m of joint to fill.`];
   if (D < 3 && system !== 'imperial') notes.push('Joints under 3 mm usually need an unsanded / fine grout: check the bag.');
@@ -90,7 +90,7 @@ export function calcAdhesive(input: AdhesiveInput): CalcResult<AdhesiveResult> {
     { label: 'Adhesive rate', working: bb > 0 ? `${fmt(kgPerM2, 2)} kg/m² (${input.notchLabel}) + ${fmt(bb, 2)} kg/m² back-buttering` : `${input.notchLabel} notch, maker's coverage`, result: rateText },
     { label: 'Adhesive for the area', working: `${rateText} × ${formatArea(areaM2, system)}`, result: M(kg) },
     { label: `Add ${fmt(extraPct, 0)}% for the bucket and the trowel`, working: `${M(kg)} × ${fmt(1 + extraPct / 100, 2)}`, result: M(withExtra) },
-    { label: 'Bags', working: `${M(withExtra)} ÷ ${M(bagKg)} bag, rounded up`, result: `${bags} bags` },
+    { label: 'Bags', working: `${M(withExtra)} ÷ ${M(bagKg)} bag, rounded up`, result: `${fmt(bags, 0)} bags` },
   ];
   return { ok: true, value: { kg, kgWithExtra: withExtra, bags }, steps, notes: [] };
 }
@@ -134,7 +134,7 @@ export function calcMembrane(input: MembraneInput): CalcResult<MembraneResult> {
   const steps: Step[] = [
     { label: 'Area to waterproof', working: surfaces.filter(s => s.areaM2 > 0).map(s => `${s.label} ${formatArea(s.areaM2, system)}`).join(' + '), result: formatArea(area, system) },
     { label: 'Membrane', working: `${formatArea(area, system)} × ${fmt(c, 3)} ${per} × ${coats} coats`, result: V(litres) },
-    { label: 'Packs', working: `${V(litres)} ÷ ${V(packLitres)} pack, rounded up`, result: `${packs} packs` },
+    { label: 'Packs', working: `${V(litres)} ÷ ${V(packLitres)} pack, rounded up`, result: `${fmt(packs, 0)} packs` },
   ];
   let primerLitres: number | null = null, primerPacks: number | null = null, tapeRolls: number | null = null;
   if (input.primerM2PerLitre && input.primerM2PerLitre > 0) {
@@ -147,7 +147,7 @@ export function calcMembrane(input: MembraneInput): CalcResult<MembraneResult> {
   }
   if (input.tapeRunMm > 0 && input.tapeRollMm && input.tapeRollMm > 0) {
     tapeRolls = ceilSafe(input.tapeRunMm / input.tapeRollMm);
-    steps.push({ label: 'Tape / bond breaker', working: `${formatLength(input.tapeRunMm, system)} ÷ ${formatLength(input.tapeRollMm, system)} roll`, result: `${tapeRolls} rolls` });
+    steps.push({ label: 'Tape / bond breaker', working: `${formatLength(input.tapeRunMm, system)} ÷ ${formatLength(input.tapeRollMm, system)} roll`, result: `${fmt(tapeRolls, 0)} rolls` });
   }
   return { ok: true, value: { areaM2: area, litres, packs, primerLitres, primerPacks, tapeRolls }, steps, notes: [] };
 }

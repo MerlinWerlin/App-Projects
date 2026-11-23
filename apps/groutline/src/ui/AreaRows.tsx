@@ -1,9 +1,9 @@
 /** Areas to tile (rectangles that add up, e.g. an L-shape) and cut-outs (windows, doors, baths) as typed rows. */
-import { Ionicons } from '@expo/vector-icons';
 import { Pressable, View } from 'react-native';
+import { Icon } from './Icon.tsx';
 import { RADIUS, SPACE, useTheme } from '../theme/theme.ts';
 import { useUnits } from './fields.tsx';
-import { Field, Txt } from './kit.tsx';
+import { Btn, Field, Txt } from './kit.tsx';
 
 export interface AreaRow { a: string; b: string; cut: boolean; label?: string }
 
@@ -29,17 +29,18 @@ export function AreaRows({ rows, onChange, surface }: { rows: AreaRow[]; onChang
     <View style={{ gap: SPACE.sm }}>
       {rows.map((r, i) => {
         const n = r.cut ? ++cutN : ++addN;
-        const title = r.cut ? `Cut-out ${n}` : adds > 1 ? `Area ${n}` : surface === 'wall' ? 'Wall' : 'Floor';
+        const title = r.cut ? `Cut-out ${n}` : `Area ${n}`;
+        const showTitle = r.cut || adds > 1;
         return (
           <View key={i} style={{ backgroundColor: r.cut ? t.sunk : 'transparent', borderRadius: RADIUS.field, padding: r.cut ? SPACE.sm : 0 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-              <Txt v="headline" style={{ flex: 1 }}>{r.cut ? `− ${title}` : title}</Txt>
+            {showTitle ? <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+              <Txt v="headline" style={{ flex: 1 }}>{r.cut ? `${title}: taken off` : title}</Txt>
               {(r.cut || adds > 1) ? (
                 <Pressable accessibilityRole="button" accessibilityLabel={`Remove ${title}`} onPress={() => del(i)} hitSlop={8} style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
-                  <Ionicons name="close-circle" size={26} color={t.ink3} />
+                  <Icon name="remove" size={24} color={t.ink3} />
                 </Pressable>
               ) : null}
-            </View>
+            </View> : null}
             <View style={{ flexDirection: 'row', gap: SPACE.sm }}>
               <Field flex={1} label={r.cut ? 'Width' : A} value={r.a} onChangeText={v => set(i, { a: v })} unit={u.unit('room')} keyboard={u.keyboard} accessibilityLabel={`${title} ${r.cut ? 'width' : A}`} />
               <Field flex={1} label={r.cut ? 'Height' : B} value={r.b} onChangeText={v => set(i, { b: v })} unit={u.unit('room')} keyboard={u.keyboard} accessibilityLabel={`${title} ${r.cut ? 'height' : B}`} />
@@ -47,22 +48,11 @@ export function AreaRows({ rows, onChange, surface }: { rows: AreaRow[]; onChang
           </View>
         );
       })}
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.xs }}>
-        <AddChip icon="add" label={surface === 'wall' ? 'Add a wall' : 'Add area (L-shape)'} onPress={() => onChange([...rows, { a: '', b: '', cut: false }])} />
-        <AddChip icon="remove" label={surface === 'wall' ? 'Window or door' : 'Cut-out (bath, cabinet)'} onPress={() => onChange([...rows, { a: '', b: '', cut: true }])} />
+      <View style={{ flexDirection: 'row', gap: SPACE.xs }}>
+        <Btn kind="plain" icon="add" label={surface === 'wall' ? 'Wall' : 'Area'} accessibilityHint={surface === 'wall' ? 'Adds another wall' : 'Adds another rectangle, for an L-shape'} onPress={() => onChange([...rows, { a: '', b: '', cut: false }])} style={{ flex: 1, paddingHorizontal: SPACE.sm }} />
+        <Btn kind="plain" icon="minus" label={surface === 'wall' ? 'Window, door' : 'Cut-out'} accessibilityHint="Adds an area that isn't tiled, like a bath or a window" onPress={() => onChange([...rows, { a: '', b: '', cut: true }])} style={{ flex: 1, paddingHorizontal: SPACE.sm }} />
       </View>
       <Txt v="footnote" tone="ink3">{u.system === 'metric' ? 'Sizes in mm. Type 2.4m for metres.' : `Room sizes in feet. Type 12' 6" or 150" for inches.`}</Txt>
     </View>
-  );
-}
-
-function AddChip({ icon, label, onPress }: { icon: keyof typeof Ionicons.glyphMap; label: string; onPress(): void }) {
-  const t = useTheme();
-  return (
-    <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress}
-      style={({ pressed }) => ({ minHeight: 48, paddingHorizontal: SPACE.md, borderRadius: RADIUS.chip, borderWidth: 1.5, borderColor: t.ink, borderStyle: 'dashed', flexDirection: 'row', alignItems: 'center', gap: 6, opacity: pressed ? 0.7 : 1 })}>
-      <Ionicons name={icon} size={20} color={t.ink} />
-      <Txt v="headline">{label}</Txt>
-    </Pressable>
   );
 }

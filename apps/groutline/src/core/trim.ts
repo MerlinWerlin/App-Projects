@@ -7,7 +7,7 @@
  * cut-list tools). An optional allowance per cut covers saw kerf / mitre. Stock lengths per country come from
  * the country file (2.4–2.5 m metric, 8 ft imperial).
  */
-import { ceilSafe, fail, type CalcResult, type Problem, type Step } from './steps.ts';
+import { ceilSafe, fail, fmt, type CalcResult, type Problem, type Step } from './steps.ts';
 import { formatLength, type UnitSystem } from './units.ts';
 
 export interface TrimInput {
@@ -60,8 +60,8 @@ export function calcTrim(input: TrimInput): CalcResult<TrimResult> {
   const F = (v: number) => formatLength(v, system);
   const steps: Step[] = [
     { label: 'Total edge to trim', working: runs.map(F).join(' + '), result: F(total) },
-    { label: 'Straight division', working: `${F(total)} ÷ ${F(S)}, rounded up (if every offcut could be used)`, result: `${naive} lengths` },
-    { label: 'Cut list', working: `Each edge cut from a ${F(S)} length${a ? `, ${F(a)} allowed per cut` : ''}; offcuts reused where they fit`, result: `${lengths} lengths` },
+    { label: 'Straight division', working: `${F(total)} ÷ ${F(S)}, rounded up (if every offcut could be used)`, result: `${fmt(naive, 0)} lengths` },
+    { label: 'Cut list', working: `Each edge cut from a ${F(S)} length${a ? `, ${F(a)} allowed per cut` : ''}; offcuts reused where they fit`, result: `${fmt(lengths, 0)} lengths` },
   ];
   const notes = [`Offcut left over: ${F(offcut)} in total.`];
   if (lengths > naive) notes.push('Short offcuts can\'t make up the longer edges, so you need more than the straight division.');

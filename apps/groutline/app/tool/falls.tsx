@@ -30,14 +30,14 @@ export default function FallsTool() {
   const notes: string[] = r.ok ? [...r.notes] : [];
   if (r.ok && N > c.falls.min + 1e-9) notes.unshift(`${gradientText(N, u.system)} is shallower than the ${gradientText(c.falls.min, u.system)} minimum.`);
   const F = (mm: number) => formatLength(mm, u.system, 'tile');
-  const summary = r.ok ? [`Perimeter ${F(r.value.rise)} above the ${c.terms.waste}`, `at ${gradientText(N, u.system)}`] : null;
+  const summary = r.ok ? [`${F(r.value.rise)} rise`, `fall 1:${fmt(N, 0)}`] : null;
 
   return (
     <ToolScreen tool="falls" inputs={s} job={job} summary={summary} steps={r.ok ? r.steps : []} intro={c.falls.label}
       result={r.ok ? (
         <Card>
-          <Txt v="footnote" tone="ink2" style={{ fontWeight: '700' }}>{`SET THE PERIMETER ABOVE THE ${c.terms.waste.toUpperCase()}`}</Txt>
           <Num value={F(r.value.rise).replace(/ mm$|″$/, '')} unit={imperial ? 'in' : 'mm'} size={72} />
+          <Txt v="subhead" tone="ink2" style={{ marginBottom: SPACE.xs }}>{`Set the perimeter this far above the ${c.terms.waste}`}</Txt>
           <Row gap={SPACE.lg}>
             <Stat label="Longest run" value={formatLength(r.value.longestRun, u.system).replace(/ mm$/, '')} unit={imperial ? undefined : 'mm'} />
             {s.drain === 'point' ? <Stat label="Steepest plane" value={`1:${fmt(r.value.steepestRatio, 0)}`} /> : null}

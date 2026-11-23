@@ -10,7 +10,7 @@ const G = 'docs/SOURCES.md#generic';
 const t = (l: number, w: number, thk: number, use: TileItem['use']): TileItem => ({ id: `xx-${l}x${w}`, label: `${l} × ${w}`, lengthMm: l, widthMm: w, thicknessMm: thk, use, src: G, verified: false });
 
 export const GENERIC: Country = {
-  code: 'XX', name: 'Other country', flag: '🌐', system: 'metric', currency: '', locale: 'en-GB', spelling: 'british',
+  code: 'XX', name: 'Other country', flag: '', system: 'metric', currency: '', locale: 'en-GB', spelling: 'british',
   terms: { waterproofing: 'Waterproofing', membrane: 'Membrane', adhesive: 'Tile adhesive', trim: 'Tile trim', falls: 'Falls', waste: 'floor waste', setOut: 'Set-out', box: 'box', colour: 'colour', backer: 'backer board' },
   falls: { min: 80, max: 50, verified: false, label: 'Generic: 1:80 to 1:50 is a common range for shower floors. Check your local building rules.', src: G },
   membraneHeights: { showerWallMm: 1800, upturnMm: 150, verified: false, label: 'Generic: shower walls to 1800 mm and a 150 mm upturn elsewhere. Check your local rules and the membrane maker.', src: G },

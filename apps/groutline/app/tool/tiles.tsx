@@ -4,6 +4,7 @@ import { LAYOUT_ORDER, LAYOUTS, type LayoutId } from '../../src/core/layouts.ts'
 import { fmt } from '../../src/core/steps.ts';
 import { calcTiles, type Rect } from '../../src/core/tiles.ts';
 import { editableLength } from '../../src/core/units.ts';
+import { count } from '../../src/core/steps.ts';
 import { useApp } from '../../src/state/AppState.tsx';
 import { SPACE } from '../../src/theme/theme.ts';
 import { AreaRows, decodeRows, encodeRows } from '../../src/ui/AreaRows.tsx';
@@ -33,16 +34,15 @@ export default function TilesTool() {
     jointMm: u.parse(s.joint as string, 'joint', true) ?? NaN, layout, wastePct: waste, perBox, boxM2: perBox ? null : boxArea, system: u.system, boxWord: c.terms.box,
   });
   const box = c.terms.box;
-  const summary = r.ok ? [`${r.value.tiles} tiles`, ...(r.value.boxes != null ? [`${r.value.boxes} ${plural(box, r.value.boxes)}`] : []), u.showArea(r.value.netM2)] : null;
+  const summary = r.ok ? [`${count(r.value.tiles)} tiles`, ...(r.value.boxes != null ? [`${count(r.value.boxes)} ${plural(box, r.value.boxes)}`] : []), u.showArea(r.value.netM2)] : null;
 
   return (
     <ToolScreen tool="tiles" inputs={s} job={job} summary={summary} steps={r.ok ? r.steps : []}
       result={r.ok ? (
         <Card>
-          <Txt v="footnote" tone="ink2" style={{ fontWeight: '700' }}>TILES TO BUY</Txt>
-          <Num value={String(r.value.tiles)} unit="tiles" size={72} />
+          <Num value={count(r.value.tiles)} unit="tiles to buy" size={72} />
           <Row gap={SPACE.lg}>
-            {r.value.boxes != null ? <Stat label={cap(plural(box, 2))} value={String(r.value.boxes)} /> : null}
+            {r.value.boxes != null ? <Stat label={cap(plural(box, 2))} value={count(r.value.boxes)} /> : null}
             <Stat label="Area to tile" value={u.showArea(r.value.netM2).split(' ')[0]} unit={u.areaUnit} />
             <Stat label="Order incl. waste" value={u.showArea(r.value.orderM2).split(' ')[0]} unit={u.areaUnit} />
           </Row>

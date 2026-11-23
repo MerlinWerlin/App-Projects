@@ -21,3 +21,6 @@ export const fmt = (v: number, dp = 2) => {
   const r = Math.round(v * f) / f;
   return r.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: dp });
 };
+
+/** Whole-number counts with thousands separators (8,108,497 tiles). */
+export const count = (n: number) => Math.round(n).toLocaleString('en-US');

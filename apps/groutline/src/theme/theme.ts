@@ -31,7 +31,7 @@ export const LIGHT: Theme = {
   sunk: '#E7E2D7',
   ink: '#15171A',
   ink2: '#4A4F57',
-  ink3: '#6B7079',
+  ink3: '#5E636B',
   line: '#D6D0C3',
   grout: '#B9B2A3',
   accent: '#FF6A1A',
