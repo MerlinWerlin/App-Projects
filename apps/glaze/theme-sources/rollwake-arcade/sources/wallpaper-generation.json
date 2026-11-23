@@ -1,0 +1,30 @@
+{
+  "id": "wallpaper",
+  "prompt": "Make exactly one phone-layout revision of our attached Rollwake Arcade wallpaper. The attached scene is the edit target. Camera pulls back from the complete original scene by roughly 30 percent, keeping the complete original subject group centered horizontally. Keep precisely the same three devices, original clockwise slide and arch cabinet, paired swinging seats, same relative position of every individual piece, all original colors, matte buff paper, muted dusty mulberry edging, wound ends, variable punched note slots. All points of the scene, including the entire left and right platform lip and all feet and warm contact shadows, must now fit strictly inside the middle 62 percent of the wallpaper width, leaving AT LEAST 19 percent uninterrupted dark blue slate at each side. The group center is at about 60 percent canvas height. Pull back uniformly in both directions and keep the same portrait outer frame and proportions. Let the existing dark slate studio backdrop and understated charcoal ground continue unchanged in the space gained around it. The top remains entirely quiet dark slate for app controls. Preserve the whole rounded paper base as one single inset complete silhouette with fully visible ends. Preserve the whole tallest roof point and the original scene geometry. No lettering, border, stairs, new rides, new props or rearranged parts.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.e4226f57.png",
+  "sourceSha256": "e4226f575cea86ff1a50b68f2f5d331fc078917734918f95b65ec4e179916ac6",
+  "sourceDimensions": [
+    941,
+    1672
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "b2658a3ee7b8ebd4b7fa1246e04a665f622e14f9c27f4cc6f5cf1705d1d71805",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.26c73f9e.png",
+      "sha256": "26c73f9e60e0d921ab80806005b71ec9c2fadfceed7259fdf42b92093dbf1995",
+      "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

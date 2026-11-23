@@ -1,0 +1,38 @@
+{
+  "themeId": "rollwake-arcade",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.9586dc17.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "9586dc17105f6402105dc09e701f5d8b9c0458df3a2486851960689d841269e7",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.45f3c878.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "45f3c878da55e85d1b67ebd8551b0776b9c111a97436c19f06a58b603e231207",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.754f410c.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "754f410ce6c0cb34d40183a29961d4d0958d8e6fbdfffd4458d6ac2f4ce48427",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "All three final encoded phone variants were viewed. Both full deck ends, all device feet, both swings and the slide's highest point sit inside a visible slate margin. The original clipped deck and exact alternate scene are retained in layout history."
+  }
+}

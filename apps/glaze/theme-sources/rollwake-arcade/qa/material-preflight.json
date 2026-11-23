@@ -1,0 +1,26 @@
+{
+  "id": "rollwake-arcade",
+  "lane": "B47",
+  "category": "Abstract & Art",
+  "process": "Sculptural assembly of wide matte paper music rolls with coarse, staggered interior note slots and tightly wound paper ends.",
+  "status": "Coordinator reviewed actual organ material proof plus six own and 65 coordinator and selector comparator artworks, then accepted the exact first unaltered. Expansion uses only the accepted first as its material reference.",
+  "subjects": [
+    "fairground-organ",
+    "showmans-engine",
+    "swing-boats",
+    "helter-skelter",
+    "roll-perforator"
+  ],
+  "cornerCompanion": "Arched organ frame, short slot marks, baton hands, roll advance battery column and a ticket calendar. The corner companion is a short bend in one paper roll with three slots.",
+  "firstGateCriterion": "Broad buff paper surfaces have obvious true interior slot columns. Roll ends show tightly wound fibres. The working organ remains legible at 85 px with paper and slots carrying the main effect.",
+  "technicalReferences": [
+    {
+      "url": "https://loc.gov/marc/bibliographic/bd007s.html",
+      "scope": "Library of Congress physical media description for original paper music rolls and perforated note information."
+    },
+    {
+      "url": "https://collections.si.edu/search/detail/edanmdm%3Anmah_606511?print=yes",
+      "scope": "Smithsonian hand-operated perforator record, consulted as text. No specimen or historic score supplied as an image reference."
+    }
+  ]
+}
