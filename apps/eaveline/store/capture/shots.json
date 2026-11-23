@@ -1,0 +1,10 @@
+[
+  { "capture": "01-sheets", "title": "Sheet count and cut list, done", "sub": "Hip cuts, end laps and overhang worked out from your local profiles" },
+  { "capture": "02-roof", "title": "Roof area from plan and pitch", "sub": "Gable, hip and skillion. Rafters, hips and valleys too" },
+  { "capture": "03-tiles", "title": "Tiles and battens without the maths", "sub": "Even gauge, courses, coverage and capping" },
+  { "capture": "04-downpipes", "title": "Downpipes by your local method", "sub": "Catchment, rainfall and gutter fall, shown as an estimate" },
+  { "capture": "06-country", "title": "Set up for where you work", "sub": "Australia, NZ, UK, Ireland, US and Canada: units, standards and stocked materials" },
+  { "capture": "05-tools", "title": "Every roofing calc on one screen", "sub": "Big buttons for gloves, high contrast for full sun" },
+  { "capture": "07-flashings", "title": "Flashings in stock lengths", "sub": "Ridge, hips, barges and gutters, with laps" },
+  { "capture": "08-pitch", "title": "Pitch in degrees or x:12", "sub": "From rise and run, or lay the phone on a rafter" }
+]

@@ -1,0 +1,85 @@
+# App Store captures for Eaveline 1.0.0 (Maestro, iOS simulator), run by .github/workflows/eaveline-store-capture.yml
+# on the capture build (EXPO_PUBLIC_EAVELINE_CAPTURE=1: every tool open as during the trial, sample hip roof
+# 14.2 × 9.6 m at 22.5° and a sample job). ${MODE} = light/dark.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+    clearState: true
+- waitForAnimationToEnd:
+    timeout: 15000
+- tapOn:
+    id: "country-AU"
+- waitForAnimationToEnd
+- takeScreenshot: 06-country-${MODE}
+- tapOn:
+    id: "onboarding-next"
+- waitForAnimationToEnd
+- tapOn:
+    id: "onboarding-done"
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 05-tools-${MODE}
+
+- openLink: eaveline://sheets
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      id: "sheets-answer"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: 01-sheets-${MODE}
+
+- openLink: eaveline://roof
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      id: "roof-answer"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: 02-roof-${MODE}
+
+- openLink: eaveline://tiles
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      id: "tiles-answer"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: 03-tiles-${MODE}
+
+- openLink: eaveline://downpipes
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      id: "downpipes-answer"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: 04-downpipes-${MODE}
+
+- openLink: eaveline://flashings
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      id: "flashings-answer"
+    direction: DOWN
+    centerElement: true
+- takeScreenshot: 07-flashings-${MODE}
+
+- openLink: eaveline://pitch
+- waitForAnimationToEnd:
+    timeout: 8000
+- tapOn:
+    id: "pitch-rise"
+- inputText: "414"
+- tapOn:
+    id: "pitch-run"
+- inputText: "1000"
+- hideKeyboard
+- waitForAnimationToEnd
+- takeScreenshot: 08-pitch-${MODE}

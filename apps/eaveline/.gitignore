@@ -9,8 +9,6 @@ web-build/
 .env*
 coverage/
 .claude/
-# store screenshot kit output (store/render.mjs), regenerated on demand, never committed
-store/screenshots/
 .verify/
 verify-report.txt
 .verify-step.txt

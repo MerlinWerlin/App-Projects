@@ -1,4 +1,6 @@
 {
-  "mode": "none",
-  "note": "Eaveline: not shipped yet (waiting for the App Store Connect app record)."
+  "mode": "build",
+  "note": "Eaveline 1.0.0: first TestFlight build. Roofing calculator: pitch and phone level, roof area, rafters, hips and valleys, sheet counts and cut lists, tiles and battens, shingles, flashings, gutter fall, downpipe estimates and fixings with every step shown; country-first setup (AU, NZ, UK, IE, US, CA) with local standards and materials; saved jobs; 7-day trial and one-time unlock.",
+  "ascAppId": "6838131478",
+  "ascKeyAuth": true
 }

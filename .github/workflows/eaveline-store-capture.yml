@@ -1,0 +1,116 @@
+name: Eaveline store capture
+# Eaveline 1.0.0 on a 6.9-inch iPhone simulator, two Release builds of the same commit:
+#  A. the real StoreKit build: country first, the free pitch tool works, paid calculators are gated and the paywall offers
+#     the free trial with Restore (store/capture/verify.yaml); its paywall capture is the purchase review screenshot.
+#  B. the same build with EXPO_PUBLIC_EAVELINE_CAPTURE=1 at bundle time (every tool open, as during the trial, with a
+#     sample roof and job) for the App Store screenshots in light and dark (store/capture/store-flow.yaml), captioned by
+#     store/capture/compose.py. Also a launch at the largest accessibility text size.
+# Simulator only: no signing, nothing shipped.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/roofer-app']
+    paths: ['.github/workflows/eaveline-store-capture.yml', 'apps/eaveline/store/capture/**', 'apps/eaveline/app/**', 'apps/eaveline/src/**']
+concurrency:
+  group: eaveline-store-capture-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: apps/eaveline
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      RCT_NO_LAUNCH_PACKAGER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Select current Xcode
+        run: |
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - name: Install
+        run: npm ci --no-audit --no-fund > "$RUNNER_TEMP/install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/install.log"; exit 1; }
+      - name: Unit tests and type check
+        run: npx jest --ci && npx tsc --noEmit
+      - name: Generate the iOS project
+        run: |
+          set -euo pipefail
+          npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/prebuild.log"; exit 1; }
+          cd ios && pod install > "$RUNNER_TEMP/pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/pods.log"; exit 1; }
+      - name: Build A (StoreKit) and B (capture flag)
+        run: |
+          set -euo pipefail
+          WS=$(ls -d ios/*.xcworkspace | head -1); SCHEME=$(basename "$WS" .xcworkspace)
+          build() {
+            xcodebuild -workspace "$WS" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/build-$1.log" 2>&1 || { grep -E "error:" "$RUNNER_TEMP/build-$1.log" | head -40; tail -150 "$RUNNER_TEMP/build-$1.log"; exit 1; }
+            APP=$(ls -d "$RUNNER_TEMP"/build/Build/Products/Release-iphonesimulator/*.app | head -1)
+            rm -rf "$RUNNER_TEMP/app-$1" && mkdir -p "$RUNNER_TEMP/app-$1" && cp -R "$APP" "$RUNNER_TEMP/app-$1/"
+          }
+          build a
+          EXPO_PUBLIC_EAVELINE_CAPTURE=1 build b
+      - name: Install Maestro and Pillow
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+          pip3 install --quiet --break-system-packages pillow
+      - name: Checks (A) and store captures (B)
+        timeout-minutes: 70
+        run: |
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/eaveline-captures"; mkdir -p "$OUT/raw" "$OUT/verify"
+          APP_A=$(ls -d "$RUNNER_TEMP"/app-a/*.app); APP_B=$(ls -d "$RUNNER_TEMP"/app-b/*.app)
+          BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP_A")
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next(x["udid"] for x in xs if "Pro Max" in x["name"]))')
+          codesign --force --deep --sign - "$APP_A"; codesign --force --deep --sign - "$APP_B"
+          PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences"; mkdir -p "$PREFS"
+          /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->eaveline string $BUNDLE" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
+          xcrun simctl ui "$DEVICE" appearance light
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          cd store/capture
+          VERIFY=fail
+          xcrun simctl install "$DEVICE" "$APP_A"
+          for TRY in 1 2; do
+            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-verify" verify.yaml && { VERIFY=pass; break; } || echo "verify try $TRY failed"
+          done
+          echo "VERIFY=$VERIFY" | tee "$OUT/verify-result.txt"
+          find "$OUT/maestro-verify" -name 'v*.png' -exec cp {} "$OUT/verify/" \;
+          xcrun simctl uninstall "$DEVICE" "$BUNDLE"
+          xcrun simctl install "$DEVICE" "$APP_B"
+          for MODE in light dark; do
+            xcrun simctl ui "$DEVICE" appearance "$MODE"
+            for TRY in 1 2; do
+              maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e MODE="$MODE" --test-output-dir "$OUT/maestro-$MODE" store-flow.yaml || echo "maestro reported a failure"
+              find "$OUT/maestro-$MODE" -name "*-$MODE.png" | grep -q . && break
+            done
+          done
+          xcrun simctl ui "$DEVICE" appearance light
+          xcrun simctl ui "$DEVICE" content_size accessibility-extra-extra-extra-large || true
+          xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
+          xcrun simctl launch "$DEVICE" "$BUNDLE"; sleep 8; xcrun simctl io "$DEVICE" screenshot "$OUT/raw/90-largest-text.png" || true
+          xcrun simctl openurl "$DEVICE" "eaveline://sheets"; sleep 5; xcrun simctl io "$DEVICE" screenshot "$OUT/raw/91-largest-text-sheets.png" || true
+          xcrun simctl ui "$DEVICE" content_size large || true
+          find "$OUT"/maestro-light "$OUT"/maestro-dark -name '*.png' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
+          ls -la "$OUT/raw" "$OUT/verify"
+          python3 compose.py --raw "$OUT/raw" --out "$OUT/6.9" --mode light || echo "compose failed"
+          ls -la "$OUT/6.9" || true
+          [ "$VERIFY" = pass ] || { echo "::error::StoreKit build checks failed"; exit 1; }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eaveline-store-captures
+          path: |
+            ${{ runner.temp }}/eaveline-captures
+            ${{ runner.temp }}/build-a.log
+          retention-days: 14

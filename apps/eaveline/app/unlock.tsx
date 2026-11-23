@@ -100,13 +100,13 @@ export default function Unlock() {
         ) : (
           <View style={{ gap: SPACE.sm }}>
             <Txt v="footnote" tone="ink2">The free 7-day trial opens every calculator. When it ends, the unlock is a separate one-time purchase at the price below; nothing is charged automatically.</Txt>
-            {!app.trial.started ? <Btn label="Start 7-day free trial" kind="ink" onPress={() => void act('trial')} disabled={busy} /> : null}
-            <Btn label={price ? `Unlock for ${price}` : 'Unlock'} onPress={() => void act('buy')} disabled={busy} />
+            {!app.trial.started ? <Btn testID="start-trial" label="Start 7-day free trial" kind="ink" onPress={() => void act('trial')} disabled={busy} /> : null}
+            <Btn testID="buy-unlock" label={price ? `Unlock for ${price}` : 'Unlock'} onPress={() => void act('buy')} disabled={busy} />
             {price === null ? <Btn label="Load App Store price" kind="plain" onPress={() => void reload()} disabled={busy} /> : null}
             <Txt v="footnote" tone="ink3" style={{ textAlign: 'center' }}>One payment. Family Sharing included.</Txt>
           </View>
         )}
-        <Btn label="Restore purchases" kind="plain" onPress={() => void act('restore')} disabled={busy} />
+        <Btn testID="restore" label="Restore purchases" kind="plain" onPress={() => void act('restore')} disabled={busy} />
       </View>
     </ScrollView>
   );

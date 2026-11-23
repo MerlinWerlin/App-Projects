@@ -1,0 +1,50 @@
+{
+  "locale": "en-AU",
+  "primaryLocale": "en-AU",
+  "dropLocales": ["en-US"],
+  "version": "1.0.0",
+  "name": "Eaveline: Roofing Calculator",
+  "subtitle": "Roof pitch, sheets & tiles",
+  "promotionalText": "Roof area, sheet cut lists, tiles and battens, flashings, downpipes and fixings, set up for your country with every step of the working shown. No account, no ads, no tracking.",
+  "keywords": "roofer,pitch,rafter,hip,valley,gutter,downpipe,downspout,flashing,batten,sheet,tile,shingle,metal",
+  "description": "A job-site calculator for roofers and roof plumbers. Pick your country first and Eaveline sets the units, the trade words, the standards it quotes and a catalogue of the sheet profiles, tiles and gutters local suppliers commonly stock.\n\nPITCH\n- Pitch from a rise and run, in degrees or rise per 12.\n- Phone level: lay the phone on a rafter or sheet and read the pitch, with hold and zero.\n- Converter between degrees, x:12, percent and 1 in N, with the pitch factor.\n\nROOF SIZE\n- Gable, hip and skillion roofs from the plan size at the eaves and the pitch.\n- Roof surface area, rise, common rafter, ridge, hips and hip pitch, barges and eaves.\n- True rafter lengths with overhang, and hip and valley rafters for equal or unequal pitches.\n\nSHEETS\n- Sheet count and a cut list from the profile's cover width, with the overhang into the gutter.\n- Hip roofs: each sheet listed at the length it needs to reach the hip.\n- Long runs split with the profile's end lap, and a warning if the roof is below the profile's minimum pitch.\n\nTILES AND BATTENS\n- Even batten gauge from the eaves and top set-out and the tile's maximum gauge.\n- Tiles by courses and by area, slates by headlap, battens in stock lengths, ridge and hip caps.\n- Asphalt shingles in squares and bundles, with starter, hip and ridge and nails (US and Canada).\n\nFLASHINGS, GUTTERS AND DOWNPIPES\n- Ridge, hip, barge, valley, gutter and wall flashings in pieces of your stock length, with laps.\n- Gutter fall over a run at your country's gradient, or the gradient a fixed fall gives you.\n- Downpipe estimate by your country's published method, with built-in design rainfall for major cities where it is published.\n\nFIXINGS\n- Screws or clips per sheet at end and middle supports, side-lap stitching, and boxes to order.\n\nSHOWN WORKING\nEvery result shows how it is worked out, step by step, and Settings lists the standards, codes and data sheets behind each value. Anything that couldn't be verified is marked.\n\nBUILT FOR SITE\nBig controls for gloves, high contrast for full sun, a Sunlight theme, and a working-at-heights reminder for your country. Save results to jobs on your phone and share a job sheet.\n\nCOUNTRIES\nFully guided for Australia, New Zealand, the United Kingdom, Ireland, the United States and Canada. Other countries get metric with general guidance.\n\nFREE TRIAL\nFree 7-day trial, then a one-time unlock. No subscription. Pitch, the phone level and gutter fall are always free.\n\nResults are estimates for planning and ordering. Check them against the maker's data and your local code; a licensed plumber or designer confirms drainage.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "PRODUCTIVITY",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/eaveline/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/eaveline/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/eaveline/",
+  "ageRating": "none",
+  "screenshots": { "APP_IPHONE_67": "apps/eaveline/store/screenshots/6.9" },
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "No account or login is needed. Eaveline works offline and has no over-the-air updates: every change ships as a new App Store build.\n\nOn first launch the app asks for the country (Australia is a good choice for review), then units, and shows a working-at-heights note.\n\nIn-app purchases: open any locked calculator (for example Sheets on the Tools tab) and tap Start free trial, or Settings > Full Unlock. Start 7-day free trial starts a free non-consumable trial (Guideline 3.1.1); Unlock buys the one-time Full Unlock; Restore purchases is on the same screen. Pitch, Phone level and Gutter fall are always free.\n\nTo see results quickly: Tools > the roof card at the top > Hip, length 14.2, width 9.6, pitch 22.5. Then open Sheets, Tiles, Flashings, Downpipes or Fixings.\n\nApp Review information:\n1. Purpose and audience: a calculator for professional roofers and roof plumbers (sheet metal and tile roofing, gutters and downpipes).\n2. Setup: none. No login.\n3. External services: none. No server, analytics, ads or tracking. Links to standards bodies and regulators open in Safari only when tapped. Payments are Apple in-app purchases only.\n4. Regional differences: the chosen country changes units, trade words, the standards quoted and the materials catalogue. The app is available everywhere.\n5. Regulated or third-party material: product values come from public manufacturer data sheets and government codes, cited in Settings > Standards & sources; no trademarks are used in the app. Drainage results are labelled as estimates and the app tells users a licensed plumber or designer confirms the system.\n6. Permissions: motion (tilt) only while the Phone level screen is open. No location, camera, contacts or photos.",
+  "reviewContactFromApp": "linework",
+  "price": "free",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.eaveline.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-Day Free Trial",
+      "displayName": "7-Day Free Trial",
+      "description": "Try every Eaveline calculator free for 7 days.",
+      "reviewNote": "Free non-consumable that starts the 7-day free trial (Guideline 3.1.1). Tools > Sheets (or any locked calculator) > Start free trial, or Settings > Full Unlock > Start 7-day free trial. Restore purchases brings it back with its original start date.",
+      "price": { "territory": "AUS", "amount": "0" },
+      "reviewScreenshot": "apps/eaveline/store/iap/paywall.jpg",
+      "availability": "all"
+    },
+    {
+      "productId": "com.jared797.eaveline.unlock",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Eaveline Full Unlock",
+      "displayName": "Eaveline Full Unlock",
+      "description": "Every calculator and saved jobs. One time, no subscription.",
+      "reviewNote": "Non-consumable one-time unlock. After the trial it keeps the roof, rafter, sheet, tile, shingle, flashing, downpipe and fixing calculators and saved jobs open; pitch, the phone level and gutter fall are always free. Settings > Full Unlock, then Unlock; Restore purchases on the same screen.",
+      "familySharable": true,
+      "price": { "territory": "AUS", "amount": "4.99" },
+      "reviewScreenshot": "apps/eaveline/store/iap/paywall.jpg",
+      "availability": "all"
+    }
+  ],
+  "attachBuild": "latest"
+}

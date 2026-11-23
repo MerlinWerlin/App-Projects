@@ -1,0 +1,52 @@
+# StoreKit build checks (no products on a simulator): country first, the free pitch tool works, a paid calculator is
+# gated and the paywall offers the free trial with Restore on the same screen. v2 is the purchase review screenshot.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+    clearState: true
+- waitForAnimationToEnd:
+    timeout: 15000
+- assertVisible:
+    id: "country-AU"
+- tapOn:
+    id: "country-AU"
+- tapOn:
+    id: "onboarding-next"
+- waitForAnimationToEnd
+- tapOn:
+    id: "onboarding-done"
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible:
+    id: "tool-pitch"
+- tapOn:
+    id: "tool-pitch"
+- waitForAnimationToEnd
+- tapOn:
+    id: "pitch-rise"
+- inputText: "300"
+- tapOn:
+    id: "pitch-run"
+- inputText: "1000"
+- hideKeyboard
+- assertVisible:
+    id: "pitch-answer"
+- takeScreenshot: v0-pitch-free
+- openLink: eaveline://sheets
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      id: "gate-unlock"
+    direction: DOWN
+- takeScreenshot: v1-gate
+- tapOn:
+    id: "gate-unlock"
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible:
+    id: "start-trial"
+- assertVisible:
+    id: "restore"
+- takeScreenshot: v2-paywall

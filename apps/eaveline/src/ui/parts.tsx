@@ -123,7 +123,7 @@ export function Gate({ tool, children }: { tool: ToolId; children: React.ReactNo
           ? 'Unlock Eaveline once to keep using this calculator and saved jobs. The pitch tools and gutter fall stay free.'
           : 'This calculator is part of the Full Unlock. Start the free trial: nothing is charged, and the pitch tools and gutter fall are always free.'}
       </Txt>
-      <Btn label={app.trial.started ? 'See unlock options' : 'Start free trial'} onPress={() => router.push('/unlock')} />
+      <Btn testID="gate-unlock" label={app.trial.started ? 'See unlock options' : 'Start free trial'} onPress={() => router.push('/unlock')} />
     </Card>
   );
 }
