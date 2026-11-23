@@ -8,7 +8,7 @@ name: Glaze 1.0.44 release QA (iOS 27 simulator)
 # used as it ships (expo-modules-core / react-native versions are printed).
 on:
   push:
-    branches: ['claude/glaze-1044', 'claude/glaze-1044-card-previews']
+    branches: ['claude/glaze-1044', 'claude/glaze-1044-card-previews', 'claude/glaze-1044-cards-98']
     paths: ['.github/workflows/glaze-1044-release-qa.yml', 'apps/glaze/scripts/native-1044-release-qa-tests.swift', 'apps/glaze/scripts/qa-1044-build-run.txt', 'apps/glaze/scripts/qa-1044-before-run.txt']
   workflow_dispatch:
 permissions:
@@ -148,11 +148,13 @@ jobs:
           fi
           SMALL=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS-27" in r for x in xs if x["name"].startswith("iPhone")];rank=lambda n:(0 if "SE" in n else 1 if "mini" in n else 2 if n.rstrip().endswith("e") else 3 if not any(w in n for w in ("Pro","Plus","Max","Air","Fold","Duo","Flip")) else 9);a.sort(key=lambda x:rank(x["name"]));print(a[0]["udid"])')
           xcrun simctl list devices available | grep "$SMALL" | tee -a "$OUT/toolchain.txt"
-          install() { # device app
+          install() { # device app plus|free (fresh data each time: free shows the stage and the Free rails)
             xcrun simctl terminate "$1" "$BID" 2>/dev/null || true
+            xcrun simctl uninstall "$1" "$BID" 2>/dev/null || true
             xcrun simctl install "$1" "$2"
             D=$(xcrun simctl get_app_container "$1" "$BID" data); S="$D/Library/Application Support/$BID/RCTAsyncLocalStorage_V1"
-            mkdir -p "$S"; [ -f "$S/manifest.json" ] || printf '%s' '{"glaze.plus.mock.v1":"{\"plus\":true}"}' > "$S/manifest.json"
+            P=$([ "$3" = plus ] && echo true || echo false)
+            mkdir -p "$S"; printf '%s' '{"glaze.plus.mock.v1":"{\"plus\":'"$P"'}"}' > "$S/manifest.json"
           }
           cards() { # device tag
             TEST_RUNNER_GLAZE_QA_TAG="$2" xcodebuild test-without-building -xctestrun "$XCTESTRUN" -destination "platform=iOS Simulator,id=$1"               -resultBundlePath "$RUNNER_TEMP/cards-$2.xcresult" -only-testing:GlazeLinkUITests/GlazeRelease1044Tests/testThemeCardsCapture > "$OUT/cards-$2.log" 2>&1 || echo "::warning::cards $2 had a failure"
@@ -160,18 +162,15 @@ jobs:
           }
           xcrun simctl boot "$SMALL" || true; xcrun simctl bootstatus "$SMALL" -b
           xcrun simctl status_bar "$SMALL" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100 || true
-          for DEV in "$DEVICE" "$SMALL"; do
-            NAME=$([ "$DEV" = "$DEVICE" ] && echo pro || echo small)
-            for SIDE in after before; do
-              APPP=$([ "$SIDE" = after ] && echo "$AFTER_APP" || echo "$BEFORE_APP")
-              [ -n "$APPP" ] || continue
-              install "$DEV" "$APPP"
-              for LOOK in light dark; do
-                [ "$NAME" = small ] && [ "$LOOK" = dark ] && [ "$SIDE" = before ] && continue
-                xcrun simctl ui "$DEV" appearance "$LOOK"
-                cards "$DEV" "$SIDE-$NAME-$LOOK"
-              done
-            done
+          # Build 98 passes: free (stage + Free rails, as a non-subscriber sees it) and Plus, before (build 97) and after.
+          for PASS in pro:after:free:light pro:after:free:dark pro:after:plus:light pro:before:free:light pro:before:plus:light small:after:free:light small:before:free:light; do
+            IFS=: read -r NAME SIDE TIER LOOK <<< "$PASS"
+            DEV=$([ "$NAME" = pro ] && echo "$DEVICE" || echo "$SMALL")
+            APPP=$([ "$SIDE" = after ] && echo "$AFTER_APP" || echo "$BEFORE_APP")
+            [ -n "$APPP" ] || continue
+            install "$DEV" "$APPP" "$TIER"
+            xcrun simctl ui "$DEV" appearance "$LOOK"
+            cards "$DEV" "$SIDE-$NAME-$TIER-$LOOK"
             xcrun simctl ui "$DEV" appearance light
           done
           ls "$OUT/cards" || true

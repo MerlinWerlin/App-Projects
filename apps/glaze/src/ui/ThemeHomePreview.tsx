@@ -1,19 +1,22 @@
-// Glaze 1.0.44 (owner 23 Nov 2026): the mini Home Screen over a theme card's art print. The print is the
-// theme's wallpaper; its own small Clock widget sits in the 2×2 slot and Phone, Messages and Camera sit in
-// a dock along the bottom, exactly as they'd look after applying the theme. Geometry, icon specs and the
-// clock SVG are pure and cached (src/core/cardPreview.ts), so a card that scrolls back in reuses them;
-// the whole layer is decorative (hidden from VoiceOver, no touches) and draws nothing on tiny prints.
+// Glaze 1.0.44 (owner 23-24 Nov 2026): the mini Home Screen over a theme card's art print. The print is
+// the theme's wallpaper; the top band holds the first page of a Home Screen as it looks after applying
+// the theme: a small widget (half the themes show their own Clock, the other half their best Artwork
+// piece, alternating along every rail) with Phone, Messages and Camera beside it. Geometry, icon specs,
+// the clock SVG and the art choice are pure and cached (src/core/cardPreview.ts, cardArtPlan.ts), the art
+// ships in the app (assets/card-art, 256 px), so nothing downloads; the whole layer is decorative
+// (hidden from VoiceOver, no touches) and draws nothing on tiny prints.
+import { Image } from 'expo-image';
 import { memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { cardClockSvg, cardIconSpecs, cardPreviewLayout, dockFill } from '../core/cardPreview';
-import { relativeLuminance } from '../core/colour';
+import { cardClockSvg, cardIconSpecs, cardPreviewLayout } from '../core/cardPreview';
 import type { IconSpec } from '../core/iconspec';
 import { weakKeyedCache } from '../core/perfCache';
 import type { Theme } from '../core/themes';
 import { IconCanvas } from '../render/IconCanvas';
 import { useT } from '../i18n';
 import { continuous } from '../theme/tokensV2';
+import { cardArtSource } from './cardArtSources';
 
 const ICONS = weakKeyedCache<Theme, IconSpec[]>();
 
@@ -23,24 +26,26 @@ export const ThemeHomePreview = memo(function ThemeHomePreview({ theme, width, h
   const { locale } = useT();
   const layout = useMemo(() => cardPreviewLayout(width, height), [width, height]);
   const icons = layout ? ICONS.get(theme, 'card', () => cardIconSpecs(theme)) : null;
-  const clock = useMemo(() => (layout ? cardClockSvg(theme, locale) : ''), [layout, theme, locale]);
+  const art = cardArtSource(theme.id);
+  const clock = useMemo(() => (layout && art == null ? cardClockSvg(theme, locale) : ''), [layout, art, theme, locale]);
   if (!layout || !icons) return null;
-  const glass = dockFill(relativeLuminance(theme.palette.bg));
-  const { widget, dock } = layout;
+  const { widget } = layout;
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
-      <View style={[styles.lift, { left: widget.x, top: widget.y, width: widget.size, height: widget.size, borderRadius: layout.widgetRadius }]}>
-        <View style={[styles.clip, continuous, { borderRadius: layout.widgetRadius }]}>
-          <SvgXml xml={clock} width={widget.size} height={widget.size} />
-        </View>
-      </View>
       <View
         style={[
-          styles.dock,
+          styles.widget,
           continuous,
-          { left: dock.x, top: dock.y, width: dock.w, height: dock.h, borderRadius: dock.radius, backgroundColor: glass.fill, borderColor: glass.edge },
+          { left: widget.x, top: widget.y, width: widget.size, height: widget.size, borderRadius: layout.widgetRadius },
+          art != null ? { backgroundColor: theme.palette.bg } : null,
         ]}
-      />
+      >
+        {art != null ? (
+          <Image source={art} contentFit="cover" cachePolicy="memory" recyclingKey={`card-art-${theme.id}`} transition={0} style={{ width: widget.size, height: widget.size }} />
+        ) : (
+          <SvgXml xml={clock} width={widget.size} height={widget.size} />
+        )}
+      </View>
       {icons.map((spec, i) => {
         const b = layout.icons[i];
         return b ? <IconCanvas key={spec.appId ?? i} spec={spec} size={b.size} morph={false} style={[styles.icon, { left: b.x, top: b.y }]} /> : null;
@@ -51,8 +56,6 @@ export const ThemeHomePreview = memo(function ThemeHomePreview({ theme, width, h
 
 const styles = StyleSheet.create({
   // No shadow: Home Screen widgets sit flat on the wallpaper, and a shadow costs a frame while scrolling.
-  lift: { position: 'absolute' },
-  clip: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' },
-  dock: { position: 'absolute', borderWidth: StyleSheet.hairlineWidth },
+  widget: { position: 'absolute', overflow: 'hidden' },
   icon: { position: 'absolute' },
 });

@@ -19,13 +19,18 @@ import { displayStyle } from './displayType';
 import { PressableScale } from './PressableScale';
 import { RemoteArtImage } from './RemoteArtImage';
 import { ThemeWallpaper } from './ThemeWallpaper';
+import { PHONE_ASPECT } from './ThemeCard';
 import { ThemeHomePreview } from './ThemeHomePreview';
 import { noMirror, textStyleFor } from './i18nLayout';
 
 /** Share of the screen width one print takes (the neighbours peek in at both sides). */
-export const STAGE_WIDTH_RATIO = 0.74;
-/** Print height over width: a tall window onto the portrait wallpaper. */
-export const STAGE_ART_RATIO = 1.3;
+export const STAGE_WIDTH_RATIO = 0.56;
+/**
+ * Print height over width: the phone's own aspect, like every other card. 1.0.44 (owner 24 Nov: "unsure
+ * why the free ones are so zoomed in?"): the stage (only the bundled free starters) used 1.3, which
+ * cover-cropped the 2.17-tall wallpaper to its middle 60 %, so the free prints looked zoomed in.
+ */
+export const STAGE_ART_RATIO = PHONE_ASPECT;
 /** How small and faint the neighbours sit (the centre print is 1 / 1). */
 const SIDE_SCALE = 0.9;
 const SIDE_OPACITY = 0.55;
