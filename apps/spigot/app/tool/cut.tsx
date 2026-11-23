@@ -64,8 +64,12 @@ export default function CutScreen() {
   const parsed = fields.map(f => readField(f, u));
   const errs = parsed.map(p => (p && typeof p === 'object' ? p.error : null));
   const num = (i: number) => { const p = parsed[i]; return typeof p === 'number' ? p : undefined; };
-  const A = resolve(fitA);
-  const B = resolve(fitB);
+  const saved = (d: unknown, key: string | null): ChosenFitting | null => {
+    const o = d as { name?: unknown; centreToEnd?: unknown; engagement?: unknown } | undefined;
+    return key && o && typeof o.centreToEnd === 'number' && typeof o.engagement === 'number' ? { key, name: String(o.name ?? 'Saved fitting'), centreToEnd: o.centreToEnd, engagement: o.engagement, verified: true, note: 'As saved with this job' } : null;
+  };
+  const A = resolve(fitA) ?? saved(ri.dimsA, fitA);
+  const B = resolve(fitB) ?? saved(ri.dimsB, fitB);
   const end = (ref: EndRef, f: ChosenFitting | null): CutEnd => ({ ref, fitting: f ?? undefined, name: f?.name });
 
   const result = useMemo(() => {
@@ -77,7 +81,7 @@ export default function CutScreen() {
   const ok = result && result.ok ? result.value : null;
   const q = num(1) ?? 1;
   const snapshot = ok ? {
-    inputs: { measured: num(0)!, qty: q, refA, refB, ...(fitA ? { fitA } : {}), ...(fitB ? { fitB } : {}) },
+    inputs: { measured: num(0)!, qty: q, refA, refB, ...(fitA ? { fitA } : {}), ...(fitB ? { fitB } : {}), ...(A ? { dimsA: { name: A.name, centreToEnd: A.centreToEnd, engagement: A.engagement } } : {}), ...(B ? { dimsB: { name: B.name, centreToEnd: B.centreToEnd, engagement: B.engagement } } : {}) },
     summary: `Measured ${formatLength(num(0)!, u)}: cut ${formatLength(ok.cut, u)}${q > 1 ? ` × ${q}` : ''}`,
   } : null;
 

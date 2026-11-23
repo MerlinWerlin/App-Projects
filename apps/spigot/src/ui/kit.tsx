@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type ViewStyle, type TextStyle, Share, Platform } from 'react-native';
+import { AccessibilityInfo, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type ViewStyle, type TextStyle, Share, Platform, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Haptics from 'expo-haptics';
@@ -93,15 +93,17 @@ export function Chips<T extends string | number>({ options, value, onChange, lab
 export function Segmented<T extends string>({ options, value, onChange, label }: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void; label?: string }) {
   const c = usePalette();
   const tap = useTap();
+  const { fontScale } = useWindowDimensions();
+  const stack = fontScale >= 1.35;
   return (
     <View style={{ gap: space.s }}>
       {label ? <FieldLabel>{label}</FieldLabel> : null}
-      <View accessibilityRole="tablist" style={{ flexDirection: 'row', backgroundColor: c.surface2, borderRadius: radius.m, padding: 4, gap: 4 }}>
+      <View accessibilityRole="tablist" style={{ flexDirection: stack ? 'column' : 'row', backgroundColor: c.surface2, borderRadius: radius.m, padding: 4, gap: 4 }}>
         {options.map(o => {
           const on = o.value === value;
           return (
             <Pressable key={o.value} accessibilityRole="tab" accessibilityState={{ selected: on }} onPress={() => { tap(); onChange(o.value); }}
-              style={{ flex: 1, minHeight: HIT - 8, borderRadius: radius.s, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? c.surface : 'transparent', paddingHorizontal: 4 }}>
+              style={{ flex: stack ? undefined : 1, minHeight: HIT - 8, borderRadius: radius.s, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? c.surface : 'transparent', paddingHorizontal: 4 }}>
               <Text numberOfLines={2} style={{ fontSize: 15, fontWeight: on ? '700' : '500', color: on ? c.ink : c.ink2, textAlign: 'center' }}>{o.label}</Text>
             </Pressable>
           );
@@ -264,6 +266,11 @@ export interface BigResult { label: string; value: string; accessibilityValue?: 
 /** The black result panel: huge hi-vis numbers readable at arm's length in sunlight. */
 export function ResultPanel({ main, rest, empty }: { main: BigResult | null; rest?: BigResult[]; empty?: string }) {
   const c = usePalette();
+  const spoken = main ? [main, ...(rest ?? [])].map(r => `${r.label} ${r.value}`).join(', ') : empty ?? '';
+  useEffect(() => {
+    const t = setTimeout(() => { if (spoken) AccessibilityInfo.announceForAccessibility(spoken); }, 900);
+    return () => clearTimeout(t);
+  }, [spoken]);
   return (
     <View accessible accessibilityLiveRegion="polite" accessibilityLabel={main ? [main, ...(rest ?? [])].map(r => `${r.label} ${r.value}`).join(', ') : empty} style={{ backgroundColor: c.panel, borderRadius: radius.l, padding: space.l, gap: space.m }}>
       {main ? (

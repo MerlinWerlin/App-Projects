@@ -90,7 +90,8 @@ export function flow(input: FlowInput): CalcResult<FlowResult> {
   }
   if (input.length !== undefined || input.c !== undefined) {
     if (!isPos(input.length)) return fail('Enter the pipe length for the pressure loss', 'length');
-    if (!isPos(input.c) || input.c > 200) return fail('Hazen–Williams C must be between 1 and 200', 'c');
+    if (typeof input.c !== 'number' || !Number.isFinite(input.c) || input.c < 1 || input.c > 200) return fail('Hazen–Williams C must be between 1 and 200', 'c');
+    if (input.c < 60 || input.c > 160) warnings.push(`C = ${input.c} is unusual: new pipe is about 120–150, old rough pipe about 80–100.`);
     const d = input.id / 1000;
     const len = input.length / 1000;
     const hf = (10.67 * len * Math.pow(q, 1.852)) / (Math.pow(input.c, 1.852) * Math.pow(d, 4.871));

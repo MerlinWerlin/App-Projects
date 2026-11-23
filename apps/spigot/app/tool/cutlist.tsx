@@ -22,6 +22,8 @@ export default function CutListScreen() {
   const [stock, setStock] = useState(lengthToInput(typeof ri.stock === 'number' ? ri.stock : prefs.stock, u));
   const [kerf, setKerf] = useState(lengthToInput(typeof ri.kerf === 'number' ? ri.kerf : prefs.kerf, u));
   const [trim, setTrim] = useState(typeof ri.trim === 'number' ? lengthToInput(ri.trim, u) : '');
+  // Reopened values stay exact until edited (inch text is rounded to 1/16, which could change the plan).
+  const [initial] = useState(() => ({ stock: stock, kerf: kerf, trim: trim, mm: { stock: typeof ri.stock === 'number' ? ri.stock : undefined, kerf: typeof ri.kerf === 'number' ? ri.kerf : undefined, trim: typeof ri.trim === 'number' ? ri.trim : undefined } }));
   const [len, setLen] = useState('');
   const [qty, setQty] = useState('1');
 
@@ -35,7 +37,8 @@ export default function CutListScreen() {
   const kp = useKeypad(fields);
   const parsed = fields.map(f => readField(f, u));
   const errs = parsed.map(p => (p && typeof p === 'object' ? p.error : null));
-  const num = (i: number) => { const p = parsed[i]; return typeof p === 'number' ? p : undefined; };
+  const exact: (number | undefined)[] = [undefined, undefined, stock === initial.stock ? initial.mm.stock : undefined, kerf === initial.kerf ? initial.mm.kerf : undefined, trim === initial.trim ? initial.mm.trim : undefined];
+  const num = (i: number) => { const p = parsed[i]; return exact[i] ?? (typeof p === 'number' ? p : undefined); };
 
   const add = () => {
     const l = num(0); const q = num(1) ?? 1;
@@ -87,7 +90,8 @@ export default function CutListScreen() {
           <View style={{ flex: 2 }}><Field field={fields[0]!} onOpen={() => kp.openAt(0)} error={errs[0]} /></View>
           <View style={{ flex: 1 }}><Field field={fields[1]!} onOpen={() => kp.openAt(1)} error={errs[1]} /></View>
         </View>
-        <Button label="Add to list" icon="add" disabled={num(0) === undefined || !!errs[0] || !!errs[1]} onPress={add} />
+        <Button label="Add to list" icon="add" disabled={num(0) === undefined || !!errs[0] || !!errs[1] || (num(1) ?? 1) > 500 || (num(1) ?? 1) < 1} onPress={add} />
+        {(num(1) ?? 1) > 500 ? <Note tone="warn">Up to 500 of one length at a time.</Note> : null}
         {lines.length ? (
           <View style={{ gap: space.s }}>
             <FieldLabel>{(() => { const n = lines.reduce((s, l) => s + l.qty, 0); return `Your list (${n} ${n === 1 ? 'piece' : 'pieces'})`; })()}</FieldLabel>

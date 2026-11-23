@@ -88,3 +88,23 @@ export function trim(n: number): string {
   const r = Math.round(n * 10) / 10;
   return Number.isInteger(r) ? String(r) : r.toFixed(1);
 }
+
+/**
+ * Rebuilds the grade field text for a saved grade (stored as N of 1:N, unit-free) in the person's current units,
+ * so a saved 1/4 in per ft reopens as 1/4 and not as its millimetre value.
+ */
+export function gradeToText(n: number, kind: GradeInput['kind'], unit: 'metric' | 'imperial'): string {
+  if (!Number.isFinite(n) || n <= 0) return '';
+  if (kind === 'ratio') return trim(n);
+  if (kind === 'percent') return String(Number((100 / n).toFixed(3)));
+  if (unit === 'imperial') {
+    // inches per foot, written the way the keypad takes it (fractions to 1/16)
+    const sixteenths = Math.round((12 / n) * 16);
+    const whole = Math.floor(sixteenths / 16);
+    let num = sixteenths % 16, den = 16;
+    while (num && num % 2 === 0) { num /= 2; den /= 2; }
+    const frac = num ? `${num}/${den}` : '';
+    return whole && frac ? `${whole} ${frac}` : whole ? String(whole) : frac || '0';
+  }
+  return String(Number((1000 / n).toFixed(3)));
+}

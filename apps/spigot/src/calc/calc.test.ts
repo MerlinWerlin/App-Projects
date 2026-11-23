@@ -316,3 +316,28 @@ describe('imperial flow units', () => {
     expect(showPerLength(lpm, 'imperial')).toBeCloseTo(Math.PI / 4 * 1.025 ** 2 * 12 / 231, 6);
   });
 });
+
+describe('saved grades reopen correctly in any unit', () => {
+  const { gradeToText, gradeN } = require('./fall');
+  const { parseLength } = require('./units');
+  test('1/4 in per ft saved as N = 48 reopens as 1/4 and parses back to 1:48', () => {
+    expect(gradeToText(48, 'mmPerM', 'imperial')).toBe('1/4');
+    const mm = parseLength('1/4', 'imperial');
+    expect(gradeN({ kind: 'inPerFt', inches: mm.value / 25.4 })).toBeCloseTo(48, 9);
+    expect(gradeToText(96, 'mmPerM', 'imperial')).toBe('1/8');
+  });
+  test('ratio, percent and mm per m round trip', () => {
+    expect(gradeToText(60, 'ratio', 'metric')).toBe('60');
+    expect(gradeToText(40, 'percent', 'metric')).toBe('2.5');
+    expect(gradeToText(40, 'mmPerM', 'metric')).toBe('25');
+    expect(gradeN({ kind: 'percent', pct: Number(gradeToText(60, 'percent', 'metric')) })).toBeCloseTo(60, 1);
+    expect(gradeToText(0, 'ratio', 'metric')).toBe('');
+  });
+});
+
+test('Hazen–Williams C below 1 or above 200 is rejected; unusual C warns', () => {
+  expect(flow({ id: 20, lpm: 10, length: 1000, c: 0.5 }).ok).toBe(false);
+  expect(flow({ id: 20, lpm: 10, length: 1000, c: 201 }).ok).toBe(false);
+  const r = flow({ id: 20, lpm: 10, length: 1000, c: 40 });
+  expect(r.ok && r.warnings.some((w: string) => w.includes('unusual'))).toBe(true);
+});

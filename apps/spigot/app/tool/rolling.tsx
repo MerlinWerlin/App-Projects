@@ -38,8 +38,10 @@ export default function RollingScreen() {
     return rollingOffset({ rise: r, roll: s, angle, takeoffA: num(2), takeoffB: num(3) });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rise, roll, angle, ta, tb, u]);
-  const ok = result && result.ok ? result.value : null;
-  const snapshot = ok ? {
+  const okRaw = result && result.ok ? result.value : null;
+  const overlap = !!okRaw && okRaw.cut !== undefined && okRaw.cut <= 0;
+  const ok = okRaw && overlap ? { ...okRaw, cut: undefined } : okRaw;
+  const snapshot = ok && !overlap ? {
     inputs: { rise: num(0)!, roll: num(1)!, angle, ...(num(2) !== undefined ? { takeoffA: num(2) } : {}), ...(num(3) !== undefined ? { takeoffB: num(3) } : {}) },
     summary: `Rolling ${formatLength(num(0)!, u)} × ${formatLength(num(1)!, u)} at ${angleLabel(angle)}: travel ${formatLength(ok.travel, u)}`,
   } : null;

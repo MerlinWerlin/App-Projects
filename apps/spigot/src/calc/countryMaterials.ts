@@ -59,6 +59,7 @@ export const US_PEX: PipeSize[] = [
   pipe('us-pex-1', 'PEX (CTS SDR 9)', '1 in', 28.58, 3.34, 'PEX CTS SDR 9 (ASTM F876), manufacturer OD and bore.', 21.9),
 ];
 export const US_CPVC: PipeSize[] = [
+  pipe('us-cpvc-12', 'CPVC (CTS SDR 11)', '1/2 in', 15.88, 1.78, 'CPVC CTS (ASTM D2846), one maker’s bore (0.485 in). Other brands differ.', 12.32),
   pipe('us-cpvc-34', 'CPVC (CTS SDR 11)', '3/4 in', 22.23, 2.03, 'CPVC CTS SDR 11 (ASTM D2846), manufacturer figures.', 17.65),
   pipe('us-cpvc-1', 'CPVC (CTS SDR 11)', '1 in', 28.58, 2.59, 'CPVC CTS SDR 11 (ASTM D2846), manufacturer figures.', 22.89),
 ];
@@ -75,16 +76,16 @@ const dwvFit = (mat: 'PVC' | 'ABS', size: string, name: string, takeoff: number,
   source: 'Charlotte Pipe DC-DWV catalogue (A = centre to socket bottom; hub depth table)', verified,
 });
 export const PVC_DWV_FITTINGS: FittingSpec[] = [
-  dwvFit('PVC', '1-1/2', '1/4 bend', 44.5), dwvFit('PVC', '1-1/2', '1/8 bend', 28.6), dwvFit('PVC', '1-1/2', 'Sanitary tee', 44.5),
-  dwvFit('PVC', '2', '1/4 bend', 58.7), dwvFit('PVC', '2', '1/8 bend', 38.1), dwvFit('PVC', '2', 'Sanitary tee', 58.7),
-  dwvFit('PVC', '3', '1/4 bend', 77.8), dwvFit('PVC', '3', '1/8 bend', 44.5), dwvFit('PVC', '3', 'Sanitary tee', 77.8),
-  dwvFit('PVC', '4', '1/4 bend', 98.4), dwvFit('PVC', '4', '1/8 bend', 55.6), dwvFit('PVC', '4', 'Sanitary tee', 98.4),
+  dwvFit('PVC', '1-1/2', '1/4 bend', 44.5), dwvFit('PVC', '1-1/2', '1/8 bend', 28.6), dwvFit('PVC', '1-1/2', 'Sanitary tee, branch', 44.5),
+  dwvFit('PVC', '2', '1/4 bend', 58.7), dwvFit('PVC', '2', '1/8 bend', 38.1), dwvFit('PVC', '2', 'Sanitary tee, branch', 58.7),
+  dwvFit('PVC', '3', '1/4 bend', 77.8), dwvFit('PVC', '3', '1/8 bend', 44.5), dwvFit('PVC', '3', 'Sanitary tee, branch', 77.8),
+  dwvFit('PVC', '4', '1/4 bend', 98.4), dwvFit('PVC', '4', '1/8 bend', 55.6), dwvFit('PVC', '4', 'Sanitary tee, branch', 98.4),
 ];
 export const ABS_FITTINGS: FittingSpec[] = [
-  dwvFit('ABS', '1-1/2', '1/4 bend', 44.45), dwvFit('ABS', '1-1/2', '1/8 bend', 28.58), dwvFit('ABS', '1-1/2', 'Sanitary tee', 43.66),
-  dwvFit('ABS', '2', '1/4 bend', 57.15), dwvFit('ABS', '2', '1/8 bend', 38.1), dwvFit('ABS', '2', 'Sanitary tee', 58.74),
-  dwvFit('ABS', '3', '1/4 bend', 77.79), dwvFit('ABS', '3', '1/8 bend', 44.45), dwvFit('ABS', '3', 'Sanitary tee', 76.99),
-  dwvFit('ABS', '4', '1/4 bend', 98.43), dwvFit('ABS', '4', '1/8 bend', 55.56), dwvFit('ABS', '4', 'Sanitary tee', 98.43),
+  dwvFit('ABS', '1-1/2', '1/4 bend', 44.45), dwvFit('ABS', '1-1/2', '1/8 bend', 28.58), dwvFit('ABS', '1-1/2', 'Sanitary tee, branch', 43.66),
+  dwvFit('ABS', '2', '1/4 bend', 57.15), dwvFit('ABS', '2', '1/8 bend', 38.1), dwvFit('ABS', '2', 'Sanitary tee, branch', 58.74),
+  dwvFit('ABS', '3', '1/4 bend', 77.79), dwvFit('ABS', '3', '1/8 bend', 44.45), dwvFit('ABS', '3', 'Sanitary tee, branch', 76.99),
+  dwvFit('ABS', '4', '1/4 bend', 98.43), dwvFit('ABS', '4', '1/8 bend', 55.56), dwvFit('ABS', '4', 'Sanitary tee, branch', 98.43),
 ];
 
 /** Wrot copper 1/2–2 in: BMI Canada Tech Info #125 take-offs + CDA Copper Tube Handbook Table 14.9 cup depths. */

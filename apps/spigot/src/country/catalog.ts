@@ -33,8 +33,8 @@ const AU: Materials = {
     'pex-16', 'pex-20', 'pex-25', 'pex-32',
     'st-15', 'st-20', 'st-25', 'st-32', 'st-40', 'st-50',
   ]),
-  fittings: fit(['pvc-', 'cu-', 'mi-']),
-  materialsNote: 'Sizes stocked by Australian plumbing suppliers. Fitting dimensions are typical: check your brand.',
+  fittings: fit(['pvc-']),
+  materialsNote: 'Sizes stocked by Australian plumbing suppliers. Australian copper fitting makers don’t publish take-offs: measure yours and add them as your own fittings.',
   materialsVerified: true,
 };
 

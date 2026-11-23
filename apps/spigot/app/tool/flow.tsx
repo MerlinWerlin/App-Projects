@@ -63,7 +63,12 @@ export default function FlowScreen() {
   const [idText, setIdText] = useState(typeof ri.id === 'number' && !ri.pipe ? lengthToInput(ri.id, u) : '');
   const [length, setLength] = useState(typeof ri.length === 'number' ? lengthToInput(ri.length, u) : '');
   const [by, setBy] = useState<FlowBy>(ri.by === 'velocity' ? 'velocity' : 'lpm');
-  const [rate, setRate] = useState(typeof ri.rate === 'number' ? String(ri.rate) : '');
+  // Saved as SI (L/min or m/s); shown in the person's units.
+  const [rate, setRate] = useState(() => {
+    if (typeof ri.rateSI !== 'number') return typeof ri.rate === 'number' ? String(ri.rate) : '';
+    const v = ri.by === 'velocity' ? showVel(ri.rateSI, fu) : showFlow(ri.rateSI, fu);
+    return String(Number(v.toFixed(3)));
+  });
   const [cText, setCText] = useState(typeof ri.c === 'number' ? String(ri.c) : '');
 
   const chosen = pipe ? pipeById(pipe) : undefined;
@@ -99,7 +104,7 @@ export default function FlowScreen() {
     inputs: { mode, ...(chosen ? { pipe: chosen.id } : { id }), length: num(1)! },
     summary: `${pipeName}, ${formatLength(num(1)!, u, { metres: true })}: ${fmtNumber(showVol(vol.litres, fu), 2)} ${FU.vol}`,
   } : fl ? {
-    inputs: { mode, ...(chosen ? { pipe: chosen.id } : { id }), by, rate: num(2)!, ...(num(1) !== undefined ? { length: num(1), c: cValue ?? 140 } : {}) },
+    inputs: { mode, ...(chosen ? { pipe: chosen.id } : { id }), by, rateSI: by === 'lpm' ? inFlow(num(2)!, fu) : inVel(num(2)!, fu), ...(num(1) !== undefined ? { length: num(1), c: cValue ?? 140 } : {}) },
     summary: `${pipeName}: ${fmtNumber(showFlow(fl.lpm, fu), 1)} ${FU.flow} at ${fmtNumber(showVel(fl.velocity, fu), 2)} ${FU.vel}${fl.kpa !== undefined ? `, loss ${fmtNumber(showPressure(fl.kpa, fu), 1)} ${FU.pressure}` : ''}`,
   } : null;
 

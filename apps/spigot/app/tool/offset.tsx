@@ -23,7 +23,7 @@ export default function OffsetScreen() {
 
   const fields: NumField[] = [
     { label: 'Offset (centre to centre)', text: offset, setText: setOffset, hint: 'Sideways distance between the pipes' },
-    { label: 'Other angle', text: customAngle, setText: s => { setCustomAngle(s); const n = Number(s); if (Number.isFinite(n) && n > 0) setAngle(n); }, kind: 'number', suffix: '°', optional: true, hint: 'Any angle above 0° up to 90°' },
+    { label: 'Other angle', text: customAngle, setText: s => setCustomAngle(s), kind: 'number', suffix: '°', optional: true, hint: 'Any angle above 0° up to 90°' },
     { label: 'Take-off, fitting A', text: ta, setText: setTa, optional: true, hint: 'Centre to pipe stop. Leave blank for travel only' },
     { label: 'Take-off, fitting B', text: tb, setText: setTb, optional: true, hint: 'Centre to pipe stop' },
   ];
@@ -32,17 +32,24 @@ export default function OffsetScreen() {
   const parsed = fields.map(f => readField(f, u));
   const errs = parsed.map(p => (p && typeof p === 'object' ? p.error : null));
   const num = (i: number) => { const p = parsed[i]; return typeof p === 'number' ? p : undefined; };
+  // A typed angle always wins over the chips, so 0 or 95 shows an error instead of an old 45° answer.
+  const useAngle = customAngle.trim() !== '' ? (num(1) ?? NaN) : angle;
   const result = useMemo(() => {
     const o = num(0);
     if (o === undefined || errs.some(Boolean)) return null;
-    return simpleOffset({ offset: o, angle, takeoffA: num(2), takeoffB: num(3) });
+    return simpleOffset({ offset: o, angle: useAngle, takeoffA: num(2), takeoffB: num(3) });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offset, angle, ta, tb, u]);
+  }, [offset, useAngle, ta, tb, u]);
 
-  const ok = result && result.ok ? result.value : null;
-  const snapshot = ok ? {
-    inputs: { offset: num(0)!, angle, ...(num(2) !== undefined ? { takeoffA: num(2) } : {}), ...(num(3) !== undefined ? { takeoffB: num(3) } : {}) },
-    summary: `${formatLength(num(0)!, u)} offset at ${angleLabel(angle)}: travel ${formatLength(ok.travel, u)}${ok.cut !== undefined ? `, cut ${formatLength(ok.cut, u)}` : ''}`,
+  const okRaw = result && result.ok ? result.value : null;
+  // A cut of 0 or less is impossible (the fittings overlap): show travel and the warning, never save it.
+  const ok = okRaw && okRaw.cut !== undefined && okRaw.cut <= 0 ? { ...okRaw, cut: undefined } : okRaw;
+  const overlap = !!okRaw && okRaw.cut !== undefined && okRaw.cut <= 0;
+  const oneTakeoff = (num(2) === undefined) !== (num(3) === undefined);
+  const angle_ = useAngle;
+  const snapshot = ok && !overlap ? {
+    inputs: { offset: num(0)!, angle: angle_, ...(num(2) !== undefined ? { takeoffA: num(2) } : {}), ...(num(3) !== undefined ? { takeoffB: num(3) } : {}) },
+    summary: `${formatLength(num(0)!, u)} offset at ${angleLabel(angle_)}: travel ${formatLength(ok.travel, u)}${ok.cut !== undefined ? `, cut ${formatLength(ok.cut, u)}` : ''}`,
   } : null;
 
   return (
@@ -58,12 +65,13 @@ export default function OffsetScreen() {
         empty={result && !result.ok ? result.error : 'Enter the offset'}
       />
       {result && result.ok && result.warnings.map(w => <Note key={w} tone="warn">{w}</Note>)}
+      {ok && oneTakeoff ? <Note>{`Take-off ${num(2) === undefined ? 'A' : 'B'} is blank, so it counts as 0.`}</Note> : null}
       <Card>
         <Field field={fields[0]!} onOpen={() => kp.openAt(0)} error={errs[0]} />
         <Chips label="Fitting angle" options={FITTING_ANGLES} value={FITTING_ANGLES.includes(angle as never) && !customAngle ? angle : null} onChange={a => { setAngle(a); setCustomAngle(''); }} format={angleLabel} />
-        <Field field={fields[1]!} onOpen={() => kp.openAt(1)} error={errs[1] ?? (customAngle && !(angle > 0 && angle <= 90) ? 'Use an angle above 0° up to 90°' : null)} />
+        <Field field={fields[1]!} onOpen={() => kp.openAt(1)} error={errs[1] ?? (customAngle.trim() && !(useAngle > 0 && useAngle <= 90) ? 'Use an angle above 0° up to 90°' : null)} />
       </Card>
-      <OffsetDiagram angle={angle} labels={ok ? { offset: formatLength(num(0)!, u), run: formatLength(ok.run, u), travel: formatLength(ok.travel, u) } : undefined} />
+      <OffsetDiagram angle={Number.isFinite(useAngle) && useAngle > 0 ? useAngle : 45} labels={ok ? { offset: formatLength(num(0)!, u), run: formatLength(ok.run, u), travel: formatLength(ok.travel, u) } : undefined} />
       <Card>
         <Field field={fields[2]!} onOpen={() => kp.openAt(2)} error={errs[2]} />
         <Field field={fields[3]!} onOpen={() => kp.openAt(3)} error={errs[3]} />

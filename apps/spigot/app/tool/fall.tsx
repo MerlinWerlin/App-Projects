@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Stack } from 'expo-router';
-import { fall, gradeFromDrop, trim, type FallResult, type GradeInput } from '../../src/calc/fall';
+import { fall, gradeFromDrop, gradeToText, trim, type FallResult, type GradeInput } from '../../src/calc/fall';
 import { formatLength, lengthToInput } from '../../src/calc/units';
 import { useApp } from '../../src/state/AppState';
 import { Card, Chips, Field, Note, ResultPanel, Segmented, Working, readField, useKeypad, type NumField } from '../../src/ui/kit';
@@ -23,7 +23,7 @@ export default function FallScreen() {
   const [length, setLength] = useState(typeof ri.length === 'number' ? lengthToInput(ri.length, u) : '');
   const [dropText, setDropText] = useState(typeof ri.drop === 'number' ? lengthToInput(ri.drop, u) : '');
   const [gradeKind, setGradeKind] = useState<GradeKind>(ri.gradeKind === 'percent' || ri.gradeKind === 'mmPerM' ? ri.gradeKind : 'ratio');
-  const [gradeText, setGradeText] = useState(typeof ri.grade === 'number' ? String(ri.grade) : String(country.commonGrades[0] ?? 60));
+  const [gradeText, setGradeText] = useState(() => typeof ri.n === 'number' ? gradeToText(ri.n, ri.gradeKind === 'percent' || ri.gradeKind === 'mmPerM' ? ri.gradeKind : 'ratio', u) : String(country.commonGrades[0] ?? 60));
   const [start, setStart] = useState(typeof ri.startLevel === 'number' ? String(ri.startLevel) : '');
 
   const perLabel = u === 'imperial' ? 'in per ft' : 'mm per m';
@@ -63,7 +63,7 @@ export default function FallScreen() {
   const drop = result && result.ok && mode === 'drop' ? (result.value as FallResult) : null;
   const check = result && result.ok && mode === 'check' ? (result.value as { n: number; percent: number }) : null;
   const snapshot = drop ? {
-    inputs: { mode, length: num(0)!, gradeKind, grade: num(1)!, ...(num(2) !== undefined ? { startLevel: num(2) } : {}) },
+    inputs: { mode, length: num(0)!, gradeKind, n: drop.n, ...(num(2) !== undefined ? { startLevel: num(2) } : {}) },
     summary: `1:${trim(drop.n)} over ${formatLength(num(0)!, u, { metres: true })}: fall ${formatLength(drop.drop, u)}`,
   } : check ? {
     inputs: { mode, length: num(0)!, drop: num(1)! },
@@ -71,7 +71,8 @@ export default function FallScreen() {
   } : null;
 
   const flattest = country.minGrades ? Math.max(...country.minGrades.rules.map(r => r.n)) : null;
-  const minGradeWarn = drop && flattest !== null && drop.n > flattest ? `Flatter than any minimum ${T.fallLower} in ${country.codeName} (1:${trim(flattest)}). Check the table in Reference.` : drop && flattest === null && drop.n > 100 ? `Flatter than 1:100 (1 %). Check the minimum ${T.fallLower} in your local code.` : null;
+  const shownN = drop?.n ?? check?.n;
+  const minGradeWarn = shownN !== undefined && flattest !== null && shownN > flattest ? `Flatter than any minimum ${T.fallLower} in ${country.codeName} (1:${trim(flattest)}). Check the table in Reference.` : shownN !== undefined && flattest === null && shownN > 100 ? `Flatter than 1:100 (1 %). Check the minimum ${T.fallLower} in your local code.` : null;
 
   return (
     <ToolFrame tool="fall" snapshot={snapshot}>

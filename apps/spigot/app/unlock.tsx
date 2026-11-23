@@ -45,7 +45,15 @@ export default function Unlock() {
     setBusy(kind);
     try {
       if (kind === 'buy') done(await app.buy(), 'Spigot is unlocked. Thanks!');
-      else if (kind === 'trial') done(await app.startTrial(), 'Your 7-day free trial has started');
+      else if (kind === 'trial') {
+        const r = await app.startTrial();
+        const start = r.ok ? r.access.trialStart : null;
+        const ends = start !== null ? start + 7 * 86_400_000 : 0;
+        const msg = start !== null && Date.now() - start > 120_000
+          ? (ends > Date.now() ? `Your trial is already running: ${Math.ceil((ends - Date.now()) / 86_400_000)} days left` : `Your trial ended on ${new Date(ends).toLocaleDateString()}`)
+          : 'Your 7-day free trial has started';
+        done(r, msg);
+      }
       else done(await app.restore(), 'Purchases restored');
     } finally { setBusy(null); }
   };
@@ -95,8 +103,8 @@ export default function Unlock() {
           {trialText ? <Body style={{ fontWeight: '700' }}>{trialText}</Body> : null}
           {!app.trial.started ? (
             <>
-              <Button kind="secondary" icon="time-outline" label={busy === 'trial' ? 'Starting…' : 'Start free 7-day trial'} disabled={!!busy} onPress={() => void run('trial')} />
-              <Body muted style={{ fontSize: 14 }}>The trial is a free item from the App Store. It starts only when you confirm it with Apple, and nothing is charged when it ends.</Body>
+              <Button kind="secondary" icon="time-outline" label={busy === 'trial' ? 'Starting…' : 'Start free 7-day trial'} disabled={!!busy || priceState !== 'ready'} onPress={() => void run('trial')} />
+              <Body muted style={{ fontSize: 14 }}>{`The trial is a free item from the App Store. It starts only when you confirm it with Apple, and nothing is charged when it ends. After 7 days, Cut length, Rolling offset, Volume & flow and Cut list lock until you buy Full Unlock${price ? ` for ${price}` : ''}, one time.`}</Body>
             </>
           ) : null}
           <Button icon="lock-open-outline" label={busy === 'buy' ? 'Opening the App Store…' : priceState === 'ready' ? `Unlock everything · ${price}` : 'Unlock everything'} disabled={!!busy || priceState !== 'ready'} onPress={() => void run('buy')} />
