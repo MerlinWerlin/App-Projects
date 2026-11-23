@@ -1,0 +1,195 @@
+{
+  "theme": "c-normalmap-pinewood",
+  "status": "Coordinator accepted unchanged after full, 170 px, 85 px and five comparison boards.",
+  "sample": {
+    "id": "pine-cone-direction",
+    "selected": true,
+    "sourceSha256": "7c7b0249658affcdb6c73de3f226765dd3246e9500048086115d06b913be5411",
+    "prompt": "Use case: stylized-concept. Produce one original square transparent Artwork asset for Glaze Facetlight Pinewood. The subject is one whole familiar pine cone in a straight-on botanical specimen view with a gentle diagonal tilt. Give it a naturally tapered egg-shaped outline, a complete short stem, and about five staggered rows of broad overlapping scales with irregular rounded tips. Keep the whole cone and stem inside the central 70 percent of the square. Leave at least 15 percent true transparent exterior on each side. The subject should read as a pine cone immediately at 85 px.\n\nBuild the entire cone as a flat false-color image of surface direction, inspired by the appearance of an RGB normal map. Show one repeating direction relationship on each visible scale. A broad flat-facing center is periwinkle, a left-facing shoulder transitions to cyan, a right-facing shoulder transitions to warm rose, and an upward-facing lip carries a thin pale mint field. The same direction should receive the same color wherever it appears, regardless of the scale's height or distance from the center. Smooth matte changes within each scale reset crisply at the true visible overlap with the next scale. Make the directional colors readable in the central scales and tighter toward the side tips. Use a restrained, relatively even brightness across the image. Avoid a whole-cone rainbow sweep. Local color changes should trace the anatomy of individual scales, with no valleys painted as dark ambient shadows.\n\nThis is a flat direction image with fully opaque color fields inside the silhouette. Show the outline and scale forms through their contours and color changes. Keep it free of wood grain, paper fibers, pigment strokes, metal highlights, finish reflections, glossy gradients, glitter, specular spots, soft cast shadows, heavy borders, light halos or halo haze. Avoid pearlescent drainage swirls, irregular black windows, wavy stress fringes, thermographic gradients, shattered mosaic grains or a projected stripe pattern. The stem is short and simple, using the same direction colors. Do not make a pine cone assembled from plastic or carved stone. This is original artistic false color, with no real measurement, dataset, texture calibration, model or sensor readout.\n\nUse genuine alpha transparency outside the whole cone and stem. No backing rectangle, floor, frame, labels, coordinates, ruler, text, numbers, live widget readings, UI, logo or watermark. No external visual inputs.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        260,
+        167,
+        969,
+        1148
+      ],
+      "96": [
+        260,
+        167,
+        968,
+        1147
+      ]
+    },
+    "edgeAlphaMaximum": 0
+  },
+  "neighbors": [
+    {
+      "theme": "c-ebsd-caravan",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-ebsd-caravan\\widgets\\saddleback-porter.5f160e27cdc5.png",
+      "sha256": "5f160e27cdc543d15ca1313e66be1c3f447a5950d8a04c58f3674c1a6d8cb774"
+    },
+    {
+      "theme": "c-nomarski-dunefield",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-nomarski-dunefield\\widgets\\saltbush-lantern.9294b959a750.png",
+      "sha256": "9294b959a750484ad25eafaf5239896f856f91964c5a5efcee86021b003a5707"
+    },
+    {
+      "theme": "c-hyperspectral-dominion",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-hyperspectral-dominion\\widgets\\oxbow-labyrinth.334c3ebbade1.png",
+      "sha256": "334c3ebbade1426a83619b95f502525a5db0df2f8331c8fd2c90ae109e6f699d"
+    },
+    {
+      "theme": "c-deflectometric-bazaar",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-deflectometric-bazaar\\widgets\\counterweight-vendor.7fd244e5debe.png",
+      "sha256": "7fd244e5debecd746ddbdcbb5ad8d70efabc1753bda7959a27055fba8bcfbd3b"
+    },
+    {
+      "theme": "c-thermographic-nightshift",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-thermographic-nightshift\\widgets\\heat-gardener.be4fbf938451.png",
+      "sha256": "be4fbf93845150999255d381e3a37e9e0bef87eb0ab865a954287dd2ab5e9d79"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "c-filmdew-garden",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-filmdew-garden\\widgets\\cowslip-thinfilm.33cfdbcd7989.png",
+      "sha256": "33cfdbcd79893f27a439d920ef9690f102f0b93c5052cd417dc775e607482804"
+    },
+    {
+      "theme": "commesso-underwood",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\commesso-underwood\\widgets\\bullfinch-sprig.9732bf92.png",
+      "sha256": "9732bf92aac6826c5a61f98d75f9faf813f6c28b6255eb1fe7ec64d5a9a55b5d"
+    },
+    {
+      "theme": "spinbark-bushland",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\laughing-kookaburra.411863de.png",
+      "sha256": "411863de2f9d95d77cf1ede6e0008677825ed6ef41c0bcbb2deac38b15445f3e"
+    },
+    {
+      "theme": "labradorite-hush",
+      "optionId": "cleavage-lines",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\widget-cleavage-lines.bd104ad5.webp",
+      "sha256": "bd104ad5583a3568603c01b137fc20b9f0d5b5d2eab25d40791a628b5b2a8aba",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\manifest.json",
+      "selectorProof": "outputs/normalmap-pinewood-published-neighbor-selections.json"
+    },
+    {
+      "theme": "labradorite-hush",
+      "optionId": "carved-mineral-leaf",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\widget-carved-mineral-leaf.e7cb9f8b.webp",
+      "sha256": "e7cb9f8b0093457876a4fdff5239164e6a8de8f11d42eed1f26bf1d1fc028f6c",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\manifest.json",
+      "selectorProof": "outputs/normalmap-pinewood-published-neighbor-selections.json"
+    },
+    {
+      "theme": "bluewing",
+      "optionId": "art-20261106-sapphire-chrysalis",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\bluewing\\v8\\widget-sapphire-chrysalis.4a87397a.webp",
+      "sha256": "4a87397aa84fe2973c9ac50fe9e12402fefd61d6ef4b5bcca3f92cbca8c0a515",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\bluewing\\v8\\manifest.json",
+      "selectorProof": "outputs/normalmap-pinewood-published-neighbor-selections.json"
+    },
+    {
+      "theme": "bluewing",
+      "optionId": "sapphire-bluebell",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\bluewing\\v8\\widget-sapphire-bluebell.dec917b9.webp",
+      "sha256": "dec917b9de24c713a6e74f2e0a63acaadf42f18daa7e6ada1b624100e52f9c3f",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\bluewing\\v8\\manifest.json",
+      "selectorProof": "outputs/normalmap-pinewood-published-neighbor-selections.json"
+    },
+    {
+      "theme": "juniper-mist",
+      "optionId": "art-20261106-frosted-juniper",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\juniper-mist\\v8\\widget-frosted-juniper.b97022af.webp",
+      "sha256": "b97022afa5853c6aec4fc4dd88f45b61ad99eee60ada5a59d2345a35f41ef8da",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\juniper-mist\\v8\\manifest.json",
+      "selectorProof": "outputs/normalmap-pinewood-published-neighbor-selections.json"
+    },
+    {
+      "theme": "juniper-mist",
+      "optionId": "winter-wren",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\juniper-mist\\v8\\widget-winter-wren.abd10c58.webp",
+      "sha256": "abd10c58f8fbf45ab53c4b5dacdf50b9fd0d830fe9ee834219e45a80de9fa9f8",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\juniper-mist\\v8\\manifest.json",
+      "selectorProof": "outputs/normalmap-pinewood-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Discrete cyan, rose, periwinkle and mint faces repeat across the scale contours. The image differs from fractured EBSD grains, Nomarski shadow pairs and the reflective Filmdew and Labradorite artwork. The full stylized cone is recognizable. The coordinator accepted the material and reserved the four additional works and wallpaper. Owner approval is separate.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "1",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\normalmap-pinewood-first-1-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "2",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\normalmap-pinewood-first-2-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "3",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\normalmap-pinewood-first-3-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "4",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\normalmap-pinewood-first-4-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "5",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\normalmap-pinewood-first-5-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ]
+}
