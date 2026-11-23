@@ -1,0 +1,55 @@
+{
+  "locale": "en-AU",
+  "primaryLocale": "en-AU",
+  "version": "1.0.0", "releaseType": "AFTER_APPROVAL", "attachBuild": "latest",
+  "name": "Spigot: Plumber's Calculator",
+  "subtitle": "Offsets, cut lengths & fall",
+  "promotionalText": "Built for the job site: glove-sized keys, huge results you can read in the sun, and the working shown for every answer. Millimetres first, inches at a tap.",
+  "keywords": "plumbing,plumber,offset,pipe,fitting,takeoff,grade,drain,cut list,tradie,copper,PVC,DWV,rolling",
+  "description": "Spigot is a calculator made for plumbers on site. Big, glove-friendly keys, huge high-contrast results you can read in direct sun, and every answer shows its working so you can check it.\n\nOFFSETS\n• Simple offsets for 11¼°, 22½°, 30°, 45°, 60° and 90° fittings, or any angle: travel, run and the multiplier.\n• Add the fitting take-offs and get the cut length of the diagonal piece.\n• Rolling offsets: rise and roll at once, true offset, setback and how far to roll the fitting.\n\nCUT LENGTHS\n• Measure to the centre or the face of a fitting, or a bare pipe end. Spigot takes off the fitting allowance or adds the socket depth.\n• Fitting table with PVC DWV bends and junctions (AS/NZS 1260), copper and threaded steel fittings, or add your own measured fittings.\n\nFALL AND GRADE\n• Total fall for 1:40, 1:60, 1:80, 1:100 or any grade, as a ratio, percent or mm per metre.\n• Finish invert level from a start level, and check the grade of an existing pipe from its drop.\n\nVOLUME AND FLOW\n• Litres of water in a run of copper, PVC, PE-X or steel pipe.\n• Flow and velocity, with a warning over 3 m/s, and Hazen–Williams pressure loss.\n\nCUT LIST\n• Fit your lengths into 6 m stock with the fewest lengths and the longest usable offcuts, allowing for blade width and end trim.\n\nJOBS AND REFERENCE\n• Save results to a job for each site and share them as text.\n• Quick reference cards: offset multipliers, minimum drain grades, pipe sizes and bores, velocity limits.\n\nMillimetres and metres first, with inches and fractions to 1/16″ at a tap. Light mode for bright sun and dark mode for under the house.\n\nFREE, THEN ONE PAYMENT\nOffset, Fall and the Reference cards are free forever. Try every tool with a free 7-day trial that you start yourself (nothing is charged when it ends), then unlock everything with one payment. No subscription.\n\nPRIVATE\nNo account, no ads, no tracking. Your jobs stay on your phone. Spigot collects no data.\n\nSpigot does the maths; you know the job. Always check against the manufacturer's data and AS/NZS 3500 or your local code.",
+  "whatsNew": "Welcome to Spigot: offsets, cut lengths, fall, flow and cut lists for plumbers, with the working shown.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "PRODUCTIVITY",
+  "copyright": "2026 Astro Labs AU",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/spigot/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/spigot/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/spigot/",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.spigot.unlock",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Spigot Full Unlock",
+      "displayName": "Spigot Full Unlock",
+      "description": "Every calculator, forever. No subscription.",
+      "reviewNote": "One-time non-consumable. Open Settings > Full Unlock and restore (or tap any locked tool such as Cut length) > Unlock everything. Restore purchases is on the same screen. Unlocks Cut length, Rolling offset, Volume & flow and Cut list. Offset, Fall, Jobs and the Reference cards stay free. The separate free 7-day Trial item is user-started; nothing is charged automatically.",
+      "price": { "territory": "AUS", "amount": "4.99" },
+      "availability": "all",
+      "reviewScreenshot": "apps/spigot/store/review/unlock.png",
+      "replaceReviewScreenshot": true
+    },
+    {
+      "productId": "com.jared797.spigot.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
+      "description": "Try every Spigot tool free for 7 days.",
+      "reviewNote": "Free user-started non-consumable trial under guideline 3.1.1. Full Unlock screen > Start free 7-day trial opens the Apple confirmation. Seven days are counted from the original transaction date, including after Restore or reinstall. After it ends, Cut length, Rolling offset, Volume & flow and Cut list need the separate Full Unlock purchase; Offset, Fall, Jobs and Reference stay free. No subscription or automatic charge.",
+      "price": { "territory": "AUS", "amount": "0.00" },
+      "availability": "all",
+      "reviewScreenshot": "apps/spigot/store/review/unlock.png",
+      "replaceReviewScreenshot": true
+    }
+  ],
+  "ageRating": "none",
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "Purpose and audience: Spigot is a calculator for plumbers and pipe fitters: pipe offsets, cut lengths after fitting take-offs, drain fall/grade, pipe volume and flow, and stock-length cut lists. Every result shows its working.\n\nSetup: No account or login. Open Offset (free): enter an offset such as 300 and pick 45 degrees to see travel and run. Fall is also free.\n\nPurchases: Settings > Full Unlock and restore (or tap any locked tool) shows Unlock everything (one-time non-consumable), Start free 7-day trial (a separate free non-consumable named 7-day Trial) and Restore purchases. The trial starts only after Apple confirms the free item, uses the original transaction date and never charges automatically. After seven days Cut length, Rolling offset, Volume & flow and Cut list need Full Unlock. Please test both products.\n\nExternal services: none. The app works fully offline. Apple handles purchases. No ads, analytics, account service or server of our own. Jobs and calculations are stored only on the device (App Privacy: Data Not Collected). No over-the-air or remote code updates: the reviewed build is the build users get.\n\nRegional differences: none apart from localised store prices. Reference values (Australian/New Zealand standards and manufacturer catalogues) are labelled with their sources, and the app tells users to check the manufacturer's data and local plumbing code. Regulated services: not applicable; it is a calculator, not a certification or compliance tool. A physical-device screen recording can be provided if requested.",
+  "reviewContactFromApp": "backspin",
+  "ageRatingExtra": {
+    "socialMedia": false,
+    "socialMediaAgeRestricted": false
+  },
+  "screenshots": {
+    "APP_IPHONE_67": "apps/spigot/store/iphone"
+  }
+}

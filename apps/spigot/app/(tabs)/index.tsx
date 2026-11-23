@@ -42,7 +42,7 @@ export default function ToolsHome() {
 
       {!app.prefs.onboarded ? (
         <View style={{ backgroundColor: c.panel, borderRadius: radius.l, overflow: 'hidden' }}>
-          <Image source={ART.welcome} style={{ width: '100%', aspectRatio: 16 / 9 }} resizeMode="cover" accessible={false} />
+          <Image source={ART.welcome} style={{ width: width - space.l * 2, height: Math.round(((width - space.l * 2) * 9) / 16) }} resizeMode="cover" accessible={false} />
           <View style={{ padding: space.l, gap: space.s }}>
             <Text style={{ fontFamily: font.displayHeavy, fontSize: 30, color: c.vis }}>MEASURE ONCE. CUT ONCE.</Text>
             <Text style={{ fontSize: 16, lineHeight: 22, color: c.onPanel2 }}>Offsets, cut lengths, fall, flow and cut lists, with the working shown. Everything stays on your phone.</Text>

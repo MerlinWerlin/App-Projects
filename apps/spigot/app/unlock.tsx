@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, Image, Linking, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Image, Linking, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { Stack, router, useLocalSearchParams } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useApp } from '../src/state/AppState';
@@ -17,6 +17,8 @@ export default function Unlock() {
   const app = useApp();
   const tap = useTap();
   const { from } = useLocalSearchParams<{ from?: string }>();
+  const { width } = useWindowDimensions();
+  const heroW = width - space.l * 2;
   const [price, setPrice] = useState<string | null>(null);
   const [priceState, setPriceState] = useState<'loading' | 'ready' | 'missing'>('loading');
   const [busy, setBusy] = useState<null | 'buy' | 'trial' | 'restore'>(null);
@@ -58,7 +60,7 @@ export default function Unlock() {
         </Pressable>
       ) }} />
       <View style={{ backgroundColor: c.panel, borderRadius: radius.l, overflow: 'hidden' }}>
-        <Image source={ART.unlock} style={{ width: '100%', aspectRatio: 16 / 9 }} resizeMode="cover" accessible={false} />
+        <Image source={ART.unlock} style={{ width: heroW, height: Math.round((heroW * 9) / 16) }} resizeMode="cover" accessible={false} />
         <View style={{ padding: space.l, gap: space.s }}>
           <Text style={{ fontFamily: font.displayHeavy, fontSize: 34, lineHeight: 36, color: c.vis }}>EVERY TOOL. ONE PAYMENT.</Text>
           <Text style={{ fontSize: 16, lineHeight: 22, color: c.onPanel2 }}>No subscription, no ads, no account. Offset, Fall and the Reference cards are free forever.</Text>

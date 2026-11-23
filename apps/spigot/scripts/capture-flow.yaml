@@ -6,8 +6,22 @@ appId: com.jared797.spigot
 - extendedWaitUntil:
     visible: "SPIGOT"
     timeout: 60000
+- waitForAnimationToEnd:
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 00-home-welcome
+- scrollUntilVisible:
+    element:
+      text: "Got it"
+    direction: DOWN
 - tapOn: "Got it"
+- scrollUntilVisible:
+    element:
+      text: "SPIGOT"
+    direction: UP
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 01-home
 
 # Offset: 300 mm at 45° with 18 mm take-offs
@@ -26,12 +40,16 @@ appId: com.jared797.spigot
 - tapOn: "1"
 - tapOn: "8"
 - tapOn: "Done"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 02-offset
 - scrollUntilVisible:
     element:
       text: "Show working"
     direction: DOWN
 - tapOn: "Show working"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 03-offset-working
 - back
 
@@ -70,11 +88,15 @@ appId: com.jared797.spigot
 - tapOn: "3"
 - tapOn: "Done"
 - tapOn: "Add to list"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 04-cutlist
 - scrollUntilVisible:
     element:
       text: "LENGTH 1"
     direction: DOWN
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 05-cutlist-plan
 - back
 
@@ -94,6 +116,8 @@ appId: com.jared797.spigot
 - tapOn: "."
 - tapOn: "5"
 - tapOn: "Done"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 06-fall
 - back
 
@@ -120,6 +144,8 @@ appId: com.jared797.spigot
     element:
       text: "CUT THE PIPE TO"
     direction: UP
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 07-cut
 - back
 
@@ -134,15 +160,21 @@ appId: com.jared797.spigot
 - tapOn: "5"
 - tapOn: "m"
 - tapOn: "Done"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 08-volume
 - back
 
 # Reference
 - tapOn:
     text: "Reference(, tab.*)?"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 09-reference
 - tapOn:
     text: "Jobs(, tab.*)?"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 10-jobs-empty
 - tapOn:
     text: "Tools(, tab.*)?"
@@ -156,10 +188,16 @@ appId: com.jared797.spigot
 - tapOn: "2"
 - tapOn: "plus 1/2 inch"
 - tapOn: "Done"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 11-offset-inches
 - back
 - tapOn:
     text: "Settings(, tab.*)?"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 12-settings
 - tapOn: "Full Unlock and restore"
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 13-unlock
