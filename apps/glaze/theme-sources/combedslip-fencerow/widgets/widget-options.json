@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cedar-waxwing",
+    "kind": "art",
+    "image": "cedar-waxwing.be6c2e96.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cedar Waxwing"
+  },
+  {
+    "id": "groundhog",
+    "kind": "art",
+    "image": "groundhog.4776ec2e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Groundhog"
+  },
+  {
+    "id": "striped-skunk",
+    "kind": "art",
+    "image": "striped-skunk.289c82bd.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Striped Skunk"
+  },
+  {
+    "id": "black-swallowtail",
+    "kind": "art",
+    "image": "black-swallowtail.8bc5b83a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Black Swallowtail"
+  },
+  {
+    "id": "milkweed-pods",
+    "kind": "art",
+    "image": "milkweed-pods.45f088cb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Milkweed Pods"
+  }
+]

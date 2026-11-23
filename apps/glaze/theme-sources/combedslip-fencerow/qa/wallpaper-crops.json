@@ -1,0 +1,38 @@
+{
+  "themeId": "combedslip-fencerow",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.5260724a.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "5260724aaaa19a8b444808f67534801b3dcb4a2e7ac7b0eba95a7900021222dc",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.3e1bda93.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "3e1bda9363768ba6cf744385c178ffe501e4b9af4931855311c78fbd7a6689f3",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.22dc3682.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "22dc3682a951dcae1c23cddab1b8ab07996ac1790a84fa42ff4b5e2035280ad9",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "All three final encoded phone crops preserve both complete ends of the bank, the short fence with both posts, both milkweed pods and the whole waxwing and groundhog. A narrow visible blue-green side margin retains the tapered bank; the upper dark area remains clear. The exact initial wallpaper remains selected."
+  }
+}
