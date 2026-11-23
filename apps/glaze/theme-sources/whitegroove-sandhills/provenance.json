@@ -1,0 +1,180 @@
+{
+  "theme": "whitegroove-sandhills",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Single-block hand-inked white-line color woodcuts with broad matte pigment fields separated by continuous unprinted cream cut channels.",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Make exactly one lateral spacing correction on this attached own Whitegroove Sandhills wallpaper. The uploaded own exact print is your edit target. The current art is cut off by the narrow phone crop on both sides. Retain same very tall crop, same exact bird/perch scale and vertical positions, same yellow bib and black V, same two paws on perch, same highly visible tall moody pale-dune arrangement and same ground and animal palette. Keep the scene about half the image height. DO NOT pull the whole view back or flatten it into a low stripe. Move only the existing clover and left three tall grass tips closer to the post, about a twelfth of the artwork width rightwards, leaving unmarked dark sage beside them. Their original overall height remains. Shift the complete fox and its tail by about one eighth total wallpaper width LEFT without shrinking it. Keep the same fox outer shape and the complete RIGHT rump, paws, ear tips and whole dark tail; there must be at least 14 percent quiet dark sage beyond its widest right extent. The fox still sits to right of and below the high meadowlark. Shorten the two semi-abstract low curved dune bands and thin grass fringes ONLY so their clean tapered ends stop beside the subject group. Quiet dark sage remains to all four edges, especially at least 14 percent each side uninterrupted. Important golden detail stays inside the middle 72 percent of the canvas width. Preserve all of the visibly wide consistent irregular warm-cream blank paper channels and broad flat ink fields. Retain subtle matte texture, exact ordinary species anatomy, balanced vertically rising composition, and keep upper quiet. Changed positions along horizontal direction only; no new subjects, scrolling borders, mirrored wildlife, featureless geometric circles, text or extra marks.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.f5159959.png",
+      "sourceSha256": "f51599590d42d861bca5faba4c8cca6050241ca194c6a8b2c5e82d31717f3c1e",
+      "sourceDimensions": [
+        941,
+        1672
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "67778fbccb19cfe8975c9c2ccf67bf0f9521255ef5e99482a7fa73c563f86f95",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: Fit to 1290x2796 with centering [0.32, 0.5] for balanced ink clearance.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "wallpaper-unselected-original",
+          "file": "qa/layout-repair/wallpaper.original.fcb82939.png",
+          "sha256": "fcb82939c21db169960c35201343dae0b40c2e166a67edd465aa36fecc3f7155",
+          "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "western-meadowlark",
+      "prompt": "WHITEGROOVE SANDHILLS for Glaze. One original isolated whole flat image of a recognizable Great Plains specimen in the physical print language of one hand-carved WHITE-LINE COLOR WOODBLOCK. Carving shallow broad V grooves in one block creates a connected network of cream UNINKED PAPER channels separating several broad hand-brushed pigment fields. At print stage the colored faces transfer uneven thin matte layers, while the visible negative channels remain the exact natural warm ivory paper color. Make these pale interior lines visually unmistakable and continuous across several substantial color junctions, with slight irregular gouge swelling, occasional flat chamfer or gentle tapered finish, and connected fork passages. Small count of large flat strong matte translucent watercolor or gouache fields with restrained light pressure-grain at their edges. Keep clean no dark contour. The print looks hand pulled: gentle block drag, even paper tooth, a few low-contrast blotchy ink variations inside broad color fields. No strong exposed wood grain, screenprint dots, fiber grid, gritty flecks, collage or relief buildup. The visible internal channels are continuous real pale paper among flat pigments, not white chalk outlines or gaps cut to transparent background. Only the region outside the entire recognizable subject silhouette is genuinely transparent. Avoid off-white outer sticker stroke, torn card or rag deckle silhouette. Completely planar matte surface, no material thickness, stone slabs, grout, enamel, stained glass, deep cast shadow, relief laminations, digital crisp double white strokes, ceramic shimmer, airbrush color ramps or wood texture shading. One clean whole articulated and unmistakable specimen composition, bold enough for 85 pixels. Natural lightweight aesthetic. Generous pure transparent margin. No border, rectangle, ground rectangle, lettering, maker mark, panel or UI. FIRST SUBJECT: one whole recognizable WESTERN MEADOWLARK from left front profile near ground level, upright but a chunky round-shouldered grassland bird with broad flattened forehead, medium-long slender pointed bill, short rufous/grey tail, and one clearly visible dark small eye. One short naturally attached dry grass twig or cropped wooden fence-top with enough height only to show its TWO natural gripping feet and separate toes. Entire bill, feathers and feet whole. Large bold warm yellow throat and breast preserve the genuine continuous sharply inked BLACK V bib, with pale uninked cut channels around the black band separating it from the golden chest. Print the upper folded wing and back in three distinct broad buff/sage-grey muted ink fields with two or three irregular clear cream paper divisions. The folded wing is recognizably a single anatomical panel; only two dark brown short field accents, no detailed fine feather hatch, barred waterfowl patterns or blue bird colors. Head absolutely rounded with a flat forehead and thin long bill, restrained pale brow. Use between six and ten large fields across the whole image. No white outer contour, no decoration outside the bird and little perch. Make actual linseed-toned warm printed paper seamless inside its ivory carve grooves.",
+      "tool": "built-in image_gen",
+      "source": "sources/western-meadowlark.e6a9279f.png",
+      "sourceSha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+      "sourceDimensions": [
+        1314,
+        1197
+      ],
+      "selectedFile": "widgets/western-meadowlark.fcdca0ff.png",
+      "sha256": "fcdca0ffdcdc77a3cc70e70317d2266c2b5d730359d84f40625a77f048a1908c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "swift-fox",
+      "prompt": "WHITEGROOVE SANDHILLS for Glaze. One original isolated whole flat image of a recognizable Great Plains specimen in the physical print language of one hand-carved WHITE-LINE COLOR WOODBLOCK. Carving shallow broad V grooves in one block creates a connected network of cream UNINKED PAPER channels separating several broad hand-brushed pigment fields. At print stage the colored faces transfer uneven thin matte layers, while the visible negative channels remain the exact natural warm ivory paper color. Make these pale interior lines visually unmistakable and continuous across several substantial color junctions, with slight irregular gouge swelling, occasional flat chamfer or gentle tapered finish, and connected fork passages. Small count of large flat strong matte translucent watercolor or gouache fields with restrained light pressure-grain at their edges. Keep clean no dark contour. The print looks hand pulled: gentle block drag, even paper tooth, a few low-contrast blotchy ink variations inside broad color fields. No strong exposed wood grain, screenprint dots, fiber grid, gritty flecks, collage or relief buildup. The visible internal channels are continuous real pale paper among flat pigments, not white chalk outlines or gaps cut to transparent background. Only the region outside the entire recognizable subject silhouette is genuinely transparent. Avoid off-white outer sticker stroke, torn card or rag deckle silhouette. Completely planar matte surface, no material thickness, stone slabs, grout, enamel, stained glass, deep cast shadow, relief laminations, digital crisp double white strokes, ceramic shimmer, airbrush color ramps or wood texture shading. One clean whole articulated and unmistakable specimen composition, bold enough for 85 pixels. Natural lightweight aesthetic. Generous pure transparent margin. No border, rectangle, ground rectangle, lettering, maker mark, panel or UI.  NEW DISTINCT SPECIMEN. A whole SWIFT FOX in left-facing three-quarter profile, in mid-step taking a delicate forward step with its near front paw. Natural small prairie fox with small triangular upright ears and tapered narrow muzzle, a compact long low body, two front and two rear slender legs all attached, and one whole swept-back bushy tail with prominent dark tip. Muted sandy buff back, russet ears and shoulders, cream underbelly, warm muted gray hips and soot near muzzle and tail tip. Small number of broad fields, with thick visible irregular connected creamy paper channels separating cheek from neck, flank, abdomen, near and far legs and tail. A warm black small proper eye, tiny paper crease on muzzle. No patchwork or dark surround. Preserve recognizable exact paw connection and whole tail shape. No accessory or landscape. Use our only attached first meadowlark as the material input only: coarse continuous warm paper channels between broad matte transfer colors and mild pressure grain. No bird contours or perch from the reference.",
+      "tool": "built-in image_gen",
+      "source": "sources/swift-fox.11f45439.png",
+      "sourceSha256": "11f45439966a1252f814649095e533e1e69ca9cc30f40332e2436b613f9ba94b",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "selectedFile": "widgets/swift-fox.6bf2b1c6.png",
+      "sha256": "6bf2b1c6cf421ea44303a55de03a8da14a1c674b83090da6ac21083a8207cef8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "western-meadowlark",
+          "file": "sources/western-meadowlark.e6a9279f.png",
+          "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/swift-fox-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/swift-fox-exact-tool-result.json"
+    },
+    {
+      "id": "plains-spadefoot",
+      "prompt": "WHITEGROOVE SANDHILLS for Glaze. One original isolated whole flat image of a recognizable Great Plains specimen in the physical print language of one hand-carved WHITE-LINE COLOR WOODBLOCK. Carving shallow broad V grooves in one block creates a connected network of cream UNINKED PAPER channels separating several broad hand-brushed pigment fields. At print stage the colored faces transfer uneven thin matte layers, while the visible negative channels remain the exact natural warm ivory paper color. Make these pale interior lines visually unmistakable and continuous across several substantial color junctions, with slight irregular gouge swelling, occasional flat chamfer or gentle tapered finish, and connected fork passages. Small count of large flat strong matte translucent watercolor or gouache fields with restrained light pressure-grain at their edges. Keep clean no dark contour. The print looks hand pulled: gentle block drag, even paper tooth, a few low-contrast blotchy ink variations inside broad color fields. No strong exposed wood grain, screenprint dots, fiber grid, gritty flecks, collage or relief buildup. The visible internal channels are continuous real pale paper among flat pigments, not white chalk outlines or gaps cut to transparent background. Only the region outside the entire recognizable subject silhouette is genuinely transparent. Avoid off-white outer sticker stroke, torn card or rag deckle silhouette. Completely planar matte surface, no material thickness, stone slabs, grout, enamel, stained glass, deep cast shadow, relief laminations, digital crisp double white strokes, ceramic shimmer, airbrush color ramps or wood texture shading. One clean whole articulated and unmistakable specimen composition, bold enough for 85 pixels. Natural lightweight aesthetic. Generous pure transparent margin. No border, rectangle, ground rectangle, lettering, maker mark, panel or UI.  NEW DISTINCT SPECIMEN. One complete PLAINS SPADEFOOT in a low ground-level three-quarter view, squat short snout and two small prominent eye domes with vertical black pupils. Compact wider body in faded sage and pale yellow ochre ink, exactly four natural squatting legs with properly attached toes. Skin mostly smooth, with a few quiet dark olive backed ink regions and slight pressure texture. Show a very small dark wedge-shaped spade at the base of one clearly visible hind foot, as a sparse dark field. Uninterrupted broad cream carve channels along the natural lip of the face, belly curve, thigh outlines and natural back color junction. Avoid lots of spots, bumps, detailed mottling, deep animal relief, body shadows or shiny wet toad illustration. A very small specimen with all visible feet inside its independent silhouette. Use our only attached first meadowlark as the material input only: coarse continuous warm paper channels between broad matte transfer colors and mild pressure grain. No bird contours or perch from the reference.",
+      "tool": "built-in image_gen",
+      "source": "sources/plains-spadefoot.879623f9.png",
+      "sourceSha256": "879623f94a608c68f16a6f303125929c03f41e64d7ca5de085afee4b28ba025f",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/plains-spadefoot.2c718db0.png",
+      "sha256": "2c718db03f85391d550b7223797a5791ecab4bc9df915d2034a85f02b8b0313e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "western-meadowlark",
+          "file": "sources/western-meadowlark.e6a9279f.png",
+          "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/plains-spadefoot-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/plains-spadefoot-exact-tool-result.json"
+    },
+    {
+      "id": "purple-prairie-clover",
+      "prompt": "WHITEGROOVE SANDHILLS for Glaze. One original isolated whole flat image of a recognizable Great Plains specimen in the physical print language of one hand-carved WHITE-LINE COLOR WOODBLOCK. Carving shallow broad V grooves in one block creates a connected network of cream UNINKED PAPER channels separating several broad hand-brushed pigment fields. At print stage the colored faces transfer uneven thin matte layers, while the visible negative channels remain the exact natural warm ivory paper color. Make these pale interior lines visually unmistakable and continuous across several substantial color junctions, with slight irregular gouge swelling, occasional flat chamfer or gentle tapered finish, and connected fork passages. Small count of large flat strong matte translucent watercolor or gouache fields with restrained light pressure-grain at their edges. Keep clean no dark contour. The print looks hand pulled: gentle block drag, even paper tooth, a few low-contrast blotchy ink variations inside broad color fields. No strong exposed wood grain, screenprint dots, fiber grid, gritty flecks, collage or relief buildup. The visible internal channels are continuous real pale paper among flat pigments, not white chalk outlines or gaps cut to transparent background. Only the region outside the entire recognizable subject silhouette is genuinely transparent. Avoid off-white outer sticker stroke, torn card or rag deckle silhouette. Completely planar matte surface, no material thickness, stone slabs, grout, enamel, stained glass, deep cast shadow, relief laminations, digital crisp double white strokes, ceramic shimmer, airbrush color ramps or wood texture shading. One clean whole articulated and unmistakable specimen composition, bold enough for 85 pixels. Natural lightweight aesthetic. Generous pure transparent margin. No border, rectangle, ground rectangle, lettering, maker mark, panel or UI.  NEW DISTINCT SPECIMEN. One coherent whole PURPLE PRAIRIE CLOVER sprig. Two upright slim cylindrical flower spikes with a dense rounded field of vivid violet near the lower half, upward muted sage-green tips and a few indigo periwinkle color blocks where color changes. A very small golden band of stamens is permitted. Attached thin stalks with natural airy clusters of narrow pinnate leaves along the bottom half, one short third upright budding spike at lower right. A near-flat asymmetric botanical print, with visibly broad warm cream cut seams dividing violet ring, green head, stem fields, and a few individual leaf edges. Keep purple inflorescences one simple continuous cylinder each. No repetitive individual tubes, raised texture, extra stems or text. All leaflets, stem ends and spikes included in the whole subject. Use our only attached first meadowlark as the material input only: coarse continuous warm paper channels between broad matte transfer colors and mild pressure grain. No bird contours or perch from the reference.",
+      "tool": "built-in image_gen",
+      "source": "sources/purple-prairie-clover.901078ff.png",
+      "sourceSha256": "901078ff7ba798c783e5618769cc0039392ccc25b7a348318c96463f604aef45",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "selectedFile": "widgets/purple-prairie-clover.3b30d543.png",
+      "sha256": "3b30d543e4d967a487c0d17957a22e471dfebcc93fc791aac9571afd206d8609",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "western-meadowlark",
+          "file": "sources/western-meadowlark.e6a9279f.png",
+          "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/purple-prairie-clover-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/purple-prairie-clover-exact-tool-result.json"
+    },
+    {
+      "id": "sand-bluestem",
+      "prompt": "WHITEGROOVE SANDHILLS for Glaze. One original isolated whole flat image of a recognizable Great Plains specimen in the physical print language of one hand-carved WHITE-LINE COLOR WOODBLOCK. Carving shallow broad V grooves in one block creates a connected network of cream UNINKED PAPER channels separating several broad hand-brushed pigment fields. At print stage the colored faces transfer uneven thin matte layers, while the visible negative channels remain the exact natural warm ivory paper color. Make these pale interior lines visually unmistakable and continuous across several substantial color junctions, with slight irregular gouge swelling, occasional flat chamfer or gentle tapered finish, and connected fork passages. Small count of large flat strong matte translucent watercolor or gouache fields with restrained light pressure-grain at their edges. Keep clean no dark contour. The print looks hand pulled: gentle block drag, even paper tooth, a few low-contrast blotchy ink variations inside broad color fields. No strong exposed wood grain, screenprint dots, fiber grid, gritty flecks, collage or relief buildup. The visible internal channels are continuous real pale paper among flat pigments, not white chalk outlines or gaps cut to transparent background. Only the region outside the entire recognizable subject silhouette is genuinely transparent. Avoid off-white outer sticker stroke, torn card or rag deckle silhouette. Completely planar matte surface, no material thickness, stone slabs, grout, enamel, stained glass, deep cast shadow, relief laminations, digital crisp double white strokes, ceramic shimmer, airbrush color ramps or wood texture shading. One clean whole articulated and unmistakable specimen composition, bold enough for 85 pixels. Natural lightweight aesthetic. Generous pure transparent margin. No border, rectangle, ground rectangle, lettering, maker mark, panel or UI.  NEW DISTINCT SPECIMEN. One whole distinctive SANDBLUESTEM bunchgrass with three mature warm skinned grass stems posed at different diagonal heights and their whole natural narrow pointed blades. The main standing stem ends in a clear three-pronged narrow Turkey-foot bluestem seedhead, each prong in thin soft honey or rusty purple. Make three several broad leaf ribbon sections in subdued flax golden, muted blue-green and straw-brown with tangible soft paper tooth and one irregular forked conspicuous cream groove along each broad shape to demonstrate the unprinted channel craft. Quiet tiny wheat-purple cluster of pollen where appropriate, connected to long thin leaf shape with clear small gaps. No wheat, cattail, prairie ground, grain flicks, field of wheat, vase, knot, ruler, poster line or blue line drawing. Every tapered tip and stem base visible, with breathing room around the natural asymmetric silhouette. Use our only attached first meadowlark as the material input only: coarse continuous warm paper channels between broad matte transfer colors and mild pressure grain. No bird contours or perch from the reference.",
+      "tool": "built-in image_gen",
+      "source": "sources/sand-bluestem.d045630c.png",
+      "sourceSha256": "d045630c2ee7ada57a73c9350a71f723a25fd1eb41563549ce0a75f5ca7263a0",
+      "sourceDimensions": [
+        1127,
+        1396
+      ],
+      "selectedFile": "widgets/sand-bluestem.4a86ca01.png",
+      "sha256": "4a86ca01cd38ab1ebbfde7e1a8b9c2ae19c62b7a1449544e30e42f0490903fa5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "western-meadowlark",
+          "file": "sources/western-meadowlark.e6a9279f.png",
+          "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/sand-bluestem-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/sand-bluestem-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "materialReview": {
+    "status": "coordinator accepted first sample unchanged",
+    "record": "qa/material-sample/coordinator-material-approval.json",
+    "authority": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts."
+  }
+}

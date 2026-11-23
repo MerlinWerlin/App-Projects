@@ -1,0 +1,38 @@
+{
+  "themeId": "whitegroove-sandhills",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.2a591372.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "2a59137229b11d85674e108120a44affd8649921b4de0b42de46c6ab5318f9ae",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.03575d1c.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "03575d1c9f5f9da94faa3e409cce2f187fb5fecbcfab1cd20d4cbd6a73777d7a",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.fc283ca5.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "fc283ca5f0bf750a57c84479298efe6661a5953372547d90d391a63e264f783e",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "All three encoded phone crops were viewed. The original fox rump, left grass and dune shapes were clipped. The selected lateral spacing correction preserves the full upright bird and post, fox paws and dark tail, left grass tips and whole shorter dune bands, with quiet sage on both sides. Earlier exact wallpaper, clipped crop proof, and the one own-scene edit history are retained."
+  }
+}
