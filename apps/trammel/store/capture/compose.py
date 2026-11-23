@@ -13,13 +13,13 @@ W, H = 1320, 2868
 
 SHOTS = [
     # Headline lines are separated by "|".
-    ('light-01-stairs.png', 'STAIRS, CHECKED|AGAINST YOUR CODE', 'Risers, going and 2R+G in one go'),
-    ('light-16-welcome.png', 'BUILT FOR WHERE|YOU BUILD', 'Local codes, trade words and timber sizes'),
-    ('light-08-cutlist.png', 'CUT LISTS THAT|WASTE LESS', 'From the lengths your yard stocks'),
-    ('light-02-rafter.png', 'RAFTERS AND|BIRDSMOUTHS', 'Length, plumb cut, height above plate'),
-    ('light-04-crown.png', 'CORNICE CUTS,|ANY CORNER', 'Bevel and mitre straight to the saw'),
+    ('dark-01-stairs.png', 'STAIRS, CHECKED|AGAINST YOUR CODE', 'Risers, going and 2R+G in one go'),
+    ('dark-16-welcome.png', 'BUILT FOR WHERE|YOU BUILD', 'Local codes, trade words and timber sizes'),
+    ('dark-08-cutlist.png', 'CUT LISTS THAT|WASTE LESS', 'From the lengths your yard stocks'),
+    ('dark-02-rafter.png', 'RAFTERS AND|BIRDSMOUTHS', 'Length, plumb cut, height above plate'),
+    ('dark-04-crown.png', 'CORNICE CUTS,|ANY CORNER', 'Bevel and mitre straight to the saw'),
     ('dark-00-home.png', 'EVERY TOOL A|CHIPPY NEEDS', 'Big buttons, every step shown'),
-    ('light-17-rafter-locked.png', 'TRY EVERY TOOL|FREE FOR A WEEK', 'Then one unlock, no subscription'),
+    ('dark-17-rafter-locked.png', 'TRY EVERY TOOL|FREE FOR A WEEK', 'Then one unlock, no subscription'),
 ]
 
 def ticks(d, y0, up=True):
