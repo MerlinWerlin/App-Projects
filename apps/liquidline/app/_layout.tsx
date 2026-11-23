@@ -55,6 +55,7 @@ export default function RootLayout() {
         <Stack.Screen name="paywall" options={{ presentation: 'modal', headerLeft: () => <Close label="Close" />, title: '' }} />
         <Stack.Screen name="settings" options={{ title: 'Settings' }} />
         <Stack.Screen name="load" options={{ title: 'Room load estimate' }} />
+        <Stack.Screen name="check" options={{ title: 'Full system check' }} />
         <Stack.Screen name="lineset" options={{ title: 'Line set & pipe' }} />
         <Stack.Screen name="evac" options={{ title: 'Evacuation' }} />
         <Stack.Screen name="convert" options={{ title: 'Converter' }} />

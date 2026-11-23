@@ -51,6 +51,7 @@ export default function ToolsScreen() {
   const c = useCountry();
   const a = useAccess();
   const job: Tool[] = [
+    { href: '/check', title: 'Full system check', detail: 'Both sides on the cycle, likely faults', icon: 'speedometer', tone: 'high' },
     { href: '/evac', title: 'Evacuation', detail: 'Checklist, vacuum target, decay test timer', icon: 'timer-outline', tone: 'low' },
     { href: '/lineset', title: 'Line set & pipe', detail: `Pipe sizes, ${c.lineSetWord} lengths stocked in ${c.name}`, icon: 'git-merge-outline' },
     { href: '/load', title: 'Room load', detail: 'Rough cooling and heating estimate', icon: 'home-outline', tone: 'high' },

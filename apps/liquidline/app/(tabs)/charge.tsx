@@ -39,6 +39,7 @@ export default function ChargeScreen() {
           { value: 'extra', label: 'Extra charge' },
         ]}
       />
+      <Button testID="open-check" kind="secondary" icon="speedometer" title="Full system check: both sides" onPress={() => router.push('/check')} />
       <Gate what="the charging calculators">
         {mode === 'sh' ? <Superheat key={k} /> : mode === 'sc' ? <Subcooling key={k} /> : <Extra key={k} />}
       </Gate>
