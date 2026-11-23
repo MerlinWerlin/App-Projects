@@ -10,6 +10,7 @@ import { BOLD, FONT, RADIUS, SPACE, TARGET } from '../theme/theme';
 import { defaults, type Field, type Run, type Tool, type Values, visible } from '../tools/registry';
 import { line, showOut } from '../tools/present';
 import { Button, Card, Choice, DONE_ID, DoneBar, FieldShell, Icon, NumberInput, T } from './kit';
+import { BlurView } from 'expo-blur';
 
 type Texts = Record<string, string>;
 interface UiShape { kind: ShapeKind; a: string; b: string; subtract: boolean }
@@ -139,8 +140,6 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
     Share.share({ message: [tool.title.toUpperCase(), ...lines, '', SUPPLIER_NOTE].join('\n') }).catch(() => undefined);
   };
 
-  if (locked) return <Locked tool={tool} />;
-
   return (
     <View style={{ flex: 1, backgroundColor: theme.ground }}>
       <ScrollView
@@ -151,7 +150,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
         contentContainerStyle={{ paddingBottom: insets.bottom + SPACE.xxl }}
       >
         <View style={{ backgroundColor: theme.ground, paddingHorizontal: SPACE.l, paddingTop: SPACE.s, paddingBottom: SPACE.m }}>
-          <ResultSlab run={run} />
+          <ResultSlab run={run} locked={locked} />
         </View>
         <View style={{ paddingHorizontal: SPACE.l, gap: SPACE.l }}>
           {tool.fields.filter(f => visible(f, values)).map(f => {
@@ -187,7 +186,8 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
             return <ShapesEditor key={f.key} shapes={shapes} setShapes={setShapes} errors={errors} sys={sys} />;
           })}
 
-          {run && run.ok ? <Outputs run={run} /> : null}
+          {locked ? <UnlockCard tool={tool} /> : null}
+          {run && run.ok ? <Veil on={locked}><Outputs run={run} /></Veil> : null}
 
           {run && run.ok && run.notes.length ? (
             <Card alt style={{ gap: SPACE.s }}>
@@ -200,7 +200,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
             </Card>
           ) : null}
 
-          {run && run.ok ? (
+          {run && run.ok && !locked ? (
             <Card style={{ padding: 0 }}>
               <Pressable testID="show-working" accessibilityRole="button" accessibilityState={{ expanded: showWorking }} onPress={() => setShowWorking(s => !s)} style={{ minHeight: TARGET, flexDirection: 'row', alignItems: 'center', paddingHorizontal: SPACE.l, gap: SPACE.s }}>
                 <Icon name="calculator-variant-outline" size={22} color={theme.ink} />
@@ -221,10 +221,10 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
             </Card>
           ) : null}
 
-          {run && run.ok && run.next ? (
+          {run && run.ok && run.next && !locked ? (
             <Button kind="secondary" icon="truck-outline" label={run.next.label} onPress={() => router.push({ pathname: '/tool/[id]', params: { id: run.next!.tool, prefill: JSON.stringify(run.next!.values) } })} />
           ) : null}
-          {run && run.ok ? (
+          {run && run.ok && !locked ? (
             <View style={{ flexDirection: 'row', gap: SPACE.m }}>
               <Button style={{ flex: 1 }} icon="content-save-outline" label="Save to job" onPress={save} />
               <Button style={{ flex: 1 }} kind="secondary" icon="export-variant" label="Share" onPress={share} />
@@ -249,7 +249,7 @@ function valuesFrom(tool: Tool, texts: Texts, choices: Record<string, string>, s
   return v;
 }
 
-export function ResultSlab({ run }: { run: Run | null }) {
+export function ResultSlab({ run, locked }: { run: Run | null; locked?: boolean }) {
   const { theme, prefs } = useApp();
   if (!run) return null;
   const toneColor = run.ok && run.tone === 'bad' ? theme.danger : run.ok && run.tone === 'warn' ? theme.amber : null;
@@ -257,7 +257,7 @@ export function ResultSlab({ run }: { run: Run | null }) {
   return (
     <View
       accessible accessibilityRole="summary" accessibilityLiveRegion="polite"
-      accessibilityLabel={run.ok ? `${run.headline.label} ${shown!.value} ${shown!.unit}, ${run.headline.caption}` : 'Fill in the highlighted boxes'}
+      accessibilityLabel={locked && run.ok ? `${run.headline.label}: hidden. Part of Full Unlock.` : run.ok ? `${run.headline.label} ${shown!.value} ${shown!.unit}, ${run.headline.caption}` : 'Fill in the highlighted boxes'}
       style={{ backgroundColor: theme.slab, borderRadius: RADIUS.l, paddingHorizontal: SPACE.l, paddingVertical: SPACE.m, borderWidth: toneColor ? 3 : 0, borderColor: toneColor ?? 'transparent', minHeight: 112, justifyContent: 'center', gap: 2 }}
     >
       {run.ok ? (
@@ -278,6 +278,15 @@ export function ResultSlab({ run }: { run: Run | null }) {
           <Text maxFontSizeMultiplier={1.5} style={{ flex: 1, ...BOLD, fontSize: 19, color: theme.onSlab }}>Fill in the highlighted boxes to see the answer.</Text>
         </View>
       )}
+      {locked && run.ok ? (
+        <View style={[StyleSheet.absoluteFill, { borderRadius: RADIUS.l, overflow: 'hidden' }]} pointerEvents="none">
+          <BlurView intensity={75} tint="dark" style={StyleSheet.absoluteFill} />
+          <View style={{ position: 'absolute', right: SPACE.l, top: SPACE.m, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: theme.amber, borderRadius: 999, paddingHorizontal: SPACE.m, paddingVertical: 6 }}>
+            <Icon name="lock-outline" size={16} color={theme.onAmber} />
+            <Text maxFontSizeMultiplier={1.4} style={{ ...BOLD, fontSize: 14, color: theme.onAmber }}>Full Unlock</Text>
+          </View>
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -357,26 +366,28 @@ function ShapesEditor({ shapes, setShapes, errors, sys }: { shapes: UiShape[]; s
   );
 }
 
-function Locked({ tool }: { tool: Tool }) {
-  const { theme, trial } = useApp();
-  const example = tool.run ? tool.run(defaults(tool)) : null;
+/** Blurs real results for a locked tool, so people see what they'd get. */
+function Veil({ on, children }: { on: boolean; children: React.ReactNode }) {
+  const { theme } = useApp();
+  if (!on) return <>{children}</>;
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: theme.ground }} contentContainerStyle={{ padding: SPACE.l, gap: SPACE.l }}>
-      <T kind="headline">{tool.blurb}</T>
-      {example && example.ok ? (
-        <View style={{ gap: SPACE.s }}>
-          <T kind="caps">Example with typical numbers</T>
-          <ResultSlab run={example} />
-        </View>
-      ) : null}
-      <Card style={{ gap: SPACE.m }}>
-        <View style={{ flexDirection: 'row', gap: SPACE.m, alignItems: 'center' }}>
-          <Icon name="lock-outline" size={28} color={theme.ink} />
-          <T kind="headline" style={{ flex: 1 }}>Part of Full Unlock</T>
-        </View>
-        <T>Every tool, unlimited jobs and job sheets. One payment, no subscription.</T>
-        <Button icon="lock-open-variant-outline" label={trial.started ? 'See Full Unlock' : 'Try it free for 7 days'} onPress={() => router.push('/unlock')} />
-      </Card>
-    </ScrollView>
+    <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ borderRadius: RADIUS.m, overflow: 'hidden' }}>
+      {children}
+      <BlurView pointerEvents="none" intensity={45} tint={theme.dark ? 'dark' : 'light'} style={StyleSheet.absoluteFill} />
+    </View>
+  );
+}
+
+function UnlockCard({ tool }: { tool: Tool }) {
+  const { theme, trial } = useApp();
+  return (
+    <Card style={{ gap: SPACE.m, borderColor: theme.amber, borderWidth: 2 }}>
+      <View style={{ flexDirection: 'row', gap: SPACE.m, alignItems: 'center' }}>
+        <Icon name="lock-outline" size={26} color={theme.ink} />
+        <T kind="headline" style={{ flex: 1 }}>{tool.title} is part of Full Unlock</T>
+      </View>
+      <T>Type your own numbers above. The answer, every output and the working are ready to show the moment you unlock.</T>
+      <Button testID="locked-unlock" icon="lock-open-variant-outline" label={trial.started ? 'See Full Unlock' : 'Try it free for 7 days'} onPress={() => router.push('/unlock')} />
+    </Card>
   );
 }
