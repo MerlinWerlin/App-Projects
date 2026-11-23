@@ -1,0 +1,29 @@
+{
+  "id": "wallpaper",
+  "prompt": "One separate original very tall opaque iPhone wallpaper for ASHLOOP RIVERBANK. Whole physical miniature crafted riverbank diorama assembled from a few broad solid steam-bent ash and cedar timber bows, one-piece grain continuous through every curve and only occasional tiny copper join pins. Use the one attached own beaver to establish the bent timber craft only. One coherent landscape vignette in correct riverbank proportions, natural sculptural low sloped bank platform with very shallow short timber curves. At left of center one broad-torso attached beaver with small rounded ears, an eye and dark wide flat paddle tail, its short front paws planted and whole visible. Towards the right, one smaller upright red-crested female common merganser stands on this same low riverbank with both attached webbed feet and whole sloping bill. A short complete woody arrowhead-leaf plant emerges between them, modestly behind in the same piece. no canoe, watersport gear, engineered lamp, dock, external props, wire or open boat frame. Make same recognizable natural figures, no giant framing arch. Their wide unsegmented solid wood body curves and larger clear open bays remain prominent. SMALL MINIATURE CAMERA DISTANCE. Group low in the picture centered at 60 percent canvas height. Visible entire left and right bank tips, tail, bill, all plant leaf tips and all foreground feet safely within the middle 58 to 61 percent of image width, so at least 19 percent of absolutely quiet mid-dark spruce green between every object edge and both outer canvas sides. Upper 40 percent and lowermost 20 percent are quiet muted deep green for phone viewing. Keep warm light wood slightly soft, book-green seamless studio matte background across entire tall frame. Small soft contact shadow only beneath sculpted mini river bank. No large landscape, photography of river, water reflections or horizon line. Photographed miniature diorama, all tangible parts visible in one coherent composition. No poster, triptych, section border, decorative elements outside the miniature, lettering, watermark, mockup or UI.",
+  "tool": "built-in image_gen",
+  "source": "qa/layout-repair/wallpaper.original.46278e6c.png",
+  "sourceSha256": "46278e6c8e4e7f5b88c97e402722d7fafea83eb6d8397fbf502213ce7ca1e07f",
+  "sourceDimensions": [
+    887,
+    1774
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "9a8a5288dd6f0158a5336bef455b245c4e2c33c315d74d1b67fea5b5fdec1ddd",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "beaver",
+      "file": "sources/beaver.6e1ae7cc.png",
+      "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/layout-repair/wallpaper-initial-request.json",
+  "exactToolResult": "qa/layout-repair/wallpaper-layout-original.json"
+}

@@ -1,0 +1,38 @@
+{
+  "themeId": "ashloop-riverbank",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.a0bcfec1.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "a0bcfec1beba5ff2fa553b34e433a8cea443a4fe85fc07e625baea5098c784be",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.34221a32.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "34221a32d74d004219497123b0a0904197e2e061b0ab2bf988843abdb63339d1",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.a1dccb4b.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "a1dccb4b449f2a46694ed918fe21a63d43db3f0b516231c7e25e4c8526a2e2c0",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "All three encoded phone frames were viewed. The revised group has the whole beaver paddle tail, both bank tips, both visible merganser feet and full beak, and the complete connected leafy plant, all within clear spruce margins. The initial crop and exact pullback lineage remain preserved."
+  }
+}

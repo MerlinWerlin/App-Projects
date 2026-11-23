@@ -1,0 +1,29 @@
+{
+  "id": "ashloop-riverbank",
+  "lane": "B50",
+  "category": "Nature",
+  "process": "Steam-bent ash and cedar wildlife sculptures made of broad unsegmented timber bows with flowing grain and visible open bays.",
+  "status": "Coordinator accepted the exact single new beaver composition after actual whole/170/85 and closest comparator inspection. Two front paws and the near hind foot read; the far hind foot is occluded. The held canoe remains exact unselected lineage. Four separate additional animals/plants and wallpaper may use only the accepted beaver as their material input.",
+  "subjects": [
+    "beaver",
+    "common-merganser",
+    "american-mink",
+    "smallmouth-bass",
+    "arrowhead-leaves"
+  ],
+  "cornerCompanion": "Oval beaver-shaped face, broad curved rib paths, pin markers, peg wedge hands, curved bank charge trail and work ledger calendar. The compact corner companion uses a paired bent rib and one small fastening mark.",
+  "firstGateCriterion": "85 px reads whole beaver silhouette with nose, ear, four coherent feet and broad flat tail. Several substantial curved grain ribbons make visible true-alpha structural bays. Only material reused from the canoe; no straight triangular wooden lattice or turned solids.",
+  "precedingUnselectedStudy": {
+    "id": "ashloop-portage",
+    "asset": "canoe-building-frame",
+    "source": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-f32b8a3d-6eaf-4bd0-bc21-b8d122678c2a.png",
+    "sourceSha256": "7d6cf2d085ba821f5cbaa741a8061ef37b102daae870a5be08de7c4993e192c8",
+    "reason": "Coordinator found process visibly distinct but conventional stock boatyard subject did not meet the direction."
+  },
+  "technicalReferences": [
+    {
+      "url": "https://access.woodenboat.com/videos/traditional-cedar-and-canvas-canoe-construction/",
+      "scope": "WoodenBoat master canoe builder demonstrate steaming and bending natural ribs and stems. Text description only."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "wallpaper",
+  "prompt": "Make exactly one camera-distance layout revision of this attached Ashloop Riverbank wallpaper; the attached scene is the edit target. Pull the static camera back by about one third, keeping the same portrait aspect, tiny scene and exact relative placement and orientation of beaver on left, the merganser on right, and one little arrowhead plant between them. All original surfaces remain in genuine continuous steam-bent ash with curved wood grain, open rib bays and tiny copper tacks. Same muted spruce stage, same cohesive shallow swerved wooden bank. All recognizable wildlife and feet remain complete, nothing else added. Most important is substantially more horizontal margin. Center the entire assembled display and its soft contact shadow within the middle 62 percent of total image width, and around 62 percent of total canvas height. Leave at least 19 percent of uninterrupted spruce image sides at both left and right so the entire beaver paddle tail, both tips of the wooden bank, both birds head and tail tips, the plant and all feet are entirely visible. This is a continuous gentle visual pull-back only; do not introduce a white frame, make a new background, squeeze widths, add or rearrange parts. Retain the original very tall phone frame, the deep olive-spruce backdrop, natural cozy timber material, relative scale, top open dark space and soft modest ground contact shadow. No text, reflections, smoke, UI or framing marks.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.c94ad5f3.png",
+  "sourceSha256": "c94ad5f3cd8ba45f63e89933360bd6dcc0dd8b4c54324e604a4ddb2f1fcdafe0",
+  "sourceDimensions": [
+    887,
+    1774
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "8b15ac8d36421cce35b36e73998466d83b7fb0a3489a1300406d6867d47a9744",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.46278e6c.png",
+      "sha256": "46278e6c8e4e7f5b88c97e402722d7fafea83eb6d8397fbf502213ce7ca1e07f",
+      "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

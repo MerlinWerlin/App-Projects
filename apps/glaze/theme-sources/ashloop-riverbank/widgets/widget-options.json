@@ -1,0 +1,62 @@
+[
+  {
+    "id": "beaver",
+    "kind": "art",
+    "image": "beaver.ec6b0b28.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Beaver"
+  },
+  {
+    "id": "common-merganser",
+    "kind": "art",
+    "image": "common-merganser.8a540f6c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Common Merganser"
+  },
+  {
+    "id": "american-mink",
+    "kind": "art",
+    "image": "american-mink.7bb9ab7b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "American Mink"
+  },
+  {
+    "id": "smallmouth-bass",
+    "kind": "art",
+    "image": "smallmouth-bass.348bea35.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Smallmouth Bass"
+  },
+  {
+    "id": "arrowhead-leaves",
+    "kind": "art",
+    "image": "arrowhead-leaves.96e5daba.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Arrowhead Leaves"
+  }
+]

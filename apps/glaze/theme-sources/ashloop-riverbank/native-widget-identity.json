@@ -1,0 +1,18 @@
+{
+  "themeId": "ashloop-riverbank",
+  "recipe": [
+    "oval",
+    "ashriverBeaver",
+    "ashriverBows",
+    "pins",
+    "wedge",
+    "trail",
+    "ledger"
+  ],
+  "art": {
+    "ashriverBeaver": "M 12 51 L 22 44 Q 27 33 35 36 L 43 41 Q 65 28 77 45 Q 83 56 77 64 L 87 65 Q 96 68 96 74 Q 93 82 85 79 L 74 72 Q 66 76 57 76 L 54 85 L 45 85 L 46 75 L 34 71 L 31 78 L 22 78 L 24 68 Q 15 65 12 58 Z M 29 48 L 30 49 M 16 59 L 22 60 M 48 41 Q 39 58 49 73 M 59 39 Q 50 60 61 75 M 69 42 Q 60 63 69 73 M 81 70 L 90 75 M 84 67 L 93 73",
+    "ashriverBows": "M 14 21 Q 18 60 39 64 Q 65 71 84 45 M 20 19 Q 25 57 43 59 Q 65 65 80 42 M 13 40 L 21 44 M 27 71 Q 52 81 67 73 L 79 61 M 56 61 L 59 59 M 72 55 L 76 52"
+  },
+  "ornament": "M 14 31 Q 25 66 52 67 Q 66 66 80 48 M 21 28 Q 32 60 53 60 Q 67 59 76 45 M 56 62 L 59 60",
+  "direction": "Oval beaver-shaped face, broad curved rib paths, pin markers, peg wedge hands, curved bank charge trail and work ledger calendar. The compact corner companion uses a paired bent rib and one small fastening mark."
+}
