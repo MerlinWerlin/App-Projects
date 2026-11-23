@@ -42,7 +42,6 @@ function Shell() {
   return (
     <>
       <StatusBar style={theme.dark ? 'light' : 'dark'} />
-      <DoneBar />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.ground } }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="unlock" options={{ presentation: 'modal' }} />
@@ -54,6 +53,7 @@ function Shell() {
         <Stack.Screen name="settings" options={{ ...header, title: '' }} />
         <Stack.Screen name="about" options={{ ...header, title: '' }} />
       </Stack>
+      <DoneBar />
     </>
   );
 }
