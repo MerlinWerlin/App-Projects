@@ -66,7 +66,12 @@ export function Paywall() {
       {a.state === 'unlocked' || a.state === 'stub' ? null : (
         <View style={{ gap: SPACE.sm }}>
           {busy ? <Small>Talking to the App Store…</Small> : null}
-          {canStartTrial ? <Button testID="start-trial" icon="time-outline" title="Start 7-day free trial" onPress={() => void run(TRIAL_SKU)} /> : null}
+          {canStartTrial && unlock.enabled && unlock.price ? (
+            <>
+              <Button testID="start-trial" icon="time-outline" title="Start 7-day free trial" onPress={() => void run(TRIAL_SKU)} />
+              <Small>{`Free for 7 days, then ${unlock.price} once to keep the calculators. No subscription, nothing renews.`}</Small>
+            </>
+          ) : null}
           {unlock.enabled && unlock.price ? (
             <Button testID="unlock" kind={canStartTrial ? 'secondary' : 'primary'} icon="lock-open-outline" title={`Unlock for ${unlock.price}`} onPress={() => void run(UNLOCK_SKU)} />
           ) : (

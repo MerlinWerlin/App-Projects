@@ -18,10 +18,14 @@ import { SettingsButton } from './index.tsx';
 
 type Mode = 'sh' | 'sc' | 'extra';
 
+/** The published default rates (R32 / R410A ductless, R410A / R454B ducted) only apply to these refrigerants. */
+const RATE_COVERS = ['R32', 'R410A', 'R454B'];
+
 export default function ChargeScreen() {
   const [mode, setMode] = useState<Mode>('sh');
   const pr = usePrefs();
-  const k = `${pr.pressure}-${pr.temp}-${pr.length}-${pr.mass}-${useSettings().country}`;
+  const st = useSettings();
+  const k = `${pr.pressure}-${pr.temp}-${pr.length}-${pr.mass}-${st.country}-${pr.gauge}-${Math.round(pr.atmKpa * 10)}-${st.refrigerant}`;
   return (
     <Screen title="Charge" subtitle="Superheat, subcooling and extra refrigerant" right={<SettingsButton />}>
       <Segmented
@@ -44,7 +48,7 @@ export default function ChargeScreen() {
 
 function verdictChip(r: Reading, tone: Tone) {
   if (!r.ok || !r.verdict) return null;
-  const map = { ok: 'On target', low: 'Below target', high: 'Above target', warn: 'Check reading' } as const;
+  const map = { ok: 'On target', low: 'Below target', high: 'Above target', warn: 'Check the reading' } as const;
   return <Chip text={map[r.verdict]} tone={r.verdict === 'ok' ? tone : 'warn'} />;
 }
 
@@ -104,7 +108,7 @@ function Superheat() {
           <>
             <NumberField label="Indoor wet bulb (return air)" value={wb} onChange={setWb} unit={TEMP_LABEL[pr.temp]} step={0.5} />
             <NumberField label="Outdoor dry bulb" value={db} onChange={setDb} unit={TEMP_LABEL[pr.temp]} step={0.5} />
-            <Small>{orificeK == null ? 'Too low to charge by superheat in these conditions: use the manufacturer’s method.' : `Fixed-orifice target ≈ ${fmt(deltaFromK(orificeK, pr.temp), 1)} ${du}. Rule of thumb from common charging charts; the unit’s own chart wins.`}</Small>
+            <Small>{orificeK == null ? 'Outside the range charging charts cover, or too low to charge by superheat: use the manufacturer’s method.' : `Rule of thumb: fixed-orifice target ≈ ${fmt(deltaFromK(orificeK, pr.temp), 1)} ${du}, from common charging charts. The unit’s own chart wins.`}</Small>
           </>
         ) : null}
       </Card>
@@ -154,17 +158,18 @@ function Extra() {
   const c = useCountry();
   const [liquid, setLiquid] = useState<'1/4"' | '3/8"'>('1/4"');
   const d = chargeDefault(c, liquid);
+  const covered = RATE_COVERS.includes(s.refrigerant);
   const L = (m: number) => fmt(lengthFromM(m, pr.length), pr.length === 'ft' ? 0 : 1);
   const R = (g: number) => fmt(rateFromGPerM(g, pr.mass), pr.mass === 'oz' ? 2 : 0);
   const [len, setLen] = useState(L(15));
   const [pre, setPre] = useState(L(d.prechargedM));
-  const [rate, setRate] = useState(R(d.gPerM));
+  const [rate, setRate] = useState(covered ? R(d.gPerM) : '');
   const [price, setPrice] = useState('');
   const pickLiquid = (v: '1/4"' | '3/8"') => {
     setLiquid(v);
     const nd = chargeDefault(c, v);
     setPre(L(nd.prechargedM));
-    setRate(R(nd.gPerM));
+    setRate(covered ? R(nd.gPerM) : '');
   };
   const r = additionalCharge(lengthToM(parseNum(len), pr.length), lengthToM(parseNum(pre), pr.length), rateToGPerM(parseNum(rate), pr.mass), null, { length: pr.length, mass: pr.mass });
   const priceN = parseNum(price);
@@ -179,7 +184,7 @@ function Extra() {
         <NumberField testID="extra-length" label="Line set length (one way)" value={len} onChange={setLen} unit={LENGTH_LABEL[pr.length]} step={pr.length === 'ft' ? 5 : 1} allowNegative={false} />
         <NumberField testID="extra-pre" label="Factory pre-charged for" value={pre} onChange={setPre} unit={LENGTH_LABEL[pr.length]} step={pr.length === 'ft' ? 5 : 0.5} allowNegative={false} />
         <NumberField testID="extra-rate" label="Additional charge rate" value={rate} onChange={setRate} unit={RATE_LABEL[pr.mass]} step={pr.mass === 'oz' ? 0.05 : 1} allowNegative={false} />
-        <Small>{d.note}</Small>
+        <Small>{covered ? d.note : `No typical rate for ${s.refrigerant}: enter the rate from the unit’s nameplate or manual.`}</Small>
         {c.currency.code ? (
           <NumberField label={`Refrigerant price per ${perKg} (optional)`} value={price} onChange={setPrice} unit={`${c.currency.symbol} ${c.currency.code}`} step={1} allowNegative={false} />
         ) : null}

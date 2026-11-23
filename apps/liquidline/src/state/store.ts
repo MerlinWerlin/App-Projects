@@ -3,6 +3,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getLocales } from 'expo-localization';
 import { useEffect, useSyncExternalStore } from 'react';
+import { Alert } from 'react-native';
 import { JOBS_KEY, parseJobs, upsertJob, type Job } from '../core/jobs.ts';
 import { SETTINGS_KEY, countryFromRegion, defaultsFor, parseSettings, type Settings } from '../core/settings.ts';
 
@@ -36,17 +37,23 @@ function makeStore<T>(initial: T) {
 const settingsStore = makeStore<Settings>(defaultsFor(countryFromRegion(deviceRegion())));
 const jobsStore = makeStore<Job[]>([]);
 const loadedStore = makeStore(false);
+let jobsLoadFailed = false;
 
 let loading: Promise<void> | null = null;
 export function loadAll(): Promise<void> {
   loading ??= (async () => {
     const fallback = countryFromRegion(deviceRegion());
+    // Read each key on its own: a failed jobs read must never look like "no jobs", or the next save would overwrite
+    // every saved job with one.
     try {
-      const [s, j] = await Promise.all([AsyncStorage.getItem(SETTINGS_KEY), AsyncStorage.getItem(JOBS_KEY)]);
-      settingsStore.set(parseSettings(s, fallback));
-      jobsStore.set(parseJobs(j));
+      settingsStore.set(parseSettings(await AsyncStorage.getItem(SETTINGS_KEY), fallback));
     } catch {
       settingsStore.set(defaultsFor(fallback));
+    }
+    try {
+      jobsStore.set(parseJobs(await AsyncStorage.getItem(JOBS_KEY)));
+    } catch {
+      jobsLoadFailed = true;
     }
     loadedStore.set(true);
   })();
@@ -80,12 +87,19 @@ export function useJob(id: string | undefined): Job | undefined {
   const jobs = useJobs();
   return jobs.find((j) => j.id === id);
 }
-function persistJobs(next: Job[]) {
+function persistJobs(next: Job[]): boolean {
+  if (jobsLoadFailed) {
+    Alert.alert('Jobs not saved', 'Liquidline couldn’t read your saved jobs, so it won’t write over them. Close and reopen the app, then try again.');
+    return false;
+  }
   jobsStore.set(next);
-  void AsyncStorage.setItem(JOBS_KEY, JSON.stringify(next)).catch(() => {});
+  AsyncStorage.setItem(JOBS_KEY, JSON.stringify(next)).catch(() => {
+    Alert.alert('Couldn’t save', 'Your iPhone didn’t store the change (storage full?). Free some space and try again.');
+  });
+  return true;
 }
-export function saveJob(job: Job): void {
-  persistJobs(upsertJob(jobsStore.get(), job));
+export function saveJob(job: Job): boolean {
+  return persistJobs(upsertJob(jobsStore.get(), job));
 }
 export function deleteJob(id: string): Job | undefined {
   const cur = jobsStore.get();

@@ -115,11 +115,34 @@ test('worst cases: typo line temperatures are refused, extreme results are flagg
   assert.ok(!typo.ok && /looks wrong/.test(typo.error));
   assert.ok(!subcooling('R32', 2000, -200, metric).ok);
   const high = superheat('R32', g, 45, metric);
-  assert.ok(high.ok && high.verdict === 'high' && /starved/.test(high.note ?? ''));
+  assert.ok(high.ok && high.verdict === null && /starved/.test(high.note ?? ''), 'safety note without a target: no chip');
   const highSc = subcooling('R32', satPressure('R32', 45)! - 101.325, 5, metric);
-  assert.ok(highSc.ok && highSc.verdict === 'high');
+  assert.ok(highSc.ok && /overcharge/.test(highSc.note ?? ''));
   assert.ok(!additionalCharge(5000, 10, 20).ok);
   assert.ok(!additionalCharge(20, 10, 9000).ok);
   // Imperial typo: 1022 °F is refused too.
   assert.ok(!superheat('R32', 118, 1022, imperial).ok);
+});
+
+test('a safety note never sits beside an On target chip; no target means no chip', () => {
+  const g = satPressure('R32', 5)! - 101.325;
+  const low = superheat('R32', g, 6, metric); // 1 K: floodback risk
+  assert.ok(low.ok && low.verdict === null && /floodback/.test(low.note ?? ''));
+  const lowWithTarget = superheat('R32', g, 6, metric, 1.2);
+  assert.ok(lowWithTarget.ok && lowWithTarget.verdict === 'warn', 'target matched but floodback: warn, not ok');
+  const neg = superheat('R32', g, 3, metric, 6);
+  assert.ok(neg.ok && neg.verdict === 'warn');
+});
+
+test('fixed-orifice target only inside the chart range', () => {
+  const c = (f: number) => ((f - 32) * 5) / 9;
+  assert.ok(fixedOrificeTargetK(c(67), c(85)) != null);
+  assert.equal(fixedOrificeTargetK(c(80), c(85)), null, 'WB above 76 °F');
+  assert.equal(fixedOrificeTargetK(c(67), c(120)), null, 'DB above 115 °F');
+  assert.equal(fixedOrificeTargetK(c(45), c(60)), null, 'WB below 50 °F');
+});
+
+test('out-of-range pressure names the table limits', () => {
+  const r = subcooling('R454B', 99999, 30, metric);
+  assert.ok(!r.ok && /R454B table \(saturation -60 to 70 °C\)/.test(r.error), !r.ok ? r.error : '');
 });

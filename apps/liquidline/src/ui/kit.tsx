@@ -234,7 +234,7 @@ export function Row({ title, detail, onPress, icon, value, tone = 'neutral', las
 export function Readout({ label, value, unit, tone = 'neutral', caption, size = 'big', testID }: { label: string; value: string; unit?: string; tone?: Tone; caption?: string; size?: 'big' | 'mid'; testID?: string }) {
   const p = usePalette();
   return (
-    <View accessible accessibilityLabel={`${label} ${value} ${unit ?? ''}`} style={{ gap: 2 }}>
+    <View accessible accessibilityLabel={`${label} ${value} ${unit ?? ''}${caption ? `. ${caption}` : ''}`} style={{ gap: 2 }}>
       <Label tone={tone}>{label}</Label>
       <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
         <Text testID={testID} adjustsFontSizeToFit numberOfLines={1} style={{ fontFamily: FONT.display, fontSize: size === 'big' ? 76 : 48, lineHeight: size === 'big' ? 80 : 52, color: toneColor(p, tone), letterSpacing: -1 }}>{value}</Text>

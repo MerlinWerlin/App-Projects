@@ -68,14 +68,14 @@ export function estimateLoad(i: LoadInput): LoadResult {
 export const NOMINAL_KW = [2.0, 2.5, 3.5, 5.0, 6.0, 7.1, 8.0, 9.5, 10.0, 12.5, 14.0, 16.0];
 export function nextSizeKw(w: number): number | null {
   const kw = w / 1000;
-  return NOMINAL_KW.find((s) => s >= kw - 0.05) ?? null;
+  return NOMINAL_KW.find((s) => s >= kw) ?? null;
 }
 
 /** Common US / Canadian nominal sizes, BTU/h; the next size up from a load in watts. */
 export const NOMINAL_BTU = [9000, 12000, 18000, 24000, 30000, 36000, 42000, 48000, 60000];
 export function nextSizeBtu(w: number): number | null {
   const btu = w / 0.29307107017;
-  return NOMINAL_BTU.find((s) => s >= btu - 100) ?? null;
+  return NOMINAL_BTU.find((s) => s >= btu) ?? null;
 }
 
 const fmt1 = (n: number) => (Math.round(n * 10) / 10).toString();

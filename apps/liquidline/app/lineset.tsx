@@ -40,7 +40,7 @@ function LineSet() {
     <>
       <Card>
         <Label>System capacity (cooling)</Label>
-        <Segmented label="Capacity unit" value={capUnit} onChange={setCapUnit} options={[{ value: 'kW', label: 'kW' }, { value: 'BTU', label: 'BTU/h' }]} />
+        <Segmented label="Capacity unit" value={capUnit} onChange={(u) => { const n = parseNum(cap); if (u !== capUnit && Number.isFinite(n)) setCap(u === 'kW' ? (btuhToW(n) / 1000).toFixed(1) : String(Math.round(n * 1000 / 0.29307107017 / 100) * 100)); setCapUnit(u); }} options={[{ value: 'kW', label: 'kW' }, { value: 'BTU', label: 'BTU/h' }]} />
         <NumberField label="Nominal capacity" value={cap} onChange={setCap} unit={capUnit === 'kW' ? 'kW' : 'BTU/h'} step={capUnit === 'kW' ? 0.5 : 3000} allowNegative={false} />
         {pair ? (
           <View style={{ flexDirection: 'row', gap: 16 }}>

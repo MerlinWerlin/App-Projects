@@ -119,6 +119,7 @@ export const COUNTRIES: CountryProfile[] = [
     licence: [
       { text: 'F-gas personnel certificate: Category I (all work), II (leak checks on any system; other work under 3 kg), III (recovery under 3 kg), IV (leak checks only). GB F-gas Regulation.', checked: true },
       { text: 'Businesses (sole traders too) working on other people’s F-gas equipment need F-gas company certification. UK certificates aren’t valid for work in the EU.', checked: false },
+      { text: 'Northern Ireland follows the EU F-gas Regulation (EU) 2024/573 under the Windsor Framework.', checked: false },
     ],
     standards: ['BS EN 378 Refrigerating systems and heat pumps: safety and environmental requirements'],
     rules: [
@@ -135,7 +136,7 @@ export const COUNTRIES: CountryProfile[] = [
     currency: { code: 'EUR', symbol: '€' }, spelling: 'GB', lineSetWord: 'pair coil',
     refrigerants: order(['R32', 'R410A', 'R290', 'R134a', 'R513A', 'R448A', 'R449A', 'R744', 'R1234ze(E)', 'R404A']), commonCount: 10,
     licence: [
-      { text: 'F-gas personnel certificate, Category I–IV, under the EU F-gas Regulation (EU) 2024/573. Certificates from other EU countries are recognised; UK-only ones are not.', checked: false },
+      { text: 'F-gas personnel certificate under the EU F-gas Regulation (EU) 2024/573. Implementing Regulation (EU) 2024/2215 brings new categories (A1, A2, B, C, D, E); existing Category I–IV certificates stay valid. Certificates from other EU countries are recognised; UK-only ones are not.', checked: false },
       { text: 'The EPA is the competent authority; certified companies are listed by F-Gas Registration Ltd.', checked: false },
     ],
     standards: ['I.S. EN 378 Refrigerating systems and heat pumps: safety and environmental requirements'],

@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as U from './units.ts';
+import { btuhToW } from './units.ts';
 import { judgeDecay, checklistFor, EVAC_CHECKLIST } from './evac.ts';
 import { estimateLoad, nextSizeBtu, nextSizeKw } from './load.ts';
 import { neededLength, planCoils } from './lineset.ts';
@@ -47,16 +48,18 @@ test('units: parsing typed numbers and formatting', () => {
   assert.equal(U.fmt(Number.NaN, 1), '–');
 });
 
-test('evacuation decay verdicts', () => {
+test('evacuation decay verdicts judge the trend, not just the last reading', () => {
   assert.equal(judgeDecay([]).verdict, 'need-more');
   assert.equal(judgeDecay([{ minute: 0, micron: 800 }, { minute: 10, micron: 900 }]).verdict, 'not-deep');
   assert.equal(judgeDecay([{ minute: 0, micron: 350 }, { minute: 4, micron: 500 }]).verdict, 'need-more');
-  assert.equal(judgeDecay([{ minute: 0, micron: 350 }, { minute: 5, micron: 600 }, { minute: 10, micron: 700 }]).verdict, 'pass');
-  // Steady climb: leak.
+  assert.equal(judgeDecay([{ minute: 0, micron: 350 }, { minute: 10, micron: 700 }]).verdict, 'need-more', 'two readings cannot show a trend');
+  // Levels off under the limit: pass.
+  assert.equal(judgeDecay([{ minute: 0, micron: 350 }, { minute: 3, micron: 600 }, { minute: 7, micron: 680 }, { minute: 10, micron: 690 }]).verdict, 'pass');
+  // Steady climb that is still under 1000 at 10 min: a leak, not a pass (review finding).
+  assert.equal(judgeDecay([{ minute: 0, micron: 450 }, { minute: 5, micron: 700 }, { minute: 10, micron: 950 }]).verdict, 'leak');
   assert.equal(judgeDecay([{ minute: 0, micron: 400 }, { minute: 5, micron: 1400 }, { minute: 10, micron: 2400 }]).verdict, 'leak');
   // Fast early rise that flattens above the limit: moisture.
   assert.equal(judgeDecay([{ minute: 0, micron: 400 }, { minute: 3, micron: 1300 }, { minute: 7, micron: 1450 }, { minute: 10, micron: 1480 }]).verdict, 'moisture');
-  // Rising very fast before 10 min: early leak call.
   assert.equal(judgeDecay([{ minute: 0, micron: 300 }, { minute: 2, micron: 2500 }]).verdict, 'leak');
 });
 
@@ -72,7 +75,9 @@ test('load estimate: worked example and edge cases', () => {
   if ('error' in r) return;
   near(r.coolW, 25 * 2.4 * 42); // 2520 W
   near(r.heatW, 25 * 2.4 * 40); // 2400 W
-  assert.equal(nextSizeKw(r.coolW), 2.5);
+  assert.equal(nextSizeKw(r.coolW), 3.5, '2.52 kW never rounds down to 2.5');
+  assert.equal(nextSizeKw(2500), 2.5);
+  assert.equal(nextSizeBtu(btuhToW(12070)), 18000);
   const busy = estimateLoad({ areaM2: 25, heightM: 2.4, insulation: 'poor', sun: 'full', coolClimate: 'hot', heatClimate: 'cold', people: 6, extraW: 500, bigGlass: true, topFloorOrUnderRoof: true });
   assert.ok(!('error' in busy) && busy.coolW > r.coolW * 2);
   assert.ok('error' in estimateLoad({ areaM2: 0, heightM: 2.4, insulation: 'good', sun: 'some', coolClimate: 'mild', heatClimate: 'mild', people: 1, extraW: 0, bigGlass: false, topFloorOrUnderRoof: false }));

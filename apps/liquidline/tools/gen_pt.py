@@ -44,7 +44,19 @@ CALIBRATE = {
 CUR = {"fid": None}
 
 def raw(name, t, q):
-    return CP.PropsSI("P", "T", t + 273.15, "Q", q, name) / 1000.0
+    # CoolProp's mixture solver fails at isolated temperatures (e.g. R454B bubble at 57 and 65 C) while working
+    # either side. Retry a hair either side and take the log-mean, which is exact to well under 0.01 %.
+    try:
+        return CP.PropsSI("P", "T", t + 273.15, "Q", q, name) / 1000.0
+    except Exception:
+        for d in (0.01, 0.03, 0.1):
+            try:
+                lo = CP.PropsSI("P", "T", t - d + 273.15, "Q", q, name)
+                hi = CP.PropsSI("P", "T", t + d + 273.15, "Q", q, name)
+                return math.sqrt(lo * hi) / 1000.0
+            except Exception:
+                continue
+        raise
 
 def sat(name, t, q):
     p = raw(name, t, q)
@@ -75,19 +87,41 @@ for fid, name in FLUIDS:
         lo = max(lo, math.ceil(CP.PropsSI('Ttriple', name) - 273.15 + 0.5))
     except Exception:
         pass
-    bub, dew, start = [], [], None
-    t = lo
-    while t <= hi:
-        try:
-            b, d = sat(name, t, 0), sat(name, t, 1)
-            if start is None:
-                start = t
-            bub.append(r(b)); dew.append(r(d))
-        except Exception:
-            if start is not None:
-                break
-        t += 1
-    end = start + len(bub) - 1
+    # Solve every 1 °C point; a point the mixture solver can't converge on is filled by interpolating ln P linearly
+    # in 1/T (Clausius-Clapeyron) between solved neighbours no more than 6 K apart. The table ends at the last point
+    # that is solved or bridgeable, never extrapolated.
+    temps = list(range(lo, hi + 1))
+    raw_pts = {}
+    for q in (0, 1):
+        for t in temps:
+            try:
+                raw_pts[(t, q)] = sat(name, t, q)
+            except Exception:
+                raw_pts[(t, q)] = None
+    filled = 0
+    for q in (0, 1):
+        solved = [t for t in temps if raw_pts[(t, q)] is not None]
+        for t in temps:
+            if raw_pts[(t, q)] is not None:
+                continue
+            below = max((x for x in solved if x < t), default=None)
+            above = min((x for x in solved if x > t), default=None)
+            if below is None or above is None or above - below > 6:
+                continue
+            ia, ib = 1 / (below + 273.15), 1 / (above + 273.15)
+            f = (1 / (t + 273.15) - ia) / (ib - ia)
+            la, lb = math.log(raw_pts[(below, q)]), math.log(raw_pts[(above, q)])
+            raw_pts[(t, q)] = math.exp(la + (lb - la) * f)
+            filled += 1
+    ok = [t for t in temps if raw_pts[(t, 0)] is not None and raw_pts[(t, 1)] is not None]
+    start = ok[0]
+    end = start
+    while end + 1 in ok:
+        end += 1
+    bub = [r(raw_pts[(t, 0)]) for t in range(start, end + 1)]
+    dew = [r(raw_pts[(t, 1)]) for t in range(start, end + 1)]
+    if filled:
+        print(f"  {fid}: {filled} point(s) bridged by Clausius-Clapeyron interpolation")
     pure = all(abs(a - b) < 1e-9 for a, b in zip(bub, dew))
     tables[fid] = {"tMin": start, "tMax": end, "bubble": bub, "dew": None if pure else dew,
                    "tCrit": None if tc is None else round(tc, 2),

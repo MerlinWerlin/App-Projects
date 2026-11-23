@@ -10,25 +10,33 @@ export const DECAY_MINUTES = 10;
 export type DecayReading = { minute: number; micron: number };
 export type DecayVerdict = { verdict: 'pass' | 'leak' | 'moisture' | 'not-deep' | 'need-more'; text: string };
 
-/** Judges a standing-vacuum test from readings taken after the pump was isolated (minute 0 = isolation). */
+/**
+ * Judges a standing-vacuum test from readings taken after the pump was isolated (minute 0 = isolation).
+ * The trend decides, not the last number: a pass needs at least three readings across the hold, every reading at or
+ * under the limit, and a late rise rate that is well below the early one (levelling off) or near flat. A steady
+ * climb is likely a leak even while it is still under the limit; a rise that levels off above it is likely moisture.
+ */
 export function judgeDecay(readings: DecayReading[], minutes = DECAY_MINUTES): DecayVerdict {
   const r = readings.filter((x) => Number.isFinite(x.minute) && Number.isFinite(x.micron) && x.micron >= 0).sort((a, b) => a.minute - b.minute);
   if (r.length < 2) return { verdict: 'need-more', text: 'Log a reading at isolation and at least one more.' };
   const start = r[0];
   const last = r[r.length - 1];
   if (start.micron > TARGET_MICRON) return { verdict: 'not-deep', text: `Start below ${TARGET_MICRON} micron before the decay test. Keep pulling.` };
-  if (last.minute - start.minute < minutes) {
-    if (last.micron > DECAY_LIMIT_MICRON * 2) return { verdict: 'leak', text: 'Rising fast. Likely a leak: check flares, cores and hose seals.' };
-    return { verdict: 'need-more', text: `Keep holding: ${Math.max(0, Math.ceil(minutes - (last.minute - start.minute)))} min to go.` };
-  }
-  // Rate over the last third of the test versus the first third: a leak keeps climbing at the same rate.
   const span = last.minute - start.minute;
-  const at = (m: number) => interp(r, m);
-  const early = (at(start.minute + span / 3) - start.micron) / (span / 3);
-  const late = (last.micron - at(last.minute - span / 3)) / (span / 3);
-  if (last.micron <= DECAY_LIMIT_MICRON) return { verdict: 'pass', text: `Held below ${DECAY_LIMIT_MICRON} micron for ${Math.round(span)} min. Dry and tight.` };
-  if (early > 0 && late >= early * 0.6) return { verdict: 'leak', text: 'Still climbing at a steady rate: a leak. Find it, fix it and evacuate again.' };
-  return { verdict: 'moisture', text: 'Rose then levelled off above the limit: moisture. Keep evacuating (warm the system, change pump oil), then test again.' };
+  if (span < minutes) {
+    if (last.micron > DECAY_LIMIT_MICRON * 2) return { verdict: 'leak', text: 'Rising fast: likely a leak. Check flares, cores and hose seals.' };
+    return { verdict: 'need-more', text: `Keep holding: ${Math.max(0, Math.ceil(minutes - span))} min to go.` };
+  }
+  if (r.length < 3) return { verdict: 'need-more', text: 'Log one more reading part-way through so the trend can be judged.' };
+  const third = span / 3;
+  const early = (interp(r, start.minute + third) - start.micron) / third; // micron per minute
+  const late = (last.micron - interp(r, last.minute - third)) / third;
+  const flat = late <= 5; // under ~5 micron/min at the end: levelled off
+  const levelling = flat || (early > 0 && late <= early * 0.35);
+  const over = r.some((x) => x.micron > DECAY_LIMIT_MICRON);
+  if (!over && levelling) return { verdict: 'pass', text: `Held under ${DECAY_LIMIT_MICRON} micron for ${Math.round(span)} min and levelled off: likely dry and tight.` };
+  if (!levelling) return { verdict: 'leak', text: 'Still climbing at a steady rate: likely a leak. Find it, fix it and evacuate again.' };
+  return { verdict: 'moisture', text: 'Rose, then levelled off above the limit: likely moisture. Keep evacuating (warm the system, change pump oil), then test again.' };
 }
 
 function interp(r: DecayReading[], m: number): number {

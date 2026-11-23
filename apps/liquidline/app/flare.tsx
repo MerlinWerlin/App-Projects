@@ -29,7 +29,7 @@ export default function FlareScreen() {
         </Card>
         <Card>
           <Label>Good flares</Label>
-          <Small>Cut square, deburr facing down, slide the nut on first, flare to the gauge for the refrigerant, a drop of the manufacturer’s recommended oil on the back of the flare (not the face), tighten with a torque wrench and a backing spanner, then leak test.</Small>
+          <Small>Cut square, deburr facing down, slide the nut on first, flare to the gauge for the refrigerant, oil only where the unit’s manual says and only its specified oil (never on the threads), tighten with a torque wrench and a backing spanner, then leak test.</Small>
         </Card>
       </Gate>
     </Screen>

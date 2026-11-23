@@ -3,7 +3,8 @@
 // StoreKit is asked at launch, on any transaction update, and after every purchase or restore.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useSyncExternalStore } from 'react';
-import { ACCESS_CACHE_KEY, accessOf, mergeEntitlements, parseAccessCache, type Access, type Entitlements } from '../core/access.ts';
+import { AppState } from 'react-native';
+import { ACCESS_CACHE_KEY, DAY_MS, TRIAL_DAYS, accessOf, mergeEntitlements, parseAccessCache, type Access, type Entitlements } from '../core/access.ts';
 import { loadProducts, onEntitlementChange, purchase, readEntitlements, restore, storeKind, type PurchaseResult, type StoreProduct } from '../native/store.ts';
 
 export type AccessSnapshot = Access & { loaded: boolean; products: Record<string, StoreProduct>; productsLoaded: boolean };
@@ -16,10 +17,20 @@ let snap: AccessSnapshot | null = null;
 const listeners = new Set<() => void>();
 
 const build = (): AccessSnapshot => ({ ...accessOf(storeKind, ent, Date.now()), loaded, products, productsLoaded });
+let expiryTimer: ReturnType<typeof setTimeout> | null = null;
 const emit = () => {
   snap = build();
   listeners.forEach((l) => l());
+  scheduleExpiry();
 };
+/** While the app stays open, the trial still ends on time: re-emit at the expiry moment. */
+function scheduleExpiry() {
+  if (expiryTimer) clearTimeout(expiryTimer);
+  expiryTimer = null;
+  if (ent.unlocked || ent.trialStart == null) return;
+  const left = ent.trialStart + TRIAL_DAYS * DAY_MS - Date.now();
+  if (left > 0 && left < 2 ** 31 - 1) expiryTimer = setTimeout(emit, left + 1000);
+}
 const current = () => (snap ??= build());
 
 async function save(e: Entitlements) {
@@ -60,6 +71,13 @@ function start() {
   void refreshAccess();
   void refreshProducts();
   onEntitlementChange(() => void refreshAccess());
+  // Back from the background: the clock moved on (trial days), and StoreKit may have news (refund, Ask to Buy).
+  AppState.addEventListener('change', (st) => {
+    if (st === 'active') {
+      emit();
+      void refreshAccess();
+    }
+  });
 }
 
 const subscribe = (l: () => void) => {

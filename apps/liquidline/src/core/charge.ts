@@ -2,7 +2,7 @@
 // Pure TypeScript (charge.test.ts). Inputs are what the tech reads: gauge (or absolute) pressure in their unit, line
 // temperature in their unit. Everything is computed in kPa abs / °C and shown back in their units.
 
-import { satTemp } from './pt.ts';
+import { limits, satTemp } from './pt.ts';
 import {
   DELTA_LABEL, LENGTH_LABEL, PRESSURE_LABEL, TEMP_LABEL, deltaFromK, fmt, lengthFromM, massFromG, pressureDecimals,
   pressureFromKpa, pressureToKpa, rateFromGPerM, tempFromC, tempToC, type LengthUnit, type MassUnit, type PressureUnit, type TempUnit,
@@ -14,6 +14,25 @@ export const LINE_MAX_C = 150;
 const lineOk = (c: number) => c >= LINE_MIN_C && c <= LINE_MAX_C;
 const lineError = (p: { temp: TempUnit }) =>
   `That line temperature looks wrong (outside ${fmt(tempFromC(LINE_MIN_C, p.temp), 0)} to ${fmt(tempFromC(LINE_MAX_C, p.temp), 0)} ${TEMP_LABEL[p.temp]}). Check the number and the probe.`;
+
+function rangeError(id: string, p: { temp: TempUnit }): string {
+  const l = limits(id);
+  return l
+    ? `That pressure is outside the ${id} table (saturation ${fmt(tempFromC(l.tMin, p.temp), 0)} to ${fmt(tempFromC(l.tMax, p.temp), 0)} ${TEMP_LABEL[p.temp]}). Check the refrigerant and the reading.`
+    : 'No data for this refrigerant.';
+}
+
+/**
+ * The chip next to a result. A safety note (floodback, starved evaporator, negative reading) is separate from the
+ * target comparison, and a result with a safety note never shows "On target". No target: no chip.
+ */
+function targetVerdict(valueK: number, targetK: number | null | undefined, safety: boolean, negative: boolean): Verdict | null {
+  if (negative) return 'warn';
+  if (targetK == null || !Number.isFinite(targetK)) return null;
+  const diff = valueK - targetK;
+  const v: Verdict = Math.abs(diff) <= 1.7 ? 'ok' : diff < 0 ? 'low' : 'high';
+  return v === 'ok' && safety ? 'warn' : v;
+}
 
 export type Prefs = { pressure: PressureUnit; temp: TempUnit; gauge: boolean; atmKpa: number };
 export type Step = { label: string; value: string };
@@ -50,7 +69,7 @@ export function superheat(id: string, suctionReading: number, lineTemp: number, 
   const abs = absOf(suctionReading, p);
   if (abs <= 0) return { ok: false, error: 'That pressure is below a perfect vacuum. Check gauge or absolute.' };
   const sat = satTemp(id, abs, 'dew');
-  if (sat == null) return { ok: false, error: 'That pressure is outside this refrigerant’s table. Check the refrigerant and the reading.' };
+  if (sat == null) return { ok: false, error: rangeError(id, p) };
   const lineC = tempToC(lineTemp, p.temp);
   if (!lineOk(lineC)) return { ok: false, error: lineError(p) };
   const sh = lineC - sat;
@@ -61,20 +80,12 @@ export function superheat(id: string, suctionReading: number, lineTemp: number, 
     { label: `Superheat = ${fmt(tempFromC(lineC, p.temp), 1)} − ${fmt(tempFromC(sat, p.temp), 1)}`, value: dStr(sh, p) },
   ];
   let note: string | null = null;
-  let verdict: Verdict | null = null;
-  if (sh < 0) {
-    note = 'Negative superheat: the line reads colder than saturation. Recheck the probe and the reading. If it is real, liquid may be returning to the compressor.';
-    verdict = 'warn';
-  } else if (sh < 1.5) {
-    note = 'Very low superheat: risk of liquid floodback. Check airflow, metering device and charge.';
-    verdict = 'low';
-  } else if (sh > 30) {
-    note = 'Very high superheat: a starved evaporator (low charge, restriction or metering fault) or a misread. Recheck before acting.';
-    verdict = 'high';
-  }
-  if (targetK != null && Number.isFinite(targetK) && verdict !== 'warn') {
+  if (sh < 0) note = 'Negative superheat: the line reads colder than saturation. Recheck the probe and the reading. If it is real, liquid may be returning to the compressor.';
+  else if (sh < 1.5) note = 'Very low superheat: risk of liquid floodback. Check airflow, metering device and charge.';
+  else if (sh > 30) note = 'Very high superheat: a starved evaporator (low charge, restriction or metering fault) or a misread. Recheck before acting.';
+  const verdict = targetVerdict(sh, targetK, note != null, sh < 0);
+  if (targetK != null && Number.isFinite(targetK) && sh >= 0) {
     const diff = sh - targetK;
-    verdict = Math.abs(diff) <= 1.7 ? 'ok' : diff < 0 ? 'low' : 'high';
     steps.push({ label: 'Target', value: dStr(targetK, p) });
     steps.push({ label: 'Difference', value: `${diff >= 0 ? '+' : ''}${dStr(diff, p)}` });
   }
@@ -87,7 +98,7 @@ export function subcooling(id: string, liquidReading: number, lineTemp: number, 
   const abs = absOf(liquidReading, p);
   if (abs <= 0) return { ok: false, error: 'That pressure is below a perfect vacuum. Check gauge or absolute.' };
   const sat = satTemp(id, abs, 'bubble');
-  if (sat == null) return { ok: false, error: 'That pressure is outside this refrigerant’s table. Check the refrigerant and the reading.' };
+  if (sat == null) return { ok: false, error: rangeError(id, p) };
   const lineC = tempToC(lineTemp, p.temp);
   if (!lineOk(lineC)) return { ok: false, error: lineError(p) };
   const sc = sat - lineC;
@@ -98,22 +109,15 @@ export function subcooling(id: string, liquidReading: number, lineTemp: number, 
     { label: `Subcooling = ${fmt(tempFromC(sat, p.temp), 1)} − ${fmt(tempFromC(lineC, p.temp), 1)}`, value: dStr(sc, p) },
   ];
   let note: string | null = null;
-  let verdict: Verdict | null = null;
-  if (sc > 30) {
-    note = 'Very high subcooling: check for overcharge, a restriction, or a misread pressure.';
-    verdict = 'high';
-  }
-  if (sc < 0) {
-    note = 'Negative subcooling: the line reads warmer than saturation. Recheck the probe and reading; flash gas or a very low charge is possible.';
-    verdict = 'warn';
-  }
-  if (targetK != null && Number.isFinite(targetK) && verdict !== 'warn') {
+  if (sc < 0) note = 'Negative subcooling: the line reads warmer than saturation. Recheck the probe and reading; flash gas or a very low charge is possible.';
+  else if (sc > 30) note = 'Very high subcooling: check for overcharge, a restriction, or a misread pressure.';
+  const verdict = targetVerdict(sc, targetK, note != null, sc < 0);
+  if (targetK != null && Number.isFinite(targetK) && sc >= 0) {
     const diff = sc - targetK;
-    verdict = Math.abs(diff) <= 1.7 ? 'ok' : diff < 0 ? 'low' : 'high';
     steps.push({ label: 'Target', value: dStr(targetK, p) });
     steps.push({ label: 'Difference', value: `${diff >= 0 ? '+' : ''}${dStr(diff, p)}` });
-    if (verdict === 'low') note = 'Below target: on a TXV/EEV system this usually points to undercharge (check for leaks before adding refrigerant).';
-    if (verdict === 'high') note = 'Above target: possible overcharge, or a restriction or non-condensables. Check before removing refrigerant.';
+    if (!note && verdict === 'low') note = 'Below target: on a TXV/EEV system this usually points to undercharge (check for leaks before adding refrigerant).';
+    if (!note && verdict === 'high') note = 'Above target: possible overcharge, or a restriction or non-condensables. Check before removing refrigerant.';
   }
   return { ok: true, satC: sat, valueK: sc, steps, note, verdict };
 }
@@ -123,10 +127,15 @@ export function subcooling(id: string, liquidReading: number, lineTemp: number, 
  * target SH (°F) = (3 × indoor wet bulb °F − 80 − outdoor dry bulb °F) / 2. Inputs and output in °C / K here.
  * Returns null when the result is below about 3 K (charts say: do not charge by superheat there).
  */
+export const ORIFICE_WB_F = [50, 76] as const;
+export const ORIFICE_DB_F = [55, 115] as const;
+
 export function fixedOrificeTargetK(indoorWbC: number, outdoorDbC: number): number | null {
   if (!Number.isFinite(indoorWbC) || !Number.isFinite(outdoorDbC)) return null;
   const wbF = (indoorWbC * 9) / 5 + 32;
   const dbF = (outdoorDbC * 9) / 5 + 32;
+  // Only inside the range the published charging charts cover; no extrapolation.
+  if (wbF < ORIFICE_WB_F[0] || wbF > ORIFICE_WB_F[1] || dbF < ORIFICE_DB_F[0] || dbF > ORIFICE_DB_F[1]) return null;
   const shF = (3 * wbF - 80 - dbF) / 2;
   const k = (shF * 5) / 9;
   return k < 2.8 ? null : k;

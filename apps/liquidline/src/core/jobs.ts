@@ -37,7 +37,7 @@ function parseReading(x: unknown): SavedReading | null {
   const kind = KINDS.includes(r.kind as ReadingKind) ? (r.kind as ReadingKind) : null;
   if (!kind || typeof r.id !== 'string') return null;
   const steps = Array.isArray(r.steps)
-    ? r.steps.filter((s) => s && typeof s === 'object').map((s) => ({ label: str((s as SavedStep).label, 200), value: str((s as SavedStep).value, 200) })).slice(0, 40)
+    ? r.steps.filter((s) => s && typeof s === 'object').map((s) => ({ label: str((s as SavedStep).label, 200), value: str((s as SavedStep).value, 200) })).slice(0, 400)
     : [];
   return { id: r.id, at: num(r.at, 0), kind, title: str(r.title, 200), result: str(r.result, 200), steps };
 }

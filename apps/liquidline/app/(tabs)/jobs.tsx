@@ -24,7 +24,7 @@ export default function JobsScreen() {
   const add = () => {
     if (!a.canCalc) return router.push('/paywall');
     const j = newJob(s.refrigerant);
-    saveJob(j);
+    if (!saveJob(j)) return;
     router.push({ pathname: '/job/[id]', params: { id: j.id } });
   };
   return (

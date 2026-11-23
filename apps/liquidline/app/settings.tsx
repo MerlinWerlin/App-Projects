@@ -19,6 +19,11 @@ export default function SettingsScreen() {
   const [pickCountry, setPickCountry] = useState(false);
   const ft = s.units.length === 'ft';
   const [alt, setAlt] = useState(String(Math.round(ft ? s.altitudeM / 0.3048 : s.altitudeM)));
+  const [altUnit, setAltUnit] = useState(s.units.length);
+  if (altUnit !== s.units.length) {
+    setAltUnit(s.units.length);
+    setAlt(String(Math.round(ft ? s.altitudeM / 0.3048 : s.altitudeM)));
+  }
   const setUnit = (k: keyof typeof s.units, v: string) => updateSettings({ units: { ...s.units, [k]: v } });
   return (
     <Screen tab={false}>

@@ -140,3 +140,12 @@ test('chart rows run every 5 °C and include 0 °C', () => {
   assert.ok(rows.some((r) => r.tC === 0));
   for (let i = 1; i < rows.length; i++) assert.equal(rows[i].tC - rows[i - 1].tC, 5);
 });
+
+test('blend tables reach hot-day condensing (review finding: R454B used to stop at 56 °C)', () => {
+  for (const id of ['R454B', 'R448A', 'R449A', 'R410A', 'R32']) {
+    assert.ok(satPressure(id, 65, 'bubble') != null, `${id} at 65 °C`);
+  }
+  // Bridged points stay on a smooth curve: each 1 K step rises by a similar ratio near 57 °C.
+  const r = (t: number) => satPressure('R454B', t + 1, 'bubble')! / satPressure('R454B', t, 'bubble')!;
+  assert.ok(Math.abs(r(56) - r(58)) < 0.003, `${r(56)} vs ${r(58)}`);
+});

@@ -24,7 +24,7 @@ export default function SaveSheet() {
     const base = id ? getJobs().find((j) => j.id === id) : newJob(s.refrigerant);
     if (!base) return;
     const j = addReading(base, reading);
-    saveJob(j);
+    if (!saveJob(j)) return;
     void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
     clearStash();
     router.replace({ pathname: '/job/[id]', params: { id: j.id } });
