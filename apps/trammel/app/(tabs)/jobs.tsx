@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { useJobs } from '../../src/state/jobs.tsx';
 import { fonts, radius, space, TOUCH, useTheme } from '../../src/theme/theme.ts';
+import { EmptyJobsArt } from '../../src/ui/diagrams.tsx';
 import { Button, Card, P, Screen } from '../../src/ui/kit.tsx';
 
 export default function Jobs() {
@@ -33,9 +34,7 @@ export default function Jobs() {
       </View>
       {jobs.length === 0 ? (
         <Card style={{ alignItems: 'center', paddingVertical: space.xxl, gap: space.m }}>
-          <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: t.blade, alignItems: 'center', justifyContent: 'center' }}>
-            <Ionicons name="folder-open-outline" size={34} color={t.bladeInk} />
-          </View>
+          <EmptyJobsArt />
           <Text style={{ fontFamily: fonts.display, fontSize: 24, color: t.ink, textAlign: 'center' }}>No jobs yet</Text>
           <P muted>Make a job here, or tap Save to a job under any result. Jobs stay on this phone.</P>
         </Card>

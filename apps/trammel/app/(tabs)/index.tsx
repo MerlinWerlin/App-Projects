@@ -2,7 +2,7 @@
 // trial starts; free ones never do. No paywall or prompt on first launch.
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { Image, Pressable, ScrollView, Text, View } from 'react-native';
+import { Image, Pressable, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TOOLS, type ToolId } from '../../src/core/tools.ts';
 import { useAccess } from '../../src/state/access.ts';
@@ -29,6 +29,9 @@ export default function Tools() {
   const t = useTheme();
   const a = useAccess();
   const insets = useSafeAreaInsets();
+  // One tool per row at the larger accessibility text sizes, so names and blurbs never squeeze.
+  const { fontScale } = useWindowDimensions();
+  const basis = fontScale > 1.35 ? '100%' : '45%';
   const locked = (free: boolean) => !free && !a.canEdit;
   const status =
     a.state === 'trial'
@@ -70,7 +73,7 @@ export default function Tools() {
                   onPress={() => router.push(`/${tool.id}` as never)}
                   accessibilityRole="button"
                   accessibilityLabel={`${tool.name}. ${tool.blurb}${lock ? '. Locked, part of Full Unlock' : ''}`}
-                  style={({ pressed }) => ({ flexGrow: 1, flexBasis: '45%', minHeight: 120, borderRadius: radius.l, backgroundColor: t.card, borderWidth: 1, borderColor: t.line, padding: space.m, gap: space.s, opacity: pressed ? 0.75 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] })}
+                  style={({ pressed }) => ({ flexGrow: 1, flexBasis: basis, minHeight: 120, borderRadius: radius.l, backgroundColor: t.card, borderWidth: 1, borderColor: t.line, padding: space.m, gap: space.s, opacity: pressed ? 0.75 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] })}
                 >
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <View style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: t.blade, alignItems: 'center', justifyContent: 'center' }}>

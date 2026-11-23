@@ -187,9 +187,9 @@ export function Readouts({ rows }: { rows: Readout[] }) {
   return (
     <Card style={{ paddingVertical: space.s, gap: 0 }}>
       {rows.map((r, i) => (
-        <View key={r.label} accessible accessibilityLabel={`${r.label}: ${r.value}`} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.m, minHeight: 50, borderTopWidth: i ? 1 : 0, borderTopColor: t.line, paddingVertical: space.s }}>
+        <View key={r.label} accessible accessibilityLabel={`${r.label}: ${r.value}`} style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', columnGap: space.m, minHeight: 50, borderTopWidth: i ? 1 : 0, borderTopColor: t.line, paddingVertical: space.s }}>
           <Text style={{ flexShrink: 1, fontFamily: fonts.body, fontSize: 17, color: t.muted }}>{r.label}</Text>
-          <Text style={{ fontFamily: fonts.display, fontSize: r.strong ? 30 : 26, color: t.ink, textAlign: 'right' }} maxFontSizeMultiplier={1.5}>
+          <Text style={{ flexShrink: 1, marginLeft: 'auto', fontFamily: fonts.display, fontSize: r.strong ? 30 : 26, color: t.ink, textAlign: 'right' }} maxFontSizeMultiplier={1.5}>
             {r.value}
           </Text>
         </View>

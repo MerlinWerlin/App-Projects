@@ -194,3 +194,22 @@ export function CutBars({ bars, label }: { bars: Bar[]; label: (mm: number) => s
     </View>
   );
 }
+
+/** Empty-state art for Jobs: a carpenter's pencil resting on a length of tape blade. */
+export function EmptyJobsArt() {
+  const t = useTheme();
+  return (
+    <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden style={{ width: 220, height: 120 }}>
+      <Svg width="100%" height="100%" viewBox="0 0 220 120">
+        <Rect x={10} y={56} width={200} height={40} rx={6} fill={t.blade} stroke={t.ink} strokeWidth={2.5} />
+        {Array.from({ length: 24 }, (_, i) => (
+          <Line key={i} x1={18 + i * 8} y1={56} x2={18 + i * 8} y2={i % 5 === 0 ? 76 : i % 1 === 0 ? 66 : 62} stroke={t.bladeInk} strokeWidth={2} />
+        ))}
+        <Polygon points="40,40 176,14 182,30 46,56" fill={t.card} stroke={t.ink} strokeWidth={2.5} strokeLinejoin="round" />
+        <Polygon points="176,14 200,16 182,30" fill={t.blade} stroke={t.ink} strokeWidth={2.5} strokeLinejoin="round" />
+        <Polygon points="194,15.5 200,16 196,21" fill={t.ink} />
+        <Line x1={62} y1={36} x2={62 + 0} y2={52} stroke={t.ink} strokeWidth={2} />
+      </Svg>
+    </View>
+  );
+}
