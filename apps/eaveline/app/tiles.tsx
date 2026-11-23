@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { cappingTiles } from '../src/core/flashing';
 import { roofGeometry } from '../src/core/geometry';
 import { slateGauge, tiles } from '../src/core/tiles';
-import { num } from '../src/core/units';
+import { grouped, num } from '../src/core/units';
 import { VERIFIED_LABEL } from '../src/data/src';
 import { useApp } from '../src/state/AppState';
 import { roofReady } from '../src/state/model';
@@ -46,13 +46,8 @@ export default function Tiles() {
   const caps = capLen > 0 && capPerM ? cappingTiles(capLen, { perMetre: capPerM }, ctx) : null;
   const belowMin = tile?.minPitchDeg != null && ready && roof.pitchDeg < tile.minPitchDeg - 1e-9;
   const stockChoices = [...new Set([...country.battenStockMm, country.defaults.battenStockMm])].sort((a, b) => a - b).map(mm => ({ id: String(mm), title: ctx.len(mm) }));
-  return (
-    <Screen>
-      <RoofCard />
-      <Picker testID="tile-product" label="Tile or slate" value={tileId} onPick={pick}
-        choices={country.tiles.map(x => ({ id: x.id, title: x.name, sub: [x.tilesPerM2 ? `${num(x.tilesPerM2, 2)} per m²` : null, x.minPitchDeg != null ? `min ${ctx.pitch(x.minPitchDeg)}` : null].filter(Boolean).join(' · '), tag: VERIFIED_LABEL[x.src.verified] }))} />
-      {tile?.note ? <Notice text={tile.note} icon="information-circle-outline" /> : null}
-      {belowMin ? <Notice tone="danger" icon="warning-outline" text={`This roof is ${ctx.pitch(roof.pitchDeg)}, below this tile’s minimum of ${ctx.pitch(tile!.minPitchDeg!)}.`} /> : null}
+  const inputs = (
+    <Section title="Tile, gauge and set-out">
       <LengthField testID="tile-cover" label="Tile cover width (side to side, as laid)" mm={cover} onMm={setCover} size="short" hint={cover ? undefined : 'Not on the data sheet: measure a laid tile or ask the maker.'} />
       {isSlate ? (
         <>
@@ -70,11 +65,21 @@ export default function Tiles() {
       <Notice icon="information-circle-outline" text={`Set-outs: slope distance from the eave line to the first ${w.batten}, and from the top ${w.batten} to the ridge. Starting values only; use the tile maker’s set-out.`} />
       <NumField label="Waste for cuts and breakage" value={waste} onValue={setWaste} suffix="%" max={50} />
       <Picker label={`${cap(w.batten)} stock length`} value={stockId} onPick={setStockId} choices={stockChoices} customLabel={null} />
+    </Section>
+  );
+  return (
+    <Screen>
+      <RoofCard />
+      <Picker testID="tile-product" label="Tile or slate" value={tileId} onPick={pick}
+        choices={country.tiles.map(x => ({ id: x.id, title: x.name, sub: [x.tilesPerM2 ? `${num(x.tilesPerM2, 2)} per m²` : null, x.minPitchDeg != null ? `min ${ctx.pitch(x.minPitchDeg)}` : null].filter(Boolean).join(' · '), tag: VERIFIED_LABEL[x.src.verified] }))} />
+      {tile?.note ? <Notice text={tile.note} icon="information-circle-outline" /> : null}
+      {belowMin ? <Notice tone="danger" icon="warning-outline" text={`This roof is ${ctx.pitch(roof.pitchDeg)}, below this tile’s minimum of ${ctx.pitch(tile!.minPitchDeg!)}.`} /> : null}
+      {!(res?.ok && app.can('tiles')) ? inputs : null}
       {res && !res.ok ? <ErrorLine text={res.error} /> : null}
       <Gate tool="tiles">
         {res?.ok ? (
           <>
-            <Answer testID="tiles-answer" label="Tiles to order" value={`${res.value.tilesToOrder}`} lines={[res.value.gaugeMm != null ? `${cap(w.batten)} gauge ${ctx.len(res.value.gaugeMm)} · ${res.value.rows} rows a plane` : `${num(res.value.coveragePerM2, 2)} per m² + ${waste ?? 0}% waste`]} />
+            <Answer testID="tiles-answer" label="Tiles to order" value={grouped(res.value.tilesToOrder)} lines={[res.value.gaugeMm != null ? `${cap(w.batten)} gauge ${ctx.len(res.value.gaugeMm)} · ${res.value.rows} rows a plane` : `${num(res.value.coveragePerM2, 2)} per m² + ${waste ?? 0}% waste`]} />
             <Figures rows={[
               ...(res.value.tilesByCourses != null ? [['By courses', String(res.value.tilesByCourses)] as [string, string]] : []),
               ['By area', String(res.value.tilesByArea)],
@@ -85,6 +90,7 @@ export default function Tiles() {
             {capLen > 0 && !country.caps.some(c => c.perMetre) ? (
               <NumField label={`${cap(w.ridge)} caps per metre (from the maker)`} value={capPerM} onValue={setCapPerM} max={10} />
             ) : null}
+            {inputs}
             <Steps steps={[...res.steps, ...(sg?.ok ? sg.steps : []), ...(caps?.ok ? caps.steps : [])]} notes={[...res.notes, ...(sg?.ok ? sg.notes : [])]} />
             <SaveToJob tool="tiles" title={`Tiles · ${tile?.name ?? 'custom'}`} lines={[
               `${res.value.tilesToOrder} tiles (${waste ?? 0}% waste)`,

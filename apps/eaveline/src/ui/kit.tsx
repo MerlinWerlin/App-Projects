@@ -266,9 +266,10 @@ export function Answer({ label, value, lines = [], testID }: { label: string; va
   const { theme } = useApp();
   return (
     <View testID={testID} accessible accessibilityLabel={`${label}: ${value}. ${lines.join('. ')}`} style={[st.answer, { backgroundColor: theme.accent }]}>
-      <Text style={[TYPE.label, { color: theme.onAccent }]}>{label}</Text>
+      {/* The number leads; its name sits under it in plain words (no eyebrow label). */}
       <Text style={[TYPE.hero, { color: theme.onAccent, fontVariant: ['tabular-nums'] }]} adjustsFontSizeToFit numberOfLines={2} maxFontSizeMultiplier={1.3}>{value}</Text>
-      {lines.map(l => <Text key={l} style={[TYPE.headline, { color: theme.onAccent }]} maxFontSizeMultiplier={1.6}>{l}</Text>)}
+      <Text style={[TYPE.title2, { color: theme.onAccent }]} maxFontSizeMultiplier={1.5}>{label}</Text>
+      {lines.map(l => <Text key={l} style={[TYPE.callout, { color: theme.onAccent }]} maxFontSizeMultiplier={1.6}>{l}</Text>)}
     </View>
   );
 }

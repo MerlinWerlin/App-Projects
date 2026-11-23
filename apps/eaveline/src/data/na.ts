@@ -19,7 +19,7 @@ const ft = (n: number) => Math.round(n * MM_PER_FT);
 const inch = (n: number) => n * MM_PER_IN;
 const x12 = (n: number) => Math.round(degFromX12(n) * 100) / 100;
 
-const usTerms = { ...DEFAULT_TERMS, downpipe: 'downspout', downpipes: 'downspouts', barge: 'rake', ridge: 'ridge cap', batten: 'furring strip', battens: 'furring strips', underlay: 'underlayment' };
+const usTerms = { ...DEFAULT_TERMS, downpipe: 'downspout', downpipes: 'downspouts', barge: 'rake', ridge: 'ridge cap', underlay: 'underlayment' };
 
 export const US: Country = {
   code: 'US', name: 'United States', guided: true, sys: 'imperial', pitchStyle: 'x12', currency: 'USD', spelling: 'en-US',

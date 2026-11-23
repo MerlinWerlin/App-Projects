@@ -69,13 +69,17 @@ export function RoofCard({ need = true }: { need?: boolean }) {
       style={({ pressed }) => [st.roofCard, { backgroundColor: theme.sheet, borderColor: ready ? theme.line : theme.ink, borderWidth: ready ? StyleSheet.hairlineWidth : 2, opacity: pressed ? 0.85 : 1 }]}>
       <RoofDiagram type={roof.type} size={0.36} label={false} />
       <View style={{ flex: 1, gap: 2 }}>
-        <Txt v="label" tone="ink3">{ready ? 'This roof' : need ? 'Start here' : 'Roof'}</Txt>
         {ready && g?.ok ? (
           <>
-            <Txt v="headline">{cap(roof.type)} · {ctx.dim(roof.lengthMm)} × {ctx.dim(roof.widthMm)}</Txt>
-            <Txt v="subhead" tone="ink2">{ctx.pitch(roof.pitchDeg)} · {ctx.area(g.value.roofAreaM2)}</Txt>
+            <Txt v="headline">{cap(roof.type)} roof, {ctx.dim(roof.lengthMm)} × {ctx.dim(roof.widthMm)}</Txt>
+            <Txt v="subhead" tone="ink2">{ctx.pitch(roof.pitchDeg)} pitch · {ctx.area(g.value.roofAreaM2)}</Txt>
           </>
-        ) : <Txt v="headline">Enter the roof size and pitch</Txt>}
+        ) : (
+          <>
+            <Txt v="headline">{need ? 'Start with the roof' : 'No roof yet'}</Txt>
+            <Txt v="subhead" tone="ink2">Size at the eaves and pitch, once. Every calculator uses it.</Txt>
+          </>
+        )}
       </View>
       <Ionicons name="create-outline" size={24} color={theme.ink} />
     </Pressable>
@@ -133,8 +137,8 @@ export function SafetyLine() {
   const router = useRouter();
   return (
     <Pressable accessibilityRole="button" onPress={() => router.push('/safety')}
-      style={({ pressed }) => [st.safety, { borderColor: theme.ink, opacity: pressed ? 0.8 : 1 }]}>
-      <View style={[st.stripes, { backgroundColor: theme.accent }]}><Ionicons name="warning" size={22} color={theme.onAccent} /></View>
+      style={({ pressed }) => [st.safety, { backgroundColor: theme.sheet, borderColor: theme.line, opacity: pressed ? 0.85 : 1 }]}>
+      <View style={[st.badge, { backgroundColor: theme.accent }]}><Ionicons name="warning" size={22} color={theme.onAccent} /></View>
       <View style={{ flex: 1, paddingVertical: SPACE.xs }}>
         <Txt v="headline">Working at heights</Txt>
         <Txt v="footnote" tone="ink2" numberOfLines={2}>{country.safety.text}</Txt>
@@ -146,6 +150,6 @@ export function SafetyLine() {
 
 const st = StyleSheet.create({
   roofCard: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, padding: SPACE.sm, minHeight: TOUCH.huge },
-  safety: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, borderWidth: 2, overflow: 'hidden', minHeight: TOUCH.huge },
-  stripes: { alignSelf: 'stretch', width: 48, alignItems: 'center', justifyContent: 'center' },
+  safety: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, borderWidth: StyleSheet.hairlineWidth, paddingLeft: SPACE.sm, minHeight: TOUCH.huge },
+  badge: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
 });

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { trimRuns, trims } from '../src/core/flashing';
 import { roofGeometry } from '../src/core/geometry';
+import { grouped } from '../src/core/units';
 import { useApp } from '../src/state/AppState';
 import { roofReady } from '../src/state/model';
 import { Answer, ErrorLine, Figures, LengthField, NumField, Picker, Screen, Section, Steps } from '../src/ui/kit';
@@ -38,7 +39,7 @@ export default function Flashings() {
       <Gate tool="flashings">
         {res?.ok ? (
           <>
-            <Answer testID="flashings-answer" label="Pieces to order" value={String(res.value.pieces)} lines={[`${ctx.run(res.value.totalMm)} of flashing and trim`]} />
+            <Answer testID="flashings-answer" label="Pieces to order" value={grouped(res.value.pieces)} lines={[`${ctx.run(res.value.totalMm)} of flashing and trim`]} />
             <Figures rows={res.value.lines.map(l => [`${l.label}${l.runs > 1 ? ` (${l.runs})` : ''}`, `${ctx.run(l.totalMm)} · ${l.pieces} pcs`])} />
             <Steps steps={res.steps} notes={res.notes} />
             <SaveToJob tool="flashings" title="Flashings & cappings" lines={res.value.lines.map(l => `${l.label}: ${ctx.run(l.totalMm)}, ${l.pieces} × ${ctx.len(stock!)}`)} />

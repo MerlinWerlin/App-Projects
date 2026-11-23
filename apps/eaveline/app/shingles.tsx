@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { roofGeometry } from '../src/core/geometry';
 import { shingles } from '../src/core/shingles';
-import { num } from '../src/core/units';
+import { grouped, num } from '../src/core/units';
 import { VERIFIED_LABEL } from '../src/data/src';
 import { useApp } from '../src/state/AppState';
 import { roofReady } from '../src/state/model';
@@ -47,11 +47,11 @@ export default function Shingles() {
       <Gate tool="shingles">
         {res?.ok ? (
           <>
-            <Answer testID="shingles-answer" label="Bundles" value={String(res.value.bundles)} lines={[`${num(res.value.squares, 2)} squares before waste`]} />
+            <Answer testID="shingles-answer" label="Bundles" value={grouped(res.value.bundles)} lines={[`${num(res.value.squares, 2)} squares before waste`]} />
             <Figures rows={[
               ...(res.value.starterBundles ? [['Starter strip', `${res.value.starterBundles} bundle${res.value.starterBundles === 1 ? '' : 's'}`] as [string, string]] : []),
               ...(res.value.capBundles ? [['Hip & ridge', `${res.value.capBundles} bundle${res.value.capBundles === 1 ? '' : 's'}`] as [string, string]] : []),
-              ['Nails', String(res.value.nails)],
+              ['Nails', grouped(res.value.nails)],
             ]} />
             <Steps steps={res.steps} notes={res.notes} />
             <SaveToJob tool="shingles" title={`Shingles · ${sh?.name ?? 'custom'}`} lines={[`${res.value.bundles} bundles (${num(res.value.squares, 2)} squares + ${waste ?? 0}%)`, `${res.value.starterBundles} starter, ${res.value.capBundles} hip & ridge bundles`, `${res.value.nails} nails`]} />

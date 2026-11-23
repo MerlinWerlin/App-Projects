@@ -99,7 +99,7 @@ export function createJob(jobs: Job[], name: string, country: string, roof: Roof
 
 export function addEntry(jobs: Job[], jobId: string, entry: Omit<JobEntry, 'id' | 'at'>, now: number): Job[] {
   return jobs.map(j => (j.id === jobId
-    ? { ...j, updatedAt: now, entries: [{ ...entry, lines: entry.lines.slice(0, 40), id: newId(now), at: now }, ...j.entries].slice(0, MAX_ENTRIES) }
+    ? { ...j, updatedAt: now, entries: [{ ...entry, lines: entry.lines.slice(0, 300), id: newId(now), at: now }, ...j.entries].slice(0, MAX_ENTRIES) }
     : j));
 }
 

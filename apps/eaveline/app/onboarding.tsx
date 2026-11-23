@@ -71,7 +71,7 @@ export default function Onboarding() {
           )}
           <Segmented label="Lengths" value={sys} onChange={setSys} options={[{ value: 'metric', label: 'Metric (mm, m)' }, { value: 'imperial', label: 'Feet & inches' }]} />
           <Segmented label="Pitch" value={pitch} onChange={setPitch} options={[{ value: 'deg', label: 'Degrees (°)' }, { value: 'x12', label: 'Rise : 12' }]} />
-          <View style={[st.safety, { borderColor: theme.ink }]}>
+          <View style={[st.safety, { borderColor: theme.line, backgroundColor: theme.sheet }]}>
             <View style={[st.stripe, { backgroundColor: theme.accent }]}><Ionicons name="warning" size={24} color={theme.onAccent} /></View>
             <View style={{ flex: 1, gap: SPACE.xxs, padding: SPACE.sm }}>
               <Txt v="headline">Before you go up</Txt>
@@ -136,6 +136,6 @@ const st = StyleSheet.create({
   search: { flexDirection: 'row', alignItems: 'center', gap: SPACE.xs, borderRadius: RADIUS.s, borderWidth: 1.5, paddingHorizontal: SPACE.sm },
   country: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, borderRadius: RADIUS.m, borderWidth: 1, paddingHorizontal: SPACE.md, minHeight: TOUCH.big, paddingVertical: SPACE.xs },
   back: { width: TOUCH.min, height: TOUCH.min, justifyContent: 'center', marginLeft: -SPACE.xs },
-  safety: { flexDirection: 'row', borderRadius: RADIUS.m, borderWidth: 2, overflow: 'hidden' },
-  stripe: { width: 48, alignItems: 'center', justifyContent: 'center' },
+  safety: { flexDirection: 'row', alignItems: 'flex-start', borderRadius: RADIUS.m, borderWidth: StyleSheet.hairlineWidth, padding: SPACE.sm, gap: SPACE.xxs },
+  stripe: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', marginTop: SPACE.xs },
 });

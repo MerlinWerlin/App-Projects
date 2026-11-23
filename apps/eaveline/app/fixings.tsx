@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { sheetFixings, perPieceFixings } from '../src/core/fixings';
 import { roofGeometry } from '../src/core/geometry';
 import { sheets } from '../src/core/sheets';
+import { grouped } from '../src/core/units';
 import { useApp } from '../src/state/AppState';
 import { roofReady } from '../src/state/model';
 import { Answer, ErrorLine, Figures, LengthField, Notice, NumField, Picker, Screen, Segmented, Steps } from '../src/ui/kit';
@@ -70,7 +71,7 @@ export default function Fixings() {
       <Gate tool="fixings">
         {res?.ok ? (
           <>
-            <Answer testID="fixings-answer" label={`${cap(what)} to order`} value={String(res.value.total)} lines={[`${res.value.boxes} box${res.value.boxes === 1 ? '' : 'es'} of ${box}`]} />
+            <Answer testID="fixings-answer" label={`${cap(what)} to order`} value={grouped(res.value.total)} lines={[`${res.value.boxes} box${res.value.boxes === 1 ? '' : 'es'} of ${box}`]} />
             <Figures rows={[['Support lines per run', String(res.value.supports)], ['Through the sheets', String(res.value.screws)], ...(res.value.stitching ? [['Side-lap stitching', String(res.value.stitching)] as [string, string]] : [])]} />
             {country.fixingsNote ? <Notice icon="hammer-outline" text={country.fixingsNote.text} /> : null}
             <Steps steps={res.steps} notes={res.notes} />
@@ -79,7 +80,7 @@ export default function Fixings() {
         ) : null}
         {res2?.ok ? (
           <>
-            <Answer label="Fixings to order" value={String(res2.value.total)} lines={[`${res2.value.boxes} box${res2.value.boxes === 1 ? '' : 'es'} of ${box}`]} />
+            <Answer label="Fixings to order" value={grouped(res2.value.total)} lines={[`${res2.value.boxes} box${res2.value.boxes === 1 ? '' : 'es'} of ${box}`]} />
             {country.fixingsNote ? <Notice icon="hammer-outline" text={country.fixingsNote.text} /> : null}
             <Steps steps={res2.steps} />
             <SaveToJob tool="fixings" title="Fixings" lines={[`${res2.value.total} fixings (${res2.value.boxes} × ${box})`]} />

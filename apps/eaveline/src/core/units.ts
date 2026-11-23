@@ -86,7 +86,7 @@ export function formatArea(m2: number, sys: UnitSystem): string {
   if (!Number.isFinite(m2)) return '–';
   if (sys === 'imperial') {
     const sqft = m2 * SQFT_PER_M2;
-    return `${grouped(sqft, 0)} sq ft (${num(sqft / 100, 2)} squares)`;
+    return `${grouped(sqft, 0)} sq ft (${grouped(sqft / 100, 2)} squares)`;
   }
   return `${grouped(m2, 2)} m²`;
 }
