@@ -66,7 +66,7 @@ const bucket = new Map<string, Buffer>();
 function publish(version: number, files = packFiles(version), manifestOver: Record<string, unknown> = {}) {
   for (const f of files) bucket.set(`art/${ID}/v${version}/${f.path}`, f.body);
   bucket.set(manifestPath(ID, version), Buffer.from(JSON.stringify(manifestFor(version, files, manifestOver))));
-  bucket.set('catalog.json', Buffer.from(JSON.stringify(catalogFor(version, files))));
+  bucket.set('catalog-v2.json', Buffer.from(JSON.stringify(catalogFor(version, files))));
   return files;
 }
 const hooks = { cut: new Map<string, number>(), corrupt: new Map<string, number>(), down: false };
@@ -184,7 +184,7 @@ test('catalogue fetch: good, bad (kept last good), offline (kept), disabled (no 
   assert.equal(themes[0].remoteArt.thumbUrl, `${base}/art/${ID}/v1/thumb.1000dddd.webp`);
   const good = d.cache;
 
-  bucket.set('catalog.json', Buffer.from('{"format":"glaze-catalog","version":99}'));
+  bucket.set('catalog-v2.json', Buffer.from('{"format":"glaze-catalog","version":99}'));
   d = decideCatalog(good, { ok: true, text: await fetchCatalogText(t, base) }, 2000);
   assert.equal(d.save, false);
   assert.equal(d.catalog?.packs[0].id, ID, 'bad catalogue ignored, last good one shown');
@@ -367,7 +367,7 @@ test('GitHub release host: catalogue, thumb, manifest and files are fetched by f
   const r = await downloadRemoteArtPack(opts(t, { baseUrl: `${gh}/` }));
   assert.equal(r.manifest.assets.length, 3);
   const paths = requests.map((q) => q.path.slice(q.path.indexOf('glaze-packs-v1/') + 'glaze-packs-v1/'.length));
-  assert.deepEqual(paths.slice(0, 2), ['catalog.json', `art__${ID}__v1__manifest.json`]);
+  assert.deepEqual(paths.slice(0, 2), ['catalog-v2.json', `art__${ID}__v1__manifest.json`]);
   assert.ok(paths.every((p) => !p.includes('/')), 'no folder paths on a release host');
   assert.ok(await loadRemoteArt(t, ID));
 

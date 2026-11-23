@@ -57,7 +57,8 @@ export function loadEnv(file = join(APP_ROOT, '.env'), base = process.env) {
 // ------------------------------------------------------------------ plan
 
 export const contentTypeOf = (key) => TYPES[key.slice(key.lastIndexOf('.')).toLowerCase()] ?? 'application/octet-stream';
-export const cacheControlOf = (key) => (key === 'catalog.json' ? CACHE_CATALOG : CACHE_IMMUTABLE);
+// 1.0.44: catalog-v2.json (the catalogue 1.0.44+ reads) is short-cached like catalog.json.
+export const cacheControlOf = (key) => (key === 'catalog.json' || key === 'catalog-v2.json' ? CACHE_CATALOG : CACHE_IMMUTABLE);
 
 function walk(dir) {
   const out = [];

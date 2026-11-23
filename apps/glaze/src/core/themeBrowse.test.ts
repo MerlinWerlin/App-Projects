@@ -418,7 +418,7 @@ test('T254: catalog.json is fetched with If-None-Match; a 304 keeps the cached c
   assert.equal(d2.catalog?.packs.length, 100);
   // Same URL both times (no new endpoint), only catalog.json.
   assert.deepEqual(calls.map((c) => [c.kind, c.etag]), [['conditional', null], ['conditional', ETAG]]);
-  assert.ok(calls.every((c) => c.url === `${BASE}catalog.json`));
+  assert.ok(calls.every((c) => c.url === `${BASE}catalog-v2.json`));
 });
 
 test('T254: no ETag for a copy saved under another build (T178 refetch), none without a cache', () => {
@@ -471,7 +471,7 @@ test('T254: the listing path requests catalog.json only (no manifest, no pack fi
   for (const s of groupByCategory(themes)) browseGridThemes({ themes, view: s.id });
   browseGridThemes({ themes, view: 'all', query: 'theme' });
   assert.equal(calls.length, 1);
-  assert.equal(calls[0].url, `${BASE}catalog.json`);
+  assert.equal(calls[0].url, `${BASE}catalog-v2.json`);
   assert.ok(!calls.some((c) => /manifest|\.webp|\.png/.test(c.url)));
 });
 
