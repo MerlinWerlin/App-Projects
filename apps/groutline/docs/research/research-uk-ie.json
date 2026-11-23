@@ -1,0 +1,195 @@
+{
+  "_meta": {
+    "researched": "2026-11-23",
+    "notes": [
+      "Every value carries the URL it was read from. 'verified' = read directly from that page/PDF in this session. 'searchIndex' = seen only in a search-engine extract of that URL (the page itself could not be fetched); treat as needs-recheck.",
+      "Topps Tiles pages embed product JSON; tile size/thickness/coverage-per-tile were read from it. Topps' field 'tiles_per_box_wastage' is used as tiles per box (it matches the visible pack count on per-pack products such as Kelham Loft, 12/box). boxM2 for those rows is derived = perBox x tile area and is flagged derived.",
+      "UNVERIFIED means no source could be read for that value; do not ship it as a default without checking."
+    ]
+  },
+  "UK": {
+    "currency": "GBP",
+    "tiles": [
+      {"name": "Wickes Metro White Gloss ceramic", "w": 200, "h": 100, "thk": 7, "use": "wall", "boxM2": 1.0, "perBox": 50, "src": "https://www.wickes.co.uk/Wickes-Metro-White-Gloss-Ceramic-Wall-Tile---200-x-100mm/p/166211", "status": "verified"},
+      {"name": "Wickes White Gloss ceramic", "w": 400, "h": 250, "thk": 8, "use": "wall", "boxM2": 1.0, "perBox": 10, "src": "https://www.wickes.co.uk/Wickes-White-Gloss-Ceramic-Wall-Tile---400-x-250mm/p/273047", "status": "verified"},
+      {"name": "Wickes Boutique Genova Beige matt porcelain", "w": 600, "h": 600, "thk": 9, "use": "both", "boxM2": 1.44, "perBox": 4, "src": "https://www.wickes.co.uk/Wickes-Boutique-Genova-Beige-Matt-Porcelain-Wall+Floor-Tile---600-x-600mm/p/556908", "status": "verified", "note": "Suitable indoors including wetroom floors"},
+      {"name": "Wickes Boutique Harmony Natural matt porcelain", "w": 1200, "h": 600, "thk": 9.7, "use": "both", "boxM2": 1.44, "perBox": 2, "src": "https://www.wickes.co.uk/Wickes-Boutique-Harmony-Natural-Matt-Porcelain-Wall+Floor-Tile---1200-x-600mm/p/287253", "status": "verified"},
+      {"name": "Wickes Boutique Cayman White matt porcelain", "w": 1200, "h": 600, "thk": 9, "use": "both", "boxM2": 1.44, "perBox": 2, "src": "https://www.wickes.co.uk/Wickes-Boutique-Cayman-White-Matt-Porcelain-Wall+Floor-Tile---1200-x-600mm/p/345714", "status": "verified", "note": "Excluding wet room floors"},
+      {"name": "Topps Elementi Grey", "w": 600, "h": 600, "thk": 9.5, "use": "both", "boxM2": 1.44, "perBox": 4, "src": "https://www.toppstiles.co.uk/bathroom-tiles/elementi-grey-tile-60cm-x-60cm", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived"},
+      {"name": "Topps Elementi Grey", "w": 300, "h": 600, "thk": 8.7, "use": "both", "boxM2": 1.26, "perBox": 7, "src": "https://www.toppstiles.co.uk/bathroom-tiles/elementi-grey-tile-30cm-x-60cm", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived"},
+      {"name": "Topps Aldbury Bone", "w": 600, "h": 1200, "thk": 8, "use": "both", "boxM2": 1.44, "perBox": 2, "src": "https://www.toppstiles.co.uk/bathroom-tiles/aldbury-bone-tile-60cm-x-120cm", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived"},
+      {"name": "Topps Nordbon Arena (wood-effect plank)", "w": 200, "h": 1200, "thk": 9, "use": "both", "boxM2": 1.2, "perBox": 5, "src": "https://www.toppstiles.co.uk/bathroom-tiles/nordbon-arena-tile-20cm-x-120cm", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived"},
+      {"name": "Topps Cotto", "w": 200, "h": 200, "thk": 10, "use": "both", "boxM2": 0.96, "perBox": 24, "src": "https://www.toppstiles.co.uk/bathroom-tiles/cotto-tile-20cm-x-20cm", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived; wall/floor use not confirmed"},
+      {"name": "Topps Kelham Loft Chalk", "w": 200, "h": 400, "thk": 10, "use": "wall", "boxM2": 0.96, "perBox": 12, "src": "https://www.toppstiles.co.uk/bathroom-tiles/kelham-lofttm-chalk-tile-20cm-x-40cm", "status": "verified (tiles_per_box_visible=12, coverage_pack_m2=0.96); use not confirmed"},
+      {"name": "Topps Metro Grey", "w": 100, "h": 200, "thk": 7.7, "use": "wall", "boxM2": 1.0, "perBox": 50, "src": "https://www.toppstiles.co.uk/metro/metro-grey-tile", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived"},
+      {"name": "Topps Campagna Artisan Taupe", "w": 75, "h": 150, "thk": 7.5, "use": "wall", "boxM2": 0.675, "perBox": 60, "src": "https://www.toppstiles.co.uk/bathroom-tiles/campagna-artisan-taupe-tile-7-5cm-x-15cm", "status": "verified size/thk; perBox from tiles_per_box_wastage; boxM2 derived"}
+    ],
+    "tileSizesNotSeen": "300x300 seen only as mosaic sheets/Topps Starluxe (not opened); 330x330 and 250x400 at B&Q not verified (diy.com blocked automated fetch). Sizes observed on Topps category pages (cm): 60x60, 60x120, 30x60, 20x120, 10x70, 20x40, 30x30, 20x20, 10x10.",
+    "adhesive": [
+      {"name": "Standard-set flexible powdered adhesive, C2TE S1", "brandForDocs": "BAL Flex One", "bagKg": 20, "class": "BS EN 12004 C2TE S1",
+       "coverage": [
+         {"notchMm": 4, "area": "dry wall", "m2PerKg": 0.6, "kgPerM2": 1.67},
+         {"notchMm": 6, "area": "dry wall", "m2PerKg": 0.5, "kgPerM2": 2.0},
+         {"notchMm": 6, "area": "wet wall, solid bed", "m2PerKg": 0.4, "kgPerM2": 2.5},
+         {"notchMm": 10, "area": "exteriors/floors, solid bed", "m2PerKg": 0.26, "kgPerM2": 3.85}
+       ],
+       "note": "kgPerM2 = 1/m2PerKg (derived). TDS dated Oct 2022. Trowel guide: mosaics min 4mm, dry wall min 6mm, wet wall min 6mm solid bed, external & floors min 10mm solid bed, large format 20mm notch (~7mm bed). Background weight limits: gypsum plaster 20kg/m2, plasterboard 32kg/m2.",
+       "src": "https://www.theunderfloorheatingstore.com/cdn/shop/files/BAL-FLEX-ONE-TDS-FEB-22.pdf", "status": "verified"},
+      {"name": "Standard-set flexible fibre-reinforced powdered adhesive, C2TE S1", "brandForDocs": "ARDEX X 77", "bagKg": 20, "class": "BS EN 12004 C2TE S1",
+       "coverage": [{"notchMm": 8, "kgPerM2": 2.5, "m2PerBag": 8, "note": "8mm x 8mm trowel"}],
+       "extra": "Retailer also states 'High yield - 5.5m2 @ 3mm' (bed thickness, not notch). UK datasheet copy (search index only) says ~1.05 kg powder per m2 per mm bed, 20kg yields ~19 L.",
+       "src": "https://www.ctdtiles.co.uk/product/ardex-x-77-microtec-fibre-reinforced-flexible-standard-set-adhesive-grey-s1-20kg", "srcDatasheet": "https://www.protilertools.co.uk/userfiles/files/4d014553e8515551dcc0d5e56192473e_ARDEX X77 Data Sheet.pdf", "status": "verified (CTD page); 1.05 kg/m2/mm = searchIndex"},
+      {"name": "Ready-mixed wall tile adhesive, D1TE", "brandForDocs": "Palace Super-Grip", "tubKg": [3.75, 7.5, 15], "class": "EN 12004 D1TE",
+       "coverage": [{"notchMm": 6, "kgPerM2": 1.7, "note": "TDS: notched trowel ~1.7 kg/m2 (technical-data box says 1.5-2.0 kg/m2); application section specifies 6mm notched trowel"}, {"notchMm": null, "area": "solid bed", "kgPerM2": 2.43, "note": "TDS: ~0.7 m2 per 1.7 kg; kgPerM2 derived"}],
+       "limits": "Wall tiles max 900 cm2 surface area; not for prolonged wetting.",
+       "src": "https://palacechemicals.co.uk/wp-content/uploads/2019/01/SuperGrip-TDS-Live.pdf", "status": "verified"}
+    ],
+    "grout": [
+      {"name": "Cementitious flexible grout 1-30mm, CG2WA", "brandForDocs": "BAL Micromax3 ECO", "bagKg": [2.5, 5, 10], "kind": "cement", "density": 1.5, "densityNote": "TDS 'Specific Gravity 1.5' (mixed)",
+       "coverageTable": [{"tile": "200x200x6", "jointMm": 2, "m2PerKg": 6.05}, {"tile": "300x300x9", "jointMm": 3, "m2PerKg": 4.03}, {"tile": "600x600x9", "jointMm": 3, "m2PerKg": 8.01}],
+       "src": "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-MICROMAX3-ECO-MAY-25.pdf", "status": "verified"},
+      {"name": "Cementitious grout 2-20mm, CG2WA", "brandForDocs": "Mapei Ultracolor Plus", "bagKg": [23, 5, 2], "kind": "cement", "density": 1.6, "densityNote": "Formula factor 1.6 (kg/L) used by Mapei; TDS bulk density of powder 1,400 kg/m3, density of mix 1,980 kg/m3",
+       "formula": "kg/m2 = (A+B)/(A*B) * C * D * 1.6, A,B = tile length,width (mm), C = tile thickness (mm), D = joint width (mm)",
+       "coverageTableSample": [{"tile": "100x100x7 (row label uncertain in PDF text)", "jointMm": 2, "kgPerM2": 0.4}],
+       "note": "UK TDS 2801-10-2017 (UK), packaging '23 kg bags, and 4x5 kg or 8x2 kg alupack boxes'. Table row/column alignment garbled in PDF text extraction, use the formula.",
+       "src": "https://www.tilemountain.co.uk/pdf/Ultracolor_Plus_Datasheet.pdf", "status": "verified"},
+      {"name": "Cementitious flexible wall grout up to 5mm, CG2", "brandForDocs": "BAL Grout Flex", "bagKg": [5, 10], "kind": "cement", "density": null, "src": "https://www.bal-adhesives.com/product/bal-grout-flex/", "status": "verified (density UNVERIFIED)"},
+      {"name": "Three-part epoxy floor grout up to 20mm, RG1", "brandForDocs": "BAL Floor Epoxy", "bagKg": 10, "kind": "epoxy", "density": 1.75, "densityNote": "TDS 'Specific Gravity 1.75'",
+       "coverageTable": [{"tile": "200x200x9", "jointMm": 3, "m2PerKg": 2.2}, {"tile": "300x300x9", "jointMm": 3, "m2PerKg": 3.25}],
+       "src": "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-FLOOR-EPOXY-MAY-25.pdf", "status": "verified"}
+    ],
+    "membrane": [
+      {"name": "One-part liquid tanking membrane (EAD-approved system)", "brandForDocs": "BAL Waterproof 1C", "packKg": 5, "packL": null,
+       "coverage": [{"area": "wall", "dryThkMm": 0.8, "m2PerPack": 6, "kgPerM2": 0.83}, {"area": "floor", "dryThkMm": 1.6, "m2PerPack": 3, "kgPerM2": 1.67}],
+       "coats": "walls 1 coat (min 0.8mm); floors min 1.6mm, two coats recommended", "tileAfterHours": 2,
+       "note": "Pack is sold by weight (5kg), not litres. kgPerM2 derived. Primer: BAL Primer 1C on porous backgrounds; BAL Scrim/Waterproof 1C Tape at corners, board joints, junctions. TDS issued May 2025.",
+       "src": "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-WATERPROOF-1C-MAY-25.pdf", "status": "verified"},
+      {"name": "Wet room tanking kit (primer + liquid membrane + tape + drain mat)", "brandForDocs": "Everbuild Aquaseal Wet Room System (Sika)", "packL": [3, 5], "kitM2": [4.5, 7.5], "lPerM2PerCoat": 0.33, "coats": 2,
+       "note": "Standard kit 3 L membrane = 4.5 m2, large kit 5 L = 7.5 m2, applied in 2 coats; lPerM2PerCoat derived (3/4.5/2). Kit also has 1 L primer and 10 m tape. Tile after 12 h. Sika Ireland data sheet, same product sold in UK.",
+       "src": "https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "status": "verified"},
+      {"name": "Sheet waterproofing membrane (polyethylene, fleece both sides)", "brandForDocs": "Schluter KERDI-200", "rollWidthM": 1, "rollLengthsM": [5, 10, 30], "thkMm": 0.2,
+       "note": "1.5 m and 2 m wide rolls also listed.",
+       "src": "https://eu.schluter.com/statics/www_schlueter_gb_2x/downloads/cumulus/557276_Flyer_KERDI_200_30qm_GB.pdf", "status": "searchIndex (PDF host unreachable)"}
+    ],
+    "primer": [
+      {"name": "Acrylic primer for porous backgrounds before tanking/tiling", "brandForDocs": "BAL Primer 1C", "packL": 1, "m2PerL": 6, "dilution": "undiluted", "dryMins": "15-30", "src": "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-PRIMER-1C-MAY-25.pdf", "status": "verified"},
+      {"name": "Tanking primer (in kit)", "brandForDocs": "Everbuild Aquaseal Waterproof Tanking Primer", "packL": 1, "m2PerL": null, "note": "Over-coat after 1 hour; coverage = kit area (4.5 or 7.5 m2)", "src": "https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "status": "verified"}
+    ],
+    "tape": [
+      {"name": "Tanking reinforcement tape", "brandForDocs": "BAL Waterproof 1C Tape", "widthMm": 100, "rollM": 5, "note": "Embed in coating min 1.0mm wet (0.8mm dry), 50mm either side", "src": "https://www.bal-adhesives.com/product/bal-waterproof-1c-tape/", "status": "verified"},
+      {"name": "Sealing band for sheet membrane", "brandForDocs": "Schluter KERDI-KEBA", "widthMm": [85, 125, 150, 185, 250], "rollM": [5, 30], "src": "https://eu.schluter.com/en-GB/waterproofing-224/e/21978/kerdi-keba", "status": "verified"},
+      {"name": "Butyl-backed fleece tanking tape (in kit)", "brandForDocs": "Everbuild Aquaseal Waterproof Tanking Tape", "widthMm": null, "rollM": 10, "note": "Width UNVERIFIED", "src": "https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "status": "verified (length only)"}
+    ],
+    "standards": [
+      {"topic": "installation", "name": "BS 5385-1:2018", "note": "Wall and floor tiling - Design and installation of ceramic, natural stone and mosaic wall tiling in normal internal conditions - Code of practice. Supersedes 2009.", "src": "https://www.tiles.org.uk/relevant-standards/", "srcAlt": "https://tiles.org.uk/wp-content/uploads/2019/04/TTA-Presentation-on-Recent-Changes-to-BS-5385-Part-1-2018-Reduced-File-Size.pdf", "status": "title verified on tiles.org.uk; edition year from search index"},
+      {"topic": "installation", "name": "BS 5385-2 (2015 edition per search index)", "note": "External ceramic, natural stone and mosaic wall tiling in normal conditions.", "src": "https://www.tiles.org.uk/relevant-standards/", "status": "title verified; edition year searchIndex"},
+      {"topic": "installation", "name": "BS 5385-3:2024", "note": "Design and installation of internal and external ceramic and mosaic, natural stone and terrazzo flooring, and internal agglomerated stone flooring in normal conditions. Published 30 May 2024; replaces BS 5385-3:2014 AND BS 5385-5:2009 (Part 5 withdrawn).", "src": "https://www.tiles.org.uk/tta-urges-awareness-on-updates-to-the-british-standard-for-wall-floor-tiling/", "srcAlt": "https://shop.standards.ie/en-ie/standards/bs-5385-3-2024-250737_saig_bsi_bsi_3427705", "status": "searchIndex"},
+      {"topic": "waterproofing", "name": "BS 5385-4:2015", "note": "Design and installation of ceramic and mosaic tiling in special conditions (wet areas, swimming pools, heated screeds etc.). Frequently wet installations: structure behind tiles should be watertight; impervious tile+grout+adhesive is not a substitute for a tanked installation. Exact falls figures in the standard UNVERIFIED (paywalled).", "src": "https://knowledge.bsigroup.com/products/wall-and-floor-tiling-design-and-installation-of-ceramic-and-mosaic-tiling-in-specific-conditions-code-of-practice", "srcAlt": "https://building.co.uk/cpd/-cpd-14-2015-integrated-solutions-for-wetrooms-with-tile-and-stone-coverings/5076632.article", "status": "title searchIndex; watertight statement verified on building.co.uk CPD"},
+      {"topic": "installation", "name": "BS 8000-11:2011", "note": "Workmanship on building sites - Internal and external wall and floor tiling (ceramic and agglomerated stone tiles, natural stone and terrazzo tiles and slabs, mosaics) - Code of practice. Revision in progress.", "src": "https://knowledge.bsigroup.com/products/workmanship-on-building-sites-internal-and-external-wall-and-floor-tiling-ceramic-and-agglomerated-stone-tiles-natural-stone-and-terrazzo-tiles-and-slabs-and-mosaics-code-of-practice", "status": "searchIndex"},
+      {"topic": "adhesive", "name": "BS EN 12004-1:2017", "note": "Adhesive types C (cementitious), D (dispersion), R (reaction resin); class 1 normal / 2 improved; F fast-setting, T reduced slip, E extended open time; S1 deformable, S2 highly deformable. Supersedes BS EN 12004:2007+A1:2012.", "src": "https://knowledge.bsigroup.com/products/adhesives-for-ceramic-tiles-requirements-assessment-and-verification-of-constancy-of-performance-classification-and-marking", "srcAlt": "https://www.toppstiles.co.uk/knowledge-base/why-choose-an-s1-or-s2-adhesive", "status": "searchIndex; class codes used on verified TDSs (C2TE S1, D1TE)"},
+      {"topic": "grout", "name": "BS EN 13888-1 (2022 edition supersedes 2009)", "note": "Grouts: CG = cementitious (CG1 normal, CG2 improved; W reduced water absorption, A high abrasion resistance), RG = reaction resin. Codes seen on verified TDSs: CG2WA (BAL Micromax3, Mapei Ultracolor Plus), RG1 (BAL Floor Epoxy), CG2 (BAL Grout Flex). Full requirement values UNVERIFIED.", "src": "https://knowledge.bsigroup.com/products/bs-en-13888-1-grouts-for-ceramic-tiles-part-1-requirements-classification-designation-marking-and-labelling", "status": "searchIndex (title); codes verified on TDSs"},
+      {"topic": "waterproofing", "name": "BS EN 14891", "note": "Liquid-applied water impermeable products for use beneath ceramic tiling bonded with adhesives. BAL Waterproof 1C instead cites an EAD/ETA (ETA241129) approval.", "src": "https://www.tiles.org.uk/relevant-standards/", "status": "verified (listing)"},
+      {"topic": "slip", "name": "HSE GEIS2 'Assessing the slip resistance of flooring' (UKSRG 2011 table)", "note": "Pendulum Test Value: 0-24 high slip potential, 25-35 moderate, 36+ low. Slider 96 for shod, Slider 55 for barefoot. Pendulum per BS 7976 Parts 1-3:2002.", "src": "https://www.hse.gov.uk/pubns/geis2.pdf", "status": "verified"},
+      {"topic": "stairs", "name": "Approved Document K (2013 edition, England)", "note": "Table 1.1 private stair rise 150-220mm, going 220-300mm; utility rise 150-190, going 250-400; general access rise 150-170, going 250-400. 2R+G 550-700mm. Max pitch private stair 42 deg.", "src": "https://assets.publishing.service.gov.uk/media/60d5bdcde90e07716f516cfd/Approved_Document_K.pdf", "status": "verified"},
+      {"topic": "falls", "name": "Wet room falls (no verified BS figure)", "note": "Building CPD article: 'Falls within the shower should be between 1:80 and 1:35' (not attributed to a standard). LABC Warranty / Premier Guarantee technical guidance: falls 'between 1:80 and 1:100 to the drainage point', waterproofing to 150mm above floor junction.", "src": "https://building.co.uk/cpd/-cpd-14-2015-integrated-solutions-for-wetrooms-with-tile-and-stone-coverings/5076632.article", "srcAlt": "https://www.premierguarantee.com/en/insite/Technical/Showers-and-wet-room-construction.html", "status": "verified (both pages); sources conflict"}
+    ],
+    "stairs": {"type": "private stair (dwelling)", "riserMin": 150, "riserMax": 220, "goingMin": 220, "goingMax": 300, "twoRplusGMin": 550, "twoRplusGMax": 700, "maxPitchDeg": 42,
+      "note": "Max rise and min going cannot be combined: 42 deg pitch limit means a 220mm rise needs ~245mm going (pitch arithmetic, not from AD K). Scotland/Wales/NI have their own regs; this is England.",
+      "src": "https://assets.publishing.service.gov.uk/media/60d5bdcde90e07716f516cfd/Approved_Document_K.pdf", "status": "verified"},
+    "falls": {"shower": "1:80 to 1:35 (trade CPD guidance); warranty providers state 1:80 to 1:100 to the drain. BS 5385-4 numeric value UNVERIFIED.",
+      "src": "https://building.co.uk/cpd/-cpd-14-2015-integrated-solutions-for-wetrooms-with-tile-and-stone-coverings/5076632.article",
+      "srcAlt": "https://www.labcwarranty.co.uk/blog/domestic-shower-and-wet-room-construction/", "status": "verified, conflicting"},
+    "terms": {
+      "waterproofing": "tanking (e.g. 'Waterproofing & Tanking' category; BAL calls Waterproof 1C a 'tanking system')",
+      "edgeTrim": "tile trim / trims",
+      "grout": "grout",
+      "colour": "colour (BAL TDS 'Colours')",
+      "screed": "screed (cement:sand screed, heated screeds)",
+      "plasterboard": "plasterboard",
+      "backerBoard": "tile backer board",
+      "uncoupling": "substrate matting / uncoupling mat",
+      "wetroomFormer": "wet room tray (Topps), also 'former'",
+      "thresholdStrip": "doorbar / door bar",
+      "units": "mm, m2, kg, litres",
+      "src": ["https://www.toppstiles.co.uk/knowledge-base/how-to-install-a-wet-room-shower", "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-WATERPROOF-1C-MAY-25.pdf"],
+      "status": "verified on Topps nav/BAL TDS; 'former' wording UNVERIFIED on a fetched page"
+    }
+  },
+  "IE": {
+    "currency": "EUR",
+    "vatNote": "McMahons shows ex-VAT and inc-VAT prices (ratio 1.23 = Irish standard VAT 23%).",
+    "tiles": [
+      {"name": "Woodies Metro White ceramic", "w": 100, "h": 200, "thk": 7, "use": "wall", "boxM2": 1.0, "perBox": 50, "priceEURperM2": 31.99, "src": "https://www.woodies.ie/metro-white-ceramic-wall-100x200mm-pk50-1192398", "status": "verified"},
+      {"name": "Woodies Beverley White ceramic", "w": 75, "h": 300, "thk": 10, "use": "wall", "boxM2": 0.42, "perBox": 19, "priceEURperM2": 57.12, "src": "https://www.woodies.ie/beverley-white-ceramic-wall-tile-75x300mm-pk19-1192402", "status": "verified"},
+      {"name": "Woodies Laura Ashley Heritage ceramic", "w": 331, "h": 331, "thk": null, "use": "both", "boxM2": null, "perBox": null, "src": "https://www.woodies.ie/laura-ashley-heritage-wicker-charcoal-ceramic-wall-and-floor-tile-331x331mm-1135468", "status": "verified size/use; thk & box UNVERIFIED"},
+      {"name": "Woodies HD Laurel Carrara ceramic", "w": 498, "h": 498, "thk": null, "use": "both", "boxM2": null, "perBox": null, "src": "https://www.woodies.ie/hd-laurel-carrara-marble-ceramic-wall-and-floor-tile-498x498mm-1135438", "status": "verified size/use; thk & box UNVERIFIED"},
+      {"name": "Tile Style Classica Nero Marquina matt porcelain", "w": 600, "h": 600, "thk": 9.5, "use": "both", "boxM2": null, "perBox": null, "priceEUR": 91.71, "priceUnit": "per box (PType: Box)", "src": "https://tilestyle.ie/products/classica-nero-marquina-matt-60x60", "status": "verified size/thk/use; box UNVERIFIED (site rate-limited)"},
+      {"name": "Tile Style Advance Mink porcelain", "w": 300, "h": 600, "thk": 8.7, "use": "both", "boxM2": null, "perBox": null, "priceEUR": 6.70, "priceUnit": "per tile", "src": "https://tilestyle.ie/products/advance-mink-30x60", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Tile Style Volterra Stone porcelain", "w": 600, "h": 1200, "thk": 10, "use": "both", "boxM2": null, "perBox": null, "priceEUR": 86.08, "priceUnit": "per box", "src": "https://tilestyle.ie/products/volterra-stone-60x120", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Tile Style Classica Carrara matt", "w": 300, "h": 300, "thk": 9.5, "use": "both", "boxM2": null, "perBox": null, "src": "https://tilestyle.ie/products/classica-carrara-matt-30x30", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Tile Style Form3 Anthracite", "w": 200, "h": 200, "thk": 9.5, "use": "both", "boxM2": null, "perBox": null, "src": "https://tilestyle.ie/products/form3-anthracite-20x20", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Tile Style Bevelled Gris (metro)", "w": 100, "h": 200, "thk": 7, "use": "wall", "boxM2": null, "perBox": null, "src": "https://tilestyle.ie/products/bevelled-gris-10x20", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Tile Style Bevelled Blanco Gloss", "w": 75, "h": 150, "thk": 7, "use": "wall", "boxM2": null, "perBox": null, "src": "https://tilestyle.ie/products/bevelled-blanco-gloss-7-5x15", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Tile Style Leccese Perla matt", "w": 1200, "h": 1200, "thk": 10.5, "use": "both", "boxM2": null, "perBox": null, "src": "https://tilestyle.ie/products/leccese-perla-120x120-mat", "status": "verified size/thk/use; box UNVERIFIED"},
+      {"name": "Delforno Sandstone White porcelain", "w": 590, "h": 590, "thk": null, "use": "both?", "boxM2": 1.05, "perBox": 3, "priceEURperBox": 50, "src": "https://www.delforno.ie/products/sandstone-white-59x59", "status": "searchIndex (site rate-limited)"},
+      {"name": "Delforno Dark Flow natural porcelain", "w": 600, "h": 1200, "thk": null, "use": "both?", "boxM2": 1.44, "perBox": 2, "priceEURperBox": 88.13, "src": "https://www.delforno.ie/products/dark-flow-natural-porcelain-tile-60x120cm", "status": "searchIndex; perBox derived (1.44/0.72)"}
+    ],
+    "tileSizesObserved": "Tile Style collection titles (cm): floor 60x120 (most common), 60x60, 120x120, 30x30, 10x10, 90x90, 100x100, 80x80, 30x60, 20x120; wall 60x120, 45x120, 60x60, 5.2x16, 10x10, 10x20, 15x15, 30x30; metro 10x20, 10x30, 5.2x16, 5x25, 7.5x30, 7.5x15. Source: https://tilestyle.ie/collections/floor-tiles/products.json (and wall-tiles, metro-subway-tiles).",
+    "adhesive": [
+      {"name": "Standard-set flexible powdered adhesive, C2TE S1", "brandForDocs": "BAL Flex One (sold in IE)", "bagKg": 20,
+       "coverage": [{"notchMm": 4, "kgPerM2": 1.67}, {"notchMm": 6, "kgPerM2": 2.0}, {"notchMm": 6, "area": "wet wall solid bed", "kgPerM2": 2.5}, {"notchMm": 10, "area": "floors solid bed", "kgPerM2": 3.85}],
+       "note": "Same BAL TDS as UK (BAL warranty text covers 'UK and Ireland'). IE stockist: bathroomoutlet.ie lists 20kg at EUR 59.00 (searchIndex).",
+       "src": "https://www.theunderfloorheatingstore.com/cdn/shop/files/BAL-FLEX-ONE-TDS-FEB-22.pdf", "srcIE": "https://bathroomoutlet.ie/products/bal-flex-one-white-wall-floor-tile-adhesive-20kg", "status": "TDS verified; IE price searchIndex"},
+      {"name": "Rapid-set flexible powdered adhesive, C2FT S1", "brandForDocs": "Nicobond Rapidflex S1", "bagKg": 20,
+       "coverage": [{"notchMm": null, "area": "notched trowel (notch not stated)", "kgPerM2": 2.0}, {"notchMm": null, "area": "solid bed 3mm", "kgPerM2": "3-4"}],
+       "note": "Tile Style (IE) page: 'Coverage: 2 - 4kg/m2', max bed 12mm, EUR 57.65. Notched/solid split from NBS Source (manufacturer-verified listing, searchIndex only).",
+       "src": "https://tilestyle.ie/collections/adhesives/products.json", "srcDatasheet": "https://direct.source.thenbs.com/product/nicobond-rapidflex-s1-adhesive/fe4Fs1F7JmwW9CFSQq7pnb/3NcDTehiQXsLcokHqDgdon", "status": "Tile Style verified; NBS split searchIndex"},
+      {"name": "Flexible powdered adhesive, C2TE S1", "brandForDocs": "Butech One Flex Pro (Porcelanosa)", "bagKg": 25, "coverage": [], "note": "Coverage UNVERIFIED. EUR 56.96 at Tile Style.", "src": "https://tilestyle.ie/collections/adhesives/products.json", "status": "verified (bag/class only)"},
+      {"name": "Rapid-set flexible powdered adhesive", "brandForDocs": "Evo-Stik Technik Rapid Set Flexible", "bagKg": 20, "coverage": [], "note": "Coverage UNVERIFIED; Woodies lists EUR 2.00/kg (= EUR 40/bag).", "src": "https://www.woodies.ie/evo-stik-technik-rapid-set-flexible-tile-adhesive-white-20kg-1111951", "status": "verified (bag/price only)"}
+    ],
+    "grout": [
+      {"name": "Flexible cementitious grout", "brandForDocs": "Nicobond GroutPro Flexible", "bagKg": [2.5, 10], "kind": "cement", "density": null, "src": "https://tilestyle.ie/collections/grouts/products.json", "status": "verified (sizes)"},
+      {"name": "Rapid cementitious grout", "brandForDocs": "Butech Colorstuk Rapid", "bagKg": 5, "kind": "cement", "density": null, "src": "https://tilestyle.ie/collections/grouts/products.json", "status": "verified (size)"},
+      {"name": "Cementitious grout (wood-tone colours)", "brandForDocs": "Butech Colorstuk Especial", "bagKg": 2, "kind": "cement", "density": null, "src": "https://tilestyle.ie/collections/grouts/products.json", "status": "verified (size)"},
+      {"name": "Resin (epoxy-type) grout", "brandForDocs": "Nicobond Starlike Evo Extreme", "bagKg": 2.5, "kind": "epoxy", "density": null, "note": "Described as resin-based grout with glass bead technology; EUR 120.87 per 2.5kg", "src": "https://tilestyle.ie/collections/grouts/products.json", "status": "verified (size); 'epoxy' = resin per description"},
+      {"name": "Wall & floor cementitious grout", "brandForDocs": "Evo-Stik Technik TGS", "bagKg": [5, 10], "kind": "cement", "density": null, "note": "Woodies spec block shows 'Specific Gravity 1.1 dry, 1.8 when mixed' but the identical text appears on the adhesive page, so treat as UNVERIFIED.", "src": "https://www.woodies.ie/evo-stik-technik-tgs-wall-floor-grout-grey-10kg-1111943", "status": "verified (sizes); density UNVERIFIED"},
+      {"name": "Coverage method (applies in IE)", "brandForDocs": "BAL Micromax3 ECO / Mapei Ultracolor Plus", "bagKg": [2.5, 5, 10], "kind": "cement", "density": 1.5, "formula": "kg/m2 = (A+B)/(A*B) * C * D * 1.6 (Mapei); BAL publishes tables + SG 1.5", "src": "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-MICROMAX3-ECO-MAY-25.pdf", "status": "verified (BAL TDS covers UK and Ireland)"}
+    ],
+    "membrane": [
+      {"name": "Wet room tanking kit", "brandForDocs": "Everbuild Aquaseal Wet Room System (Sika Ireland)", "packL": [3, 5], "kitM2": [4.5, 7.5], "lPerM2PerCoat": 0.33, "coats": 2, "note": "1 L primer, 10 m tape, drain mat included; tile after 12 h; lPerM2PerCoat derived", "src": "https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "status": "verified"},
+      {"name": "Tanking kit (primer + tanking paste + sealing strip)", "brandForDocs": "Arc Tanking Kit System", "packL": null, "kitM2": 5, "lPerM2PerCoat": null, "coats": null, "priceEUR": {"incVAT": 69.89, "exVAT": 56.82}, "src": "https://www.mcmahons.ie/arc-tanking-kit-system-5sq-m-60550", "status": "verified (coverage/price); volumes & coats UNVERIFIED"},
+      {"name": "One-part liquid tanking", "brandForDocs": "BAL Waterproof 1C", "packKg": 5, "coverage": [{"area": "wall", "m2PerPack": 6}, {"area": "floor", "m2PerPack": 3}], "note": "BAL markets to UK and Ireland; Irish stockist not confirmed", "src": "https://www.bal-adhesives.com/wp-content/uploads/2026/03/BAL-WATERPROOF-1C-MAY-25.pdf", "status": "verified (TDS); IE availability UNVERIFIED"}
+    ],
+    "primer": [
+      {"name": "Tanking primer (in kit)", "brandForDocs": "Everbuild Aquaseal Waterproof Tanking Primer", "packL": 1, "m2PerL": null, "src": "https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "status": "verified"}
+    ],
+    "tape": [
+      {"name": "Butyl-backed fleece tanking tape (in kit)", "brandForDocs": "Everbuild Aquaseal Waterproof Tanking Tape", "widthMm": null, "rollM": 10, "note": "Usually enough for corners of a 7.5 m2 job; width UNVERIFIED", "src": "https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "status": "verified"}
+    ],
+    "standards": [
+      {"topic": "installation", "name": "No Irish ceramic-tiling code of practice found", "note": "No NSAI 'S.R.'/'I.S.' code for wall/floor ceramic tiling installation was found. NSAI sells BS 5385 parts (e.g. BS 5385-3:2024) through shop.standards.ie, and Irish suppliers' data sheets (BAL, Palace) reference BS 5385. I.S. ICP 2 / S.R. 82 is ROOF slating & tiling, not ceramic tiling. Claim that Irish tilers 'use BS 5385' rests on this indirect evidence.", "src": "https://shop.standards.ie/en-ie/standards/bs-5385-3-2024-250737_saig_bsi_bsi_3427705", "srcAlt": "https://nsai.ie/about/news/slating-tiling-standard-revision", "status": "indirect / partially UNVERIFIED"},
+      {"topic": "installation", "name": "I.S. CEN/TR 13548:2004", "note": "General rules for design and installation of adhesive-bonded ceramic tiling (CEN technical report adopted by NSAI), listed Current.", "src": "https://shop.standards.ie/en-ie/standards/i-s-cen-tr-13548-2004-871764_saig_nsai_nsai_2072836", "status": "searchIndex"},
+      {"topic": "adhesive", "name": "I.S. EN 12004-1:2017 (EN 12004-1:2017)", "note": "Irish adoption of EN 12004; same C/D/R classes as UK. NSAI lists the 2007 I.S. edition as superseded.", "src": "https://shop.standards.ie/en-ie/standards/en-12004-1-2017-342317_saig_cen_cen_783947", "status": "searchIndex"},
+      {"topic": "grout", "name": "I.S. EN 13888-1 (EN 13888-1:2022)", "note": "Irish adoption assumed identical to EN; I.S. edition number UNVERIFIED.", "src": "https://shop.standards.ie/en-ie/standards/bs-en-13888-2009-235463_saig_bsi_bsi_550722", "status": "UNVERIFIED (I.S. edition)"},
+      {"topic": "waterproofing", "name": "I.S. EN 14891:2017", "note": "Liquid-applied water impermeable products beneath adhesive-bonded ceramic tiling; listed Current.", "src": "https://shop.standards.ie/en-ie/standards/i-s-en-14891-2017-862642_saig_nsai_nsai_2052119", "status": "searchIndex"},
+      {"topic": "slip", "name": "Health and Safety Authority (HSA) - Measuring Slip Resistance", "note": "Consider specifying a wet Pendulum Test Value (PTV) of 36+ in final use conditions; pendulum is HSE UK's preferred method; PTV ranges for 4S (shod) and TRL (barefoot) sliders; PTV 36 = 1 in 1 million slip probability.", "src": "https://www.hsa.ie/eng/topics/slips_trips_falls/pedestrian_surfaces/measuring_slip_resistance/", "status": "verified"},
+      {"topic": "stairs", "name": "Technical Guidance Document K (2014) Stairways, Ladders, Ramps and Guards", "note": "Table 1: private stair rise optimum 175 / max 220mm; going min 220 / optimum 250mm; pitch optimum 35 / max 42 deg. Semi-public: rise 165/190, going 250/300, pitch 31/38. Public: rise 150/180, going 280/300, pitch 27/33. 2R+G 550-700mm, optimum 600mm. Based on I.S. 158:1987 and BS 5395-1:2010.", "src": "https://www.propertyhealthcheck.ie/wp-content/uploads/2015/07/tgd-part-k-2014.pdf", "srcOfficial": "https://www.gov.ie/en/publication/6b632-technical-guidance-document-k-stairways-ladders-ramps-and-guards", "status": "verified (PDF copy of TGD K 2014); gov.ie page blocked automated fetch"},
+      {"topic": "falls", "name": "No Irish TGD figure for wet room falls found", "note": "TGD K/M/G not checked in full for falls; HomeBond guidance not found. UNVERIFIED.", "src": null, "status": "UNVERIFIED"}
+    ],
+    "stairs": {"type": "private stair (e.g. internal stair in a dwelling)", "riserMin": null, "riserOpt": 175, "riserMax": 220, "goingMin": 220, "goingOpt": 250, "goingMax": null, "twoRplusGMin": 550, "twoRplusGOpt": 600, "twoRplusGMax": 700, "maxPitchDeg": 42,
+      "note": "TGD K Table 1 gives no minimum rise and no maximum going for private stairs (only optimum values).",
+      "src": "https://www.propertyhealthcheck.ie/wp-content/uploads/2015/07/tgd-part-k-2014.pdf", "status": "verified"},
+    "falls": {"shower": "UNVERIFIED - no Irish regulatory figure found; Irish practice likely follows BS 5385-4 / manufacturer former instructions (not confirmed).", "src": null},
+    "terms": {
+      "waterproofing": "tanking (Sika Ireland: 'Waterproof Tanking Kit', 'Tanking Primer', 'Tanking Membrane'; McMahons: 'Tanking Kit')",
+      "edgeTrim": "trim (Tile Style: 'L-Shaped Trim', 'Square Edge Trim')",
+      "grout": "grout",
+      "colour": "colour (Woodies spec 'Colour')",
+      "spacers": "tile spacers / levelling clips",
+      "sealant": "silicone sealant",
+      "units": "mm, m2 ('per sqm' on Woodies), kg",
+      "src": ["https://irl.sika.com/dms/getdocument.get/aa8f7649-28e2-4eb7-a8a4-7cf56c7b5406/everbuild_aquasealwetroomsystem.pdf", "https://tilestyle.ie/collections/all-tile-application/products.json", "https://www.woodies.ie/metro-white-ceramic-wall-100x200mm-pk50-1192398"],
+      "status": "verified; 'screed', 'plasterboard', 'backer board', 'wetroom former' Irish usage assumed same as UK (UNVERIFIED on an Irish page)"
+    }
+  }
+}

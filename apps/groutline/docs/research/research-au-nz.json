@@ -1,0 +1,475 @@
+{
+  "_meta": {
+    "researchedOn": "2026-11-23",
+    "scope": "Australia (AU) and New Zealand (NZ) tiling data for an iPhone tiling calculator",
+    "conventions": {
+      "derived": "true means the value was calculated by the researcher from the cited figures (for example pieces x tile area, or bag kg / m2), not printed by the source",
+      "UNVERIFIED": "the value could not be confirmed from a primary or retailer page during this research",
+      "verifiedVia": "how the value was read: 'page' = product or manufacturer page read directly, 'tds' = manufacturer data sheet PDF text read directly, 'secondary' = industry body or third-party copy, 'searchSnippet' = search-result text only (page itself could not be opened)"
+    },
+    "tileDimsNote": "Bunnings lists dimensions as length x thickness x width in its spec block; w/h below are the nominal face size, thk is the listed thickness in mm."
+  },
+  "AU": {
+    "tiles": [
+      {"w": 600, "h": 600, "thk": 9.5, "use": "both", "boxM2": 1.08, "perBox": 3, "material": "porcelain, rectified", "verifiedVia": "page", "src": "https://www.bunnings.com.au/duratile-60-x-60cm-1-08m-crema-porcelain-indoor-floor-and-wall-tile-3-carton_p0087517"},
+      {"w": 600, "h": 600, "thk": 9, "use": "both", "boxM2": 1.44, "perBox": 4, "material": "porcelain", "verifiedVia": "page", "src": "https://www.bunnings.com.au/signorino-600-x-600mm-oxide-ruggine-porcelain-tile-carton-of-4-1-44m2_p0312901"},
+      {"w": 300, "h": 600, "thk": 9.5, "use": "both", "boxM2": 1.08, "perBox": 6, "material": "porcelain (actual face 298.5 x 600)", "verifiedVia": "page", "src": "https://www.bunnings.com.au/duratile-30-x-60cm-1-08m-light-grey-terrazzo-floor-and-wall-tile-6-carton_p0409786"},
+      {"w": 300, "h": 600, "thk": 9.5, "use": "both", "boxM2": 1.44, "perBox": 8, "material": "porcelain, non-slip", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-30-x-60cm-1-44m-gold-milazzo-non-slip-tile-8-pack-gold_p0624883"},
+      {"w": 300, "h": 600, "thk": 8.8, "use": "both", "boxM2": 1.26, "boxM2Derived": true, "perBox": 7, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-300-x-600mm-desert-white-matt-ceramic-floor-tile-7-carton_p0176082"},
+      {"w": 300, "h": 600, "thk": 9.5, "use": "wall", "boxM2": 1.44, "boxM2Derived": true, "perBox": 8, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.com.au/duratile-30-x-60cm-white-gloss-ceramic-wall-tile-8-pack_p6661134"},
+      {"w": 400, "h": 400, "thk": 8, "use": "both", "boxM2": 0.96, "perBox": 6, "material": "ceramic (actual 402 x 402)", "verifiedVia": "page", "src": "https://www.bunnings.com.au/practa-solutions-40-x-40cm-0-96m2-portland-ivory-ceramic-floor-tile_p0964015"},
+      {"w": 400, "h": 400, "thk": 8.4, "use": "both", "boxM2": 1.44, "boxM2Derived": true, "perBox": 9, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-400-x-400mm-charcoal-cemento-matt-ceramic-floor-tile-carton-of-9_p0012633"},
+      {"w": 450, "h": 450, "thk": 8, "use": "floor", "boxM2": 1.42, "perBox": 7, "perBoxDerived": true, "material": "ceramic/porcelain (Belga range)", "verifiedVia": "page", "src": "https://beaumont-tiles.com.au/products/79937-belga-taupe-matt-tile"},
+      {"w": 300, "h": 300, "thk": 8, "use": "both", "boxM2": 1.08, "perBox": 12, "material": "ceramic (rustic cotto)", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-300-x-300mm-1-08m-cotto-rustic-tiles-12-carton-rustic-cotto_p0559693"},
+      {"w": 300, "h": 300, "thk": 7.2, "use": "both", "boxM2": 1.35, "boxM2Derived": true, "perBox": 15, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-300-x-300mm-carrara-statuari-ceramic-floor-tile-carton-of-15_p6660976"},
+      {"w": 200, "h": 200, "thk": 8, "use": "both", "boxM2": 1.0, "boxM2Derived": true, "perBox": 25, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-200-x-200mm-grey-matt-elements-tiles-25-carton_p0575848"},
+      {"w": 200, "h": 200, "thk": 7.2, "use": "wall", "boxM2": 1.0, "boxM2Derived": true, "perBox": 25, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.com.au/duratile-20-x-20cm-white-gloss-wall-tile-25-pack_p6661267"},
+      {"w": 150, "h": 150, "thk": 5, "use": "wall", "boxM2": 0.99, "boxM2Derived": true, "perBox": 44, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-150-x-150mm-ultra-white-gloss-ceramic-wall-tile-carton-of-44_p6660875"},
+      {"w": 75, "h": 300, "thk": 9, "use": "wall", "boxM2": 0.99, "perBox": 44, "material": "ceramic gloss subway", "verifiedVia": "page", "src": "https://www.bunnings.com.au/duratile-75-x-300mm-white-gloss-wall-tile-0-99sqm_p0575350"},
+      {"w": 75, "h": 300, "thk": 7, "use": "wall", "boxM2": 1.125, "boxM2Derived": true, "perBox": 50, "material": "ceramic gloss subway", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-75-x-300mm-dark-grey-gloss-ceramic-wall-tile-carton-of-50_p0012639"},
+      {"w": 100, "h": 300, "thk": 7.8, "use": "wall", "boxM2": 1.02, "perBox": 34, "material": "ceramic gloss subway", "verifiedVia": "page", "src": "https://www.bunnings.com.au/duratile-10-x-30cm-1-02m-white-gloss-subway-wall-tile-34-carton_p0038766"},
+      {"w": 100, "h": 200, "thk": 8, "use": "wall", "boxM2": 1.0, "boxM2Derived": true, "perBox": 50, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-200-x-100mm-white-ceramic-wall-tile-carton-50_p0012683"},
+      {"w": 200, "h": 300, "thk": 7.2, "use": "wall", "boxM2": 1.44, "perBox": 24, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-300-x-200mm-1-44m-ultra-white-gloss-tile-24-carton_p0393855"},
+      {"w": 200, "h": 400, "thk": 8.5, "use": "wall", "boxM2": 1.44, "boxM2Derived": true, "perBox": 18, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-400-x-200mm-white-gloss-wall-tile-carton-of-18_p6661016"},
+      {"w": 300, "h": 800, "thk": 8.5, "use": "both", "boxM2": 1.44, "perBox": 6, "material": "porcelain", "verifiedVia": "page", "src": "https://www.bunnings.com.au/johnson-tiles-800-x-300mm-1-44m-white-matt-cape-flow-tile_p0335527"},
+      {"w": 600, "h": 1200, "thk": 10, "use": "both", "boxM2": 1.44, "perBox": 2, "perBoxDerived": true, "material": "porcelain (Basilica range; thickness read from product page spec block)", "verifiedVia": "page", "src": "https://beaumont-tiles.com.au/products/1297461-basilica-chalk-structured-silk-tile"},
+      {"w": 300, "h": 300, "thk": 8, "use": "wall", "boxM2": 0.72, "boxM2Derived": true, "perBox": 8, "sheet": true, "material": "linear mosaic on 300 x 300 sheet", "verifiedVia": "page", "src": "https://www.bunnings.com.au/decor8-tiles-300-x-300-x-8mm-grey-mix-linear-mosaic-tile_p6660778"},
+      {"w": 255, "h": 290, "thk": 6, "use": "both", "boxM2": null, "perBox": 10, "sheet": true, "material": "hexagon porcelain mosaic sheet, sold as '30 x 30cm'", "verifiedVia": "page", "src": "https://www.bunnings.com.au/decor8-tiles-30-x-30cm-grey-como-hexagon-stone-porcelain-mosaic-tile_p0044489"},
+      {"w": 306, "h": 306, "thk": 6, "use": "both", "boxM2": null, "perBox": null, "sheet": true, "material": "mosaic sheet, sold per sheet (Beaumont)", "verifiedVia": "page", "src": "https://beaumont-tiles.com.au/products/1010871-mod-white-matt-mosaic"},
+      {"w": 140, "h": 160, "thk": 8, "use": "both", "boxM2": null, "perBox": 30, "material": "single hexagon porcelain tile", "verifiedVia": "page", "src": "https://www.bunnings.com.au/decor8-tiles-140-x-160mm-capri-bettina-hexagon-blue-porcelain-floor-tile_p0295843"}
+    ],
+    "tilesNotSeen": "800x800 and 1200x1200 were not found in Bunnings or Beaumont searches during this research (UNVERIFIED as stocked sizes). Beaumont's search for 800x800 / 1200x1200 returned other sizes.",
+    "adhesive": [
+      {
+        "name": "Polymer-modified flexible cement-based adhesive, fast setting (classification printed on TDS: C1 E S2)",
+        "brandForDocs": "ARDEX X 56 (ARDEX Australia TDS issued March 2026)",
+        "bagKg": 15,
+        "coverage": [
+          {"notchMm": 6, "m2PerBag": "12-14 (walls)", "kgPerM2": 1.15, "kgPerM2Derived": true},
+          {"notchMm": 10, "m2PerBag": "8-10 (floors)", "kgPerM2": 1.67, "kgPerM2Derived": true}
+        ],
+        "waterPerBagL": 6.75,
+        "verifiedVia": "tds",
+        "src": "https://adheseal.com.au/cdn/shop/files/ardex-x56-tile-adhesive-technical-data-sheet.pdf",
+        "note": "Third-party-hosted copy of the ARDEX Australia TDS (footer: ARDEX Australia, issued March 2026). Front panel says '15kg cover 12m2 on walls and 8m2 on floors'. NZ figures for the same product differ (see NZ)."
+      },
+      {
+        "name": "Flexible cement-based adhesive (C1S1T)",
+        "brandForDocs": "Bostik Excelflex (sell sheet, April 2019)",
+        "bagKg": 20,
+        "coverage": [{"notchMm": 10, "kgPerM2": 2.8, "m2PerBag": 7.0}],
+        "verifiedVia": "tds",
+        "src": "https://www.bostik.com/files/live/sites/shared_bostik/files/import-australia/bostik-tiling-info-sheet---excelflex.pdf"
+      },
+      {
+        "name": "Improved flexible cement-based adhesive, extended open time (C2ES1)",
+        "brandForDocs": "Mapei Keraflex Easy S1 (Mapei Australia TDS, en-AU)",
+        "bagKg": 20,
+        "coverage": [
+          {"notchMm": 4, "kgPerM2": 2.0, "use": "mosaic and small tiles"},
+          {"notchMm": 6, "kgPerM2": "2.5-3", "use": "normal size tiles"},
+          {"notchMm": 10, "kgPerM2": 5.0, "use": "large tiles, external floors"}
+        ],
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_00011_keraflex-easy-s1-_en-au_273104d2f3574e6b841fb34fa96dfc7b.pdf?sfvrsn=7178f4db_0"
+      },
+      {
+        "name": "Improved flexible non-slip cement-based adhesive (C2TES1)",
+        "brandForDocs": "Mapei Keraflex Maxi S1 (Mapei Australia TDS, en-AU)",
+        "bagKg": 20,
+        "coverage": [{"notchMm": null, "kgPerM2PerMmBed": 1.2}],
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_12906_keraflex-maxi-s1-(n)-(fo)_en-au_5fe1ee3bc3f34d17954b430326110be2.pdf?sfvrsn=2f610a03_0",
+        "note": "Mapei states consumption as 1.2 kg/m2 per mm of bed thickness, not per notch."
+      },
+      {
+        "name": "Rubber-modified cement-based adhesive (C1S1E)",
+        "brandForDocs": "Davco Ultraflex (Sika Australia data sheet dated 05/20)",
+        "bagKg": 20,
+        "coverage": [{"notchMm": 6, "m2PerBag": 12, "kgPerM2": 1.67, "kgPerM2Derived": true}],
+        "notchGuide": [
+          {"tile": "mosaic", "notchMm": 6},
+          {"tile": "150x150", "notchMm": 6},
+          {"tile": "over 150x150", "notchMm": 10},
+          {"tile": "400x400 and over", "notchMm": 12}
+        ],
+        "waterPerBagL": "6-7",
+        "verifiedVia": "tds",
+        "src": "https://aus.sika.com/dms/getdocument.get/9872370c-646c-487d-9abb-c8dfbf3872e4/Davco%20Ultraflex%20Data%20Sheet.pdf",
+        "note": "Data sheet is dated 05/20; check for a newer Sika issue."
+      },
+      {
+        "name": "Flexible cement-based adhesive (C1TES1)",
+        "brandForDocs": "LATICRETE LATAFLEX Gold",
+        "bagKg": 20,
+        "coverage": "UNVERIFIED (product page does not show a notch coverage table)",
+        "verifiedVia": "page",
+        "src": "https://au.laticrete.com/products/lataflex-gold-adhesive"
+      }
+    ],
+    "grout": [
+      {
+        "name": "Flexible cement-based coloured grout, joints 1-8 mm",
+        "brandForDocs": "ARDEX FG 8",
+        "bagKg": [1.5, 5, 20],
+        "kind": "cement",
+        "waterPer20kgL": 4.2,
+        "coverageTableKgPerM2": [
+          {"tile": "50x50x5", "joint1_5": 0.6, "joint3": 1.2},
+          {"tile": "100x100x5", "joint1_5": 0.3, "joint3": 0.6},
+          {"tile": "150x150x5", "joint1_5": 0.2, "joint3": 0.4},
+          {"tile": "300x300x5", "joint1_5": 0.1, "joint3": 0.3},
+          {"tile": "600x600x10", "joint1_5": 0.1, "joint3": 0.23}
+        ],
+        "wastageAdvice": "add 15-20%",
+        "density": "UNVERIFIED (not stated; table values are rounded and do not imply one constant)",
+        "verifiedVia": "tds",
+        "src": "https://cdn.shopify.com/s/files/1/0281/3560/files/ARDEX_FG_8_Datasheet.pdf",
+        "note": "Third-party-hosted ARDEX AU/NZ joint TDS (lists both ARDEX Australia and ARDEX NZ addresses)."
+      },
+      {
+        "name": "Improved fast-setting cement grout, joints 2-20 mm (AS ISO 13007-3 CG2WAF)",
+        "brandForDocs": "Mapei Ultracolor Plus (Mapei Australia TDS, en-AU)",
+        "bagKg": [5, 2],
+        "packNote": "4 x 5 kg or 8 x 2 kg Alupack bags depending on colour",
+        "kind": "cement",
+        "density": 1.4,
+        "densityNote": "bulk density of powder 1400 kg/m3 (TDS)",
+        "formula": "kg/m2 = ((A + B) / (A x B)) x C x D x 1.6, where A = tile length mm, B = tile width mm, C = tile thickness mm, D = joint width mm",
+        "formulaNote": "A-D definitions are printed in the AU TDS; the 1.6 constant is printed as an image and was confirmed from a Mapei catalogue copy (archiexpo). It matches the AU TDS table (e.g. 300x300x10 @ 3 mm = 0.3 kg/m2).",
+        "coverageTableKgPerM2Sample": [
+          {"tile": "300x300x10", "j2": 0.2, "j3": 0.3, "j5": 0.5, "j8": 0.9, "j10": 1.1},
+          {"tile": "300x600x10", "j2": 0.2, "j3": 0.2, "j5": 0.4, "j8": 0.6, "j10": 0.8},
+          {"tile": "600x600x10", "j2": 0.1, "j3": 0.2, "j5": 0.3, "j8": 0.4, "j10": 0.5}
+        ],
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_02801_ultracolor-plus_en-au_d78beef88cd74f6d81624ea42967b82d.pdf?sfvrsn=c53db32e_0",
+        "formulaSrc": "https://pdf.archiexpo.com/pdf/mapei/ultracolor-plus/3921-405787.html"
+      },
+      {
+        "name": "Two-part acid-resistant epoxy grout (RG)",
+        "brandForDocs": "Mapei Kerapoxy",
+        "kitKg": [2, 5, 10],
+        "kind": "epoxy",
+        "mixRatio": "A:B = 9:1",
+        "density": 1.55,
+        "densityNote": "density of mix 1550 kg/m3; part A 1.64 g/cm3, part B 0.97 g/cm3",
+        "coverageTableKgPerM2Sample": [
+          {"tile": "300x300x10", "j3": 0.3, "j5": 0.5, "j8": 0.9, "j10": 1.1},
+          {"tile": "600x600x10", "j3": 0.2, "j5": 0.3, "j8": 0.4, "j10": 0.5}
+        ],
+        "asAdhesiveKgPerM2": "2-4",
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_00141_kerapoxy_en_7f5f0763b46a447a87b9456f6b2dc807.pdf?sfvrsn=aa1675ec_0",
+        "note": "Linked from the Mapei Australia Kerapoxy page; document is the generic English TDS."
+      },
+      {
+        "name": "Ready-to-use premixed flexible grout, joints 1-5 mm",
+        "brandForDocs": "Davco Easy Grout (Sika Australia PDS, July 2023)",
+        "packL": [2, 4],
+        "kind": "premixed",
+        "density": 1.8,
+        "densityNote": "bulk density 1.8 kg/L",
+        "coveragePer2LPailM2": [
+          {"tile": "300x100x10", "j1_5": 14, "j3": 7, "j5": 4},
+          {"tile": "600x300x10", "j1_5": 17.5, "j3": 9, "j5": 5.5},
+          {"tile": "600x600x10", "j1_5": 28, "j3": 14, "j5": 8.5}
+        ],
+        "verifiedVia": "tds",
+        "src": "https://aus.sika.com/dam/dms/au01/3/davco-easy-grout.pdf"
+      },
+      {
+        "name": "Sanded cement grout for slate and quarry tiles, joints 6-12 mm",
+        "brandForDocs": "Davco Slate & Quarry Grout",
+        "bagKg": 20,
+        "kind": "cement",
+        "density": "UNVERIFIED",
+        "verifiedVia": "searchSnippet",
+        "src": "https://aus.sika.com/en/products/davco-slate-quarrygrout.html"
+      }
+    ],
+    "membrane": [
+      {
+        "name": "Water-based polyurethane Class III undertile membrane",
+        "brandForDocs": "Davco K10 Plus (Sika Australia PDS, June 2026, v01.07)",
+        "packL": [4, 20],
+        "coverage": "20 L ~ 13.3 m2 with 2 coats; 4 L ~ 2.75 m2 with 2 coats",
+        "lPerM2PerCoat": 0.75,
+        "lPerM2PerCoatDerived": true,
+        "coats": 2,
+        "minWftPerCoatMm": 0.75,
+        "minDftMm": 1.0,
+        "standards": "AS/NZS 4858:2004 Class III (BRANZ test report)",
+        "verifiedVia": "tds",
+        "src": "https://aus.sika.com/dam/dms/au01/1/davco-k10-plus.pdf"
+      },
+      {
+        "name": "Water-based polyurethane-acrylic hybrid undertile membrane (Class III)",
+        "brandForDocs": "ARDEX WPM 155 Rapid Plus (ARDEX Australia TDS, January 2025)",
+        "packL": [4, 15],
+        "coverage": "15 L = 17.5 m2 and 4 L = 4.5 m2 at 0.5 mm DFT / 2 coats",
+        "lPerM2PerCoat": 0.43,
+        "lPerM2PerCoatDerived": true,
+        "coats": 2,
+        "minDftMm": 0.5,
+        "minDftNote": "0.5 mm is the DFT the coverage is quoted at; floor DFT requirement for AU TDS UNVERIFIED (ARDEX NZ quotes 1.0 mm DFT for floors without tape)",
+        "specificGravity": 1.35,
+        "verifiedVia": "tds",
+        "src": "https://ardexaustralia.com/pdf/products/datasheets/waterproofing/ARDEX%20WPM%20155%20Rapid%20Plus%20Datasheet.pdf"
+      },
+      {
+        "name": "Ready-to-use one-part elastic membrane",
+        "brandForDocs": "Mapei Mapelastic AquaDefense",
+        "packKg": [3.5, 7.5, 15],
+        "kgPerM2TwoCoats": 1.0,
+        "lPerM2PerCoat": 0.38,
+        "lPerM2PerCoatDerived": true,
+        "coats": 2,
+        "thicknessPerCoatMm": 0.4,
+        "density": 1.3,
+        "minDftMm": "UNVERIFIED (TDS gives ~0.4 mm per coat, not a stated minimum DFT)",
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_14224_mapelastic-aquadefense-(fo)_en_6ad929b36afd4836b8ab37ba7030fb49.pdf?sfvrsn=d73a0afc_0"
+      }
+    ],
+    "primer": [
+      {
+        "name": "Water-based synthetic resin primer",
+        "brandForDocs": "Mapei Primer G",
+        "packKg": [1, 5, 10, 25],
+        "kgPerM2": "0.08-0.15",
+        "density": 1.01,
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_00532_primer-g_en_75bbe42944114835a80c6e58ca299210.pdf?sfvrsn=99bb8a06_0"
+      },
+      {
+        "name": "Two-part epoxy barrier coating / moisture primer",
+        "brandForDocs": "ARDEX WPM 300 (HydrEpoxy)",
+        "packL": [4, 20],
+        "coverage": "UNVERIFIED on the AU page (calculator only); the ARDEX NZ page gives water stop 60 m2 / 1 coat and membrane 30 m2 / 2 coats per pack (pack size not stated with the figure)",
+        "verifiedVia": "page",
+        "src": "https://ardexaustralia.com/product/ardex-wpm-300/"
+      },
+      {
+        "name": "Primers named in Davco K10 Plus primer guide",
+        "brandForDocs": "Davco Ultraprime (porous concrete, cement sheet, render/screed), Davco PrimeX (dense concrete, compressed cement boards)",
+        "coverage": "UNVERIFIED",
+        "verifiedVia": "tds",
+        "src": "https://aus.sika.com/dam/dms/au01/1/davco-k10-plus.pdf"
+      }
+    ],
+    "tape": [
+      {"name": "Self-adhesive butyl tape with fleece (bond-breaker / junction tape)", "brandForDocs": "ARDEX STB Tape", "widthMm": 75, "rollM": 15, "minEndLapMm": 50, "verifiedVia": "page", "src": "https://ardexaustralia.com/product/ardex-stb-tape/", "lapSrc": "https://ardexaustralia.com/pdf/products/datasheets/waterproofing/ARDEX%20WPM%20155%20Rapid%20Plus%20Datasheet.pdf"},
+      {"name": "Self-adhesive butyl sheet", "brandForDocs": "ARDEX STA Tape", "widthMm": 400, "rollM": 2.4, "form": "sheet", "verifiedVia": "page", "src": "https://ardexaustralia.com/product/ardex-stb-tape/"},
+      {"name": "Polyethylene / polypropylene joint tape over sheet joints and cracks", "brandForDocs": "Davco K10 Plus instructions (generic tape)", "widthMm": 50, "rollM": "UNVERIFIED", "verifiedVia": "tds", "src": "https://aus.sika.com/dam/dms/au01/1/davco-k10-plus.pdf"}
+    ],
+    "puddleFlange": [
+      {"name": "PVC puddle flange kit with square grate", "brandForDocs": "Kinetic (Bunnings)", "sizesMm": [50], "verifiedVia": "searchSnippet", "src": "https://www.bunnings.com.au/kinetic-50mm-puddle-flange-kit-square-grate_p0282747"},
+      {"name": "In-pipe puddle flange", "brandForDocs": "Kinetic (Bunnings)", "sizesMm": [80], "verifiedVia": "searchSnippet", "src": "https://www.bunnings.com.au/kinetic-80mm-in-pipe-puddle-flange_p4770462"},
+      {"name": "Puddle flange to brass waste adaptor", "brandForDocs": "Kinetic (Bunnings)", "sizesMm": [80, 100], "verifiedVia": "searchSnippet", "src": "https://www.bunnings.com.au/kinetic-100mm-puddle-flange-to-brass-waste-adaptor_p4770467"},
+      {"name": "Retro puddle flange with test plug", "brandForDocs": "Wondercap (Mitre 10 AU)", "sizesMm": ["100x50", "100x80", "100x100"], "verifiedVia": "searchSnippet", "src": "https://www.mitre10.com.au/wondercap-retro-puddle-flange-with-test-plug-100-x-50mm-6672596"}
+    ],
+    "standards": [
+      {"topic": "installation", "name": "AS 3958:2023 Installation of ceramic and stone tiles", "note": "Combines and replaces AS 3958.1-2007 (and AS 3958.2). Store lists AS 3958.1-2007 as superseded. Many manufacturer TDS still cite AS 3958.1 (e.g. Davco Ultraflex movement joints at max 4.5 m centres).", "src": "https://hia.com.au/resources-and-advice/building-materials-and-products/use-the-right-building-products-for-the-job/articles/updates-to-ceramic-tile-standard-as-3958-2023", "srcStore": "https://store.standards.org.au/product/as-3958-2023"},
+      {"topic": "installation", "name": "AS 3958.1-2007 Ceramic tiles - Guide to the installation of ceramic tiles (superseded)", "note": "Superseded; keep only as a legacy reference.", "src": "https://store.standards.org.au/product/as-3958-1-2007"},
+      {"topic": "waterproofing", "name": "AS 3740:2021 Waterproofing of domestic wet areas", "note": "Current edition, published 23 Jul 2021, replaced AS 3740-2010. Called up by NCC Housing Provisions 10.2.1(2). Detailed clause values are behind a paywall and were not read (UNVERIFIED beyond NCC text).", "src": "https://store.standards.org.au/product/as-3740-2021"},
+      {"topic": "waterproofing", "name": "NCC 2022 Housing Provisions Part 10.2 Wet area waterproofing", "note": "Shower walls waterproof >= 1800 mm above floor substrate (10.2.2(1)(b)); shower wall junctions >= 40 mm each side (10.2.2(1)(c)); unenclosed shower waterstop >= 1500 mm from shower rose (10.2.18); step-down >= 25 mm below floor outside (10.2.15); hob membrane over top, down outside, >= 50 mm onto floor (10.2.28); hobs not timber (10.2.16(4)); outside shower: wall/floor junctions waterproof, horizontal flashing leg >= 40 mm (10.2.3); perimeter flashing vertical leg >= 25 mm above FFL, horizontal leg >= 50 mm (10.2.24); walls by non-freestanding bath within 75 mm of wall water resistant >= 150 mm above vessel (10.2.4); sinks/vessels within 75 mm of wall: 150 mm (10.2.5).", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing"},
+      {"topic": "falls", "name": "NCC 2022 Housing Provisions 10.2.12 Falls to floor wastes", "note": "Where a floor waste is installed: continuous fall min 1:80, max 1:50.", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing"},
+      {"topic": "waterproofing", "name": "AS/NZS 4858:2004 Wet area membranes", "note": "Membrane classes I-III by elongation; K10 Plus and WPM 155 Rapid Plus are Class III.", "src": "https://aus.sika.com/dam/dms/au01/1/davco-k10-plus.pdf"},
+      {"topic": "waterproofing", "name": "AS 4654.2 Waterproofing membranes for external above-ground use - Design and installation", "note": "Balconies, decks and other external above-ground membranes; edition year not verified (2012 commonly cited).", "verifiedVia": "searchSnippet", "src": "https://hia.com.au/resources-and-advice/building-it-right/australian-standards/articles/waterproofing-of-wet-areas"},
+      {"topic": "slip", "name": "AS 4586 (slip resistance classification), via NCC Housing Provisions Table 11.2.4", "note": "Stair treads: dry P3 or R10, wet P4 or R11. Nosing or landing edge strip: dry P3, wet P4. Ramps not steeper than 1:8: dry P4 or R10, wet P5 or R12.", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/11-safe-movement-and-access/part-112-stairway-and-ramp-construction"},
+      {"topic": "stairs", "name": "AS 1428.1 Design for access and mobility (contrasting nosing strips, NCC Volume One)", "note": "Secondary sources: contrasting strip 50-75 mm wide, max 15 mm setback from nosing, >= 30% luminance contrast, max 10 mm down the riser. Which edition (2009 or 2021) the NCC DTS references is disputed between sources; applies to Class 2-9 buildings, not houses. UNVERIFIED against primary text.", "verifiedVia": "secondary", "src": "https://buildingtools.co/tool/access-luminance-contrast"}
+    ],
+    "stairs": {
+      "riserMin": 115, "riserMax": 190,
+      "goingMin": 240, "goingMax": 355,
+      "twoRplusGMin": 550, "twoRplusGMax": 700,
+      "maxRisersPerFlight": 18, "minRisersPerFlight": 2,
+      "spiral": {"riserMin": 140, "riserMax": 220, "goingMin": 210, "goingMax": 370, "twoRplusGMin": 590, "twoRplusGMax": 680},
+      "note": "NCC 2022 Housing Provisions Table 11.2.2a (stairs other than spiral).",
+      "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/11-safe-movement-and-access/part-112-stairway-and-ramp-construction"
+    },
+    "falls": {
+      "shower": "1:80 min to 1:50 max to the floor waste (NCC 2022 HP 10.2.12 applies wherever a floor waste is installed)",
+      "outside": "Same 1:80-1:50 where the floor has a waste; a floor with a vessel must be graded to a floor waste (SA variation 10.2.33). Davco K10 Plus TDS advises 1:80 for wet areas and 1:100 for balconies/rooftops (manufacturer advice, not code).",
+      "oldValues": "1:60-1:80 shower falls were from older editions (pre-2022); 1:60 is no longer the NCC limit.",
+      "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing",
+      "secondarySrc": "https://www.bpc.vic.gov.au/__data/assets/pdf_file/0024/25890/NCC-2022-Roadshow-Building-Webinar-Presentation.pdf",
+      "as3740Wording": "UNVERIFIED (AS 3740:2021 text not read)"
+    },
+    "terms": {
+      "wetArea": {"term": "wet area", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing"},
+      "hob": {"term": "hob", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing"},
+      "stepDown": {"term": "step-down", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing"},
+      "waterstop": {"term": "waterstop", "src": "https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisions/10-health-and-amenity/part-102-wet-area-waterproofing"},
+      "falls": {"term": "falls (to floor waste)", "src": "https://aus.sika.com/dam/dms/au01/1/davco-k10-plus.pdf"},
+      "screed": {"term": "screed", "src": "https://aus.sika.com/dam/dms/au01/1/davco-k10-plus.pdf"},
+      "bondBreaker": {"term": "bond breaker", "src": "https://ardexaustralia.com/product/ardex-wpm-155-rapid-plus/"},
+      "puddleFlange": {"term": "puddle flange", "src": "https://www.bunnings.com.au/kinetic-80mm-in-pipe-puddle-flange_p4770462"},
+      "backButtering": {"term": "back buttering", "src": "https://aus.sika.com/dms/getdocument.get/9872370c-646c-487d-9abb-c8dfbf3872e4/Davco%20Ultraflex%20Data%20Sheet.pdf"},
+      "spelling": "colour, metre, centre (all AU sources); boxes are usually called 'carton' or 'pack' at Bunnings and 'pack'/'box' at Beaumont",
+      "units": "mm and m2; tiles sold per carton/pack with price per m2"
+    }
+  },
+  "NZ": {
+    "tiles": [
+      {"w": 300, "h": 600, "thk": 9.5, "use": "both", "boxM2": 1.08, "perBox": 6, "material": "porcelain (298.5 x 600)", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/practa-solutions-30-x-60cm-1-08m-light-grey-terrazzo-porcelain-floor-and-wall-tile-6-carton_p0409786"},
+      {"w": 300, "h": 600, "thk": 9, "use": "floor", "boxM2": 1.26, "perBox": 7, "material": "porcelain", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-300-x-600mm-pavement-haze-matt-1-26m2-carton-of-7_p0469226"},
+      {"w": 300, "h": 600, "thk": "UNVERIFIED", "use": "floor", "boxM2": 1.44, "perBox": 8, "material": "porcelain (Caspian range)", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-300-x-600mm-caspian-grey-matt-1-44m2-8-pack_p0826245"},
+      {"w": 296, "h": 597, "thk": 9, "use": "floor", "boxM2": 1.24, "perBox": 7, "material": "porcelain lappato", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-296-x-596mm-1-24m-cemento-white-lappato-porcelain-floor-tile-7-carton_p0270629"},
+      {"w": 600, "h": 600, "thk": "UNVERIFIED", "use": "both", "boxM2": 1.08, "perBox": 3, "material": "porcelain", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/duratile-60-x-60cm-1-08m-aggregate-grey-porcelain-indoor-floor-tile-3-carton_p6661266"},
+      {"w": 600, "h": 600, "thk": "UNVERIFIED", "use": "floor", "boxM2": 1.44, "perBox": 4, "material": "porcelain (Chicago range)", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-600-x-600mm-1-44m-anthracite-matt-chicago-4-pack_p0335558"},
+      {"w": 600, "h": 1200, "thk": 9.5, "use": "both", "boxM2": 1.4401, "perBox": 2, "material": "porcelain polished, rectified", "verifiedVia": "searchSnippet", "src": "https://tilewarehouse.co.nz/tile-ranges/pisa-gold/pisa-gold-polished-600x1200/", "note": "Page returned 404 when opened; values from search result only."},
+      {"w": 300, "h": 300, "thk": 7.2, "use": "both", "boxM2": 1.35, "perBox": 15, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-300-x-300mm-1-35m-carrara-matt-statuari-ceramic-floor-tile-15-pack_p0289620"},
+      {"w": 300, "h": 600, "thk": "UNVERIFIED (NZ spec block shows an implausible 75; AU page for same item shows 9.5)", "use": "wall", "boxM2": 1.44, "boxM2Derived": true, "perBox": 8, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/duratile-30-x-60cm-white-gloss-ceramic-wall-tile-8-pack_p6661134"},
+      {"w": 200, "h": 300, "thk": 7.8, "use": "wall", "boxM2": 1.44, "perBox": 24, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-300-x-200mm-1-44m-ultra-white-gloss-tile-24-carton_p0393855"},
+      {"w": 200, "h": 200, "thk": 7.8, "use": "wall", "boxM2": 1.52, "perBox": 38, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-200-x-200mm-1-52m-ultra-white-gloss-ceramic-wall-tile-38-carton_p0385647"},
+      {"w": 150, "h": 150, "thk": 5, "use": "wall", "boxM2": 0.99, "boxM2Derived": true, "perBox": 44, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-150-x-150mm-ultra-white-gloss-ceramic-wall-tile-44-carton_p6660875"},
+      {"w": 100, "h": 300, "thk": 8, "use": "wall", "boxM2": 1.2, "perBox": 40, "material": "ceramic gloss", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-100-x-300mm-1-2m-black-gloss-tile-40-carton_p0405646"},
+      {"w": 100, "h": 200, "thk": 8, "use": "wall", "boxM2": 1.0, "boxM2Derived": true, "perBox": 50, "material": "ceramic", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-200-x-100mm-white-ceramic-wall-tile-carton-50_p0012683"},
+      {"w": 75, "h": 300, "thk": "UNVERIFIED", "use": "wall", "boxM2": 0.99, "perBox": 44, "material": "ceramic subway", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-75-x-300mm-0-99m2-grey-matt-artisan-wall-tile-carton-of-44_p0814718"},
+      {"w": 301, "h": 301, "thk": "UNVERIFIED", "use": "wall", "boxM2": null, "perBox": 1, "sheet": true, "material": "mosaic sheet sold each", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-301-x-301mm-white-satin-luna-mosaic-wall-tile_p0814727"},
+      {"w": 97, "h": 97, "thk": "UNVERIFIED", "use": "wall", "boxM2": null, "perBox": 1, "material": "ceramic gloss, sold each", "verifiedVia": "page", "src": "https://www.bunnings.co.nz/johnson-tiles-97-x-97mm-white-gloss-spectrum-wall-tile-each_p0531743"}
+    ],
+    "tilesNotSeen": "450x450, 800x800 and 1200x1200 were not checked/found for NZ (UNVERIFIED). Mitre 10 NZ search did not return tile results; Tile Warehouse NZ product pages returned 404 to the browser.",
+    "adhesive": [
+      {
+        "name": "Polymer-modified flexible cement-based adhesive, fast setting",
+        "brandForDocs": "ARDEX X 56 (ARDEX New Zealand product page)",
+        "bagKg": 15,
+        "coverage": [
+          {"notchMm": 6, "m2PerBag": 8, "surface": "walls", "kgPerM2": 1.88, "kgPerM2Derived": true},
+          {"notchMm": 10, "m2PerBag": 6, "surface": "floors", "kgPerM2": 2.5, "kgPerM2Derived": true}
+        ],
+        "verifiedVia": "page",
+        "src": "https://www.ardex.co.nz/product/ardex-x-56/",
+        "note": "NZ page gives 8 m2 walls / 6 m2 floors per 15 kg (notch sizes per the NZ datasheet search result: 6x6x6 walls, 10x10x10 floors). ARDEX Australia's March 2026 TDS for the same product says 12-14 m2 / 8-10 m2. Use the more conservative NZ figure or let the user choose.",
+        "notchSrc": "https://ardex.co.nz/products/Tiling/X%2056/ARDEX%20X%2056%20Datasheet.pdf"
+      },
+      {
+        "name": "Improved flexible non-slip cement-based adhesive (C2TES1)",
+        "brandForDocs": "Mapei Keraflex Maxi S1 (Mapei NZ page exists; AU TDS figures)",
+        "bagKg": 20,
+        "coverage": [{"notchMm": null, "kgPerM2PerMmBed": 1.2}],
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider14/products-documents/1_12906_keraflex-maxi-s1-(n)-(fo)_en-au_5fe1ee3bc3f34d17954b430326110be2.pdf?sfvrsn=2f610a03_0",
+        "nzPage": "https://www.mapei.com/nz/en/products-and-solutions/products/detail/keraflex-maxi-s1",
+        "note": "NZ-specific TDS not read; AU TDS used."
+      },
+      {
+        "name": "Third NZ adhesive with a notch table",
+        "brandForDocs": "UNVERIFIED",
+        "coverage": "UNVERIFIED - only two NZ-sold adhesives were confirmed; Davco/Sika NZ and Laticrete NZ data not checked",
+        "src": null
+      }
+    ],
+    "grout": [
+      {
+        "name": "Flexible cement-based coloured grout, joints 1-8 mm",
+        "brandForDocs": "ARDEX FG 8 (NZ)",
+        "bagKg": [5, 20],
+        "kind": "cement",
+        "density": "UNVERIFIED",
+        "coverage": "Same AU/NZ datasheet table as AU entry; NZ page calculator adds 15% wastage",
+        "verifiedVia": "page",
+        "src": "https://www.ardex.co.nz/product/ardex-fg-8/"
+      },
+      {
+        "name": "Epoxy grout",
+        "brandForDocs": "UNVERIFIED for NZ (Mapei NZ Kerapoxy and Ultracolor Plus pages returned HTTP 403)",
+        "kind": "epoxy",
+        "src": null
+      }
+    ],
+    "membrane": [
+      {
+        "name": "One-part acrylic fibre-reinforced undertile membrane (Class III)",
+        "brandForDocs": "ARDEX WPM 001 (NZ)",
+        "packKg": [6.5, 20],
+        "coverage": "20 kg: floors 7.5 m2 (2 coats, 1.0 mm DFT); walls 15 m2 (2 coats, 0.5 mm DFT)",
+        "kgPerM2TwoCoats": {"floor": 2.67, "wall": 1.33, "derived": true},
+        "coats": 2,
+        "minDftMm": {"floor": 1.0, "wall": 0.5},
+        "readyToTileHours": 48,
+        "verifiedVia": "page",
+        "src": "https://www.ardex.co.nz/product/ardex-wpm-001/"
+      },
+      {
+        "name": "Water-based polyurethane-acrylic undertile membrane",
+        "brandForDocs": "ARDEX WPM 155 Rapid (NZ)",
+        "packL": 15,
+        "packKg": 20,
+        "coverage": "Walls 17.2 m2 (2 coats, 0.5 mm DFT); floors with ARDEX STB tape 17.2 m2 (2 coats, 0.5 mm DFT); floors 8.6 m2 (2 coats, 1.0 mm DFT)",
+        "lPerM2PerCoat": {"dft0_5": 0.44, "dft1_0": 0.87, "derived": true},
+        "coats": 2,
+        "minDftMm": {"wall": 0.5, "floorWithSTBTape": 0.5, "floor": 1.0},
+        "verifiedVia": "page",
+        "src": "https://www.ardex.co.nz/product/ardex-wpm-155-rapid/"
+      },
+      {
+        "name": "Ready-to-use one-part elastic membrane",
+        "brandForDocs": "Mapei Mapelastic AquaDefense (Mapei NZ TDS)",
+        "packKg": [3.5, 7.5, 15],
+        "kgPerM2TwoCoats": 1.0,
+        "lPerM2PerCoat": 0.38,
+        "lPerM2PerCoatDerived": true,
+        "coats": 2,
+        "thicknessPerCoatMm": 0.4,
+        "density": 1.3,
+        "verifiedVia": "tds",
+        "src": "https://cdnmedia.mapei.com/docs/librariesprovider22/products-documents/1_14224_mapelastic-aquadefense-(fo)_en_9ef0132ebae4400581ca4e65483faf81.pdf"
+      }
+    ],
+    "primer": [
+      {"name": "Multi-purpose primer", "brandForDocs": "ARDEX Multiprime (NZ)", "packL": [4, 20], "m2PerL": 6, "verifiedVia": "page", "src": "https://www.ardex.co.nz/product/ardex-multiprime/"},
+      {"name": "Two-part epoxy barrier coating / moisture primer", "brandForDocs": "ARDEX WPM 300 (NZ)", "packL": [4, 20], "coverage": "Water stop 60 m2 (1 coat); waterproof membrane 30 m2 (2 coats) - pack size the figure refers to is not stated (UNVERIFIED which kit)", "verifiedVia": "page", "src": "https://www.ardex.co.nz/product/ardex-wpm-300/"}
+    ],
+    "tape": [
+      {"name": "Self-adhesive butyl tape with fleece", "brandForDocs": "ARDEX STB Tape (NZ)", "widthMm": 75, "rollM": 15, "verifiedVia": "page", "src": "https://www.ardex.co.nz/product/ardex-st-tape/"},
+      {"name": "Self-adhesive butyl sheet", "brandForDocs": "ARDEX STA Sheets (NZ)", "widthMm": 400, "rollM": 2.4, "form": "sheet", "verifiedVia": "page", "src": "https://www.ardex.co.nz/product/ardex-st-tape/"},
+      {"name": "Rubber-coated alkali-resistant waterproofing band", "brandForDocs": "Mapei Mapeband Easy (Mapei NZ TDS)", "widthMm": 130, "rollM": [10, 30], "extras": "90 and 270 degree corner pieces; 200x200 and 400x400 penetration templates", "verifiedVia": "tds", "src": "https://cdnmedia.mapei.com/docs/librariesprovider22/products-documents/1_07631_mapeband-easy_en_6615afbf32a8474bb3ac778afc63fac6.pdf"}
+    ],
+    "puddleFlange": "UNVERIFIED (not researched for NZ retailers)",
+    "standards": [
+      {"topic": "waterproofing", "name": "NZ Building Code clause E3 Internal moisture; Acceptable Solution E3/AS1 (2nd edition, Amendment 7, effective 5 Nov 2020)", "note": "Per LEVEL (BRANZ): tiles max 6% water absorbency; shower floor and wall finishes impervious; enclosures continuous from floor/top of upstand to >= 1800 mm above floor and >= 300 mm above the rose; open showers fall >= 1:50 to the waste within 1500 mm radius of the point below the rose (E3/AS1 3.3.2.3); floor wastes to G13/AS1.", "verifiedVia": "secondary", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/", "primary": "https://www.building.govt.nz/building-code-compliance/e-moisture/e3-internal-moisture/"},
+      {"topic": "waterproofing", "name": "E3/AS2 Internal wet-area membrane systems (1st edition)", "note": "Cites the Waterproof Membrane Association Code of Practice for internal wet-area membrane systems (4th ed., Feb 2020); membranes must comply with AS/NZS 4858:2004; all components from one supplier; contained by a waterstop.", "verifiedVia": "secondary", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/", "primary": "https://www.building.govt.nz/assets/Uploads/building-code-compliance/e-moisture/e3-internal-moisture/asvm/e3-internal-moisture-as2-1st-edition.pdf"},
+      {"topic": "waterproofing", "name": "AS/NZS 4858:2004 Wet area membranes", "note": "Class I (least flexible) to Class III (most flexible, suits timber framing).", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      {"topic": "durability", "name": "NZBC clause B2 Durability", "note": "Waterproofing systems under wet-area tiling need at least 15 years durability.", "verifiedVia": "secondary", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      {"topic": "stairs", "name": "NZBC clause D1 Access routes; Acceptable Solution D1/AS1 (2nd edition, Amendment 6) Table 6", "note": "Primary PDF could not be text-extracted; values taken from BRANZ Bulletin 625 (2018) and BRANZ 'External stairs for houses'. Max 5 mm variation between steps; closed nosing projection 0-25 mm, open stair 15-25 mm.", "verifiedVia": "secondary", "src": "https://www.branz.co.nz/documents/4044/BU625-Stair-Design.pdf", "primary": "https://www.building.govt.nz/assets/Uploads/building-code-compliance/d-access/d1-access-routes/asvm/d1-access-routes-2nd-edition-amendment6.pdf"},
+      {"topic": "slip", "name": "D1/AS1 section 2.1 Slip resistance (AS/NZS 3661.1; AS 4586-2013 as an alternative)", "note": "Level public access routes: coefficient of friction >= 0.4 (D1/AS1 2.1.1); stairs and slopes need slightly higher (Table 2 notes); a house bathroom is unlikely to be an 'access route'. Secondary source says level routes may instead meet SRV >= 39 under AS 4586-2013 or Table 2 'acceptable wet slip' (UNVERIFIED against current D1/AS1 text).", "src": "https://www.building.govt.nz/building-code-compliance/d-access/d1-access-routes/slip-resistant-walking-surfaces-safety-of-walking-surfaces-in-and-around-buildings"},
+      {"topic": "stairs", "name": "NZS 4121 Design for access and mobility", "note": "UNVERIFIED - not researched; relevance to contrasting nosings in NZ not confirmed.", "src": null}
+    ],
+    "stairs": {
+      "mainPrivate": {"riserMax": 190, "goingMin": 280, "pitchMaxDeg": 37},
+      "common": {"riserMax": 190, "goingMin": 280, "pitchMaxDeg": 37},
+      "secondaryPrivate": {"riserMax": 200, "goingMin": 250, "pitchMaxDeg": 41},
+      "serviceAndMinorPrivate": {"riserMax": 220, "goingMin": 220, "pitchMaxDeg": 47},
+      "accessible": {"riserMax": 180, "goingMin": 310, "pitchMaxDeg": 32, "nosingRadiusMm": "5-10"},
+      "riserMin": "UNVERIFIED (D1/AS1 sets a recommended minimum pitch of 23 deg rather than a minimum riser)",
+      "goingMax": "UNVERIFIED",
+      "twoRplusGMin": null, "twoRplusGMax": null,
+      "twoRplusGNote": "NZ does not use a 2R+G band; BRANZ says the old 2R+G = 580-610 rule of thumb should not be used. Check pitch, riser and going instead.",
+      "maxRiseBetweenLandingsM": {"accessible": 2.5, "common": 2.5, "private": 4.0, "service": 4.0},
+      "verifiedVia": "secondary",
+      "src": "https://www.branz.co.nz/documents/4044/BU625-Stair-Design.pdf",
+      "srcAlt": "https://www.branz.co.nz/design-build/articles/external-stairs-for-houses"
+    },
+    "falls": {
+      "shower": "Open (level-entry/unenclosed) showers: fall not less than 1:50 to the floor waste within a 1500 mm radius of the point below the shower rose (E3/AS1 3.3.2.3, via LEVEL/BRANZ). Falls must be formed in the substrate or screed, not by the membrane.",
+      "enclosedShower": "UNVERIFIED (no separate NZ code fall found for enclosed showers with an upstand)",
+      "outside": "UNVERIFIED",
+      "verifiedVia": "secondary",
+      "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"
+    },
+    "terms": {
+      "wetArea": {"term": "wet area", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      "upstand": {"term": "upstand (NZ code wording; 'hob' is also used by BRANZ)", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      "waterstop": {"term": "waterstop", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      "falls": {"term": "falls / fall to the floor waste", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      "showerRose": {"term": "shower rose", "src": "https://www.level.org.nz/wet-areas/waterproofing-tiled-showers/"},
+      "tread": {"term": "tread (NZ) - AU uses 'going'", "src": "https://www.branz.co.nz/design-build/articles/external-stairs-for-houses"},
+      "spelling": "colour, metre (same as AU)",
+      "units": "mm and m2; tiles sold per carton/pack"
+    }
+  }
+}

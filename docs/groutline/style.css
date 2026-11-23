@@ -1,0 +1,22 @@
+:root{--paper:#F2EFE8;--card:#FFFFFF;--line:#D6D0C3;--text:#15171A;--muted:#4A4F57;--ink:#B8460C;--ink-soft:#FFE3D2}
+@media (prefers-color-scheme: dark){:root{--paper:#0F1113;--card:#1A1D21;--line:#33383E;--text:#F4F1EA;--muted:#C3C0B8;--ink:#FF8A4A;--ink-soft:#3A2416}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+h1{font:800 2.1rem/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:1.2rem;margin:32px 0 8px}
+p,li{overflow-wrap:anywhere}a{color:var(--ink)}
+.meta,.sub{color:var(--muted)}.sub{font-size:1.15rem;margin:2px 0 0}
+header{display:flex;gap:18px;align-items:center;margin:8px 0 18px}header img{width:84px;height:84px;border-radius:19px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+nav a{background:var(--ink-soft);color:var(--ink);text-decoration:none;border-radius:999px;padding:6px 14px;font-size:.95rem;font-weight:600}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.badge .tick{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink-soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:22px}
+.badge strong{display:block;font-size:1.2rem}
+.shots{display:flex;gap:12px;overflow-x:auto;padding:18px 0;scroll-snap-type:x mandatory}
+.shots img{height:min(520px,68vh);width:auto;border-radius:16px;scroll-snap-align:start}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.lead h3{margin:0 0 4px;font-size:1.05rem}.lead p{margin:0;color:var(--muted)}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0}
+summary{cursor:pointer;padding:14px 18px;font-weight:600}details>div{padding:0 18px 14px}
+footer{color:var(--muted);font-size:.9rem;margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 18px}
