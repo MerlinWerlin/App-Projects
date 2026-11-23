@@ -1,0 +1,6 @@
+{
+  "mode": "build",
+  "note": "Liquidline 1.0.0: first TestFlight build. HVAC/R toolkit: PT for 17 refrigerants with glide, superheat/subcooling with working, extra charge, evacuation decay test, line set planner, room load, flare torque, converter, jobs; country-first setup (AU, NZ, UK, IE, US, CA); 7-day trial + one-time unlock.",
+  "ascAppId": "6838129527",
+  "ascKeyAuth": true
+}
