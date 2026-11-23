@@ -26,6 +26,8 @@ interface App {
   prefs: Prefs;
   /** The chosen country's guidance (OTHER until chosen). */
   country: CountryInfo;
+  /** Simulator capture build only (EXPO_PUBLIC_ROOTPASS_CAPTURE); always false in store builds. */
+  capture: boolean;
   /** Copy in the country's spelling (US: meter, miter, aluminum...). */
   sp(s: string): string;
   setPrefs(p: Partial<Prefs>): void;
@@ -123,7 +125,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     const unlocked = owned || trial.active || CAPTURE;
     const country = COUNTRIES[prefs.country ?? 'OTHER'];
     return {
-      loaded, prefs, setPrefs, jobs, country,
+      loaded, prefs, setPrefs, jobs, country, capture: CAPTURE,
       sp: (str: string) => spell(str, country.spelling),
       saveJob: job => persistJobs(upsertJob(jobsRef.current, job)),
       deleteJob: id => persistJobs(jobsRef.current.filter(j => j.id !== id)),

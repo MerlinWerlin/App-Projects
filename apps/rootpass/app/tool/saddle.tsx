@@ -27,8 +27,38 @@ export default function SaddleTool() {
   const r = useMemo(() => saddle(input), [JSON.stringify(input)]); // eslint-disable-line react-hooks/exhaustive-deps
   const U = t.units;
 
+  const results = r.ok ? (
+    <Card>
+      <Row>
+        <Big label="Deepest cut" value={len(r.value.maxDepth, U)} sub="back from a square end" tone="accent" />
+        <Big label="Wrap length" value={len(r.value.circumference, U)} sub="branch circumference" />
+      </Row>
+      {r.value.longLength !== undefined ? (
+        <Row>
+          <Big label="Cut pipe to" value={len(r.value.longLength, U)} sub={`long point; short point ${len(r.value.shortLength!, U)}`} tone="arc" />
+        </Row>
+      ) : null}
+      <WrapPreview
+        points={r.value.points}
+        circumference={r.value.circumference}
+        maxDepth={r.value.maxDepth}
+        ordinates={r.value.ordinates}
+        labels={deg => saddleQuarterLabel(deg, input.angleDeg)}
+      />
+      <Btn
+        label="Print true-scale template"
+        icon="print"
+        onPress={() => exportPdf(() => {
+          const doc = saddleTemplate(input, U, app.prefs.paper);
+          return doc.ok ? { doc: doc.value.doc, fileName: `Saddle ${fmt(input.branchOD, 1)} on ${fmt(input.headerOD, 1)} at ${fmt(input.angleDeg, 0)}deg` } : null;
+        })}
+      />
+      <Working steps={r.steps} />
+    </Card>
+  ) : null;
+
   return (
-    <ToolScreen tool="saddle" onSave={t.save} jobName={t.jobName}>
+    <ToolScreen tool="saddle" onSave={t.save} jobName={t.jobName} preview={results}>
       <Section title="Header (run pipe)">
         <NumField label="Outside diameter" value={t.v.header} onChange={t.set('header')} unit={t.u} invalid={t.invalid('header')} />
         <PipeChips units={U} selectedMm={input.headerOD} onPick={t.set('header')} />
@@ -61,33 +91,7 @@ export default function SaddleTool() {
 
       {!r.ok ? <Note kind="error">{r.error}</Note> : (
         <>
-          <Card>
-            <Row>
-              <Big label="Deepest cut" value={len(r.value.maxDepth, U)} sub="back from a square end" tone="accent" />
-              <Big label="Wrap length" value={len(r.value.circumference, U)} sub="branch circumference" />
-            </Row>
-            {r.value.longLength !== undefined ? (
-              <Row>
-                <Big label="Cut pipe to" value={len(r.value.longLength, U)} sub={`long point; short point ${len(r.value.shortLength!, U)}`} tone="arc" />
-              </Row>
-            ) : null}
-            <WrapPreview
-              points={r.value.points}
-              circumference={r.value.circumference}
-              maxDepth={r.value.maxDepth}
-              ordinates={r.value.ordinates}
-              labels={deg => saddleQuarterLabel(deg, input.angleDeg)}
-            />
-            <Btn
-              label="Print true-scale template"
-              icon="print"
-              onPress={() => exportPdf(() => {
-                const doc = saddleTemplate(input, U, app.prefs.paper);
-                return doc.ok ? { doc: doc.value.doc, fileName: `Saddle ${fmt(input.branchOD, 1)} on ${fmt(input.headerOD, 1)} at ${fmt(input.angleDeg, 0)}deg` } : null;
-              })}
-            />
-            <Working steps={r.steps} />
-          </Card>
+          {results}
           {r.warnings.map(w => <Note key={w} kind="warn">{w}</Note>)}
           <Section title={`Ordinates (${t.u}, cut back from a square end)`}>
             <Segmented

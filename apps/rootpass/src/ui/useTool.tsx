@@ -1,6 +1,7 @@
 import { Icon } from './Icon.tsx';
 import * as Haptics from 'expo-haptics';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { BlurView } from 'expo-blur';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { ActionSheetIOS, Alert, Platform, Pressable, View } from 'react-native';
 import { convertValues, newJobId, type Job } from '../core/jobs.ts';
@@ -10,7 +11,7 @@ import { sharePdf, printPdf } from '../native/exportPdf.ts';
 import type { ToolId } from '../plus/entitlement.ts';
 import { useApp } from '../state/AppState.tsx';
 import { Btn, Card, Screen, Txt } from './kit.tsx';
-import { C, SPACE } from './theme.ts';
+import { C, RADIUS, SPACE } from './theme.ts';
 import { TOOL_META } from './tools.ts';
 
 export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKeys: readonly string[]) {
@@ -87,12 +88,19 @@ export function useTool(tool: ToolId, defaults: Record<string, string>, lengthKe
   return { v, set, setMany, mm, num, invalid, units: state.units, u: unitLabel(state.units), save, jobName };
 }
 
-/** The frame every tool shares: title, Save in the top right, and the lock for Full Unlock tools. */
-export function ToolScreen({ tool, onSave, jobName, children }: { tool: ToolId; onSave?: () => void; jobName?: string | null; children: ReactNode }) {
+/**
+ * The frame every tool shares: title, Save in the top right, and, for a Full Unlock tool while locked, a real preview:
+ * the tool's own result for its sample job (template, drawing, cut plan), the top part clear and the rest blurred
+ * under an unlock card, so people see exactly what they would get.
+ */
+export function ToolScreen({ tool, onSave, jobName, children, preview }: { tool: ToolId; onSave?: () => void; jobName?: string | null; children: ReactNode; preview?: ReactNode }) {
   const app = useApp();
   const router = useRouter();
   const meta = TOOL_META[tool];
-  const open = app.can(tool);
+  // Capture builds can show the locked view with ?lockedPreview=1 (store screenshots and review only).
+  const { lockedPreview } = useLocalSearchParams<{ lockedPreview?: string }>();
+  const forceLocked = app.capture && lockedPreview === '1';
+  const open = app.can(tool) && !forceLocked;
   return (
     <>
       <Stack.Screen
@@ -107,14 +115,26 @@ export function ToolScreen({ tool, onSave, jobName, children }: { tool: ToolId; 
       />
       {open ? <Screen>{children}</Screen> : (
         <Screen>
-          <Card tone="accent">
-            <Icon name="lock" size={28} color={C.accent} />
-            <Txt v="title">{meta.title} is in Full Unlock</Txt>
+          <View style={{ gap: SPACE.sm }}>
+            <Txt v="title" accessibilityRole="header">{meta.title}</Txt>
             <Txt v="body" tone="ink2">{meta.pitch}</Txt>
-            <Txt v="body" tone="ink2">Try everything free for 7 days, then a single payment unlocks it for good. No subscription.</Txt>
-            <View style={{ marginTop: SPACE.sm }}>
-              <Btn label="See Full Unlock" icon="flash" onPress={() => router.push('/unlock')} />
+          </View>
+          {preview ? (
+            <View style={{ borderRadius: RADIUS.lg, overflow: 'hidden', maxHeight: 460 }} accessible accessibilityLabel={app.sp(`Sample ${meta.title.toLowerCase()} result, blurred. Unlock to use it with your own sizes.`)}>
+              <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">{preview}</View>
+              <BlurView intensity={28} tint="dark" style={{ position: 'absolute', left: 0, right: 0, top: 150, bottom: 0 }} />
+              <View style={{ position: 'absolute', top: SPACE.md, right: SPACE.md, backgroundColor: C.accent, borderRadius: RADIUS.sm, paddingHorizontal: SPACE.sm, paddingVertical: 4 }}>
+                <Txt v="label" tone="accentInk" style={{ fontSize: 13 }}>Sample</Txt>
+              </View>
             </View>
+          ) : null}
+          <Card tone="accent">
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.sm }}>
+              <Icon name="lock" size={22} color={C.accent} />
+              <Txt v="headline" style={{ flex: 1 }}>{meta.title} is part of Full Unlock</Txt>
+            </View>
+            <Txt v="body" tone="ink2">Try everything free for 7 days, then one payment unlocks it for good. No subscription.</Txt>
+            <Btn label="Try it free" icon="flash" onPress={() => router.push('/unlock')} />
           </Card>
         </Screen>
       )}

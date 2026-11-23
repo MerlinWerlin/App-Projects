@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useApp } from '../../src/state/AppState.tsx';
-import { Glyph } from '../../src/ui/Glyph.tsx';
+import { GlyphTile } from '../../src/ui/Glyph.tsx';
 import { Txt } from '../../src/ui/kit.tsx';
 import { C, RADIUS, SPACE } from '../../src/ui/theme.ts';
 import { TOOL_META } from '../../src/ui/tools.ts';
@@ -73,7 +73,7 @@ export default function Tools() {
                   accessibilityLabel={app.sp(`${m.title}. ${m.short}${locked ? '. In Full Unlock' : ''}`)}
                   style={({ pressed }) => [st.row, k > 0 && st.rowLine, pressed && { backgroundColor: C.raised }]}
                 >
-                  <Glyph tool={id} size={40} />
+                  <GlyphTile tool={id} />
                   <View style={{ flex: 1, gap: 2 }}>
                     <Txt v="headline" style={{ fontSize: 18 }}>{m.title}</Txt>
                     <Txt v="small" tone="ink2">{m.short}</Txt>

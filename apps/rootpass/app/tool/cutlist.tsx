@@ -38,8 +38,34 @@ export default function CutListTool() {
     t.setMany(next);
   };
 
+  const results = r.ok ? (
+    <Card>
+      <Row>
+        <Big label="Stock lengths" value={String(r.value.bars.length)} sub={r.value.optimal ? 'fewest possible' : `at least ${r.value.lowerBound} needed`} tone="accent" />
+        <Big label="Pieces" value={String(r.value.pieces)} sub={`${lenShort(r.value.partsLength, U)} ${t.u} of parts`} />
+      </Row>
+      {r.value.bars.map((b, k) => (
+        <View key={k} style={{ gap: 6 }}>
+          <Txt v="label" tone="ink2">Length {k + 1}: {b.cuts.map(c => lenShort(c.length, U)).join(' + ')}</Txt>
+          <View style={{ flexDirection: 'row', height: 34, borderRadius: RADIUS.sm, overflow: 'hidden', backgroundColor: C.ground }} accessible accessibilityLabel={`Length ${k + 1}: ${b.cuts.length} pieces, offcut ${lenShort(b.offcut, U)} ${t.u}`}>
+            {input.trim > 0 ? <View style={{ flex: input.trim, backgroundColor: C.line }} /> : null}
+            {b.cuts.map((c, j) => (
+              <View key={j} style={{ flex: c.length, backgroundColor: j % 2 ? '#C8601A' : C.accent, borderRightWidth: 2, borderRightColor: C.ground, justifyContent: 'center', overflow: 'hidden' }}>
+                <Txt v="small" tone="accentInk" numberOfLines={1} style={{ textAlign: 'center', fontWeight: '700' }}>{lenShort(c.length, U)}</Txt>
+              </View>
+            ))}
+            {b.offcut > 0 ? <View style={{ flex: b.offcut, backgroundColor: C.raised }} /> : null}
+          </View>
+          <Txt v="small" tone="ink3">Offcut {lenShort(b.offcut, U)} {t.u}</Txt>
+        </View>
+      ))}
+      <Txt v="small" tone="ink3">Buying {r.value.bars.length} × {lenShort(input.stock, U)} {t.u}: {lenShort(r.value.waste, U)} {t.u} goes to kerf, trim and offcuts.</Txt>
+      <Working steps={r.steps} />
+    </Card>
+  ) : null;
+
   return (
-    <ToolScreen tool="cutlist" onSave={t.save} jobName={t.jobName}>
+    <ToolScreen tool="cutlist" onSave={t.save} jobName={t.jobName} preview={results}>
       <Section title="Stock">
         <NumField label="Stock length" value={t.v.stock} onChange={t.set('stock')} unit={t.u} invalid={t.invalid('stock')} />
         {lengths.length ? (
@@ -80,31 +106,7 @@ export default function CutListTool() {
         {rows < MAX_ROWS ? <Btn kind="secondary" icon="add" label="Add a part" onPress={() => t.setMany({ rows: String(rows + 1), [`l${rows}`]: '', [`q${rows}`]: '1' })} /> : null}
       </Section>
 
-      {!r.ok ? <Note kind="error">{r.error}</Note> : (
-        <Card>
-          <Row>
-            <Big label="Stock lengths" value={String(r.value.bars.length)} sub={r.value.optimal ? 'fewest possible' : `at least ${r.value.lowerBound} needed`} tone="accent" />
-            <Big label="Pieces" value={String(r.value.pieces)} sub={`${lenShort(r.value.partsLength, U)} ${t.u} of parts`} />
-          </Row>
-          {r.value.bars.map((b, k) => (
-            <View key={k} style={{ gap: 6 }}>
-              <Txt v="label" tone="ink2">Length {k + 1}: {b.cuts.map(c => lenShort(c.length, U)).join(' + ')}</Txt>
-              <View style={{ flexDirection: 'row', height: 34, borderRadius: RADIUS.sm, overflow: 'hidden', backgroundColor: C.ground }} accessible accessibilityLabel={`Length ${k + 1}: ${b.cuts.length} pieces, offcut ${lenShort(b.offcut, U)} ${t.u}`}>
-                {input.trim > 0 ? <View style={{ flex: input.trim, backgroundColor: C.line }} /> : null}
-                {b.cuts.map((c, j) => (
-                  <View key={j} style={{ flex: c.length, backgroundColor: j % 2 ? '#C8601A' : C.accent, borderRightWidth: 2, borderRightColor: C.ground, justifyContent: 'center', overflow: 'hidden' }}>
-                    <Txt v="small" tone="accentInk" numberOfLines={1} style={{ textAlign: 'center', fontWeight: '700' }}>{lenShort(c.length, U)}</Txt>
-                  </View>
-                ))}
-                {b.offcut > 0 ? <View style={{ flex: b.offcut, backgroundColor: C.raised }} /> : null}
-              </View>
-              <Txt v="small" tone="ink3">Offcut {lenShort(b.offcut, U)} {t.u}</Txt>
-            </View>
-          ))}
-          <Txt v="small" tone="ink3">Buying {r.value.bars.length} × {lenShort(input.stock, U)} {t.u}: {lenShort(r.value.waste, U)} {t.u} goes to kerf, trim and offcuts.</Txt>
-          <Working steps={r.steps} />
-        </Card>
-      )}
+      {!r.ok ? <Note kind="error">{r.error}</Note> : results}
       <VerifyNote />
     </ToolScreen>
   );

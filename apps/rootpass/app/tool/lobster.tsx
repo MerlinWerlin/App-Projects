@@ -35,8 +35,46 @@ export default function LobsterTool() {
     return { W, H, polys: polys.map(p => p.map(toS).join(' ')) };
   }, [r, width]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const results = r.ok ? (
+    <Card>
+      <Row>
+        <Big label="Cut each face" value={`${fmt(r.value.cutDeg, 2)}°`} sub="off square (saw setting)" tone="accent" />
+        <Big label="Welds" value={String(r.value.welds)} sub={`each turns ${fmt(r.value.weldDeg, 2)}°`} />
+      </Row>
+      {drawing ? (
+        <View accessible accessibilityLabel={`Drawing of a ${input.pieces}-piece ${fmt(input.bendDeg, 0)} degree bend`}>
+          <Svg width={drawing.W} height={drawing.H}>
+            {drawing.polys.map((p, k) => (
+              <Polygon key={k} points={p} fill={k === 0 || k === drawing.polys.length - 1 ? C.raised : k % 2 ? '#2C3846' : '#263240'} stroke={C.accent} strokeWidth={2} strokeLinejoin="round" />
+            ))}
+          </Svg>
+        </View>
+      ) : null}
+      <TableRows
+        head={['Piece', 'Qty', 'Long', 'Short']}
+        rows={[
+          ['End', r.value.end.qty, lenShort(r.value.end.long, U), lenShort(r.value.end.short, U)],
+          ...(r.value.middle.qty > 0 ? [['Middle', r.value.middle.qty, lenShort(r.value.middle.long, U), lenShort(r.value.middle.short, U)]] : []),
+        ]}
+      />
+      <Txt v="small" tone="ink3">Long = outside of the bend, short = inside, in {t.u}. End pieces have one square end. Centreline: end {lenShort(r.value.end.centre, U)}, middle {lenShort(r.value.middle.centre, U)}.</Txt>
+      <Row>
+        <Big label="Pipe needed" value={len(r.value.stockLength, U)} sub="sum of long sides, before kerf" />
+      </Row>
+      <Btn
+        label="Print cut template"
+        icon="print"
+        onPress={() => exportPdf(() => {
+          const doc = mitreTemplate(input, U, app.prefs.paper);
+          return doc.ok ? { doc: doc.value.doc, fileName: `Mitre ${fmt(input.od, 1)} OD ${fmt(r.value.cutDeg, 1)}deg` } : null;
+        })}
+      />
+      <Working steps={r.steps} />
+    </Card>
+  ) : null;
+
   return (
-    <ToolScreen tool="lobster" onSave={t.save} jobName={t.jobName}>
+    <ToolScreen tool="lobster" onSave={t.save} jobName={t.jobName} preview={results}>
       <Section title="Pipe">
         <NumField label="Outside diameter" value={t.v.od} onChange={t.set('od')} unit={t.u} invalid={t.invalid('od')} />
         <PipeChips units={U} selectedMm={input.od} onPick={t.set('od')} />
@@ -52,41 +90,7 @@ export default function LobsterTool() {
 
       {!r.ok ? <Note kind="error">{r.error}</Note> : (
         <>
-          <Card>
-            <Row>
-              <Big label="Cut each face" value={`${fmt(r.value.cutDeg, 2)}°`} sub="off square (saw setting)" tone="accent" />
-              <Big label="Welds" value={String(r.value.welds)} sub={`each turns ${fmt(r.value.weldDeg, 2)}°`} />
-            </Row>
-            {drawing ? (
-              <View accessible accessibilityLabel={`Drawing of a ${input.pieces}-piece ${fmt(input.bendDeg, 0)} degree bend`}>
-                <Svg width={drawing.W} height={drawing.H}>
-                  {drawing.polys.map((p, k) => (
-                    <Polygon key={k} points={p} fill={k === 0 || k === drawing.polys.length - 1 ? C.raised : k % 2 ? '#2C3846' : '#263240'} stroke={C.accent} strokeWidth={2} strokeLinejoin="round" />
-                  ))}
-                </Svg>
-              </View>
-            ) : null}
-            <TableRows
-              head={['Piece', 'Qty', 'Long', 'Short']}
-              rows={[
-                ['End', r.value.end.qty, lenShort(r.value.end.long, U), lenShort(r.value.end.short, U)],
-                ...(r.value.middle.qty > 0 ? [['Middle', r.value.middle.qty, lenShort(r.value.middle.long, U), lenShort(r.value.middle.short, U)]] : []),
-              ]}
-            />
-            <Txt v="small" tone="ink3">Long = outside of the bend, short = inside, in {t.u}. End pieces have one square end. Centreline: end {lenShort(r.value.end.centre, U)}, middle {lenShort(r.value.middle.centre, U)}.</Txt>
-            <Row>
-              <Big label="Pipe needed" value={len(r.value.stockLength, U)} sub="sum of long sides, before kerf" />
-            </Row>
-            <Btn
-              label="Print cut template"
-              icon="print"
-              onPress={() => exportPdf(() => {
-                const doc = mitreTemplate(input, U, app.prefs.paper);
-                return doc.ok ? { doc: doc.value.doc, fileName: `Mitre ${fmt(input.od, 1)} OD ${fmt(r.value.cutDeg, 1)}deg` } : null;
-              })}
-            />
-            <Working steps={r.steps} />
-          </Card>
+          {results}
           {r.warnings.map(w => <Note key={w} kind="warn">{w}</Note>)}
           <VerifyNote />
         </>

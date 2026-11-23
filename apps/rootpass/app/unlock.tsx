@@ -10,7 +10,7 @@ import { Alert, AppState, Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { trialState } from '../src/plus/trial.ts';
 import { useApp } from '../src/state/AppState.tsx';
-import { Glyph } from '../src/ui/Glyph.tsx';
+import { GlyphTile } from '../src/ui/Glyph.tsx';
 import { Btn, Txt } from '../src/ui/kit.tsx';
 import { C, RADIUS, SPACE } from '../src/ui/theme.ts';
 import type { ToolId } from '../src/plus/entitlement.ts';
@@ -81,7 +81,7 @@ export default function Unlock() {
         <View style={{ backgroundColor: C.surface, borderRadius: RADIUS.lg, padding: SPACE.lg, gap: SPACE.lg }}>
           {UNLOCKS.map(u => (
             <View key={u.title} style={{ flexDirection: 'row', gap: SPACE.md, alignItems: 'center' }}>
-              <Glyph tool={u.tool} size={40} />
+              <GlyphTile tool={u.tool} />
               <View style={{ flex: 1 }}>
                 <Txt v="headline">{u.title}</Txt>
                 <Txt v="small" tone="ink2">{u.body}</Txt>

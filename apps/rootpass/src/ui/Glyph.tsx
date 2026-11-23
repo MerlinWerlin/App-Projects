@@ -1,4 +1,5 @@
 /** Rootpass's own line glyphs for each tool (original artwork, drawn in code). */
+import { View } from 'react-native';
 import Svg, { Circle, Line, Path, Polyline, Rect } from 'react-native-svg';
 import type { ToolId } from '../plus/entitlement.ts';
 import { C } from './theme.ts';
@@ -75,5 +76,14 @@ export function Glyph({ tool, size = 44, color = C.accent, sub = C.ink2 }: { too
         </>
       )}
     </Svg>
+  );
+}
+
+/** The tool's glyph in a consistent rounded well: the same size, weight and colour on every list. */
+export function GlyphTile({ tool, size = 56 }: { tool: ToolId; size?: number }) {
+  return (
+    <View style={{ width: size, height: size, borderRadius: size * 0.27, backgroundColor: C.accentDim, borderWidth: 1, borderColor: '#4A2C12', alignItems: 'center', justifyContent: 'center' }}>
+      <Glyph tool={tool} size={size * 0.68} />
+    </View>
   );
 }

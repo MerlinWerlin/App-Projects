@@ -21,8 +21,19 @@ export default function WeldTool() {
   const input = { joint, length: t.mm('length'), reinforcementPct: t.v.reinf.trim() === '' ? 0 : t.num('reinf'), process, efficiency: eff };
   const r = useMemo(() => weldFiller(input), [JSON.stringify(input)]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const results = r.ok ? (
+    <Card>
+      <Row>
+        <Big label="Filler to buy" value={mass(r.value.fillerKg, U)} sub={`about ${r.value.packs} × ${r.value.packName}`} tone="accent" />
+        <Big label="Weld metal" value={mass(r.value.depositedKg, U)} sub="deposited in the joint" />
+      </Row>
+      <Big label={U === 'imperial' ? 'Per foot of weld' : 'Per metre of weld'} value={U === 'imperial' ? mass(r.value.perMetreKg * 0.3048, U) : mass(r.value.perMetreKg, U)} />
+      <Working steps={r.steps} />
+    </Card>
+  ) : null;
+
   return (
-    <ToolScreen tool="weld" onSave={t.save} jobName={t.jobName}>
+    <ToolScreen tool="weld" onSave={t.save} jobName={t.jobName} preview={results}>
       <Segmented value={kind} onChange={t.set('joint')} options={[{ value: 'fillet', label: 'Fillet' }, { value: 'singleV', label: 'Single V' }, { value: 'doubleV', label: 'Double V' }, { value: 'squareButt', label: 'Square' }]} />
       <Section title="Joint">
         {kind === 'fillet' ? (
@@ -57,16 +68,7 @@ export default function WeldTool() {
         />
         <NumField label="Efficiency (optional)" value={t.v.eff} onChange={t.set('eff')} unit="%" hint={`Typical for ${PROCESSES[process].name}: ${fmt(PROCESSES[process].efficiency * 100, 0)} %. Leave blank to use it.`} invalid={t.invalid('eff')} />
       </Section>
-      {!r.ok ? <Note kind="error">{r.error}</Note> : (
-        <Card>
-          <Row>
-            <Big label="Filler to buy" value={mass(r.value.fillerKg, U)} sub={`about ${r.value.packs} × ${r.value.packName}`} tone="accent" />
-            <Big label="Weld metal" value={mass(r.value.depositedKg, U)} sub="deposited in the joint" />
-          </Row>
-          <Big label={U === 'imperial' ? 'Per foot of weld' : 'Per metre of weld'} value={U === 'imperial' ? mass(r.value.perMetreKg * 0.3048, U) : mass(r.value.perMetreKg, U)} />
-          <Working steps={r.steps} />
-        </Card>
-      )}
+      {!r.ok ? <Note kind="error">{r.error}</Note> : results}
       {r.ok ? r.warnings.map(w => <Note key={w} kind="info">{w}</Note>) : null}
       <Txt v="small" tone="ink3">Carbon steel density 7850 kg/m³. For stainless the figure is about 2 % higher.</Txt>
     </ToolScreen>

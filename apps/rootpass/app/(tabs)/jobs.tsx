@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import { Alert, Pressable, View } from 'react-native';
 import { useApp } from '../../src/state/AppState.tsx';
 import { EmptyBenchArt } from '../../src/ui/Art.tsx';
-import { Glyph } from '../../src/ui/Glyph.tsx';
+import { GlyphTile } from '../../src/ui/Glyph.tsx';
 import { Btn, Screen, Txt } from '../../src/ui/kit.tsx';
 import { C, RADIUS, SPACE } from '../../src/ui/theme.ts';
 import { TOOL_META } from '../../src/ui/tools.ts';
@@ -42,7 +42,7 @@ export default function Jobs() {
             accessibilityLabel={app.sp(`${j.name}, ${TOOL_META[j.tool].title}`)}
             style={({ pressed }) => ({ flex: 1, flexDirection: 'row', alignItems: 'center', gap: SPACE.md, padding: SPACE.lg, opacity: pressed ? 0.8 : 1, minHeight: 76 })}
           >
-            <Glyph tool={j.tool} size={40} />
+            <GlyphTile tool={j.tool} />
             <View style={{ flex: 1 }}>
               <Txt v="headline" numberOfLines={2}>{j.name}</Txt>
               <Txt v="small" tone="ink3">{TOOL_META[j.tool].title} · {new Date(j.savedAt).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}</Txt>
