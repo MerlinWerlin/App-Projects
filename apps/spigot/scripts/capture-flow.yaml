@@ -9,7 +9,7 @@ appId: com.jared797.spigot
 - waitForAnimationToEnd:
     timeout: 3000
 - tapOn:
-    text: "Australia\..*"
+    text: "Australia\\..*"
 - takeScreenshot: 00-country
 - tapOn:
     text: "Continue.*"
