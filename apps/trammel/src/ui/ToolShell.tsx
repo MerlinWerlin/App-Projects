@@ -5,7 +5,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { BlurView } from 'expo-blur';
+import { CAPTURE } from '../native/store.ts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { localTool, toolById, type ToolId } from '../core/tools.ts';
 import { COUNTRIES, type CountryCode } from '../core/country.ts';
@@ -89,8 +91,11 @@ export function useToolInputs(tool: ToolId, defaults: DefaultsFn) {
 
 export function useLocked(tool: ToolId): boolean {
   const a = useAccess();
+  // Store-capture builds only: trammel:///stairs?locked=1 shows a paid tool as a locked customer sees it.
+  const { locked } = useLocalSearchParams<{ locked?: string }>();
   const info = toolById(tool);
   if (!info || info.free) return false;
+  if (CAPTURE && locked === '1') return true;
   return !a.canEdit;
 }
 
@@ -140,7 +145,9 @@ function LockedPreview({ children }: { children: ReactNode }) {
   const t = useTheme();
   return (
     <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ height: 640, overflow: 'hidden' }}>
-      <View style={{ gap: space.l, opacity: 0.55 }}>{children}</View>
+      <View style={{ gap: space.l, opacity: 0.7 }}>{children}</View>
+      {/* Blurred so the layout of the answer shows (the yellow result, the drawing, the checks) but not the numbers. */}
+      <BlurView intensity={t.dark ? 40 : 34} tint={t.dark ? 'dark' : 'light'} style={StyleSheet.absoluteFill} />
       {[0.35, 0.6, 0.85, 1].map((o, i) => (
         <View key={i} style={{ position: 'absolute', left: 0, right: 0, bottom: (3 - i) * 40, height: 40, backgroundColor: t.bg, opacity: o }} />
       ))}

@@ -19,6 +19,7 @@ SHOTS = [
     ('light-02-rafter.png', 'RAFTERS AND|BIRDSMOUTHS', 'Length, plumb cut, height above plate'),
     ('light-04-crown.png', 'CORNICE CUTS,|ANY CORNER', 'Bevel and mitre straight to the saw'),
     ('dark-00-home.png', 'EVERY TOOL A|CHIPPY NEEDS', 'Big buttons, every step shown'),
+    ('light-17-rafter-locked.png', 'TRY EVERY TOOL|FREE FOR A WEEK', 'Then one unlock, no subscription'),
 ]
 
 def ticks(d, y0, up=True):

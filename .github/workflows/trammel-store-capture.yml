@@ -69,11 +69,12 @@ jobs:
             if running; then echo "LAUNCH OK ($MODE)"; else echo "::error::Trammel is not running 15 s after launch ($MODE)"; crashlog; exit 1; fi
             t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-00-home.png" || true
             i=1
-            for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall welcome; do
+            for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall welcome 'rafter?locked=1'; do
+              N=$(echo "$R" | sed 's/?locked=1/-locked/')
               t 30 xcrun simctl openurl "$DEVICE" "trammel:///$R" || echo "::warning::openurl $R timed out"
               sleep 5
-              t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$R.png" || true
-              if ! running; then echo "::error::Trammel exited on $R ($MODE)"; FAIL=1; crashlog; t 60 xcrun simctl launch "$DEVICE" "$BID" || true; sleep 8; fi
+              t 30 xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$N.png" || true
+              if ! running; then echo "::error::Trammel exited on $N ($MODE)"; FAIL=1; crashlog; t 60 xcrun simctl launch "$DEVICE" "$BID" || true; sleep 8; fi
               i=$((i+1))
             done
           done
