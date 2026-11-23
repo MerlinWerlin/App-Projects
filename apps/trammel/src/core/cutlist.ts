@@ -13,7 +13,8 @@
 import { type Fmt } from './units.ts';
 import { fail, type Calc, type Check, type Step } from './result.ts';
 
-export type StockSpec = { length: number; qty?: number | null; label?: string };
+/** price: optional cost of one length, in the country's currency; with prices on every length used, a total is given. */
+export type StockSpec = { length: number; qty?: number | null; label?: string; price?: number | null };
 export type PieceSpec = { length: number; qty: number; label?: string };
 export type CutInput = { stock: StockSpec[]; pieces: PieceSpec[]; kerf?: number | null; trim?: number | null };
 
@@ -28,6 +29,8 @@ export type CutResult = {
   kerfTotal: number;
   yieldPct: number;
   unplaced: PieceSpec[];
+  /** Sum of the bars' prices, or null when any length used has no price. */
+  cost: number | null;
 };
 
 const MAX_PIECES = 1000;
@@ -167,6 +170,8 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
   const bought = bars.reduce((a, b) => a + b.stock, 0);
   const unplaced = groups.filter((g) => g.left > 0).map((g) => ({ length: g.len, qty: g.left, label: g.label }));
   const yieldPct = bought ? (piecesLength / bought) * 100 : 0;
+  const prices = bars.map((b) => stock[b.stockIndex].price);
+  const cost = bars.length && prices.every((p) => typeof p === 'number' && Number.isFinite(p) && p >= 0) ? prices.reduce((a: number, p) => a + (p as number), 0) : null;
   const steps: Step[] = [
     { label: 'Stock to get', working: byStock.map((s) => `${s.count} x ${f.len(s.length)}`).join(', ') || 'none' },
     { label: 'Total bought', working: f.len(bought) },
@@ -177,5 +182,5 @@ export function optimiseCuts(input: CutInput, f: Fmt): Calc<CutResult> {
   const checks: Check[] = [];
   if (unplaced.length) checks.push({ level: 'fail', text: `Not enough stock: ${unplaced.map((p) => `${p.qty} x ${f.len(p.length)}`).join(', ')} left over` });
   checks.push({ level: 'warn', text: 'Check each length for splits, knots and bow before you cut, and measure the kerf of your blade' });
-  return { ok: true, value: { bars, byStock, bought, piecesLength, offcutTotal, kerfTotal, yieldPct, unplaced }, steps, checks };
+  return { ok: true, value: { bars, byStock, bought, piecesLength, offcutTotal, kerfTotal, yieldPct, unplaced, cost }, steps, checks };
 }

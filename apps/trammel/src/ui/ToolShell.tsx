@@ -1,18 +1,19 @@
 // The frame every calculator sits in: the lock for paid tools, input state (restored from a saved job or the last
 // values used), and the Save to job sheet.
+import { Icon } from './Icon.tsx';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { toolById, type ToolId } from '../core/tools.ts';
+import { localTool, toolById, type ToolId } from '../core/tools.ts';
+import { inputsInUnits, UNITS_KEY } from '../core/inputs.ts';
 import { lengthToInput, type UnitSystem } from '../core/units.ts';
 import { useAccess } from '../state/access.ts';
 import { useJobs } from '../state/jobs.tsx';
 import { useSettings } from '../state/settings.tsx';
-import { fonts, radius, space, TOUCH, useTheme } from '../theme/theme.ts';
+import { fonts, radius, space, TOUCH, useTheme, sys } from '../theme/theme.ts';
 import { Button, Card, H, P, Screen } from './kit.tsx';
 
 const LAST_KEY = 'trammel.last.v1';
@@ -36,33 +37,32 @@ function remember(tool: string, v: Record<string, string>) {
   saveTimer = setTimeout(() => AsyncStorage.setItem(LAST_KEY, JSON.stringify(last)).catch(() => {}), 400);
 }
 
-export type DefaultsFn = (d: { len: (mm: number) => string; units: UnitSystem }) => Record<string, string>;
+/** len(mm) writes a length in the units in use; len(mm, inches) uses a round imperial value instead of converting. */
+export type DefaultsFn = (d: { len: (mm: number, inches?: number) => string; units: UnitSystem }) => Record<string, string>;
 
 /** Input strings for a tool: a saved calculation (?calc=id) first, then the last values used, then the defaults. */
 export function useToolInputs(tool: ToolId, defaults: DefaultsFn) {
   const { calc } = useLocalSearchParams<{ calc?: string }>();
   const { findCalc } = useJobs();
   const { settings } = useSettings();
-  const d = { len: (mm: number) => lengthToInput(mm, settings.units, settings.denom), units: settings.units };
+  const d = { len: (mm: number, inches?: number) => lengthToInput(settings.units === 'imperial' && inches != null ? inches * 25.4 : mm, settings.units, settings.denom), units: settings.units };
+  // Which fields hold lengths: the ones the defaults fill through d.len (row lists hold lengths in "l").
+  const lengthKeys = useRef<string[] | null>(null);
+  if (!lengthKeys.current) {
+    const MARK = '@@trammel-length@@';
+    const probe = defaults({ len: () => MARK, units: settings.units });
+    lengthKeys.current = Object.keys(probe).filter((k) => probe[k] === MARK || probe[k].includes(MARK));
+  }
   const [vals, setVals] = useState<Record<string, string>>(() => {
     const saved = calc ? findCalc(calc) : undefined;
-    if (saved && saved.tool === tool) return { ...defaults(d), ...saved.inputs };
-    return { ...defaults(d), ...(last[tool] ?? {}) };
+    const stored = saved && saved.tool === tool ? saved.inputs : last[tool];
+    const base = { ...defaults(d), [UNITS_KEY]: settings.units };
+    return stored ? { ...base, ...inputsInUnits(stored, lengthKeys.current!, settings.units, settings.denom) } : base;
   });
-  // Switching units in Settings: fields still holding a default are re-written in the new units.
-  const unitsRef = useRef(settings.units);
+  // Switching units while a tool is open converts every typed length (2700 mm becomes 106 5/16", not 2700").
   useEffect(() => {
-    if (unitsRef.current === settings.units) return;
-    const before = defaults({ len: (mm) => lengthToInput(mm, unitsRef.current, settings.denom), units: unitsRef.current });
-    const after = defaults(d);
-    unitsRef.current = settings.units;
-    setVals((v) => {
-      const next = { ...v };
-      for (const k of Object.keys(after)) if (v[k] === before[k]) next[k] = after[k];
-      return next;
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.units]);
+    setVals((v) => (v[UNITS_KEY] === settings.units ? v : inputsInUnits(v, lengthKeys.current!, settings.units, settings.denom)));
+  }, [settings.units, settings.denom]);
   const set = (key: string) => (s: string) =>
     setVals((v) => {
       const next = { ...v, [key]: s };
@@ -70,11 +70,17 @@ export function useToolInputs(tool: ToolId, defaults: DefaultsFn) {
       return next;
     });
   const reset = () => {
-    const v = defaults(d);
+    const v = { ...defaults(d), [UNITS_KEY]: settings.units };
     remember(tool, v);
     setVals(v);
   };
-  return { vals, set, reset, setAll: setVals };
+  const setAll = (fn: (v: Record<string, string>) => Record<string, string>) =>
+    setVals((v) => {
+      const next = fn(v);
+      remember(tool, next);
+      return next;
+    });
+  return { vals, set, reset, setAll };
 }
 
 export function useLocked(tool: ToolId): boolean {
@@ -86,15 +92,17 @@ export function useLocked(tool: ToolId): boolean {
 
 export function ToolShell({ tool, children, save }: { tool: ToolId; children: ReactNode; save?: { title: string; summary: string; inputs: Record<string, string> } | null }) {
   const info = toolById(tool)!;
+  const { country } = useSettings();
+  const local = localTool(info, country.terms);
   const locked = useLocked(tool);
   const [sheet, setSheet] = useState(false);
   const a = useAccess();
   return (
     <>
-      <Stack.Screen options={{ title: info.name }} />
+      <Stack.Screen options={{ title: local.name }} />
       {locked ? (
         <Screen>
-          <LockedCard name={info.name} blurb={info.blurb} expired={a.state === 'expired'} />
+          <LockedCard name={local.name} blurb={local.blurb} expired={a.state === 'expired'} />
         </Screen>
       ) : (
         <Screen
@@ -122,12 +130,12 @@ function LockedCard({ name, blurb, expired }: { name: string; blurb: string; exp
   return (
     <Card style={{ gap: space.l, paddingVertical: space.xl }}>
       <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: t.blade, alignItems: 'center', justifyContent: 'center' }}>
-        <Ionicons name="lock-closed" size={30} color={t.bladeInk} />
+        <Icon name="lock" size={30} color={t.bladeInk} />
       </View>
       <H>{name}</H>
       <P>{blurb}.</P>
       <P muted>{expired ? 'Your free week has finished. Unlock every tool with one purchase, no subscription. Your saved jobs stay open.' : 'Part of Trammel Full Unlock. Try every tool free for 7 days first: nothing is charged and nothing renews.'}</P>
-      <Button label={expired ? 'See Full Unlock' : 'Try it free for 7 days'} kind="blade" icon="arrow-forward" onPress={() => router.push('/paywall')} />
+      <Button label={expired ? 'See Full Unlock' : 'Try it free for 7 days'} kind="blade" icon="arrow" onPress={() => router.push('/paywall')} />
       <P muted small>Free for good: Fractions ↔ mm, Square check, Mitre and Roof pitch.</P>
     </Card>
   );
@@ -138,7 +146,7 @@ function SaveBar({ onPress }: { onPress: () => void }) {
   const insets = useSafeAreaInsets();
   return (
     <View style={{ paddingHorizontal: space.l, paddingTop: space.s, paddingBottom: Math.max(insets.bottom, space.m), backgroundColor: t.bg, borderTopWidth: 1, borderTopColor: t.line }}>
-      <Button label="Save to a job" icon="bookmark-outline" kind="primary" onPress={onPress} />
+      <Button label="Save to a job" icon="bookmark" kind="primary" onPress={onPress} />
     </View>
   );
 }
@@ -160,19 +168,19 @@ function SaveSheet({ visible, onClose, tool, payload }: { visible: boolean; onCl
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1, backgroundColor: t.bg }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: space.l }}>
           <Pressable onPress={onClose} accessibilityRole="button" hitSlop={12} style={{ minHeight: 44, justifyContent: 'center' }}>
-            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: t.ink }}>Cancel</Text>
+            <Text style={{ ...sys.bodyBold, fontSize: 17, color: t.ink }}>Cancel</Text>
           </Pressable>
-          <Text accessibilityRole="header" style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: t.ink }}>
+          <Text accessibilityRole="header" style={{ ...sys.bodyBold, fontSize: 17, color: t.ink }}>
             Save to a job
           </Text>
           <View style={{ width: 56 }} />
         </View>
         <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ padding: space.l, paddingTop: 0, gap: space.m, paddingBottom: insets.bottom + space.xl }}>
           <Card>
-            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: t.muted }}>{payload.title}</Text>
+            <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.muted }}>{payload.title}</Text>
             <P>{payload.summary}</P>
           </Card>
-          <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: t.muted }}>New job</Text>
+          <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.muted }}>New job</Text>
           <View style={{ flexDirection: 'row', gap: space.s }}>
             <TextInput
               value={name}
@@ -182,18 +190,18 @@ function SaveSheet({ visible, onClose, tool, payload }: { visible: boolean; onCl
               returnKeyType="done"
               onSubmitEditing={() => name.trim() && done(create(name).id)}
               accessibilityLabel="New job name"
-              style={{ flex: 1, minHeight: TOUCH, borderRadius: radius.m, borderWidth: 2, borderColor: t.line, backgroundColor: t.card, paddingHorizontal: space.m, fontFamily: fonts.bodyMedium, fontSize: 18, color: t.ink }}
+              style={{ flex: 1, minHeight: TOUCH, borderRadius: radius.m, borderWidth: 2, borderColor: t.line, backgroundColor: t.card, paddingHorizontal: space.m, ...sys.bodyMedium, fontSize: 18, color: t.ink }}
             />
             <Button label="Add" kind="blade" disabled={!name.trim()} onPress={() => done(create(name).id)} />
           </View>
-          {jobs.length ? <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: t.muted, marginTop: space.s }}>Or add to</Text> : null}
+          {jobs.length ? <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.muted, marginTop: space.s }}>Or add to</Text> : null}
           {jobs.map((j) => (
             <Pressable key={j.id} onPress={() => done(j.id)} accessibilityRole="button" accessibilityLabel={`Add to ${j.name}`} style={({ pressed }) => ({ minHeight: TOUCH, borderRadius: radius.m, backgroundColor: t.card, borderWidth: 1, borderColor: t.line, paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', gap: space.m, opacity: pressed ? 0.7 : 1 })}>
-              <Ionicons name="folder-open-outline" size={22} color={t.ink} />
-              <Text style={{ flex: 1, fontFamily: fonts.bodyBold, fontSize: 18, color: t.ink }} numberOfLines={1}>
+              <Icon name="jobs" size={22} color={t.ink} />
+              <Text style={{ flex: 1, ...sys.bodyBold, fontSize: 18, color: t.ink }} numberOfLines={1}>
                 {j.name}
               </Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 15, color: t.muted }}>{j.calcs.length}</Text>
+              <Text style={{ ...sys.body, fontSize: 15, color: t.muted }}>{j.calcs.length}</Text>
             </Pressable>
           ))}
         </ScrollView>

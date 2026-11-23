@@ -18,7 +18,7 @@ export default function Crown() {
   return (
     <ToolShell tool="crown" save={save}>
       <Field label="Spring angle" kind="angle" value={vals.spring} onChange={set('spring')} hint="Between the back of the moulding and the wall" />
-      <Segment options={SPRINGS} value={vals.spring} onChange={set('spring')} />
+      <Segment chips options={SPRINGS} value={vals.spring} onChange={set('spring')} />
       <Field label="Corner angle" kind="angle" value={vals.corner} onChange={set('corner')} hint="90 for a square room; inside and outside corners use the same angles" />
       {!res.ok ? (
         <ErrorCard text={res.error} />

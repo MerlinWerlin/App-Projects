@@ -1,11 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Icon } from '../../src/ui/Icon.tsx';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Alert, Pressable, Share, Text, TextInput, View } from 'react-native';
 import { jobText } from '../../src/core/jobs.ts';
 import { toolById } from '../../src/core/tools.ts';
 import { useJobs } from '../../src/state/jobs.tsx';
-import { fonts, radius, space, TOUCH, useTheme } from '../../src/theme/theme.ts';
+import { fonts, radius, space, TOUCH, useTheme, sys } from '../../src/theme/theme.ts';
 import { Button, Card, P, Screen } from '../../src/ui/kit.tsx';
 
 export default function JobScreen() {
@@ -41,7 +41,7 @@ export default function JobScreen() {
     <Screen>
       <Stack.Screen options={{ title: job.name }} />
       <View style={{ gap: space.xs }}>
-        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: t.muted }}>Job name</Text>
+        <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.muted }}>Job name</Text>
         <TextInput
           value={name}
           onChangeText={setName}
@@ -54,13 +54,13 @@ export default function JobScreen() {
       {job.calcs.length === 0 ? (
         <Card>
           <P muted>Nothing saved here yet. Open a tool, then tap Save to a job under the result.</P>
-          <Button label="Open the tools" kind="blade" icon="grid-outline" onPress={() => router.navigate('/')} />
+          <Button label="Open the tools" kind="blade" icon="tools" onPress={() => router.navigate('/')} />
         </Card>
       ) : (
         job.calcs.map((c) => (
           <View key={c.id} style={{ borderRadius: radius.l, backgroundColor: t.card, borderWidth: 1, borderColor: t.line, overflow: 'hidden' }}>
             <Pressable onPress={() => router.push({ pathname: `/${c.tool}` as never, params: { calc: c.id } })} accessibilityRole="button" accessibilityHint="Opens it with these numbers" style={({ pressed }) => ({ padding: space.l, gap: space.xs, opacity: pressed ? 0.75 : 1 })}>
-              <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, letterSpacing: 0.6, textTransform: 'uppercase', color: t.muted }}>{toolById(c.tool)?.name}</Text>
+              <Text style={{ ...sys.bodyBold, fontSize: 14, letterSpacing: 0.6, textTransform: 'uppercase', color: t.muted }}>{toolById(c.tool)?.name}</Text>
               <Text style={{ fontFamily: fonts.display, fontSize: 22, color: t.ink }}>{c.title}</Text>
               <P>{c.summary}</P>
             </Pressable>
@@ -75,14 +75,14 @@ export default function JobScreen() {
               accessibilityLabel={`Remove ${c.title}`}
               style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: 48, paddingHorizontal: space.l, borderTopWidth: 1, borderTopColor: t.line }}
             >
-              <Ionicons name="trash-outline" size={18} color={t.bad} />
-              <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: t.bad }}>Remove</Text>
+              <Icon name="trash" size={18} color={t.bad} />
+              <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.bad }}>Remove</Text>
             </Pressable>
           </View>
         ))
       )}
-      {job.calcs.length ? <Button label="Share job sheet" icon="share-outline" kind="secondary" onPress={() => Share.share({ message: jobText(job) }).catch(() => {})} /> : null}
-      <Button label="Delete job" icon="trash-outline" kind="danger" onPress={confirmDelete} />
+      {job.calcs.length ? <Button label="Share job sheet" icon="share" kind="secondary" onPress={() => Share.share({ message: jobText(job) }).catch(() => {})} /> : null}
+      <Button label="Delete job" icon="trash" kind="danger" onPress={confirmDelete} />
     </Screen>
   );
 }

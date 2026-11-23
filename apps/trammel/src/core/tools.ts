@@ -1,3 +1,4 @@
+import type { Terms } from './country.ts';
 // The tool list: id, route, name, one-line purpose and whether it is always free (src/core/access.ts).
 export type ToolId = 'stairs' | 'rafter' | 'hip' | 'pitch' | 'mitre' | 'crown' | 'layout' | 'decking' | 'cutlist' | 'square' | 'arc' | 'convert';
 
@@ -19,3 +20,22 @@ export const TOOLS: readonly ToolInfo[] = Object.freeze([
 ]);
 
 export const toolById = (id: string): ToolInfo | undefined => TOOLS.find((t) => t.id === id);
+
+
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/** Tool name and blurb in the chosen country's trade words (mitre/miter, cornice/coving/crown, going/run). */
+export function localTool(t: ToolInfo, terms: Terms): { name: string; blurb: string } {
+  switch (t.id) {
+    case 'mitre':
+      return { name: terms.Mitre, blurb: 'Any corner or polygon' };
+    case 'crown':
+      return { name: `${cap(terms.cornice)} & compound`, blurb: `Bevel and ${terms.mitre} settings` };
+    case 'stairs':
+      return { name: 'Stairs', blurb: `Risers, ${terms.going}, stringer, code check` };
+    case 'layout':
+      return { name: 'Stud & joist layout', blurb: `Marks on centres, ${terms.noggin} lengths` };
+    default:
+      return { name: t.name, blurb: t.blurb };
+  }
+}

@@ -3,7 +3,7 @@
 import { Text, View } from 'react-native';
 import { formatFeetInches, formatInches, formatMm, MM_PER_INCH, parseLength, toInchFraction, type FractionDenom } from '../src/core/units.ts';
 import { useSettings } from '../src/state/settings.tsx';
-import { fonts, radius, space, useTheme } from '../src/theme/theme.ts';
+import { fonts, radius, space, useTheme, sys } from '../src/theme/theme.ts';
 import { Blade, Card, ErrorCard, Field, H, P, Readouts, Segment } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 
@@ -38,7 +38,7 @@ export default function Convert() {
             <P muted small>How far each tape fraction is from the exact length.</P>
             {([8, 16, 32] as FractionDenom[]).map((d) => (
               <View key={d} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: t.sunk, borderRadius: radius.s, padding: space.s }}>
-                <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: t.ink }}>1/{d}"</Text>
+                <Text style={{ ...sys.bodyBold, fontSize: 16, color: t.ink }}>1/{d}"</Text>
                 <Text style={{ fontFamily: fonts.display, fontSize: 20, color: t.ink }}>
                   {(err(d) as number) >= 0 ? '+' : ''}
                   {(err(d) as number).toFixed(2)} mm

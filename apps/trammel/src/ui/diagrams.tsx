@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import Svg, { Line, Path, Polygon, Rect, Text as SvgText } from 'react-native-svg';
 import type { Bar } from '../core/cutlist.ts';
 import { toRad } from '../core/units.ts';
-import { fonts, radius, space, useTheme } from '../theme/theme.ts';
+import { fonts, radius, space, useTheme, sys } from '../theme/theme.ts';
 
 function Frame({ label, children, height = 200 }: { label: string; children: React.ReactNode; height?: number }) {
   const t = useTheme();
@@ -174,10 +174,10 @@ export function CutBars({ bars, label }: { bars: Bar[]; label: (mm: number) => s
       {bars.map((b, i) => (
         <View key={i} accessible accessibilityLabel={`Length ${i + 1}, ${label(b.stock)}: cut ${b.cuts.map((c) => label(c.length)).join(', ')}; offcut ${label(b.offcut)}`} style={{ gap: space.xs }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: t.ink }}>
+            <Text style={{ ...sys.bodyBold, fontSize: 15, color: t.ink }}>
               #{i + 1} · {label(b.stock)}
             </Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 15, color: t.muted }}>offcut {label(b.offcut)}</Text>
+            <Text style={{ ...sys.body, fontSize: 15, color: t.muted }}>offcut {label(b.offcut)}</Text>
           </View>
           <View style={{ flexDirection: 'row', height: 40, width: `${(b.stock / longest) * 100}%`, borderRadius: 6, overflow: 'hidden', backgroundColor: t.sunk, borderWidth: 1.5, borderColor: t.ink }}>
             {b.cuts.map((c, k) => (

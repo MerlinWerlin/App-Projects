@@ -64,7 +64,7 @@ jobs:
             sleep 12
             xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-00-home.png"
             i=1
-            for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall; do
+            for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall welcome; do
               xcrun simctl openurl "$DEVICE" "trammel:///$R"
               sleep 5
               xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$R.png"

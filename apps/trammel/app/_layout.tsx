@@ -1,8 +1,8 @@
 // Root: the splash stays up until fonts, settings and jobs have loaded (no flash of an unstyled screen; 4 s cap).
-import { Barlow_400Regular, Barlow_500Medium, Barlow_600SemiBold, useFonts } from '@expo-google-fonts/barlow';
 import { BarlowCondensed_700Bold, BarlowCondensed_800ExtraBold, useFonts as useCondensed } from '@expo-google-fonts/barlow-condensed';
+import { useFonts } from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
-import { Stack } from 'expo-router';
+import { router, Stack, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -31,10 +31,11 @@ export default function RootLayout() {
 
 function Shell() {
   const t = useTheme();
-  const { ready } = useSettings();
+  const { ready, settings } = useSettings();
+  const segments = useSegments();
   const { loaded } = useJobs();
   const [lastReady, setLastReady] = useState(false);
-  const [a, aErr] = useFonts({ Barlow_400Regular, Barlow_500Medium, Barlow_600SemiBold, ...Ionicons.font });
+  const [a, aErr] = useFonts({ ...Ionicons.font });
   const [b, bErr] = useCondensed({ BarlowCondensed_700Bold, BarlowCondensed_800ExtraBold });
   useEffect(() => {
     loadLastInputs().finally(() => setLastReady(true));
@@ -43,6 +44,10 @@ function Shell() {
   useEffect(() => {
     if (show) SplashScreen.hideAsync().catch(() => {});
   }, [show]);
+  // First launch: ask the country before anything else (app/welcome.tsx).
+  useEffect(() => {
+    if (show && !settings.country && segments[0] !== 'welcome') router.replace('/welcome');
+  }, [show, settings.country, segments]);
   useEffect(() => {
     const id = setTimeout(() => SplashScreen.hideAsync().catch(() => {}), 4000);
     return () => clearTimeout(id);
@@ -64,6 +69,8 @@ function Shell() {
           <Stack.Screen name="paywall" options={{ presentation: 'modal', title: 'Trammel Full Unlock' }} />
           <Stack.Screen name="job/[id]" options={{ title: 'Job', headerBackTitle: 'Jobs' }} />
           <Stack.Screen name="about" options={{ title: 'About the maths', headerBackTitle: 'Settings' }} />
+          <Stack.Screen name="country" options={{ title: 'Country', headerBackTitle: 'Settings' }} />
+          <Stack.Screen name="welcome" options={{ headerShown: false, gestureEnabled: false, animation: 'fade' }} />
         </Stack>
       ) : null}
     </View>

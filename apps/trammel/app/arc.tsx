@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import { arcFromChord } from '../src/core/arc.ts';
 import { useSettings } from '../src/state/settings.tsx';
-import { fonts, space, useTheme } from '../src/theme/theme.ts';
+import { fonts, space, useTheme, sys } from '../src/theme/theme.ts';
 import { ArcDiagram } from '../src/ui/diagrams.tsx';
 import { Blade, Card, Checks, ErrorCard, Field, H, P, Stepper, StepsCard, useReaders } from '../src/ui/kit.tsx';
 import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
@@ -12,7 +12,7 @@ export default function Arc() {
   const { fmt } = useSettings();
   const fine = useFine();
   const r = useReaders();
-  const { vals, set } = useToolInputs('arc', (d) => ({ chord: d.len(1200), rise: d.len(200), div: '8' }));
+  const { vals, set } = useToolInputs('arc', (d) => ({ chord: d.len(1200, 48), rise: d.len(200, 8), div: '8' }));
   const div = Math.round(r.num(vals.div) ?? 8);
   const chord = r.len(vals.chord) ?? NaN;
   const rise = r.len(vals.rise) ?? NaN;
@@ -41,7 +41,7 @@ export default function Arc() {
             <Stepper label="Divisions" value={div} min={2} max={40} onChange={(n) => set('div')(String(n))} />
             {res.value.offsets.map((o, i) => (
               <View key={i} style={{ flexDirection: 'row', justifyContent: 'space-between', minHeight: 40, alignItems: 'center', borderTopWidth: i ? 1 : 0, borderTopColor: t.line }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 17, color: t.muted }}>at {fmt.len(o.fromEnd)}</Text>
+                <Text style={{ ...sys.body, fontSize: 17, color: t.muted }}>at {fmt.len(o.fromEnd)}</Text>
                 <Text style={{ fontFamily: fonts.display, fontSize: 24, color: t.ink }}>{fine(o.y)}</Text>
               </View>
             ))}

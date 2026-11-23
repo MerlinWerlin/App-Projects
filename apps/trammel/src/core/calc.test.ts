@@ -8,7 +8,11 @@ import { decking, layoutMembers } from './layout.ts';
 import { compoundMitre, flatMitre, normaliseCorner, polygonMitre } from './mitre.ts';
 import { commonRafter, pitchFromDegrees, pitchFromRiseRun, regularHip } from './roof.ts';
 import { squareCheck } from './square.ts';
-import { goingRangeFor, planStair, STAIR_LIMITS } from './stairs.ts';
+import { stairCodesFor, stairLimitsById } from './stairCodes.ts';
+import { goingRangeFor, planStair } from './stairs.ts';
+
+const HOUSE = stairLimitsById('AU', 'au-house');
+const PUBLIC = stairLimitsById('AU', 'au-public');
 import { METRIC as F, MM_PER_INCH } from './units.ts';
 
 const near = (a: number, b: number, tol = 0.01, msg?: string) => assert.ok(Math.abs(a - b) <= tol, msg ?? `${a} is not within ${tol} of ${b}`);
@@ -23,7 +27,7 @@ function err(r: { ok: boolean; error?: string }) {
 
 // ---------- Stairs ----------
 test('stairs: 2700 floor to floor, house: 15 risers of 180, going 270, 2R+G 630', () => {
-  const r = planStair({ totalRise: 2700, stringerWidth: 290 }, F);
+  const r = planStair({ limits: HOUSE, totalRise: 2700, stringerWidth: 290 }, F);
   assert.ok(r.ok);
   const v = ok(r);
   assert.equal(v.risers, 15);
@@ -40,50 +44,51 @@ test('stairs: 2700 floor to floor, house: 15 risers of 180, going 270, 2R+G 630'
 });
 
 test('stairs: available run picks the riser count that fits it', () => {
-  const v = ok(planStair({ totalRise: 2700, totalRun: 3500 }, F));
+  const v = ok(planStair({ limits: HOUSE, totalRise: 2700, totalRun: 3500 }, F));
   assert.equal(v.risers, 15);
   near(v.going, 250);
   near(v.twoRG, 610);
 });
 
 test('stairs: forced 20 risers flags a flight over 18', () => {
-  const r = planStair({ totalRise: 3600, risers: 20 }, F);
+  const r = planStair({ limits: HOUSE, totalRise: 3600, risers: 20 }, F);
   assert.ok(r.ok);
   assert.ok(r.checks.some((c) => c.level === 'fail' && /landing/.test(c.text)));
 });
 
 test('stairs: a going outside the limits fails its check, and public stairs need 250', () => {
-  const r = planStair({ totalRise: 2700, going: 245, code: 'public' }, F);
+  const r = planStair({ totalRise: 2700, going: 245, limits: PUBLIC }, F);
   assert.ok(r.ok);
   assert.ok(r.checks.some((c) => c.level === 'fail' && /Going/.test(c.text)));
-  const house = planStair({ totalRise: 2700, going: 245, code: 'housing' }, F);
+  const house = planStair({ limits: HOUSE, totalRise: 2700, going: 245 }, F);
   assert.ok(house.ok && !house.checks.some((c) => c.level === 'fail' && /Going/.test(c.text)));
 });
 
 test('stairs: NCC limits as published (Housing 11.2.2a and Volume One D3D14)', () => {
-  assert.deepEqual([STAIR_LIMITS.housing.rMin, STAIR_LIMITS.housing.rMax, STAIR_LIMITS.housing.gMin, STAIR_LIMITS.housing.gMax, STAIR_LIMITS.housing.sMin, STAIR_LIMITS.housing.sMax], [115, 190, 240, 355, 550, 700]);
-  assert.equal(STAIR_LIMITS.public.gMin, 250);
-  assert.equal(STAIR_LIMITS.private.gMin, 240);
-  assert.equal(STAIR_LIMITS.housing.maxRisers, 18);
+  assert.deepEqual([HOUSE.rMin, HOUSE.rMax, HOUSE.gMin, HOUSE.gMax, HOUSE.sMin, HOUSE.sMax], [115, 190, 240, 355, 550, 700]);
+  assert.equal(PUBLIC.gMin, 250);
+  assert.equal(stairLimitsById('AU', 'au-private').gMin, 240);
+  assert.equal(HOUSE.maxRisers, 18);
+  assert.equal(stairCodesFor('AU').length, 3);
   // R 180: going 240-340 (2R+G caps it at 700 - 360)
-  assert.deepEqual(goingRangeFor(180, STAIR_LIMITS.housing), { min: 240, max: 340 });
-  assert.equal(goingRangeFor(200, STAIR_LIMITS.housing), null);
+  assert.deepEqual(goingRangeFor(180, HOUSE), { min: 240, max: 340 });
+  assert.equal(goingRangeFor(200, HOUSE), null);
 });
 
 test('stairs: bad input gives plain errors', () => {
-  err(planStair({ totalRise: 0 }, F));
-  err(planStair({ totalRise: NaN }, F));
-  err(planStair({ totalRise: 2700, risers: 1 }, F));
-  err(planStair({ totalRise: 2700, risers: 2.5 }, F));
-  err(planStair({ totalRise: 2700, going: -5 }, F));
-  err(planStair({ totalRise: 99999 }, F));
+  err(planStair({ limits: HOUSE, totalRise: 0 }, F));
+  err(planStair({ limits: HOUSE, totalRise: NaN }, F));
+  err(planStair({ limits: HOUSE, totalRise: 2700, risers: 1 }, F));
+  err(planStair({ limits: HOUSE, totalRise: 2700, risers: 2.5 }, F));
+  err(planStair({ limits: HOUSE, totalRise: 2700, going: -5 }, F));
+  err(planStair({ limits: HOUSE, totalRise: 99999 }, F));
   // tiny rise: still a plan, but the riser check fails
-  const r = planStair({ totalRise: 200 }, F);
+  const r = planStair({ limits: HOUSE, totalRise: 200 }, F);
   assert.ok(r.ok && r.checks.some((c) => c.level === 'fail' && /Riser/.test(c.text)));
 });
 
 test('stairs: cut-through stringer is a fail', () => {
-  const r = planStair({ totalRise: 2700, stringerWidth: 140 }, F);
+  const r = planStair({ limits: HOUSE, totalRise: 2700, stringerWidth: 140 }, F);
   assert.ok(r.ok && r.checks.some((c) => c.level === 'fail' && /stringer/.test(c.text)));
 });
 
@@ -357,4 +362,12 @@ test('arc: semicircle and more than a semicircle', () => {
   near(big.angle, 236.145, 0.001);
   err(arcFromChord({ chord: 0, rise: 10 }, F));
   err(arcFromChord({ chord: 100, rise: 10, divisions: 1 }, F));
+});
+
+test('cut list: prices per length add up to a total, and any missing price gives no total', () => {
+  const v = validPlan({ stock: [{ length: 6000, price: 18.5 }, { length: 4800, price: 14 }], pieces: [{ length: 2400, qty: 4 }, { length: 1500, qty: 3 }], kerf: 3 });
+  const expected = v.bars.reduce((a, b) => a + (b.stock === 6000 ? 18.5 : 14), 0);
+  near(v.cost!, expected, 1e-9);
+  const none = validPlan({ stock: [{ length: 6000, price: 18.5 }, { length: 4800 }], pieces: [{ length: 4500, qty: 2 }], kerf: 3 });
+  assert.equal(none.cost, null);
 });

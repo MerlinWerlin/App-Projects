@@ -9,7 +9,8 @@
 //    the set-out line through the birdsmouth heel; the eave (overhang) is measured level from the wall line.
 //  - Birdsmouth: seat length S level on the plate. Plumb face height = S x tan(pitch). Depth of the notch
 //    square to the rafter edge = S x sin(pitch). Height above plate at the wall line (HAP) = D / cos(pitch) - S x tan(pitch).
-//    Keeping the notch to a third of the rafter depth is a widely used rule (AS 1684 sets the actual limits; check it).
+//    Keeping the notch to a third of the rafter depth is a widely used rule; the local framing code (e.g. AS 1684 in
+//    Australia) sets the actual limits.
 //  - Regular hip or valley (both roof planes at the same pitch, hip at 45° in plan): hip run = common run x sqrt(2);
 //    hip pitch = atan(rise / hip run); hip length = sqrt(hip run^2 + rise^2). Creepers (jacks) spaced s along the
 //    plate shorten by s / cos(pitch) each. Hip and creeper cheek cuts: cut on the plumb line with the saw bevelled 45°
@@ -89,12 +90,12 @@ export function commonRafter(input: RafterInput, f: Fmt): Calc<RafterResult> {
     steps.push({ label: 'Notch depth (square to edge)', working: `${f.len(S)} x sin ${f.deg(p.deg)} = ${f.len(depthSquare)}` });
     steps.push({ label: 'Height above plate', working: `${f.len(D)} / cos ${f.deg(p.deg)} - ${f.len(plumbHeight)} = ${f.len(hap)}` });
     if (hap <= 0) checks.push({ level: 'fail', text: 'The seat is too long for this rafter: the birdsmouth cuts through it' });
-    else if (overThird) checks.push({ level: 'fail', text: `Notch is ${f.len(depthSquare)} deep, more than a third of the ${f.len(D)} rafter. Shorten the seat or check AS 1684` });
+    else if (overThird) checks.push({ level: 'fail', text: `Notch is ${f.len(depthSquare)} deep, more than a third of the ${f.len(D)} rafter. Shorten the seat or check your framing code` });
     else checks.push({ level: 'ok', text: `Notch ${f.len(depthSquare)} deep, within a third of the rafter depth` });
   } else if (D > 0 || S > 0) {
     checks.push({ level: 'warn', text: 'Enter both rafter depth and seat length to work out the birdsmouth' });
   }
-  checks.push({ level: 'warn', text: 'Rafter sizes, spans and fixings come from AS 1684 or the engineer, not from this length' });
+  checks.push({ level: 'warn', text: 'Rafter sizes, spans and fixings come from your timber framing code or the engineer, not from this length' });
   return {
     ok: true,
     value: { run, rise, rafterToRidge, eaveLength, total, plumbAngle: p.deg, seatAngle: 90 - p.deg, birdsmouth },

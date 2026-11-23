@@ -19,29 +19,42 @@
 import { toDeg, type Fmt } from './units.ts';
 import { fail, positive, type Calc, type Check, type Step } from './result.ts';
 
-export type StairCode = 'housing' | 'public' | 'private';
-
-export type StairLimits = { rMin: number; rMax: number; gMin: number; gMax: number; sMin: number; sMax: number; maxRisers: number; minRisers: number; source: string };
-
-export const STAIR_LIMITS: Record<StairCode, StairLimits> = {
-  housing: { rMin: 115, rMax: 190, gMin: 240, gMax: 355, sMin: 550, sMax: 700, maxRisers: 18, minRisers: 2, source: 'NCC 2022 Housing Provisions 11.2.2, Table 11.2.2a' },
-  public: { rMin: 115, rMax: 190, gMin: 250, gMax: 355, sMin: 550, sMax: 700, maxRisers: 18, minRisers: 2, source: 'NCC 2022 Volume One D3D14, Table D3D14 (public)' },
-  private: { rMin: 115, rMax: 190, gMin: 240, gMax: 355, sMin: 550, sMax: 700, maxRisers: 18, minRisers: 2, source: 'NCC 2022 Volume One D3D14, Table D3D14 (private)' },
-};
-
-export const STAIR_CODE_NAMES: Record<StairCode, string> = {
-  housing: 'House (Class 1 & 10)',
-  public: 'Public (Class 2-9)',
-  private: 'Private (Class 2-9)',
+/**
+ * One set of stair limits from a building code (or generic guidance). Any limit a code doesn't set is null.
+ * Per-country sets live in src/core/stairCodes.ts with their sources.
+ */
+export type StairLimits = {
+  id: string;
+  name: string;
+  rMin: number | null;
+  rMax: number | null;
+  gMin: number | null;
+  gMax: number | null;
+  sMin: number | null;
+  sMax: number | null;
+  maxPitch: number | null;
+  maxRisers: number | null;
+  minRisers: number | null;
+  /** Most rise one flight may climb before a landing (NZ, US and Canada limit flights this way), mm. */
+  maxFlightRise?: number | null;
+  /** Short citation shown under the result. */
+  source: string;
+  /** false for generic guidance: outside a range is a note, not a fail. */
+  binding: boolean;
+  /** Extra plain-words rules shown as notes (open risers, tolerances, headroom). */
+  notes: string[];
 };
 
 /** A comfortable stair sits near 2R + G = 630 mm (Blondel's stride rule; the middle of the NCC 550-700 band). */
 export const COMFORT_2RG = 630;
 export const COMFORT_RISER = 175;
+/** Used only where a code sets no riser limit, to bound the riser counts offered. */
+export const COMFORT_RISER_MAX = 220;
+export const COMFORT_RISER_MIN = 100;
 
 export type StairInput = {
   totalRise: number;
-  code?: StairCode;
+  limits: StairLimits;
   /** Force this many risers (otherwise Trammel picks). */
   risers?: number | null;
   /** Force this going (otherwise from the available run, or a comfortable one). */
@@ -73,16 +86,18 @@ export type StairResult = {
 
 /** Goings that keep both the going and 2R+G inside the limits for this riser height. */
 export function goingRangeFor(riser: number, L: StairLimits): { min: number; max: number } | null {
-  if (riser < L.rMin || riser > L.rMax) return null;
-  const min = Math.max(L.gMin, L.sMin - 2 * riser);
-  const max = Math.min(L.gMax, L.sMax - 2 * riser);
-  return min <= max ? { min, max } : null;
+  if ((L.rMin != null && riser < L.rMin - 1e-9) || (L.rMax != null && riser > L.rMax + 1e-9)) return null;
+  let min = Math.max(L.gMin ?? 0, L.sMin != null ? L.sMin - 2 * riser : 0);
+  let max = Math.min(L.gMax ?? Infinity, L.sMax != null ? L.sMax - 2 * riser : Infinity);
+  if (L.maxPitch != null) min = Math.max(min, riser / Math.tan((L.maxPitch * Math.PI) / 180));
+  if (!Number.isFinite(max)) max = Math.max(min, 400);
+  return min <= max + 1e-9 ? { min, max } : null;
 }
 
 export function stairOptions(totalRise: number, L: StairLimits) {
   const out: StairResult['options'] = [];
-  const lo = Math.max(L.minRisers, Math.ceil(totalRise / L.rMax - 1e-9));
-  const hi = Math.floor(totalRise / L.rMin + 1e-9);
+  const lo = Math.max(L.minRisers ?? 2, Math.ceil(totalRise / (L.rMax ?? COMFORT_RISER_MAX) - 1e-9));
+  const hi = Math.floor(totalRise / (L.rMin ?? COMFORT_RISER_MIN) + 1e-9);
   for (let n = lo; n <= hi && out.length < 6; n++) {
     const r = goingRangeFor(totalRise / n, L);
     if (r) out.push({ risers: n, riser: totalRise / n, goingMin: r.min, goingMax: r.max });
@@ -90,11 +105,10 @@ export function stairOptions(totalRise: number, L: StairLimits) {
   return out;
 }
 
-export function planStair(input: StairInput, f: Fmt): Calc<StairResult> {
+export function planStair(input: StairInput, f: Fmt, goingWord = 'Going'): Calc<StairResult> {
   const e = positive('total rise (floor to floor)', input.totalRise);
   if (e) return fail(e);
-  const code = input.code ?? 'housing';
-  const L = STAIR_LIMITS[code];
+  const L = input.limits;
   const rise = input.totalRise;
   if (rise > 20000) return fail('That total rise is over 20 m. Check the number and units.');
   if (input.going != null && (!Number.isFinite(input.going) || input.going <= 0)) return fail('The going must be more than zero.');
@@ -102,8 +116,10 @@ export function planStair(input: StairInput, f: Fmt): Calc<StairResult> {
   if (input.risers != null && (!Number.isInteger(input.risers) || input.risers < 1)) return fail('Risers must be a whole number, 1 or more.');
   if (input.risers === 1) return fail('One riser is a single step, not a stair flight. Use 2 or more.');
 
-  const nLo = Math.max(L.minRisers, Math.ceil(rise / L.rMax - 1e-9));
-  const nHi = Math.floor(rise / L.rMin + 1e-9);
+  const rMaxEff = L.rMax ?? COMFORT_RISER_MAX;
+  const rMinEff = L.rMin ?? COMFORT_RISER_MIN;
+  const nLo = Math.max(L.minRisers ?? 2, Math.ceil(rise / rMaxEff - 1e-9));
+  const nHi = Math.floor(rise / rMinEff + 1e-9);
   const steps: Step[] = [];
   let n: number;
   if (input.risers) {
@@ -127,9 +143,9 @@ export function planStair(input: StairInput, f: Fmt): Calc<StairResult> {
     n = best;
     steps.push({ label: 'Risers', working: `${n}: the count whose going fits ${f.len(input.totalRun)} of run best` });
   } else {
-    n = Math.max(L.minRisers, Math.round(rise / COMFORT_RISER));
+    n = Math.max(L.minRisers ?? 2, Math.round(rise / COMFORT_RISER));
     if (nLo <= nHi) n = Math.min(nHi, Math.max(nLo, n));
-    else n = Math.max(nLo, L.minRisers);
+    else n = Math.max(nLo, L.minRisers ?? 2);
     steps.push({ label: 'Risers', working: `${f.len(rise)} / ${f.len(COMFORT_RISER)} target riser = ${f.num(rise / COMFORT_RISER, 2)}, use ${n}` });
   }
 
@@ -140,14 +156,14 @@ export function planStair(input: StairInput, f: Fmt): Calc<StairResult> {
   let going: number;
   if (input.going) {
     going = input.going;
-    steps.push({ label: 'Going', working: `${f.len(going)} (set by you)` });
+    steps.push({ label: goingWord, working: `${f.len(going)} (set by you)` });
   } else if (input.totalRun) {
     going = input.totalRun / treads;
-    steps.push({ label: 'Going', working: `${f.len(input.totalRun)} run / ${treads} treads = ${f.num(going, 1)} mm` });
+    steps.push({ label: goingWord, working: `${f.len(input.totalRun)} run / ${treads} treads = ${f.num(going, 1)} mm` });
   } else {
     const ideal = COMFORT_2RG - 2 * riser;
-    going = range ? Math.min(range.max, Math.max(range.min, ideal)) : Math.min(L.gMax, Math.max(L.gMin, ideal));
-    steps.push({ label: 'Going', working: `630 - 2 x ${f.num(riser, 1)} = ${f.num(ideal, 1)} mm${going !== ideal ? `, kept inside the limits: ${f.num(going, 1)} mm` : ''}` });
+    going = range ? Math.min(range.max, Math.max(range.min, ideal)) : Math.min(L.gMax ?? Infinity, Math.max(L.gMin ?? 0, ideal));
+    steps.push({ label: goingWord, working: `630 - 2 x ${f.num(riser, 1)} = ${f.num(ideal, 1)} mm${going !== ideal ? `, kept inside the limits: ${f.num(going, 1)} mm` : ''}` });
   }
   const twoRG = 2 * riser + going;
   steps.push({ label: '2R + G', working: `2 x ${f.num(riser, 1)} + ${f.num(going, 1)} = ${f.num(twoRG, 1)} mm` });
@@ -168,19 +184,24 @@ export function planStair(input: StairInput, f: Fmt): Calc<StairResult> {
   }
 
   const checks: Check[] = [];
-  const inR = riser >= L.rMin - 1e-9 && riser <= L.rMax + 1e-9;
-  checks.push({ level: inR ? 'ok' : 'fail', text: `Riser ${f.num(riser, 1)} mm (limits ${L.rMin}-${L.rMax})` });
-  const inG = going >= L.gMin - 1e-9 && going <= L.gMax + 1e-9;
-  checks.push({ level: inG ? 'ok' : 'fail', text: `Going ${f.num(going, 1)} mm (limits ${L.gMin}-${L.gMax})` });
-  const inS = twoRG >= L.sMin - 1e-9 && twoRG <= L.sMax + 1e-9;
-  checks.push({ level: inS ? 'ok' : 'fail', text: `2R+G ${f.num(twoRG, 1)} mm (limits ${L.sMin}-${L.sMax})` });
-  if (n > L.maxRisers) checks.push({ level: 'fail', text: `${n} risers is more than ${L.maxRisers} in one flight: add a landing` });
-  else checks.push({ level: 'ok', text: `${n} risers in the flight (${L.minRisers}-${L.maxRisers} allowed)` });
+  const bad: Check['level'] = L.binding ? 'fail' : 'warn';
+  const span = (lo: number | null, hi: number | null) => (lo != null && hi != null ? `${f.num(lo, 0)}-${f.num(hi, 0)} mm` : lo != null ? `at least ${f.num(lo, 0)} mm` : `at most ${f.num(hi ?? 0, 0)} mm`);
+  const within = (v: number, lo: number | null, hi: number | null) => (lo == null || v >= lo - 1e-9) && (hi == null || v <= hi + 1e-9);
+  if (L.rMin != null || L.rMax != null) checks.push({ level: within(riser, L.rMin, L.rMax) ? 'ok' : bad, text: `Riser ${f.num(riser, 1)} mm (${span(L.rMin, L.rMax)})` });
+  if (L.gMin != null || L.gMax != null) checks.push({ level: within(going, L.gMin, L.gMax) ? 'ok' : bad, text: `${goingWord} ${f.num(going, 1)} mm (${span(L.gMin, L.gMax)})` });
+  if (L.sMin != null || L.sMax != null) checks.push({ level: within(twoRG, L.sMin, L.sMax) ? 'ok' : bad, text: `2R+G ${f.num(twoRG, 1)} mm (${span(L.sMin, L.sMax)})` });
+  if (L.maxPitch != null) checks.push({ level: angle <= L.maxPitch + 1e-9 ? 'ok' : bad, text: `Pitch ${f.deg(angle)} (at most ${L.maxPitch}°)` });
+  if (L.maxRisers != null && n > L.maxRisers) checks.push({ level: bad, text: `${n} risers is more than ${L.maxRisers} in one flight: add a landing` });
+  else if (L.maxRisers != null) checks.push({ level: 'ok', text: `${n} risers in the flight (${L.minRisers ?? 2}-${L.maxRisers} allowed)` });
+  if (L.maxFlightRise != null) {
+    const fits = rise <= L.maxFlightRise + 1e-9;
+    checks.push({ level: fits ? 'ok' : bad, text: fits ? `Flight rise ${f.len(rise)} (at most ${f.len(L.maxFlightRise)} between landings)` : `Flight rise ${f.len(rise)} is more than ${f.len(L.maxFlightRise)}: add a landing` });
+  }
   if (throat != null) {
     if (throat <= 0) checks.push({ level: 'fail', text: 'The notches cut right through this stringer: use a wider board or a housed stringer' });
     else checks.push({ level: 'warn', text: `${f.len(throat)} of stringer left under each notch: check it against the span tables or engineer` });
   }
-  checks.push({ level: 'warn', text: 'Keep every riser and going the same (5 mm between neighbours, 10 mm across the flight) and no gap that lets a 125 mm sphere through open risers' });
+  for (const note of L.notes) checks.push({ level: 'warn', text: note });
 
   return {
     ok: true,

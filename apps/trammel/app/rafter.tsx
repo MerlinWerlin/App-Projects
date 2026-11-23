@@ -8,10 +8,10 @@ import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 import { useFine } from '../src/ui/useFine.ts';
 
 export default function Rafter() {
-  const { fmt } = useSettings();
+  const { fmt, country } = useSettings();
   const fine = useFine();
   const r = useReaders();
-  const { vals, set } = useToolInputs('rafter', (d) => ({ span: d.len(6000), pitch: '22.5', ridge: d.len(45), overhang: d.len(450), depth: d.len(190), seat: d.len(90) }));
+  const { vals, set } = useToolInputs('rafter', (d) => ({ span: d.len(6000, 288), pitch: '22.5', ridge: d.len(45, 1.5), overhang: d.len(450, 18), depth: d.len(190, 7.25), seat: d.len(90, 3.5) }));
   const res = commonRafter({ span: r.len(vals.span) ?? NaN, pitchDeg: r.num(vals.pitch) ?? NaN, ridgeThickness: r.len(vals.ridge), overhang: r.len(vals.overhang), rafterDepth: r.len(vals.depth), seat: r.len(vals.seat) }, fmt);
   const save = res.ok
     ? { title: `Rafter at ${fmt.deg(res.value.plumbAngle)}`, summary: `Heel to ridge ${fmt.len(res.value.rafterToRidge)}, eave ${fmt.len(res.value.eaveLength)}, total ${fmt.len(res.value.total)}, rise ${fmt.len(res.value.rise)}${res.value.birdsmouth ? `, birdsmouth height above plate ${fine(res.value.birdsmouth.hap)}` : ''}`, inputs: vals }
@@ -66,7 +66,7 @@ export default function Rafter() {
           ) : null}
           <Checks checks={res.checks} />
           <StepsCard steps={res.steps} />
-          <Verify />
+          <Verify text={`Guidance only: size, span and fix rafters to ${country.framingCode ?? 'your local framing code'} or the engineer's details, and check against the plans.`} />
         </>
       )}
     </ToolShell>

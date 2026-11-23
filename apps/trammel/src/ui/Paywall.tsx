@@ -7,7 +7,7 @@ import { Alert, Linking, Text, View } from 'react-native';
 import { TRIAL_SKU, UNLOCK_SKU, unlockButton } from '../core/access.ts';
 import { CAPTURE } from '../native/store.ts';
 import { buy, refreshProducts, restorePurchases, useAccess } from '../state/access.ts';
-import { fonts, space, useTheme } from '../theme/theme.ts';
+import { fonts, space, useTheme, sys } from '../theme/theme.ts';
 import { Button, Card, P } from './kit.tsx';
 
 export const PRIVACY_URL = 'https://merlinwerlin.github.io/App-Projects/trammel/privacy.html';
@@ -67,12 +67,12 @@ export function Paywall() {
         <Text accessibilityRole="header" style={{ fontFamily: fonts.displayHeavy, fontSize: 40, lineHeight: 42, color: t.bladeInk }}>
           EVERY TOOL. ONE PRICE.
         </Text>
-        <Text style={{ fontFamily: fonts.bodyMedium, fontSize: 18, color: t.bladeInk }}>{accessLine(a)}</Text>
+        <Text style={{ ...sys.bodyMedium, fontSize: 18, color: t.bladeInk }}>{accessLine(a)}</Text>
       </View>
       <Card>
-        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: t.ink }}>Full Unlock opens</Text>
+        <Text style={{ ...sys.bodyBold, fontSize: 17, color: t.ink }}>Full Unlock opens</Text>
         {PAID.map((p) => (
-          <Text key={p} style={{ fontFamily: fonts.body, fontSize: 17, lineHeight: 23, color: t.ink }}>
+          <Text key={p} style={{ ...sys.body, fontSize: 17, lineHeight: 23, color: t.ink }}>
             •  {p}
           </Text>
         ))}
@@ -81,24 +81,24 @@ export function Paywall() {
       {a.state === 'unlocked' || a.state === 'stub' ? null : (
         <View style={{ gap: space.s }}>
           {busy ? (
-            <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 16, color: t.muted }}>
+            <Text accessibilityLiveRegion="polite" style={{ ...sys.body, fontSize: 16, color: t.muted }}>
               Talking to the App Store…
             </Text>
           ) : null}
-          {canStartTrial ? <Button label="Start 7-day free trial" kind="blade" icon="time-outline" hint="Free. Nothing renews." onPress={() => run(TRIAL_SKU)} /> : null}
+          {canStartTrial ? <Button label="Start 7-day free trial" kind="blade" icon="time" hint="Free. Nothing renews." onPress={() => run(TRIAL_SKU)} /> : null}
           {unlock.enabled && unlock.price ? (
-            <Button label={`Unlock everything · ${unlock.price}`} kind={canStartTrial ? 'secondary' : 'primary'} icon="lock-open-outline" onPress={() => run(UNLOCK_SKU)} />
+            <Button label={`Unlock everything · ${unlock.price}`} kind={canStartTrial ? 'secondary' : 'primary'} icon="unlock" onPress={() => run(UNLOCK_SKU)} />
           ) : (
             <>
               <P muted small>The App Store price couldn’t be loaded.</P>
-              <Button label="Try again" kind="quiet" icon="refresh-outline" onPress={() => void refreshProducts()} />
+              <Button label="Try again" kind="quiet" icon="refresh" onPress={() => void refreshProducts()} />
             </>
           )}
           <P muted small>One-time purchase. No subscription.</P>
         </View>
       )}
-      <Button label="Restore purchases" kind="quiet" icon="refresh-outline" onPress={doRestore} />
-      <Button label="Privacy policy" kind="quiet" icon="shield-checkmark-outline" onPress={() => Linking.openURL(PRIVACY_URL).catch(() => {})} />
+      <Button label="Restore purchases" kind="quiet" icon="refresh" onPress={doRestore} />
+      <Button label="Privacy policy" kind="quiet" icon="shield" onPress={() => Linking.openURL(PRIVACY_URL).catch(() => {})} />
     </View>
   );
 }

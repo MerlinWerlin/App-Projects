@@ -1,7 +1,7 @@
 // Trammel's "Blade" design system: a tape-measure blade. Results sit on high-vis yellow with heavy black condensed
 // numerals (the most legible pairing in full sun: ~15:1 contrast), everything else is ink on warm site paper, or
 // paper on near-black at night. One accent (blade yellow); red, amber and green only for the NCC/fit checks.
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
 
 export type Theme = {
   dark: boolean;
@@ -67,10 +67,16 @@ export function useTheme(): Theme {
   return useColorScheme() === 'dark' ? dark : light;
 }
 
+// Body text and controls use the system face (SF Pro on iPhone) so they read and scale like iOS; the condensed
+// brand face is for numbers and headings only.
+const SYS = Platform.select({ ios: 'System', default: undefined });
+export const sys = {
+  body: { fontFamily: SYS, fontWeight: '400' },
+  bodyMedium: { fontFamily: SYS, fontWeight: '500' },
+  bodyBold: { fontFamily: SYS, fontWeight: '600' },
+} as const;
+
 export const fonts = {
-  body: 'Barlow_400Regular',
-  bodyMedium: 'Barlow_500Medium',
-  bodyBold: 'Barlow_600SemiBold',
   display: 'BarlowCondensed_700Bold',
   displayHeavy: 'BarlowCondensed_800ExtraBold',
 };

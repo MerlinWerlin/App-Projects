@@ -10,7 +10,7 @@ export default function Square() {
   const { fmt } = useSettings();
   const fine = useFine();
   const r = useReaders();
-  const { vals, set } = useToolInputs('square', (d) => ({ a: d.len(3000), b: d.len(4000), d1: '', d2: '' }));
+  const { vals, set } = useToolInputs('square', (d) => ({ a: d.len(3000, 108), b: d.len(4000, 144), d1: '', d2: '' }));
   const res = squareCheck({ a: r.len(vals.a) ?? NaN, b: r.len(vals.b) ?? NaN, d1: r.len(vals.d1), d2: r.len(vals.d2) }, fmt);
   const save = res.ok ? { title: `Square ${fmt.len(r.len(vals.a) ?? 0)} x ${fmt.len(r.len(vals.b) ?? 0)}`, summary: `Diagonal ${fine(res.value.diagonal)}${res.value.measured ? `; measured corner ${fmt.deg(res.value.measured.corner)}` : ''}`, inputs: vals } : null;
   return (

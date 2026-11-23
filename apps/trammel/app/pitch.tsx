@@ -8,7 +8,7 @@ import { ToolShell, useToolInputs } from '../src/ui/ToolShell.tsx';
 export default function Pitch() {
   const { fmt } = useSettings();
   const r = useReaders();
-  const { vals, set } = useToolInputs('pitch', (d) => ({ mode: 'deg', deg: '22.5', rise: d.len(250), run: d.len(1000) }));
+  const { vals, set } = useToolInputs('pitch', (d) => ({ mode: 'deg', deg: '22.5', rise: d.len(250, 6), run: d.len(1000, 12) }));
   const p = vals.mode === 'deg' ? pitchFromDegrees(r.num(vals.deg) ?? NaN) : pitchFromRiseRun(r.len(vals.rise) ?? NaN, r.len(vals.run) ?? NaN);
   const save = p ? { title: `Pitch ${fmt.deg(p.deg)}`, summary: `${fmt.deg(p.deg)} = ${fmt.num(p.per1000, 0)} per 1000 = ${fmt.num(p.in12, 2)} in 12 = ${fmt.num(p.percent, 1)}%`, inputs: vals } : null;
   return (
