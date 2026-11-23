@@ -14,8 +14,8 @@ const TOOLS: Array<{ id: ToolId; title: string; sub: (w: Words) => string; icon:
   { id: 'setout', title: 'Set-out', sub: w => `Centre the grid, no thin cuts, ${w.setOut.toLowerCase()} diagram`, icon: 'scan-outline' },
   { id: 'materials', title: 'Grout, adhesive & membrane', sub: w => `Bags and packs from joint, notch and ${w.waterproofing.toLowerCase()}`, icon: 'flask-outline' },
   { id: 'falls', title: 'Falls to waste', sub: w => `${w.falls} to the ${w.waste}, perimeter heights`, icon: 'water-outline' },
-  { id: 'trim', title: 'Trim & edging', sub: w => `${w.trim} lengths with a cut list`, icon: 'remove-outline' },
-  { id: 'stairs', title: 'Stairs & steps', sub: () => 'Treads, risers, nosings, riser check', icon: 'stats-chart-outline' },
+  { id: 'trim', title: 'Trim & edging', sub: w => `${w.trim} lengths with a cut list`, icon: 'swap-horizontal-outline' },
+  { id: 'stairs', title: 'Stairs & steps', sub: () => 'Treads, risers, nosings, riser check', icon: 'trending-up-outline' },
 ];
 type Words = { box: string; setOut: string; waterproofing: string; falls: string; waste: string; trim: string };
 

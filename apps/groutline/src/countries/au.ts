@@ -19,7 +19,7 @@ const NCC11 = 'https://ncc.abcb.gov.au/editions/ncc-2022/adopted/housing-provisi
 export const AU: Country = {
   code: 'AU', name: 'Australia', flag: '🇦🇺', system: 'metric', currency: 'AUD', locale: 'en-AU', spelling: 'british',
   terms: { waterproofing: 'Waterproofing', membrane: 'Membrane', adhesive: 'Tile adhesive', trim: 'Tile trim', falls: 'Falls', waste: 'floor waste', setOut: 'Set-out', box: 'carton', colour: 'colour', backer: 'fibre cement sheet' },
-  falls: { min: 80, max: 50, target: 60, verified: true, label: 'NCC 2022 Housing Provisions 10.2.12: continuous fall to the floor waste at least 1:80 and no steeper than 1:50', src: NCC10 },
+  falls: { min: 80, max: 50, verified: true, label: 'NCC 2022 Housing Provisions 10.2.12: continuous fall to the floor waste at least 1:80 and no steeper than 1:50', src: NCC10 },
   membraneHeights: { showerWallMm: 1800, upturnMm: 150, verified: true, label: 'NCC 10.2.2: shower walls waterproof to at least 1800 mm, junctions 40 mm each side. The 150 mm upturn outside the shower is trade practice (AS 3740).', src: NCC10 },
   stairs: { riserMin: 115, riserMax: 190, goingMin: 240, goingMax: 355, twoRGMin: 550, twoRGMax: 700, source: 'NCC 2022 Housing Provisions Table 11.2.2a', verified: true, src: NCC11, docs: 'Max 18 risers per flight.' },
   contactRule: CONTACT_RULES.AS3958,

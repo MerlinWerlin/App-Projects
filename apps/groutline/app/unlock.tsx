@@ -10,6 +10,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { trialState } from '../src/plus/trial.ts';
 import { useApp } from '../src/state/AppState.tsx';
 import { RADIUS, SPACE, useTheme } from '../src/theme/theme.ts';
+import { plural } from '../src/ui/fields.tsx';
 import { GroutMark } from '../src/ui/GroutMark.tsx';
 import { Btn, haptic, Txt } from '../src/ui/kit.tsx';
 
@@ -17,8 +18,8 @@ const FEATURES: Array<[keyof typeof Ionicons.glyphMap, string, string]> = [
   ['scan-outline', 'Set-out', 'Centre the grid, avoid slivers, see the plan'],
   ['flask-outline', 'Grout, adhesive & membrane', 'Bags and packs from your local products'],
   ['water-outline', 'Falls to the waste', 'Perimeter heights checked against your code'],
-  ['remove-outline', 'Trim & edging', 'Lengths to buy with a cut list'],
-  ['stats-chart-outline', 'Stairs & steps', 'Treads, risers, nosings and the riser check'],
+  ['swap-horizontal-outline', 'Trim & edging', 'Lengths to buy with a cut list'],
+  ['trending-up-outline', 'Stairs & steps', 'Treads, risers, nosings and the riser check'],
 ];
 
 export default function Unlock() {
@@ -85,7 +86,7 @@ export default function Unlock() {
               <View style={{ flex: 1 }}><Txt v="headline">{title}</Txt><Txt v="subhead" tone="ink2">{sub}</Txt></View>
             </View>
           ))}
-          <Txt v="subhead" tone="ink2" style={{ marginTop: SPACE.sm }}>Always free: Tiles & boxes (counts, cut-outs, waste by layout, boxes to buy) and saving those jobs.</Txt>
+          <Txt v="subhead" tone="ink2" style={{ marginTop: SPACE.sm }}>{`Always free: Tiles & boxes (counts, cut-outs, waste by layout, ${plural(app.country.terms.box, 2)} to buy) and saving those jobs.`}</Txt>
 
           {app.owned ? (
             <Txt v="title2" style={{ marginTop: SPACE.lg }}>Every tool is unlocked. Thanks!</Txt>

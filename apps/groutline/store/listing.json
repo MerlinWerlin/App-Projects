@@ -1,0 +1,49 @@
+{
+  "locale": "en-AU",
+  "version": "1.0.0", "releaseType": "AFTER_APPROVAL", "attachBuild": "latest",
+  "name": "Groutline: Tile Calculator",
+  "subtitle": "Set-out & materials for tilers",
+  "promotionalText": "Tiles and cartons, set-out without slivers, grout and adhesive bags, waterproofing, falls, trim and stairs, using your country's products and rules. No subscription.",
+  "keywords": "tiler,tiling,grout,adhesive,thinset,waterproofing,tanking,setout,layout,falls,shower,trim,stairs",
+  "description": "Groutline is a job-site toolkit for tilers. Measure once, get every quantity, and see the working behind each answer.\n\nPick your country when you start. Australia, New Zealand, the UK, Ireland, the US and Canada are fully guided: units, the words tilers use, the standards quoted in notes, and the tile, adhesive, grout and membrane sizes local suppliers stock. Anywhere else gets metric with generic guidance.\n\nTILES & CARTONS (FREE)\n• Floors and walls, L-shapes and cut-outs for windows, doors, baths and cabinets\n• Waste by layout: straight, brick, third offset, diagonal, herringbone, hexagon\n• Tiles to buy and cartons or boxes, from your supplier's carton sizes or your own\n\nSET-OUT\n• Centre the grid so edge cuts are even and never slivers\n• Joint on centre, tile on centre or from a wall, with a plan of every full and cut tile\n\nGROUT, ADHESIVE & WATERPROOFING\n• Grout from tile size, depth and joint using the makers' own formula\n• Adhesive by trowel notch with back-buttering, and the suggested notch for your tile\n• Waterproofing take-off for a bathroom: floor, shower walls, upturn and tape\n\nFALLS, TRIM & STAIRS\n• Falls to a centre or strip waste, perimeter heights checked against your code's minimum and maximum\n• Trim and edging lengths with a cut list that reuses offcuts\n• Stairs: tiles per tread and riser, nosings, and the riser check after build-up\n\nBUILT FOR SITE\n• Big controls that work with gloves on\n• Type sizes the way you measure: 2400, 2.4m, 12' 6\" or 3/16\n• Every answer shows how it's worked out, step by step\n• Save jobs and share the answer with the working\n\nPRICE\nTiles & cartons is free for good. Start an optional free 7-day trial to use every tool; it begins only when you confirm the free trial item with Apple and nothing is charged when it ends. After that, Full Unlock is a single payment, not a subscription.\n\nPRIVATE\nNo account, no ads, no tracking. Jobs stay on your phone. The app collects no data.\n\nQuantities are estimates from makers' published coverage. Always check the product's data sheet and your local rules before ordering.",
+  "whatsNew": "Welcome to Groutline: tiles, set-out, grout, adhesive, waterproofing, falls, trim and stairs for the country you work in.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "PRODUCTIVITY",
+  "copyright": "2026 Astro Labs AU",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/groutline/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/groutline/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/groutline/",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.groutline.unlock",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Full Unlock",
+      "displayName": "Full Unlock",
+      "description": "Every tiling tool, one payment",
+      "reviewNote": "One-time non-consumable. Open Settings > Full Unlock (or tap any locked tool on the Tools tab). Restore purchases is on the same screen. Unlocks Set-out, Grout/adhesive/membrane, Falls, Trim and Stairs. The Tiles & cartons calculator and saving its jobs stay free. A separate free user-started 7-day Trial item opens the same tools for 7 days; nothing is charged automatically.",
+      "price": { "territory": "AUS", "amount": "4.99" },
+      "availability": "all",
+      "reviewScreenshot": "apps/groutline/store/review/unlock-review.jpg",
+      "replaceReviewScreenshot": true
+    },
+    {
+      "productId": "com.jared797.groutline.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
+      "description": "Try every tool for 7 days. No auto-charge.",
+      "reviewNote": "Free user-started non-consumable trial under guideline 3.1.1. Settings > Full Unlock > Start free 7-day trial opens the Apple confirmation. Seven days are measured from the original transaction date, including after Restore or reinstall. After expiry the five tools need the separate Full Unlock purchase; Tiles & cartons stays free. There is no subscription and no automatic charge.",
+      "price": { "territory": "AUS", "amount": "0.00" },
+      "availability": "all",
+      "reviewScreenshot": "apps/groutline/store/review/unlock-review.jpg",
+      "replaceReviewScreenshot": true
+    }
+  ],
+  "ageRating": "none",
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "Purpose and audience: Groutline is a calculator for professional tilers and serious DIYers: tile and carton counts, set-out, grout/adhesive/waterproofing quantities, shower falls, trim lengths and stair tiling.\n\nSetup: No account or login. On first launch pick a country (pre-selected from the device region; changeable in Settings). Open Tiles & boxes, enter a floor such as 3000 x 2800 mm and pick a 600 x 600 tile to see 26 tiles and 7 cartons, with 'How it's worked out' showing every step.\n\nPurchases: Settings > Full Unlock has Unlock (one-time non-consumable), Start free 7-day trial (a separate free non-consumable named 7-day Trial) and Restore purchases. The trial starts only after Apple confirms the free item, uses the original transaction date and never charges automatically. Tiles & boxes and saving its jobs are always free. Please test both products with the submitted build.\n\nData: Everything is stored on the device. No server, account, analytics, ads or tracking; the app makes no network requests other than Apple's StoreKit. No camera, microphone, location, photos or contacts. App Privacy: Data Not Collected.\n\nNo over-the-air or remote code-update mechanism is included; the reviewed build is exactly what users get.\n\nRegional differences: country choice changes units (metric or imperial), terminology, the standards named in notes and the sizes of materials offered. Store prices are localised.\n\nRegulated material: the app quotes public building-code and standard values (for example NCC 2022 falls 1:80 to 1:50) as guidance and tells users to check local rules and product data sheets; it is not a certification tool.",
+  "reviewContactFromApp": "backspin",
+  "ageRatingExtra": { "socialMedia": false, "socialMediaAgeRestricted": false },
+  "screenshots": { "APP_IPHONE_67": "apps/groutline/store/screenshots/iphone" }
+}

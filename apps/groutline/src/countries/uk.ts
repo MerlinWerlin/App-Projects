@@ -20,7 +20,7 @@ export const GB: Country = {
   code: 'GB', name: 'United Kingdom', flag: '🇬🇧', system: 'metric', currency: 'GBP', locale: 'en-GB', spelling: 'british',
   terms: { waterproofing: 'Tanking', membrane: 'Tanking', adhesive: 'Tile adhesive', trim: 'Tile trim', falls: 'Falls', waste: 'drain', setOut: 'Setting out', box: 'box', colour: 'colour', backer: 'tile backer board' },
   falls: {
-    min: 80, max: 35, target: 60, verified: false,
+    min: 80, max: 35, verified: false,
     label: 'Wet room floors: 1:80 shallowest to 1:35 steepest is the usual trade range (BS 5385-4 practice); warranty bodies quote 1:80–1:100 to the drain. The BS figure itself could not be checked (paywalled).',
     src: 'https://building.co.uk/cpd/-cpd-14-2015-integrated-solutions-for-wetrooms-with-tile-and-stone-coverings/5076632.article',
   },
