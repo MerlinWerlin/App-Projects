@@ -142,17 +142,20 @@ export function NumField({ label, value, onChange, unit, hint, placeholder, inte
  * Done bar that rides on top of the keyboard (the iPhone number pad has no return key). Driven by the keyboard's own
  * show/hide events and rendered once at the root, so it works with every number field on every screen.
  */
+/** iOS 26 and later put their own Done button on the number pad; earlier versions have none. */
+const NEEDS_DONE_BAR = Platform.OS === 'ios' && parseInt(String(Platform.Version), 10) < 26;
+
 export function DoneBar() {
   const { theme } = useApp();
   const [kb, setKb] = useState(0);
   useEffect(() => {
-    if (Platform.OS !== 'ios') return;
+    if (!NEEDS_DONE_BAR) return;
     const show = Keyboard.addListener('keyboardWillShow', e => setKb(e.endCoordinates.height));
     const shown = Keyboard.addListener('keyboardDidShow', e => setKb(e.endCoordinates.height));
     const hide = Keyboard.addListener('keyboardWillHide', () => setKb(0));
     return () => { show.remove(); shown.remove(); hide.remove(); };
   }, []);
-  if (Platform.OS !== 'ios' || kb <= 0) return null;
+  if (!NEEDS_DONE_BAR || kb <= 0) return null;
   return (
     <View style={[st.doneBar, { bottom: kb, backgroundColor: theme.card2, borderTopColor: theme.line }]}>
       <Pressable onPress={() => Keyboard.dismiss()} accessibilityRole="button" accessibilityLabel="Done" hitSlop={8} style={st.doneBtn}>
