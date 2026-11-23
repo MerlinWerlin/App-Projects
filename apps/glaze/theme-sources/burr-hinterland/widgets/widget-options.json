@@ -1,0 +1,62 @@
+[
+  {
+    "id": "underside-vault",
+    "kind": "art",
+    "image": "underside-vault.9a878715.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Underside Vault"
+  },
+  {
+    "id": "upstream-stair",
+    "kind": "art",
+    "image": "upstream-stair.d82e7e1a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Upstream Stair"
+  },
+  {
+    "id": "hanging-tide",
+    "kind": "art",
+    "image": "hanging-tide.5338380f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hanging Tide"
+  },
+  {
+    "id": "groundless-crater",
+    "kind": "art",
+    "image": "groundless-crater.d50db955.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Groundless Crater"
+  },
+  {
+    "id": "forked-night",
+    "kind": "art",
+    "image": "forked-night.e8324568.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Forked Night"
+  }
+]

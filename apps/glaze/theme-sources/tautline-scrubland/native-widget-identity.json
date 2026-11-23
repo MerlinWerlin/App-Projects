@@ -1,0 +1,18 @@
+{
+  "themeId": "tautline-scrubland",
+  "recipe": [
+    "facet",
+    "stringGecko",
+    "stringChordFan",
+    "pins",
+    "wedge",
+    "trail",
+    "board"
+  ],
+  "art": {
+    "stringGecko": "M 33 59 L 22 65 L 13 62 L 9 50 L 14 39 L 24 36 L 31 41 L 41 32 L 55 29 L 64 19 L 75 17 L 89 25 L 91 34 L 83 41 L 70 40 L 61 49 L 51 55 L 44 63 L 39 78 L 29 88 L 16 89 L 6 81 L 4 70 L 9 63 M 34 43 L 26 30 L 18 26 M 26 30 L 25 19 M 26 30 L 34 23 M 47 33 L 43 18 L 37 12 M 43 18 L 47 8 M 43 18 L 53 16 M 60 48 L 73 57 L 84 54 M 73 57 L 80 64 M 73 57 L 72 69 M 44 61 L 55 73 L 67 72 M 55 73 L 60 82 M 55 73 L 51 84 M 20 57 L 31 47 L 39 54 L 48 37 L 52 48 L 62 34 L 67 42 M 75 26 L 77 28 M 79 34 L 86 33",
+    "stringChordFan": "M 12 81 L 25 16 M 12 81 L 43 12 M 12 81 L 61 18 M 12 81 L 78 32 M 12 81 L 87 52 M 25 16 L 87 52 M 43 12 L 78 32 M 61 18 L 25 70 M 18 52 L 87 52 M 14 69 L 78 32 M 10 80 L 14 82 M 23 14 L 27 17 M 41 10 L 45 13 M 59 16 L 63 19 M 76 30 L 80 33 M 85 50 L 89 53"
+  },
+  "ornament": "M 19 79 L 25 23 M 19 79 L 43 17 M 19 79 L 62 23 M 19 79 L 79 40 M 19 79 L 85 61 M 25 23 L 85 61 M 43 17 L 79 40 M 22 22 C 22 18 28 18 28 22 C 28 26 22 26 22 22 Z M 40 16 C 40 12 46 12 46 16 C 46 20 40 20 40 16 Z M 82 60 C 82 56 88 56 88 60 C 88 64 82 64 82 60 Z",
+  "direction": "Angular curled gecko built from straight pin-to-pin segments as full illustration; open cotton chord fan with short pin-head marks as detail. Faceted bezel, pin hour markers, wedge hands, thread-trail charge gauge and board calendar. Compact companion is a small five-chord fan with three tiny closed pin-head loops, no complete organism in headers."
+}

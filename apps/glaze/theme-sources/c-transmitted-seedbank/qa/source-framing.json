@@ -1,0 +1,100 @@
+{
+  "review": "All five whole subjects inside original alpha16/96 bounds, edgealpha maximum1. Four honesty pod rims/seeds/stem, four maple samara wings/red leaf/twig ends, two physalis husks/berry/leaf/stem, three beech leaves/twig ends, and lacewing antennae/wings/legs/body/grass tips all complete. Full originals proportionally fitted1024square without cropping or creative alpha changes. Initial maple with unintended extra insect retained unselected; one own-study edit removes it while preserving the plant.",
+  "assets": [
+    {
+      "id": "honesty-seedhead",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          194,
+          71,
+          1023,
+          1200
+        ],
+        "96": [
+          195,
+          72,
+          1022,
+          1199
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "maple-samaras",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          64,
+          101,
+          1182,
+          1171
+        ],
+        "96": [
+          65,
+          101,
+          1181,
+          1170
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "physalis-lantern",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          135,
+          140,
+          1103,
+          1172
+        ],
+        "96": [
+          136,
+          141,
+          1102,
+          1171
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "beech-leaf",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          114,
+          42,
+          1157,
+          1185
+        ],
+        "96": [
+          115,
+          43,
+          1156,
+          1185
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "lacewing-seedgrass",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          127,
+          219,
+          1150,
+          1059
+        ],
+        "96": [
+          129,
+          220,
+          1149,
+          1058
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

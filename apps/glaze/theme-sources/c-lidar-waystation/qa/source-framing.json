@@ -1,0 +1,55 @@
+{
+  "review": "High-opacity subjects fully inside source frames; edge alpha checked.",
+  "assets": [
+    {
+      "id": "scan-postmaster",
+      "sourceOpaqueBounds": [
+        186,
+        58,
+        1145,
+        1193
+      ],
+      "edgeAlphaMaximum": 1
+    },
+    {
+      "id": "range-carriage",
+      "sourceOpaqueBounds": [
+        52,
+        85,
+        1203,
+        1108
+      ],
+      "edgeAlphaMaximum": 1
+    },
+    {
+      "id": "pointgate-inn",
+      "sourceOpaqueBounds": [
+        43,
+        166,
+        1178,
+        1028
+      ],
+      "edgeAlphaMaximum": 2
+    },
+    {
+      "id": "survey-hound",
+      "sourceOpaqueBounds": [
+        40,
+        199,
+        1174,
+        1047
+      ],
+      "edgeAlphaMaximum": 1
+    },
+    {
+      "id": "scan-pump",
+      "sourceOpaqueBounds": [
+        42,
+        13,
+        1223,
+        1237
+      ],
+      "edgeAlphaMaximum": 1
+    }
+  ]
+}

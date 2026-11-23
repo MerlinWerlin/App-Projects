@@ -1,0 +1,150 @@
+{
+  "id": "c-lidar-waystation",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "scan-postmaster",
+    "range-carriage",
+    "pointgate-inn",
+    "survey-hound",
+    "scan-pump"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.6d081348.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 33884,
+    "sha256": "6d081348cfc2ccad05e061e2161e63df44f8a2c4d55f549a84698b97103d1ff5",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed wallpaper and all five artworks at two widget-like sizes. Messenger, sail carriage, inhabited inn, articulated survey hound and pump have distinct readable silhouettes; height-coded spatial point texture unifies the set.",
+    "nativeCombination": "Viewed actual app renderer previews for Clock, Battery and Calendar at small, medium and large sizes. Carriage and postmaster motifs are legible and readings remain clear.",
+    "sourceFraming": "High-opacity subject bounds are inside all five source frames; maximum edge alpha is 1 or 2 out of 255.",
+    "ownerSteering": "Applies Jared 22 November tangible-subject direction while preserving a distinct scientific image process.",
+    "actualCornerRefinement": "Reviewed actual coordinator renderer output in all four affected placements; old Clock-face/Battery SVGs verified byte-identical. Prototype studies retained as design history."
+  },
+  "packTestEvidence": "Unchanged pipeline: 47 distinct pack test cases passed across the initial suite and the two Pillow-enabled WebP reruns. This theme separately passed the real builder, full decoding, hashes, provenance and actual app planner/renderer checks.",
+  "ornamentRefinement": {
+    "optionalField": "ornament",
+    "heroPathsUnchanged": true,
+    "rasterAssetsUnchanged": true,
+    "pathVocabulary": "M/L/Q/T/C/Z",
+    "canvas": [
+      100,
+      100
+    ],
+    "pathBoundsChecked": true,
+    "pathLength": 287,
+    "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+    "runtimeSupport": "Verified with actual coordinator TS parser/renderer, copied unchanged into scratch. All nine plans round-trip optional ornament; actual shared source registry integration remains coordinator-owned.",
+    "actualParserRetainsOrnament": true,
+    "nativeLayouts": 9,
+    "readingChangesAllNine": true,
+    "heroSvgUnchanged": true,
+    "visualReview": "Viewed actual-renderer small/medium/large Calendar and medium Clock corner sheet, alongside unchanged larger hero placements. Single aspect-fitted motif is clear, proportionate and separate from live readings.",
+    "nativeRendererSource": {
+      "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+      "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+      "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+    }
+  }
+}

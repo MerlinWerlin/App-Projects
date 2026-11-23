@@ -1,0 +1,14 @@
+{
+  "initialSource": {
+    "sourceImage": "intermediate-art-studies/fence-lizard-shadows-first.916215278530.png",
+    "sha256": "916215278530a19364af5a19ef21d2426520a7cee0d535f84f8f562c889fbe80"
+  },
+  "initialSelected": false,
+  "selectedSource": "sources/fence-lizard-shadows.61a2b0757e6a.png",
+  "selectedSha256": "61a2b0757e6a46db3d76c7422026cd184e7ec4a2ed712d66bf1aa69985e9b728",
+  "exactPrompt": "Use case: precise-object-edit. Use the exact original own lizard as the sole edit target. Make one narrowly localized anatomy correction. Remove the tiny stray real-looking paw and toes sticking out below the lower edge of the tail, just behind the nearer hind leg, at about x 300 and y 735 in the 1254-square input. This tiny isolated fifth paw is tan on top of the teal shadow. Replace only that stray paw with the continuation of the teal shadow and naturally transparent edging around the tail. Leave the tail itself unchanged.\n\nThe lizard retains exactly four anatomically connected limbs: the large near hind foot left of center, the far hind foot partly visible under the middle belly, the large near front foot beneath the chest and the far front foot to the right. Recheck that there are four physical feet in total and no extra toes directly under the curled tail. Preserve the complete original head, nostril, eye, proportions, gray-brown scales, blue throat, curved tail and all the four sound limbs. Preserve the three flattened dusty teal, dusty magenta and ochre cast silhouettes, with their full furthest endpoints, soft edges and similar contact overlaps. Preserve the full framing and transparent exterior, including the tiny clear spaces. No new branch, background, floor shape, detached paws, mist, edge border, letters, logo, watermark or halo. No external images.",
+  "directOwnReferenceCheck": true,
+  "visualAssessment": "Full, 170 px and 85 px views show four physical limbs, complete curled tail and lifted head. The small extra foot below the tail is gone. The three flat cast shadows retain their digits and full endpoints. The visible exterior remains transparent, with a very small maximum frame alpha of 2.",
+  "approvalScope": "One direct own-source anatomy-only edit of the first unselected lizard is cleared. Preserve original first quail, other three companions and all casts. Local reference only.",
+  "rawFrameAlphaMaximum": 2
+}

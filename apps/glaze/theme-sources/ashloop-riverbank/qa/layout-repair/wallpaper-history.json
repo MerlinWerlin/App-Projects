@@ -1,0 +1,19 @@
+{
+  "reason": "Actual encoded phone crops clipped the two ends of the timber bank and the beaver tail margin. The sole layout edit pulls back uniformly, retaining the whole bank and complete wildlife.",
+  "originalGeneration": "qa/layout-repair/original-generation.json",
+  "originalSource": "qa/layout-repair/wallpaper.original.46278e6c.png",
+  "originalSha256": "46278e6c8e4e7f5b88c97e402722d7fafea83eb6d8397fbf502213ce7ca1e07f",
+  "selectedSource": "qa/vertical-layout-repair/wallpaper.prior-pullback.c94ad5f3.png",
+  "selectedSha256": "c94ad5f3cd8ba45f63e89933360bd6dcc0dd8b4c54324e604a4ddb2f1fcdafe0",
+  "exactRequest": "qa/layout-repair/wallpaper-layout-repair-request.json",
+  "exactResult": "qa/layout-repair/wallpaper-layout-repair-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.46278e6c.png",
+      "sha256": "46278e6c8e4e7f5b88c97e402722d7fafea83eb6d8397fbf502213ce7ca1e07f",
+      "role": "Own original scene EDIT TARGET for layout-only pullback. All five standalone artworks and native identity preserved."
+    }
+  ]
+}

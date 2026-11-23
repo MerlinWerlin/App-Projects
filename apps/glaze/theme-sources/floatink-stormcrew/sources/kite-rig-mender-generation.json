@@ -1,0 +1,18 @@
+{
+  "id": "kite-rig-mender",
+  "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject KITE RIG MENDER: one tall adult woman in indigo/ivory marbled-paper work overalls, natural adult face, hair tied in small practical bun. She stands in an asymmetrical braced stance, BOTH feet fully visible, left hand low and right hand raised holding one long split-bamboo spar. Above-left a HUGE OPEN ANGULAR KITE has one triangular marbled sail stretched over a thin four-point frame, one corner folded back to expose repair ribs and tension cord. A small work basket with coiled plain rope and a blunt spool hangs at her hip; no weapons or scissors. One long tail ribbon curves down beside her left leg without looping around feet. Clear useful kite-rig inspection/mending role, diagonal mast and enormous airy triangular wing contrast tall human. Entire kite/spar tips, hands, feet, ribbon and basket contained central64% within real transparent margins. Thin matte paper prints/fine broken floating-ink rings throughout clothing and sail, no3D cloth sculpture/backing rectangle/halo.",
+  "tool": "built-in image_gen",
+  "source": "sources/kite-rig-mender.aafa26c3.png",
+  "sourceSha256": "aafa26c3794921e0e86712d029aa67b97a122b6f1082e29d33f6ddb6318f7fe6",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/kite-rig-mender.549312ad.png",
+  "sha256": "549312ad520840c1abd5a9df5c509d20ea1ba9dc281c1eed9540c2a6db679f2f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,56 @@
+{
+  "initial": {
+    "prompt": "Use case: stylized-concept. Matching SOOT & BRAMBLE opaque portrait phone wallpaper, aspect1290:2796. Inputs1-5 are our exact own natural hare, long-tailed tit on hawthorn, bramble with5blackberries, bumblebee on dogrose, and garden snail on dock leaf. Preserve their familiar real anatomy, exact BLACK-INK SCRATCHBOARD treatment: deep opaque matte soot-black reserves with crisp warm-ivory knife-scratched fur/feather/vein/petal marks and little sharp chisel ends, no gray photographic gradient/softmezzotint/stipple/metal/3D sculpture. Build ONE coherent familiar English hedgerow vignette, not a catalogue row or floating cutout collage. A crouched hare behind-left under a gentle arch of bramble. Long-tailed tit perches above-right on its short hawthorn twig, tail entire. Dogrose stem with open5petal flower/bee andbud grows low-left, all bee wings/antennae intact. Complete dock leaf/snail sits foreground centre-right. Natural relative sizes, hare larger than songbird, bee and snail small but identifiable on their plants. Sparse short grasses and small natural leaves anchor the scene, in the same black/ivory scratched medium. Keep all main subjects clearly separated and every outer leaf/stalk/tail/antenna/ear/foot tip whole. Full-bleed PALE COOL GREY-SAGE approximately#D8DED9 ground/background, subtle fine scratchboard grain only, quiet soft neutral field rather than a real photograph; no colored berries/flowers or watercolor washes. CRITICAL FRAMING: the ENTIRE grouping and supporting grass/branches must fit inside CENTRAL62% image width with19%quiet ground on each side, between44% and73%image height. Upper42% completely quiet pale field, bottom26%quiet ground. Plenty of room around ALL projecting tips, no whole landscape filling edges. A centre crop removing9%top/bottom must retain every focal silhouette comfortably inside rounded phone corners. No border/plaque/rectangle/panel/plate mark, no vignette dark corners or abrupt band. No new animals, fantasy shapes, clothes/props/machines/architecture. Absolutely no text/signatures/labels/numerals/logos/clock/date/battery/calendar/UI. One original illustrated natural hedgerow.",
+    "file": "qa/wallpaper-edge-study/first-scene.30421078ddc0.png",
+    "sha256": "30421078ddc03016be89dbbaf90e80037e5887b54b6d7b5ca7a05206feda7170",
+    "references": [
+      {
+        "file": "sources/hare.dcc38cfb5aaf.png",
+        "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b"
+      },
+      {
+        "file": "sources/longtailed-tit.0dfa4dabb647.png",
+        "sha256": "0dfa4dabb64740268cdd8301d35770d7ab404d4ad73cad6ac623ae9ad6444e43"
+      },
+      {
+        "file": "sources/bramble-berries.54923310708d.png",
+        "sha256": "54923310708d0d20d0cf06df33c0eb09a4fe4ebc431a08a5ca3b2a20405e09fe"
+      },
+      {
+        "file": "sources/bee-dogrose.11d195121176.png",
+        "sha256": "11d19512117680cded1e45ca0a0fd044279a0787ba21b3aae508569f81fd0455"
+      },
+      {
+        "file": "sources/snail-dock.e0ec744bc342.png",
+        "sha256": "e0ec744bc3425b1eda53823f4330734cf5afaf507837511353687619a2a53ab1"
+      }
+    ]
+  },
+  "selectedEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. LAYOUT-ONLY correction of our own SOOT & BRAMBLE scratchboard hedgerow wallpaper. Preserve all five exact familiar natural subjects, anatomy, illustration marks and relative arrangement: bramble arch/fiveblackberries upper-left, long-tailed tit withwhole tail onhawthorn upper-right, crouched hare centre-right, bumblebee onfivepetal dogrose lower-left withbud/leaves, garden snail withfourfeelers onwhole dockleaf foreground. Preserve matte opaque black reserves and crisp warm-ivory directional knife scratches, same natural sparse grass/base, same pale cool grey-sage#D8DED9 field. Change ONLY framing. Uniformly reduce the ENTIRE connected subject grouping, branches, grass and leaf base to about64% ofcurrent size; centre the smaller entire grouping at57% image height and50%width. Every part must now fit inside central62%width, with19%quiet side margins. Topmost leaf/bird should begin near40%height, lowest grass/stalk/leaf end above75%height. Upper38% quiet pale field, bottom25%quiet pale ground. Extend the same subtle neutral field smoothly around and beneath, no new plants/animals or rectangular band. Do not crop, redraw poses, change subject identities, relative arrangement or scale between subjects. Keep all ears/whiskers/beak/tail/wings/antennae/thorns/leaf tips/stem ends wholly intact; shorter-phone centre crop removing9%top/bottom should retain every silhouette with comfortable rounded-corner margins. No added realism/3D/color/softgray shading/painting, no border/panel/plate/labels/numbers/signature/UI. Full-bleed opaque portrait wallpaper, same aspect as input.",
+    "source": "sources/wallpaper.50f8061d2c58.png",
+    "sourceSha256": "50f8061d2c58ec1b8f465f4f1e00292d676db748eb769615f49b43cebf982d0b",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "fd2b0b62dedd482811d8d6e631881ec9472ac00666bf00d1a512802ed539a5ec",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own layout-only hedgerow pullback then1290x2796 export; all5independent art and native subject unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/first-scene.30421078ddc0.png",
+        "sha256": "30421078ddc03016be89dbbaf90e80037e5887b54b6d7b5ca7a05206feda7170",
+        "purpose": "Own first five-reference illustrated habitat, uniform whole-group framing correction only."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "Preserve all focal silhouettes and give phone screen corners quiet matching side/bottom margins."
+}

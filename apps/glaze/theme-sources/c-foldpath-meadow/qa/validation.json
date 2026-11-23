@@ -1,0 +1,203 @@
+{
+  "id": "c-foldpath-meadow",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "daffodil-foldpath",
+    "wren-foldpath",
+    "snail-foldpath",
+    "fern-foldpath",
+    "butterfly-foldpath"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.6f44a713.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 19224,
+    "sha256": "6f44a713ba2fc72109d11c8904f38015c0fc865f49b801cba8c7a032d2c6b874",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five whole originals and each encoded artwork at 85 px. Daffodil, perched wren, snail, arcing fern and four-wing butterfly keep familiar silhouettes. Broad teal arrow ribbons, short coral coils and thin connecting loops remain distinct at small size. The fern's first output had visible haze. One built-in edit from the exact initial fern cleared the backdrop while retaining the whole frond, all 11 leaflets and the fiddlehead. The initial image and its style reference are retained.",
+    "wallpaper": "Viewed the actual 1290x2796, 1179x2556 and 750x1334 encoded variants. The five subjects remain inside each crop. One fern leaflet meets a daffodil petal at the center of the scene. Both outlines are readable. The group spans roughly 96 percent of the width and 64 percent of the height and begins near 18 percent from the top. The outer margins are narrower than requested in the generation prompt.",
+    "native": "Viewed the final nine previews through the current coordinator renderer. A simplified daffodil and a short coil give the clock and battery room for the readings. A separate plain narcissus leaf fits the compact clock and calendar headers. All nine change with sample readings. Battery boundary states and ornament parsing passed. Installed-device verification and canonical integration remain with the coordinator.",
+    "roundedArtworkCorners": "Viewed all five rounded Artwork tiles with the app gradient, 6 percent fit inset and conservative 20 percent corner radius. Across 38 lane C themes, all 190 encoded artworks retain every pixel at or above alpha 16 in this layout simulation."
+  },
+  "ownerSteeringReview": "Recognizable meadow plants and wildlife use the visual conventions of molecular ribbon diagrams. Artwork corners have quiet ivory fields, and native headers use a small plain leaf. Completed locally under the original instruction for unavailable coordinator messaging. Coordinator review is pending.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-foldpath-meadow",
+    "backgroundStops": [
+      "#E6E3D8",
+      "#D1DBD3"
+    ],
+    "pieces": [
+      {
+        "id": "daffodil-foldpath",
+        "sha256": "70f3cf42daf0a62c3b331618890c8bd1abc7a02786748f3cc37be4b1ed2a73a9",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "wren-foldpath",
+        "sha256": "7752d02a784b29be7e681fdcbfb3bb2b17217b83d1a32c5e1e2c049ba85c838f",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "snail-foldpath",
+        "sha256": "5b9f41397667bea60782d93431996c0e958a2fab59f54936b8aad64a01c18ba9",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fern-foldpath",
+        "sha256": "67d23e5280f161eb0d67c9f5413878257c3960f9e024c0c3db8e77e97a6f5729",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "butterfly-foldpath",
+        "sha256": "02638bb9d2f800bad34ce501001e01ec3ef7179fabced0b9fb068fee70041eaa",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 5,
+  "packTestEvidence": "Offline builder v1 produced 9 assets totaling 835990 bytes with minApp 1.0.44. Five Artwork selections, nine changing live previews, ornament parsing, battery boundary states, Nature browsing, and full image and provenance checks passed. Reviewed the artwork at 85 px, the native previews, three wallpaper crops and rounded tiles.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2",
+  "selectedFirstRawUnchanged": true,
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "newImageOutputs": 7,
+  "unselectedGenerations": 1,
+  "creativeRasterEdits": 1,
+  "artworkOwnStudyDistinctReferenceImages": 2,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#214A4B",
+    "tile": "#D1DBD3",
+    "glyphTile": 6.889946946518287,
+    "text": "#1D3F40",
+    "bg": "#E6E3D8",
+    "textBg": 8.895663445679393,
+    "minimum": 4.5,
+    "source": "C:/Users/jared/Documents/Codex/2026-11-14/files-pasted-by-the-user-glaze/work/App-Projects/apps/glaze/src/core/colour.ts"
+  },
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "IntendedID/process notice attempted before first; Codex app messaging unavailable. Original HUMAN fallback authorizes collision-checked isolated strictlaneC work. ONE first then actualfull17085/material/corner review,atmost1own correction; peer material/canonical/integration/device review pending, no root/Jared artworkapproval implied. No shared/publication actions.",
+  "scope": "Local pack, source and preview verification. Coordinator review, device verification and canonical integration are pending."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "shattered-estuary",
+  "prompt": "ONE original square1024x1024 pure artwork for WAXWAKE, a flat wax-resist BATIK current-world. SHATTERED ESTUARY: three broad asymmetrical DIAGONAL slabs of indigo-dyed textile interlock around a single huge jagged cream negative-space channel; the channel abruptly turns ninety degrees twice, then forks into two short blunt teal reservoirs. An ochre reserved band follows only the upper edge of each indigo slab, and a broad rust lozenge is suspended in the large central cream gap. Outer contour low and extremely wide, staggered and angular, with big empty bites. Make it abstract impossible fluid terrain, definitely NOT an instrument, harp/lyre, fence, parallel strings, doorway, animal, face, letter, map or everyday object. Clearly thin flat wax-resist dyed cotton, visible fine plain-weave grain, dark branching wax-crackle, uneven melted resist boundaries and cream dye halos, slightly irregular dye saturation. Indigo #122E5C, ochre #C48C35, rust #A54832, cream #F3E2BC, teal #4E8B87. No glossy3D relief, embroidery, seam, plush pile or stuffed body. Whole motif central65%,18% actual transparent alpha margin around irregular cloth edge, opaque dyed internal fields, no backing rectangle/background/floor/pedestal/frame. No text, numerals, logos, UI, clock, date, battery/weather values. One standalone artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/shattered-estuary.ffff15c3.png",
+  "sourceSha256": "ffff15c334e3a62f42657b1ebd6bf2268a619c8af9bc5fd59c25bbf8898b012d",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/shattered-estuary.e42ddedf.png",
+  "sha256": "e42ddedf061046d8e8227f0287ae8f3177c17b5a2aa888564e01db9366d78aa6",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,175 @@
+{
+  "theme": "c-electron-mossbank",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "split-pollen",
+      "sourceImage": "sources/split-pollen.e5d68d47bdf3.png",
+      "sourceSha256": "e5d68d47bdf3b0dba28c5bb274af85c9354a52516769ad4f7ffd1ca572a3accf",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/split-pollen.b5ed54841689.png",
+      "sha256": "b5ed54841689c9255ad3110da13552d0fef05a2af5d5afc91edb51e3661a59e2",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1144965,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTRON MOSSBANK. A tangible NATURE microhabitat imagined as a SCANNING ELECTRON MICROGRAPH,secondary-electron detector image language. Medium: neutral COOL GREYSCALE microscopy signal,exceptionally crisp fine stochastic surface GRANULES,tiny pores,pitted cell walls and minute cuticular wrinkles. Raised edges give a narrow bright secondary-electron signal;hollow pores are deep grey/black;gently graded local detector tones describe organic relief. Almost unlimited depth of field: every near/far body part sharply resolved,with a tiny authentic detector-grain texture. The anatomy feels naturally grown,soft/woody/chitinous where appropriate,not another fabricated sculpture. The visible medium is a high-magnification electron image,not natural-light macro photography. No glossy speculars,chrome,silver metal,ceramic,concrete,foam model,crystal,paper,ink hatching,carved craft,neon light,colour bands,projected stripes,fluorescence,transmitted blue/amber fields,orientation maps,X-ray bones or artificial furry plush. Black-grey-white detector signal only,no object pigment or coloured shadows. Fictional artistic electron image of an invented but nature-led ecosystem,not a real measured microscopy dataset. No labels,scale bars,coordinates,text,numerals,clock faces,readings,graphs,logos or watermark. Subject: SPLIT POLLEN: ONE complete irregular three-lobed pollen capsule with THREE deep rounded germination fissures. One attached lobe folds outward to reveal a dark open chamber and a densely porous inner wall;the capsule stays connected,not broken into separate pieces. Exterior has a coarse reticulate exine network with tiny grain-coated ridges and short blunt nodules,not sharp spikes. Strong asymmetric rounded silhouette in three-quarter view. No ordinary fruit,nut,rock,face or hollow toy. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject and every awn loop,antenna,leg,root,leaf,tooth/cap must fit inside central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through open gaps. No black rectangular detector backing,floor,ground,cast shadow,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 608498
+    },
+    {
+      "id": "coiled-awn-seed",
+      "sourceImage": "sources/coiled-awn-seed.2b05954c2996.png",
+      "sourceSha256": "2b05954c2996fdfd53b252a4219497af4f080d0cd443865cb71aade6e48663c6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/coiled-awn-seed.7c313fd87792.png",
+      "sha256": "7c313fd877924e1b304115c0314a65ccd06b5446f55376590e6588d16aeec249",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 634389,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTRON MOSSBANK. A tangible NATURE microhabitat imagined as a SCANNING ELECTRON MICROGRAPH,secondary-electron detector image language. Medium: neutral COOL GREYSCALE microscopy signal,exceptionally crisp fine stochastic surface GRANULES,tiny pores,pitted cell walls and minute cuticular wrinkles. Raised edges give a narrow bright secondary-electron signal;hollow pores are deep grey/black;gently graded local detector tones describe organic relief. Almost unlimited depth of field: every near/far body part sharply resolved,with a tiny authentic detector-grain texture. The anatomy feels naturally grown,soft/woody/chitinous where appropriate,not another fabricated sculpture. The visible medium is a high-magnification electron image,not natural-light macro photography. No glossy speculars,chrome,silver metal,ceramic,concrete,foam model,crystal,paper,ink hatching,carved craft,neon light,colour bands,projected stripes,fluorescence,transmitted blue/amber fields,orientation maps,X-ray bones or artificial furry plush. Black-grey-white detector signal only,no object pigment or coloured shadows. Fictional artistic electron image of an invented but nature-led ecosystem,not a real measured microscopy dataset. No labels,scale bars,coordinates,text,numerals,clock faces,readings,graphs,logos or watermark. Subject: COILED AWN SEED: ONE long tapered spindle seed body with a pitted longitudinal husk,a single broad flexible awn forming TWO open corkscrew turns above/left,and one short hooked tip at the opposite end. A few short natural backward-pointing barbs at the seed shoulder,not fine fuzzy hairs. One complete connected seed,diagonal three-quarter view,all loops and endpoints whole. The awn is biologically grown,not a metal spring,cable,drill or ornament. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject and every awn loop,antenna,leg,root,leaf,tooth/cap must fit inside central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through open gaps. No black rectangular detector backing,floor,ground,cast shadow,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 860053
+    },
+    {
+      "id": "moss-capsule",
+      "sourceImage": "sources/moss-capsule.31ebf3c1c92e.png",
+      "sourceSha256": "31ebf3c1c92e857d1bed09b7cc9c3676b713400e2d24701d0737e4ef0140fdaf",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/moss-capsule.fdcff9a8f506.png",
+      "sha256": "fdcff9a8f5069a54c0a5e338bcdd3df597309f8e63b449af60bd2bdd2fb1394a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 652188,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTRON MOSSBANK. A tangible NATURE microhabitat imagined as a SCANNING ELECTRON MICROGRAPH,secondary-electron detector image language. Medium: neutral COOL GREYSCALE microscopy signal,exceptionally crisp fine stochastic surface GRANULES,tiny pores,pitted cell walls and minute cuticular wrinkles. Raised edges give a narrow bright secondary-electron signal;hollow pores are deep grey/black;gently graded local detector tones describe organic relief. Almost unlimited depth of field: every near/far body part sharply resolved,with a tiny authentic detector-grain texture. The anatomy feels naturally grown,soft/woody/chitinous where appropriate,not another fabricated sculpture. The visible medium is a high-magnification electron image,not natural-light macro photography. No glossy speculars,chrome,silver metal,ceramic,concrete,foam model,crystal,paper,ink hatching,carved craft,neon light,colour bands,projected stripes,fluorescence,transmitted blue/amber fields,orientation maps,X-ray bones or artificial furry plush. Black-grey-white detector signal only,no object pigment or coloured shadows. Fictional artistic electron image of an invented but nature-led ecosystem,not a real measured microscopy dataset. No labels,scale bars,coordinates,text,numerals,clock faces,readings,graphs,logos or watermark. Subject: MOSS SPOROPHYTE CAPSULE: ONE curved thick seta stem rising from THREE small folded basal leaflets and ending in a large drooping ovoid spore capsule. The open capsule mouth has a short ring of SIX broad recurved peristome teeth and a small attached cap hood tilted to one side. Organic pore/granule texture,wide readable capsule opening,not a lantern,bottle,bell,house or carnivorous pitcher plant. Complete connected plant,three-quarter view,all leaflets/stem/cap/teeth inside frame. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject and every awn loop,antenna,leg,root,leaf,tooth/cap must fit inside central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through open gaps. No black rectangular detector backing,floor,ground,cast shadow,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 848849
+    },
+    {
+      "id": "liverwort-thallus",
+      "sourceImage": "sources/liverwort-thallus.662cf370fb2b.png",
+      "sourceSha256": "662cf370fb2b6697b55b0cd8192e209a7c70d7c564276e3df95bd2fad4600309",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/liverwort-thallus.d929a662b54c.png",
+      "sha256": "d929a662b54cc5954c4c5007be8104c7ad0d848576f8d165b577b6b3890aa9e1",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 849839,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTRON MOSSBANK. A tangible NATURE microhabitat imagined as a SCANNING ELECTRON MICROGRAPH,secondary-electron detector image language. Medium: neutral COOL GREYSCALE microscopy signal,exceptionally crisp fine stochastic surface GRANULES,tiny pores,pitted cell walls and minute cuticular wrinkles. Raised edges give a narrow bright secondary-electron signal;hollow pores are deep grey/black;gently graded local detector tones describe organic relief. Almost unlimited depth of field: every near/far body part sharply resolved,with a tiny authentic detector-grain texture. The anatomy feels naturally grown,soft/woody/chitinous where appropriate,not another fabricated sculpture. The visible medium is a high-magnification electron image,not natural-light macro photography. No glossy speculars,chrome,silver metal,ceramic,concrete,foam model,crystal,paper,ink hatching,carved craft,neon light,colour bands,projected stripes,fluorescence,transmitted blue/amber fields,orientation maps,X-ray bones or artificial furry plush. Black-grey-white detector signal only,no object pigment or coloured shadows. Fictional artistic electron image of an invented but nature-led ecosystem,not a real measured microscopy dataset. No labels,scale bars,coordinates,text,numerals,clock faces,readings,graphs,logos or watermark. Subject: LIVERWORT THALLUS: ONE broad low natural six-lobed forked rosette,with gently overlapping thick leafy thallus branches and THREE unequal shallow round gemma cups growing from its upper surface. Four short stout rhizoid root tufts attach beneath. Clear low horizontal silhouette and genuine organic branching,finely pitted cell walls and granular cup interiors. Plant cups are part of tissue,not pottery or ordinary cups,not an architectural model or moss-covered stone. Three-quarter elevated view shows hollows and branch gaps. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject and every awn loop,antenna,leg,root,leaf,tooth/cap must fit inside central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through open gaps. No black rectangular detector backing,floor,ground,cast shadow,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 753258
+    },
+    {
+      "id": "springtail",
+      "sourceImage": "sources/springtail.d9e6086feca6.png",
+      "sourceSha256": "d9e6086feca65bcf3f31418c62c4438f71a855710d1400f39add06b1aa4caa29",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/springtail.c91e0c480e2a.png",
+      "sha256": "c91e0c480e2a174197029606c9597055e6d60fc01082d0e7b1a72f4a5fa15162",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 841967,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTRON MOSSBANK. A tangible NATURE microhabitat imagined as a SCANNING ELECTRON MICROGRAPH,secondary-electron detector image language. Medium: neutral COOL GREYSCALE microscopy signal,exceptionally crisp fine stochastic surface GRANULES,tiny pores,pitted cell walls and minute cuticular wrinkles. Raised edges give a narrow bright secondary-electron signal;hollow pores are deep grey/black;gently graded local detector tones describe organic relief. Almost unlimited depth of field: every near/far body part sharply resolved,with a tiny authentic detector-grain texture. The anatomy feels naturally grown,soft/woody/chitinous where appropriate,not another fabricated sculpture. The visible medium is a high-magnification electron image,not natural-light macro photography. No glossy speculars,chrome,silver metal,ceramic,concrete,foam model,crystal,paper,ink hatching,carved craft,neon light,colour bands,projected stripes,fluorescence,transmitted blue/amber fields,orientation maps,X-ray bones or artificial furry plush. Black-grey-white detector signal only,no object pigment or coloured shadows. Fictional artistic electron image of an invented but nature-led ecosystem,not a real measured microscopy dataset. No labels,scale bars,coordinates,text,numerals,clock faces,readings,graphs,logos or watermark. Subject: SPRINGTAIL: ONE complete globular collembola-inspired tiny soil animal with a rounded abdomen,a small forward head,TWO long gently curved segmented antennae,SIX stout jointed walking legs and a forked furcula spring folded beneath the rear. Small simple eye clusters,no human/cartoon face. Fine cuticular granules and scattered short blunt natural setae,not fur,armour,robot joints or smooth plastic. Three-quarter side walking pose,one front leg lifted;all antenna tips,legs and spring forks whole. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject and every awn loop,antenna,leg,root,leaf,tooth/cap must fit inside central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through open gaps. No black rectangular detector backing,floor,ground,cast shadow,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 797423
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.42b91dbac203.png",
+      "sourceSha256": "42b91dbac203a2d4dd6d06a0e6ef62b48f05e274a22240efb6ea6ca15acb7a99",
+      "sourceDimensions": [
+        853,
+        1844
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "54e3fa1e57f7c7bc0efecc4565aa9038d53cb22b12f593fea2c0d8a1ee69953a",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 3702834,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: identity-preserving layout edit. Preserve this exact Electron Mossbank grayscale secondary-electron micrograph habitat and all FIVE existing nature subject identities: three-lobed split-pollen capsule,two-turn coiled-awn spindle seed,curved-stem toothed moss capsule with tilted hood,six-lobed three-cup liverwort with rhizoid roots,and globular six-leg springtail with two segmented antennae/forked spring. Change framing only: pull back/reduce the entire five-subject group by about25%,keeping its relative arrangement and connected granular bank. Place ALL FIVE complete primary subjects inside horizontal10%to90%andvertical44%to78%ofcanvas. Especially reveal ALL SIX liverwort leaf lobes and root tips with space on both sides;keep full pollen capsule,seed hook/awn endpoints,springtail antennae/legs and moss hood/teeth whole. The top42%is empty very dark muted aubergine detector field,bottom20%quiet dark granular soil. Soil grains/bank can bleed through frame edges,but no focal leaves or animal limbs. Preserve fine stochastic granules,deep-focus pores,narrow bright detector edge signal,coolgreyscale bodies and dark hollows. No new objects,redesign,colourisation,blur,natural sunlight,gloss,physical craft effects,text,scale bars or UI. One continuous natural bank,not specimen panels or collage. Opaque portrait1290x2796,same aspect ratio.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "split-pollen",
+          "sourceImage": "sources/split-pollen.e5d68d47bdf3.png",
+          "sha256": "e5d68d47bdf3b0dba28c5bb274af85c9354a52516769ad4f7ffd1ca572a3accf"
+        },
+        {
+          "id": "coiled-awn-seed",
+          "sourceImage": "sources/coiled-awn-seed.2b05954c2996.png",
+          "sha256": "2b05954c2996fdfd53b252a4219497af4f080d0cd443865cb71aade6e48663c6"
+        },
+        {
+          "id": "moss-capsule",
+          "sourceImage": "sources/moss-capsule.31ebf3c1c92e.png",
+          "sha256": "31ebf3c1c92e857d1bed09b7cc9c3676b713400e2d24701d0737e4ef0140fdaf"
+        },
+        {
+          "id": "liverwort-thallus",
+          "sourceImage": "sources/liverwort-thallus.662cf370fb2b.png",
+          "sha256": "662cf370fb2b6697b55b0cd8192e209a7c70d7c564276e3df95bd2fad4600309"
+        },
+        {
+          "id": "springtail",
+          "sourceImage": "sources/springtail.d9e6086feca6.png",
+          "sha256": "d9e6086feca65bcf3f31418c62c4438f71a855710d1400f39add06b1aa4caa29"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.6b7e89f2788e.png",
+        "sha256": "6b7e89f2788edad2c061206ac4c38e6767ebe99fad859856373707137974779a"
+      },
+      "generationStages": "Five independent artwork generations;separately generated own-five-reference habitat;one layout-only edit to retain complete focal nature forms in phone crops."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Nature-led tangible habitat per Jared,with complete silhouettes/quiet Artwork corners and a compact pore-rim native fragment. meta.category Nature."
+}

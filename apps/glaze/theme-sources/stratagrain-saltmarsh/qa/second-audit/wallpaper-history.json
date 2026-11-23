@@ -1,0 +1,25 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "kind": "authorized wallpaper enlargement and natural vertical recomposition",
+  "authority": "Jared via Claude/coordinator SECOND AUDIT00:47: freeze art, enlarge wallpaper75\u201390percent width with real vertical presence; clock form for ART, never for date-marker fitting.",
+  "exactToolRequest": "qa/second-audit/wallpaper-request.json",
+  "exactToolResult": "qa/second-audit/wallpaper-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/enlargement-first-cropped.png",
+      "sha256": "426e62f87ec737980fb192360d6f00327b21800fe8565953c3e883ac86fad47d",
+      "role": "Own first enlarged wallpaper EDIT TARGET; actual side-bank cropping corrected only."
+    }
+  ],
+  "selectedSource": "sources/wallpaper.47c9aa18.png",
+  "selectedSourceSha256": "47c9aa18daeafaab3f07a37de716da06459d5f924a4710cbcaf2b0f5216a9253",
+  "priorGenerationHistory": "qa/layout-repair/wallpaper-history.json",
+  "previousSelectedGeneration": "qa/second-audit/previous-selected-generation.json",
+  "exactPreviousHistory": "qa/second-audit/before-wallpaper-history.exact.json",
+  "previousProductionWallpaper": "qa/second-audit/previous-production-wallpaper.png",
+  "previousProductionSha256": "4e2e5532e92542f4ac240e97d3d3eed9a846e3c887a94d29bb1d469a449bbcad",
+  "enlargementHistory": "qa/second-audit/enlargement-first-history.json",
+  "targetedActualCropCorrection": true
+}

@@ -1,0 +1,267 @@
+{
+  "theme": "c-colored-shadow-meadow",
+  "status": "Lane A coordinator accepted the exact first quail unchanged after full/170/85 and all seven actual comparison boards. The whole natural body and three large cast forms share the foot region and read on one ground plane. Expand four and wallpaper using this exact quail as the sole visual reference. Preserve the first raw and everything visible in the footprint.",
+  "sample": {
+    "id": "quail-three-shadows",
+    "selected": true,
+    "sourceSha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a",
+    "prompt": "Use case: stylized-concept. Create one original square Glaze Artwork study for Shadowlight Meadow. One complete and immediately recognizable California quail, standing quietly in profile with its head turned slightly toward the viewer. Whole rounded gray-brown body, tiny pale facial bar, small dark curved topknot with its full tip, short tail and both visible feet. Restrained natural warm gray and taupe plumage with a few broad underside scale marks and a dark eye. Real gentle wildlife proportions. A clean, quiet illustrative finish, with a little natural down and no bright unnatural color on the bird.\n\nShow a stylized colored-shadow scene. From the SAME two real foot contacts the quail casts THREE broad, flattened silhouette shadows along a single implied pale ground plane, in three progressively different directions. They stretch outward behind the visible bird in three directions: dusty cyan left and back, dusty magenta right and back, warm golden ochre diagonally forward. They are solid readable areas of shadow with very soft penumbra at each outside edge. Each shadow has a visibly flattened whole quail body projection, with its associated footprint narrowing into the shared dark origin at the actual feet. The far edge can show a short flattened topknot or bill, but the shadows are low flat cast shapes, never three upright birds. The shadows partly overlap near the feet in distinctly darker small intersection shapes, then separate into broad colored areas farther out. Keep the single opaque bird in front and its clean unfringed body clearly separate visually from the three thinner ground marks. The three shadows supply enough shape and color to read at 85 px. This is an original artistic depiction of colored cast shadows under three light colors, without an actual measurement or calibration.\n\nThe real quail, legs, crest and all three shadow endpoints are fully contained within the central 72 percent of the canvas. Only the quail and its actual colored shadows are visible, with transparency elsewhere. The ground is implied by the flattened shadows and foot contacts. Do not add a rectangular backing, floor slab, display disc, drawn horizon, dark platform, layer of fog, halo, ring of highlights, veins, halo outline, detached swirls, ornamental paint stroke, light beams, reflection, wet glossy texture, neon contours, red and cyan misregistration, unfocused duplicate figures, existing photographs, labels, text, UI, numbers, logos or watermark. Quiet edges and truly transparent empty corners. No external images.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        53,
+        131,
+        1218,
+        1138
+      ],
+      "96": [
+        55,
+        132,
+        1215,
+        1137
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "c-anaglyph-crossing",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-anaglyph-crossing\\widgets\\stiltshell.7434e1508785.png",
+      "sha256": "7434e15087851decc501ece5df778348a38504f040beb4cbaa6eff458cc021a5"
+    },
+    {
+      "theme": "c-chronophotographic-ensemble",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chronophotographic-ensemble\\widgets\\bellows-breather.2baf90daf94f.png",
+      "sha256": "2baf90daf94fa5fef3ec6a8260946d800909bccb899098fe4f5131bb13d2e939"
+    },
+    {
+      "theme": "porcelain-umbra",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\shadow-sluice.8c3fbbb2.png",
+      "sha256": "8c3fbbb2a20a213b1c1690a699686fd7d31bb9467f47a34fae3be8f5ff37c043"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "c-normalmap-pinewood",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-normalmap-pinewood\\widgets\\woodpecker-direction.041026a551e6.png",
+      "sha256": "041026a551e680ebf207fe7dab127b1d089d8dc4173c9c70bcbd82dff6b0ebfa"
+    },
+    {
+      "theme": "c-electron-mossbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-electron-mossbank\\widgets\\split-pollen.b5ed54841689.png",
+      "sha256": "b5ed54841689c9255ad3110da13552d0fef05a2af5d5afc91edb51e3661a59e2"
+    },
+    {
+      "theme": "roseghost-fen",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\roseghost-fen\\widgets\\lantern-bladderwort.a68c5c93abb8.png",
+      "sha256": "a68c5c93abb834a617b0f510740616925995419936b54f23338cfc00649e3a76"
+    },
+    {
+      "theme": "commesso-underwood",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\commesso-underwood\\widgets\\bullfinch-sprig.9732bf92.png",
+      "sha256": "9732bf92aac6826c5a61f98d75f9faf813f6c28b6255eb1fe7ec64d5a9a55b5d"
+    },
+    {
+      "theme": "c-cherenkov-dispatch",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-cherenkov-dispatch\\widgets\\keelbeam-ferry.89398e132087.png",
+      "sha256": "89398e132087a79258653d01e4a01278af5b3971575106e6ad5143971cf92d1c"
+    },
+    {
+      "theme": "c-anaglyph-crossing",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-anaglyph-crossing\\widgets\\forkbill.eb3c1b576f58.png",
+      "sha256": "eb3c1b576f589eb8afd0ff943962adfe86a769a728f97ac6aaf3724fa118b909"
+    },
+    {
+      "theme": "c-anaglyph-crossing",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-anaglyph-crossing\\widgets\\crest-tumbler.b107f2d3de23.png",
+      "sha256": "b107f2d3de2363c4cc9003f81834534df43009a8eddf4900066bd7c5f25ceef0"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "tessellated-sunbird",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-tessellated-sunbird.81d4eab9.webp",
+      "sha256": "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "hero-small",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-small.a0d46a3f.webp",
+      "sha256": "a0d46a3faab58da3e2cf75b520423ff846e8a8fda0ee3a35e4770d26c8c2003e",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "stained-glass-iris",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-stained-glass-iris.b4fa5f9e.webp",
+      "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "neon-monsoon",
+      "optionId": "neon-paper-fish",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\neon-monsoon\\v7\\widget-neon-paper-fish.a2fb26fa.webp",
+      "sha256": "a2fb26fa3bee10648139f6a9a6df58a8e1d57f92a42c94f26b8b5f5b512db4eb",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\neon-monsoon\\v7\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "neon-monsoon",
+      "optionId": "rain-capsule",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\neon-monsoon\\v7\\widget-rain-capsule.e16cd9ab.webp",
+      "sha256": "e16cd9ab084f256c9fba7993237234d72320273dfd887a94e3a1a2767c651a13",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\neon-monsoon\\v7\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "neon-monsoon",
+      "optionId": "neon-origami-fox",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\neon-monsoon\\v7\\widget-neon-origami-fox.a23ee949.webp",
+      "sha256": "a23ee9492ac6dc2137bb354fd349aa532aaa98afa19cb30e71f847f4838fccc2",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\neon-monsoon\\v7\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "magnolia-veil",
+      "optionId": "ivory-bloom",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\widget-ivory-bloom.f9e3d957.webp",
+      "sha256": "f9e3d957d6074fb780ffffe86ee85574bf7a2665a80bb284b69f9d193d08957c",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "magnolia-veil",
+      "optionId": "petal-fold",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\widget-petal-fold.54a18c30.webp",
+      "sha256": "54a18c30160087c5cc79c2a4330bcd4ff78b23d53d3ff2ba78d38055b60c4345",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "magnolia-veil",
+      "optionId": "magnolia-seedpod",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\widget-magnolia-seedpod.bd586d13.webp",
+      "sha256": "bd586d134d9b77b7fb981a9153dec94b9b9bf749838a11e20b2a578c0c3e2089",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    },
+    {
+      "theme": "magnolia-veil",
+      "optionId": "magnolia-skeleton-leaf",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\widget-magnolia-skeleton-leaf.b118391c.webp",
+      "sha256": "b118391c9c955788f9e9ca3770333261bc41270461995ebee602109e3e3f6073",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\magnolia-veil\\v5\\manifest.json",
+      "selectorProof": "outputs/colored-shadow-meadow-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "One natural quail remains recognizable by the full crest and beak, broad body and grounded feet. The flat and colored lobes continue from the feet in three directions. Each shows subtle compressed body, bill and crest traits. Darker contacts are near the feet. At 85 px the fine overlap and ends are simpler, but the three large low shadows remain distinct from the central upright bird. The raw footprint is wider than requested, with all shadows and natural tips inside the source frame.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "1",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-1-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "2",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-2-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "3",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-3-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "4",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-4-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "5",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-5-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "6",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-6-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "7",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\colored-shadow-meadow-first-7-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ]
+}

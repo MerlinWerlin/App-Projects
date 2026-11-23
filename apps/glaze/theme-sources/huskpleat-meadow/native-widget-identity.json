@@ -1,0 +1,18 @@
+{
+  "themeId": "huskpleat-meadow",
+  "recipe": [
+    "arch",
+    "huskOwl",
+    "huskPleats",
+    "rays",
+    "leaf",
+    "column",
+    "ticket"
+  ],
+  "art": {
+    "huskOwl": "M 30 20 Q 49 6 69 20 L 76 41 L 72 69 Q 63 87 49 88 Q 34 88 27 69 L 23 42 Z M 30 23 Q 41 14 49 29 Q 58 14 69 23 Q 76 39 49 49 Q 22 39 30 23 M 36 31 L 38 32 M 60 31 L 62 32 M 47 35 L 51 35 L 49 42 Z M 28 46 Q 29 68 45 76 L 37 47 M 70 46 Q 69 68 53 76 L 61 47 M 42 86 L 40 94 L 32 96 M 57 86 L 59 94 L 67 96 M 18 97 L 82 97",
+    "huskPleats": "M 13 82 Q 28 69 44 19 M 20 82 Q 36 59 44 19 M 28 83 Q 42 61 44 19 M 28 83 Q 53 63 62 38 M 28 83 Q 63 73 78 51 M 34 76 L 46 80 M 36 69 L 48 73 M 57 52 Q 72 39 84 39"
+  },
+  "ornament": "M 22 82 Q 40 65 43 22 Q 57 43 56 63 Q 50 76 22 82 M 29 75 Q 43 58 43 29 M 35 77 Q 49 61 48 43 M 28 69 L 48 75 M 30 64 L 50 70",
+  "direction": "Natural barn owl and broad gathered corn-husk fans. Arch clock recalls two curved folded face panels, ray marks and leaf hands echo longitudinal ribs and tapering husk ends. Column battery and ticket calendar give long folded bands. Compact companion is only one short pleated husk tip with a two-turn binding; no whole owl, tall stalk, dense fanball or enclosing straw wreath. Retain shipped calendar/date/highlight/identity outlines, no date-containment design gate."
+}

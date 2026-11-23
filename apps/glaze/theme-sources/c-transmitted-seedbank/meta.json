@@ -1,0 +1,16 @@
+{
+  "name": "Seedlight Copse",
+  "mood": "Papery autumn seedpods and delicate wings in soft warm transmitted light.",
+  "tags": [
+    "autumn-woodland",
+    "seedpods",
+    "transmitted-light",
+    "natural-botanical"
+  ],
+  "credits": "Glaze original built-in image_gen botanical artwork and authored live native identity.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland plants and one real lacewing, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. ",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

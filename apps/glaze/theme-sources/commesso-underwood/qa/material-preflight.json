@@ -1,0 +1,60 @@
+{
+  "id": "commesso-underwood",
+  "lane": "B42",
+  "category": "Nature",
+  "status": "One first generated and visually reviewed full540/170/85 plus6own and44actual baseline neighbors. Messaging failed on third material-gate dispatch. Proceeding isolated under explicit original human fallback; coordinator material review pending.",
+  "process": "Precisely contoured opaque natural hardstone inlay: broad jasper, marble and chalcedony pieces fitted flush in one plane with hairline joints and coarse intrinsic mineral veins",
+  "subjects": [
+    "bullfinch-sprig",
+    "red-squirrel-acorns",
+    "common-toad",
+    "oak-acorns",
+    "speckledwood-butterfly"
+  ],
+  "world": "Oakwood wildlife assembled from broad natural hardstone pieces, precisely fitted and polished in one plane.",
+  "baselineSearch": "Exactcommesso/pietra-dura and ID absent in current root source/catalogue scan; broad stone/inlay/mosaic neighbors positive. Actual44selector baselineimages +6own independentlyhashed/decoded/viewed, historicalfunctional progress pictures retained/distinguished; accepted5snapshot unpublished, no currentliveR2 claim.",
+  "neighborReview": "../outputs/commesso-underwood-scout-neighbor-review.json",
+  "neighbors": [
+    "TesseraTempo actual geometric glazed ceramic tiles/fan/mountain, no regular tessera grid/grout here.",
+    "JadeMeridian actual carved3Djade bonsai/crane/disc/tiger/tortoise, no3Danimal sculpture or one greenjade body here.",
+    "AgateApricot actual banded slices/druzy/bowl/shell, no agate band-stripes/translucency/druzy carving here.",
+    "MarquetryArc actual flat woodveneer intarsia, no woodgrain/ribbon fields.",
+    "LumenMosaic actual stainedglass sunbird/lantern/pomegranate/window/iris with metaldividers/translucency, no glass/metal partition/glow here.",
+    "B8iridescent shell in lacquer, B37eggshellsmallchips, B3vitreousenamelmetalwalls, B29flatstrawfibres, B34bondedmetalstrata, B32fusedcaneglasscrosssections.",
+    "A19Linkmere open steel rings reserved by coordinator, exclusive and avoided."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://www.vam.ac.uk/articles/how-was-it-made-pietre-dure",
+      "scope": "Primary V&A technique text: precisely cut colored hardstones fitted into a picture and polished. TEXT only; no object image/pattern input."
+    },
+    {
+      "url": "https://www.metmuseum.org/exhibitions/listings/2008/pietre-dure",
+      "scope": "Primary Met technique text: finely cut colored hardstone pieces, natural stone color/pattern choices, abrasive bow-saw cutting. TEXT only; no specimen image or historical composition copied."
+    }
+  ],
+  "cornerCompanion": "Whole natural bullfinch on a short leafy sprig, broad coplanar stone pieces and switching coarse natural mineral veins. Octagon clock rim echoes polished lapidary cut edges, cut marks and wedge hands, tiled charge and folio calendar. Compact companion is one open half-leaf vein with two short cut-seam fragments; no full bird, mosaic tile patch, enclosing gemstone frame or jewel mount. Retain shipped calendar/date/highlight/identity-outline behavior, no date-containment design gate.",
+  "firstGateCriterion": "Must visibly read at85 as broad OPAQUE natural mineral-vein fields fitted in ONE FLAT plane with tight joints, not colored3Djade bird, stainedglassmetalframed mosaic, glazedtilegrid, nacre/eggshellchips or merely differentpalette of familiar mosaic. One first prototype then actual material review before expansion.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 Codex app tool request failed",
+      "delivery": "unknown",
+      "informationalIntentOnly": true
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "Same request error on bounded retry",
+      "delivery": "unknown",
+      "informationalIntentOnly": true
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 material-gate dispatch failed",
+      "delivery": "unknown",
+      "informationalIntentOnly": false
+    }
+  ],
+  "coordinationFallbackAuthority": "Original human lane brief: If messaging is unavailable, stay strictly inside your assigned territory and use new, collision-checked IDs.",
+  "reviewAuthority": "lane-local; coordinator review pending"
+}

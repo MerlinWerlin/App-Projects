@@ -1,0 +1,73 @@
+{
+  "theme": "c-fraunhofer-masquerade",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.55425c77e613.png",
+      "sourceSha256": "55425c77e613282d6f938a04b0dfb71ee4e701d819b3504bd84ce633b7dc2059",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "8d1f558a48dd84aa209f02194fe692526805a9e39a1212304da841873564cc85",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 4641368,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze FRAUNHOFER MASQUERADE. Medium: far-field coherent laser diffraction INTENSITY EXPOSURE, finely resolved sinc lobes, nested Airy fringes, sharp dark optical zeros and aligned luminous chromatic diffraction orders on an invisible field. Continuous light intensity, pink-magenta outer orders, ice-cyan counterorders and soft bone-white peaks, deep violet shadows. Visibly a flat photographic optical detector image. Bright lobes have tiny finely striped internal fringes; dark gaps create bold silhouettes. No solid surfaces, objects, materials, relief, sculpture, glossy glass, photoelastic rainbow sheets, contour maps, particle dots, drawn continuous trajectories, sparkly stars, ultrasound grain, thermal spectrogram bars or physical craft. No text, numerals, labels, axes, scale, time, live readings, UI, borders, logos or watermark. Fictional aperture experiments, not actual measured data. Asset: ONE portrait phone wallpaper1290x2796. Near-black violet optical field, upper third and middle left quiet. In the lower two-thirds, an immense asymmetric three-lobed diffraction caustic intersects a slanted family of thin sinc orders, with one broken annular fringe cluster near bottom left. Intensities taper into darkness, sharply defined optical zeros and rich microfringe detail. No physical light source, object or laser apparatus. Opaque full-bleed detector exposure, no mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "trefoil-caustic",
+      "sourceImage": "sources/trefoil-caustic.25c0f61393cc.png",
+      "sourceSha256": "25c0f61393cca8cae92a44746c61bbdc0af17188bcbf9f98879d7aa7d50b5cc3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/trefoil-caustic.2c3df25a7ff8.png",
+      "sha256": "2c3df25a7ff82f19deb746ecf553765a3814fea838be8ad209d148cb8988df1a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 409326,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze FRAUNHOFER MASQUERADE. Medium: far-field coherent laser diffraction INTENSITY EXPOSURE, finely resolved sinc lobes, nested Airy fringes, sharp dark optical zeros and aligned luminous chromatic diffraction orders on an invisible field. Continuous light intensity, pink-magenta outer orders, ice-cyan counterorders and soft bone-white peaks, deep violet shadows. Visibly a flat photographic optical detector image. Bright lobes have tiny finely striped internal fringes; dark gaps create bold silhouettes. No solid surfaces, objects, materials, relief, sculpture, glossy glass, photoelastic rainbow sheets, contour maps, particle dots, drawn continuous trajectories, sparkly stars, ultrasound grain, thermal spectrogram bars or physical craft. No text, numerals, labels, axes, scale, time, live readings, UI, borders, logos or watermark. Fictional aperture experiments, not actual measured data. Asset: ONE separate square1024x1024 pure-art widget. Subject TREFOIL CAUSTIC: three radically unequal wedge-shaped light-intensity lobes rotate around an off-centre dark triangular optical zero; longest lobe curls into a sharp cusp, shortest splits into two narrow aligned diffraction orders. Strong asymmetric three-blade optical silhouette, no wings or ordinary object, no drawn outlines. Entire event centred with15%clear margins. Genuine transparent alpha outside the light field and inside the zero; no black backing, tile, floor, shadow or rectangular image panel. Critical framing correction: the ENTIRE event, including every bright lobe and all visible fringes, must fit inside the central60percent of a square canvas. At least20percent fully empty transparent margin on all four sides. Every lobe tapers completely to zero before any edge. No crop, no cut-off bright regions, no glow touching the canvas boundary.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 918256
+    },
+    {
+      "id": "oblique-comb",
+      "sourceImage": "sources/oblique-comb.907071369b2e.png",
+      "sourceSha256": "907071369b2e301a1d3809bab18c69c1de77fb50a5b32f1849ade3c26d991cf1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/oblique-comb.438c6210a1d3.png",
+      "sha256": "438c6210a1d3ab8a4c104a549608ebdce75efeb3dfaa5189022b0014eea561a6",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 407204,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze FRAUNHOFER MASQUERADE. Medium: far-field coherent laser diffraction INTENSITY EXPOSURE, finely resolved sinc lobes, nested Airy fringes, sharp dark optical zeros and aligned luminous chromatic diffraction orders on an invisible field. Continuous light intensity, pink-magenta outer orders, ice-cyan counterorders and soft bone-white peaks, deep violet shadows. Visibly a flat photographic optical detector image. Bright lobes have tiny finely striped internal fringes; dark gaps create bold silhouettes. No solid surfaces, objects, materials, relief, sculpture, glossy glass, photoelastic rainbow sheets, contour maps, particle dots, drawn continuous trajectories, sparkly stars, ultrasound grain, thermal spectrogram bars or physical craft. No text, numerals, labels, axes, scale, time, live readings, UI, borders, logos or watermark. Fictional aperture experiments, not actual measured data. Asset: ONE separate square1024x1024 pure-art widget. Subject OBLIQUE COMB: a tall diagonal array of seven unequal elongated sinc lobes stacked in a steep staircase, each lobe has fine bright/dark parallel fringe orders and tapered ends; one thin short cross-order links only the middle three. The brightest order sits off-centre low. Tall angular comb silhouette, no actual comb, ladder, object or material. Whole continuous-intensity optical event centred with15%clear margins. Real alpha between and outside lobes; no black backing, tile, floor, shadow or image panel. Critical framing: complete event and every bright lobe must fit inside the central65percent of a square canvas, with fully empty transparent outer margins on all four sides. All fringes taper to zero before the frame; no cropped lobes or glow touching any edge.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixels": 924001
+    }
+  ],
+  "published": false
+}

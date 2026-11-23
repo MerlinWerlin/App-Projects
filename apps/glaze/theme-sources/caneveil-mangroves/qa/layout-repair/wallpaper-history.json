@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "reason": "Reduce and reposition complete habitat for all actual wallpaper crop variants.",
+  "originalPrompt": "CANEVEIL MANGROVES. Original Glaze Nature phone wallpaper, portrait1290x2796. Input image1 is OWN approved gecko/leaf MATERIAL AND ANATOMY REFERENCE ONLY, not a layout or sheet to paste. Build ONE coherent tangible mangrove habitat in its fused MURRINE glass-cane process: low shallow continuous glass roots and leaves with large embedded radial ivory/honey/cobalt/emerald cane cross-sections, clear fused casing and longitudinal color stripes visible at curved cut lips. Real mangrove prop roots form a low open arch above a small calm shallow tidal oval, three modest leafy twigs and two long propagules. One SMALL whole natural four-legged gecko with complete curling tail rests on a leaf at left, one tiny familiar mudskipper fish below at right. Natural anatomy and connected root/branch growth; not separate ornament stickers or a five-item collage. Entire habitat including ALL roots, leaves and tail tips occupies only CENTRAL48percent canvas width and CENTRAL24percent height, horizontally centered, vertical center60percent down. Huge quiet flat pale pistachio field #D9DCC1 with only faint compatible tone variation above and around. At least26percent blank margin on both left and right; top43percent completely quiet, bottom22percent quiet. Whole habitat fully inside margins, no branches or roots extend toward any screen edge. No wallpaper frames, peripheral vines, corner rosettes, border decorations, buildings, floats or litter. No loose beads, leading, metallic jewelry, rough frit, generic plain shiny glass or painted floral decals. No people, text/letters/numbers, dates/weather/clock/battery values, icons, UI, logos or signature. True continuous full opaque wallpaper background, no transparency. Use material from reference but compose the entire habitat deliberately SMALL with broad quiet negative space.",
+  "originalSource": "qa/layout-repair/wallpaper.original.50b70662.png",
+  "originalSha256": "50b70662fd1a6744f203926dddd71b8e3b1e626f25450358af7ca5fd98bd07d0",
+  "repairPrompt": "Precise LAYOUT-ONLY edit of input1, own original Caneveil Mangroves wallpaper. Keep exact fused murrine cane-glass mangrove habitat, gecko, leaf/branch/root arrangement, propagules, mudskipper, shallow water oval, embedded coarse colored cane flowers and longitudinal stripes, palette, lighting, subtle quiet pistachio background and portrait aspect ratio. Scale the ENTIRE existing connected habitat uniformly to65percent of its CURRENT width and height, as ONE unit, without changing any individual organism or object proportions or spacing within it. Place the uniformly smaller complete habitat horizontally centered with its overall center at57percent canvas height. Extend/reconstruct only the same quiet pale pistachio #D9DCC1 background around it; match smooth subtle background perfectly, no visible rectangular pasted edge. Final whole habitat should occupy about HALF total canvas width, with at least24percent quiet background on BOTH left/right sides. Preserve complete leaf/root/gecko tail/fins/propagule tips, no crop, no duplicate or new organism/object. No border/corner branches/extra flowers, no enlarged individual gecko, no reframing zoom, no text/UI. Keep original internal murrine material and anatomy unchanged. Opaque full wallpaper, no transparency.",
+  "referencedImage": "qa/layout-repair/wallpaper.original.50b70662.png",
+  "selectedSource": "qa/second-audit/previous-selected-wallpaper.png",
+  "selectedSourceSha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c",
+  "initialMaterialAndAnatomyReferences": [
+    {
+      "id": "gecko-leaf",
+      "source": "sources/gecko-leaf.704a800f.png",
+      "sourceSha256": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5",
+      "role": "Own approved material/anatomy reference for initial wallpaper; no external or neighbor reference input."
+    }
+  ],
+  "initialReferencedImageOrder": [
+    "sources/gecko-leaf.704a800f.png"
+  ],
+  "initialExactToolRequest": "qa/layout-repair/exact-initial-material-request.json",
+  "exactToolRequest": "qa/layout-repair/exact-layout-only-request.json",
+  "selectedSourceLocationNote": "Exact selected raster retained here after second-audit enlargement/recomposition; generation inputs/order/hashes unchanged."
+}

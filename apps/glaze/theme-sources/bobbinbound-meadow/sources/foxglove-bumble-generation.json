@@ -1,0 +1,18 @@
+{
+  "id": "foxglove-bumble",
+  "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject FOXGLOVE AND BUMBLEBEE: one tall gracefully arching foxglove flower stem with FIVE LARGE HANGING BELL FLOWERS of unequal sizes, broad pleated basal leaves and two small unopened top buds. Each flower is open enough to show its scalloped ivory-bound mouth and deeper plum open diamond-lace bell, thick braided stem and paired loop leaf edges. One naturally proportioned BUMBLEBEE approaches from upper-left with compact round thorax, clear striped abdomen made of alternating plum/ivory thread bands, exactly two visible translucent diamond-lace wings and six short looped legs reaching toward the largest bell; no anthropomorphic face or costume. A small gently curved root stem connects basal leaves, no pot/ground mat or garden structure. Strong tall S-shaped flower silhouette counterbalanced by the small hovering bee, actual living meadow pollination scene. Whole stem tip, buds, all flower lips, leaf tips, bee antennae/wings/legs completely visible within broad genuine alpha margin. Handmade paired linen twists and picot joins throughout, no actual insect photo, plush, wire or solid embroidered fill.",
+  "tool": "built-in image_gen",
+  "source": "sources/foxglove-bumble.eb97211a.png",
+  "sourceSha256": "eb97211a786a17f348b0dff5534c3d6a61265b9be377ec697e260ba6e87a44a7",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/foxglove-bumble.2eec2e1e.png",
+  "sha256": "2eec2e1e85f89b016770eefb7435641f8bc541bde3d16f6b2705b9fd678d92a1",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,1 @@
+Neutrino Reliquary lane C sources for APPS A2. Exact prompts and selected source hashes are in provenance.json; all scientific events are imagined artwork. Native preview readings are QA only. No publication.

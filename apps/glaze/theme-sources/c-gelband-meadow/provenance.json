@@ -1,0 +1,225 @@
+{
+  "theme": "c-gelband-meadow",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "beech-bandlight",
+      "sourceImage": "sources/beech-bandlight.030887aea926.png",
+      "sourceSha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/beech-bandlight.61cafa0ba753.png",
+      "sha256": "61cafa0ba75361810b9a9776a02863649488f08564d8a8091be32039fd7a0bcc",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 368213,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, BANDLIGHT GROVE. Subject: one complete instantly recognizable BEECH LEAF, broad ovate natural blade, about twice as long as wide, gently pointed tip, shallow modest teeth along both margins, one whole gently bent short petiole. Diagonal from lower left petiole to upper right tip. Whole intact familiar leaf silhouette, flat continuous opaque filled blade. Leaf plus complete stalk inside central70percent square, at least15percent truly transparent empty exterior on all sides. Whole natural form FIRST, not an abstract striped blob.\nDistinctive artistic image language: a monochrome GEL-BAND FLUORESCENCE INTENSITY IMAGE supplies the entire filled blade. Continuous matte charcoal/midgrey matrix, neither black void nor natural leaf skin. Across that blade are EIGHT separate broad vertical image lanes, each carrying TWO TO FOUR discrete soft pale-silver/white horizontal bands at uneven, staggered heights. About20large bands total. Bands are short rounded irregular luminous dashes, some thicker/brighter, others faint, with soft photographic edges and restrained very short vertical smears under a few bands. Intervals in between remain opaque charcoal matrix. Bands in adjacent lanes generally DO NOT ALIGN across the leaf; no single continuous stripe crosses the whole form. A few lower bands are broad and bright, upper bands sparse; distinct lane-wise grouping reads at85px. Stalk remains a simple opaque midgrey. Image is flat, front-on, softly resolved photographic signal, not carved/embossed, not a real leaf photograph with stripes added, no veins or lit tissue. The outline alone provides botanical form; matrix and discrete white band clusters provide the process.\nMonochrome only, warmwhite to coolgrey, no rainbow heatmap, orange spectral pixels, fine regular grid, barcode, dense equal repeated stripes, projected continuous stripes wrapping3D, X-ray skeleton/veins, leaf-cell network, line art, paper/fabric/collage, metallic sculpture, plastic, glass, fluorescence halo outside the leaf, ornamental hatching, terrain or mineral rings. No gel wells, assay plate, lab equipment, numbering, molecular weights, DNA sequences, diagnostics or measurements. This is original static artistic band-image interpretation, NOT actual molecular/experimental data, a real leaf-shaped assay, scientific result or validated simulation. No external visual input or named artist.\nTRUE alpha transparency ONLY outside the whole complete leaf/petiole, retain opaque matrix everywhere inside leaf blade, no internal cutout holes. No backing square/rectangle/slab, ground, cast background shadow, fog, glow beyond silhouette, frame, UI, text, numbers, labels, scale/ruler, clock/date/battery/weather values, logo or watermark. One clean complete leaf with generous truly transparent margins.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 803543
+    },
+    {
+      "id": "songbird-bandlight",
+      "sourceImage": "sources/songbird-bandlight.c90baae546ea.png",
+      "sourceSha256": "c90baae546ea78b855eb7f4150cc027b72e9497f5471e3ada62e353dafdf98fa",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/songbird-bandlight.4e47a90e2714.png",
+      "sha256": "4e47a90e2714ce96bc095ff6ba49c70a7abd72b9826867bc79e1eb65baf45a3d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 364859,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, BANDLIGHT GROVE. Subject: One WHOLE familiar small plump SONGBIRD perched in side profile facing LEFT on one short gently diagonal twig. Complete pointed bill, rounded crown, compact oval body, one closed wing indicated by a restrained darkgrey contour only, short clearly separated tail, TWO visible slender legs and TWO coherent sets of toes wrapping the twig. One small whole beech leaf on the twig's right end. Exactly one small plain dark eye with a tiny pale catchlight, no human face. Keep bill, belly, tail, feet, twig and leaf endpoints intact and separated. Familiar natural bird outline, no robot/toy, bird wing remains attached, no long heron neck. Broad body/wing grey plane carries the coarse staggered gel bands; head has only1or2faintbands so its small eye stays clear.\nThe entire broad body/plant blade/cap/petals is ONE FLAT continuous opaque charcoal-to-midgrey GEL-BAND INTENSITY IMAGE, no 3D volume or underlying natural photograph. Across each broad part, six to eight broad parallel vertical image lanes carry TWO TO FOUR sparse soft horizontal pale-silver/white band dashes each, irregularly staggered at different heights, unequal thickness/intensity, soft photographic edges, a few restrained short vertical smears below. Roughly20to30large bands total in the whole composition, not many fine lines. Adjacent lanes rarely align; no continuous stripe crosses the form. All spaces between bands are opaque neutral grey matrix. Anatomically narrow beak/legs/stalk/antennae stay plain midgrey without tiny bands. Bands are the visible image construction, not a named hidden filter. Whole nature silhouette first, all major parts cleanly separated and familiar at85px. Monochrome white/neutral grey only. Similar signal texture to an artistic gel photograph, NEVER a real genetic/biomolecular profile or measured image. No assay, experimental result, molecular weights, diagnosis, exact species anatomy or validated simulation claim.\nFlat front-on image, fully opaque filled grey forms, TRUEalphaZERO only OUTSIDE the complete subject. Subject contained inside central70percent square with at least15percent clear transparent margin each side. No background/rectangle/slab/paper carrier, ground/floor/castshadow, glow outside silhouettes, haze, cropped tips, extra scattered objects, UI, text/numbers/labels/scale bar, actual data, baked clock/date/battery/weather readings, logos or watermark. No rainbow heatmap, orange dense spectrogram pixels, continuous projected stripes following3D, Xray skeleton or bones/veins, cellular mesh, neon linework, engraved metallic sculpture, fabric/paper/collage, plastic/glass, mineral rings, normal wildlife/plant photo, embossed shading or coloured fur/feathers/tissue. No external image input or named artist style. ONE independent original asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 841176
+    },
+    {
+      "id": "mushrooms-bandlight",
+      "sourceImage": "sources/mushrooms-bandlight.4aac4bfbcf1a.png",
+      "sourceSha256": "4aac4bfbcf1a88ea5cffc04a2f5ba1a595e2b25a9e3641ff3ef573dcdb5ddf0d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/mushrooms-bandlight.7d34e9f91fce.png",
+      "sha256": "7d34e9f91fcebed338a8b71a607ba251f964ca76f3c80799e8719dea5834976d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 423302,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, BANDLIGHT GROVE. Subject: A WHOLE natural cluster of THREE familiar woodland MUSHROOMS with gently domed caps and full stout tapering stems. One broad tall mushroom at left-back, one medium cap right, one short foreground mushroom low-left. Caps subtly irregular rounded umbrellas, not perfect geometric disks, complete margins with shallow underside scallop. Stems join caps naturally and meet in a compact irregular base with no ground platform. Each cap is filled grey band-intensity plane; stems midgrey with only1or2faint bands. Distinct tall/medium/short complete silhouettes, no holes through caps/stems, no fairy houses or faces. All THREEcaps and allTHREE fullstem ends visible, no one cap hiding an entire stem.\nThe entire broad body/plant blade/cap/petals is ONE FLAT continuous opaque charcoal-to-midgrey GEL-BAND INTENSITY IMAGE, no 3D volume or underlying natural photograph. Across each broad part, six to eight broad parallel vertical image lanes carry TWO TO FOUR sparse soft horizontal pale-silver/white band dashes each, irregularly staggered at different heights, unequal thickness/intensity, soft photographic edges, a few restrained short vertical smears below. Roughly20to30large bands total in the whole composition, not many fine lines. Adjacent lanes rarely align; no continuous stripe crosses the form. All spaces between bands are opaque neutral grey matrix. Anatomically narrow beak/legs/stalk/antennae stay plain midgrey without tiny bands. Bands are the visible image construction, not a named hidden filter. Whole nature silhouette first, all major parts cleanly separated and familiar at85px. Monochrome white/neutral grey only. Similar signal texture to an artistic gel photograph, NEVER a real genetic/biomolecular profile or measured image. No assay, experimental result, molecular weights, diagnosis, exact species anatomy or validated simulation claim.\nFlat front-on image, fully opaque filled grey forms, TRUEalphaZERO only OUTSIDE the complete subject. Subject contained inside central70percent square with at least15percent clear transparent margin each side. No background/rectangle/slab/paper carrier, ground/floor/castshadow, glow outside silhouettes, haze, cropped tips, extra scattered objects, UI, text/numbers/labels/scale bar, actual data, baked clock/date/battery/weather readings, logos or watermark. No rainbow heatmap, orange dense spectrogram pixels, continuous projected stripes following3D, Xray skeleton or bones/veins, cellular mesh, neon linework, engraved metallic sculpture, fabric/paper/collage, plastic/glass, mineral rings, normal wildlife/plant photo, embossed shading or coloured fur/feathers/tissue. No external image input or named artist style. ONE independent original asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 765871
+    },
+    {
+      "id": "hedgehog-bandlight",
+      "sourceImage": "sources/hedgehog-bandlight.6a724e891150.png",
+      "sourceSha256": "6a724e891150dbd14b658f6661d3f81d5460a88cd3396ec0eb642e21ca082108",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/hedgehog-bandlight.3253c38208ed.png",
+      "sha256": "3253c38208ed4de999999661ff89398d88fcc6d4d24717f18244315cc687d7a1",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 270208,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, BANDLIGHT GROVE. Subject: One WHOLE instantly familiar HEDGEHOG, low walking side profile facing RIGHT. Rounded oval prickly back with coarse short irregular triangular spine-tip silhouette, small pointed tapered snout with one tiny dark nose, one small rounded visible ear, tiny dark eye, belly held low and FOUR short coherent visible legs/paws separated along the lower outline. Natural compact body proportions and quiet walking pose, not cartoon/toy/porcupine with giant needle rays. Body is a single continuous opaque grey band-intensity image, not individual rendered fur/spines. Spine tips are only the outer silhouette; inside are broad grey matrix and staggered soft white gel bands. No stripe overlays on realistic animal, no dorsal bone/skeleton. All paws/snout/spine-tip endpoints intact.\nThe entire broad body/plant blade/cap/petals is ONE FLAT continuous opaque charcoal-to-midgrey GEL-BAND INTENSITY IMAGE, no 3D volume or underlying natural photograph. Across each broad part, six to eight broad parallel vertical image lanes carry TWO TO FOUR sparse soft horizontal pale-silver/white band dashes each, irregularly staggered at different heights, unequal thickness/intensity, soft photographic edges, a few restrained short vertical smears below. Roughly20to30large bands total in the whole composition, not many fine lines. Adjacent lanes rarely align; no continuous stripe crosses the form. All spaces between bands are opaque neutral grey matrix. Anatomically narrow beak/legs/stalk/antennae stay plain midgrey without tiny bands. Bands are the visible image construction, not a named hidden filter. Whole nature silhouette first, all major parts cleanly separated and familiar at85px. Monochrome white/neutral grey only. Similar signal texture to an artistic gel photograph, NEVER a real genetic/biomolecular profile or measured image. No assay, experimental result, molecular weights, diagnosis, exact species anatomy or validated simulation claim.\nFlat front-on image, fully opaque filled grey forms, TRUEalphaZERO only OUTSIDE the complete subject. Subject contained inside central70percent square with at least15percent clear transparent margin each side. No background/rectangle/slab/paper carrier, ground/floor/castshadow, glow outside silhouettes, haze, cropped tips, extra scattered objects, UI, text/numbers/labels/scale bar, actual data, baked clock/date/battery/weather readings, logos or watermark. No rainbow heatmap, orange dense spectrogram pixels, continuous projected stripes following3D, Xray skeleton or bones/veins, cellular mesh, neon linework, engraved metallic sculpture, fabric/paper/collage, plastic/glass, mineral rings, normal wildlife/plant photo, embossed shading or coloured fur/feathers/tissue. No external image input or named artist style. ONE independent original asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 874655
+    },
+    {
+      "id": "primrose-bandlight",
+      "sourceImage": "sources/primrose-bandlight.f4e927f5e675.png",
+      "sourceSha256": "f4e927f5e6750e258b2b3c81f4833614bc5679486fdb56060b2d93d008d59bd0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/primrose-bandlight.0c644b490289.png",
+      "sha256": "0c644b4902891d7c36e3fccc21c32c8e83757e724b09b2adda0b3779fb573faa",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 358863,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, BANDLIGHT GROVE. Subject: One WHOLE familiar PRIMROSE flower plant with a single open FIVE-PETALLED blossom facing slightly forward. Five broad softly heart-notched rounded petals forming one readable natural flower, small plain grey centre, full slender slightly bent stalk descending to TWO unequal broad softly toothed oval basal leaves. One leaf points lower-left and one lower-right, both full complete tips and short petioles visible; full stalk-base endpoint. Flower petals and broad leaves are filled opaque grey band-intensity image planes with sparse staggered soft white dashes; no petal veins, no intricate anatomy, no detached floating petal. Delicate believable natural growth, generous clear separation around the five petals/leaves, no planter/ground/flowers elsewhere.\nThe entire broad body/plant blade/cap/petals is ONE FLAT continuous opaque charcoal-to-midgrey GEL-BAND INTENSITY IMAGE, no 3D volume or underlying natural photograph. Across each broad part, six to eight broad parallel vertical image lanes carry TWO TO FOUR sparse soft horizontal pale-silver/white band dashes each, irregularly staggered at different heights, unequal thickness/intensity, soft photographic edges, a few restrained short vertical smears below. Roughly20to30large bands total in the whole composition, not many fine lines. Adjacent lanes rarely align; no continuous stripe crosses the form. All spaces between bands are opaque neutral grey matrix. Anatomically narrow beak/legs/stalk/antennae stay plain midgrey without tiny bands. Bands are the visible image construction, not a named hidden filter. Whole nature silhouette first, all major parts cleanly separated and familiar at85px. Monochrome white/neutral grey only. Similar signal texture to an artistic gel photograph, NEVER a real genetic/biomolecular profile or measured image. No assay, experimental result, molecular weights, diagnosis, exact species anatomy or validated simulation claim.\nFlat front-on image, fully opaque filled grey forms, TRUEalphaZERO only OUTSIDE the complete subject. Subject contained inside central70percent square with at least15percent clear transparent margin each side. No background/rectangle/slab/paper carrier, ground/floor/castshadow, glow outside silhouettes, haze, cropped tips, extra scattered objects, UI, text/numbers/labels/scale bar, actual data, baked clock/date/battery/weather readings, logos or watermark. No rainbow heatmap, orange dense spectrogram pixels, continuous projected stripes following3D, Xray skeleton or bones/veins, cellular mesh, neon linework, engraved metallic sculpture, fabric/paper/collage, plastic/glass, mineral rings, normal wildlife/plant photo, embossed shading or coloured fur/feathers/tissue. No external image input or named artist style. ONE independent original asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 834988
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.72d72736acd7.png",
+      "sourceSha256": "72d72736acd7d68a13ce1f38c96bf5e9a9bfffec5d72fd73b777a6df12e0980c",
+      "sourceDimensions": [
+        853,
+        1844
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "e78fc0c20b5d5cb9449e819fe289aba436f0e480f5b7bc432266f7198dbfbb07",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 1877221,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Compose FIVE exact OWN subject/material references into ONE original OPAQUE PORTRAIT1290x2796 Glaze phone wallpaper, BANDLIGHT GROVE. Inputs:1whole beechleaf/petiole,2whole songbird/twig/leaf,3complete cluster of3mushrooms,4whole walking hedgehog with4paws,5whole five-petalled primrose/stalk/2basalleaves. Preserve familiar full silhouettes, proportions and all important endpoints. Matching material: opaque neutral charcoal/midgrey signal-image planes containing sparse soft horizontal silverwhite band dashes at staggered heights in broad vertical lanes, varying thickness/intensity, subtle short downward smears, slight low-amplitude photographic noise. Coarse discrete luminous bands remain the actual image language, no continuous stripes across allforms, normal wildlife/plant texture, colourful tissue, Xray anatomy, metallic carving, thin neon outline or paper/fabric collage. Small simple head/wing/flower junction shading from references may remain, but no glossy3Dmodels. Grey/white natural forms first, no actual molecular profile, data/diagnosis, real assay or validated simulation claim.\nONE coherent quiet BEECH-WOODLAND FLOOR habitat. Tall complete three-mushroom cluster left-centre. Whole low hedgehog walks to the right beneath it, four full paws intact. Whole primrose grows to right, full fivepetals and both basal leaves/stalk tip. Whole bird perches higher on a gentle twig coming inward from right, complete bill/feet/wing/tail and whole twig leaf. Large complete beechleaf/petiole rests low-left near hedgehog, not pasted onto its body. Restrained low undulating grey bank contour and two small simple unpatterned stems join the habitat; no extra animals/flowers/trees, no debris scatter. Natural varied sizes and relative heights; group feels one habitat, no equal-spaced five-icon collage/cards/panels. Keep separate clear negative gaps around every endpoint: all birdfeet/tail/bill/twigends, hedgehogpaws/snout/spinetips, all3caps/stemends, all5primrosepetals/basalleaftips/stalkbase, wholebeechleafpetiole visible. No figure hides another's defining silhouette.\nPale cool SAGE #D7E1DC opaque background, smooth restrained tonal depth, upper20percent quiet, corners calm. Fuller/taller central group intended about84to88percentwidth and58to64percentheight, aroundy23to85percent, minimum6percent real side breathing room and12percent below all key endpoints. Large enough to feel tangible on a phone, not tiny bottom icons, no empty huge upper two-thirds. All actual phone centre-crops later must retain entire organisms. Low bank can be a soft subtle connecting contour, no solid pedestal/ground slab, horizon/table, realistic landscape, cast background shadows, glow/halo, texture field, outerframe, image labels/text/numbers/scale/data, clock/date/battery/weather/UI, logos, watermark or phone mockup. Only these FIVE exact OWN source images as subject/material references; no external visual inputs. OPAQUE whole wallpaper.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "beech-bandlight",
+          "sourceImage": "sources/beech-bandlight.030887aea926.png",
+          "sha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b"
+        },
+        {
+          "id": "songbird-bandlight",
+          "sourceImage": "sources/songbird-bandlight.c90baae546ea.png",
+          "sha256": "c90baae546ea78b855eb7f4150cc027b72e9497f5471e3ada62e353dafdf98fa"
+        },
+        {
+          "id": "mushrooms-bandlight",
+          "sourceImage": "sources/mushrooms-bandlight.4aac4bfbcf1a.png",
+          "sha256": "4aac4bfbcf1a88ea5cffc04a2f5ba1a595e2b25a9e3641ff3ef573dcdb5ddf0d"
+        },
+        {
+          "id": "hedgehog-bandlight",
+          "sourceImage": "sources/hedgehog-bandlight.6a724e891150.png",
+          "sha256": "6a724e891150dbd14b658f6661d3f81d5460a88cd3396ec0eb642e21ca082108"
+        },
+        {
+          "id": "primrose-bandlight",
+          "sourceImage": "sources/primrose-bandlight.f4e927f5e675.png",
+          "sha256": "f4e927f5e6750e258b2b3c81f4833614bc5679486fdb56060b2d93d008d59bd0"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "One own-five-reference woodland-floor habitat",
+          "prompt": "Use case: stylized-concept. Compose FIVE exact OWN subject/material references into ONE original OPAQUE PORTRAIT1290x2796 Glaze phone wallpaper, BANDLIGHT GROVE. Inputs:1whole beechleaf/petiole,2whole songbird/twig/leaf,3complete cluster of3mushrooms,4whole walking hedgehog with4paws,5whole five-petalled primrose/stalk/2basalleaves. Preserve familiar full silhouettes, proportions and all important endpoints. Matching material: opaque neutral charcoal/midgrey signal-image planes containing sparse soft horizontal silverwhite band dashes at staggered heights in broad vertical lanes, varying thickness/intensity, subtle short downward smears, slight low-amplitude photographic noise. Coarse discrete luminous bands remain the actual image language, no continuous stripes across allforms, normal wildlife/plant texture, colourful tissue, Xray anatomy, metallic carving, thin neon outline or paper/fabric collage. Small simple head/wing/flower junction shading from references may remain, but no glossy3Dmodels. Grey/white natural forms first, no actual molecular profile, data/diagnosis, real assay or validated simulation claim.\nONE coherent quiet BEECH-WOODLAND FLOOR habitat. Tall complete three-mushroom cluster left-centre. Whole low hedgehog walks to the right beneath it, four full paws intact. Whole primrose grows to right, full fivepetals and both basal leaves/stalk tip. Whole bird perches higher on a gentle twig coming inward from right, complete bill/feet/wing/tail and whole twig leaf. Large complete beechleaf/petiole rests low-left near hedgehog, not pasted onto its body. Restrained low undulating grey bank contour and two small simple unpatterned stems join the habitat; no extra animals/flowers/trees, no debris scatter. Natural varied sizes and relative heights; group feels one habitat, no equal-spaced five-icon collage/cards/panels. Keep separate clear negative gaps around every endpoint: all birdfeet/tail/bill/twigends, hedgehogpaws/snout/spinetips, all3caps/stemends, all5primrosepetals/basalleaftips/stalkbase, wholebeechleafpetiole visible. No figure hides another's defining silhouette.\nPale cool SAGE #D7E1DC opaque background, smooth restrained tonal depth, upper20percent quiet, corners calm. Fuller/taller central group intended about84to88percentwidth and58to64percentheight, aroundy23to85percent, minimum6percent real side breathing room and12percent below all key endpoints. Large enough to feel tangible on a phone, not tiny bottom icons, no empty huge upper two-thirds. All actual phone centre-crops later must retain entire organisms. Low bank can be a soft subtle connecting contour, no solid pedestal/ground slab, horizon/table, realistic landscape, cast background shadows, glow/halo, texture field, outerframe, image labels/text/numbers/scale/data, clock/date/battery/weather/UI, logos, watermark or phone mockup. Only these FIVE exact OWN source images as subject/material references; no external visual inputs. OPAQUE whole wallpaper.",
+          "references": [
+            {
+              "id": "beech-bandlight",
+              "sourceImage": "sources/beech-bandlight.030887aea926.png",
+              "sha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b"
+            },
+            {
+              "id": "songbird-bandlight",
+              "sourceImage": "sources/songbird-bandlight.c90baae546ea.png",
+              "sha256": "c90baae546ea78b855eb7f4150cc027b72e9497f5471e3ada62e353dafdf98fa"
+            },
+            {
+              "id": "mushrooms-bandlight",
+              "sourceImage": "sources/mushrooms-bandlight.4aac4bfbcf1a.png",
+              "sha256": "4aac4bfbcf1a88ea5cffc04a2f5ba1a595e2b25a9e3641ff3ef573dcdb5ddf0d"
+            },
+            {
+              "id": "hedgehog-bandlight",
+              "sourceImage": "sources/hedgehog-bandlight.6a724e891150.png",
+              "sha256": "6a724e891150dbd14b658f6661d3f81d5460a88cd3396ec0eb642e21ca082108"
+            },
+            {
+              "id": "primrose-bandlight",
+              "sourceImage": "sources/primrose-bandlight.f4e927f5e675.png",
+              "sha256": "f4e927f5e6750e258b2b3c81f4833614bc5679486fdb56060b2d93d008d59bd0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Whole recognizable less abstract woodland Nature: beechleaf/petiole, songbird/twig/leaf, three-mushroom cluster, walking hedgehog and five-petalled primrose/stalk/two leaves. Opaque grey signal-image planes with sparse staggered soft white horizontal bands in broad lanes. Minor restrained head/flower/stem junction shading in outputs, band construction dominant; no natural tissue/fur or metallic3Dmaterial. Five distinct natural silhouettes, whole raws uniformly900within1024RGBA, no creative code crop/stretch/alpha cleanup. Pale sage Artwork field and separate plain beech native corner motif. One coherent own-five-reference woodland wallpaper; support branch joins right scene edge, all key organisms whole. Artistic gel-band image, not real data/assay/genetic profile or validated simulation. Original human messaging-unavailable fallback authorizes isolated strictC source completion after actual lane material review; peer material/integration review pending, no Jared artwork approval/publication implied.",
+  "conceptReferences": [
+    {
+      "url": "https://www.genome.gov/genetics-glossary/Electrophoresis",
+      "scope": "Official NHGRI definition/narration body directly read. Generic separation/image concept only; no figure, visual input, method execution, sequence or experiment."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12053679/",
+      "scope": "Primary GelGenie article abstract/introduction directly read on band and lane image appearance/segmentation. No copied figure, image dataset, procedure, measured profile or real assay claim."
+    }
+  ],
+  "conceptReferenceScope": "NHGRI definition/narration and GelGenie primary abstract/introduction directly read, generic band/lane appearance only. No external visual input, figure, measured profile, biological procedure or experimental result used. Actual9source/16historical-rebuiltselector union preflight and15closest first-neighbor controls viewed; not currentR2 proof.",
+  "selectedFirstPrototypeSha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b",
+  "newImageOutputs": 6,
+  "creativeRasterEdits": 0,
+  "unselectedGenerations": 0,
+  "artworkReferenceUses": 0,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "intendedMinAppVersion": "1.0.44",
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "Original human brief authorizes collision-checked isolated strict lane C work when coordinator messaging unavailable. IntendedID/process notice attempted before generation, app request failed. Own thorough actual material/85/corner review required before expansion. Coordinator material/canonical/integration review remains pending, no peer or Jared artwork approval claimed. No publication/shared runtime changes."
+}

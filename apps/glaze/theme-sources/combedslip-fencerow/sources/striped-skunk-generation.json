@@ -1,0 +1,29 @@
+{
+  "id": "striped-skunk",
+  "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side.  NEW SEPARATE SUBJECT. One whole adult STRIPED SKUNK, viewed three-quarter side on, walking to the right with all four integrated short paws arranged clearly and a single full brush tail rising behind to the left. A small head with tiny round ears and pointed muzzle. The dominant natural body ground is espresso-black, separated by exactly two thick defining warm pale dorsal stripes roughly following the back. At the broad outward tail face, use a separate strong field of five thick alternating honey and dark clay trails pulled across with two visible comb bends. The two pale dorsal stripes read as simple natural markings on the main body. Keep the object materially tactile with low raised links and satin highlight, no naturalistic fur or detached twigs. Tail tip shown whole. The own cedar waxwing is a material reference only. Transfer its fired satin clay, visible raw clay depth and broad curved honey-black slip continuity. Use the completely different subject and shape above.",
+  "tool": "built-in image_gen",
+  "source": "sources/striped-skunk.58933300.png",
+  "sourceSha256": "5893330067465a710b6a7cb82ca0fb400fa10bc55ce9fec74fef0f11a3d8f351",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/striped-skunk.289c82bd.png",
+  "sha256": "289c82bd44d266d334750158aa436214d14f12cfd04decce0db9c9097da96ddc",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "cedar-waxwing",
+      "file": "sources/cedar-waxwing.d7a8dc95.png",
+      "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/striped-skunk-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/striped-skunk-exact-tool-result.json"
+}

@@ -1,0 +1,169 @@
+{
+  "id": "c-cherenkov-dispatch",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "keelbeam-ferry",
+    "split-level-hall",
+    "beacon-courier",
+    "reversing-gate",
+    "tripod-sorter"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.c8eb52ca.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 10288,
+    "sha256": "c8eb52ca8bc43010d1abb2cbd7c43fd7eb98ccbb5244a5588ab1f42ee1eff0d4",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed5 independent ferry/hall/courier/gate/sorter outputs together at210/150px and actual encoded85px. Each reads as its stated working subject:open passenger well/keels,scalloped roof/3piers,striding cone-head adult,opposed open gate and3leg sorting machine. Filled blue intensity fans/sharp envelopes/crossing wavefront arcs coherent,distinct from corona/diffraction/grey schlieren. Ferry also viewed on actual theme background;exterior apparent glow disappears with real alpha.",
+    "wallpaper": "Viewed all3 actual encoded phone variants. All5 exact own identities preserved in one connected signal-port/quay habitat. Complete courier cape/hands/feet/beam,gate feet,ferry paddles,hall roof/decks and sorter arms/supports stay inside every crop. Quiet deep-ink upper field/dark water below;terrain/water may bleed. Explicit indexed own refs prevented identity drift.",
+    "native": "Viewed all9 current coordinator real renderer previews in scratch. Octagon/rays/wedge courier clock,column battery,band calendar keep clear live values. Small single cone-fan/wavefront fragment fits compact headers with breathing room;whole courier remains in larger areas.",
+    "roundedArtworkCorners": "Viewed5 actual encoded art assets with real app background stops,Fit6%inset and conservative20%roundedmask. Every visible alpha16 retained;quiet ink-blue corners support whole conic light fields. Whole20theme/100art audit passes. UI layout simulation,not installed-device proof."
+  },
+  "ownerSteeringReview": "Different civic setting after four Nature themes for collection balance. Tangible working subjects in filled optical shock-cone intensity fields,with quiet complete Artwork corners and compact cone-fan native fragment. Exact City & Retro category verified.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-cherenkov-dispatch",
+    "backgroundStops": [
+      "#071D39",
+      "#142E4F"
+    ],
+    "pieces": [
+      {
+        "id": "keelbeam-ferry",
+        "sha256": "7a16f058bf0cb6523fd328ec875169e715344ee6fa7cb47eb47a946fb74be4a7",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "split-level-hall",
+        "sha256": "c3e8f7d41885ff23d63d0d8d8b49dd2cee3344097493d01633ed82441b0dc088",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "beacon-courier",
+        "sha256": "ccf22a477ac95d9abbfdf66e4f308fafe88358cec54df1716bdea645c473b967",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "reversing-gate",
+        "sha256": "f1aabbbe79ed8800a6f5529e2074f09592f1e879edd27137502135f81a2ae1fd",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "tripod-sorter",
+        "sha256": "460343c5340af9a46c306fd81af0d769e1235bd758acf646532bf28648ef357b",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "packTestEvidence": "Actual offline builder v1:9assets/0.81MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and5own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}

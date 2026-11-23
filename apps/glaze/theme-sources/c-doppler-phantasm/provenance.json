@@ -1,0 +1,142 @@
+{
+  "theme": "c-doppler-phantasm",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.d5d46043bef2.png",
+      "sourceSha256": "d5d46043bef2eee967a8d20354994b3f4c3d53b7a0cd944aa19869f9297e48d2",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "94dce5b0911e9ed1bb5a2258199c8a50f6d7e30aa6d5651abbc630401c296b6a",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 4606866,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze DOPPLER PHANTASM. Medium: fictional sonographic pulse-echo imaging, velvety granular grayscale ultrasound speckle, curved acoustic scan sampling and sharply bounded red/blue Doppler flow patches. It is a flat scientific detector exposure of imaginary non-anatomical acoustic spaces: dark anechoic holes, silver granular echo walls, densely mottled cobalt/vermillion counterflow fields. No continuous polished surfaces, no reflective material or 3D sculpture, no anatomical organs, people, fetus, bones, animals or actual diagnostic study. No rainbow interference, sparkly particle trails, thermal orange spectrogram bars, engraved lines, physical craft, painted brushwork, text, numbers, scales, labels, axes, UI, dates, readings, logo or watermark. The sonographic sampling texture MUST be visible. Imagined art only. Asset: ONE portrait phone wallpaper1290x2796. Near-black blue-grey scan field. Across the lower two-thirds, a gigantic impossible echo vault with three unequal dark open chambers interlocks with a branching duplex-flow structure. One chamber wall curves over itself into a small isolated echo island. Mottled red and blue velocity zones sit inside selected channels, surrounded by broad silver speckle masses. Top third and upper right remain quiet near-black. No scan border, machine housing or mockup. Opaque full-bleed image.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "echo-vault",
+      "sourceImage": "sources/echo-vault.87ed62cbbdb0.png",
+      "sourceSha256": "87ed62cbbdb0219a35f722d43922fa1dc51486894bdc67c85e9c702a682fb019",
+      "sourceDimensions": [
+        1355,
+        1161
+      ],
+      "file": "widgets/echo-vault.38dd26debc0d.png",
+      "sha256": "38dd26debc0d97e85385e544315dabf606ff304d1f894100a013a670b811e7b8",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 585447,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze DOPPLER PHANTASM. Medium: fictional sonographic pulse-echo imaging, velvety granular grayscale ultrasound speckle, curved acoustic scan sampling and sharply bounded red/blue Doppler flow patches. It is a flat scientific detector exposure of imaginary non-anatomical acoustic spaces: dark anechoic holes, silver granular echo walls, densely mottled cobalt/vermillion counterflow fields. No continuous polished surfaces, no reflective material or 3D sculpture, no anatomical organs, people, fetus, bones, animals or actual diagnostic study. No rainbow interference, sparkly particle trails, thermal orange spectrogram bars, engraved lines, physical craft, painted brushwork, text, numbers, scales, labels, axes, UI, dates, readings, logo or watermark. The sonographic sampling texture MUST be visible. Imagined art only. Asset: ONE separate square1024x1024 pure-art widget. Subject ECHO VAULT: a wide low asymmetrical arch of dense silver sonographic speckle enclosing three unequal jet-black/transparent empty windows; upper rim doubles into a short crescent echo and left foot branches into two pointed stubs. Small opposing red/blue granular flow patches hug the interior rims. Broad architectural acoustic silhouette without actual building or material. Entire event centred with15%clear margins. Real transparent alpha outside and through all empty windows, no black backing, floor, shadow, tile or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 844646
+    },
+    {
+      "id": "duplex-antler",
+      "sourceImage": "sources/duplex-antler.993e2dc3939d.png",
+      "sourceSha256": "993e2dc3939df403b1996cfefea04e999b0bce110a66a3498235e5a00b0f2a2f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/duplex-antler.b435ff83c5c8.png",
+      "sha256": "b435ff83c5c8358b6c170b1fca72d82ed2beb2fb6008d61611bdefc1835ddef3",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 792437,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze DOPPLER PHANTASM. Medium: fictional sonographic pulse-echo imaging, velvety granular grayscale ultrasound speckle, curved acoustic scan sampling and sharply bounded red/blue Doppler flow patches. It is a flat scientific detector exposure of imaginary non-anatomical acoustic spaces: dark anechoic holes, silver granular echo walls, densely mottled cobalt/vermillion counterflow fields. No continuous polished surfaces, no reflective material or 3D sculpture, no anatomical organs, people, fetus, bones, animals or actual diagnostic study. No rainbow interference, sparkly particle trails, thermal orange spectrogram bars, engraved lines, physical craft, painted brushwork, text, numbers, scales, labels, axes, UI, dates, readings, logo or watermark. The sonographic sampling texture MUST be visible. Imagined art only. Asset: ONE separate square1024x1024 pure-art widget. Subject DUPLEX ANTLER: an irregular upward-branching Y of thick grainy echo channels, one branch ends in a pair of unequal oval chambers, the other curves into a short hooked bifurcation. Cobalt-speckled flow climbs one channel while red-speckled flow branches oppositely, separated by silver granular boundaries. Angular tall branching silhouette, no actual antler, anatomy, tree or material. Whole event centred with15%transparent margins. Real alpha around and through clear holes, no backing, tile, floor, shadow or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 771377
+    },
+    {
+      "id": "sector-islands",
+      "sourceImage": "sources/sector-islands.2ca61d899373.png",
+      "sourceSha256": "2ca61d8993733cee75fbdd64f744afe72b1f20e4994fc249b0d47bf7ee73dde9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/sector-islands.72a7ad4f6975.png",
+      "sha256": "72a7ad4f6975c3a1fae4d56914d1a93e48e77d6ada00b06b9ef71c9e2d750e9f",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1188233,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze DOPPLER PHANTASM. Medium: fictional sonographic pulse-echo imaging, velvety granular grayscale ultrasound speckle, curved acoustic scan sampling and sharply bounded red/blue Doppler flow patches. It is a flat scientific detector exposure of imaginary non-anatomical acoustic spaces: dark anechoic holes, silver granular echo walls, densely mottled cobalt/vermillion counterflow fields. No continuous polished surfaces, no reflective material or 3D sculpture, no anatomical organs, people, fetus, bones, animals or actual diagnostic study. No rainbow interference, sparkly particle trails, thermal orange spectrogram bars, engraved lines, physical craft, painted brushwork, text, numbers, scales, labels, axes, UI, dates, readings, logo or watermark. The sonographic sampling texture MUST be visible. Imagined art only. Asset: ONE separate square1024x1024 pure-art widget. Subject SECTOR ISLANDS: a broad fan-shaped acoustic sector with an uneven scalloped lower arc, made of curved rows of finely sampled grayscale speckle; three floating irregular echo islands inside have empty dark centres and tiny alternating red/blue granular patches. A wide wedge-like silhouette with a deeply notched side; no straight rectangular scan frame. Not an organ or ordinary object. Entire imagined event centred with15%clear margins. Real alpha outside and in large silence gaps, no backing, tile, floor, shadow or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 560376
+    },
+    {
+      "id": "anechoic-knot",
+      "sourceImage": "sources/anechoic-knot.e17b0a0ed300.png",
+      "sourceSha256": "e17b0a0ed3006f40863e46af5f42777aee7f24ab2db66e18be5c344f9db34554",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/anechoic-knot.ea12724c9e86.png",
+      "sha256": "ea12724c9e86f4e5ed62d02b7de3de02a74ba3284a09ede4e923b4a01c585f94",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 591316,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze DOPPLER PHANTASM. Medium: fictional sonographic pulse-echo imaging, velvety granular grayscale ultrasound speckle, curved acoustic scan sampling and sharply bounded red/blue Doppler flow patches. It is a flat scientific detector exposure of imaginary non-anatomical acoustic spaces: dark anechoic holes, silver granular echo walls, densely mottled cobalt/vermillion counterflow fields. No continuous polished surfaces, no reflective material or 3D sculpture, no anatomical organs, people, fetus, bones, animals or actual diagnostic study. No rainbow interference, sparkly particle trails, thermal orange spectrogram bars, engraved lines, physical craft, painted brushwork, text, numbers, scales, labels, axes, UI, dates, readings, logo or watermark. The sonographic sampling texture MUST be visible. Imagined art only. Asset: ONE separate square1024x1024 pure-art widget. Subject ANECHOIC KNOT: two unequal open sonographic loops joined at one narrow oblique neck; a big horizontally squashed loop on the left and a smaller upright loop on the right, both bounded by thick irregular silver-speckle echo walls. The counterflow patches are asymmetric, hot red at the large lower rim and cobalt at the small upper rim. Wide double-hole acoustic topology, no solid object, glasses, anatomy or animal. Complete event centred with15%clear margins. Real alpha in both holes and outside, no backing, tile, floor, shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 834455
+    },
+    {
+      "id": "pulse-rift",
+      "sourceImage": "sources/pulse-rift.cf7b3cb0d92a.png",
+      "sourceSha256": "cf7b3cb0d92a698ee18a53562e3f9e73756ba45e743f50fa6cc9fbc848e6af08",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/pulse-rift.93538e483cdd.png",
+      "sha256": "93538e483cdd0b76163a1002b66fd688075583982c1f45eb81755a7f4d4f286b",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1121338,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze DOPPLER PHANTASM. Medium: fictional sonographic pulse-echo imaging, velvety granular grayscale ultrasound speckle, curved acoustic scan sampling and sharply bounded red/blue Doppler flow patches. It is a flat scientific detector exposure of imaginary non-anatomical acoustic spaces: dark anechoic holes, silver granular echo walls, densely mottled cobalt/vermillion counterflow fields. No continuous polished surfaces, no reflective material or 3D sculpture, no anatomical organs, people, fetus, bones, animals or actual diagnostic study. No rainbow interference, sparkly particle trails, thermal orange spectrogram bars, engraved lines, physical craft, painted brushwork, text, numbers, scales, labels, axes, UI, dates, readings, logo or watermark. The sonographic sampling texture MUST be visible. Imagined art only. Asset: ONE separate square1024x1024 pure-art widget. Subject PULSE RIFT: three thick horizontal layers of granular grayscale echo texture pull apart around a jagged diagonal void; the lowest layer ends in a long narrow downward hook while the upper projects a short fork to the right. Two compact red/blue speckled velocity jets occupy opposite sides of the rift. Strong offset broken zigzag silhouette, no actual rock, ribbon, anatomy, object or landscape. Complete event centred with15%clear margins. Real transparent alpha around and in the main void, no backing, tile, floor, shadow or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 601821
+    }
+  ],
+  "published": false
+}

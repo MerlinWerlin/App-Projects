@@ -1,0 +1,19 @@
+{
+  "theme": "c-spectrogram-labyrinth",
+  "recipe": [
+    "square",
+    "cSpectrogramCitadel",
+    "cSpectrogramChirp",
+    "bars",
+    "baton",
+    "tiles",
+    "board"
+  ],
+  "art": {
+    "cSpectrogramCitadel": "M 13 86 L 13 26 L 31 26 L 31 12 L 58 12 L 58 22 L 84 22 L 84 85 L 70 85 L 70 43 L 57 43 L 57 86 L 44 86 L 44 34 L 31 34 L 31 86 Z M 17 36 L 26 36 M 17 43 L 26 43 M 17 51 L 26 51 M 17 60 L 26 60 M 17 69 L 26 69 M 17 77 L 26 77 M 36 23 L 53 23 M 36 29 L 53 29 M 48 39 L 53 39 M 48 47 L 53 47 M 48 56 L 53 56 M 48 66 L 53 66 M 48 76 L 53 76 M 63 31 L 80 31 M 74 50 L 80 50 M 74 60 L 80 60 M 74 70 L 80 70 M 74 79 L 80 79",
+    "cSpectrogramChirp": "M 12 82 L 28 82 M 18 73 L 35 73 M 24 64 L 41 64 M 30 55 L 47 55 M 36 46 L 53 46 M 42 37 L 59 37 M 48 28 L 65 28 M 54 19 L 71 19 M 47 78 L 65 78 M 52 68 L 70 68 M 57 58 L 75 58 M 62 48 L 80 48 M 67 38 L 85 38 M 72 28 L 90 28"
+  },
+  "direction": "Stepped formant-bin linework, separated chirp segments, square detector bezel, bar markers/baton hands, amplitude-cell charge tiles and board calendar.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms only; no raster readings.",
+  "registryIntegration": "Coordinator integrates this original data-only descriptor."
+}

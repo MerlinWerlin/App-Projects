@@ -1,0 +1,39 @@
+{
+  "id": "wallpaper",
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-studies/wallpaper-first.cff09bc31793.png",
+  "sourceSha256": "cff09bc31793507748084379e74e723a3d35138eb28c201591c3ec3e71d0130b",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "prompt": "Use case: stylized-concept. Compose one original complete opaque portrait phone wallpaper for Glaze Facetlight Pinewood, target 1290x2796. Use the five exact own references, which are a whole pine cone (image 1), woodpecker on pine twig (image 2), squirrel (image 3), shelf fungi on bark (image 4), and wild columbine (image 5). Retain the broad flat directional colors of the five references. The periwinkle face, cyan left shoulder, rose right shoulder and mint upward lip change at each actual local fold or overlap. Keep the same clean flat graphic fields inside each familiar natural shape. No physical sheen, ordinary reflected light, grain or texture. This is an artistic convention inspired by surface direction images, with no actual data, calibration or sensor readout.\n\nSet all five subjects together in a single small woodland vignette. A gentle line suggesting the forest floor ties the scene together. Place the woodpecker higher left, gripping its complete short twig. The three shelf fungi sit below it on their whole short bark fragment. The complete columbine stalk rises to the right with its open flower, bud and divided leaves. A whole squirrel rests low right with an uncropped broad raised tail and its feet visible. A whole standing pine cone rests near the bottom center with its short stem. Use a few tiny dark slate needles to suggest a woodland floor and give each subject a little negative space. Keep the exact familiar shape of each reference and preserve the whole bill, twig, tail, fungi lips, flowers and cone. Arrange the five forms at varied heights and sizes within one coherent scene. Keep each of the five distinctive silhouettes separate and avoid repeating any of them.\n\nUse a quiet opaque matte slate bluegray field near #354650. The group occupies about 70 to 76 percent of the image width and 54 to 58 percent of the height. Center it at about 56 percent of the image height. Keep both outer side strips, each about 12 percent of canvas width, completely empty. Keep the upper quarter and lowest 14 percent quiet. No part of a subject, plant or connecting line extends to the canvas boundary. The group must remain readable and maintain a single habitat composition across widescreen and shorter phone crops. Use no saturated marks in the four outer corners and no opaque backing shape within the scene. No banner, panels, frames, haze, background texture, shadow or shine, visible text or numbers, UI, labels, logo or watermark. No external images.",
+  "internalArtworkReferences": [
+    {
+      "id": "pine-cone-direction",
+      "sourceImage": "sources/pine-cone-direction.7c7b0249658a.png",
+      "sha256": "7c7b0249658affcdb6c73de3f226765dd3246e9500048086115d06b913be5411"
+    },
+    {
+      "id": "woodpecker-direction",
+      "sourceImage": "sources/woodpecker-direction.c9c1fe711958.png",
+      "sha256": "c9c1fe711958225c53cf2517f59bfbda3ef607c0985024255ba40650759330e2"
+    },
+    {
+      "id": "squirrel-direction",
+      "sourceImage": "sources/squirrel-direction.b4e65aafd833.png",
+      "sha256": "b4e65aafd8333509a563ec0a34de30f0780447d7f174e445abbc1c48aa40f46b"
+    },
+    {
+      "id": "shelf-fungi-direction",
+      "sourceImage": "sources/shelf-fungi-direction.35c8296a9bd5.png",
+      "sha256": "35c8296a9bd548778fb31c776583ed9d3202965b83f7edd7a006f24826b35c87"
+    },
+    {
+      "id": "columbine-direction",
+      "sourceImage": "sources/columbine-direction.6a40fe4e04f0.png",
+      "sha256": "6a40fe4e04f0620fbbb6fd2d93bf758b322c583a54cfb6a5487ed159294f5e37"
+    }
+  ],
+  "reason": "The initial composition has room at the edges, but the columbine stalk meets the squirrel head and the two left subjects float independently."
+}

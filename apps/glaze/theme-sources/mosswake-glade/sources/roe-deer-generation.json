@@ -1,0 +1,27 @@
+{
+  "id": "roe-deer",
+  "label": "Starshoot Deer",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. TRANSPARENCY CLEANUP ONLY of our own moss/lichen roe deer. Preserve EXACT whole deer, all actual moss star-leaf shoots, pale branchinglichen bib/inner ears/rump, sparse redsporophytecapsules, bothwholeantlers, two ears, natural eye/muzzle, FOUR complete slender legs/split hooves/tail and exact pose/proportions/lighting/colors. Do not redraw/anatomicallyalter/crop the deer. Remove EVERY bit of the unrequested grey/white/yellow background wash, translucent fog, exterior glow, photographic backdrop and ground haze. All pixels OUTSIDE the actual deer/individual moss/lichen/antler/capsule/hoof silhouette must be TRUE EMPTY ALPHA, including the big openings between all four legs and under jaw/antlers. No opaque rectangle, no painted checkerboard, no white background, no new shadow or coloured halos. Keep body and fine plant edges solid with smooth natural antialiasing; remove background rather than making deer transparent. Keep all extremities entire with ample genuinely transparent margins on every side. Same familiar natural animal identity, same green living-moss/pale-lichen botanical-topiary sculpture. No newobjects/text/labels/UI/border.",
+  "source": "sources/roe-deer.4fe0e9df30c0.png",
+  "sourceSha256": "4fe0e9df30c07bd62804353ca2a609c3f2cfe2ce5a51f79e46adf3bb12dbf57d",
+  "sourceDimensions": [
+    1199,
+    1312
+  ],
+  "selectedFile": "widgets/roe-deer.5ac36ad88a9f.png",
+  "sha256": "5ac36ad88a9fe3d7ccba336988a2dfdb9e9cb7d816c1c855fe192af1ff8e9f03",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "qa/deer-alpha-study/unselected-first-deer.aca1ba94dfb1.png",
+      "sha256": "aca1ba94dfb1265fd14986295151ff3eb722109b468c638b5f33669cadef327a",
+      "purpose": "Own first deer with exterior semi-transparent haze; built-in cleanup preserves whole deer/anatomy/material while correcting only transparency."
+    }
+  ],
+  "generationHistory": "qa/deer-alpha-study/generation-history.json"
+}

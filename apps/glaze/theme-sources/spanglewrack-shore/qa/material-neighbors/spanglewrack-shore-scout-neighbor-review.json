@@ -1,0 +1,341 @@
+{
+  "scope": "Read-only actual image comparison,6own plusall10rootPurlwake/Linkmere source images and33actual app-selector baseline images. Historical cache and accepted unpublished snapshots distinct. No currentliveR2 or external generation-input claim.",
+  "phase": "scout",
+  "candidateSha256": null,
+  "ownNeighbors": [
+    {
+      "id": "beadweft-estuary",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\beadweft-estuary\\widgets\\kingfisher-reeds.769e09df.png",
+      "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5"
+    },
+    {
+      "id": "copper-selvedge",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\copper-selvedge\\widgets\\warp-fall.654200c5.png",
+      "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333"
+    },
+    {
+      "id": "tinwake-understory",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\fern-fiddlehead.ede17d73.png",
+      "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c"
+    },
+    {
+      "id": "enamel-reliquary",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\enamel-reliquary\\widgets\\trident-of-the-lost-sea.4ff30a41.png",
+      "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be"
+    },
+    {
+      "id": "shellspeck-blackthorn",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\shellspeck-blackthorn\\widgets\\longtailed-tit.2f5d99af.png",
+      "sha256": "2f5d99af07238f6538a9a0793ad2580e216755a21bcbfd8033567836192c3b0c"
+    },
+    {
+      "id": "commesso-underwood",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\commesso-underwood\\widgets\\bullfinch-sprig.9732bf92.png",
+      "sha256": "9732bf92aac6826c5a61f98d75f9faf813f6c28b6255eb1fe7ec64d5a9a55b5d"
+    }
+  ],
+  "baselineGroups": [
+    {
+      "id": "purlwake-reedbeds",
+      "origin": "Actual coordinator source, read-only",
+      "selections": [
+        {
+          "optionId": "water-vole-rush",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\water-vole-rush.0916c484.png",
+          "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0"
+        },
+        {
+          "optionId": "grebe-reeds",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\grebe-reeds.6d8a6f5b.png",
+          "sha256": "6d8a6f5b936c3d1205046159d1bd577464ce0088bc0c489bc15250fbae6b4d09"
+        },
+        {
+          "optionId": "pike-waterweed",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\pike-waterweed.16db03f5.png",
+          "sha256": "16db03f585ce3ca7be2290cf78e5d0f098bdfe04e1d15d02c498a7b7367bc664"
+        },
+        {
+          "optionId": "iris-damselfly",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\iris-damselfly.1a2da2e5.png",
+          "sha256": "1a2da2e5962308b3a355f536fa37357481d85de0bc1985d539a9676230431471"
+        },
+        {
+          "optionId": "marshmarigold",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\marshmarigold.5bb10f61.png",
+          "sha256": "5bb10f61f6483f86a500b75958a4f504f55c01265ca7728b085e23e391a4109b"
+        }
+      ]
+    },
+    {
+      "id": "linkmere-copse",
+      "origin": "Actual coordinator source, read-only",
+      "selections": [
+        {
+          "optionId": "kingfisher-reed",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\linkmere-copse\\widgets\\kingfisher-reed.36a85aaf.png",
+          "sha256": "36a85aaf9ef4b189cad38312f9be7d050936e4258a213e4d37987ed26e985d06"
+        },
+        {
+          "optionId": "water-vole-sedge",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\linkmere-copse\\widgets\\water-vole-sedge.0819bb62.png",
+          "sha256": "0819bb62984fc2b7be300dfdf07b52b5ab30258c1dc95b00cc9a12ab990fca2d"
+        },
+        {
+          "optionId": "open-wing-dragonfly",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\linkmere-copse\\widgets\\open-wing-dragonfly.391c58ca.png",
+          "sha256": "391c58ca9858dda3c9f0643f5882d4f255e49c2532a4fb359011e1d6e145103e"
+        },
+        {
+          "optionId": "yellowflag-iris",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\linkmere-copse\\widgets\\yellowflag-iris.21ff61b3.png",
+          "sha256": "21ff61b3f3fe782f81c6d0dbb0232a345fc30100608e7c04983ccaf09b979a24"
+        },
+        {
+          "optionId": "willow-catkin-branch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\linkmere-copse\\widgets\\willow-catkin-branch.dab5f093.png",
+          "sha256": "dab5f0932b3ca23cbe0a43d1094075678fa30851fef1a2983880ec635250c24b"
+        }
+      ]
+    },
+    {
+      "id": "fern-and-brass",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\fern-and-brass\\v7\\manifest.json",
+      "manifestSha256": "a9694c866580227449d130034806704305c3cc2aa7c20e4c185852e1de7a9693",
+      "selections": [
+        {
+          "optionId": "brass-leaf-beetle",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\fern-and-brass\\v7\\widget-brass-leaf-beetle.78dc3cc0.webp",
+          "sha256": "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21"
+        },
+        {
+          "optionId": "fern-glasshouse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\fern-and-brass\\v7\\widget-fern-glasshouse.25659d29.webp",
+          "sha256": "25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\fern-and-brass\\v7\\widget-small.6dc4d990.webp",
+          "sha256": "6dc4d990f990894e8671b2868e2eccfa85b019ed2daa07783568b12bb5c6210e"
+        }
+      ]
+    },
+    {
+      "id": "brass-afterhours",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\brass-afterhours\\v1\\manifest.json",
+      "manifestSha256": "aa89f2b25612c93dca300c74df0b137349fb181e94c6b1bbda53ca01103ea0c1",
+      "selections": [
+        {
+          "optionId": "key-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\brass-afterhours\\v1\\widget-key-rhythm.feca7f52.webp",
+          "sha256": "feca7f5205eaecf653f3294be17ccfa920f4727993c9b607a557ccc67d322362"
+        },
+        {
+          "optionId": "reed-study",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\brass-afterhours\\v1\\widget-reed-study.95a3e23a.webp",
+          "sha256": "95a3e23a43db5ec81810fe60e9a82d96ff6a6e83d3de8449d65d249f4493040d"
+        },
+        {
+          "optionId": "sax-bell",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\brass-afterhours\\v1\\widget-sax-bell.e90077c5.webp",
+          "sha256": "e90077c5b875ce2503103a928ae94d091ffd3bab59c74932514c73c55eaee07f"
+        }
+      ]
+    },
+    {
+      "id": "copper-circuit",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\copper-circuit\\v1\\manifest.json",
+      "manifestSha256": "d14610cebda9847c9717920376b8d250ffbe4e7d6ae85e838335041b1a3b22f6",
+      "selections": [
+        {
+          "optionId": "chip-island",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\copper-circuit\\v1\\widget-chip-island.f7acf499.webp",
+          "sha256": "f7acf499165e27f98510769f261f9c9c60ed8eaf8d90f4b2df84ef6b71704ff1"
+        },
+        {
+          "optionId": "copper-coil",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\copper-circuit\\v1\\widget-copper-coil.1bfbbc83.webp",
+          "sha256": "1bfbbc8320a7602745f53394cf771ff7ddb764d877ce700f8969903ba6bc3b74"
+        },
+        {
+          "optionId": "trace-flow",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\copper-circuit\\v1\\widget-trace-flow.d2daad37.webp",
+          "sha256": "d2daad37a0428536efd42075bb6f27c6ac558cbd426626ba7d98017f6f31fc01"
+        }
+      ]
+    },
+    {
+      "id": "berry-stitch",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\manifest.json",
+      "manifestSha256": "b538bab9b5c38e95e3912ff104478353fe740ace8b87079a19c7fe23902879ba",
+      "selections": [
+        {
+          "optionId": "stitched-berry-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-stitched-berry-basket.6486a4b6.webp",
+          "sha256": "6486a4b62fe5d34f9c8114983022083602ad9245b24509750a45806528f3e0b1"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-small.ec4dffb0.webp",
+          "sha256": "ec4dffb0409350dea6b8c53bbe114c5d68cfa6d551b2861c291bf142b98ef8b7"
+        },
+        {
+          "optionId": "art-20261107-bilberry-pincushion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-bilberry-pincushion.7698bbae.webp",
+          "sha256": "7698bbae3b9a1062b9090e3cada2e60176dbe3174baf4f2caf4d499ddaf7ac67"
+        },
+        {
+          "optionId": "art-20261107-thread-spool-finch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-thread-spool-finch.46ae3c6a.webp",
+          "sha256": "46ae3c6ab060f6771532b32549e6a3cb86ac9d719bc682802cb2c85d806f5dce"
+        }
+      ]
+    },
+    {
+      "id": "fern-and-brass",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\manifest.json",
+      "manifestSha256": "64c0e0cf2b4ddececbd91c590820b8556fcd65fb2191c18d915f7f481c8ec385",
+      "selections": [
+        {
+          "optionId": "brass-leaf-beetle",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-brass-leaf-beetle.78dc3cc0.webp",
+          "sha256": "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21"
+        },
+        {
+          "optionId": "fern-glasshouse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-fern-glasshouse.25659d29.webp",
+          "sha256": "25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-small.6dc4d990.webp",
+          "sha256": "6dc4d990f990894e8671b2868e2eccfa85b019ed2daa07783568b12bb5c6210e"
+        },
+        {
+          "optionId": "brass-acorn",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-brass-acorn.274ede4b.webp",
+          "sha256": "274ede4bcd03ddb707a20e605b7b231aad65a50c0692ed934bbbb534d3497dbf"
+        },
+        {
+          "optionId": "brass-watering-can",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-brass-watering-can.1a0b9adf.webp",
+          "sha256": "1a0b9adf5505234e82eb20ae81d90272bfe521c8a224c0966ba7a24c0d0d828a"
+        }
+      ]
+    },
+    {
+      "id": "brass-afterhours",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\brass-afterhours\\v2\\manifest.json",
+      "manifestSha256": "4db38c353cda4a0bbf2fa69454c120f83920b238e5852a41fcc979b8c9ec30bc",
+      "selections": [
+        {
+          "optionId": "key-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\brass-afterhours\\v2\\widget-key-rhythm.feca7f52.webp",
+          "sha256": "feca7f5205eaecf653f3294be17ccfa920f4727993c9b607a557ccc67d322362"
+        },
+        {
+          "optionId": "reed-study",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\brass-afterhours\\v2\\widget-reed-study.95a3e23a.webp",
+          "sha256": "95a3e23a43db5ec81810fe60e9a82d96ff6a6e83d3de8449d65d249f4493040d"
+        },
+        {
+          "optionId": "sax-bell",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\brass-afterhours\\v2\\widget-sax-bell.e90077c5.webp",
+          "sha256": "e90077c5b875ce2503103a928ae94d091ffd3bab59c74932514c73c55eaee07f"
+        },
+        {
+          "optionId": "velvet-instrument-case",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\brass-afterhours\\v2\\widget-velvet-instrument-case.c2cb73fc.webp",
+          "sha256": "c2cb73fcbbe49151b6119f8e5073b855cc9d141a777551910016ec830554a164"
+        },
+        {
+          "optionId": "brass-cup-mute",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\brass-afterhours\\v2\\widget-brass-cup-mute.3ac494c0.webp",
+          "sha256": "3ac494c0bcd86be54760d950538a8e9aae01326eba420b4ae554f7d151ec60da"
+        }
+      ]
+    },
+    {
+      "id": "copper-circuit",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\manifest.json",
+      "manifestSha256": "f0c721b61771d511ec57efa979c869b91a4e17bf225b708928180eeee3054ca8",
+      "selections": [
+        {
+          "optionId": "chip-island",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-chip-island.f7acf499.webp",
+          "sha256": "f7acf499165e27f98510769f261f9c9c60ed8eaf8d90f4b2df84ef6b71704ff1"
+        },
+        {
+          "optionId": "copper-coil",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-copper-coil.1bfbbc83.webp",
+          "sha256": "1bfbbc8320a7602745f53394cf771ff7ddb764d877ce700f8969903ba6bc3b74"
+        },
+        {
+          "optionId": "trace-flow",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-trace-flow.d2daad37.webp",
+          "sha256": "d2daad37a0428536efd42075bb6f27c6ac558cbd426626ba7d98017f6f31fc01"
+        },
+        {
+          "optionId": "copper-fin-array",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-copper-fin-array.b911c243.webp",
+          "sha256": "b911c243f62e30cf0621341432c3167d3451047f087fd5b647550b797749f4b8"
+        },
+        {
+          "optionId": "ceramic-transistor",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\copper-circuit\\v2\\widget-ceramic-transistor.b3e3dfd4.webp",
+          "sha256": "b3e3dfd48842647f441fb60ea9824745acee3c6ea517a9313d92d83efd2205e0"
+        }
+      ]
+    },
+    {
+      "id": "berry-stitch",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\manifest.json",
+      "manifestSha256": "05f6f7ba80ebca03d0580c8cfd0a267fcd31bb344963ff2491e76c99bb624cbd",
+      "selections": [
+        {
+          "optionId": "stitched-berry-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-stitched-berry-basket.6486a4b6.webp",
+          "sha256": "6486a4b62fe5d34f9c8114983022083602ad9245b24509750a45806528f3e0b1"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-small.ec4dffb0.webp",
+          "sha256": "ec4dffb0409350dea6b8c53bbe114c5d68cfa6d551b2861c291bf142b98ef8b7"
+        },
+        {
+          "optionId": "art-20261107-bilberry-pincushion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-bilberry-pincushion.7698bbae.webp",
+          "sha256": "7698bbae3b9a1062b9090e3cada2e60176dbe3174baf4f2caf4d499ddaf7ac67"
+        },
+        {
+          "optionId": "art-20261107-thread-spool-finch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-thread-spool-finch.46ae3c6a.webp",
+          "sha256": "46ae3c6ab060f6771532b32549e6a3cb86ac9d719bc682802cb2c85d806f5dce"
+        },
+        {
+          "optionId": "berry-yarn-teapot",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-berry-yarn-teapot.1fec9d4c.webp",
+          "sha256": "1fec9d4c21fcd21bdd842fcd16067debde170ddbdb4103d5c621feb11c4d218c"
+        }
+      ]
+    }
+  ],
+  "baselineSelections": 43,
+  "visualReview": "pending actualboards inspection",
+  "reviewAuthority": "lane-local; coordinator review pending"
+}

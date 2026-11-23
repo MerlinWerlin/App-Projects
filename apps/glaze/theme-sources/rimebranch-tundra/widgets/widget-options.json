@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ptarmigan-willow",
+    "label": "Ptarmigan & Willow",
+    "kind": "art",
+    "image": "ptarmigan-willow.2b44d5c2.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "arctic-hare",
+    "label": "Arctic Hare",
+    "kind": "art",
+    "image": "arctic-hare.daa98beb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "muskox",
+    "label": "Crystal Muskox",
+    "kind": "art",
+    "image": "muskox.6931fdc0.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "arctic-poppy",
+    "label": "Arctic Poppy",
+    "kind": "art",
+    "image": "arctic-poppy.7c282cc9.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "dwarf-willow",
+    "label": "Dwarf Willow",
+    "kind": "art",
+    "image": "dwarf-willow.658a03c8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

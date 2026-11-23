@@ -1,0 +1,39 @@
+{
+  "status": "distinct physical process after broad actual-source review",
+  "neighbors": [
+    {
+      "themeId": "cobalt-ribbon",
+      "provenance": "pack-artwork/cobalt-ribbon/provenance.json",
+      "sha256": "5968eeeeeeea3d141c9fed27b95195bff335da4f27eb29fff18fa18b02466f6e",
+      "actualProcess": "Sculptural feather made from cobalt-blue anodized metal with brushed grain and silver-blue quill."
+    },
+    {
+      "themeId": "saltveil",
+      "provenance": "pack-artwork/saltveil/provenance.json",
+      "sha256": "16687dbfd7f6589432f44d27605e67e6183ae5bf063ca1abf0b1e208415d3111",
+      "actualProcess": "Natural feather encrusted with rose/ivory salt crystals, macro crystalline surfaces."
+    },
+    {
+      "themeId": "juniper-mist",
+      "provenance": "pack-artwork/juniper-mist/provenance.json",
+      "sha256": "480391895e83cdd3d7400fdcd22ef9710b83cf913cc41b6f2de4a8147667810e",
+      "actualProcess": "Natural winter wren with photographic plumage and twig, not an assembled feather mosaic."
+    },
+    {
+      "themeId": "plume-court",
+      "provenance": "pack-artwork/plume-court/provenance.json",
+      "sha256": "00821258ddb59017be934b5965a147a4d393a4381cedf74b63cc6c39291d5104",
+      "actualProcess": "Ivory porcelain coffer with teal/jade enamel inlays and antique-gold filigree."
+    },
+    {
+      "themeId": "curlfin-cove",
+      "provenance": "pack-artwork/curlfin-cove/provenance.json",
+      "sha256": "af8532bdaf5bebcec6e1c1c6be2a79768cd807c535a3bf42fa5ad50e9ecfc373",
+      "actualProcess": "Quilled-paper coastal miniatures with rolled/cut paper edges."
+    }
+  ],
+  "selectedProcess": "Flat assemblage of individually clipped real feather-vane panels, narrow shafts, parallel barbs and lightly lifted thin panel edges. No metal/porcelain/salt/mineral/yarn/wood-wool or natural plumage photograph.",
+  "coordinatorOtherComparison": "Coordinator also checked Bluewing translucent iridescent botanical art in preserved published baseline; distinct from clipped featherwork.",
+  "directionChange": "Vaneleaf Lagoon marine proposal replaced with Highland before any images; root explicitly reserved Highland and all five subjects before generation.",
+  "coordinatorOwnsFinalCatalogueReview": true
+}

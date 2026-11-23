@@ -1,0 +1,56 @@
+{
+  "id": "pithcurl-orchard",
+  "selected": false,
+  "raw": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-3896bb08-ba45-4aeb-ae01-feee751b7969.png",
+  "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\pithcurl-studies\\dormouse-original.png",
+  "sha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+  "prompt": "ONE original standalone Glaze Nature material prototype for PITHCURL ORCHARD. A whole recognizable HAZEL DORMOUSE, sitting in a soft three-quarter side pose with two round open ears, dark tiny eye, pointed short nose, TWO small forepaws and TWO coherent back feet, a long tail curled up beside its body and one whole tiny hazel leaf. The entire familiar animal is an ingenious physical miniature assembled ONLY from FRESH FLEXIBLE MANDARIN PEEL: saturated tangerine-orange outer skin with large recognizable oil-gland dimples, thick creamy white spongy PITH exposed on every gently curling cut edge and strip underside. Very clearly visible construction from a FEW BROAD CONTINUOUS CURLED PEEL STRIPS, not a solid carved orange mouse: one open rolled oval body shell with its white interior visible at the lower rim; separate broad folded face wedge; folded peel ear cups with white interiors; a long thin peel-strip tail coils in one open spiral with alternating orange outside and creamy pith inside; narrow folded strips make complete paws; leaf is a small folded mandarin-peel leaf silhouette. At least four bold orange/white curl transitions readable at85px. Naturally flexible torn peel edges with irregular pith fibres, moist satin oil-gland skin, no wet droplets or sticky juice. Beautiful tangible fresh-fruit-peel miniature in careful macro product photography with gentle warm modelling light. The medium and curled construction are unmistakable, not a realistic furry animal merely coloured orange, dried brown gourd, smooth clay, painted porcelain, felt, corrugated paper, goldwork or metal. No fruit bowl, orange fruit, cutting board, plate, plinth, plaque, backing rectangle, assembly tools or food props. Complete one animal and leaf centered in CENTRAL68percent canvas width and CENTRAL68percent height, all tail/ears/paw/leaf tips entirely whole with at least13percent quiet margins on a square canvas. True clean transparent alpha background and inside every open curl; no shadows, floor, background color, white halo or stray speckles. Dark eye and nose can be tiny natural dark mandarin pips. No lettering, labels, symbols, clock, date, battery readings or UI. Original artistic peel-sculpture interpretation, not a claim of a real handmade physical artwork.",
+  "alphaBounds": {
+    "16": [
+      34,
+      149,
+      1162,
+      1092
+    ],
+    "96": [
+      35,
+      150,
+      1161,
+      1092
+    ]
+  },
+  "neighbors": [
+    {
+      "name": "A: dried carved gourd",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\rindlight-waystation\\widgets\\shade-crown-well.696b7777.png",
+      "sha256": "696b77778805d2dc4b44ec1e8b7680ff7a8e1cc4a1fe11f6d4fc5842d15e9816"
+    },
+    {
+      "name": "B: chased tin relief",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\fern-fiddlehead.ede17d73.png",
+      "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c"
+    },
+    {
+      "name": "B: broad corrugated kraft",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\tawny-owl-oak.cdd74878.png",
+      "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2"
+    },
+    {
+      "name": "B: reverse applique cotton",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\cutstack-skyport\\widgets\\foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322"
+    },
+    {
+      "name": "B: pale carbon-fired ceramic",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\quail-manzanita.49be3811.png",
+      "sha256": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13"
+    },
+    {
+      "name": "Published: laminated nerikomi clay",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\yuzu-soak\\v7\\widget-small.729961e5.webp",
+      "sha256": "729961e5f925c042250868bb8be7b9754bdb0b3597f0f0fbe25f280759f0ac52"
+    }
+  ],
+  "mechanicalProcessingAllowed": "Whole-original containment only, no crop/recolour/alpha cleanup",
+  "published": false
+}

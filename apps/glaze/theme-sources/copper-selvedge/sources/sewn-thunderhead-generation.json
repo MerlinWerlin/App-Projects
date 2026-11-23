@@ -1,0 +1,18 @@
+{
+  "id": "sewn-thunderhead",
+  "prompt": "ONE individual original 1024x1024 square Glaze COPPER SELVEDGE artwork. A SEWN THUNDERHEAD in physical woven-metal relief: a compressed asymmetrical storm-cloud made of five box-pleated pillows of tightly interlaced copper ribbon, tied through its middle by a single jagged diagonal turquoise woven lightning seam. Three short angular lightning tabs emerge from lower edge; one entire side ends in fine frayed metal selvedge. The cloud is emphatically made of visible over-under thin copper warp and turquoise verdigris wire weft, not a natural puffy cloud, not a fabric toy. Bold low wide zigzag silhouette with squared lobes; no hanging waterfall or trefoil knot. Hand-hammered strip edges, scratches, warm oxidised copper and teal patina, strong low raking studio light, dark green occluded weave. Gallery craft photography, inventive meteorology woven by a metalsmith. Central 65% whole subject,18% clear genuine alpha-transparent margins; no colored backdrop, floor, pedestal or backing sheet. No letters, text, numerals, UI, clock hands/dials, battery/date/live readings, logos, animals, ordinary objects. One art asset, no grid or collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/sewn-thunderhead.b00c1285.png",
+  "sourceSha256": "b00c1285666a913d6baf7ef8760d03482180859fe85c5c8da265a01a92a10f6c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sewn-thunderhead.10f0e987.png",
+  "sha256": "10f0e9879dfdd57abcacfc2ba6d070156dd13c5b322b8b5e6fdf3b97af864cca",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

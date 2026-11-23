@@ -1,0 +1,1 @@
+Six selected exact unmodified built-in PNG outputs. Five independent whole woodland subjects, one own-five-reference opaque habitat wallpaper. No creative edits or external images. Whole art900within1024RGBA.

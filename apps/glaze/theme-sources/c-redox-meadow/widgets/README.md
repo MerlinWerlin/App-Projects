@@ -1,0 +1,1 @@
+Five separate pure-art1024square RGBA options, each whole original uniformly contained900within1024. Real alpha preserved, no baked live values. Native identities use existing supported live Clock/Battery/Calendar recipe in native-widget-identity.json.

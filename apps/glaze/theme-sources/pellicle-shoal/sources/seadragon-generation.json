@@ -1,0 +1,19 @@
+{
+  "id": "seadragon",
+  "label": "Leafy Sea Dragon",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL: a fictional sea organism sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES, thin cloudy translucent bio-fibre membranes. Convincing physical macro photography. Very thin naturally wrinkled amber/tea/ivory laminae, densely visible fine cellulose fibrils, irregular torn fibrous edges, softer doubled opaque fold lips, little water beads caught only at seams. Light passes diffusely through cloudy fibre, with overlapping folds and visibly loose membrane sections. No smooth solid core, no glass, polished resin, clear jelly candy, gelatin, plastic, fabric weave, paper quilling, metal, wood or ordinary animal skin. Use light warm amber and pale oyster fibres on true alpha. SUBJECT: one complete alert LEAFY SEA DRAGON floating upright in a gentle S posture. Long narrow curled snout, tiny dark eye, fine ridged flexible neck, broad delicate leaf-shaped flaps branching from head/back/belly and tail; those flaps are translucent thin torn cellulose sheets with clear fibrils and stronger thick fold ribs, with genuine see-through gaps between them. Two small delicate pectoral fins, long curling tapering tail fully visible. The creature must read immediately as a real coherent sea-dragon silhouette, not a random abstract sheet or flower. Entire subject and every flap/tail tip comfortably within central70% of canvas, generous truly empty transparent margins on all sides. No underwater scenery, external bubbles or glow, floor, cast shadow, opaque backing panel, frame, text, numerals, clock/battery/calendar or UI. One subject only, no sheet/collage. Retain clear silhouettes at85px.",
+  "source": "sources/seadragon.8b72684483bd.png",
+  "sourceSha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/seadragon.5743037c00cf.png",
+  "sha256": "5743037c00cf5464f7d4664b66d2c76c77d23f20960e56f224e4e1bf6a92dae2",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits."
+}

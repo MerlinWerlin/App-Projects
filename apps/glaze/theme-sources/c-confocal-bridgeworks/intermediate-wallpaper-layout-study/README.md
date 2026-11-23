@@ -1,0 +1,1 @@
+Unselected initial wallpaper retained with exact prompt and five original identity references. A layout-only built-in imagegen edit preserves this scene while placing complete focal structures inside safe device crops. Ground may bleed.

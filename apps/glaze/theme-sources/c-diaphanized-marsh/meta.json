@@ -1,0 +1,16 @@
+{
+  "name": "Rosefin Marsh",
+  "mood": "Familiar freshwater animals revealed in delicate rose and blue anatomical studies.",
+  "tags": [
+    "cleared-and-stained",
+    "freshwater",
+    "real-nature",
+    "selective-tissue-colour"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored live native identity. Artistic natural-history specimen interpretation; no real specimens or external visual inputs.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole recognizable real freshwater nature in cleared-and-double-stained natural-history specimen photography: selective rose/magenta bones and localized blue cartilage inside a faint continuous clear tissue silhouette. Ordinary photographic light and intact familiar morphology. Digital artistic specimen interpretation, not a real specimen, calibrated record or anatomical reference. No glass sculpture, fluorescent glow, dual red/cyan projection, labels, cuts, blood or organs. Exact independent generation prompts retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

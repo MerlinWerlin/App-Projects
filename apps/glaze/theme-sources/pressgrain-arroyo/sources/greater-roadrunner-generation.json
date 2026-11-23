@@ -1,0 +1,18 @@
+{
+  "id": "greater-roadrunner",
+  "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. FIRST SUBJECT: One whole GREATER ROADRUNNER in a naturally low mid-stride profile, facing RIGHT. A small raised feather crest, narrow pointed closed bill, long level body with narrow neck, elongated wedge tail trails upward LEFT, two distinct long running legs, one extended forward and one behind, simplified coherent toes fully visible. The long folded wing is one dominant dusty indigo reverse-bookcloth grid panel, with coarse crisscross cells. The rust back and wedge tail have two broad, random gritty fields. The ochre-cream breast is broad matte smooth reserve with one uneven, torn-board boundary and a slim pressure-dark ink rim where it meets the grid wing. The face has a small flush plum triangular eye and subtle short indigo crest. Whole natural bird with recognizable streamlined roadrunner posture, no anthropomorphic features, twig, rocks or extra animals. True transparent alpha outside, including between the two legs.",
+  "tool": "built-in image_gen",
+  "source": "sources/greater-roadrunner.0893abca.png",
+  "sourceSha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/greater-roadrunner.152afe7b.png",
+  "sha256": "152afe7b9a2477501522d4dd302010b2afd9c60c31fff7ba3de320727daa2c37",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "reason": "Glider intrudes into quiet upper field and tallest wing would crop in750x1334. Whole group needs a shallower valley arrangement.",
+  "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.af73837da46a.png",
+  "sourceSha256": "af73837da46a08ad823ab5a14321de02e6909f1ee96561b0e882eb05e1c0f220",
+  "prompt": "Use case: stylized-concept. GLAZE ORIENTATION CARAVAN. An invented migration of tangible functional fauna seen as a fictional ELECTRON BACKSCATTER DIFFRACTION ORIENTATION MAP. Image language: flat, sharply segmented POLYCRYSTALLINE GRAINS. Each irregular angular interlocking grain is ONE uniform saturated orientation colour: primary cobalt, carmine red, emerald green, hot fuchsia, cyan or acid yellow. Unequal grain sizes, long grains following limbs, little grains at joints, thin charcoal BLACK grain-boundary seams and occasional three-way junctions. Crisp oblique crystallographic twin bands cross a FEW grains, and tiny stepped detector pixels are just visible along some boundaries. The colour is a false-colour measurement signal, never a material surface. The whole recognizable subject silhouette is packed with hundreds of adjacent coloured grains, with NO shading, gradients, relief, highlights or volumetric modelling. Anatomy/working joints read through silhouette and negative gaps, not a black contour drawing laid over the map. Dense orientation segmentation remains visible at thumbnail size. Not a physical mosaic, stained glass, enamel, gemstones, bismuth, crystal sculpture, origami, low-poly3D model, paint, print, paper craft, contour map, terrain cartography, smooth rainbow interference, thermal field, fluorescent fibres, glowing rim, particle cloud or radiograph. Fictional artistic orientation map, not a real measured microscopy dataset. No text, grain numbers, scale bars, axes, orientation legends, labels, clock faces, readings, graphs, logos or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. Use the five own selected artwork originals as identity references. A coherent migration landscape: saddleback porter crosses a shallow stepped pass, trident grazer feeds beside it, cairn lifter negotiates a low ridge, spindle burrower emerges from a hollow and bellows glider banks above. Preserve the five exact silhouettes and false-colour grain process, no extra creatures. All five complete focal bodies including every foot, wing and jaw must fit within horizontal10%to90%andvertical43%to78%ofcanvas; bottom20%quiet pale ground, upper40%quiet warm ivory detector background. Landscape consists of restrained sparse pale-grey segmented grains and charcoal channels, so bright orientation-mapped animals remain dominant. Terrain can bleed through frame edges, complete creatures cannot. One inhabited-scale world rather than a collage or specimen sheet. No ordinary rocks photographed in3D, no coloured physical materials, no text or UI.",
+  "internalArtworkReferences": [
+    {
+      "id": "saddleback-porter",
+      "sourceImage": "sources/saddleback-porter.067ede319439.png",
+      "sha256": "067ede31943933ddff5fa7f64bb5a032f65438f88064d85b5925995be8b346d5"
+    },
+    {
+      "id": "trident-grazer",
+      "sourceImage": "sources/trident-grazer.e54f51b8f068.png",
+      "sha256": "e54f51b8f06851caa9f9e29142a4b48b48d82c750e43a7968fdbbc86b169a473"
+    },
+    {
+      "id": "bellows-glider",
+      "sourceImage": "sources/bellows-glider.7f40ad298f58.png",
+      "sha256": "7f40ad298f58fe37460aa172bb95e9ed5ad3c6ef0e15a89981d67d448d97f6ad"
+    },
+    {
+      "id": "cairn-lifter",
+      "sourceImage": "sources/cairn-lifter.f03f59472064.png",
+      "sha256": "f03f59472064ac081e18d3c59a21df6c8723b1a9a7a5163bffec5677b8313664"
+    },
+    {
+      "id": "spindle-burrower",
+      "sourceImage": "sources/spindle-burrower.0274855e1a04.png",
+      "sha256": "0274855e1a045bbe5f7d8f4ad869492fe8f4d14b4647dafd1832a646b451ac23"
+    }
+  ]
+}

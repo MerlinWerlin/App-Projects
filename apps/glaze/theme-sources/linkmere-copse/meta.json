@@ -1,0 +1,22 @@
+{
+  "name": "Linkmere Copse",
+  "mood": "Familiar riverbank wildlife, iris and willow shaped from coarse open steel rings with worn silver edges.",
+  "tags": [
+    "nature",
+    "riverbank",
+    "kingfisher",
+    "water-vole",
+    "dragonfly",
+    "iris",
+    "willow",
+    "open-rings",
+    "steel",
+    "mail-construction"
+  ],
+  "credits": "Original Glaze built-in image_gen artworks and authored native geometry. Artistic interlinked steel-ring sculpture, not an authentic historical object, real specimen or physical making claim.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole familiar riverbank wildlife and plants made of coarse interlinked open blackened-steel wire rings with worn silver edges and large see-through air holes. Five independent originals, one own dragonfly leg-count correction and exact own-reference portrait habitat history retained.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "pike-waterweed",
+  "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. Subject PIKE WATERWEED: one recognizable natural northern pike fish in a shallow open S-curve swimming diagonally upper-left, long slim coherent body, broad pointed duckbill-like closed snout, one modest natural eye, dorsal fin placed well back near the tail, natural paired pectoral/pelvic fins and a complete forked tail. ONE slender curling waterweed sprig beside lower tail, not a wreath/hoop. No extra heads, body split, mechanical parts, dragon wings or jewelry. Body/fins constructed entirely from directional fields of short coarse HOLLOW HELICAL GILT-WIRE CUT-PURL TUBES sewn through their bores, distinct spiral ridges/cut mouths/couching joins, natural cream-silver purl belly and gilt back with tiny olive silk sprig. No smooth castgold skin, shell/enamel/glass beads, flush foil channels or ordinary thread stitching. Keep natural fish anatomy and clear silhouette first. Whole snout, all fins/tail points and every sprig tip inside generous true alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/pike-waterweed.6df1217c.png",
+  "sourceSha256": "6df1217c8e839f39c329a6d07fae62374ea31aaf4f4d8dc992e01edda798fa4a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/pike-waterweed.16db03f5.png",
+  "sha256": "16db03f585ce3ca7be2290cf78e5d0f098bdfe04e1d15d02c498a7b7367bc664",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

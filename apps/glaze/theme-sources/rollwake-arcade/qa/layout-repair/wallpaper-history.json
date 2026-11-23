@@ -1,0 +1,19 @@
+{
+  "reason": "Actual encoded phone crops cropped both ends of the fairground deck. The layout-only edit pulls back uniformly so both platform ends and all three devices fit inside the phone frame.",
+  "originalGeneration": "qa/layout-repair/original-generation.json",
+  "originalSource": "qa/layout-repair/wallpaper.original.26c73f9e.png",
+  "originalSha256": "26c73f9e60e0d921ab80806005b71ec9c2fadfceed7259fdf42b92093dbf1995",
+  "selectedSource": "sources/wallpaper.e4226f57.png",
+  "selectedSha256": "e4226f575cea86ff1a50b68f2f5d331fc078917734918f95b65ec4e179916ac6",
+  "exactRequest": "qa/layout-repair/wallpaper-layout-repair-request.json",
+  "exactResult": "qa/layout-repair/wallpaper-layout-repair-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.26c73f9e.png",
+      "sha256": "26c73f9e60e0d921ab80806005b71ec9c2fadfceed7259fdf42b92093dbf1995",
+      "role": "Own original scene EDIT TARGET for layout-only pullback. All five standalone artworks and native identity preserved."
+    }
+  ]
+}

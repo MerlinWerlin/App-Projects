@@ -1,0 +1,21 @@
+{
+  "theme": "c-gelband-meadow",
+  "art": {
+    "cBandBeech": "M 20 85 Q 27 74 33 68 Q 22 53 31 40 L 34 41 L 39 30 L 42 31 L 50 22 L 53 23 L 64 15 L 66 17 L 82 9 L 80 26 L 77 26 L 77 39 L 73 39 L 69 51 L 65 50 L 58 62 L 54 60 Q 42 74 36 72 L 24 91 Z",
+    "cBandLanes": "M 25 28 L 38 28 M 25 49 L 38 49 M 25 72 L 38 72 M 47 20 L 60 20 M 47 41 L 60 41 M 47 64 L 60 64 M 69 34 L 81 34 M 69 58 L 81 58"
+  },
+  "recipe": [
+    "oval",
+    "cBandBeech",
+    "cBandLanes",
+    "beads",
+    "needle",
+    "trail",
+    "ledger"
+  ],
+  "ornament": "M 27 88 Q 37 75 43 67 Q 28 62 35 45 L 39 46 L 45 34 L 49 36 L 58 25 L 61 27 L 77 16 L 77 34 L 73 33 L 69 46 L 65 45 L 60 58 L 56 56 Q 49 69 43 67 M 43 67 Q 54 48 68 30",
+  "values": "Existing live Clock/Battery/Calendar; no raster readings.",
+  "registryIntegration": "Isolated source-only candidate floor1.0.44. Root owns canonical/runtime/Swift integration and installed-device qualification. Coordinator material review pending.",
+  "ornamentDirection": "Quiet small plain beech leaf/petiole, no mini band chart in compact headers. Oval clock selected from whole leaf form, not calendar fitting. Current restored root calendar identity.outline, no retired badge probes.",
+  "ornamentProvenance": "Original100x100vector authored23November2026 for user both-corner steering."
+}

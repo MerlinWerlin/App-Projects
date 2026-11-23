@@ -1,0 +1,1 @@
+Unselected original and exact built-in alpha repair lineage. Remove the unwanted pale backing and halo, preserving every actual feather bract, leaf and stem. Selected repaired original retained without subject edits by packaging tools.

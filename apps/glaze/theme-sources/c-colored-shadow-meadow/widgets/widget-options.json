@@ -1,0 +1,67 @@
+[
+  {
+    "id": "quail-three-shadows",
+    "kind": "art",
+    "image": "quail-three-shadows.2125e5293342.png",
+    "sha256": "2125e529334272272f03a23df4e2bdf44acad1c2b8e4cb983fa62c218b7be9fc",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Quail Shadows"
+  },
+  {
+    "id": "cottontail-shadows",
+    "kind": "art",
+    "image": "cottontail-shadows.1781156d7041.png",
+    "sha256": "1781156d7041d0a708bd3734823d41096da6cf11dfc00a7ad929375fa6a4b21a",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cottontail Shadows"
+  },
+  {
+    "id": "poppy-shadows",
+    "kind": "art",
+    "image": "poppy-shadows.14402b3368ea.png",
+    "sha256": "14402b3368eabcb1314965d560206200deb6c6207b4d15073f4b65d67c7dfa58",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Poppy Shadows"
+  },
+  {
+    "id": "fence-lizard-shadows",
+    "kind": "art",
+    "image": "fence-lizard-shadows.2562e054d83b.png",
+    "sha256": "2562e054d83bb6fa12a543ae7835574b4a8c085f824fab12f2c3bdc13a972111",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fence Lizard Shadows"
+  },
+  {
+    "id": "mushroom-shadows",
+    "kind": "art",
+    "image": "mushroom-shadows.db863d5ef6a1.png",
+    "sha256": "db863d5ef6a1e127cc2a04e0dd02c7966b8c6ac1759771646d5ee3f4610c37df",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Meadow Mushroom Shadows"
+  }
+]

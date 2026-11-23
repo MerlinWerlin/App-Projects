@@ -1,0 +1,100 @@
+{
+  "review": "All5 full shrub leaves/holes/stems/roottoes,cricket2antennae/6legs/2tailprongs,grass3blades/3roots,succulent2large leaves/3leafshoot/rootfoot,and seed2wings/pod/curledroot lie inside original alpha16/96 bounds. Edgealpha maximum1. Full originals proportionally contained1024square without cropping.",
+  "assets": [
+    {
+      "id": "saltbush-lantern",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          29,
+          159,
+          1185,
+          1125
+        ],
+        "96": [
+          30,
+          159,
+          1184,
+          1124
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "burrow-cricket",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          44,
+          268,
+          1214,
+          985
+        ],
+        "96": [
+          44,
+          269,
+          1213,
+          984
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "spiralroot-grass",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          222,
+          93,
+          1062,
+          1193
+        ],
+        "96": [
+          222,
+          93,
+          1062,
+          1192
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "leafcockle-succulent",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          85,
+          177,
+          1163,
+          1027
+        ],
+        "96": [
+          86,
+          178,
+          1162,
+          1026
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "winged-sand-seed",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          105,
+          181,
+          1118,
+          1095
+        ],
+        "96": [
+          106,
+          182,
+          1118,
+          1094
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

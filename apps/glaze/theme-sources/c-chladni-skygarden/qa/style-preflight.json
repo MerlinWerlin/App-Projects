@@ -1,0 +1,102 @@
+{
+  "theme": "c-chladni-skygarden",
+  "status": "FLAT targeted variant accepted by coordinator after actual A2/B11/C2/C8 comparison,before remaining4generations",
+  "sample": {
+    "selected": false,
+    "id": "bellpod-arbor",
+    "sourceSha256": "1e8bc3436223cdf0c3090893389c86ad2544967bb8c499b474ef290e76d62d58",
+    "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN. An invented inhabited celestial garden appears ONLY through flat CHLADNI-FIGURE SAND-NODAL RECORDINGS. VISUAL CONSTRUCTION: irregular MATTE IVORY and PALE OCHRE sand grains accumulate densely along broad CURVED NODAL RIDGES,forming connected branching/crossing loops and rounded cellular standing-wave patterns. Large transparent EMPTY INTERNODAL AREAS lie between those grain ridges. The recognisable whole organism/structure silhouette consists ONLY of those accumulated grain bands and a few broad densely grained nodal patches. There is NO solid body underneath and no surface coated with sand. Flat two-dimensional grain accumulation image,not shaded 3D matter. Broad ridge widths and a small number of large cells,roughly four to eight prominent cells across the main form. Each ridge has visible uneven discrete natural grains and slightly ragged margins;matte chalk-ivory centres and muted ochre edge grains,not glitter or light points. The entire body has empty optical gaps between the grain bands. Curves are not threads,wires or tubes. No smooth outline drawing,beaded/sewn regular chain,woven lace,fibres,metal,clay,stone,resin,fused glass,gloss,specular highlights or cast shadows. No 3D substrate,sand pile sculpture,opaque grain-textured skin,nebula haze,LiDAR point cloud,thin particle tracks,quiver arrows,checker cells or regular parallel stripes. The distinctive standing-wave nodal-grain network must be visible in the actual image. Fictional artistic ecology inspired by vibrating-plate grain patterns,not a measured experiment or a claim about acoustic propagation in vacuum. No text,numbers,labels,scale bar,axes,plot,clock,UI,reading,logo or watermark. Subject: ONE complete BELLPOD ARBOR: a small invented tree with one short thick forked trunk,THREE broad arching branches,and THREE unequal bell-shaped open seedpods hanging from those branches. Each pod is a wide downward-opening bell with a thick flared rim and one large open mouth;left pod low and broad,centre pod tall,right pod smaller and tipped outward. THREE broad root feet curl below the trunk. The trunk/branches/pod walls are made only of nodal-grain loops and broad grain ridges,with large open internodal spaces. Read as a useful living sky-garden plant,not a lampstand,wire sculpture or ordinary leafy tree. Whole pod rims,branch tips and root ends. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        37,
+        45,
+        1216,
+        1220
+      ],
+      "96": [
+        38,
+        46,
+        1216,
+        1219
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "grainward-commons",
+      "asset": "tide-stair-inn",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\grainward-commons\\widgets\\tide-stair-inn.adb594c8.png",
+      "sha256": "adb594c8b091542b1172ba91ea591f4a7bb9ac6d184d02b2bfb51cdf14c67cca"
+    },
+    {
+      "theme": "c-neutrino-reliquary",
+      "asset": "cascade-gate",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-neutrino-reliquary\\widgets\\cascade-gate.f8efe08bc575.png",
+      "sha256": "f8efe08bc575f3c24ccce504d1ec2646da7c7203ff683935ab652e4fa5f656e1"
+    },
+    {
+      "theme": "c-lidar-waystation",
+      "asset": "scan-postmaster",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-lidar-waystation\\widgets\\scan-postmaster.3d65ba920f57.png",
+      "sha256": "3d65ba920f574a34b45cd417626a63d6e6b8ed4f52dc9837a9febd96fdd6c804"
+    }
+  ],
+  "assessment": "On actual proposed plum background,connected broad ivory/ochre grain bands leave large genuinely empty internodal cells through trunk/branches/pods/rootfeet. Distinct construction from B11solid sand-painted wall fields,C2thin tracks and C8depth point surfaces. Raw grains are coarse;first-sample reviewer should flag raised granular/coated appearance if it dominates actual85px. Whole3pod/3branch/3root silhouette retained.",
+  "comparisonImageInputsToGeneration": [],
+  "conceptReferenceScope": "UCLA demonstration text only;celestial ecology entirely fictional,not measured acoustic/vacuum behavior.",
+  "firstGateVerdict": "Readable nodal silhouette,but coarse raised ribs feel granular sculpture;addA2porousBellowsBloom comparison,keep large empty cells and continuous nodal bands,remove tubular crosssections/shading.",
+  "targetedVariantPrompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete BELLPOD ARBOR: a small invented tree with one short thick forked trunk,THREE broad arching branches,and THREE unequal bell-shaped open seedpods hanging from those branches. Each pod is a wide downward-opening bell with a thick flared rim and one large open mouth;left pod low and broad,centre pod tall,right pod smaller and tipped outward. THREE broad root feet curl below the trunk. The trunk/branches/pod walls are made only of nodal-grain loops and broad grain ridges,with large open internodal spaces. Read as a useful living sky-garden plant,not a lampstand,wire sculpture or ordinary leafy tree. Whole pod rims,branch tips and root ends. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px. TARGETED EDIT OF IMAGE1: preserve the exact recognizable whole THREE-BELLPOD ARBOR silhouette,three unequal open bellpod mouths,three arched branches andthree curled rootfeet. Transform ONLY the construction into the strictly flat fine-grain nodal recording described above. Flatten every rounded raised ridge into a planar loose-grain BAND with NO apparent thickness or curved sidewall. Remove all smooth solid tan/brown binder,edge shading and uniform highlights;replace coarse chunky grains by much finer matte loose sand,uniform diffuse exposure. Retain broad continuous bands and all large transparent internodal cells. Do not close holes,fill bodies or replace the tree with abstract rings. Fit whole tree inside central75%with generous transparent outer margins;all pod rims/branch/root endpoints whole. No backdrop plate,floor,shadow or extra grain spills in corners.1024square,true alpha outside/through all empty cells.",
+  "expandedNeighbors": [
+    {
+      "theme": "grainward-commons",
+      "asset": "tide-stair-inn",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\grainward-commons\\widgets\\tide-stair-inn.adb594c8.png",
+      "sha256": "adb594c8b091542b1172ba91ea591f4a7bb9ac6d184d02b2bfb51cdf14c67cca"
+    },
+    {
+      "theme": "c-neutrino-reliquary",
+      "asset": "cascade-gate",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-neutrino-reliquary\\widgets\\cascade-gate.f8efe08bc575.png",
+      "sha256": "f8efe08bc575f3c24ccce504d1ec2646da7c7203ff683935ab652e4fa5f656e1"
+    },
+    {
+      "theme": "c-lidar-waystation",
+      "asset": "scan-postmaster",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-lidar-waystation\\widgets\\scan-postmaster.3d65ba920f57.png",
+      "sha256": "3d65ba920f574a34b45cd417626a63d6e6b8ed4f52dc9837a9febd96fdd6c804"
+    },
+    {
+      "theme": "aerolith-choir",
+      "asset": "bellows-bloom",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\aerolith-choir\\widgets\\bellows-bloom.png",
+      "sha256": "05c2c6a107f5e13d011b5bec1c20f8f10703f598e4385395b80d876f1478109f"
+    }
+  ],
+  "targetedVariant": {
+    "selected": true,
+    "sourceSha256": "3ac3bfb690b108b33a074bc2572bba588f4a1e5468c8f390e30e35392979c8ff",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        41,
+        49,
+        1213,
+        1217
+      ],
+      "96": [
+        42,
+        49,
+        1212,
+        1215
+      ]
+    },
+    "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete BELLPOD ARBOR: a small invented tree with one short thick forked trunk,THREE broad arching branches,and THREE unequal bell-shaped open seedpods hanging from those branches. Each pod is a wide downward-opening bell with a thick flared rim and one large open mouth;left pod low and broad,centre pod tall,right pod smaller and tipped outward. THREE broad root feet curl below the trunk. The trunk/branches/pod walls are made only of nodal-grain loops and broad grain ridges,with large open internodal spaces. Read as a useful living sky-garden plant,not a lampstand,wire sculpture or ordinary leafy tree. Whole pod rims,branch tips and root ends. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px. TARGETED EDIT OF IMAGE1: preserve the exact recognizable whole THREE-BELLPOD ARBOR silhouette,three unequal open bellpod mouths,three arched branches andthree curled rootfeet. Transform ONLY the construction into the strictly flat fine-grain nodal recording described above. Flatten every rounded raised ridge into a planar loose-grain BAND with NO apparent thickness or curved sidewall. Remove all smooth solid tan/brown binder,edge shading and uniform highlights;replace coarse chunky grains by much finer matte loose sand,uniform diffuse exposure. Retain broad continuous bands and all large transparent internodal cells. Do not close holes,fill bodies or replace the tree with abstract rings. Fit whole tree inside central75%with generous transparent outer margins;all pod rims/branch/root endpoints whole. No backdrop plate,floor,shadow or extra grain spills in corners.1024square,true alpha outside/through all empty cells.",
+    "directEditReference": {
+      "sourceImage": "intermediate-flat-nodal-study/bellpod-first.1e8bc3436223.png",
+      "sha256": "1e8bc3436223cdf0c3090893389c86ad2544967bb8c499b474ef290e76d62d58"
+    },
+    "assessment": "Variant has flatter more uniform-intensity bands and somewhat finer grain texture;exact same whole3pod/3branch/3root skeleton and large transparent cells. Reviewer must decide whether enough separation from porous sculpture/coated ribs remains. No further variants/other4gens yet.",
+    "sourceImage": "sources/bellpod-arbor.3ac3bfb690b1.png"
+  },
+  "coordinatorVerdict": "Planar constant-intensity sand bands/clear empty internodal cells sufficiently distinct from foam thick rims and three otherneighbors. Continue strict finegrain monolayer,no shadedtubes/sparkle/coatedbodies. Compactcorner must be open nodaljunction."
+}

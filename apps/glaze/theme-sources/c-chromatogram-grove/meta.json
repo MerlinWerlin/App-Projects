@@ -1,0 +1,17 @@
+{
+  "name": "Pigment Passage",
+  "mood": "Familiar nature forms hold softly separated trails of plant colour on pale porous paper.",
+  "tags": [
+    "paper-chromatography",
+    "plant-pigment",
+    "capillary-front",
+    "nature",
+    "botanical"
+  ],
+  "credits": "Glaze original built-in image_gen artwork. Artistic nature-shaped paper-chromatogram interpretation, not authentic analytical samples or measured pigment/Rf data.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole familiar nature-shaped thin porous chromatography-paper carriers with broad unequal separated absorbed pigment migration zones, concentrated feathered fronts and unstained warm-white paper intervals. No external visual inputs or authentic analytical results claimed.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

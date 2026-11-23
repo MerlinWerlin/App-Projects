@@ -1,0 +1,129 @@
+{
+  "theme": "purlwake-reedbeds",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Cut-purl goldwork embroidery with hollow helical gilt-wire spring tubes, cut coil mouths and fine couching stitches",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Edit this EXACT Purlwake Reedbeds goldwork wallpaper, LAYOUT ONLY. Preserve all five recognizable natural subjects, dense SHORT HELICAL CUT-PURL METAL TUBES, open cut mouths/spiral ridges/couching stitches, gilt/silver/olive colors and existing arrangement exactly. Uniformly shrink the ENTIRE COMPLETE EXISTING HABITAT GROUP to65PERCENT OF ITS CURRENT WIDTH AND HEIGHT, including vole/tail/paws, all rush/reed tips, grebe/bill/crest/feet/ripples, pike/fins/tail, iris/bud/leaves/damselfly and all marshmarigold flowers/kidney leaves/current/grass strokes. Everything shrinks/moves together, no independent resizing, redrawing, deletion or additions. Recenter the smaller complete group horizontally at57PERCENT imageheight. Every element inside central60percent imagewidth and y44to70percent imageheight, with clearly WIDE QUIET PLUM MARGINS ON BOTH SIDES and BELOW. Naturally extend same quiet smoky-plum #343039 matte textile-paper field above/below/sides; upper40percent and bottom28percent remain empty. Whole every ear/tail/paw/bill/crest/toe/fin/wing/antenna/petal/reed/leaf end intact. Keep purl SPRING-WIRE construction; no smooth castgold, ordinary soft-thread fill, glassbeads/enamel, wool/felt, new plants/background decorations, hoop/frame, lettering/numbers, clock/date/battery/UI, halo/glow or cast-shadow plaque. Opaque portrait phone wallpaper, same exact already-correct natural goldwork reedbed, just one uniform pulled-back composition.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.85be2d02.png",
+      "sourceSha256": "85be2d0208d8b8d9a3bb8c624b97d26fc32243350d3c8324e60cbfd3e36b3995",
+      "sourceDimensions": [
+        941,
+        1671
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "3d18232585b98e08dd41b4b4693b39a69d5104075695d29f122bcee3336f62b1",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.cfd21df1.png",
+        "sha256": "cfd21df1c5b2ff3a28a143c997ca1f7178dff2c2ed6df3c7b62d3ff9221b179b"
+      }
+    },
+    {
+      "id": "water-vole-rush",
+      "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. FIRST MATERIAL SAMPLE WATER VOLE RUSH: one recognizable natural adult water vole walks quietly toward right, low rounded body, coherent short blunt muzzle, two small rounded ears, modest normal dark eyes, exactly FOUR short coherent legs with complete delicate natural paws/toes, one complete slender tail about half body length curving behind left. No smiling chibi face, giant toy eyes, rabbit ears, mouse cheese/costume or mechanical parts. Three short whole rush blades and one small seedhead beside front feet, no ground pad or habitat platform. Build vole entirely from DENSE SHORT CUT-PURL METAL SPRING TUBES laid in directional fur rows: each tube visibly consists of a many-turn continuous GOLDEN WIRE HELIX, with spring ridges and open cut ends, not one smooth bead or long metal ribbon. Slight coarse purl variation makes construction legible at170and85pixels. Tiny pale-silver purl highlights at cheeks/belly, fine olive silk at rush stems, rest gilt purl. Natural outline dominant, no generic decorative floral overprint. Whole muzzle/ears/tail, all four paws/toes and rush tips inside generous true alpha margins. No smooth silver cast skin, nacre/enamel/gems, pins/clasp/ring/brooch mount or cloth rectangle.",
+      "tool": "built-in image_gen",
+      "source": "sources/water-vole-rush.7085d1d8.png",
+      "sourceSha256": "7085d1d870bd3875cdc73b6ea94aec5acd5605385d369a57f6105125bf632c85",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/water-vole-rush.0916c484.png",
+      "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "grebe-reeds",
+      "prompt": "Edit this EXACT goldwork great-crested grebe artwork. Preserve all short hollow HELICAL CUT-PURL GILT/SILVER WIRE TUBES, visible spiral ridges/cut mouths, sewn directional fields, entire bird swimming pose, reeds/ripples and true alpha. NATURAL ANATOMY CORRECTION ONLY: replace the TWO triangular ducklike WEBBED feet with TWO small natural GREBE FEET, each with THREE CLEAR SEPARATE LONG TOES with individual oval LOBED SIDES, no continuous webbing sheet between the toes. Keep complete toe tips, coherent attachment to the rear underside of body and quiet paddling pose. Scale the oversized head crest down modestly to TWO slim dark crest tufts with a natural short neck ruff, not giant fan plumes, while preserving pointed bill, small natural eye and recognizable grebe head. Do not alter body/wing/tail proportions or cut-purl construction. Whole beak/crest/body/tail/feet/toes/reedtips/ripples contained with generous real transparent margins. No extra limbs, ornament, smooth gold cast surface, bead/enamel/gems, backing, floor, halo/shadow, frame, text or UI. One complete refined natural grebe on transparent alpha.",
+      "tool": "built-in image_gen",
+      "source": "sources/grebe-reeds.b44ba91a.png",
+      "sourceSha256": "b44ba91ada7af65a83c55382eff9658901886dfaf67cce06720debb03443e1d4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/grebe-reeds.6d8a6f5b.png",
+      "sha256": "6d8a6f5b936c3d1205046159d1bd577464ce0088bc0c489bc15250fbae6b4d09",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/grebe-reeds-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-repair/grebe-reeds.original.27ebfdc5.png",
+        "sha256": "27ebfdc582a5045f7948d94c375d72aa2cba6a6518a6a79de2b69c116e2eeb99"
+      }
+    },
+    {
+      "id": "pike-waterweed",
+      "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. Subject PIKE WATERWEED: one recognizable natural northern pike fish in a shallow open S-curve swimming diagonally upper-left, long slim coherent body, broad pointed duckbill-like closed snout, one modest natural eye, dorsal fin placed well back near the tail, natural paired pectoral/pelvic fins and a complete forked tail. ONE slender curling waterweed sprig beside lower tail, not a wreath/hoop. No extra heads, body split, mechanical parts, dragon wings or jewelry. Body/fins constructed entirely from directional fields of short coarse HOLLOW HELICAL GILT-WIRE CUT-PURL TUBES sewn through their bores, distinct spiral ridges/cut mouths/couching joins, natural cream-silver purl belly and gilt back with tiny olive silk sprig. No smooth castgold skin, shell/enamel/glass beads, flush foil channels or ordinary thread stitching. Keep natural fish anatomy and clear silhouette first. Whole snout, all fins/tail points and every sprig tip inside generous true alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/pike-waterweed.6df1217c.png",
+      "sourceSha256": "6df1217c8e839f39c329a6d07fae62374ea31aaf4f4d8dc992e01edda798fa4a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/pike-waterweed.16db03f5.png",
+      "sha256": "16db03f585ce3ca7be2290cf78e5d0f098bdfe04e1d15d02c498a7b7367bc664",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "iris-damselfly",
+      "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. Subject IRIS DAMSELFLY: one recognizable natural iris flowering stem with ONE large open bloom showing THREE broad gently drooping outer falls and THREE narrower upright inner standards, one closed tapered bud, TWO long pointed sword-shaped leaves. A small recognizable damselfly rests beside the lower leaf: one slender coherent segmented body, TWO antennae, FOUR narrow wings folded together beside body and SIX tiny coherent legs, no giant jeweled eyes. No pot/vase/ground or backing leaf. Iris petals/leaf/stem and insect made from short dense directional fields of coarse hollow HELICAL METAL PURL SPRING TUBES with visible spiral ridges/cut open ends and couching stitches; champagne-silver petals with gilt lips/veins, antique-gilt insect and restrained olive silk leaf accents. No colored enamel, beads, sequins, gems, smooth gold casting, ordinary soft silk flower or wire cage. Whole flower/petal lobes, bud, two leaf tips and insect wing/antenna/leg tips fully contained within generous true alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/iris-damselfly.c02e774d.png",
+      "sourceSha256": "c02e774d214dab1c9466d1931da5aa6d770f9c494c3a7e330c091deab87b31f5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/iris-damselfly.1a2da2e5.png",
+      "sha256": "1a2da2e5962308b3a355f536fa37357481d85de0bc1985d539a9676230431471",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "marshmarigold",
+      "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. Subject MARSHMARIGOLD: one recognizable natural small marsh-marigold plant clump with THREE open round golden flowers, each with FIVE broad softly rounded petal lobes around a small stamen centre, one closed bud and THREE broad round KIDNEY-SHAPED leaves with shallow notches on coherent curved stems. Airy low spreading botanical silhouette rather than a flower wreath or bouquet in a vase, no pot/ground/base/plaque. Every petal and leaf is dense short CUT-PURL GOLDWORK: coarse short hollow HELICAL GILT-WIRE SPRING TUBES sewn/couched in directional rows, exposed spiral ridges, cut mouths and fine joins, antique-gilt flowers, pale-silver leaf vein highlights and tiny olive silk stems. No glass beads, enamel/gems/sequins, long smooth gold foil, solid cast petals, fuzzy wool/thread fill or printed floral decoration. Natural botanical form first, no mandala/sun badge or measurement markings. All three blooms, bud, kidney leaf tips and stem ends whole inside generous true alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/marshmarigold.ac4d74dd.png",
+      "sourceSha256": "ac4d74ddbd4ab5d1ca2721a6e2f80aad377d9919d78cbd889b7949202e526c2d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/marshmarigold.5bb10f61.png",
+      "sha256": "5bb10f61f6483f86a500b75958a4f504f55c01265ca7728b085e23e391a4109b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

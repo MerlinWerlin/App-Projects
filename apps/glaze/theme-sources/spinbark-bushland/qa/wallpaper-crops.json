@@ -1,0 +1,38 @@
+{
+  "themeId": "spinbark-bushland",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.94f60f36.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "94f60f36548185fe022514bfa2bf13200437a25612f61f424294697cc097a794",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.5b9f8080.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "5b9f80800694ccfd8cee8a0b006948deccfbf09286a0166b22356b58eba83e54",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.7a2c86d4.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "7a2c86d4d084835e1f107fa6d00f6ae079520932891bb16f870b36779975cf56",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Final1290x2796/1179x2556/750x1334encodedphonecrops allviewed whole. Kookaburrabill/tail/2feet/toes, echidna4feet/claws/longsnout/allspinetips, eucalyptus3capsules/lips/valves/3leafpoints/branchends, grass/rootlip ends allretainedwithbackgroundmargin; naturalfuller tallsilhouette, no crop/layoutrepair."
+  }
+}

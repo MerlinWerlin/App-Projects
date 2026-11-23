@@ -1,0 +1,47 @@
+{
+  "id": "yucca-moth",
+  "prompt": "Make a precise anatomy correction to Image 1, our existing original yucca moth artwork. Image 2 is our own collograph reference for the original flat print textures only. Image 1 already has the correct four complete wings, two antennae, and four visible legs below the thorax. Keep these intact. Add the missing foreleg pair. Draw one fine three-joint rust ink leg from the front left thorax just below the base of the left antenna, extending out and up-left into the open transparent gap between that antenna and the top edge of the left wing. Draw its matching front right leg from the front right thorax into the open space between the right antenna and right wing. Both new legs must attach to the thorax below the head and end in a short angled tarsus, just wide enough to count, with clean alpha between them, the antennae and the wings. Exactly six total visible attached legs, four wings and two original antennae. Preserve existing wing shapes, cloth grid, rust grit transfer, cream reserve and torn plate edges. Keep the full moth, all legs, wings and antennae inside the square and the true alpha background perfectly empty. No text or detached marks.",
+  "tool": "built-in image_gen",
+  "source": "sources/yucca-moth.6091ef2a.png",
+  "sourceSha256": "6091ef2af9ddfd849d81a11bcb578f46b1520a7b39dd5f7d49348e9f1c9396b3",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/yucca-moth.1bd996bc.png",
+  "sha256": "1bd996bc0f0bf919029b9bdd30bc2b9e087b97979ea0761bfc39559f54fdcce6",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/yucca-moth-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+    "sha256": "5b40a4e3463de715f07f9cab20552ea015bb49ec060dd1a8c4de0a3101561194"
+  },
+  "materialReference": {
+    "id": "greater-roadrunner",
+    "source": "sources/greater-roadrunner.0893abca.png",
+    "sourceSha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+    "role": "Material reference only; target subject/geometry retained."
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "yucca-moth-unselected-original",
+      "file": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+      "sha256": "5b40a4e3463de715f07f9cab20552ea015bb49ec060dd1a8c4de0a3101561194",
+      "role": "Own unselected animal EDIT TARGET for documented anatomy-only correction; exact input retained unchanged."
+    },
+    {
+      "order": 2,
+      "id": "greater-roadrunner",
+      "file": "sources/greater-roadrunner.0893abca.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/yucca-moth-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/yucca-moth-exact-tool-result.json"
+}

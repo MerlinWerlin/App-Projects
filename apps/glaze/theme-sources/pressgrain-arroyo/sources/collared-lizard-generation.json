@@ -1,0 +1,29 @@
+{
+  "id": "collared-lizard",
+  "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. NEW SEPARATE SUBJECT. One whole COLLARED LIZARD from above at a slight diagonal, head upper right and tail curving in a broad open S to the lower left. Exactly four attached coherent splayed legs with whole slender toes and complete tapered tail. Two short dark plum neck bands retain species character. A single broad coarse indigo cloth-grid panel occupies the back, rust grit covers a separate run of tail and hips, smooth ochre reserve along the flanks has a broken torn-board edge. Natural head and body proportions, all four feet and tail fit comfortably and do not touch the canvas edges. The input is our own roadrunner craft reference only. It supplies the transferred cloth grid, coarse grit, torn plate boundaries and flat ink language. Make a new composition without a bird.",
+  "tool": "built-in image_gen",
+  "source": "sources/collared-lizard.d0ab755d.png",
+  "sourceSha256": "d0ab755df131404eeee62201aeeaad4279e88dc3169f1d31fce468dba5a6cc3b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/collared-lizard.0ddda3cc.png",
+  "sha256": "0ddda3cc676309e2bb0c7bee4c5cf27ea0b0938ecdc8c7ba914e4aee01da7537",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "greater-roadrunner",
+      "file": "sources/greater-roadrunner.0893abca.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/collared-lizard-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/collared-lizard-exact-tool-result.json"
+}

@@ -1,0 +1,129 @@
+{
+  "theme": "vaneleaf-highland",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Cut-and-laid feather-vane mosaics, narrow shafts, fine parallel barbs, fragile clipped contours and lightly overlapping thin panels",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Layout-only repair of this same Vaneleaf Highland feather-mosaic wallpaper. Preserve exactly the ibex/bellflower, marmot/saxifrage, chough/juniper, edelweiss rosette and scarab/gentian habitat, natural anatomy, fine physical feather-VANE PANELS with narrow shafts/parallel barbs, clipped edges and slight overlap, existing sage/cream/apricot/slateblue colours on ink-plum. SCALE DOWN the ENTIRE CONNECTED HABITAT and place ALL shapes inside CENTRAL62%WIDTH andBETWEEN34%AND72%HEIGHT. Restore/complete any plant/rock edge currently touching the original boundary, including edelweiss outer petals/leaves and far gentian tips. Both ibex horn tips, all4feet/tail, marmot tail/paws, chough beak/tail, all flower/leaf tips and beetle must be fully contained. Upper30% and bottom24% completely quiet matching plum ground, safe for1290x2796 and750x1334 centre crops. Fine barbs and feather shafts must remain evident, not generic smooth paper leaves/wood shavings/fur or3Dclay. No new subjects, extra limbs, frame/backing plate, text, UI or shadow; composition scale/position only, never crop to force fit.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.3f334114.png",
+      "sourceSha256": "3f33411455f623a1e1627e698d5f7825e38678c3b50d7c2101ec7dfcd6c5e15c",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "cc2c5993e718747509a4c3532ead0375f8063f9a8028bda3add95f6b8daf7943",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.b0aaf587.png",
+        "sha256": "b0aaf587c82024891c65a5fb3441a6dfda9d8937142cf8a8986fbc9b2761ef96"
+      }
+    },
+    {
+      "id": "ibex-bellflower",
+      "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject IBEX BELLFLOWER: one recognisable natural adult IBEX in calm standing three-quarter side profile faces right. TWO long ribbed horns sweep in separate elegant backward arcs, small pointed ears, narrow natural muzzle/beard, short tail, exactly FOUR distinct jointed legs ending in coherent paired hooves, all4feet visible. The whole body including horns/legs is a THIN FLAT cut-feather mosaic, broad clipped feather-vane panels aligned to the animal shape, visible central shafts and fine parallel barbs on each panel, soft sage/cream/apricot/slate colours, not fur-coated3Danimal. One small BELLFLOWER SPRIG with3drooping blue bell blossoms and two narrow sage leaves rises beside front feet, sparse and separate, no rock/terrain/pedestal. Strong broad-horned asymmetric silhouette, full BOTH horn tips/ears, muzzle, tail, ALL4hooves and every blossom/leaf tip complete within actual generous alpha margin. No dangling feathers around subject.",
+      "tool": "built-in image_gen",
+      "source": "sources/ibex-bellflower.759979a9.png",
+      "sourceSha256": "759979a9e7e6e265ee12fb1fedf916aff470f14ee38c09e21e4e7f0a05d5c053",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ibex-bellflower.715f4342.png",
+      "sha256": "715f43428f9ac5aa499c6263a5b19f61685229677151d2939d9e32a6554aeaa2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "marmot-saxifrage",
+      "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject MARMOT SAXIFRAGE: one natural plump MARMOT sits upright with body leaning slightly left, tiny round ears, short broad muzzle with natural small dark eyes, TWO small forepaws held close at chest, TWO hindfeet beneath body, one short thick tail curves toward right. Entire shape is a THIN FLAT MOSAIC of broad clipped FEATHER-VANE PANELS, each with fine parallel barbs and narrow shaft, apricot/cream/sage/slate pieces intentionally laid to define belly, cheek and back; NOT furry3Dsculpture, living feathered hybrid or fluffy pile. A small low SAXIFRAGE SPRIG with five tiny cream/apricot star flowers and sparse rounded sage leaves curves below-left, no soil/rock/pedestal. Low rounded upright triangular silhouette contrasts tall horned ibex and bird. Clear full animal anatomy, all4paws/feet and tail visible, no extra limbs. Whole ears, tail, feet and outer flower tips inside actual generous transparent margins; no halo/shadow/backing.",
+      "tool": "built-in image_gen",
+      "source": "sources/marmot-saxifrage.1dd8d573.png",
+      "sourceSha256": "1dd8d5734d9893a29bf3e5fe8f3c162f3c0004e6ff9a58f7d631d4368e4f8c07",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/marmot-saxifrage.25ae9cb9.png",
+      "sha256": "25ae9cb920ab90d93249312de0d6f3d8238dfdf4a2384a25f880d60c3a5296e4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "chough-juniper",
+      "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject CHOUGH JUNIPER: one recognisable natural alpine CHOUGH in side profile perched on a short diagonal JUNIPER BRANCH, head faces left, natural gently downcurved ochre beak, small dark eye, TWO clawed feet gripping twig, folded wing and long rounded tail angled down-right. Bird plumage and whole branch/leaves/berries are a THIN FLAT ASSEMBLAGE of purposefully CLIPPED FEATHER-VANE PANELS: dark ink-plum/slate blue pieces for body, sage/cream wing panels, each clearly visible little central shaft and fine diagonal parallel barbs; not an ordinary photograph of a bird or fluffy3Dcreature. Juniper has two sparse short side branches, tiny sharply pointed sage feather-piece leaves and just3small blue-grey berry circles made of clipped vanes. No tree trunk/terrain/backing. Tall elegant diagonal bird-and-twig silhouette distinct from ibex and rounded marmot. Full beak/head, both feet, tail tip, branch ends, every leaf and berry contained with ample true alpha margin.",
+      "tool": "built-in image_gen",
+      "source": "sources/chough-juniper.2bc29bbf.png",
+      "sourceSha256": "2bc29bbf0f9ca26c4030221f158cb7aedf52aeddf8829bd70a53d45ba4c32678",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/chough-juniper.cbe06c5b.png",
+      "sha256": "cbe06c5b14f74401d9a5047270928ece4d96b92ef2c7b135f8df0769a3cbc69c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "edelweiss-rosette",
+      "prompt": "Transparent-background repair ONLY of this same cut-feather-mosaic edelweiss. REMOVE COMPLETELY every pale cream/grey backing, fill, halo and shadow BEHIND, AROUND and BETWEEN the actual feather petals, stems, leaves and flower stars. Those areas must be REAL FULLY TRANSPARENT ALPHA with no pale residue. Preserve exactly the complete three edelweiss flower stars, small ochre disk-floret clusters, all feather-vane bracts and basal leaves, narrow shafts/fine parallel barbs, sage/apricot/slate accents, thin clipped physical edges and current botanical composition. Do not erase actual cream feather petals or crop any leaf/tip. Keep the whole botanical group central65% of a square with at least16% true alpha margins every side. This must be a pure transparent featherwork cutout on a dark widget, not a scene or backed applique patch. No new props, loose feathers, text, values, UI or shadows.",
+      "tool": "built-in image_gen",
+      "source": "sources/edelweiss-rosette.3850c9f7.png",
+      "sourceSha256": "3850c9f77cb78df955fcfe9b62fa42e7e121ee2216563caf7a5b1e5147a09caa",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/edelweiss-rosette.1ca92954.png",
+      "sha256": "1ca929549f6200a3dfca88dc305a3fc6084c6f87f014a31930c4122ab83029f8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/alpha-repair/edelweiss-rosette-history.json",
+      "referencedImage": {
+        "file": "qa/alpha-repair/edelweiss-rosette.original.05440557.png",
+        "sha256": "05440557753d138c28ab8a73eed8226964c714b66e81a2e0a684e9d36988fd83"
+      }
+    },
+    {
+      "id": "scarab-gentian",
+      "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject SCARAB GENTIAN: one slender natural GENTIAN PLANT with TWO large open blue/slate trumpet flowers at different heights, one narrow closed bud, six opposite pointed sage leaves and a short joined stem base. A single clearly recognisable SCARAB BEETLE climbs the front of the middle stem/leaf, oval paired wing cases with centre seam, small thorax/head, exactly SIX fine jointed legs and TWO short antennae visible, no gem/jewellery face. Both flower petals/leaves and beetle wing cases are THIN CLIPPED FEATHER-VANE MOSAIC PANELS: subtle shafts and actual fine parallel diagonal barbs, fragile cut contours, matte sage/cream/slate/apricot craft. Plant is tall asymmetric with gently bowed upper bloom and low beetle, not a flowerpot or opaque embroidered patch. Lots of open true alpha between stems/leaves/legs, no soil/ground or loose feathers. Full trumpet rims, bud/leaf tips, insect legs/antennae and lowest stem contained with generous true alpha margin, no pale backing/halo/drop shadow.",
+      "tool": "built-in image_gen",
+      "source": "sources/scarab-gentian.b8213599.png",
+      "sourceSha256": "b8213599f1f1392c995e6fe3099601d3350308d5e7b065f70be5c1722fe0d02a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/scarab-gentian.a14592e4.png",
+      "sha256": "a14592e482eb6b8d9d9eece22554a23035bc8e7105acec1db6ad7b610acde72f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

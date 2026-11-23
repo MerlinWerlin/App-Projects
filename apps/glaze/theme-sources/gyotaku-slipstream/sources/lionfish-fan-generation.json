@@ -1,0 +1,18 @@
+{
+  "id": "lionfish-fan",
+  "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject LIONFISH FAN: one natural LIONFISH in broad three-quarter side profile faces LEFT, short deep body covered in uneven vertical SKIN-RIDGE INK TRANSFER BANDS, small plain dark printed eye, natural mouth and no jewel/cartoonface. Above it a spectacular tall semicircular crown of LONG DORSAL SPINES radiates at unequal angles, each spine a dry pressure-transferred ink trace with broken printed edges; two broad PECTORAL FIN FANS spread down-left and down-right with thin comb-like fin-ray impressions and unprinted alpha between rays. Short fan tail projects right. This must read as a direct rubbed specimen impression with strong dry skips/scale texture, not engraved crosshatch, X-ray bones or softly watercolor-modelled3Dfish. Dark Prussian blue ink only with one tiny vermilion mark at a fin base. Compact high spiky radial silhouette contrasting long flyingfish wings, no shell/plant/scenery or backdrop. Complete every dorsal spine, both pectoral fan tips, tail and mouth central and contained with at least18% actual transparent margins, all unprinted spaces truly alpha.",
+  "tool": "built-in image_gen",
+  "source": "sources/lionfish-fan.4b427260.png",
+  "sourceSha256": "4b427260fffa292438e076da413bbb646d71f1fc126db87dd7dbf808c326eeaa",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/lionfish-fan.d1172aa0.png",
+  "sha256": "d1172aa0a2dd486463b24d3e7174a49d8d597d52784339f15838838c860891c3",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

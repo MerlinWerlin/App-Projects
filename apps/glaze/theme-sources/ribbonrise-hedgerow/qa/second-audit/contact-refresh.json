@@ -1,0 +1,8 @@
+{
+  "themeId": "ribbonrise-hedgerow",
+  "scope": "QA presentation-only refresh: contact sheet wallpaper now matches final selected second-audit wallpaper. Five artwork tiles use unchanged production PNGs; earlier contact retained exactly. No production/native/meta/palette bytes changed.",
+  "previousContactSha256": "0a1099fc2efe869b6182c85f3dc91bfcc3844e626842fe52a591e1a482f341bd",
+  "currentContactSha256": "a2e34fca7facaa0310221cc78b602ac844dc343ce8212a81da4c990365de16fb",
+  "selectedWallpaperSha256": "85c184b8b5b7d6405630f8c538e7fbf5c2dadadd2ec50f363341bcae214903d9",
+  "allTwentyFrozenFilesRemainIdentical": true
+}

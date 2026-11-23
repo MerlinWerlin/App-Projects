@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "Create ONE original production wallpaper for Glaze theme PORCELAIN UMBRA. Tall portrait image ratio 1290:2796, no device mockup. Physical fine-art craft photography of an impossible shadow theatre made entirely from eggshell-thin unglazed ivory porcelain, hand pierced with fine narrow lancet apertures, tiny pinholes and lace-cut crenellations. In lower 58% of the composition, three nested crescent-shaped porcelain stage walls twist into an Escher-like suspended aqueduct, reverse stair and hollow folded fan; a single low raking warm amber light sends long, exquisitely sharp midnight-indigo architectural shadows through the holes across a continuous matte dark navy ceramic surface. Unmistakable actual ceramic craft: translucent thin edges, occasional kiln warping, bisque grain, minute finger tooling marks; crisp ivory silhouettes, profound negative space. Upper 42% is very quiet deep midnight blue #101B30, subtle hand rubbed ceramic grain, suitable for legible phone icons. Palette ivory #F4EDD9, midnight #101B30, subdued amber #BC8B4D; refined gallery photography, mysterious miniature world, asymmetric lower-left focal assembly with arcs to lower right. All objects and shadows belong to this one crafted world. Absolutely no animals, ordinary household objects, text, letters, numbers, UI, logo, frame, clock hands, dials, dates, percentages or live values. Not a collage; not a contact sheet; one standalone wallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.b5d4ca68.png",
+  "sourceSha256": "b5d4ca68beb307eeec9e332727c85e196883ff074a43ddd10a2f165db4df74b5",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "3440bba63264dd04dcbf0bd91e022b6ef009b93083dc4b4de40450eb3999f472",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

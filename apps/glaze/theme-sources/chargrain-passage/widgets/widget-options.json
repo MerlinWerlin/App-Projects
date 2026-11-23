@@ -1,0 +1,62 @@
+[
+  {
+    "id": "switchback-caravan",
+    "kind": "art",
+    "image": "switchback-caravan.57e4dbbf.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Switchback Caravan"
+  },
+  {
+    "id": "walking-causeway",
+    "kind": "art",
+    "image": "walking-causeway.16da2849.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Walking Causeway"
+  },
+  {
+    "id": "bellows-ferry",
+    "kind": "art",
+    "image": "bellows-ferry.bbb29f8a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bellows Ferry"
+  },
+  {
+    "id": "suspended-climber",
+    "kind": "art",
+    "image": "suspended-climber.a7e0805a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Suspended Climber"
+  },
+  {
+    "id": "folding-tunnel-carrier",
+    "kind": "art",
+    "image": "folding-tunnel-carrier.73ea7fff.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Tunnel Carrier"
+  }
+]

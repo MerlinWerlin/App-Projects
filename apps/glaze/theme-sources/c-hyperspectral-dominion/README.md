@@ -1,0 +1,1 @@
+Lane C original false-colour hyperspectral cartography theme for APPS A2. Six individually generated images depict imaginary territories without real geographic claims. Exact prompts, original PNGs, hash provenance and native identity descriptor retained. Coordinator integrates shared registry. No publication.

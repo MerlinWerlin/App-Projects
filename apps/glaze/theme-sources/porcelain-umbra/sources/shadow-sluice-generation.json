@@ -1,0 +1,18 @@
+{
+  "id": "shadow-sluice",
+  "prompt": "ONE individual original square 1024x1024 production artwork for Glaze PORCELAIN UMBRA. A self-contained sculptural SHADOW-SLUICE: an eggshell-thin ivory bisque porcelain helix split vertically like a peeled shell, with two floating rows of tiny pointed arches facing opposite ways; its hollow central void is the unmistakable dominant silhouette, not a building facade or ordinary object. It looks handmade from thin slip-cast sheets, meticulously pierced lace holes, light passing through ivory edges, visible kiln-warp and bisque grain. A low amber grazing light makes the pierced cuts luminous. Isolated complete sculpture at three-quarter view, strong readable compact silhouette, fills central 70% with generous 15% transparent margins, no cropping. Real alpha transparent background, no floor or colored backdrop, only tiny intimate contact shadow attached to sculpture. Fine-art craft photography, ivory and subdued amber with midnight-indigo occlusion inside, physically tactile, extraordinary invented theatre architecture. No text, numerals, symbols, logos, UI, dates, clock, dial, hands, battery or baked live values. One scene, no grid, no variants. Must visibly be pierced porcelain, not paper, coral or plastic.",
+  "tool": "built-in image_gen",
+  "source": "sources/shadow-sluice.1a12f811.png",
+  "sourceSha256": "1a12f8111ffd108fdbe20cfd747707f3e5b84fc283ab2e90c6f76d3d012831e7",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/shadow-sluice.8c3fbbb2.png",
+  "sha256": "8c3fbbb2a20a213b1c1690a699686fd7d31bb9467f47a34fae3be8f5ff37c043",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

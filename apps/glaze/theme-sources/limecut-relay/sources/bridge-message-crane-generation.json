@@ -1,0 +1,18 @@
+{
+  "id": "bridge-message-crane",
+  "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject BRIDGE MESSAGE CRANE: one elegant VERY WIDE BALANCED COURIER JIB on a compact high arched pedestal. The long chalk/terracotta beam extends far LEFT to a small hanging open message cradle shaped like a shallow three-arch basket; a short heavy teal counterweight hangs from far RIGHT. Large visible round central pivot above the pedestal, two paired suspension cords connect cradle to jib tip. Below the jib, a small folded receiving footbridge extends forward from the pedestal arch to explain pedestrian collection; no town/ground plate around it. Beam tilts slightly up-left, cradle low-left, heavy counterweight high-right, strong asymmetric cantilever silhouette and clear useful lifting function. The cradle contains only one small unmarked rolled ribbon, no people, ordinary construction cargo, hooks resembling weapons, text or signs. All beam tips, cords, cradle, weight, footbridge and pedestal feet visible with roomy alpha margin. Depict every surface as flat cut-back mineral plaster fields and shallow incised channels with rough chalk lips, no realistic wooden/metal crane sculpture.",
+  "tool": "built-in image_gen",
+  "source": "sources/bridge-message-crane.11cdd7a7.png",
+  "sourceSha256": "11cdd7a75a9b964b6194bab61dcd9139e7a6689292063f6fb85d22ccc5244dd9",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bridge-message-crane.fe926861.png",
+  "sha256": "fe92686168189d07b637f33971dd6a489448bfbff78a0a0afe8bc5234232031b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

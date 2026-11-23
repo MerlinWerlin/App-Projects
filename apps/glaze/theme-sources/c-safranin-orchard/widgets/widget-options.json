@@ -1,0 +1,67 @@
+[
+  {
+    "id": "strawberry-section",
+    "kind": "art",
+    "image": "strawberry-section.65c51856f18f.png",
+    "sha256": "65c51856f18f7281558037f114307d744194b796f938533b2c266a584d71dda5",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Strawberry Section"
+  },
+  {
+    "id": "pea-pod-section",
+    "kind": "art",
+    "image": "pea-pod-section.0f125d2ff551.png",
+    "sha256": "0f125d2ff551b93c88fe89450f77bb64b41fb219125534ccd5b0ca19d6295c5d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pea Pod Section"
+  },
+  {
+    "id": "daffodil-bud-section",
+    "kind": "art",
+    "image": "daffodil-bud-section.a45fbbc3b0bf.png",
+    "sha256": "a45fbbc3b0bfbf6e50c200c7639981724469827fb965626700158622ae35cb02",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Daffodil Bud Section"
+  },
+  {
+    "id": "fern-crozier-section",
+    "kind": "art",
+    "image": "fern-crozier-section.d570df95794e.png",
+    "sha256": "d570df95794ebacfb05c3ceb582f9325c0f4d8447b87bfd4dd77f7c34497721d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fern Crozier Section"
+  },
+  {
+    "id": "samara-section",
+    "kind": "art",
+    "image": "samara-section.cc394bc1a66e.png",
+    "sha256": "cc394bc1a66e465407fc261000dbc2f2ea217a253975114e5144c9d096fd71a3",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Samara Section"
+  }
+]

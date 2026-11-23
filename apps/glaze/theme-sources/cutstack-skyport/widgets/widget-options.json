@@ -1,0 +1,62 @@
+[
+  {
+    "id": "foldwing-mooring-tower",
+    "kind": "art",
+    "image": "foldwing-mooring-tower.55992a8a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Foldwing Mooring Tower"
+  },
+  {
+    "id": "basket-lift-terminal",
+    "kind": "art",
+    "image": "basket-lift-terminal.8845effd.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Basket Lift Terminal"
+  },
+  {
+    "id": "wind-sail-ferry",
+    "kind": "art",
+    "image": "wind-sail-ferry.c8065d92.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Wind Sail Ferry"
+  },
+  {
+    "id": "cloud-cradle-hangar",
+    "kind": "art",
+    "image": "cloud-cradle-hangar.c9eb79f9.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cloud Cradle Hangar"
+  },
+  {
+    "id": "hinge-step-boarding-bridge",
+    "kind": "art",
+    "image": "hinge-step-boarding-bridge.b93c2db0.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hinge Step Boarding Bridge"
+  }
+]

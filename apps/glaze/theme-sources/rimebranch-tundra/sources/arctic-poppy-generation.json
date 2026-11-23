@@ -1,0 +1,26 @@
+{
+  "id": "arctic-poppy",
+  "label": "Arctic Poppy",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE original pure standalone artwork for Glaze Rimebranch Tundra, genuinely transparent alpha. Use the attached OWN accepted ptarmigan ONLY as reference for the unmistakable hoarfrost ice-crystal substance, cool white/ice-blue macro lighting and scale of interlocking angular crystals. Generate a new independent complete subject, not a variation or crop of the bird. SUBJECT: One whole recognizable Arctic poppy plant: a single broad shallow open four-petal poppy bloom facing the viewer at a slight angle, visibly crystalline cup with dense tiny stamen cluster, one thinner curved upright stem and a compact basal rosette of five broad shallowly lobed leaves. One small whole unopened bud on a shorter stem. All three-dimensional botanical parts are made of ice crystals; no extra bird or animal. Material is grown hoarfrost: short rigid straight hexagonal icy prisms and clearly branched crystal fans, dense milky-white cores, subtle pale-blue translucent prismatic tips and fine facet shadows. The complete subject is physically built from these ice crystals, no real fur/feathers/foliage or fern-shaped paper stamps; no glass bubble, foam, stone, wool or ceramic. Readable natural silhouette at85px, crisp macro miniature photograph, artistic material interpretation not scientific evidence. Entire subject centered in a SQUARE canvas with every horn, ear, paw, petal, leaf and crystal tip whole; occupy central68 percent width and central62percent height with quiet transparent margins. No floor, habitat, frame, halo, fog, glitter, drop-shadow rectangle, lettering, numerals, labels, clock or UI. Controlled soft top-left light. Keep the image transparent all around.",
+  "source": "sources/arctic-poppy.7c282cc9d208.png",
+  "sourceSha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/arctic-poppy.7c282cc9.png",
+  "sha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+  "references": [
+    {
+      "file": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+      "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+      "purpose": "Own accepted ptarmigan supplies crystal material and light only; independently generated different natural subject."
+    }
+  ]
+}

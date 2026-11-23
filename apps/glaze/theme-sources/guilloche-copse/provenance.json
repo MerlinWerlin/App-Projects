@@ -1,0 +1,166 @@
+{
+  "theme": "guilloche-copse",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Flat single-ink bold guilloche-rosette intaglio-inspired nature illustration",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wren-twig",
+      "label": "Wren Twig",
+      "tool": "built-in image_gen",
+      "prompt": "Correct the LINE GEOMETRY and printed-ink character of this same OWN whole wren/twig material prototype. Preserve the recognizable whole wren pose, two feet, beak, eye, cocked tail, curved twig, two leaves, flat single petrol-blue ink #20536A and transparent alpha. Replace ALL regular diagonal diamond-mesh/net/lace areas on breast, head and wing with broad elaborate TRUE GUILLOCHE SPIROGRAPH ROSETTE linework: nested offset multi-lobed circular/elliptical epitrochoid curves that oscillate in rounded petal-like interlacing lobes, creating precise low-frequency curved interference bands. The breast contains ONE large elliptical multi-lobed rosette following its rounded silhouette; the folded wing contains a narrower nested multi-lobed oval rosette with visible open fan pockets; tail uses nested oscillating fan arcs. It must read unmistakably as flat engine-engraved intaglio printing, visibly different from tied bobbin lace or any woven thread. No diagonal warp/weft lattice, fabric/fibres/thread, circular stitch knots, raised wire, fuzzy lines, shaded mesh or paper-cut filigree. Single matte uniformly flat blue ink lines with restrained dry print bite. Broader separated rosette arcs readable at85px, not a chaotic nest of hair-thin lines. No realistic feather hatching or 3D metal. Keep whole natural coherent bird anatomy and ample true transparent margins. No panel, paper rectangle, background, shadow, lettering, symbols or UI. Preserve the bird silhouette; change only the internal printed geometry and flat-ink material.",
+      "source": "sources/wren-twig.2d8e172e0f05.png",
+      "sourceSha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/wren-twig.e2a10d9b.png",
+      "sha256": "e2a10d9ba15a952a0d021bfc668c1904e14892588791626265bc2c77e64b653f",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+      "references": [
+        {
+          "file": "qa/first-material-study/initial-wren.2af1425f158b.png",
+          "sha256": "2af1425f158b6a4141004ef973bde28be5b44793a56721b71a58638112d56c31",
+          "purpose": "Own initial whole wren, correcting only mesh-like geometry to broad flat printed rosettes."
+        }
+      ]
+    },
+    {
+      "id": "dormouse-hazel",
+      "label": "Hazel Dormouse",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: A whole familiar hazel dormouse in a natural curled sleeping pose, body forming a loose oval with one rounded ear, short pointed muzzle and a gently closed eye, four tiny coherent paws tucked at its belly, and a thin whole tail curling around its outside. A single small hazelnut beside it. Keep a recognizable natural mouse silhouette; use broad rosette-loop print geometry on the body and tail, not physical fabric or a solid toy. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+      "source": "sources/dormouse-hazel.791764ea8d5a.png",
+      "sourceSha256": "791764ea8d5ac67055025ead61e651a6026db0438ad4b82dd71d19828b05d515",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dormouse-hazel.efdc0a39.png",
+      "sha256": "efdc0a3950703cd8cdea111a516dc6a2dab44c823309a7f9066d67d70ffd1bb7",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+      "references": [
+        {
+          "file": "sources/wren-twig.2d8e172e0f05.png",
+          "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+          "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+        }
+      ]
+    },
+    {
+      "id": "red-fox",
+      "label": "Red Fox",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: A whole recognizable red fox in a calm seated three-quarter side pose, long narrow muzzle, two pointed upright ears, two separate straight front paws and two tucked hind paws, plus one large whole bushy tail sweeping around its right side. Natural compact fox anatomy and a clearly visible small eye. Distinct long triangular silhouette, no clothes or human pose. Print a long multi-lobed rosette within the tail and nested smaller rosettes in body/haunch. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+      "source": "sources/red-fox.61fc7745326f.png",
+      "sourceSha256": "61fc7745326f46e459949bddae3c91b38c57d73b4a600d2b52bb562845a5cb77",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/red-fox.fa29ad81.png",
+      "sha256": "fa29ad81f9a8541ab7241a005415dd916ed05788cf9852f4d9e7e9205f85abf9",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+      "references": [
+        {
+          "file": "sources/wren-twig.2d8e172e0f05.png",
+          "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+          "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+        }
+      ]
+    },
+    {
+      "id": "lady-fern",
+      "label": "Fern Frond",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: One whole natural lady-fern frond with a gently curving central rachis, many clearly separated paired tapering pinnate leaflets and one small unfurling crozier near its base. A recognizable open botanical silhouette, not an abstract mandala. Broad oscillating fan-loop intaglio lines follow each leaflet; no literal fabric, knots, yarn or 3D lighting. No bird or animal. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+      "source": "sources/lady-fern.622d4449d05e.png",
+      "sourceSha256": "622d4449d05ecf865a3a1daee278daa33d98c1db705551a30718dcac4ec55e21",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/lady-fern.cd5e227c.png",
+      "sha256": "cd5e227c619b58f1f3b3bff392d49743117ac1f8657bafec546614e5a798c658",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+      "references": [
+        {
+          "file": "sources/wren-twig.2d8e172e0f05.png",
+          "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+          "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+        }
+      ]
+    },
+    {
+      "id": "oak-acorns",
+      "label": "Oak Acorns",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: One whole short gently curved oak branch carrying THREE distinctly lobed broad oak leaves and TWO small acorns with complete caps and pointed nuts. Natural asymmetrical botanical composition, all leaf lobes whole. Dense single-ink nested rosette arcs define the rounded acorns and rhythmic curved loop fields follow each leaf lobe; no diagonal fabric lattice, separate beadwork, ornate jewelry or animal. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+      "source": "sources/oak-acorns.e8d187505b8e.png",
+      "sourceSha256": "e8d187505b8e434165941d1d619f9f7b9aa18e5adfd18199236eefc9762cb919",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/oak-acorns.898fe1cb.png",
+      "sha256": "898fe1cb1578f8dd58606fc45b35bf32a10a2115b91e17bc3fa5659dd1a9e884",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+      "references": [
+        {
+          "file": "sources/wren-twig.2d8e172e0f05.png",
+          "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+          "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Refine ONLY this exact OWN Guilloche Copse printed woodland wallpaper. Preserve the whole wren/twig, curled dormouse, seated fox, fern and oak/acorn arch, their recognizable anatomy, relative positions and exact flat blue guilloche rosette ink geometry. Uniformly reduce the ENTIRE existing habitat group INCLUDING the full outer oak arch, all ground/grass, every branch/leaf/tail/paw to70percent of its CURRENT size, then place the complete reduced group at the horizontal center and around55percent of canvas height. Entire group at most65percent of canvasWIDTH, with very broad warm buff paper margins on both sides, top and bottom. Keep the tall portrait aspect, the same #E5D8BE warm fine paper tooth and matte petrol-blue ink. Restore clean unprinted paper in the incidental faint gray smudges/ghost traces around and behind the fox, wren perch and fern, preserving the actual blue subject linework; no letters, symbols or new marks. Do not enlarge or reshape any individual subject. No composition crop, new animals, frames or decorative outer border. Every beak, ear, paw, leaf lobe, acorn and frond tip remains whole. This is one own-scene uniform framing/background-cleanup edit only; preserve all five separate original artwork references unchanged.",
+      "source": "sources/wallpaper.d1c1ba021453.png",
+      "sourceSha256": "d1c1ba02145370c02d7c5f615950b45d9e391adfca1f6dea5e382f8626144982",
+      "sourceDimensions": [
+        856,
+        1838
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "602935a4337a2b15e371f4301441275311b6686ef025734869778a370a084fa2",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own-scene uniform70percent habitat pullback plus incidental background-ghost cleanup through built-in image_gen; mechanical1290x2796 export. All five independent artwork inputs stay unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-scene.536ce2ea88cb.png",
+          "sha256": "536ce2ea88cb4a837b2dc4e5189982dca3ad198fdd9cc4dd7712ae8b9f48d5d2",
+          "purpose": "Own complete five-reference printed woodland scene, framing and background cleanup only."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

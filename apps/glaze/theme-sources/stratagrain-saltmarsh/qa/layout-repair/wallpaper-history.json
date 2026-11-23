@@ -1,0 +1,33 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "reason": "Reduce and reposition complete habitat for all actual wallpaper crop variants.",
+  "originalPrompt": "STRATAGRAIN SALTMARSH. Original Glaze Nature phone wallpaper, portrait1290x2796. Input1 is own approved plover/samphire MATERIAL AND NATURAL-BIRD ANATOMY reference. Input2 is own selected whole harbour seal MATERIAL AND SEAL ANATOMY reference. Neither is a layout or sheet to paste. Create ONE coherent small recognizable saltmarsh habitat in their warm MOKUME-GANE bonded mixed-metal laminate craft: one low naturally curving tidal-bank rim and a tiny shallow tidal oval, two modest samphire forks, a short sedge and one small airy sea-lavender panicle. One SMALL whole natural plover with short bill and both slender feet stands left; one SMALL whole harbour seal with coherent fore/rear flippers rests right beside the shallow channel. Natural connected habitat, no separate sticker lineup or jewellery display. All broad metal surfaces reveal FEW LARGE continuous flowing copper/brass/silver/dark-alloy laminate layer contours, occasional ring-eye section and actual stacked cross-cut layer lips. Soft restrained satin metal reflections, not plain gold sculpture, glued inlay panels, woodgrain, painted marble, stone/gems or glossy enamel. Entire complete connected habitat including all grass/root/flower/bill/tail/whisker/flipper tips occupies only CENTRAL46percent canvas width and CENTRAL23percent height, horizontally centered and vertical center58percent down. At least26percent quiet empty field on BOTH left/right sides. Top43percent completely quiet, bottom23percent quiet. Background huge calm plain deep tidal blue-green #1F383E, only barely perceptible compatible tonal variation. No plants reaching screen edges, no peripheral weeds/corner decorations, frame, plaque, plinth, table, rocks or separate ornamental medallions. Every natural species/plant tip whole inside generous margins. No boats, buildings, people, machinery or sports equipment. No text/letters/numbers, dates/clock/battery/weather values, icons, UI/logo/signature. Full coherent OPAQUE wallpaper background, no transparency. Keep the whole habitat deliberately SMALL with wide negative space for phone crops.",
+  "originalSource": "qa/layout-repair/wallpaper.original.ed365c49.png",
+  "originalSha256": "ed365c4918938405aa2530fee2e1ac43ad133a9675b8e301033ce4828734a9e5",
+  "repairPrompt": "Precise LAYOUT-ONLY edit of input1, own Stratagrain Saltmarsh wallpaper. Preserve exact coherent existing bonded mixed-metal saltmarsh habitat: complete natural plover/short bill/two feet, whole harbour seal/all flippers/whiskers, both samphire forks, sedge, airy small sea-lavender flowers, shallow tidal oval and complete flowing natural bank rim. Keep broad continuous copper/brass/silver/dark-alloy strata and ring-eye layers, satin metal lighting, real layered cut lips, all organism proportions and internal arrangement unchanged. Uniformly scale the ENTIRE whole connected habitat as ONE unit to60percent of its CURRENT width and height. Place the whole smaller habitat horizontally centered and with its overall center at57percent canvas height. Extend ONLY matching quiet deep tidal blue-green #1F383E background around it, same very subtle tonal variation, no visible rectangular paste edge. Final habitat should occupy about HALF canvas width, at least24percent blank quiet background on BOTH left/right sides, generous quiet space above/below. Preserve every bill/foot/whisker/flipper/leaf/grass/flower/bank tip inside full margins. No individual subject resizing, no pose/material changes, no crop, new/duplicate/replaced organisms, new scenery/corner plants/borders/jewellery plaques, glow/shadow/frame or text/UI. No zoom/reframe that enlarges the whole scene. Opaque full wallpaper, no transparency.",
+  "referencedImage": "qa/layout-repair/wallpaper.original.ed365c49.png",
+  "selectedSource": "qa/second-audit/previous-selected-wallpaper.png",
+  "selectedSourceSha256": "bf0688c5f01cc373c73de8e239dbdb6da9f3c31a2ce260167b2328126f921751",
+  "initialMaterialAndAnatomyReferences": [
+    {
+      "id": "plover-samphire",
+      "source": "sources/plover-samphire.0ef856c3.png",
+      "sourceSha256": "0ef856c38fc986ec6c3703caa42881cabb299555f003a99e5e717a9ea40fc635",
+      "role": "Own approved first material/bird-anatomy reference; unchanged after material gate."
+    },
+    {
+      "id": "harbour-seal",
+      "source": "sources/harbour-seal.d85a4e16.png",
+      "sourceSha256": "d85a4e1694e2e29f44673ee5abb1d0127437837e7f5c32803b4ddecc7a3e6537",
+      "role": "Own selected whole natural seal material/anatomy reference."
+    }
+  ],
+  "initialReferencedImageOrder": [
+    "sources/plover-samphire.0ef856c3.png",
+    "sources/harbour-seal.d85a4e16.png"
+  ],
+  "initialExactToolRequest": "qa/layout-repair/exact-initial-two-reference-request.json",
+  "exactToolRequest": "qa/layout-repair/exact-layout-only-request.json",
+  "selectedSourceLocationNote": "Exact selected raster retained here after second-audit enlargement/recomposition; generation inputs/order/hashes unchanged."
+}

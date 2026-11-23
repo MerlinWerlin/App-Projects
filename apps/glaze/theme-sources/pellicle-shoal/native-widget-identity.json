@@ -1,0 +1,19 @@
+{
+  "themeId": "pellicle-shoal",
+  "recipe": [
+    "wave",
+    "pellicleSeaDragon",
+    "pellicleFibrils",
+    "pearls",
+    "leaf",
+    "basin",
+    "band"
+  ],
+  "art": {
+    "pellicleSeaDragon": "M 41 18 Q 31 11 24 22 L 9 26 L 9 31 L 26 30 Q 25 39 33 44 Q 42 49 39 58 Q 35 69 43 76 Q 53 84 42 88 Q 31 92 25 84 Q 18 87 24 94 Q 39 102 52 90 Q 66 76 49 66 Q 45 61 49 55 Q 58 41 45 32 Q 38 28 41 18 Z M 36 20 Q 45 4 56 12 Q 53 23 41 26 M 37 46 Q 20 43 13 54 Q 28 62 39 53 M 49 41 Q 67 24 77 31 Q 75 49 51 49 M 47 60 Q 71 55 79 65 Q 69 76 51 69 M 46 83 Q 68 82 72 91 Q 58 98 48 91 M 31 22 Q 33 20 35 22 Q 33 25 31 22 Z",
+    "pellicleFibrils": "M 41 23 L 50 14 M 44 19 L 43 13 M 46 17 L 52 20 M 50 45 L 69 34 M 58 40 L 57 34 M 60 39 L 69 42 M 31 51 L 19 53 M 25 51 L 24 47 M 52 64 L 71 65 M 60 64 L 65 60 M 60 66 L 65 72 M 49 88 L 65 90 M 31 33 Q 36 39 43 44 M 43 54 Q 39 64 47 71"
+  },
+  "direction": "A sea-dragon with torn leaf-shaped flaps and fine cellulose fibrils brings the wet sculptural habitat into live native components. Soft wave bezel, pearl seam marks and a basin charge gauge reflect the physical membrane material.",
+  "ornament": "M 16 67 Q 40 20 82 33 Q 72 42 74 57 Q 44 39 16 67 Z M 16 67 Q 41 48 74 57 Q 59 75 31 77 Z M 33 55 L 43 38 M 47 50 L 58 33 M 37 64 L 50 55",
+  "ornamentDirection": "One folded membrane lip with short fibril strokes supplies a compact material fragment; the full creature remains in larger hero layouts."
+}

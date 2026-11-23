@@ -1,0 +1,35 @@
+{
+  "id": "whitegroove-sandhills",
+  "lane": "B51",
+  "category": "Nature",
+  "process": "Single-block hand-inked white-line color woodcuts with broad matte pigment fields separated by continuous unprinted cream cut channels.",
+  "status": "Coordinator accepted the exact one western meadowlark study unchanged after assessing the broad reserved channels at widget size and viewing the full closest actual print, inlay and relief sets. Four more independent subjects and wallpaper may use only this exact first. No orchard assets generated.",
+  "subjects": [
+    "western-meadowlark",
+    "swift-fox",
+    "plains-spadefoot",
+    "purple-prairie-clover",
+    "sand-bluestem"
+  ],
+  "cornerCompanion": "The wave rim follows a dune crest. A chunky meadowlark profile and single-block cut field paths inform cut hour markers, needle hands, tile battery and folio calendar. The compact companion uses one short unprinted channel with two small branching ends.",
+  "firstGateCriterion": "Continuously forked irregular paper-color negative channels give clearly cut transitions between flat ink blocks. Chunky short-tailed long-billed western meadowlark and yellow breast with bold black V read at 85 px. Differs from raised texture, dark outline relief, litho grain, coplanar stone and digital white outline.",
+  "retiredId": {
+    "id": "whitegroove-orchard",
+    "generatedArtworks": 0,
+    "reason": "Actual Persimmon Press orchard songbird, cross-section fruit and white-carved blocks overlap the intended subject and style."
+  },
+  "technicalReferences": [
+    {
+      "url": "https://paam.org/white-line-woodblock-prints-from-the-collection/",
+      "scope": "Provincetown Art Association and Museum process note on single-block separate color fields and manual print. Text only."
+    },
+    {
+      "url": "https://www.aaa.si.edu/download_pdf_transcript/ajax?record_id=edanmdm-AAADCD_oh_213181",
+      "scope": "Smithsonian Archives of American Art oral history. Printmaker describes carving the white line, text only."
+    },
+    {
+      "url": "https://www.allaboutbirds.org/guide/WESTERN_MEADOWLARK/id",
+      "scope": "Cornell feather, bill and black V identification. Text only."
+    }
+  ]
+}

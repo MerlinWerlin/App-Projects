@@ -1,0 +1,39 @@
+{
+  "themeId": "caneveil-mangroves",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.70847f42.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "70847f42cbc0fa2544731ef6e87a9ce206c8c6d27366c40e48da96ae4f93de4f",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.c726e238.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "c726e2389f07d1972587c2a230f52433e8946543d0a2bdebefa535192dd3c36f",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.a56cc945.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "a56cc945be4134d983574b3f15cecb8b914c55b52a9a09fe5cad3d2384ff426b",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedAllThreeEncodedVariants": true,
+    "finding": "Tall curved mangrove canopy/trunk/prop roots and whole gecko/leaf/long tail, two whole propagules and mudskipper remain complete in all three actual encoded phone crops. Enlarged fused cane-glass flowers and cut-lip stripes read clearly. Petal contour echoes the flowered cane cross-sections; compact leaf/cane ornament and hero/detail remain exact.",
+    "automaticPullbackApplied": false
+  }
+}

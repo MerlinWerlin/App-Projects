@@ -1,0 +1,1 @@
+Unselected native prototype before kookaburra bill-direction correction, retained before any raster candidate existed. Exact initial spec/allrendereroutputs preserved; final current9layouts in parentqa. No historicalsamplevalues baked into standaloneart.

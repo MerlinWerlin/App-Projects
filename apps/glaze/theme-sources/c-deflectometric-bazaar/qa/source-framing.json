@@ -1,0 +1,100 @@
+{
+  "review": "All5 whole vendor canopy/yoke/trays/hands/feet,porter cargo leaves/limbs,operated stall canopy/serving saddles/3feet,carrier handle/leaves/3rockers and press yoke/plunger/crescent arm/bowls/channel/scoop lie inside original alpha16/96 bounds. Edgealpha maximum1. Complete originals proportionally contained1024square without cropping.",
+  "assets": [
+    {
+      "id": "counterweight-vendor",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          30,
+          55,
+          1224,
+          1220
+        ],
+        "96": [
+          30,
+          55,
+          1224,
+          1220
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "hinge-porter",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          29,
+          39,
+          1223,
+          1226
+        ],
+        "96": [
+          30,
+          40,
+          1222,
+          1226
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "split-saddle-stall",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          78,
+          152,
+          1176,
+          1129
+        ],
+        "96": [
+          78,
+          153,
+          1176,
+          1128
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "rocker-load-carrier",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          19,
+          110,
+          1218,
+          1171
+        ],
+        "96": [
+          20,
+          111,
+          1218,
+          1170
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "pendulum-press",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          16,
+          176,
+          1233,
+          1149
+        ],
+        "96": [
+          17,
+          176,
+          1233,
+          1148
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

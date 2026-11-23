@@ -1,0 +1,23 @@
+{
+  "id": "gate-drummer",
+  "prompt": "Repair this benign festival guild illustration as one FLAT SHALLOW DIE-TOOLED LEATHER CAMEO. Retain the same broad bearded adult gate drummer, squat pose, two drums, two hands/mallets, two feet, ornate three-arch portable frame, oxblood/tan/turquoise hide palette and embossed rosette/stitch patterns. Flatten the rounded human-body shading into shallow incised leather colour fields, matching a2mm-thick decorated wall panel rather than a3D figurine. More importantly, expand the true transparent canvas: place the WHOLE composition inside the central70% of a square, leaving minimum15% empty alpha on every side. Reconstruct the currently clipped top crown/rosette arc so its full outer outline is visible, and keep all toes, frame sides and mallets entirely contained. Preserve all open arch gaps and existing transparency. No background, plaque, halo, floor, shadow, text, numbers or new prop.",
+  "tool": "built-in image_gen",
+  "source": "sources/gate-drummer.9bbdfb5e.png",
+  "sourceSha256": "9bbdfb5eb2323bdf600e7a67a585c1a0f9a818fadfb53c4e4725a3dfb0d53cd7",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/gate-drummer.fa12a08f.png",
+  "sha256": "fa12a08f83d762322187f4689b95665e9a1dd0f79f56f6635606014ac5d7e600",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/crop-repair/gate-drummer-history.json",
+  "referencedImage": {
+    "file": "qa/crop-repair/gate-drummer.original.fa9e9c66.png",
+    "sha256": "fa9e9c6624f3a1fe818690f408eaf541ddaee9caf507b1eac113fd9d093f68f3"
+  }
+}

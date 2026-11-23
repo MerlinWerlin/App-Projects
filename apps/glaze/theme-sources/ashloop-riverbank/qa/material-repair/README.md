@@ -1,0 +1,1 @@
+The held canoe survives here as the exact unselected material input. The one independent riverbank beaver composition uses it as a process reference. Coordinator acceptance applies to the selected beaver only.

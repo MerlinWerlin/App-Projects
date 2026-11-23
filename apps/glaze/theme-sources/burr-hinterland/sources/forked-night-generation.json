@@ -1,0 +1,18 @@
+{
+  "id": "forked-night",
+  "prompt": "ONE new individual original1024x1024 square pure artwork for BURR HINTERLAND, a flat copperplate MEZZOTINT image titled FORKED NIGHT. Two thick black ink branches climb from a very narrow single stem, separate into radically different heights and terminate in hard diagonal flat cuts. A small free-floating ivory trapezoid sits BETWEEN them; three small rectangular white windows descend through only the taller branch. At the branching joint a tiny vermilion triangular underprint peeks out. An invented abstract split territory carved from velvety ink; tall asymmetrical fork silhouette, emphatically not a tree, antler, person, letterform, animal, household object, stairs, shell or hanging drips. Rocked burr gives the black ink very fine granular velvety stipple, scraped/burnished ivory highlights, warm cotton rag fibers in white reserves, no outlines, crosshatching, pencil lines, glossy3D texture or physical sculpture photography. Whole shape middle65% with18% fully transparent alpha margins outside contour, ivory interior windows remain opaque warm #F1E8D5. No paper sheet, tile, backdrop, floor, stand or frame. No signature, words, numbers, edition marks, labels, logos, UI, clocks, time/date/battery live readings. One artwork only, no variants or contact sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/forked-night.24e8f70d.png",
+  "sourceSha256": "24e8f70d855fcd9a7f82f59b0994534eb4600d6968d6744a83a7fa5f9ba16df4",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/forked-night.e8324568.png",
+  "sha256": "e832456890a555c2d4d6face62864058417a75ce05b50fa3623acdd15be4bb83",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

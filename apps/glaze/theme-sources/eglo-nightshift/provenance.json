@@ -1,0 +1,124 @@
+{
+  "theme": "eglo-nightshift",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Reverse-painted silver-leaf glass with hand-scratched black contours",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 production wallpaper for Glaze EGLO NIGHTSHIFT. Traditional reverse-painted and silver-leaf-gilded GLASS artwork, flat artisan verre-eglomise language: irregular thin mirror-SILVER LEAF seams, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted fields, tiny age pinholes and soft tarnish at edges, no digital chrome or3D crystal objects. A coherent tangible nocturnal repair guild occupies lower45%: one broad masked porter with an arch-shaped coat carries a folded little bridge, a very tall stilt-legged worker holds a shallow cloud-shearing frame, a crouching worker repairs a crescent in a large clamp, and a squat lamp-helmet diver rests by a shallow channel of water. They work in a quiet arched workshop courtyard, humanlike invented costumes and understandable tasks, friendly mysterious rather than frightening. Upper55% largely calm bottle-green black glass #102628, slight reverse-paint brush texture and silver pinholes, excellent quiet icon space. Silver #D8DDD4, nearblack #101819, muted amber #B88952 tiny accents. Everyone and every object drawn as flat silver-leaf silhouette with scratched engraving lines and painted green inner fields, not photographic sculpture or CGI. No text, lettering, signature, numerals, edition marks, clocks/dials, dates, battery/weather values, UI, logos, frame, border, phone mockup or collage. One continuous illustrated world.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.0d935f74.png",
+      "sourceSha256": "0d935f747f083cf30336d3e672da0fd4725432b97eb4b230626b662e01f2c84f",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "7bb4136fb275cc890e4c9e35d00e3d4ebcb9df498290dffbbe5d8f88ff7f602c",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "doorway-porter",
+      "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: DOORWAY PORTER. A very broad strong masked adult figure in a long arched-front coat shaped like an inhabited doorway, tiny recessed window panels and rolled cloth arch shoulder pads. TWO arms cradle a miniature COMPLETE FOLDED DRAWBRIDGE across the chest, one hand firmly supporting each end, its little railings and hinges visible; coat hem has three open arch cutouts, two heavy wide boots. Body slightly bent to bear the weight, broad low silhouette, recognisable occupation of transporting portable crossings and doorways, not abstract geometry or a generic man holding a tool. Fine etched costume ornament and silver-leaf faces stay readable and tactile.",
+      "tool": "built-in image_gen",
+      "source": "sources/doorway-porter.b4714666.png",
+      "sourceSha256": "b4714666afacf02bd4befb7afae9e8a2fd1d3f854f1258aceb9aeee91478dd8e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/doorway-porter.8e414a0f.png",
+      "sha256": "8e414a0f878f0633616120d1329230f0248211b3eee76bb101a1c64342ecdb34",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "lamp-diver",
+      "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: LAMP DIVER, a squat compact adult in a deep-green bulky protective diving costume, seated with knees bent and TWO hands adjusting a valve at the side of the helmet. The enormous CHANDELIER HELMET has one clear oval silver face grille, a wide scalloped brim carrying five small hanging lantern chambers and thick curved light conduits running into the shoulder yoke; its purpose is illuminating the guild's submerged tunnels. Heavy ridged boots/flippers project toward viewer, one coiled air hose rests close behind. Low rounded triangular silhouette, clearly different from tall porter or generic standing diver. Every helmet/lamp/suit detail rendered as flat reverse-painted glass and scratched silver leaf, irregular foil seams and green painted panels, no actual3D metal/plush figurine. No gauge numbers, clock dial, letters or values; whole complete compact character fits alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/lamp-diver.1a85e0c2.png",
+      "sourceSha256": "1a85e0c2a979e2f4d721855c69388ab676a5e24d4c2a8e8aa13f662eb1a06e1e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/lamp-diver.1613a9bd.png",
+      "sha256": "1613a9bd47c8e543ce849a0b1072c1ba697ae3998b026b4f62b652332a48f5c4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "cloud-shearer",
+      "prompt": "Repair the cropping of this EGLO NIGHTSHIFT cloud-shearer production asset. Keep exactly the same adult worker, two jointed stilts, two arms/handgrips, cloud-harvesting frame and cloud shaving, green/silver reverse-painted scratched silver-leaf glass art process, proportions, pose and fine craft texture. Enlarge the transparent canvas around the figure so the entire TOP ARC of the cloud frame and every part of the subject are fully reconstructed and visible, including the currently clipped frame top. Fit the WHOLE composition into the central70% of a1024x1024 square with at least15% genuine alpha-transparent margin on all four sides. Preserve existing transparency and keep all gaps transparent. No background, paper tile, floor, frame, text, numbers, new props or style change. This is a composition/crop repair only.",
+      "tool": "built-in image_gen",
+      "source": "sources/cloud-shearer.a8ce6dbd.png",
+      "sourceSha256": "a8ce6dbd2f29754dbee5734a29c6e99be59ca8ca4ddac4f3ab58ea558581edde",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/cloud-shearer.8e423cf3.png",
+      "sha256": "8e423cf3b011e3dfdaf2937288c96db882d803ce46a75eb355c7250496e35ee8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "editReference": {
+        "file": "qa/crop-repair/cloud-shearer-before-repair.png",
+        "sha256": "04f551572de892b7ca8d773bdb12291b76c47962c1b3dedde9509870ad3608cc",
+        "promptHistory": "qa/crop-repair/provenance.json"
+      }
+    },
+    {
+      "id": "moon-mender",
+      "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: MOON MENDER, a crouching adult craftworker in a short hooded bottle-green work robe with silver sleeves and a leather-like apron rendered in reverse-painted glass. The figure kneels on ONE knee at the left of a large physical clamp holding an uneven crescent moon; TWO hands visibly work, one steadies a small silver repair patch on the crescent and the other raises a tiny flat hammer. The crescent has three clear riveted repair patches and a missing inner chip, not a clock or dial. Clamp stands on two small splayed feet; a compact tray holds two spare blank patches, not generic stationery. Strong low open C-shaped composition dominated by crescent on right and crouching worker on left, complete tangible occupation repairing celestial hardware for the guild, friendly focused expression. Etched silver-leaf seams, black scratches, painted green fields and restrained amber pins; keep the artisan flat glass language, no actual3D sculpture, no inscriptions or numeric values.",
+      "tool": "built-in image_gen",
+      "source": "sources/moon-mender.a20b498c.png",
+      "sourceSha256": "a20b498c9dbeff93e7b9a585a84ed4804f3aa04ec68619a06fcdf9f6bacd12ba",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/moon-mender.8bba5e79.png",
+      "sha256": "8bba5e79624fbc971a9ae984c31fdd79ae8a40cac6c82796e35ac9c58c2e65f8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "river-carrier",
+      "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: RIVER CARRIER, a heavy adult worker shown striding three-quarter away to the right, wearing a long narrow deep-green weatherproof coat and broad silver shoulder harness. One ENORMOUS rounded silver reservoir rides high on the LEFT shoulder/back, connected by a thick visible pipe to a long curved trough held low in TWO hands, projecting forward and down. A coherent silver ribbon of water visibly runs from the tank along the trough and pours into a tiny freestanding river channel under the forward boot. Hood pushed back shows a calm masked profile, one knee bent mid-step. A tangible living utility worker transporting complete rivers, high asymmetric loaded silhouette and walking pose, not porter carrying bridge, squatting diver, stilt figure or crouching moon mender. Flat silver-leaf reverse-painted glass with scratched black lines, patchy foil seams and green fields; tiny amber valves. No tank gauges, numbers, time/date/weather values or text. Whole reservoir/trough/water/boots visible and contained within alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/river-carrier.2e772a1e.png",
+      "sourceSha256": "2e772a1e89c33de3049c76246db418fd698ab923d3786ac1925ce09fa076cfc9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/river-carrier.51b975f9.png",
+      "sha256": "51b975f950a3c0a9d7ac25fa792193908064426548856cfc46fe35af8c7e728a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

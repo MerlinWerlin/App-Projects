@@ -1,0 +1,57 @@
+[
+  {
+    "id": "clover-thinfilm",
+    "sourceSha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e",
+    "rawAlpha16Bounds": [
+      148,
+      168,
+      1082,
+      1118
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "dragonfly-thinfilm",
+    "sourceSha256": "5615009c1a83e722004f9f5f4f1bc44fcd72d6f668667e26e0738373f6a0c15f",
+    "rawAlpha16Bounds": [
+      33,
+      314,
+      1220,
+      1060
+    ],
+    "frameAlphaMaximum": 0
+  },
+  {
+    "id": "frog-thinfilm",
+    "sourceSha256": "0344c2a85ca96857e4304e01b1261c8558cbd544efa89ee05225b4f1020dc3ae",
+    "rawAlpha16Bounds": [
+      136,
+      391,
+      1117,
+      994
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "fox-thinfilm",
+    "sourceSha256": "72a9bb008ea2e2cddef749571dac0262b5273bedec4295ee419d44c008099704",
+    "rawAlpha16Bounds": [
+      220,
+      104,
+      1079,
+      1163
+    ],
+    "frameAlphaMaximum": 0
+  },
+  {
+    "id": "cowslip-thinfilm",
+    "sourceSha256": "3da727acfe942e30a5787fcef831a0a8943cd75fa2a4138433d7257ea10849cc",
+    "rawAlpha16Bounds": [
+      124,
+      159,
+      1109,
+      1163
+    ],
+    "frameAlphaMaximum": 1
+  }
+]

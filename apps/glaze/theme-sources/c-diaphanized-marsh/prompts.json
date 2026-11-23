@@ -1,0 +1,169 @@
+{
+  "theme": "c-diaphanized-marsh",
+  "mode": "built-in image_gen",
+  "ownerSteering": "Recognizable real freshwater nature with intact familiar morphology. Selective rose bone/localized blue cartilage, faint continuous tissue and ordinary light. Quiet blue-grey Artwork corners and a small natural alder-leaf native header companion. Artistic specimen interpretation, not a real specimen or scientific reference.",
+  "conceptReferences": [
+    {
+      "url": "https://www.nhm.ac.uk/discover/behind-the-scenes-fish.html",
+      "scope": "Text only: intact small fish clearing, Alcian blue cartilage and Alizarin red bone."
+    },
+    {
+      "url": "https://www.floridamuseum.ufl.edu/exhibits/online/inner-beauty/",
+      "scope": "Text only: selective skeletal colours and retained collagen support."
+    },
+    {
+      "url": "https://fishes-fnam.linnaeus.naturalis.nl/linnaeus_ng/app/views/species/taxon.php?id=109234",
+      "scope": "Primary taxonomic morphology text only: free dorsal spines, pelvic spine and natural stickleback proportions."
+    }
+  ],
+  "prompts": [
+    {
+      "id": "stickleback",
+      "type": "art",
+      "label": "Three-spined Stickleback",
+      "prompt": "ONE whole real three-spined STICKLEBACK, lateral profile facing right in a gentle natural swimming curve. Familiar small fish anatomy: compact pointed snout, one visible eye, narrow tail peduncle, broad fan-shaped tail, THREE separate short dorsal spines followed by a small soft dorsal fin, two natural pelvic spines and small pectoral fin. Every spine, fin ray, snout and tail tip whole. Scientific-image medium is CLEARED-AND-DOUBLE-STAINED natural-history specimen photography, not an X-ray or abstract invented creature. The real continuous fish body remains nearly transparent and very faint neutral pale-amber tissue; inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta: segmented vertebral column, delicate curved ribs, jaw/skull components and fine natural fin rays. LOCALIZED blue/cyan cartilage joins occur at the appropriate small anatomical joints and fin supports; not uniform blue skin, not red/cyan doubled projection outlines. Internal anatomy stays in one exact pose with natural soft photographic gradients and delicate translucent tissue continuity. Selective tissue staining is the dominant visual identity. No hard glass shell, shiny resin, hollow glass toy, metal, foil, crystal, neon rim, electric corona, X-ray noise, spectral heat map, laser dots, fluorescent optical slices, repeated exposure, paper/ink marks or fabricated mechanical body. Restrained pale-magenta and blue anatomical details with faint neutral collagen, clean transmitted photographic light, no external glow. Whole subject well inside CENTRAL70PERCENT of1024square, ample TRUE ALPHAZERO exterior, natural transparent gaps, no rectangular haze or backdrop. No other animal, plant, jar, fluid meniscus, bubbles, specimen tray, lab tools, floor, shadow, frame, text, label, diagram, UI or readings. Recognizable real nature first. Gentle non-graphic museum-study presentation with no wounds, cutting, exposed flesh or blood. Digital artistic interpretation of whole cleared-and-stained anatomical photography, not a real specimen or diagnostic/scientific reference."
+    },
+    {
+      "id": "european-eel",
+      "type": "art",
+      "label": "European Eel",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE ROSEFIN MARSH. ONE whole real freshwater animal with intact familiar morphology, photographed in the scientific-image language of CLEARED-AND-DOUBLE-STAINED natural-history specimens. Real continuous soft-tissue silhouette remains nearly transparent, faint neutral pale amber/ivory collagen. Inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta, while BLUE/CYAN cartilage is LOCALIZED to natural joints and supports. Selective tissue staining is the dominant medium, not red/cyan offset projections or coloured skin. Bone elements have ordinary softly translucent photographic modelling and fine anatomical detail; no neon outlines or artificially geometric body. Preserve natural external proportions and complete anatomy in ONE exact pose, clearly readable at85px. Clean ordinary transmitted photographic illumination, no glow around subject. No X-ray absorption noise, fluorescent optical slices, body made of data, metal, hard glass/resin shell, gummy candy, shiny plastic, foil, crystal, wet cellulose sculpture, fabric, ink drawing, hatching or abstract fantasy animal. No organs, blood, cutting, wounds, open flesh or dissection tray. Gentle non-graphic museum-study presentation. Digital artistic specimen interpretation, not a real specimen, diagnostic record or anatomical reference. Every outer endpoint comfortably inside CENTRAL70PERCENT of1024square, substantial true ALPHAZERO exterior and natural gaps. No background field/haze/rectangle, fluid meniscus, bubbles, jar, tools, floor, shadow, frame, text, label, diagram, UI or readings. No other animal or plant. ONE complete EUROPEAN EEL in a broad graceful OPEN S curve viewed from above-side, head upper-left and tapering tail lower-right, no closed loop or knot. Long continuous cylindrical natural eel body, small head, subtle longer lower jaw, one visible small pectoral fin just behind head with the other naturally far-side, NO pelvic fins or legs. Dorsal, caudal and anal fins form one thin continuous natural fringe around the tail. Rose chain of many small connected vertebrae and fine natural fin rays follows the real body curve, tiny blue cartilage only near jaw/pectoral supports. Whole tail fin and head remain separate with generous open gap across the S; no fish spikes or dragon anatomy."
+    },
+    {
+      "id": "smooth-newt",
+      "type": "art",
+      "label": "Smooth Newt",
+      "prompt": "EDIT OUR OWN newt only. Preserve the exact entire natural newt pose, head, spine, three existing limbs, long complete tail and cleared tissue/selective rose bone/local blue cartilage photographic process. Make TWO localized corrections. FIRST add the missing FAR-SIDE FORELIMB attached anatomically at the shoulder just behind the neck on the upper-left side of the body, extending gently upper-left with one short upper arm, bent elbow, forearm and FOUR small natural foredigits. Leave all three existing limbs untouched, giving FOUR complete limbs total, no disconnected limb or fifth leg. Natural rose limb bones with small blue joint cartilage and thin clear tissue, coherent scale. SECOND remove the entire visible EXTERIOR WHITE HALO/VEIL around the animal. Every pixel outside the actual natural skin/limb/tail silhouette and all natural gaps must be genuinely ALPHAZERO, no bright feathered cloud, glow, haze or drop shadow. Preserve translucent tissue INSIDE the skin envelope and delicate anatomical texture, do not harden the animal into glass/plastic or erase whole fine toes. Do not change body proportions, three existing hands/feet, colour response, skull, spine, pose or whole tail. Whole natural animal inside generous empty margins. No new object, text, UI, blood, organs, cut, tray or background. Same gentle artistic cleared-and-stained specimen interpretation.",
+      "initialPrompt": "Use case: recognizable real nature artwork. GLAZE ROSEFIN MARSH. ONE whole real freshwater animal with intact familiar morphology, photographed in the scientific-image language of CLEARED-AND-DOUBLE-STAINED natural-history specimens. Real continuous soft-tissue silhouette remains nearly transparent, faint neutral pale amber/ivory collagen. Inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta, while BLUE/CYAN cartilage is LOCALIZED to natural joints and supports. Selective tissue staining is the dominant medium, not red/cyan offset projections or coloured skin. Bone elements have ordinary softly translucent photographic modelling and fine anatomical detail; no neon outlines or artificially geometric body. Preserve natural external proportions and complete anatomy in ONE exact pose, clearly readable at85px. Clean ordinary transmitted photographic illumination, no glow around subject. No X-ray absorption noise, fluorescent optical slices, body made of data, metal, hard glass/resin shell, gummy candy, shiny plastic, foil, crystal, wet cellulose sculpture, fabric, ink drawing, hatching or abstract fantasy animal. No organs, blood, cutting, wounds, open flesh or dissection tray. Gentle non-graphic museum-study presentation. Digital artistic specimen interpretation, not a real specimen, diagnostic record or anatomical reference. Every outer endpoint comfortably inside CENTRAL70PERCENT of1024square, substantial true ALPHAZERO exterior and natural gaps. No background field/haze/rectangle, fluid meniscus, bubbles, jar, tools, floor, shadow, frame, text, label, diagram, UI or readings. No other animal or plant. ONE complete real SMOOTH NEWT, female/nonbreeding low crest, top three-quarter diagonal view. Small flattened rounded head at upper-right, slender trunk, FOUR clearly distinct short naturally bent limbs with four foredigits and five hind toes where visible, long tapering gently curved tail sweeping down-left, no detached or crossed duplicate limbs. Faint continuous natural skin envelope; delicate rose skull/vertebrae/limb bones and localized small blue cartilage at shoulders, elbows, hips and knees. Calm natural walking/swimming posture, no external gill bouquet, no frog crouch, no eel fins, no horns or decorative body parts. Every toe and tail tip fully inside canvas.",
+      "directEditReference": {
+        "sourceImage": "intermediate-anatomy-studies/smooth-newt-first-unselected.b99039886e1c.png",
+        "sha256": "b99039886e1c66c9e9451ea0737d4ae88f755ba47971b6a253a17c490d2f0caa"
+      },
+      "generationStage": "One own-study localized anatomy/exterior-alpha correction; initial output retained unselected."
+    },
+    {
+      "id": "common-frog",
+      "type": "art",
+      "label": "Crouched Common Frog",
+      "prompt": "EDIT OUR OWN crouched frog only, localized skeletal correction. Preserve the exact recognizable whole frog outer anatomy, natural crouch, two eyes, four limbs, every digit/foot, subtle continuous pale transparent tissue and selective rose/magenta bone with local blue cartilage. REMOVE the long curved fish-like RIB BONES arcing across the middle/right torso and abdomen. A true common frog has no long encircling rib cage. Keep only short spinal transverse processes CLOSE to its short backbone, natural pelvis/urostyle near hips and all existing skull/limb bones. The abdomen should remain soft clear unbroken tissue with no added long red curved ribs. Do not erase or change the correctly folded hind limbs, natural forelimbs, feet, head, skin outline or body pose. Maintain ordinary photographic light and delicate tissue, no hard glass/gummy sculpture, glowing outline or diagrams. All exterior and natural limb gaps ALPHAZERO, no halo, background, plate, frame, shadow, text, UI, blood, organs or wounds. Whole body and all toe tips inside generous margins. Same gentle artistic cleared-and-stained specimen interpretation, not a real specimen or scientific reference.",
+      "initialPrompt": "Use case: recognizable real nature artwork. GLAZE ROSEFIN MARSH. ONE whole real freshwater animal with intact familiar morphology, photographed in the scientific-image language of CLEARED-AND-DOUBLE-STAINED natural-history specimens. Real continuous soft-tissue silhouette remains nearly transparent, faint neutral pale amber/ivory collagen. Inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta, while BLUE/CYAN cartilage is LOCALIZED to natural joints and supports. Selective tissue staining is the dominant medium, not red/cyan offset projections or coloured skin. Bone elements have ordinary softly translucent photographic modelling and fine anatomical detail; no neon outlines or artificially geometric body. Preserve natural external proportions and complete anatomy in ONE exact pose, clearly readable at85px. Clean ordinary transmitted photographic illumination, no glow around subject. No X-ray absorption noise, fluorescent optical slices, body made of data, metal, hard glass/resin shell, gummy candy, shiny plastic, foil, crystal, wet cellulose sculpture, fabric, ink drawing, hatching or abstract fantasy animal. No organs, blood, cutting, wounds, open flesh or dissection tray. Gentle non-graphic museum-study presentation. Digital artistic specimen interpretation, not a real specimen, diagnostic record or anatomical reference. Every outer endpoint comfortably inside CENTRAL70PERCENT of1024square, substantial true ALPHAZERO exterior and natural gaps. No background field/haze/rectangle, fluid meniscus, bubbles, jar, tools, floor, shadow, frame, text, label, diagram, UI or readings. No other animal or plant. ONE complete real COMMON FROG in a compact natural low CROUCH, front three-quarter view, head facing gently left. Broad low head, two ordinary small dark eyes, rounded short trunk, TWO short forelimbs planted forward and TWO long hind legs naturally folded beside the body. Four short foredigits and five longer hind toes where visible, real modest webbing. Body and all feet intact, no spread-eagle specimen pose or extra limb. Delicate rose skull, short backbone, pelvis and real long folded limb bones inside faint continuous neutral tissue; small localized blue cartilage at natural joints. No long fish ribs turning into a fantasy cage, no tadpole tail, suction pads or theatrical skull grin. Keep anatomy gentle and animal immediately recognizable.",
+      "directEditReference": {
+        "sourceImage": "intermediate-anatomy-studies/common-frog-first-unselected.8bfb28b77684.png",
+        "sha256": "8bfb28b77684a1ed71094e8ac0b9e14398cfb82d42c46dd9984fa26be504ab7f"
+      },
+      "generationStage": "One own-study localized anatomy/exterior-alpha correction; initial output retained unselected."
+    },
+    {
+      "id": "pond-turtle",
+      "type": "art",
+      "label": "European Pond Turtle",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE ROSEFIN MARSH. ONE whole real freshwater animal with intact familiar morphology, photographed in the scientific-image language of CLEARED-AND-DOUBLE-STAINED natural-history specimens. Real continuous soft-tissue silhouette remains nearly transparent, faint neutral pale amber/ivory collagen. Inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta, while BLUE/CYAN cartilage is LOCALIZED to natural joints and supports. Selective tissue staining is the dominant medium, not red/cyan offset projections or coloured skin. Bone elements have ordinary softly translucent photographic modelling and fine anatomical detail; no neon outlines or artificially geometric body. Preserve natural external proportions and complete anatomy in ONE exact pose, clearly readable at85px. Clean ordinary transmitted photographic illumination, no glow around subject. No X-ray absorption noise, fluorescent optical slices, body made of data, metal, hard glass/resin shell, gummy candy, shiny plastic, foil, crystal, wet cellulose sculpture, fabric, ink drawing, hatching or abstract fantasy animal. No organs, blood, cutting, wounds, open flesh or dissection tray. Gentle non-graphic museum-study presentation. Digital artistic specimen interpretation, not a real specimen, diagnostic record or anatomical reference. Every outer endpoint comfortably inside CENTRAL70PERCENT of1024square, substantial true ALPHAZERO exterior and natural gaps. No background field/haze/rectangle, fluid meniscus, bubbles, jar, tools, floor, shadow, frame, text, label, diagram, UI or readings. No other animal or plant. ONE complete small real EUROPEAN POND TURTLE in top three-quarter view, head extended towards upper-left, FOUR webbed clawed feet naturally extended, visible relatively long tapered tail lower-right. Smooth moderately FLATTENED oval shell, widest just behind middle, not a land tortoise dome. Actual connected bony carapace plates/ribs are softly translucent rose, with fine natural sutures and much fainter neutral continuous tissue/scute outline; rose skull and limb bones, tiny blue cartilage only at natural limb/neck joints. Internal shell anatomy remains real turtle anatomy, not arbitrary decorative mosaic or hollow crystal dome. NO thick glossy transparent glass carapace, glass toy, polished plastic, candy or metallic foil. Head, all feet/toes and long tail whole with ample spacing."
+    },
+    {
+      "id": "wallpaper",
+      "type": "wallpaper",
+      "label": "Rosefin Marsh Habitat",
+      "prompt": "COMPOSITION-ONLY edit of our own Rosefin Marsh wallpaper. Preserve all FIVE exact intact real freshwater animal identities, correct limbs, selective rose bone/localized blue cartilage, faint continuous natural tissue, gentle ordinary photographic light and subdued slate marsh setting. Scale the ENTIRE CONNECTED MARSH VIGNETTE down by35PERCENT as ONE group, including ALL reed/grass tips, full animals, pebbles/ground edge and reflections; do not crop any part to force fit. Reposition every visible habitat endpoint inside CENTRAL62PERCENT width(x19to81percent) and BETWEEN42AND72PERCENT of image height. Leave upper40percent, bottom25percent and wide side margins quietly uninterrupted blue-grey matching existing #293B43/#51616A, no extra bright plants or objects. Keep one stickleback withTHREE dorsal spines, one open-S eel withwhole tail, one FOUR-limbed newt withwhole long tail, one crouched frog withNO curved rib cage, one flattened-shell turtle withFOUR webbed feet/whole head/long complete tail. Do not alter natural anatomy or stain process, add animals, duplicate limbs or invent skeletons inside plants. The FOUR supplementary own images preserve eel/newt/frog/turtle identity and corrected anatomy; stickleback identity is preserved from the scene. Continue the same quiet atmospheric field around the smaller connected group; no dark rectangle, border, plate, new scene, text, UI, readings, glow, metal, glass/gummy toy, blood or organs. Portrait1290x2796; enough room under both tall1290x2796 and shorter750x1334 centre crops. Artistic specimen-inspired habitat, not a real specimen collection.",
+      "internalArtworkReferences": [
+        {
+          "id": "stickleback",
+          "sourceImage": "sources/stickleback.730e8fdc3062.png",
+          "sha256": "730e8fdc30622f159684332c1fe2ee823f0368446f51485c5c88b131fa5a0f88"
+        },
+        {
+          "id": "european-eel",
+          "sourceImage": "sources/european-eel.d8112b258109.png",
+          "sha256": "d8112b2581098c7788ee28b0246947b87b3aa9a26639f72b8da3db78582a1e3d"
+        },
+        {
+          "id": "smooth-newt",
+          "sourceImage": "sources/smooth-newt.c5ca41c685f0.png",
+          "sha256": "c5ca41c685f0e7d0ba058cd8ac44c6736494de6b857bac24270b0cff9b5d7081"
+        },
+        {
+          "id": "common-frog",
+          "sourceImage": "sources/common-frog.e854dd4bbfed.png",
+          "sha256": "e854dd4bbfed593755b75e52eb7f0f201a8d99e9c84a6971c49d6c3ed2d025e8"
+        },
+        {
+          "id": "pond-turtle",
+          "sourceImage": "sources/pond-turtle.900514152174.png",
+          "sha256": "900514152174cb7c7af535cde3c3207f632d82471a6d34b6429a6082d217b79f"
+        }
+      ],
+      "initialPrompt": "ONE original opaque portrait1290x2796 phone wallpaper for GLAZE ROSEFIN MARSH. A beautiful quiet freshwater natural-history study, REAL recognizable stickleback, eel, newt, crouched frog and European pond turtle in ONE coherent gently connected marsh-bank vignette. Use our FIVE own images ONLY for their exact individual animal identities, faint continuous tissue and selective anatomical stain process. IMAGE1=whole three-spined stickleback, rose spine/fin rays and tiny blue supports;IMAGE2=whole eel in open S with continuous fin fringe and no pelvic fins;IMAGE3=whole smooth newt with FOUR complete limbs and long intact tapered tail;IMAGE4=whole crouched frog with folded long hind legs, short backbone and NO encircling curved rib cage;IMAGE5=whole flattened-oval pond turtle with FOUR webbed feet, extended head and long whole tail. Preserve each familiar natural silhouette and correct limbs, no added animals or duplicated body parts. Same artistic CLEARED-AND-DOUBLE-STAINED specimen photography throughout: rose/magenta bone, LOCALIZED blue cartilage at joints, faint continuous neutral pale-amber clear tissue, ordinary photographic illumination. Not X-ray noise, fluorescent glow, glass/resin/gummy figures, metal, mechanical fantasy animals, dissection, organs, blood, wounds or diagrams. Make the study a calm imaginary marsh vignette rather than a laboratory display: a FEW low-contrast slate/ivory natural reed blades and smooth small water-margin forms gently connect the animals, without trays/jars/frames or five separate panels. Botanical details remain subdued natural tissue, never given fake bones. VERY DISTANT SMALL GROUP with every animal and reed endpoint entirely within CENTRAL52PERCENT of width (x24to76percent) and BETWEEN44AND72PERCENT of height. Stickleback above-left aroundx35/y49;newt above-right aroundx62/y51;eel gentle low open S acrossx40to64/y57to66;frog front-left aroundx37/y67;turtle front-right aroundx63/y66. Keep whole tail/fin/feet/toes/spines/head tips visible and separate, generous quiet margins. Upper42percent and bottom25percent are uninterrupted very quiet deep blue-grey #293B43/#51616A marsh atmosphere, no bright plants or objects, no busy horizon or optical clouds there. All five should feel at the same natural habitat scale with enough space to read. Safe under both tall1290x2796 and shorter750x1334 centre crops. No text, numbers, labels, anatomical captions, reading, clocks, dates, battery/weather values, icons, logo, phone/UI, border or watermark. Gentle artistic specimen interpretation, not a real specimen collection or scientific reference.",
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-framing-study/first-wide-scene-unselected.4e9cdc694d56.png",
+        "sha256": "4e9cdc694d5653b05511d8751ec154bf3363aac7f03befa64abbb0fb49f0e6bb"
+      },
+      "editSupportReferences": [
+        {
+          "id": "european-eel",
+          "sourceImage": "sources/european-eel.d8112b258109.png",
+          "sha256": "d8112b2581098c7788ee28b0246947b87b3aa9a26639f72b8da3db78582a1e3d"
+        },
+        {
+          "id": "smooth-newt",
+          "sourceImage": "sources/smooth-newt.c5ca41c685f0.png",
+          "sha256": "c5ca41c685f0e7d0ba058cd8ac44c6736494de6b857bac24270b0cff9b5d7081"
+        },
+        {
+          "id": "common-frog",
+          "sourceImage": "sources/common-frog.e854dd4bbfed.png",
+          "sha256": "e854dd4bbfed593755b75e52eb7f0f201a8d99e9c84a6971c49d6c3ed2d025e8"
+        },
+        {
+          "id": "pond-turtle",
+          "sourceImage": "sources/pond-turtle.900514152174.png",
+          "sha256": "900514152174cb7c7af535cde3c3207f632d82471a6d34b6429a6082d217b79f"
+        }
+      ],
+      "generationStage": "Initial exact-own-five-reference scene, then one own-scene35percent pullback with four own-art supports; no creative post-processing."
+    }
+  ],
+  "generationGate": "Coordinator accepted actual first stickleback/full170/85 and six-neighbor material comparisons. Complete four distinct animal artworks, own-reference wallpaper, nine changing native plans and compact reed/alder ornament. No publication.",
+  "subjectAnatomyTextReferences": [
+    {
+      "id": "three-spined-stickleback",
+      "species": "Gasterosteus aculeatus",
+      "composition": "Lateral swimming profile with three free dorsal spines, soft dorsal fin behind them, natural pelvic spine, narrow tail peduncle and broad tail.",
+      "textSources": [
+        "https://fishes-fnam.linnaeus.naturalis.nl/linnaeus_ng/app/views/species/taxon.php?id=109234"
+      ]
+    },
+    {
+      "id": "european-eel",
+      "species": "Anguilla anguilla",
+      "composition": "One long broad open S curve, continuous dorsal/caudal/anal fin fringe; small pectoral pair near head and no pelvic fins. Avoid disconnected coils or sea-snake anatomy.",
+      "textSources": [
+        "https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=308"
+      ]
+    },
+    {
+      "id": "smooth-newt",
+      "species": "Lissotriton vulgaris",
+      "composition": "Top three-quarter diagonal with head raised slightly, four distinct short limbs, slender trunk and long tapered tail. Use female/nonbreeding low crest to keep silhouette calm.",
+      "textSources": [
+        "https://reptiles-and-amphibians.linnaeus.naturalis.nl/linnaeus_ng/app/views/species/taxon.php?id=99002"
+      ]
+    },
+    {
+      "id": "common-frog",
+      "species": "Rana temporaria",
+      "composition": "Low crouched three-quarter view with compact body, four short front digits and five long rear toes; long hind legs naturally folded beside body. No additional ribs forming a fantasy cage.",
+      "textSources": [
+        "https://www.dcceew.gov.au/sites/default/files/env/pages/dc11235d-8b3b-43f7-b991-8429f477a1d4/files/04-fauna-2a-amphibia-morphology.pdf",
+        "https://amphibiansoftheworld.amnh.org/Amphibia/Anura/Ranidae/Rana/Rana-temporaria"
+      ]
+    },
+    {
+      "id": "european-pond-turtle",
+      "species": "Emys orbicularis",
+      "composition": "Top three-quarter view, flattened oval bony shell widest behind middle, four webbed clawed feet, extended small head and a visible relatively long tail. Real bone plates under faint tissue, no hard glossy glass carapace.",
+      "textSources": [
+        "https://www.mnhn.fr/en/the-european-pond-turtle",
+        "https://turtles.linnaeus.naturalis.nl/linnaeus_ng/app/views/species/nsr_taxon.php?cat=TAB_DESCRIPTION&epi=11&id=8096"
+      ]
+    }
+  ]
+}

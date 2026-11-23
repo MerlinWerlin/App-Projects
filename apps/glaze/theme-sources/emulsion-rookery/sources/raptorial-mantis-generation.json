@@ -1,0 +1,26 @@
+{
+  "id": "raptorial-mantis",
+  "label": "Raptorial Mantis",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one complete elegant PRAYING MANTIS in upright three-quarter side pose facing right. Small triangular head with two tiny dark eyes, two long fine curved antennae, long slender neck/thorax and tapered abdomen. TWO distinct folded raptorial forearms held up in a recognisable praying pose, FOUR separately visible slender walking legs planted below with articulated bends and complete fine feet. Folded narrow film-ribbon wings run along its back. Every anatomical part constructed from curled and folded photographic film strips, rectangular frame windows and clear square sprocket-hole rows. No body skin, no insect fuzz, not a stick figure; preserve all six limbs and both antennae inside generous margins.",
+  "source": "sources/raptorial-mantis.b8fa31396a21.png",
+  "sourceSha256": "b8fa31396a2110f63e0bb87eb8a0cd1fc5a6c3fde3e18fbcaeb37196b73f7fbe",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/raptorial-mantis.48b3cf937c8b.png",
+  "sha256": "48b3cf937c8ba5c85a28d776cda2ac8ef0d89fa7dc2beaf6e88f670a2a4433f0",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/ibis.34b1d9dbdfc2.png",
+      "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+      "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+    }
+  ]
+}

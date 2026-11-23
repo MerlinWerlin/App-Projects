@@ -1,0 +1,18 @@
+{
+  "id": "tortoise-caper",
+  "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject TORTOISE CAPER: one natural small TORTOISE walking left in gentle side/three-quarter view. Broad LOW DOMED SHELL divided into5or6large natural scute polygons, each scute a SPARSE OPEN FAN of straight ochre/bone cotton threads meeting a small dull brass centre pin and outer pins, real transparent gaps between threads; do not make a solid painted or embroidered shell. Small coherent head, short neck, FOUR low sturdy legs with fine toe ends and a tiny tail visible. Terracotta/ink cotton chord head/legs, no big cartoon eyes. A short CAPER SPRIG with3round sage leaves, one pale flower of long open pin-thread stamens and one closed oval bud curves behind the shell; no huge tree or pot. Low broad shell silhouette and airy fine sprig different from upright thistle/bird or curled gecko. Complete head, all4feet, tail, flower/leaf tips centrally contained in generous alpha margins. No soil/rock/baseplate/backing, no halo.",
+  "tool": "built-in image_gen",
+  "source": "sources/tortoise-caper.de0be629.png",
+  "sourceSha256": "de0be629dda08ce59a0f784aa9c5d00df4d6026ee99fcacb8cb3936e3b02fd5c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/tortoise-caper.372b6054.png",
+  "sha256": "372b6054bafb4931164382ee4e6cd86d9e2b529c7b774fac4e1c6193db63b024",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

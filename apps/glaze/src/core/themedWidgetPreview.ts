@@ -33,6 +33,10 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
   const elements: string[] = [], definitions: string[] = [];
   const box = (x: number, y: number, width: number, height = width): Box => ({ x, y, w: width, h: height });
   const transform = (b: Box) => `translate(${b.x} ${b.y}) scale(${b.w / 100} ${b.h / 100})`;
+  const ornamentBox = (b: Box): Box => {
+    const side = Math.min(b.w, b.h) * .86;
+    return box(b.x + (b.w - side) / 2, b.y + (b.h - side) / 2, side);
+  };
   const path = (data: string, b: Box, colour: string, opacity = 1, stroke?: number) => {
     const paint = stroke === undefined ? `fill="${colour}"` : `fill="none" stroke="${colour}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round"`;
     elements.push(`<path d="${data}" transform="${transform(b)}" ${paint} opacity="${opacity}"/>`);
@@ -41,9 +45,12 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
   const line = (x: number, y: number, endX: number, endY: number, colour: string, opacity: number, width = 1) => elements.push(`<line x1="${x}" y1="${y}" x2="${endX}" y2="${endY}" stroke="${colour}" opacity="${opacity}" stroke-width="${width}" stroke-linecap="round"/>`);
   const circle = (x: number, y: number, r: number, colour: string) => elements.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="${colour}"/>`);
   const font = d.font === 'serif' ? 'Georgia,serif' : d.font === 'mono' ? 'Menlo,monospace' : 'ui-rounded,system-ui,sans-serif';
-  const text = (value: string, x: number, y: number, nominal: number, width: number, colour = d.ink, weight = 600, anchor = 'middle') => {
+  const text = (value: string, x: number, y: number, nominal: number, width: number, colour = d.ink, weight = 600, anchor = 'middle', serifLift = 0) => {
     const estimate = [...value].length * nominal * .62;
     const fitted = Math.min(nominal, nominal * width / Math.max(1, estimate));
+    // Georgia's old-style digits descend below SVG's central baseline. Lift the crowded
+    // numeric roles by a fraction of their fitted em; keep the authored art/gauge geometry.
+    if (d.font === 'serif') y -= fitted * serifLift;
     elements.push(`<text x="${x}" y="${y}" font-size="${fitted}" font-weight="${weight}" fill="${colour}" text-anchor="${anchor}" dominant-baseline="central" alignment-baseline="central">${esc(value)}</text>`);
   };
   const number = (value: number, digits = 1) => new Intl.NumberFormat(locale, { useGrouping: false, minimumIntegerDigits: digits }).format(value);
@@ -85,7 +92,8 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
     if (wide) {
       path(identity.outline, box(179, 13, 178, 144), d.ink, .052);
       path(identity.inner, box(179, 13, 178, 144), d.accent, .35, .6);
-      path(identity.detail, box(244, 21, 47, 35), d.secondary, .62, 2.6);
+      if (identity.ornament) path(identity.ornament, ornamentBox(box(244, 21, 47, 35)), d.secondary, .62, 2.6);
+      else path(identity.detail, box(244, 21, 47, 35), d.secondary, .62, 2.6);
       const parts = new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit' }).formatToParts(date);
       const period = parts.find(p => p.type === 'dayPeriod')?.value;
       const time = parts.filter(p => p.type === 'hour' || p.type === 'minute' || p.type === 'literal' && p.value.includes(':')).map(p => p.value).join('');
@@ -160,7 +168,7 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       }
     }
     if (!wide && !isColumn) rect(box(valueX - valueWidth / 2, valueY - (large ? 47 : 27), valueWidth, large ? 94 : 54), d.background[0], .72, large ? 30 : 15);
-    text(value, valueX, valueY, large ? 85 : wide ? 67 : isColumn ? 41 : 52, valueWidth, d.ink, 700);
+    text(value, valueX, valueY, large ? 85 : wide ? 67 : isColumn ? 41 : 52, valueWidth, d.ink, 700, 'middle', wide ? .12 : 0);
     text(label, valueX, large ? (isColumn ? 234 : 327) : wide ? 144 : 148, large ? 23 : 13, valueWidth, d.secondary, 500);
   } else {
     const first = localeFirstWeekday(locale);
@@ -191,8 +199,11 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       for (let i = 0; i < 7; i++) line(gridX, top + row * (.65 + i), gridX + gridW, top + row * (.65 + i), d.secondary, identity.calendar === 'board' ? .24 : .30, .65);
       if (identity.calendar === 'board') for (let i = 0; i <= 7; i++) line(gridX + i * col, top - row * .47, gridX + i * col, top + row * 6.65, d.secondary, .21, .65);
     }
-    path(identity.detail, motifBox, d.accent, .22, 1.3);
-    path(identity.subject, motifBox, d.secondary, .65, wide ? 2 : 2.6);
+    if (identity.ornament) path(identity.ornament, ornamentBox(motifBox), d.secondary, .65, wide ? 2 : 2.6);
+    else {
+      path(identity.detail, motifBox, d.accent, .22, 1.3);
+      path(identity.subject, motifBox, d.secondary, .65, wide ? 2 : 2.6);
+    }
     if (wide) {
       text(fmt({ weekday: 'short' }), 72, 60, 14, 108, d.secondary);
       text(number(month.today), 72, 99, 49, 102, d.ink, 700);
@@ -211,7 +222,7 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       const y = top + row * (Math.floor(index / 7) + 1.18);
       const today = day === month.today, diameter = large ? 31 : 18;
       if (today) path(identity.outline, box(x - diameter / 2, y - diameter / 2, diameter), d.accent);
-      text(number(day), x, y, large ? 19 : 12, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550);
+      text(number(day), x, y, large ? 19 : 12, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550, 'middle', .1);
     });
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${d.background[0]}"/><stop offset="1" stop-color="${d.background[1]}"/></linearGradient>${definitions.join('')}</defs><rect width="${w}" height="${h}" fill="url(#paint)"/><g font-family="${font}" style="font-variant-numeric:tabular-nums">${elements.join('')}</g></svg>`;

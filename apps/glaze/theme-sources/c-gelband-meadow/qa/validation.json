@@ -1,0 +1,203 @@
+{
+  "id": "c-gelband-meadow",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "beech-bandlight",
+    "songbird-bandlight",
+    "mushrooms-bandlight",
+    "hedgehog-bandlight",
+    "primrose-bandlight"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.86a1fa90.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 8462,
+    "sha256": "86a1fa90b7c9262e141c5a583f35c32512b1eb14fb49a08d31f18498b96984d1",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full selected originals, together at source210/85 and all five actual encoded85px. Familiar whole beechleaf/petiole, bird/fullbill/eye/closedwing/tail/twofeet/twig/leaf, three-mushroom cluster with joined complete bases, hedgehog/pricklyoutline/snout/ear/fourpaws, and fivepetal primrose/fullstalk/twoleaves remain immediately readable. Sparse staggered soft silverwhite bands in broad lanes remain visible in opaque grey fields. Minor head/wing/flower/stem junction shading is present but no realistic fur/leaf texture or glossy physical material. Five independent requests without image references, no corrections or creative code/alpha edits. First leaf unchanged. Lane actual material review passed; peer material/integration review pending under original human messaging-unavailable fallback, no Jared artwork approval implied.",
+    "wallpaper": "Viewed actual1290x2796,1179x2556 and750x1334 encoded phone crops. One connected woodland floor with bird above, mushrooms left, primrose right, hedgehog below and full beechleaf low-left. Whole key organisms and leaf/petiole, birdbill/feet/tail/twigleaf, mushroomcaps/stem bases, primrosepetals/leaves/stalkbase, hedgehogsnout/body/paws retained. Wallpaper hedgehog has a natural slight leg overlap, not exact four separated sourcepaws. Supporting branch intentionally joins right scene edge, low bank crosses scene edges; do not claim all contextual connector endpoints are contained. Approx keygroup92percentwidth/63percentheight/top22percent, actual wider than requested numeric target. Fuller/taller coherent scene, no five-card collage, one original own-five-reference wallpaper, zero framing edits.",
+    "native": "Viewed all nine actual current root94source live native previews. Oval face echoes leaf, original beech/staggered-lane large-field motifs, beads marks, needle hands, trail battery and ledger calendar. Separate small plain beechleaf/petiole in compact calendar and clock headers, no mini gel chart. Pale sage and dark forest ink readable. Nine layouts change with readings, battery null0/100, ornament parser/roundtrip pass. Current restored shipped calendar identity.outline; no retired badge-fitting/containment/equal-size probes. Windows SVG/layout evidence only, no Apple/installed-device claim.",
+    "roundedArtworkCorners": "Viewed own five actual encoded artworks on actual app gradients/Fit6percent/conservative20percent rounded mask. All36C/180encodedart retain visiblealpha16; originalrasters unchanged. Whole source900within1024 gives clear breathingroom and quietcorners around complete nature silhouettes. UI layout model only."
+  },
+  "ownerSteeringReview": "Less abstract familiar woodland Nature, natural whole silhouettes first and distinct coarse band-intensity process second. Pale sage Artwork corner fields, small plain beech native corner companion. Complete isolated source under original human fallback; no coordinator material acceptance, Jared artwork approval or publication inferred.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-gelband-meadow",
+    "backgroundStops": [
+      "#D7E1DC",
+      "#B8C8C2"
+    ],
+    "pieces": [
+      {
+        "id": "beech-bandlight",
+        "sha256": "a6b455bf5d1a71bbd7dfeb87b7bf0eeab2e24b4421613ad04078ebc5a73040f4",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "songbird-bandlight",
+        "sha256": "e40ed2bbca825eb0056240b7330817177b76f88a26a90140d4f1f627ffc1575b",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "mushrooms-bandlight",
+        "sha256": "7a7326a5e1e6a24436f24bd674b5a1652b3944fa28a545414df32aa3ff463de1",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "hedgehog-bandlight",
+        "sha256": "ff3ce1a71c379c97269bfaf9b77e924d1101e7bb86eee4bedac14da61a846876",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "primrose-bandlight",
+        "sha256": "7a9e3de31143e2c9c8b648671d9a05cc962ad4383f6cf9c84c73b3bc9c664bad",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 0,
+  "packTestEvidence": "Actual offline builderv1:9assets/350708bytes/minApp1.0.44. Actual parsers/selectors5pureart/9changingnative,ornament roundtrip,battery null0/100,Nature resolver,full selectedsource+normalized+encoded decode/dimensions/hashes,6selected/noorphans and5own wallpaper refs/5distinct match. All5full17085/encoded85/9native/3phonecrops/own5rounded viewed;36C/180encodedart retainalpha16. No shared edits/publication; coordinator material/integration review pending.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b",
+  "selectedFirstRawUnchanged": true,
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "newImageOutputs": 6,
+  "unselectedGenerations": 0,
+  "creativeRasterEdits": 0,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#243A37",
+    "tile": "#B8C8C2",
+    "glyphTile": 6.960220525873474,
+    "text": "#243A37",
+    "bg": "#D7E1DC",
+    "textBg": 9.042833493958412,
+    "minimum": 4.5,
+    "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\src\\core\\colour.ts",
+    "sourceSha256": "f3249f098d433a4a0277fab231da14699d3958c03402c80d44b24f535815d17e"
+  },
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "Original human brief authorizes collision-checked isolated strict lane C work when coordinator messaging unavailable. IntendedID/process notice attempted before generation, app request failed. Own thorough actual material/85/corner review required before expansion. Coordinator material/canonical/integration review remains pending, no peer or Jared artwork approval claimed. No publication/shared runtime changes.",
+  "scope": "Actual local source/encoded pack QA, current coordinator SVG native previews and rounded-layout simulation; original human messaging-unavailable fallback. Peer material/canonical/integration/combinedCI/device qualification pending. No Apple/installed-device/publication claim."
+}

@@ -1,0 +1,236 @@
+[
+  {
+    "id": "crumbkin",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crumbkin\\v6\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "crumb-goals",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crumbkin\\v6\\widget-crumb-goals.d17e0f49.webp",
+        "sha256": "d17e0f4941c5a64f7284cbf8e15c1e5a6d9734b840f0810084ae82322a18abeb"
+      },
+      {
+        "optionId": "nougat-flowerpot",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crumbkin\\v6\\widget-nougat-flowerpot.cc66f541.webp",
+        "sha256": "cc66f5411eb109d9e7eff0caeb6ff3acd4bcf4e807f5736c6790c65cc2a2071e"
+      }
+    ]
+  },
+  {
+    "id": "honeywood",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\honeywood\\v8\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "wool-moth",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\honeywood\\v8\\widget-wool-moth.e4c27022.webp",
+        "sha256": "e4c270223768ca399ae20795ad7a63a500fb46b9c3a59110d6857c93392663fe"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\honeywood\\v8\\widget-small.abd22da2.webp",
+        "sha256": "abd22da2fd05dd2b933c3ae9b37746c6147c57ff4330844eccc87193c052c630"
+      },
+      {
+        "optionId": "art-20261107-wax-lantern",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\honeywood\\v8\\widget-wax-lantern.22582b53.webp",
+        "sha256": "22582b5395b8f14e1ea80fe21f4621c3bb9e751a3731d407112d3044313efa82"
+      },
+      {
+        "optionId": "art-20261107-honey-spoon",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\honeywood\\v8\\widget-honey-spoon.3d92f141.webp",
+        "sha256": "3d92f141034771fc3e01aafb33eea0a8e32f00f204bf6314df13af7b1610872a"
+      }
+    ]
+  },
+  {
+    "id": "peach-puddle",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\peach-puddle\\v7\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "peach-umbrella-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\peach-puddle\\v7\\widget-peach-umbrella-snail.44a1b298.webp",
+        "sha256": "44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\peach-puddle\\v7\\widget-small.c2bce4f1.webp",
+        "sha256": "c2bce4f1eca8a7682b2d55808a855cb9473f2c23487f0ede3c35ee082215e778"
+      },
+      {
+        "optionId": "art-20261107-rain-boots",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\peach-puddle\\v7\\widget-rain-boots.99aa2395.webp",
+        "sha256": "99aa23958bf92e6580edc110865f84e3389b19c437d3020667ab68a9e26d26ae"
+      },
+      {
+        "optionId": "art-20261107-duckling-raft",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\peach-puddle\\v7\\widget-duckling-raft.c8db65bf.webp",
+        "sha256": "c8db65bfd3cff38bfb80a5e757a4909f55d98f6de51401405eb4c99842826b3a"
+      }
+    ]
+  },
+  {
+    "id": "puffin-fold",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "cliff-strata",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-cliff-strata.3514833f.webp",
+        "sha256": "3514833fde31a0f69b513a2c4c405cc45f64f2096d416eea295a735c5a096e74"
+      },
+      {
+        "optionId": "egg-progress",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-egg-progress.2145988c.webp",
+        "sha256": "2145988cb3575a69960d87e612bfd94888152675908b6eb0d4ec4cbe48d5d6a4"
+      },
+      {
+        "optionId": "paper-flight",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-paper-flight.310ee665.webp",
+        "sha256": "310ee66592fd1074a62f4ac3d414c3187137f80b535dda039379de4773130b63"
+      },
+      {
+        "optionId": "puffin-perch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-puffin-perch.3993576f.webp",
+        "sha256": "3993576fbf0bbd689bd40988a615fb70b33d2f1b0a7224502230c6dbcbca6b5a"
+      }
+    ]
+  },
+  {
+    "id": "crumbkin",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crumbkin\\v7\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "nougat-flowerpot",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crumbkin\\v7\\widget-nougat-flowerpot.cc66f541.webp",
+        "sha256": "cc66f5411eb109d9e7eff0caeb6ff3acd4bcf4e807f5736c6790c65cc2a2071e"
+      },
+      {
+        "optionId": "croissant-sailboat",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crumbkin\\v7\\widget-croissant-sailboat.7e2ae57b.webp",
+        "sha256": "7e2ae57be84d4441ea81b6da82bae2557f71b9cc0d40555dc0c9cf2210919834"
+      },
+      {
+        "optionId": "biscuit-windmill",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crumbkin\\v7\\widget-biscuit-windmill.62df35a5.webp",
+        "sha256": "62df35a5b2fa22688587d7ad64fddaa8f187672f041b25806c3796703793b413"
+      },
+      {
+        "optionId": "marzipan-squirrel",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crumbkin\\v7\\widget-marzipan-squirrel.a6cfdba3.webp",
+        "sha256": "a6cfdba3b1cff0da7c5d10fbca5f35df9152381de3cd3ded932b86066212a48a"
+      },
+      {
+        "optionId": "biscuit-treasure-chest",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crumbkin\\v7\\widget-biscuit-treasure-chest.2b6520db.webp",
+        "sha256": "2b6520db1330db524c58ccaab6b9bb2c150eaf61d85a618a829f56f8dede7032"
+      }
+    ]
+  },
+  {
+    "id": "honeywood",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\honeywood\\v9\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "wool-moth",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\honeywood\\v9\\widget-wool-moth.e4c27022.webp",
+        "sha256": "e4c270223768ca399ae20795ad7a63a500fb46b9c3a59110d6857c93392663fe"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\honeywood\\v9\\widget-small.abd22da2.webp",
+        "sha256": "abd22da2fd05dd2b933c3ae9b37746c6147c57ff4330844eccc87193c052c630"
+      },
+      {
+        "optionId": "art-20261107-wax-lantern",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\honeywood\\v9\\widget-wax-lantern.22582b53.webp",
+        "sha256": "22582b5395b8f14e1ea80fe21f4621c3bb9e751a3731d407112d3044313efa82"
+      },
+      {
+        "optionId": "art-20261107-honey-spoon",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\honeywood\\v9\\widget-honey-spoon.3d92f141.webp",
+        "sha256": "3d92f141034771fc3e01aafb33eea0a8e32f00f204bf6314df13af7b1610872a"
+      },
+      {
+        "optionId": "amber-hedgehog",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\honeywood\\v9\\widget-amber-hedgehog.2d00dee3.webp",
+        "sha256": "2d00dee3030aa932baef3d1f09250f788474dc5d9d7dbbb6e0724529bd77392f"
+      }
+    ]
+  },
+  {
+    "id": "peach-puddle",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\peach-puddle\\v8\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "peach-umbrella-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\peach-puddle\\v8\\widget-peach-umbrella-snail.44a1b298.webp",
+        "sha256": "44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\peach-puddle\\v8\\widget-small.c2bce4f1.webp",
+        "sha256": "c2bce4f1eca8a7682b2d55808a855cb9473f2c23487f0ede3c35ee082215e778"
+      },
+      {
+        "optionId": "art-20261107-rain-boots",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\peach-puddle\\v8\\widget-rain-boots.99aa2395.webp",
+        "sha256": "99aa23958bf92e6580edc110865f84e3389b19c437d3020667ab68a9e26d26ae"
+      },
+      {
+        "optionId": "art-20261107-duckling-raft",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\peach-puddle\\v8\\widget-duckling-raft.c8db65bf.webp",
+        "sha256": "c8db65bfd3cff38bfb80a5e757a4909f55d98f6de51401405eb4c99842826b3a"
+      },
+      {
+        "optionId": "peach-raincoat",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\peach-puddle\\v8\\widget-peach-raincoat.bfbf2082.webp",
+        "sha256": "bfbf2082050168b3640d0f459c2974d67864832986856bcf4f52caa83e073236"
+      }
+    ]
+  },
+  {
+    "id": "puffin-fold",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "cliff-strata",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-cliff-strata.3514833f.webp",
+        "sha256": "3514833fde31a0f69b513a2c4c405cc45f64f2096d416eea295a735c5a096e74"
+      },
+      {
+        "optionId": "paper-flight",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-paper-flight.310ee665.webp",
+        "sha256": "310ee66592fd1074a62f4ac3d414c3187137f80b535dda039379de4773130b63"
+      },
+      {
+        "optionId": "puffin-perch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-puffin-perch.3993576f.webp",
+        "sha256": "3993576fbf0bbd689bd40988a615fb70b33d2f1b0a7224502230c6dbcbca6b5a"
+      },
+      {
+        "optionId": "paper-lighthouse",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-paper-lighthouse.b36f7e52.webp",
+        "sha256": "b36f7e52fb6e3e56be7dfaa6fedf34bc36534528cbbb86943dde62e3682203f3"
+      },
+      {
+        "optionId": "paper-fishing-boat",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-paper-fishing-boat.48436bd7.webp",
+        "sha256": "48436bd7222477368b6d9f2b0f79f46c3c133421a4ca3de237e1256ae08d27a4"
+      }
+    ]
+  }
+]

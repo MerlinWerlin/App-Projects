@@ -1,0 +1,22 @@
+{
+  "theme": "c-chromatogram-grove",
+  "recipe": [
+    "arch",
+    "cPigmentGinkgo",
+    "cPigmentFronts",
+    "dash",
+    "leaf",
+    "column",
+    "band"
+  ],
+  "art": {
+    "cPigmentGinkgo": "M 49 95 Q 52 85 52 72 L 10 56 Q 9 35 31 15 Q 41 9 47 13 L 50 24 L 54 12 Q 68 8 82 22 Q 96 38 93 58 L 57 74 Q 56 85 58 95",
+    "cPigmentFronts": "M 16 45 Q 49 64 87 47 M 23 31 Q 49 47 83 34 M 33 20 Q 47 31 66 22 M 52 71 L 50 55"
+  },
+  "ornament": "M 33 89 Q 46 71 52 55 M 51 57 L 18 43 Q 19 25 38 17 L 46 24 L 49 14 Q 69 15 78 35 L 54 57 M 51 54 L 34 31 M 51 54 L 61 28",
+  "ornamentDirection": "One small natural ginkgo fan and short curved petiole, two restrained radial vein hints and generous surrounding space. No laboratory strip, graph or stacked pigment chart in the header.",
+  "direction": "Supported arch contour follows the broad rounded fan. Ginkgo/curved front hints in larger native fields, dash marks, leaf hands, column battery and band calendar. Small natural fan-leaf companion in compact headers; date marker independent and today ordinary pointsize/bold.",
+  "values": "Existing live Clock/Battery/Calendar, no raster readings.",
+  "registryIntegration": "Source-only lane; coordinator owns canonical registry/shared SVG/Swift/runtime and installed-device qualification. Candidate floor1.0.44.",
+  "ornamentProvenance": "Original authored100x100 SVG paths,23November2026,following the whole ginkgo paper carrier and both-corner steering."
+}

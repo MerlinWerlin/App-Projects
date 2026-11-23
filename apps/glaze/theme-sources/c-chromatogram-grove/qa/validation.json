@@ -1,0 +1,194 @@
+{
+  "id": "c-chromatogram-grove",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "ginkgo-chromatogram",
+    "butterfly-chromatogram",
+    "kingfisher-chromatogram",
+    "snail-chromatogram",
+    "primrose-chromatogram"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.6b5c8d5c.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 14660,
+    "sha256": "6b5c8d5cad11aa650ebbe0b40d54c2acd4b51817532184131120113cf0ffe52e",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "b449a47325934d5b060904b15cff3c8cf0cf1ea7b76d523a41ab096e84b47920"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full selected originals together at full17085 and all five actual encoded85px assets. Whole ginkgo fan/petiole, butterfly/four wings/two antennae/six legs, kingfisher/bill/twig/two feet, garden snail/four tentacles/shell spiral and five-lobed primrose/two basal leaves have distinct familiar natural silhouettes. Matte opaque thin warm-white paper, broad unequal separated blue-green/olive/yellow/amber pigment fronts, concentrated feathering and unstained paper intervals remain visible at85. First ginkgo a939f613 accepted unchanged after actual eight-neighbor material gate. Four additional subjects separately generated, no creative edits or code alpha cleanup.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556,750x1334 phone crops. Single coherent taller paper-nature arrangement against deep teal, with whole five subjects and every ginkgo/petal/leaf/bill/wing/antenna/leg/tentacle endpoint retained in all three. Actual generator fills roughly92percent width and69percent height, with uppermost leaf around14percent; larger/taller than requested percentages, documented rather than claiming prompt compliance. No clipped key subject or further pullback. Five exact own references/five distinct source originals, no external visual inputs.",
+    "native": "Viewed all nine current coordinator SVG native layouts. Arch contour follows fan; original ginkgo and curved pigment-front hints in larger fields, dash marks, leaf hands, column battery and band calendar. Separate small natural fan/petiole/two radial hints gives compact headers breathing room. Existing icon-style mechanism resolves a muted woodland olive gradient, visually compatible with teal/paper pigment art; source palette remains unchanged. All nine change with readings, battery null0/100 and ornament roundtrip pass. Today pointsize/bold and independent marker use coordinator-owned renderer. Clock contour chosen for art, no automatic square or font-shrink requirement. Windows SVG evidence, not installed-device or Apple New York qualification.",
+    "roundedArtworkCorners": "All33Cthemes/165actual encoded art retain every visible alpha16 pixel with actual app gradient/Fit6percent inset/conservative20percent rounded mask, originals unchanged. Own five whole originals uniformly contained900within1024 and rounded tiles viewed; quiet matching corners, whole natural endpoints retained. UI layout simulation only."
+  },
+  "ownerSteeringReview": "Less abstract recognizable Nature with whole familiar ginkgo, butterfly, kingfisher, snail and primrose silhouettes. Tangible thin porous paper and visibly separated pigment migration fronts. Quiet Artwork corners and a separate natural fan-leaf header companion. Artistic chromatography interpretation, not authentic lab results, measuredRf or exact pigment identification.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-chromatogram-grove",
+    "backgroundStops": [
+      "#162C2A",
+      "#29443E"
+    ],
+    "pieces": [
+      {
+        "id": "ginkgo-chromatogram",
+        "sha256": "752273b42fa5b5ddc81ad82aa69e43818cf7e05b3fc93820f63732b097d07cc0",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "butterfly-chromatogram",
+        "sha256": "f3a19d9a15bd143881e250011bd6860aa080f21a38aaa7cd25e0155685f86910",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "kingfisher-chromatogram",
+        "sha256": "ccfd32806deecd7447af7ff14e6705fc1239a82c3e06e8c6eec3802b13ba9391",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "snail-chromatogram",
+        "sha256": "e862f0e1c0dd7d0e22964fed2fef95422ffc0ff61215830c17e575e073f26c59",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "primrose-chromatogram",
+        "sha256": "b791fbd9904df400e3fa08eca9d84ac6dd914ddc80477889a2e56381455c0e3d",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 0,
+  "packTestEvidence": "Actual offline builder v1:9assets/983226bytes/minApp1.0.44. Actual manifest/catalogue parsers,5pure-art/9changingnative,ornament roundtrip,battery null0/100,Nature resolver,full selectedsource+normalized+encoded decoding/dimensions/hashes,6selected/noorphans,5own-WP references/5distinct pass. All5full17085/actual85/9native/3phonecrops/own5rounded viewed;33C/165encodedart retain alpha16. No shared runtime edits; combined Swift/device qualification coordinator-owned.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467",
+  "acceptedFirstRawUnchanged": true,
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "unselectedGenerations": 0,
+  "creativeRasterEdits": 0,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#EFDFBF",
+    "tile": "#29443E",
+    "actualCoreRatio": 8.026118450841608,
+    "minimum": 4.5
+  },
+  "scope": "Actual source/encoded pack validation, current coordinator SVG previews and rounded-layout simulation. Existing icon-style-derived woodland native gradient; no shared/Swift or installed-device qualification claim. No publication."
+}

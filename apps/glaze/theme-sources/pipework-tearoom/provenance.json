@@ -1,0 +1,124 @@
+{
+  "theme": "pipework-tearoom",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-piped royal-icing bas-relief with rope ridges, star-nozzle ribbing, shell swags, bead joins and matte sugar pores",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "PIPEWORK TEAROOM for Glaze. ONE original1290x2796 tall phone wallpaper, a coherent invented COMMUNITY TEA-ENGINE WORKSHOP. Weird useful machines arranged as an airy connected public tea counter, not routine teacups: a tall pear-shaped SAMOVAR with4large open fan lid panels and a long curved spout; a tilted triangular hand-crank roasting drum in an open yoke; a stepped folding scissor trolley with cantilever shelves and a little bellows canopy; a broad ribbon-like steam condenser zigzagging into a low receiving vessel; a low expanding accordion-arch bread oven with a side bread paddle. Visible hinges, cranks, rails, pipes, access steps and useful functions, no people or decorative faces. Physical craft process HAND-PIPED ROYAL-ICING BAS-RELIEF: every surface individually piped parallel rope ridges, sharp star-tip ribbing, shell swags and tiny nozzle-bead joins, matte sugar pores and brittle uneven edges, thin FLAT3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm pastry illustration. No smooth clay/CGI toy, textiles, coral, foam, wax or glass. Oyster cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B, quiet blueberry #665772 against deep aubergine #32243A very fine quiet sugar-paper texture. Crop safety: ENTIRE COMPLETE WORKSHOP inside CENTRAL60%WIDTH andBETWEEN38% AND73%HEIGHT. All finials/spouts/crank/shelves/condenser/paddle/feet inside that central safe area. Upper35% and bottom24% quietly empty aubergine for phone icons and narrow/short wallpaper crop variants. Strong differing silhouettes, open gaps between engines, no enclosing rectangular backing, cake/cookie/plaque, frame/border, wholephone/UI mockup, text/numbers/signage/symbols, clocks/date/battery/weather values or logos.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.37c18433.png",
+      "sourceSha256": "37c18433f6a349a166a6be96feee85f8e89533c3301c8d16a5ef3d18d2076a1d",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "e79edab0696a7ec89e9121c0a1605481d3f85ac031073208863b8b546ea43e51",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fan-lid-samovar",
+      "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject FAN LID SAMOVAR: one tall PEAR-SHAPED BOILER supported on THREE open curved legs with small star-piped feet, central belly round but narrow neck. FOUR very large triangular PLEATED FAN LID PANELS hinge out from the neck, spreading like an irregular open crown that reveals a small central steam cap. Each panel visibly thin with parallel star-nozzle icing ridges and tiny shell-swags along scalloped edge. One long rising gooseneck pouring spout arcs to the right and has a little tap lever; an offset small loop handle and thin articulated steam pipe sit left. A short3-tread access stair hangs between the front legs, open underbody. Strong tall fan-crowned silhouette, visibly useful invented communal tea boiler, no ordinary teapot or cup. Entire fan tips, spout, loop handle, stair and THREE feet safely contained with large alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/fan-lid-samovar.3ceae5a8.png",
+      "sourceSha256": "3ceae5a8282da14a43864fcf01571ca0b953a77abb20d168fe196d62a652b570",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fan-lid-samovar.16b9f737.png",
+      "sha256": "16b9f73779fd92f6d2996b214f37d1751d278df9dbf8baefcaee2a35ca96228a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hand-crank-roaster",
+      "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject HAND CRANK ROASTER: one large tilted TRIANGULAR PRISM ROASTING DRUM, open triangular mouth facing down-left so its three inner ribbed sides and a few tiny unmarked oval roasted-leaf pieces are visible. The drum turns on a cross axle supported by TWO tall curved open YOKE ARMS over a very small slatted cooling tray. A huge bent hand-crank with short ribbed handle extends far left; a three-spoke pivot connects it to the drum. On right one folded fan-shaped COOLING WING swings out on an obvious hinge, completely different silhouette from an ordinary barrel grill. Low frame on four short unequal-splayed feet, readable purpose is roasting and cooling tea leaves. All objects are thin matte piped royal-icing relief with star-tip ridges and nozzle bead joints, no metal or toy. Strong diagonal drum and side crank, open spaces through supports/under tray. Entire crank tip, wing, triangular mouth, supports and feet centrally contained with generous alpha.",
+      "tool": "built-in image_gen",
+      "source": "sources/hand-crank-roaster.c2b55950.png",
+      "sourceSha256": "c2b55950346015479134585abf27bb339e601b4908b8e3f1dcb5c76d62b1146f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hand-crank-roaster.3d7a3b0d.png",
+      "sha256": "3d7a3b0df0a79e1d02ebc5545bfd085241b8e62773d839bc02693e3327de3c38",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-tea-trolley",
+      "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject FOLDING TEA TROLLEY: one invented mobile tea-service WORK CART with a tall narrow OPEN SCISSOR-LIFT FRAME. TWO large crossing hinged X arms support THREE thin cantilevered stepped serving shelves: bottom extends right, middle extends left, top small round shelf high right, all visibly useful ledges with tiny rim rails. ONE big spoked wheel low left, TWO small trailing caster wheels right, an oversized curved push handle rising left. Above, a small diagonally folded BELLOWS CANOPY of five stiff accordion panels shelters just the upper shelf. A single pear-shaped unlabeled tea canister rests low, no cups or routine utensil collection. Hinges and wheel axle joints explicit; striking zigzag asymmetric tall silhouette with ample negative space through X frame and shelves. Every component constructed from thin matte piped icing ridges, shell-swags and nozzle-bead joins. Entire canopy tips, push handle, shelf ends and ALL3wheels contained, no cutoff.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-tea-trolley.9295eaf8.png",
+      "sourceSha256": "9295eaf8d1e673e3c392be51ac32fa4e93f7ed043929ddccb3a91f138e3d22e1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-tea-trolley.c3528ba8.png",
+      "sha256": "c3528ba831a1c79e586911ba0b0798a41f865f4eba8a8397a64c6df3883d6636",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "ribbon-steam-condenser",
+      "prompt": "Edit this same piped royal-icing steam condenser. REMOVE COMPLETELY the pale cream/grey background/backing/shadow/halo behind, around and BETWEEN the three serpentine cooling pipes, tripod legs, braces, valve wheel and receiving basin. Those areas must become TRUE FULLY TRANSPARENT ALPHA with no pale residue, drop shadow, glow or ground. Preserve the exact complete condenser geometry, thin icing ropes and shell-swags, pastel colours, small nozzle joins and brittle edges; do not crop or erase actual icing. All open gaps genuinely empty transparent. The ENTIRE machine including intake lip, left valve, right basin and all feet should be fully contained central70% of square with at least14% real transparent margin. Same subject only, no new props, plaques, text, values or UI. This is a transparent cutout for a dark widget background, not a scene.",
+      "tool": "built-in image_gen",
+      "source": "sources/ribbon-steam-condenser.305fd395.png",
+      "sourceSha256": "305fd3958926820d7dece4dd8c2bfaeb877238294d8e16c6e4bb64b557873c68",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ribbon-steam-condenser.9f786dea.png",
+      "sha256": "9f786dea7bbc58375b58274118405f85628f5ceb568d68e281bae4b69a87bb0c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/alpha-repair/ribbon-steam-condenser-history.json",
+      "referencedImage": {
+        "file": "qa/alpha-repair/ribbon-steam-condenser.original.d340a18e.png",
+        "sha256": "d340a18e55115e0131a740ad58b2c42a77a08d1bf0764acd2607d8c8f0b9e6fa"
+      }
+    },
+    {
+      "id": "accordion-bread-oven",
+      "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject ACCORDION BREAD OVEN: one low WIDE EXPANDING OVEN whose chamber is SIX nested open arched ribs connected by pleated accordion walls. The front arch on left is wide open, revealing a shallow ribbed baking shelf and one small unmarked elongated loaf; rear arch tapers to the right. Each rib has tiny shell-swags and bead hinge joins, all surfaces matte piped royal icing rather than metal or clay. A long hinged BREAD PADDLE with fan-shaped blade swings out diagonally high right from a side pivot, its handle cradled in a little support. A small FOOT PEDAL near front left operates a visible open linkage to extend the accordion chamber. Four short splayed feet, open air under the oven, no plinth or ground. Clear unusual yet useful expanding communal bread oven, broad horizontal silhouette contrasting all other tea engines. Complete front arch, pleats, paddle/handle, pedal linkage and all feet contained inside large alpha margins; no steam or pale background/shadow/halo.",
+      "tool": "built-in image_gen",
+      "source": "sources/accordion-bread-oven.9ed86d1b.png",
+      "sourceSha256": "9ed86d1bd3b67f44de5c3259865efaabea2b591135922e4060b8af05d254c8a2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/accordion-bread-oven.f991ebb0.png",
+      "sha256": "f991ebb07e202bb737ddfbd2a1be8ce1f0d664ef072a628aca71e1ede1576af8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

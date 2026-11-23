@@ -1,0 +1,60 @@
+{
+  "review": "All five high-opacity subject bounds are inside original source frames.",
+  "assets": [
+    {
+      "id": "lantern-ray",
+      "sourceOpaqueBounds": [
+        80,
+        217,
+        1151,
+        1039
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "hinge-crab",
+      "sourceOpaqueBounds": [
+        28,
+        172,
+        1188,
+        1093
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "bell-keeper",
+      "sourceOpaqueBounds": [
+        50,
+        105,
+        1207,
+        1159
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "siphon-colony",
+      "sourceOpaqueBounds": [
+        58,
+        164,
+        1174,
+        1152
+      ],
+      "edgeAlphaMaximum": 2,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "coil-eel",
+      "sourceOpaqueBounds": [
+        104,
+        76,
+        1170,
+        1191
+      ],
+      "edgeAlphaMaximum": 5,
+      "highOpacitySubjectInsideFrame": true
+    }
+  ]
+}

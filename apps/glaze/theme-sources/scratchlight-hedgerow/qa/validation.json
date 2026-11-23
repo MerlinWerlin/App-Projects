@@ -1,0 +1,168 @@
+{
+  "theme": "scratchlight-hedgerow",
+  "integratedBatchThemes": 63,
+  "actualAppAudit": {
+    "id": "scratchlight-hedgerow",
+    "name": "Soot & Bramble",
+    "packVersion": 1,
+    "artworks": [
+      "hare",
+      "longtailed-tit",
+      "bramble-berries",
+      "bee-dogrose",
+      "snail-dock"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1135418,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "allSelectedSourceAndOutputImagesFullyDecoded": true,
+  "selectedArtworks": 5,
+  "largeArtworkSelections": 5,
+  "nativePlans": 9,
+  "allNineChangeWithLiveReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "actualEncodedAssetHashes": {
+    "wallpaper-2796.05ad92a2.webp": "05ad92a2912e66136aded3e4ed0f383ced29af9c870eda0caa3c65851c70a739",
+    "wallpaper-2556.163f9064.webp": "163f9064b22cf9d68b2b1abd823274e3434f409341074fb11a2b176c07249c11",
+    "wallpaper-1334.346206ae.webp": "346206aea847b19ee62c45f64e177a0aea0933a2e61dcbd06d29e1294eb2b217",
+    "thumb.48b81004.webp": "48b810041805bf1c9d2ba4b47ad01fc55848573e87f6959399284a904842645f",
+    "widget-hare.fc7f40fd.webp": "fc7f40fdaa4732fb7fc3add9c865379a56b0d502e2a27b08714fc444d922fc3a",
+    "widget-longtailed-tit.e965cbef.webp": "e965cbefc0c08cdf7711fd90c8e55b1bc860cbf29706c10422591fdfb98212af",
+    "widget-bramble-berries.148a9452.webp": "148a9452f52efbc7a7ba9f46b46d409098e47d123c6888803553e32d6e770c12",
+    "widget-bee-dogrose.cd003696.webp": "cd003696f9c43c0a1d051244af95f223b3e6dc909c3708ecadf1fdbcd51330be",
+    "widget-snail-dock.e5e77069.webp": "e5e77069fe232f7c8e3927172fd65c27637bd19abd1597cbeba8c0a7ddb6b013"
+  },
+  "selectedInputHashes": {
+    "widgets/hare.7326f063231c.png": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98",
+    "widgets/longtailed-tit.f8fb47aac4da.png": "f8fb47aac4da913314bcf8f2af45763b058bea7bd36a5dae9690d4a7966881fb",
+    "widgets/bramble-berries.fcd765bdb4e6.png": "fcd765bdb4e62c93dc88385dec9d5eb10b45e77992974f9214062718cfb192bf",
+    "widgets/bee-dogrose.4a5518d82907.png": "4a5518d82907d9c0401e83d8af8406d42296592c532d5589c95fe072c6856fcc",
+    "widgets/snail-dock.3136912464ef.png": "3136912464efa40b700b89c624f9913069aea2627d9c07e9fea5156645e041fd",
+    "wallpapers/wallpaper.png": "fd2b0b62dedd482811d8d6e631881ec9472ac00666bf00d1a512802ed539a5ec"
+  },
+  "compactCompanion": {
+    "id": "scratchlight-hedgerow",
+    "name": "Soot & Bramble",
+    "retainedHeroLayouts": 5,
+    "compactLayouts": 4
+  },
+  "roundedArtwork": {
+    "id": "scratchlight-hedgerow",
+    "name": "Soot & Bramble",
+    "gradient": [
+      "#D5DBD6",
+      "#CED3CF"
+    ],
+    "artifacts": [
+      {
+        "id": "hare",
+        "label": "Listening Hare",
+        "blend": "transparent",
+        "corePixels": 48525,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "hare-170.png",
+        "tiny": "hare-85.png"
+      },
+      {
+        "id": "longtailed-tit",
+        "label": "Hawthorn Tit",
+        "blend": "transparent",
+        "corePixels": 24897,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "longtailed-tit-170.png",
+        "tiny": "longtailed-tit-85.png"
+      },
+      {
+        "id": "bramble-berries",
+        "label": "Bramble Berries",
+        "blend": "transparent",
+        "corePixels": 32380,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "bramble-berries-170.png",
+        "tiny": "bramble-berries-85.png"
+      },
+      {
+        "id": "bee-dogrose",
+        "label": "Dogrose Visitor",
+        "blend": "transparent",
+        "corePixels": 47861,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "bee-dogrose-170.png",
+        "tiny": "bee-dogrose-85.png"
+      },
+      {
+        "id": "snail-dock",
+        "label": "Dockleaf Snail",
+        "blend": "transparent",
+        "corePixels": 42383,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "snail-dock-170.png",
+        "tiny": "snail-dock-85.png"
+      }
+    ]
+  },
+  "nativeDescriptorSha256": "9f138a0992935611848ace8ffcc2ed6cc934a2c7d55edf6800cb7e1aa32ae0f3",
+  "nativeSvgPreviews": [
+    {
+      "file": "clock-small.svg",
+      "sha256": "a437bd44b0133cb0814ae94a666f8eb9b5e88dea34401b7c17b8ef585f7ed5ac"
+    },
+    {
+      "file": "clock-medium.svg",
+      "sha256": "9fdecb323ae8c54683fc315092feb24f61ad56e3777dc710e1aeaca9f5d4b62f"
+    },
+    {
+      "file": "clock-large.svg",
+      "sha256": "e81adcc9b91444a456b15c55efae01c5878faccd82d9322b8ea452fd4d4ffe9f"
+    },
+    {
+      "file": "battery-small.svg",
+      "sha256": "6108eeac73e768e6e17a2c674d48436f1875005fd3186fe486dcfc8bf46dba4c"
+    },
+    {
+      "file": "battery-medium.svg",
+      "sha256": "a1fd8cf49eecc82023420addd83430ca7aa8b890ccfafb7592e96960a61b63af"
+    },
+    {
+      "file": "battery-large.svg",
+      "sha256": "7e8140eb67a740bafba908ded296240e483c7cda441cb34ac277932d8e87db6e"
+    },
+    {
+      "file": "calendar-small.svg",
+      "sha256": "42a1f563bd147cfda935d3eaa84aec4fb029ee4cb536a6d1512c7263ad674c6c"
+    },
+    {
+      "file": "calendar-medium.svg",
+      "sha256": "914e5f5b17ba84cb3bc33f20eb37fbdfd83e69c871a3d505313eeb43d3f735ff"
+    },
+    {
+      "file": "calendar-large.svg",
+      "sha256": "c6f9b11959f8eb92697bb437195ac6f0436b4022b848df5608444c8a1ba148af"
+    }
+  ],
+  "actualRuntimeSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "category": "Nature",
+  "visualReview": "Coordinator inspected all5 actual encoded170/85rounded artworks,9actual native layouts and3actual phone exports. Natural focal silhouettes stay whole with quiet matching wallpaper margins and compact theme-matched native header companions.",
+  "published": false,
+  "installedDeviceVerified": false
+}

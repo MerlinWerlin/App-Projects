@@ -1,0 +1,43 @@
+{
+  "initial": {
+    "file": "qa/background-extraction/garden-snail.initial.c4b4c0a147b5.png",
+    "sha256": "c4b4c0a147b54c4184a18d111d86efa2945ce4a95d5bfcbe49dd87a127ac90bb",
+    "prompt": "ONE entirely NEW independent standalone Glaze Nature artwork for PITHCURL ORCHARD. Reference is our OWN accepted dormouse, used ONLY for the material/construction language; invent the described different natural subject, never copy the mouse silhouette. Entire recognizable subject assembled solely from FEW BROAD FLEXIBLE FRESH MANDARIN-PEEL STRIPS and folded pieces: saturated tangerine orange oil-gland dimpled skin, thick spongy creamy white pith exposed in every curling underside and cut lip, loose open orange/white turns readable at85px. Restrained moist satin fruit-peel texture, not wet gloss, ceramic, paper quilling, metal, felt, dried brown gourd or a realistic animal merely painted orange. No extra materials except tiny dark citrus pips for eyes/nose and a few small pith joins. Beautiful careful tangible macro miniature, gentle warm modelling light, no floor shadow. Complete whole subject central66percent width/height, ALL natural extremities entire with at least14percent quiet transparent margins. TRUE transparent alpha background, including open gaps and curl centres; no backing rectangle, plate, plinth, assembly tools, orange fruit, bowl, border, frame, halo, dirt, stray speckles, lettering, labels, numbers, clock/calendar/battery/weather/UI or mockup. Artistic peel sculpture interpretation, no authentic physical artwork claim. ONE complete recognizable GARDEN SNAIL creeping along a gently curved whole foot. Shell is ONE large loose OPEN SPIRAL of a broad fresh peel ribbon, alternating deep orange outer skin and thick creamy pith underside, with visibly separated curl openings and no solid shell or ordinary snail surface. Body/continuous broad gliding foot is a long folded peel piece, head raised with exactly TWO LONG upper eye tentacles bearing tiny dark pips plus TWO short lower sensory feelers; entire long foot taper and all four tentacles whole. A single small curled peel leaf beside it. Shell/body silhouette immediately recognizable, no mammal paws, ears or fur.",
+    "references": [
+      {
+        "file": "sources/dormouse.be0b4539037f.png",
+        "sha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+        "purpose": "Own first dormouse material reference."
+      }
+    ],
+    "selected": false
+  },
+  "selectedEdit": {
+    "id": "garden-snail",
+    "label": "Peel Snail",
+    "tool": "built-in image_gen",
+    "prompt": "BACKGROUND EXTRACTION ONLY on this OWN original entire fresh-mandarin-peel snail. Preserve the COMPLETE same snail, physical orange skin, thick white pith, all broad strip curls, natural anatomy, dark pip eyes/nose, paws or tentacles, and accompanying leaf if present. Remove ALL diffuse orange/brown ambient haze, glow and cast shadows OUTSIDE the physical peel object, including between legs, around tail, around shell and leaf and inside genuinely open curl gaps. Every exterior pixel and every empty gap must be clean TRUE TRANSPARENT ALPHA, including immediately beyond tiny natural pith fibres; no coloured cloud or partially opaque floor. Keep genuine soft light and shadow ON actual physical skin/pith surfaces and within physically closed shell layers. Do not recolor, smooth, redraw, re-pose, alter the material, delete or shorten any anatomy, add foliage, leave a white/grey backdrop, or create a new shadow. Whole original subject with all tip extremities remains in frame; add quiet transparent margin if necessary, never crop. No text or UI. This is the final clean reusable transparent artwork cutout.",
+    "source": "sources/garden-snail.a7215e62fa70.png",
+    "sourceSha256": "a7215e62fa70c8b338863499134838e6962bac12758a46b9b1f6680b2fd9a74d",
+    "sourceDimensions": [
+      1536,
+      1024
+    ],
+    "selectedFile": "widgets/garden-snail.fe151da8.png",
+    "sha256": "fe151da862f7350948e57eefe8cb0dd6ece7a61b6ecf10c7cc947657fd585e79",
+    "dimensions": [
+      1200,
+      1200
+    ],
+    "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+    "references": [
+      {
+        "file": "qa/background-extraction/garden-snail.initial.c4b4c0a147b5.png",
+        "sha256": "c4b4c0a147b54c4184a18d111d86efa2945ce4a95d5bfcbe49dd87a127ac90bb",
+        "purpose": "Own image reference; exact original retained."
+      }
+    ]
+  },
+  "reason": "One own-source exterior background extraction; whole anatomy and peel construction visually retained. Actual composite QA shows no perceptible glow on grey or petrol.",
+  "noCodeAlphaCleanup": true
+}

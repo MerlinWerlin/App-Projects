@@ -1,0 +1,119 @@
+{
+  "id": "c-schlieren-paradox",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "mach-saddle",
+    "vortex-rook",
+    "caustic-iris",
+    "split-front",
+    "bowshock-comb"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.7c6bf542.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 10632,
+    "sha256": "7c6bf542c1bc57493385d329affaacc15a99f8b4ef7517f24cb117c69a827105",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "wallpaper": "Selected revised grainy planar density exposure; quiet warm ivory top; lower diagonal shockfronts and vortex.",
+    "fiveArtworks": "Final5separate sources reviewed at210and150pixels; triangular saddle, stacked vortex, star aperture, zigzag front and curved comb are distinct; alpha composites cleanly.",
+    "native": "All9actual app renderer candidate previews reviewed: lozenge/shockfront dial with dash markers and wedge hands, density-column gauge and folio calendar; legible on source palette.",
+    "rejectedAttempts": "First metallic/solid-looking wallpaper and2artworks rejected; exact source and prompts retained separately and excluded from final selected set."
+  },
+  "packTestEvidence": "Common pipeline unchanged:47existing cases covered by45initial passes and2encoder follow-up passes."
+}

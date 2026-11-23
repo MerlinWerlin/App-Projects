@@ -1,0 +1,142 @@
+{
+  "theme": "c-neutrino-reliquary",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.5c29f1e63685.png",
+      "sourceSha256": "5c29f1e6368553374763f42d2273cd10a80eda5007919e5bd9287f69d7908a1c",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "517801c2c9633364edac03e1566e41b67d0bddeed15cd71b28d5abd8c7ec0a66",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 3093194,
+      "processing": "Whole composition fitted to 1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original Glaze Neutrino Reliquary asset. Medium: fictional bubble-chamber event imaging and long-exposure particle-track tomography. Every form consists entirely of luminous hairline curved trajectories, discontinuous dotted ionisation trails, branching collision vertices and small pinprick scintillation points suspended in an invisible volume. Bone-white and pale champagne tracks, a few icy teal countertracks, restrained dim lavender depth haze. Delicate scientific detector-image grain. Absolutely no solid material, no surfaces, no glass or metal sculpture, no rainbow interference, no painted brushwork, no diagram labels, letters, digits, UI, hands, clocks, dates, readings, frame, logo or watermark. Original imagined event, not a real measured scientific dataset. Asset: ONE portrait phone wallpaper with 1290x2796 framing. Near-black aubergine detector volume. A grand asymmetric arch of curling particle trajectories bends across the lower right, feeding a small central branching vertex and a wide shallow fan of dotted tracks below. A few spiral countertracks float at different depths. Plenty of near-black breathing space in the upper third and middle left. Large readable structural masses built from dozens of separate thin tracks; no solid volume or dense starfield. Opaque full-bleed background. No phone mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "cascade-gate",
+      "sourceImage": "sources/cascade-gate.8bfbb2d38a80.png",
+      "sourceSha256": "8bfbb2d38a80f02ab7cf804fe587cf225b9bb622d76f6c95e97a3ceb2a0ad879",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cascade-gate.f8efe08bc575.png",
+      "sha256": "f8efe08bc575f3c24ccce504d1ec2646da7c7203ff683935ab652e4fa5f656e1",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 872090,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original Glaze Neutrino Reliquary asset. Medium: fictional bubble-chamber event imaging and long-exposure particle-track tomography. Every form consists entirely of luminous hairline curved trajectories, discontinuous dotted ionisation trails, branching collision vertices and small pinprick scintillation points suspended in an invisible volume. Bone-white and pale champagne tracks, a few icy teal countertracks, restrained dim lavender depth haze. Delicate scientific detector-image grain. Absolutely no solid material, no surfaces, no glass or metal sculpture, no rainbow interference, no painted brushwork, no diagram labels, letters, digits, UI, hands, clocks, dates, readings, frame, logo or watermark. Original imagined event, not a real measured scientific dataset. Asset: ONE individual square1024x1024 pure-art widget. Subject: CASCADE GATE, an impossible horseshoe arch built from nested parabolic collision trajectories; the left foot splits into three short track forks while the right rises into one long curl. Clean tall open arch silhouette, central opening genuinely transparent. Sparse crisp bright tracks, a few subtle dotted echo trajectories. Full subject centred with15% transparent margins. Real transparent alpha around and between tracks; no tile, backdrop, floor, shadows, grey or white panels.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        253
+      ],
+      "transparentPixels": 859244
+    },
+    {
+      "id": "vertex-vessel",
+      "sourceImage": "sources/vertex-vessel.0a0e030bf905.png",
+      "sourceSha256": "0a0e030bf90532cca245dfddd5c6f0284601d72bcb004d99169bac48e816c2d9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/vertex-vessel.e0809bee9353.png",
+      "sha256": "e0809bee9353a830ff2876dcf70f2d175e08033373c5522356f03f7dcf200d0e",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 579452,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original Glaze Neutrino Reliquary asset. Medium: fictional bubble-chamber event imaging and long-exposure particle-track tomography. Every form consists entirely of luminous hairline curved trajectories, discontinuous dotted ionisation trails, branching collision vertices and small pinprick scintillation points suspended in an invisible volume. Bone-white and pale champagne tracks, a few icy teal countertracks, restrained dim lavender depth haze. Delicate scientific detector-image grain. Absolutely no solid material, no surfaces, no glass or metal sculpture, no rainbow interference, no painted brushwork, no diagram labels, letters, digits, UI, hands, clocks, dates, readings, frame, logo or watermark. Original imagined event, not a real measured scientific dataset. Asset: ONE individual square1024x1024 pure-art widget. Subject: VERTEX VESSEL, one brilliant off-centre collision vertex at the base of a wide shallow upward fan; twelve trajectories peel apart like a bowl while two long countertracks curve downward to a tiny tripod vertex. Wide goblet-like silhouette made only from disconnected dotted light paths, no actual goblet or object. Whole abstract event centred with15% transparent margins. Real transparent alpha around and between all tracks; no backdrop, tile, floor, shadow or panels.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        253
+      ],
+      "transparentPixels": 917211
+    },
+    {
+      "id": "muon-harp",
+      "sourceImage": "sources/muon-harp.30dd6fd14274.png",
+      "sourceSha256": "30dd6fd14274d6ab542108ef123dd2cc3fd10ef1d6d0708309a345d165a818c6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/muon-harp.451ccab84b09.png",
+      "sha256": "451ccab84b0982a66f3263607e1febd521a4271542c70d5fa493ea223a3e3170",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 834681,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original Glaze Neutrino Reliquary asset. Medium: fictional bubble-chamber event imaging and long-exposure particle-track tomography. Every form consists entirely of luminous hairline curved trajectories, discontinuous dotted ionisation trails, branching collision vertices and small pinprick scintillation points suspended in an invisible volume. Bone-white and pale champagne tracks, a few icy teal countertracks, restrained dim lavender depth haze. Delicate scientific detector-image grain. Absolutely no solid material, no surfaces, no glass or metal sculpture, no rainbow interference, no painted brushwork, no diagram labels, letters, digits, UI, hands, clocks, dates, readings, frame, logo or watermark. Original imagined event, not a real measured scientific dataset. Asset: ONE individual square1024x1024 pure-art widget. Subject: MUON HARP, a steep diagonal comb of seven parallel C-shaped particle tracks with staggered endpoints, crossed by two fine horizontal collision beams and a sparse scattering of detached dots. A tall angular trapezoid silhouette, asymmetry and clean rhythm; no actual musical instrument, no arch or goblet shape, no solid edges. Entire event centred with15% transparent margins. Real transparent alpha around and between all tracks; no backdrop, tile, floor, shadow or panels.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        246
+      ],
+      "transparentPixels": 876157
+    },
+    {
+      "id": "pair-production-knot",
+      "sourceImage": "sources/pair-production-knot.7643852464de.png",
+      "sourceSha256": "7643852464de1e20649e2b5a168033edc49c760968b5a595cf328a39f6030d2a",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "file": "widgets/pair-production-knot.920168ddff2c.png",
+      "sha256": "920168ddff2c9997cac92e58074f64c85d296e8611c66c59f7fe807c3b02ba4d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 473410,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original Glaze Neutrino Reliquary asset. Medium: fictional bubble-chamber event imaging and long-exposure particle-track tomography. Every form consists entirely of luminous hairline curved trajectories, discontinuous dotted ionisation trails, branching collision vertices and small pinprick scintillation points suspended in an invisible volume. Bone-white and pale champagne tracks, a few icy teal countertracks, restrained dim lavender depth haze. Delicate scientific detector-image grain. Absolutely no solid material, no surfaces, no glass or metal sculpture, no rainbow interference, no painted brushwork, no diagram labels, letters, digits, UI, hands, clocks, dates, readings, frame, logo or watermark. Original imagined event, not a real measured scientific dataset. Asset: ONE individual square1024x1024 pure-art widget. Subject: PAIR PRODUCTION KNOT, two oppositely curling planar spirals erupt from one shared vertex, one wide tight clockwise whirl and one smaller open anticlockwise hook; a thin straight incident trail enters from the upper left and three tiny dotted jets depart lower right. Low wide sideways double-curl silhouette; no material shell, animal, eye, glass or filled disc. Complete event centred with15% transparent margins. Real transparent alpha around and between all trails; no backdrop, tile, floor, shadow or panels.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        252
+      ],
+      "transparentPixels": 927965
+    },
+    {
+      "id": "scintillation-keel",
+      "sourceImage": "sources/scintillation-keel.c5205cff7c5c.png",
+      "sourceSha256": "c5205cff7c5c83bbd1d8722cfb3c16af8f9eeaa78dfe134fd8fcb3716b6ff15d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/scintillation-keel.6c409f1bd2dc.png",
+      "sha256": "6c409f1bd2dc502b7bb6146e7cf110a3c89e532737f280b63df0709166cdbd46",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 679381,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original Glaze Neutrino Reliquary asset. Medium: fictional bubble-chamber event imaging and long-exposure particle-track tomography. Every form consists entirely of luminous hairline curved trajectories, discontinuous dotted ionisation trails, branching collision vertices and small pinprick scintillation points suspended in an invisible volume. Bone-white and pale champagne tracks, a few icy teal countertracks, restrained dim lavender depth haze. Delicate scientific detector-image grain. Absolutely no solid material, no surfaces, no glass or metal sculpture, no rainbow interference, no painted brushwork, no diagram labels, letters, digits, UI, hands, clocks, dates, readings, frame, logo or watermark. Original imagined event, not a real measured scientific dataset. Asset: ONE individual square1024x1024 pure-art widget. Subject: SCINTILLATION KEEL, a long hooked keel of braided dotted trajectories descends to a sharp vertex and turns upward into three unequal radial spokes. A detached thin oval countertrack floats above the short spoke, with seven bright collision nodes on the longest stem. Strong asymmetric lightning-shaped event silhouette with clear gaps, not a ship or plant or arch. Complete event centred with15% transparent margins. Real transparent alpha around and between tracks; no backdrop, tile, floor, shadow or panels.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        253
+      ],
+      "transparentPixels": 887091
+    }
+  ],
+  "published": false
+}

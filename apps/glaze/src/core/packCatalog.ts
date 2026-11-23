@@ -20,7 +20,16 @@ import { widgetOptionsOfPack, type WidgetOption } from './widgetOptions.ts';
 
 export const CATALOG_FORMAT = 'glaze-catalog';
 export const CATALOG_VERSION = 1;
+/** What the pack builders write and builds 1.0.37 to 1.0.43 read. NEVER rewritten from 1.0.44 on. */
 export const CATALOG_FILE = 'catalog.json';
+/** Same as CATALOG_FILE: the frozen catalogue older builds keep reading (live sha256 97a7a132…, 141 themes). */
+export const LEGACY_CATALOG_FILE = CATALOG_FILE;
+/**
+ * 1.0.44: the catalogue THIS build reads. It lists every theme in the legacy catalog.json exactly as
+ * served there, plus the themes that need 1.0.44 (minAppVersion 1.0.44), so 1.0.42 / 1.0.43 never list
+ * a theme they can't download. scripts/packs/publish_catalog_v2.mjs writes it (never catalog.json).
+ */
+export const APP_CATALOG_FILE = 'catalog-v2.json';
 export const REMOTE_ART_FORMAT = 'glaze-remote-art-pack';
 /** The version scripts/packs/build_packs.mjs writes (v1 has no widget option list). */
 export const REMOTE_ART_VERSION = 1;

@@ -1,0 +1,18 @@
+{
+  "themeId": "floatink-stormcrew",
+  "recipe": [
+    "wave",
+    "marbleKite",
+    "marbleEddy",
+    "rays",
+    "leaf",
+    "trail",
+    "ledger"
+  ],
+  "art": {
+    "marbleKite": "M 17 31 L 61 8 L 87 43 L 45 56 Z M 17 31 L 87 43 M 61 8 L 45 56 M 45 56 Q 33 69 44 78 Q 58 85 49 96 M 42 69 L 33 64 L 32 73 Z M 47 87 L 60 85 L 57 94 Z M 44 55 L 27 81 M 21 80 C 21 73 31 73 31 80 C 31 87 21 87 21 80 Z M 22 86 L 16 96 M 30 86 L 37 96",
+    "marbleEddy": "M 9 44 C 20 10 77 8 90 42 C 97 64 72 86 45 86 C 20 86 8 69 21 51 C 34 33 66 29 78 44 C 88 58 67 74 48 73 C 31 72 26 62 38 53 C 49 44 63 45 65 54 Q 64 63 51 62 M 11 61 Q 9 82 31 92 M 24 26 Q 51 8 74 25 M 82 69 L 88 65"
+  },
+  "ornament": "M 14 55 C 21 25 69 20 83 47 C 93 68 61 86 39 74 C 23 65 30 47 49 43 C 64 40 73 51 65 60 Q 56 70 45 59 M 16 72 Q 23 86 40 86 M 76 20 L 78 22 M 88 31 L 90 33",
+  "direction": "Open kite frame with a short tail and tiny mender figure as full illustration; irregular nested floating-ink eddy as print detail. Wave bezel, ray marks, leaf hands, trail charge gauge and ledger calendar. Compact companion is one short broken ink eddy and two small ink-pool marks; full worker/equipment stays out of compact headers."
+}

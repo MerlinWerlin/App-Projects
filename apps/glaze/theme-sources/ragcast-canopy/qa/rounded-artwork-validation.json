@@ -1,0 +1,204 @@
+{
+  "themeId": "ragcast-canopy",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#D7C2B4",
+    "#CBB1A2"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "tapir-palm",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        26,
+        51,
+        144,
+        125
+      ],
+      "asset": "widget-tapir-palm.fa374537.webp",
+      "assetSha256": "fa37453753e6d3f5a77b2b0f5d9b4b9247b59b651a2eb20567f841d7199d27a8"
+    },
+    {
+      "option": "tapir-palm",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        57,
+        120,
+        309,
+        277
+      ],
+      "asset": "widget-tapir-palm.fa374537.webp",
+      "assetSha256": "fa37453753e6d3f5a77b2b0f5d9b4b9247b59b651a2eb20567f841d7199d27a8"
+    },
+    {
+      "option": "toucan-bromeliad",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        27,
+        141,
+        144
+      ],
+      "asset": "widget-toucan-bromeliad.af98f434.webp",
+      "assetSha256": "af98f4348b1a4b701c1ee01b4279290a5bf179a5044b948a1789ebc17997deb9"
+    },
+    {
+      "option": "toucan-bromeliad",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        54,
+        67,
+        302,
+        317
+      ],
+      "asset": "widget-toucan-bromeliad.af98f434.webp",
+      "assetSha256": "af98f4348b1a4b701c1ee01b4279290a5bf179a5044b948a1789ebc17997deb9"
+    },
+    {
+      "option": "morpho-fern",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        27,
+        34,
+        142,
+        141
+      ],
+      "asset": "widget-morpho-fern.e8b34904.webp",
+      "assetSha256": "e8b3490483596b945eccf820ff7d279409c620a5f9345a79e583201cce3d0af5"
+    },
+    {
+      "option": "morpho-fern",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        58,
+        83,
+        305,
+        311
+      ],
+      "asset": "widget-morpho-fern.e8b34904.webp",
+      "assetSha256": "e8b3490483596b945eccf820ff7d279409c620a5f9345a79e583201cce3d0af5"
+    },
+    {
+      "option": "heliconia-leaf",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        29,
+        25,
+        140,
+        144
+      ],
+      "asset": "widget-heliconia-leaf.fff3c762.webp",
+      "assetSha256": "fff3c7626da290279ca9aa6daf1008891ba7b194863334797949886d31ab976a"
+    },
+    {
+      "option": "heliconia-leaf",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        62,
+        63,
+        301,
+        318
+      ],
+      "asset": "widget-heliconia-leaf.fff3c762.webp",
+      "assetSha256": "fff3c7626da290279ca9aa6daf1008891ba7b194863334797949886d31ab976a"
+    },
+    {
+      "option": "treeboa-bough",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        43,
+        143,
+        126
+      ],
+      "asset": "widget-treeboa-bough.300b2564.webp",
+      "assetSha256": "300b25647feea1ac206b9b3e8457818ebb55915314a75f3d01b1516529fa892a"
+    },
+    {
+      "option": "treeboa-bough",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        55,
+        102,
+        306,
+        279
+      ],
+      "asset": "widget-treeboa-bough.300b2564.webp",
+      "assetSha256": "300b25647feea1ac206b9b3e8457818ebb55915314a75f3d01b1516529fa892a"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

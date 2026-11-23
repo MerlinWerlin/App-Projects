@@ -1,0 +1,18 @@
+{
+  "id": "puffer-shellcurl",
+  "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject PUFFER SHELLCURL: one natural inflated PUFFERFISH in slightly oblique side profile faces right, round compact body, small natural snout with one simple dark printed eye, one short fan tail left, two tiny side fins and a low dorsal fin. Surface made of many tiny irregular PRICKLE AND SCALE-POINT INK IMPRESSIONS around a broken dry perimeter, a patch of dense directly transferred skin texture low left and large irregular unprinted alpha skips elsewhere; natural print-pressure pattern, NOT soft watercolor shading, stippled3Dball, engraved mathematical dots or X-ray bones. One small SPIRAL GASTROPOD SHELL IMPRESSION curves below-left, its whorl ridges rubbed in broken ink segments, not literal porcelain. Ink Prussian blue with one tiny muted vermilion dry mark near one fin. Strong broad rounded fish and little spiral shape, completely different silhouette from long flyingfish or tall spiky lionfish. All prickles, fin/tail tips, muzzle and shell whorl complete and inside generous true alpha margins. No paper fill/backing/scenery/frame/halo, only ink and real unprinted gaps.",
+  "tool": "built-in image_gen",
+  "source": "sources/puffer-shellcurl.02ef92a8.png",
+  "sourceSha256": "02ef92a8a715725928b21c914e372e9f06ec37b5616636bdbd0949b01e3f65c5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/puffer-shellcurl.0e05bab6.png",
+  "sha256": "0e05bab647f7aef6f0380f12125e8b70fb4522eede82f03d175bbf146b0cd07e",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

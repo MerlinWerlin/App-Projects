@@ -1,0 +1,43 @@
+{
+  "initial": {
+    "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, one independent pure-art asset on TRUE transparent alpha. Our own accepted moss badger reference supplies only the living botanical material, palette and refined natural macro daylight. Create a distinctly different familiar natural subject. Entire sculptural body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved green star-rosette shoots, minute overlapping leaves and short leafy fernlike tips, moist plant tissue. Pale warm-grey REINDEER LICHEN defines restrained natural highlights and small markings. Forest/olive/chartreuse green moss cushions with occasional sparse short reddish-brown sporophyte stems/tiny oval capsules. Real leafy plant texture, not fur/felt/artificialturf, gills/mycelium, long woodshavings, cork/stone/metal/glass/paper or 3Dtoy. All anatomy arises from botanical material, no real animal hidden beneath. Real familiar anatomy and clear entire silhouette first, readable at85px. Restrained moist highlights, no glitter/glow. Whole subject and EVERY extremity inside central66% square, ample truealpha margins all sides, true transparency through major gaps. No ground/lawn/base/rocks/scenery/floor, exterior shadow/haze or opaque background/rectangle/panel/frame/collage. No labels/text/signatures/numerals/logos/clock/dial/battery/calendar/UI/readings. SUBJECT: One complete elegant ROE DEER standing in calm three-quarter profile facing right. Natural slender torso, narrow long muzzle, two large upright leaf-shaped ears, TWO short modest three-tined antlers fully whole, four slender legs with complete split hooves, tiny rump tail. Warm-grey lichen bib and inner ears/rump patch, darker moss muzzle, tiny natural dark eyes. Moss star shoots follow real body planes; no branch/body distortions or fantasy horns. Keep allfour distinct feet visible, generous clear space above antler tips and below hooves.",
+    "file": "qa/deer-alpha-study/unselected-first-deer.aca1ba94dfb1.png",
+    "sha256": "aca1ba94dfb1265fd14986295151ff3eb722109b468c638b5f33669cadef327a",
+    "references": [
+      {
+        "file": "sources/badger.d804513a49f7.png",
+        "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365"
+      }
+    ],
+    "selected": false,
+    "edgeAlphaMax": 119
+  },
+  "selectedTransparencyEdit": {
+    "id": "roe-deer",
+    "label": "Starshoot Deer",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. TRANSPARENCY CLEANUP ONLY of our own moss/lichen roe deer. Preserve EXACT whole deer, all actual moss star-leaf shoots, pale branchinglichen bib/inner ears/rump, sparse redsporophytecapsules, bothwholeantlers, two ears, natural eye/muzzle, FOUR complete slender legs/split hooves/tail and exact pose/proportions/lighting/colors. Do not redraw/anatomicallyalter/crop the deer. Remove EVERY bit of the unrequested grey/white/yellow background wash, translucent fog, exterior glow, photographic backdrop and ground haze. All pixels OUTSIDE the actual deer/individual moss/lichen/antler/capsule/hoof silhouette must be TRUE EMPTY ALPHA, including the big openings between all four legs and under jaw/antlers. No opaque rectangle, no painted checkerboard, no white background, no new shadow or coloured halos. Keep body and fine plant edges solid with smooth natural antialiasing; remove background rather than making deer transparent. Keep all extremities entire with ample genuinely transparent margins on every side. Same familiar natural animal identity, same green living-moss/pale-lichen botanical-topiary sculpture. No newobjects/text/labels/UI/border.",
+    "source": "sources/roe-deer.4fe0e9df30c0.png",
+    "sourceSha256": "4fe0e9df30c07bd62804353ca2a609c3f2cfe2ce5a51f79e46adf3bb12dbf57d",
+    "sourceDimensions": [
+      1199,
+      1312
+    ],
+    "selectedFile": "widgets/roe-deer.5ac36ad88a9f.png",
+    "sha256": "5ac36ad88a9fe3d7ccba336988a2dfdb9e9cb7d816c1c855fe192af1ff8e9f03",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+    "references": [
+      {
+        "file": "qa/deer-alpha-study/unselected-first-deer.aca1ba94dfb1.png",
+        "sha256": "aca1ba94dfb1265fd14986295151ff3eb722109b468c638b5f33669cadef327a",
+        "purpose": "Own first deer with exterior semi-transparent haze; built-in cleanup preserves whole deer/anatomy/material while correcting only transparency."
+      }
+    ],
+    "generationHistory": "qa/deer-alpha-study/generation-history.json"
+  },
+  "reason": "Initial deer had exterior haze reaching image edge; correction is built-in imagegen, no mechanical background removal. Initial original also supplied deer identity to first own-five-reference habitat before alpha correction."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "bell-canopy-bath",
+  "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject BELL CANOPY BATH: one LOW BROAD SHARED BATH PAVILION with a large shallow round open basin and wide front entry stairs. FOUR SLENDER PIERCED POSTS support an oversized low FLUTED BELL-SHAPED RAIN CANOPY, its thick rim scalloped into six large shallow arcs. Narrow roof channels visibly converge into two small downspouts connected to the basin rim; a single carved water sheet drops from the front roof lip into the inner pool, and concentric lacquer ripples follow the bowl. A low open safety rail encircles only the back half, front entry wide and welcoming. Large air gaps between posts, no enclosed house walls, tower, machinery wheels, people or statues. Strong wide umbrella-over-bowl silhouette, useful rain-fed communal bath, not ordinary umbrella or gazebo ornament. Put all canopy flutes, posts, downspouts, stairs and bowl edge well inside generous alpha. Layered hard red lacquer bands exposed at roof scallops/basin cuts and deeply carved wave patterns underneath.",
+  "tool": "built-in image_gen",
+  "source": "sources/bell-canopy-bath.a9ff14a3.png",
+  "sourceSha256": "a9ff14a32bcd95bf3746b797258863ffff61532813c5060a103f4e865d71775f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bell-canopy-bath.828ec2ae.png",
+  "sha256": "828ec2aeff3092b06f8f8b6cddec0c4f9b3b67fcf84377849a67a6f16ff4b269",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,43 @@
+name: Glaze extraordinary themes
+on:
+  pull_request:
+    paths:
+      - 'apps/glaze/theme-sources/**'
+      - 'apps/glaze/src/core/extraordinaryThemeIdentities.ts'
+      - 'apps/glaze/src/core/widgetIdentityArt.ts'
+      - 'apps/glaze/src/core/widgetIdentityRecipes.ts'
+      - 'apps/glaze/scripts/packs/extraordinary_themes*'
+      - 'apps/glaze/scripts/packs/verify_extraordinary_images.py'
+      - '.github/workflows/glaze-extraordinary-themes.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/glaze
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r scripts/packs/requirements-images.txt
+      - name: Pack and native identity regression tests
+        run: node --test "scripts/packs/*.test.mjs" src/core/designedWidgets.test.ts
+      - name: Offline candidate build and actual app selector/native planner audit
+        run: node scripts/packs/extraordinary_themes.mjs
+      - name: Decode all selected sources and staged image payloads
+        run: python scripts/packs/verify_extraordinary_images.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glaze-extraordinary-review
+          path: |
+            apps/glaze/dist/extraordinary-packs/catalog.json
+            apps/glaze/dist/extraordinary-packs/art/**/manifest.json
+            apps/glaze/dist/extraordinary-packs/new-theme-*.json
+            apps/glaze/dist/extraordinary-packs/native-review/**
+          retention-days: 7

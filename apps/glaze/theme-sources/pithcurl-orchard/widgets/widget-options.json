@@ -1,0 +1,62 @@
+[
+  {
+    "id": "dormouse",
+    "kind": "art",
+    "image": "dormouse.c868a72a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Peel Dormouse"
+  },
+  {
+    "id": "robin-twig",
+    "kind": "art",
+    "image": "robin-twig.0a65033e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Peel Robin"
+  },
+  {
+    "id": "garden-snail",
+    "kind": "art",
+    "image": "garden-snail.fe151da8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Peel Snail"
+  },
+  {
+    "id": "walking-fox",
+    "kind": "art",
+    "image": "walking-fox.6cc4e92b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Peel Fox"
+  },
+  {
+    "id": "apple-blossom",
+    "kind": "art",
+    "image": "apple-blossom.e0bfe1b3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pith Blossoms"
+  }
+]

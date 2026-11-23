@@ -1,0 +1,19 @@
+{
+  "themeId": "emulsion-rookery",
+  "recipe": [
+    "reel",
+    "emulsionIbis",
+    "emulsionFrames",
+    "staples",
+    "baton",
+    "tiles",
+    "board"
+  ],
+  "art": {
+    "emulsionIbis": "M 60 24 Q 49 16 52 9 Q 56 3 64 8 Q 72 10 70 17 Q 88 21 93 39 Q 85 26 68 25 Q 60 29 64 39 Q 69 48 59 57 Q 48 66 28 61 L 9 70 Q 15 53 29 42 Q 42 33 53 40 Q 59 43 60 37 Q 53 31 60 24 Z M 32 61 L 31 85 L 19 92 M 31 85 L 36 93 M 46 62 L 49 85 L 42 94 M 49 85 L 60 91 M 59 12 L 62 12 M 24 48 Q 41 37 53 46 Q 48 57 30 59",
+    "emulsionFrames": "M 28 45 Q 30 50 34 57 M 36 41 Q 39 48 43 54 M 44 41 Q 47 45 50 49 M 52 9 L 57 15 M 53 19 L 60 23 M 56 29 L 63 31 M 59 38 L 65 39 M 15 61 L 19 61 L 19 65 L 15 65 M 24 52 L 28 52 L 28 56 L 24 56 M 34 46 L 38 46 L 38 50 L 34 50 M 47 44 L 51 44 L 51 48 L 47 48"
+  },
+  "direction": "Recognizable long-curved-beak ibis with S neck, pleated film wing and two long legs. Rectangular emulsion windows and sprocket marks translate the actual film craft into a live native identity; reel bezel, staple ticks, tile gauge and board calendar share its construction.",
+  "ornament": "M 13 66 Q 35 22 60 33 Q 76 41 87 27 M 17 77 Q 39 35 61 46 Q 77 54 91 38 M 25 49 L 29 51 L 27 55 L 23 53 M 38 35 L 42 36 L 41 40 L 37 39 M 53 34 L 57 35 L 56 39 L 52 38 M 69 41 L 73 41 L 73 45 L 69 45 M 81 36 L 85 34 L 87 38 L 83 40",
+  "ornamentDirection": "An open bent double-edge film strip with tiny three-sided sprocket marks supplies a material fragment in small headers, with no closed box/button or full compressed animal. Larger ibis heroes retain their whole native subject."
+}

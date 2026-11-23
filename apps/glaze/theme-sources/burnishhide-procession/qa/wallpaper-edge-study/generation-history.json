@@ -1,0 +1,45 @@
+{
+  "originalGeneration": {
+    "id": "wallpaper",
+    "prompt": "ONE original tall1290:2796 production wallpaper for GLAZE BURNISHHIDE PROCESSION. An original tangible festival guild performs across a quiet courtyard in lower42%: a broad crouched gate-drummer carries a double-arched drum frame, an adult dancer balances on one foot inside an enormous open fan-panel mantle, a tall antler-crowned lamplighter carries hanging little lanterns, a striding herald wears a huge seven-spoke ceremonial face mask and curved speaking horn, and a kneeling standard-bearer operates pleated bellows that lift a narrow blank wind banner. Each figure clearly humanlike ADULT with different purposeful equipment/pose/costume, no generic animal collection, readable charming theatre. Entire world is FLAT SHALLOW HAND-TOOLED LEATHER RELIEF illustration: clean curved tooling cuts, compressed bevelled contour edges, fine pebbled hide pores, warm burnished tan highlights, stamped crosshatch and rosette impressions, sparse visible saddle stitches, uneven hand-rubbed matte wax finish. Oxblood #6A303B, tan #D6A775, muted turquoise #559A98, dark inkblue #162434. Little flat incised shadows only; not 3D dolls/toys, CGI, paper, embroidery, shiny metal or real equestrian equipment. No horses, saddles, bags, shoes still life or ordinary leather products. Upper55% calm very dark inkblue dyed hide with subtle grain and few sparse tool impressions only, no figures there, excellent icon space. One coherent stage courtyard etched into hide, broad open negative spaces. No text, lettering, numbers, insignia, signatures, clocks/dials, dates, battery/weather values, UI, logos, border, frame or phone mockup.",
+    "tool": "built-in image_gen",
+    "source": "sources/wallpaper.f95878c3.png",
+    "sourceSha256": "f95878c302a4959764bc2b1d5f73be2c2f5d879123cba86092f0953b1a7eb59a",
+    "sourceDimensions": [
+      852,
+      1847
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "817365f937fc20465d5611f8e0522fd5759663bc3706ecdc0bdd82488877ec82",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+  },
+  "retainedOriginalAt": "qa/wallpaper-edge-study/original-source.f95878c302a4.png",
+  "edit": {
+    "id": "wallpaper",
+    "prompt": "Use case: composition repair for an existing Glaze portrait wallpaper. Keep the exact approved Burnishhide Procession artwork style, palette, five adult festival performers, identities, equipment, poses, scene architecture and carved hide material from this reference. Make ONE modest layout-only revision of the whole festival group: uniformly reduce and gently recenter the group so every performer, drum frame, toe, hand, antler, lantern, horn and banner has clear breathing room. The current shorter phone crop cuts the foreground drummer's legs/feet and the left lamplighter is close to the screen edge. Place ALL five primary performer silhouettes comfortably inside x=12\u00e2\u20ac\u201c88 percent and y=50\u00e2\u20ac\u201c84 percent of this same tall 1290:2796 portrait canvas. Show a broad natural patterned courtyard floor beneath their feet across the bottom16 percent, and quiet dyed ink-blue hide above the gathering. Architecture and incidental floor patterns may naturally continue beyond edges; primary bodies and props must remain complete. Preserve the original relative arrangement: standing antler lamplighter left, fan-mantle dancer centre, wheel-mask horn herald right, squat twin-drum gate drummer foreground left, kneeling bellows/banner standard bearer foreground right. Preserve all stamped rosettes, shallow bevelled incisions, pebbled leather, restrained oxblood/tan/turquoise tones, and flat artisan tooled-leather relief. Do not turn this into 3D figurines, plastic, metal, generic painting, different costume design or a new scene. No new characters or props, no duplication, no text/letters/numerals, clocks, date/battery readings, logos, borders, frames or phone mockups. Opaque full-bleed wallpaper with the same aspect ratio. This is a zoomout/reposition repair of the provided composition only.",
+    "tool": "built-in image_gen",
+    "source": "sources/wallpaper.9159c6557654.png",
+    "sourceSha256": "9159c65576546bb209935cb391f28f7d2dbdec6f4bc8bb12ddff3588e23b1f47",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "beac3af012425202b4657d05af886486e226760b2e5ea4c066caeb1867777820",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Built-in imagegen layout-only scene repair; export complete portrait to1290x2796 with a subpixel aspect adjustment. No alteration of the five separate Artwork images, native paths or palette.",
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json",
+    "referencedImage": {
+      "file": "qa/wallpaper-edge-study/before-wallpaper.png",
+      "sha256": "817365f937fc20465d5611f8e0522fd5759663bc3706ecdc0bdd82488877ec82"
+    }
+  },
+  "reason": "Short750x1334 phone crop trimmed the front drummer. Uniform scene zoomout/recentering leaves primary figures away from screen edges."
+}

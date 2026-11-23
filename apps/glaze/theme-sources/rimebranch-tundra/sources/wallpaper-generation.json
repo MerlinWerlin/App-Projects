@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Perform a LAYOUT-ONLY refinement of this exact OWN Rimebranch Tundra wallpaper. Preserve all five recognizable hoarfrost sculptures, every individual animal/plant silhouette, all anatomy, materials, lighting, ice crystal detail and their relative positions. Uniformly reduce the ENTIRE habitat group INCLUDING every icy ground shelf/stray ground branch to exactly70percent of its CURRENT size, then place the complete reduced group at the same horizontal center and around56percent of canvas height. Keep the tall portrait aspect and original glacial navy atmospheric palette. The complete habitat including all ground must now occupy at most66percent of frame WIDTH. Add broad quiet matching empty dark-blue space around BOTH sides, top and bottom, filling naturally with the same calm background. No tip, horn, wing, paw, leaf or ground edge may approach a screen edge. Do not enlarge any individual animal relative to the rest, do not change their poses, do not add or remove any subject, do not repaint the individual artwork style. In particular keep the whole horned muskox, hare, ptarmigan, poppy and dwarf-willow all exactly recognizable. No clouded white border, frame, text or UI. Preserve the exact image except for this uniform whole-group pullback and quiet background extension.",
+  "source": "sources/wallpaper.5b6def036b5d.png",
+  "sourceSha256": "5b6def036b5d92068e07e71f0cfea3669b904e70805666f23f6ac51ac220c81c",
+  "sourceDimensions": [
+    856,
+    1838
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "9144925a47e404f4d336e15a19ae6557069e4ba54ea568bbbe63583d98280202",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Built-in whole-group 70 percent layout pullback; mechanical portrait export to1290x2796. Independent art inputs and native vector art unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-scene.fcca12b3b03c.png",
+      "sha256": "fcca12b3b03c27219568fbd647d54131f00ca94cd1f037ed9602c420d28231e1",
+      "purpose": "Own complete five-reference first scene; uniform framing correction only."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

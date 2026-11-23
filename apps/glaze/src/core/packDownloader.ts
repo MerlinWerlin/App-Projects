@@ -22,7 +22,7 @@ import {
 } from './themePack.ts';
 import type { Theme } from './themes.ts';
 import {
-  CATALOG_FILE,
+  APP_CATALOG_FILE,
   CATALOG_MAX_BYTES,
   REMOTE_ART_MANIFEST,
   assetsForDevice,
@@ -367,14 +367,14 @@ export async function fetchText(transport: Transport, url: string, limit: number
 }
 
 /**
- * catalog.json as text. Rejects 'disabled' without any request while the base URL is empty, and
+ * The app's catalogue (APP_CATALOG_FILE, catalog-v2.json since 1.0.44) as text. Rejects 'disabled' without any request while the base URL is empty, and
  * 'network' when offline or the file is too big. Parsing and keeping the last good copy is
  * src/core/remoteCatalog.ts's job.
  */
 export async function fetchCatalogText(transport: Transport, baseUrl: string): Promise<string> {
   const base = resolvePackBaseUrl(baseUrl);
   if (base === null) throw new PackError('disabled', 'theme packs are not available yet');
-  return fetchText(transport, packObjectUrl(base, CATALOG_FILE), CATALOG_MAX_BYTES, 'network');
+  return fetchText(transport, packObjectUrl(base, APP_CATALOG_FILE), CATALOG_MAX_BYTES, 'network');
 }
 
 /** T254: catalog.json fetched with its ETag: a new body, or "not modified" (keep the cached copy). */
@@ -396,7 +396,7 @@ export function cleanEtag(x: unknown): string | null {
 export async function fetchCatalogConditional(transport: Transport, baseUrl: string, etag: string | null): Promise<CatalogTextResult> {
   const base = resolvePackBaseUrl(baseUrl);
   if (base === null) throw new PackError('disabled', 'theme packs are not available yet');
-  const url = packObjectUrl(base, CATALOG_FILE);
+  const url = packObjectUrl(base, APP_CATALOG_FILE);
   if (!transport.fetchConditional) return { notModified: false, text: await fetchText(transport, url, CATALOG_MAX_BYTES, 'network'), etag: null };
   let res: ConditionalResponse;
   try {

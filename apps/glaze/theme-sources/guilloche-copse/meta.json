@@ -1,0 +1,21 @@
+{
+  "name": "Guilloche Copse",
+  "mood": "Familiar woodland wildlife, fern and oak woven from bold blue printed rosettes on warm quiet paper.",
+  "tags": [
+    "nature",
+    "woodland",
+    "wren",
+    "fox",
+    "fern",
+    "oak",
+    "guilloche",
+    "intaglio",
+    "single-ink"
+  ],
+  "credits": "Original Glaze built-in image_gen artworks and authored native identity. Artistic digital intaglio/engine-engraving interpretation, not an authentic physical print.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Flat matte single-blue-ink nested multi-lobed rosette and fan-loop geometry forms complete familiar woodland nature. Exact original prompts, own-reference hashes, geometry refinement and wallpaper framing/background edit retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

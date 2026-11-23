@@ -1,0 +1,18 @@
+{
+  "id": "folding-rain-cistern",
+  "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject FOLDING RAIN CISTERN: one broad low squat bulbous dried-shell WATER STORAGE VESSEL on THREE short carved feet, clear small tap spout low right. Above its narrow neck a giant shallow RAIN FUNNEL UNFOLDS as FIVE large irregular fan-like split-shell wings, some spread horizontally, one partially folded upright. Each wing has a smooth slate-blue inner WATER CHANNEL running inward to an obvious central opening, pale pith rims, radial incision facets and sparse pierced holes ONLY around the outer lip so the channel itself can collect water. Visible small reed hinge pegs and flax tension ties connect wings to neck, a short3rung access ladder hugs vessel's left side. Broad crown/low belly silhouette, much wider/flatter than well or beacon; visibly useful rain collection rather than flower/tree/ordinarypot. All funnel tips, partially raised wing, tap, ladder and3feet fully contained, open alpha between wings and under vessel, no water scenery.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-rain-cistern.ebb220aa.png",
+  "sourceSha256": "ebb220aa81da7b5b84652c7a5951219c6bac680ffc177f2e45e7e36b5eab7dfb",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-rain-cistern.99e51cd3.png",
+  "sha256": "99e51cd3af2202c0fbe7f2a67f63494977e7d530e7fb8c1113d6fca976cd6283",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

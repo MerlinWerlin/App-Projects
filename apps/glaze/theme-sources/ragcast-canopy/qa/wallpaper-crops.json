@@ -1,0 +1,34 @@
+{
+  "themeId": "ragcast-canopy",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.5c6d40b9.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "5c6d40b9a42ccb9cdfa86ed145b7615bbdce6f41169ae7f6f7f43097ec4e7928",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.e2acffd9.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "e2acffd9383ad6323deea3c3abd987b6bbf62dead1234a4c39fd73edc7a785c7",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.aa51c9d2.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "aa51c9d2f7999b49d5db53172c6a65e05740b326f24897e1bd47fd6de0df963f",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Passed all three actual encoded phone crops: whole five-subject cast-paper rainforest with broad peach-stone side/lower margins and quiet upper clock space; no cut ears/paws/beak/tail/wings/leaf/flower/branch tips. Initial own-tapir material reference and selected uniform layout-only pullback exact provenance retained."
+}

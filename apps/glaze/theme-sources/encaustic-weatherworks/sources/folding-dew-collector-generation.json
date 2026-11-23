@@ -1,0 +1,18 @@
+{
+  "id": "folding-dew-collector",
+  "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject FOLDING DEW COLLECTOR: an asymmetrical wide shallow umbrella-shaped catchment made of SIX open ribbed mesh panels, hinged like a folding fan around an offset orange hub. Two panels on the left are partially folded inward to reveal hinge construction; the other four spread outward and tilt downward toward a single lowest centre spout. Ivory dew beads cling to cobalt mesh and form one coherent thin stream from the spout into a squat petrol collection tank under it. The entire machine stands on three articulated tangerine legs with broad flat shoes; a side crank and short cross-brace control the opening. Seen slightly from above to reveal porous net, hinge ribs, tank and folding function. No people, face, flowers, cloud, wheel, drum or screw. Broad open bowl silhouette with airy gaps, physically understandable workshop machine, clearly different from a round furnace, tall press, tracked drummer or double reel. Entire open rim, folded panels, stream, tank and feet inside alpha margin. Mesh is expressive hand-scratched encaustic linework through thick painted wax, no photo-real wire, digital gradient or smooth3D model.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-dew-collector.cd31fac7.png",
+  "sourceSha256": "cd31fac75a5c57d2e86e1d96dc0fe871f91d9a3740aa1725ff1f124708621089",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-dew-collector.3eb9e08f.png",
+  "sha256": "3eb9e08f08d47219e5bdcfc760d01819d71b67cc1a70798686cba3f99f79c0ee",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

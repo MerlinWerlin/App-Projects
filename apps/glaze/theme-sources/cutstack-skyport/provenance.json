@@ -1,0 +1,119 @@
+{
+  "theme": "cutstack-skyport",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Flat layered reverse-applique cotton with rolled cut-back colour channels and tiny hand stitches",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 phone wallpaper for GLAZE CUTSTACK SKYPORT. A tangible invented aerial public-transit port across the lower42%: one tall folding-wing mooring tower, a squat basket-shaped lift terminal with suspended passenger cages, a diagonal kite-sailed ferry carrying a little platform, a broad clam-opening cradle hangar for skyboats, and a zigzag hinged boarding stair bridge. Coherent useful transport world with obvious mooring points, cables, access stairs, deck railings and hinges, no space rockets/planets/astronauts, no ordinary toy collection. Artwork is FLAT LAYERED REVERSE-APPLIQUE COTTON: saturated thin cloth layers are CUT BACK to reveal lower colours as nested contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave/fibres and slight edge lift, all thin/UNPADDED. Incised-looking multi-colour channels are actually exposed stacked fabric edges, physically tactile stitched craft. No quilted/stuffed/plush objects, crochet/knitting, embroidery-filled surfaces, paper cutout, leather, loose sand, plastic or3D rendered models. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2. Upper55% nearly empty dark-indigo woven cotton with very quiet weave, no stars/patterns/objects, excellent pale icon space. Bold flat aeronautical architectural silhouettes below, expressive different outlines, no blank outer mat or tile around scene. No text, lettering, numerals, labels, signage, symbols, clock/gauge/date/battery/weather readings, UI, logos, frame, border, phone mockup or collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.d3088329.png",
+      "sourceSha256": "d30883297f51d2b18d87ebe9901769e38960bc34e366cf84636faea064f269a0",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "d23b83c02ea210f803f5fecff76cfdcff4999612fa5b950fedf95987a205311a",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "foldwing-mooring-tower",
+      "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject FOLDWING MOORING TOWER: one tall narrow open arch tower with TWO ENORMOUS LEAF-SHAPED DOCKING WINGS opening outward from a visible round pivot at its TOP. Each wing has three nested reverse-applique coloured channels and one wide open tapered slot; they are rigid mooring cradles, not feathers or real leaves. The tower has three open access arches and one small wraparound boarding balcony halfway up, narrow stair inside. At lower-right a short articulated mooring arm ends in an open ring cleat, attached to tower with a thick textile hinge pivot. Three small buttress feet integral at bottom, no ground platform, airship or people. Dramatic tall V-topped open silhouette, recognisable hinged public docking station rather than abstract plant/ordinary tree. Entire wing tips, cleat, balcony and feet visible with broad alpha margin, especially large empty band above wings. All beams and wings rendered as thin stitched cut-back cotton fields with rolled edges.",
+      "tool": "built-in image_gen",
+      "source": "sources/foldwing-mooring-tower.a6fd1e1f.png",
+      "sourceSha256": "a6fd1e1fe80bc06aeafdf5de672f889be002d37929ba2133969cf4bf742dcef6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "basket-lift-terminal",
+      "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject BASKET LIFT TERMINAL: one SQUAT WIDE INVERTED-BASKET TRANSIT HALL, a broad circular rim at top tapering to a narrower rounded underside with flat layered cotton rib strips. Four open arch waiting bays run around the rim, with a low pierced passenger rail above. THREE SMALL OPEN PASSENGER LIFT CAGES hang below the hall at staggered heights from paired straight cords, connected through three visible rim pulley discs; each cage has one short bench and no people. Two stout side buttresses join the hall to a small arched boarding bridge at rear-left, leaving a large clear open central gap under the basket and between cages. No tower body, hot-air balloon, hot air flame, round sculpture, space vehicle or scenery. Strong broad upper basket and three dangling small cage silhouettes, understandable useful public lift terminal, not ordinary picnic basket collection. All hall rim tips, pulley cords, cage bottoms and bridge end fully contained with alpha. Every rib/cage/cord interpreted as thin reverse-applique cotton colour fields with tiny stitches and rolled edges, no padded quilt body.",
+      "tool": "built-in image_gen",
+      "source": "sources/basket-lift-terminal.6a59010c.png",
+      "sourceSha256": "6a59010c7b545ca851df0d90aff6ccae23056eb40a7890dfe4dcf588ea2c126e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/basket-lift-terminal.8845effd.png",
+      "sha256": "8845effd9bd0b83b6bcbcd483f8397e6c8b0326ae27e520e7ce934783f65cc38",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "wind-sail-ferry",
+      "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject WIND SAIL FERRY: one long slender AIRBORNE PASSENGER PLATFORM with four open arch cabin windows at centre, low protective rail, small forked tail fins at rear-right and one tiny bow boarding gangway projecting lower-left. Above it one enormous off-centre SWEPT KITE SAIL is held by two diagonal spars and FOUR CLEAR TETHER CORDS attached to bow/stern. The sail has three deep reverse-applique cut channels following its curved leading edge, exposing coral/saffron/ultramarine/aqua fabric layers; one triangular open slot at its lower corner. No balloon, rockets, outer-space imagery, water, waves, birds or people. A small fold-down message/passenger cage hangs directly under the bow by paired short straps, empty bench visible. Strong upper-right sail/low-left platform diagonal silhouette, tangible public skyferry construction rather than ordinary sailboat. Whole sail tip, all tether ends, forked tail, gangway and hanging cage fully inside broad alpha, no cropping. Thin flat stitched cotton silhouette, no padded quilt or 3D toy model.",
+      "tool": "built-in image_gen",
+      "source": "sources/wind-sail-ferry.a6b8ab1c.png",
+      "sourceSha256": "a6b8ab1c86f89680e0ce2f3f1b7245a2a17c1c2963c3c6815c824035ddf2d21c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/wind-sail-ferry.c8065d92.png",
+      "sha256": "c8065d9235fdb83ffc9d7f428d5312692ab50afe3ef82ba7be3140829dc01c5e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "cloud-cradle-hangar",
+      "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject CLOUD CRADLE HANGAR: one very BROAD OPENING CLAMSHELL BOAT HANGAR, a deep oval cradle base on four short splayed structural feet. Two enormous curved roof leaves hinge from opposite sides and open outward/upward like parted arms, each leaf bearing FOUR NESTED CUT-BACK COLOUR CHANNELS, clearly thin cloth layers with stitched rolled edges. Inside are two stacked open cradles on a small simple lift, holding one tiny long fork-tailed skyboat each; broad open space around boats, no people or props. Short boarding stair and low rail at front explain public access; two big round hinge pivots clearly attach roof leaves to base. No literal cloud, animal, ordinary shell specimen, wings on an organism, space rocket or scenery. Wide U-shaped open silhouette, recognisable useful storage/launch shelter rather than abstract nested arch. Full roof tips, hinge discs, boats, feet and stairs visible with real alpha margins. All forms flat reverse-applique cotton, no puffed quilt, clay or paper maquette.",
+      "tool": "built-in image_gen",
+      "source": "sources/cloud-cradle-hangar.5482a880.png",
+      "sourceSha256": "5482a880a88b07c814de14e18b13ceb54729e9e0cf7736080215706d977a35ed",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/cloud-cradle-hangar.c9eb79f9.png",
+      "sha256": "c9eb79f9f1c30adb06865a53758960f247e1974443b505e407cd1bde852dfa12",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hinge-step-boarding-bridge",
+      "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject HINGE STEP BOARDING BRIDGE: one WIDE LOW FOLDING STAIRWAY CONNECTOR between two compact pierced-arch docking piers. THREE STAIR FLIGHTS form an ascending zigzag W profile, each with clearly visible individual saffron tread strips and thin aqua/indigo handrails. TWO BIG ROUND TEXTILE HINGE PIVOTS join the flights at the two reversing landings, a short coral locking lever above each pivot. Left pier lower and wider, right pier tall/slender; both have open arch voids and small flat integral feet. At the centre landing a tiny projecting step can fold down for short-stop boarding, no people or vehicle. Strong wide zigzag silhouette, no giant wings, sail, shell/hangar, basket, cloud or ground tile. Actual functional folding skyport access bridge, not generic abstract staircase. All pier tips, handrails, tread corners, hinges, locking levers and feet well inside broad alpha. Every stair/rail is flat reverse-applique fabric with nested cut-back colour channels, rolled edges and tiny stitches; no wood/metal, stuffed quilting or3D miniature.",
+      "tool": "built-in image_gen",
+      "source": "sources/hinge-step-boarding-bridge.af2c5809.png",
+      "sourceSha256": "af2c5809dc1ccca0a698d60e1b58cc39facf8142ef3ee7ff005e53df28c74866",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hinge-step-boarding-bridge.b93c2db0.png",
+      "sha256": "b93c2db0960463db3e20352840a86024185b0df26b91fde8bbb6cbde18597032",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

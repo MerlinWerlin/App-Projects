@@ -1,0 +1,67 @@
+[
+  {
+    "id": "lantern-ray",
+    "kind": "art",
+    "image": "lantern-ray.ed2f9e3788ed.png",
+    "sha256": "ed2f9e3788ed22d0375d2b899c5f5ccf564d02335088d1f58879173819a08390",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lantern Ray"
+  },
+  {
+    "id": "hinge-crab",
+    "kind": "art",
+    "image": "hinge-crab.7c5c51f17861.png",
+    "sha256": "7c5c51f178612c7639f3215a9ca39def92e7029436b21b75e3591d09a5e02851",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hinge Crab"
+  },
+  {
+    "id": "bell-keeper",
+    "kind": "art",
+    "image": "bell-keeper.774762dcecdd.png",
+    "sha256": "774762dcecdd4dd90973b66a5bf5ab92e0da2ca453dcf7160ee36168e9349400",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bell Keeper"
+  },
+  {
+    "id": "siphon-colony",
+    "kind": "art",
+    "image": "siphon-colony.ba5114c2ea8f.png",
+    "sha256": "ba5114c2ea8ff4f5bf35230dc71fa831485fc4c2b2921aaf2f67d110d859c8fc",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Siphon Colony"
+  },
+  {
+    "id": "coil-eel",
+    "kind": "art",
+    "image": "coil-eel.af5d599b0b8d.png",
+    "sha256": "af5d599b0b8dcb73b650016e5ec5ced126e5d56a2109ae834a4d74def62f1c80",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Coil Eel"
+  }
+]

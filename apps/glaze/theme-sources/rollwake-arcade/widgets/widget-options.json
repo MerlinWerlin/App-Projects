@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fairground-organ",
+    "kind": "art",
+    "image": "fairground-organ.6b035955.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fairground Organ"
+  },
+  {
+    "id": "showmans-engine",
+    "kind": "art",
+    "image": "showmans-engine.d5306056.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Showmans Engine"
+  },
+  {
+    "id": "swing-boats",
+    "kind": "art",
+    "image": "swing-boats.ca4aa23a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Swing Boats"
+  },
+  {
+    "id": "helter-skelter",
+    "kind": "art",
+    "image": "helter-skelter.e4c5c5ff.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Helter Skelter"
+  },
+  {
+    "id": "roll-perforator",
+    "kind": "art",
+    "image": "roll-perforator.497fcf06.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Roll Perforator"
+  }
+]

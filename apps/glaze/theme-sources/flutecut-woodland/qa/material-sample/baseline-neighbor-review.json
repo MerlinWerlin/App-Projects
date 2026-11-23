@@ -1,0 +1,39 @@
+{
+  "status": "Specific paper/material neighbors compared in actual first-sample gate",
+  "neighbors": [
+    {
+      "observedSource": "pack-artwork/curlfin-cove/provenance.json",
+      "observedSourceSha256": "af8532bdaf5bebcec6e1c1c6be2a79768cd807c535a3bf42fa5ad50e9ecfc373",
+      "actualNeighborProcess": "Rolled paper-quilling coils, unlike broad flat kraft panels with exposed flute cross-sections."
+    },
+    {
+      "observedSource": "pack-artwork/cloud-atelier/provenance.json",
+      "observedSourceSha256": "69ccbaaadf89f8c09ddfefc396ba292496f7f6c44220297ff15d16ed23138bf7",
+      "actualNeighborProcess": "Folded-paper/cotton cloud swan, unlike actual corrugated stock channels and torn kraft liners."
+    },
+    {
+      "observedSource": "pack-artwork/concertina-rose/provenance.json",
+      "observedSourceSha256": "771e5f392c745efe62ee4219aaed3efe1c1953f15d3fd747e37b2587e98c9a3e",
+      "actualNeighborProcess": "Actual local added-art is wine leather handstrap, saddle stitching, brass buckle and rosewood tabs; distinct from the broader folded-paper identity mentioned by coordinator. Neither leather straps nor thin pleated paper fan ribs are used here."
+    },
+    {
+      "observedSource": "coordinator:theme-sources/raspnest-heath/provenance.json",
+      "observedSourceSha256": "c9727c70381e3feadd27a295501222916f1b28d72ef6c2445526ba52f82f54c6",
+      "actualNeighborProcess": "Dry irregular excelsior wood-wool shavings with brittle curled strands and wood grain, unlike broad kraft panels."
+    },
+    {
+      "observedSource": "coordinator:theme-sources/emulsion-rookery/provenance.json",
+      "observedSourceSha256": "f9738bdb4abfa81cd9c958e3216649e58b1c0fc17b7c083742ba1f0891790ace",
+      "actualNeighborProcess": "Continuous film loops with rectangular dye frames and paired square sprocket rows, unlike opaque kraft stock."
+    },
+    {
+      "observedSource": "theme-sources/vaneleaf-highland/provenance.json",
+      "observedSourceSha256": "034c66558ea8c7703effe668f804883613bd32a0becded0aaf82e13e07644b16",
+      "actualNeighborProcess": "Cut feather vanes with shafts and diagonal fine barbs, unlike broad few-panel construction with parallel channels and wavy hollow cut lips."
+    }
+  ],
+  "selectedProcess": "Few broad contour-cut kraft panels; two flat liners sandwich open wavy corrugated stock, peeled liner reveals straight parallel channels. Familiar natural anatomy remains dominant.",
+  "externalImagesUsedAsGenerationInputs": false,
+  "originalFirstSampleUnchanged": true,
+  "coordinatorOwnsFinalCatalogueReview": true
+}

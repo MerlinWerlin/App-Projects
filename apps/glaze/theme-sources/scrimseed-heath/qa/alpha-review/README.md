@@ -1,0 +1,1 @@
+Read-only whole selected source alpha composites on actual umber background at240/170/85. All five visually clean; no alpha-only or other creative edit. Parent qa has final encoded/native/rounded/crop proof.

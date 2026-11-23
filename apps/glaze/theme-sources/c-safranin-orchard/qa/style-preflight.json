@@ -1,0 +1,156 @@
+{
+  "theme": "c-safranin-orchard",
+  "status": "First bb68 accepted unchanged after actual full17085/material comparisons, expansion authorized.",
+  "sample": {
+    "id": "strawberry-section",
+    "selected": true,
+    "sourceSha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75",
+    "prompt": "Use case: stylized-concept. ONE square transparent original Glaze pure-art asset, CELLBLOOM ORCHARD. ONE ENTIRE immediately recognizable longitudinal STRAWBERRY SECTION: familiar gently asymmetric heart/teardrop berry outline, complete pointed lower end, a small crown of THREE in-plane cut sepal tips and one COMPLETE short curved stalk. The whole thin SECTION is intact, not half a thick3D fruit and not a random round microscope field. Clear broad pale central pith, a few peripheral seed/achene chambers and tiny naturally branching vascular strands. Keep familiar strawberry form FIRST, gently diagonal but almost front-on.\nForeground process: a SINGLE VERY THIN microtomed botanical tissue plane, seen in brightfield-style transmitted light after DIFFERENTIAL SAFRANIN/FAST-GREEN-TYPE CELL-WALL STAINING. Dry-looking flat positive crimson/red lignified vascular strands and seed-coat walls within a fine green/turquoise network of non-lignified plant cell walls. Unequal softly polygonal cell chambers with PALE CREAM/PINK LUMENS, occasional small dark crimson cellular dots, faintly wavering biological wall junctions. Distinct anatomical regions: larger soft polygonal pulp cells, narrow elongated cells along the branching conducting strands, denser small peripheral cells. Continuous real-looking tissue, not separate beads/chips. Make the fine positive stained WALL NETWORK and internal biological chamber layout clearly legible at85px while keeping whole organ recognizable; artistic enlarged histological scale, not an authentic specimen, exact species anatomy, measured cell map or diagnostic image. Stains live INSIDE thin biological walls, no luminous outline or emission. Predominantly pale green cell field with restrained positive crimson strands and seed chambers, no natural glossy red strawberry skin/juicy flesh photograph.\nONE FLAT PLANE, negligible thickness, no perspective stack, rounded3D shading or translucent animal volume. No fluorescent neon glow, confocal optical slabs, cyan cables/lime vesicles, Rheinberg amber edge light, optical phase-relief gradients, X-ray bones, cleared whole-animal anatomy or classified spectral-map blocks. No glass/crystal/gel jewel, stained-glass window, mosaic tesserae, eggshell chips, dark grout/metal solder, reflective bevels, paper carrier/painted leaf/printed ink illustration, lace/open vascular net or embossed foam cells. Cell lumens are very pale solid tissue depiction, not alpha holes. Genuine ALPHAZERO exterior only outside whole tissue outline and through real gaps between crown tips/stalk. No backing white rectangle, glass slide/coverslip border, mount, tabletop/floor, external cast shadow, lab tools, scale bars, labels, writing/numbers, axes/graphs, UI/clock/date/battery values, logos or frames. Whole berry/crown/stalk and every endpoint comfortably inside central70percent square with minimum15percent true transparent exterior all sides. No external visual input or named artist style.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        208,
+        45,
+        1038,
+        1221
+      ],
+      "96": [
+        209,
+        46,
+        1037,
+        1220
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "c-diaphanized-marsh",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-diaphanized-marsh\\widgets\\stickleback.c0d821f608a7.png",
+      "sha256": "c0d821f608a7dd520436b6be5cf7166ba5cae8b2e2e1d22f0f851dac7ae4adc2"
+    },
+    {
+      "theme": "c-confocal-bridgeworks",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\widgets\\ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243"
+    },
+    {
+      "theme": "c-rheinberg-micropond",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-rheinberg-micropond\\widgets\\radiating-desmid.276715b85aae.png",
+      "sha256": "276715b85aaea12a572618d3147ad6ed7ed68f7f4e6b7128f0b356c316f68d05"
+    },
+    {
+      "theme": "c-transmitted-seedbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-transmitted-seedbank\\widgets\\honesty-seedhead.d5e2713d2f77.png",
+      "sha256": "d5e2713d2f779be7e04f600c94a3959a22720e24c7b27a64e3d350e2c1cb8e76"
+    },
+    {
+      "theme": "c-nomarski-dunefield",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-nomarski-dunefield\\widgets\\saltbush-lantern.9294b959a750.png",
+      "sha256": "9294b959a750484ad25eafaf5239896f856f91964c5a5efcee86021b003a5707"
+    },
+    {
+      "theme": "c-hyperspectral-dominion",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-hyperspectral-dominion\\widgets\\oxbow-labyrinth.334c3ebbade1.png",
+      "sha256": "334c3ebbade1426a83619b95f502525a5db0df2f8331c8fd2c90ae109e6f699d"
+    },
+    {
+      "theme": "shellspeck-blackthorn",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\shellspeck-blackthorn\\widgets\\longtailed-tit.2f5d99af.png",
+      "sha256": "2f5d99af07238f6538a9a0793ad2580e216755a21bcbfd8033567836192c3b0c"
+    },
+    {
+      "theme": "c-electron-mossbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-electron-mossbank\\widgets\\split-pollen.b5ed54841689.png",
+      "sha256": "b5ed54841689c9255ad3110da13552d0fef05a2af5d5afc91edb51e3661a59e2"
+    },
+    {
+      "theme": "c-vascular-lanterns",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-vascular-lanterns\\widgets\\magnolia-veins.25dcd29d6275.png",
+      "sha256": "25dcd29d6275b70348c5c3fa808b38b58f85adeb5704b350799969dee58def08"
+    },
+    {
+      "theme": "heirloom-rouge",
+      "optionId": "seed-crosscut",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heirloom-rouge\\v5\\widget-seed-crosscut.0a1c7c63.webp",
+      "sha256": "0a1c7c63b2c0358e5451cb23e16da7601d1d11fe065eda5137b123ab1acae743",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heirloom-rouge\\v5\\manifest.json",
+      "selectorProof": "outputs/safranin-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "stained-glass-iris",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-stained-glass-iris.b4fa5f9e.webp",
+      "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/safranin-published-neighbor-selections.json"
+    },
+    {
+      "theme": "prism-orchard",
+      "optionId": "glass-plum",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-glass-plum.df948b64.webp",
+      "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\manifest.json",
+      "selectorProof": "outputs/safranin-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Whole familiar heart/teardrop strawberry section with crown/short stalk and full lower point. Fine irregular positive green cell-wall field, crimson conducting strands/seed traces, pale filled tissue lumens and flat single plane. At85 check whether anatomical/cellular pattern remains distinct from ordinary fruit photo, 3Dstained animal, confocal/Rheinberg light, glass/chip mosaic, empty dry vascular net or printed illustration. No selection/correction/4/WP.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "staining",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\safranin-first-staining-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "cells",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\safranin-first-cells-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "material",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\safranin-first-material-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "fruit-glass",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\safranin-first-fruit-glass-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ],
+  "coordinatorGate": "Root compact status157 after actual small-size comparison: the stained-cell prototype looks distinct, so the lane may complete its set. Exact sole first prototype bb68f7a6 remains unchanged. Expand four separate familiar natural sections and fuller/taller own-reference wallpaper. Preserve whole silhouettes, flat positive cell-wall tissue plane and quiet natural corners. No authentic specimen/anatomy/data claim."
+}

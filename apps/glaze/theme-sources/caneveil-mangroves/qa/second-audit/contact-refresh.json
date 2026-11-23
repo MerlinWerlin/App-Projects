@@ -1,0 +1,8 @@
+{
+  "themeId": "caneveil-mangroves",
+  "scope": "QA presentation-only refresh: contact sheet wallpaper now matches final selected second-audit wallpaper. Five artwork tiles use unchanged production PNGs; earlier contact retained exactly. No production/native/meta/palette bytes changed.",
+  "previousContactSha256": "3a4f185540edae57869f0503b621ed24a9992b43e86ddb265e6694df877340b0",
+  "currentContactSha256": "41c74d331ab1cdb5acae98947d130f72b7f7550ca8a55ea7773b3bf2a8bf4347",
+  "selectedWallpaperSha256": "4f244c8904f7b751323b577e6670ba4a7d67519ab0762bd1c071bd50d4dc6365",
+  "allTwentyFrozenFilesRemainIdentical": true
+}

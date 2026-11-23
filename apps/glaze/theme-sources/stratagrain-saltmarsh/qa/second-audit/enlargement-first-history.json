@@ -1,0 +1,36 @@
+{
+  "reason": "First enlargement had actual cropped tidal-bank side edges; retained exactly before targeted crop correction.",
+  "exactToolRequest": "qa/second-audit/wallpaper-initial-request.json",
+  "exactToolResult": "qa/second-audit/wallpaper-initial-result.json",
+  "orderedInputs": [
+    {
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\second-audit\\stratagrain-saltmarsh\\before-selected-wallpaper.png",
+      "retainedFile": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "bf0688c5f01cc373c73de8e239dbdb6da9f3c31a2ce260167b2328126f921751"
+    },
+    {
+      "id": "curlew-sedge",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\stratagrain-saltmarsh\\sources\\curlew-sedge.6d1dc8d5.png",
+      "retainedFile": "sources/curlew-sedge.6d1dc8d5.png",
+      "sha256": "6d1dc8d5b3a1896ae74532aef809aa1236b365ae1a450162ea9cfdfdcbc0ee57"
+    },
+    {
+      "id": "harbour-seal",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\stratagrain-saltmarsh\\sources\\harbour-seal.d85a4e16.png",
+      "retainedFile": "sources/harbour-seal.d85a4e16.png",
+      "sha256": "d85a4e1694e2e29f44673ee5abb1d0127437837e7f5c32803b4ddecc7a3e6537"
+    },
+    {
+      "id": "plover-samphire",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\stratagrain-saltmarsh\\sources\\plover-samphire.0ef856c3.png",
+      "retainedFile": "sources/plover-samphire.0ef856c3.png",
+      "sha256": "0ef856c38fc986ec6c3703caa42881cabb299555f003a99e5e717a9ea40fc635"
+    }
+  ],
+  "selectedSource": "qa/second-audit/enlargement-first-cropped.png",
+  "selectedSourceSha256": "426e62f87ec737980fb192360d6f00327b21800fe8565953c3e883ac86fad47d"
+}

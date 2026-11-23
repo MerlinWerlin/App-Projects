@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-framing-study/first-close-scene.cdbff1d5a1ca.png",
+  "sourceSha256": "cdbff1d5a1cae3dbfe4f527bda1dca4d0d27678a136015300a0724d1714cfe38",
+  "prompt": "Use case: natural botanical and wildlife artwork. GLAZE AUTOCHROME ORCHARD. ONE familiar real nature subject with true natural anatomy and tissue, photographed as a beautiful EARLY ADDITIVE-COLOUR AUTOCHROME-INSPIRED POSITIVE IMAGE. The visibly distinctive photographic language is a fine RANDOM MULTICOLOURED STARCH-SCREEN GRAIN across the actual image tones: tiny irregular red-orange, muted leaf-green and blue-violet colour-filter specks combine into a soft natural-colour photographic image. At1024resolution the irregular speckles are mostly2to6pixels, dense but fine, uneven and subtly chromatic, never a regular screen grid or large colored cells. Photographic image structure and silhouette stay fully continuous and recognisable beneath this fine additive colour screen. The optical grain is flat image texture, NOT physical grains, coloured skin patches, a coat of sand or body construction. Soft pictorial photographic focus with clearly resolved whole silhouettes, gently muted rose, faded cornflower blue, sage green, buttercream and warm amber shadows. Delicate luminous low-contrast colour-positive feel, slight honey colour bias, fine multicoloured mottled grain visible in light and midtone areas. Real natural subject, not an illustration, painterly brushstrokes, coarse print, screenprint, risograph dots, half-tone ink, pixel art, mosaic body, orientation map, beads, sand sculpture, physical film ribbons or perforated frames. No duplicated/ghost exposures, neon, fluorescence, transmitted-vein glow, glass/plastic organisms or magical aura. No heavy antique scratches, fading holes, damage, torn edges or plate rectangle. No letters, numbers, labels, reading, UI, watermark or logo. Asset:ONE opaque portrait phone wallpaper1290x2796. A coherent real summer orchard-edge hedgerow, using exact five own nature identities: wildrose sprig, blue tit on a low apple twig with one green apple, bumblebee on borage, redcurrant sprig and garden snail on one curled leaf. Natural plants rooted in a little moss/grass and twig growth; one blue tit, one bumblebee, one snail only. Softly muted early-colour Autochrome-inspired photographic image with flat fine random multicoloured starch-screen grain across all tones, no body made of grains. Upper43percent quiet defocused smoky sage-olive orchard background, bottom20percent quiet soft grass/moss. All FIVE complete focal groups withinhorizontal12to88percent andvertical47to77percent, generous room around every petal, tail, beak, foot, wing, antenna, tentacle, berry cluster and leaf tip. One connected natural habitat, not cutout collage or separate vignettes. No extra animals, plate edge, frame, handwriting, antique damage, text, UI or readings. Exact own reference order: IMAGE1=one five-petal pale pink wildrose with golden stamens, one closed bud and three serrated leaflets; IMAGE2=one whole real blue tit on an apple twig with one unripe green apple and two leaves; IMAGE3=one whole bumblebee gripping a borage sprig with one blue flower, two tiny closed pink buds and one hairy leaf; IMAGE4=two hanging redcurrant clusters and one lobed leaf on a twig; IMAGE5=one whole real garden snail with shell, four tentacles and complete foot on one curled apple leaf. Preserve all five actual identities and the fine RANDOM MULTICOLOUR ADDITIVE SCREEN IMAGE TEXTURE through the same soft natural colour-positive photographic tones. No bead/ribbon/sand/mosaic construction, no physical film border, no plate, no coarse ink dots. These are actual opaque natural subjects, not glowing or translucent models. Compose ONE coherent orchard-edge habitat. Suggested safe layout:redcurrant atleft x17to33percent/y52to73percent;wildrose centreleft x33to52percent/y49to71percent;blue tit/apple rear-right x61to81percent/y51to72percent;borage/bee frontleft-centre x32to49percent/y65to77percent;snail/curledleaf frontcentre-right x52to69percent/y69to77percent. Keep each complete group small enough to have breathing room and natural open gaps. Whole group withinhorizontal12to88percent andvertical47to77percent. All petals, berry tips, leaf lobes, bird beak/tail/feet, bee antennae/wings/legs, snail tentacles/foot/tail and twig ends whole. Stems and low branches join naturally among sparse soft moss/grass, not floating cutouts. Upper43percent quiet defocused smoky sage-olive orchard bokeh;bottom20percent quiet soft moss/grass. One blue tit, one bee, one snail, no extra fauna. Portrait1290x2796, opaque, no text/UI/frame/antique damage.",
+  "internalArtworkReferences": [
+    {
+      "id": "wildrose-sprig",
+      "sourceImage": "sources/wildrose-sprig.74e3ce16e87f.png",
+      "sha256": "74e3ce16e87fa36876b0f7da9e2226405395fbacc140a4cb7ee763659f4066e8"
+    },
+    {
+      "id": "blue-tit-apple",
+      "sourceImage": "sources/blue-tit-apple.2d2aa6ad38e8.png",
+      "sha256": "2d2aa6ad38e844e634a9c4efef446a99801ee515411f8dad0d6804a645fd1e35"
+    },
+    {
+      "id": "bumblebee-borage",
+      "sourceImage": "sources/bumblebee-borage.c01f1fc919ec.png",
+      "sha256": "c01f1fc919ec008af492207273b807d1d1add5f90d1227e8486d077960736552"
+    },
+    {
+      "id": "redcurrant-sprig",
+      "sourceImage": "sources/redcurrant-sprig.b4bded9f6b41.png",
+      "sha256": "b4bded9f6b410fad288d712aafcf6daa365d63382e9526d3624eedc4d699588c"
+    },
+    {
+      "id": "garden-snail-leaf",
+      "sourceImage": "sources/garden-snail-leaf.d473fea82c06.png",
+      "sha256": "d473fea82c067bf6897164391fbc997b8a9b6be1093a8da79c1f092024e3a1c4"
+    }
+  ],
+  "reason": "Natural identities/grain good,butleftcurrantleaf/rightappleleaf too close tocanvas edge;pull back full group before selection."
+}

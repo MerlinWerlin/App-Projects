@@ -1,0 +1,119 @@
+{
+  "theme": "encaustic-weatherworks",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Torch-fused hot-wax encaustic painting with scraped pigment layers and knife ridges",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall 1290:2796 wallpaper for GLAZE ENCAUSTIC WEATHERWORKS. A tangible hand-built factory in a storybook world makes weather: at lower40%, a squat orange kiln vents a broad ivory cumulus cloud from a short chimney; beside it a tall screw press squeezes petrol-blue fog from layered plates, a low crawler carries a large thunder drum, and an open folding mesh catches dew. Each is a believable purposeful machine with obvious legs/wheels, hinges, chambers, cranks and connections, simplified enough to recognise at phone scale. An actual continuous small workshop courtyard, no collage, no abstract floating geometry. Medium is FLAT HOT-WAX ENCAUSTIC PAINTING on dark slate: torch-fused pigmented wax, scraped recesses exposing older layers, coarse palette-knife ridges, cloudy translucent wax pools, buried sgraffito linework and uneven matte satin sheen. It must visibly look painted by dragging and reheating wax, not sculpted beeswax toys, fabric batik, glass, clay, CGI or 3D render. Petrol black #122E35 with strong burnt tangerine #E8793D, dirty ivory #E6DEC5 and limited cobalt #3E69BA. Upper55% calm deep petrol wax surface with subtle scraped texture, generous quiet app icon space; machinery grounded in lower45%. Flat expressive blocky forms with tactile wax edges and scratches, charming original weather equipment, slight three-quarter illustration, minimal shadows. No text, lettering, numbers, symbols resembling UI, clocks, gauges with readings, dates, battery/weather values, logos, borders, phone mockup or frame.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.0a9ba9d1.png",
+      "sourceSha256": "0a9ba9d1baaadcfce2d4129936e1ac272b315af17b7224be8ec111f19f87d4b1",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "64abcbb516f7fc0b75e9f3d2bfa5e19803e99308d7b0742b2ec7d25baf183e55",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "cumulus-kiln",
+      "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject CUMULUS KILN: a squat broad orange riveted beehive-shaped furnace on three short splayed ivory feet, an open arch firebox with a warm blank ember glow, short thick chimney at upper-left releasing one big coherent ivory cumulus cloud into a shallow curved cooling cradle mounted above the furnace. A cobalt side water tank is visibly connected to kiln by one bent pipe, single handwheel at right controls the feed. Cloud clearly emerges from chimney and rests over cooling cradle. Three-quarter view. Strong rounded body, low heavy feet, tall soft cloud contrasts with hard furnace; one useful designed object, not generic steam engine. Keep all cloud, pipe and feet fully inside generous alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/cumulus-kiln.cb8a97ad.png",
+      "sourceSha256": "cb8a97adb54c859380324f28ca7c13b73efafa78acfb22fe372f162e585e1693",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/cumulus-kiln.d5ac050f.png",
+      "sha256": "d5ac050f1140369619982823a3911d715984a3ec9f8dec72aaf6ed3335385b77",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "screw-fog-press",
+      "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject SCREW FOG PRESS: a tall narrow open-frame mechanical press with two heavy petrol uprights on a four-foot ivory base and one large vertical threaded screw descending from a broad tangerine T-handle. The screw compresses four alternating cobalt and ivory absorbent plates into a shallow orange catch trough. A single deliberate ribbon of pale blue FOG is squeezed out from BETWEEN THE PLATES, descends through a curved chute on the right into a little open receiving canister. A simple big flywheel stands at lower left connected to a short shaft. Clear open negative space inside frame, readable screw and stacked plates, recognisable useful press construction, no furnace, wheels/crawler, drum, clouds or humanoid. Flat hand-painted wax pigment and scraped ridges across every beam/plate, not a metal product photograph. Whole T-handle, fog ribbon, canister and all feet visible, overall subject central65% with roomy true alpha margin.",
+      "tool": "built-in image_gen",
+      "source": "sources/screw-fog-press.70283724.png",
+      "sourceSha256": "70283724a4283a66d2574771b082b46a03c6850aa8e9d9960711104f3f1a482b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/screw-fog-press.b92198ab.png",
+      "sha256": "b92198ab3a82a94f16fa2f474dfa2c3a1cf0659018accc6f4e2cd346a044ba90",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "thunder-drum-crawler",
+      "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject THUNDER DRUM CRAWLER: a low elongated tracked utility vehicle seen from front-left, supporting a huge HORIZONTAL COBALT DRUM with ivory stretched end skins and orange hoops across its back. Two visibly articulated orange mallet arms on the chassis are poised over the big drum, one at each end, striking it to manufacture thunder. A short open ivory horn at front releases two simple painted shockwave arcs, not lightning icons or text. Six small road wheels within each heavy petrol caterpillar track, orange riveted chassis, no cabin, face, tank gun, people, cloud, furnace or screw. Recognisable mobile percussion workshop with useful construction; wide horizontal silhouette, large drum axis left-to-right and low tracks distinguish this clearly from a tall press or round kiln. All wheels, mallets and horn fully visible inside generous true alpha margins. Use opaque hot wax painted ridges/scraping, not realistic metal toy.",
+      "tool": "built-in image_gen",
+      "source": "sources/thunder-drum-crawler.baeac118.png",
+      "sourceSha256": "baeac118a4ffc87e99f6b0a6a3871dcfb5d6a569a69b335179da41b43cff8f9f",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "selectedFile": "widgets/thunder-drum-crawler.f0bc14b0.png",
+      "sha256": "f0bc14b0dbe79a54460af6c421239fe6cded31ba9ee7a5c140e4cbdc04b89062",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "rainbow-winch",
+      "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject RAINBOW WINCH: a low open tangerine A-frame gantry on four flat ivory shoes holds TWO LARGE REELS side-by-side, one above-left and one lower-right, with thick flanged cobalt drums and visible hand-crank at the right. A continuous broad THREE-STRIPE RIBBON, orange/ivory/cobalt, is drawn off the left reel, rises into a graceful high arch across the top and is wound onto the right reel. The three stripes stay together as one material rainbow ribbon, not disconnected floating arcs. Large open triangular space under the gantry, crossed drive belts, a small locking pawl and simple hubs explain how the useful device tensions and stores rainbows. No rainbow sixcolour spectrum, no clouds, cute face, engine, pipes, print, weather icon or data. Asymmetric double-spool silhouette, overall balanced width and height. Entire arch and all shoes inside genuine alpha margins. Strong opaque painted wax ridges, scraped old layers, palette knife texture, flat painted illustration.",
+      "tool": "built-in image_gen",
+      "source": "sources/rainbow-winch.1b98d4c3.png",
+      "sourceSha256": "1b98d4c32bacb283403a01d9fa3bedc42e23815e9564c13300a820df392ea65f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/rainbow-winch.6db2a5d1.png",
+      "sha256": "6db2a5d1a0c44e04b5dd83d60d6e49188633cca851292dd72811b69da92691e1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-dew-collector",
+      "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject FOLDING DEW COLLECTOR: an asymmetrical wide shallow umbrella-shaped catchment made of SIX open ribbed mesh panels, hinged like a folding fan around an offset orange hub. Two panels on the left are partially folded inward to reveal hinge construction; the other four spread outward and tilt downward toward a single lowest centre spout. Ivory dew beads cling to cobalt mesh and form one coherent thin stream from the spout into a squat petrol collection tank under it. The entire machine stands on three articulated tangerine legs with broad flat shoes; a side crank and short cross-brace control the opening. Seen slightly from above to reveal porous net, hinge ribs, tank and folding function. No people, face, flowers, cloud, wheel, drum or screw. Broad open bowl silhouette with airy gaps, physically understandable workshop machine, clearly different from a round furnace, tall press, tracked drummer or double reel. Entire open rim, folded panels, stream, tank and feet inside alpha margin. Mesh is expressive hand-scratched encaustic linework through thick painted wax, no photo-real wire, digital gradient or smooth3D model.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-dew-collector.cd31fac7.png",
+      "sourceSha256": "cd31fac75a5c57d2e86e1d96dc0fe871f91d9a3740aa1725ff1f124708621089",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-dew-collector.3eb9e08f.png",
+      "sha256": "3eb9e08f08d47219e5bdcfc760d01819d71b67cc1a70798686cba3f99f79c0ee",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

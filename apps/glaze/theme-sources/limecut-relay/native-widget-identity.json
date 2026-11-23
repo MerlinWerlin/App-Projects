@@ -1,0 +1,18 @@
+{
+  "themeId": "limecut-relay",
+  "recipe": [
+    "shield",
+    "limeSemaphore",
+    "limeIncision",
+    "staples",
+    "sword",
+    "column",
+    "board"
+  ],
+  "art": {
+    "limeSemaphore": "M 47 12 L 53 12 L 56 89 L 44 89 Z M 50 26 L 31 18 L 12 24 L 30 43 L 34 22 M 51 43 L 70 31 L 90 38 L 73 55 L 70 35 M 51 61 L 30 51 L 10 60 L 30 75 L 32 55 M 53 76 L 72 66 L 88 72 L 74 87 L 72 70 M 38 90 L 62 90 M 50 24 L 50 77",
+    "limeIncision": "M 14 26 L 37 26 Q 69 26 69 49 Q 69 74 42 74 M 21 35 L 38 35 Q 60 35 60 49 Q 60 64 43 64 M 18 82 L 30 80 L 36 85 L 50 82 M 79 24 L 74 40 L 81 46 L 75 60 M 22 52 L 29 48"
+  },
+  "ornament": "M 18 59 C 10 36 39 19 61 31 C 88 46 69 78 46 70 C 26 63 34 41 51 43 Q 67 46 57 58 M 17 76 L 25 73 L 32 78 M 75 24 L 80 27 L 76 34",
+  "direction": "Folding signal mast and staggered flag arms as full illustration, cut-back spiral incision and two shrink-crack notches as detail; shield dial, staple marks, sword hands, column charge rail and board calendar. Compact ornament uses one restrained double-cut plaster curl with two chipped notches, separate from all full subjects."
+}

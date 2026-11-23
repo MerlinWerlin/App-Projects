@@ -1,0 +1,62 @@
+[
+  {
+    "id": "trident-of-the-lost-sea",
+    "kind": "art",
+    "image": "trident-of-the-lost-sea.4ff30a41.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Trident Of The Lost Sea"
+  },
+  {
+    "id": "folded-ladder-fossil",
+    "kind": "art",
+    "image": "folded-ladder-fossil.09aed4b2.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folded Ladder Fossil"
+  },
+  {
+    "id": "fan-of-lost-tides",
+    "kind": "art",
+    "image": "fan-of-lost-tides.15778b57.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fan Of Lost Tides"
+  },
+  {
+    "id": "ruptured-carapace",
+    "kind": "art",
+    "image": "ruptured-carapace.90e7d9ca.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ruptured Carapace"
+  },
+  {
+    "id": "drowned-light-fossil",
+    "kind": "art",
+    "image": "drowned-light-fossil.326bf834.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Drowned Light Fossil"
+  }
+]

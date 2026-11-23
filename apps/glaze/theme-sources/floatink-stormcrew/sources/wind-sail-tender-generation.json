@@ -1,0 +1,23 @@
+{
+  "id": "wind-sail-tender",
+  "prompt": "Composition-only repair of this same Floatink Stormcrew wind-sail tender. The highest hooked sail currently touches/cuts off at the top image edge. SCALE DOWN the ENTIRE adult figure, both wind scoops, rods, harness, hands and feet together, placing the WHOLE GROUP inside CENTRAL65% of a square with at least17% real transparent margin on ALL4sides. Fully reconstruct the tiny missing upper sail/rib portion so the top hook and every rod end are complete and surrounded by transparent alpha. Preserve exact useful braced pose, TWO hands/TWO legs, asymmetric high-left and low-right sails, indigo/vermilion/ivory floating-ink marbling on thin matte rice-paper, visible fibres and dry contours. No new people/props, cropping to force fit, halo/backing/background/drop shadow or UI. Keep all actual openings alpha transparent. This is a flat marbled-paper print silhouette, not glossy3Dclay/stone.",
+  "tool": "built-in image_gen",
+  "source": "sources/wind-sail-tender.9912f549.png",
+  "sourceSha256": "9912f54938062d003f65155d54594524b4ef9a6ccf3cef5052dd12baf0252444",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/wind-sail-tender.34eeadf5.png",
+  "sha256": "34eeadf5b8eeb9b3778b01b0028d6de405d7abd739eff7c0fa1b531af9a8cffe",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wind-sail-tender-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wind-sail-tender.original.2de0b4d9.png",
+    "sha256": "2de0b4d923ff3cc80b062211c71ede4d2f7cf549a4b71259da66ccd19e3b7ca7"
+  }
+}

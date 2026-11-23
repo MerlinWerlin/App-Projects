@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "audit": "SECOND AUDIT",
+  "artworkSubjects": 5,
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "allSizeSamePointSizeBoldTodayCases": 288,
+  "todayAndNormalPoints": {
+    "small": 12,
+    "medium": 12,
+    "large": 19
+  },
+  "finding": "Whole long-billed curlew/legs/toes, plover and seal/flippers remain complete in all three actual encoded phone crops. Taller sedge and airy lavender join a flowing tidal bank/channel. Broad bonded metal strata remain legible. Wave contour echoes the tidal metal flow; hero/detail/compact marsh fragment remain exact.",
+  "frozenArtProof": "qa/second-audit/frozen-art-proof.json",
+  "clockFaceRationale": "Flowing bonded metal strata and tidal contours.",
+  "history": "qa/second-audit/wallpaper-history.json",
+  "scope": "Actual encoded wallpaper crops/native board visually reviewed. All five art/raw/options/palette/meta and native hero/detail/ornament remain frozen. Calendar-only badge adapts independently. Windows current-renderer proof; no Apple/device/publication claim."
+}

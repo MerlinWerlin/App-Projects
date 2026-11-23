@@ -1,0 +1,48 @@
+{
+  "id": "ribbonrise-hedgerow",
+  "lane": "B35",
+  "category": "Nature",
+  "status": "accepted for full-set expansion after exactly one own-source broad-satin refinement, actual full17085 and nine-neighbor coordinator review",
+  "process": "Silk ribbonwork embroidery with broad satin ribbons pulled through thin shaped linen, punctured tucked stitch tips and tiny entry puckers",
+  "subjects": [
+    "foxglove-fern",
+    "robin-dogrose",
+    "fieldmouse-blackberry",
+    "redadmiral-nettle",
+    "bumblebee-clover"
+  ],
+  "world": "Familiar hedgerow flowers and wildlife in short soft silk-ribbon stitches with clear whole silhouettes over a quiet smoky violet field.",
+  "baselineSearch": "Exact ribbon-embroidery/silk-ribbon/pulled-ribbon/satin-ribbon scan across139baseline and current integrated prompts found satin-bow contexts in Cherry Ribbon and Disco Drift. Actual Crimson Reverie folded silk, needlework/textile neighbors retained. No no-silk-neighbor claim. New ID absent from owned/coordinator source folders. Fresh citrus-peel A15 excluded.",
+  "neighbors": [
+    "Cherry Ribbon actual satin bows on linen slippers: candidate uses many short broad ribbon stitches pulled through backing, visible stitch-entry puckers and tucked pierced ends, no decorative tied bows.",
+    "Crimson Reverie actual folded flowing silk koi: no long free draped silk fins/cloth sculpture; short individually anchored ribbon stitches here.",
+    "B16 Cutstack Skyport reverse applique: raw cut cotton edges/stacked negative cuts versus soft satin ribbon-stitch faces/tucked tips.",
+    "B17 Bobbinbound Meadow linen lace: paired-thread open mesh/picot loops versus broad opaque satin ribbons.",
+    "B24 Vaneleaf Highland feather-vane mosaic: no feather shafts/barbs/veins; woven silk selvedge and punctured tucked ends.",
+    "B31 Purlwake Reedbeds goldwork: hard helical metal spring tubes versus soft broad flat satin stitches.",
+    "Berry Stitch actual crochet teapot/embroidery: no yarn loops, fuzz or ordinary thread fill, broad ribbon stitches required.",
+    "Moonpatch actual quilt rover: no padded patchwork panels/blanket-stitch seams or stuffed toy construction.",
+    "B5 Flockquake: no velour pile or tufted/fuzzy surface; smooth soft satin ribbon folds with stitch entries."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://rsnstitchbank.org/technique",
+      "scope": "Primary Royal School of Needlework defines ribbonwork with narrow traditionally silk ribbon instead of thread; process text only, no photos used."
+    },
+    {
+      "url": "https://rsnstitchbank.org/stitch/straight-stitch",
+      "scope": "Primary RSN describes passing silk ribbon through ground fabric for individual stitches; text only."
+    },
+    {
+      "url": "https://www.vam.ac.uk/event/13GqkPVx/introduction-to-ribbon-embroidery-frida-kahlo",
+      "scope": "Museum/RSN workshop description names ribbon stitch and detached-chain/straight stitch; process only, no named-artist style or photograph used."
+    },
+    {
+      "url": "https://www.rhs.org.uk/plants/5862/digitalis-purpurea/details",
+      "scope": "Primary botany: one-sided spikes of pendant tubular flowers with spotted throats; text only."
+    }
+  ],
+  "cornerCompanion": "Natural one-sided foxglove tubular flower spike and short fern as full hero; broad pointed satin ribbon stitch folds as detail. Square rim retains12pt today digits; pearl hour markers, baton hands, tiled charge and ticket calendar. Compact companion is one small pulled-ribbon leaf with a tucked tip and two tiny entry stitches, no full foxglove stalk/bird/hoop/bow or medallion.",
+  "reservationMessaging": "Initial intended reservation send stalled/terminated with receipt unconfirmed. Concrete first-gate send later returned receipt successfully. New ID collision-checked; strict own B craft territory per user brief while unavailable.",
+  "materialRefinement": "Selectedexec-67f4adb7-b5db-4b5d-a9ca-692a32194815.png replaces fine thread shading with broad smooth satin planes/curled lips/pinched entries. Initialexec-35c9328f-9aac-46fd-8aa5-d9744facf092.png/source/prompt/hash/initialboards retained. Single own-source material edit only. Remainingfour exactrequests nowuse this selected OWN source as MATERIAL-ONLY reference; still ungenerated."
+}

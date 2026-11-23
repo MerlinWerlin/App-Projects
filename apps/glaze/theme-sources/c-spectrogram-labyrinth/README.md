@@ -1,0 +1,1 @@
+Lane C flat spectrogram optical/scientific image theme for APPS A2. Six separately generated original images depict fictional time-frequency events, with visible raster bins and silence gaps. Exact prompts, source hashes, native identity descriptor and QA are retained. Coordinator integrates shared registries. No publication.

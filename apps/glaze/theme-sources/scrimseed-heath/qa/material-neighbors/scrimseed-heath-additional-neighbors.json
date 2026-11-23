@@ -1,0 +1,111 @@
+{
+  "scope": "Actual five production source selections from each of two recent coordinator themes, independently decoded and hashed. Root additionally reviewed these before accepting firstB41; read-only comparison, no external generation reference or currentliveR2 claim.",
+  "rootHeadObserved": "c464d71662dcc0ebb4f1bb2f219052246ae923f3",
+  "themes": [
+    {
+      "id": "scratchlight-hedgerow",
+      "options": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\widget-options.json",
+      "optionsSha256": "e8a1f7f63ae81cfff74b3a9b5b3b457820fe0dde83ddd95fa60249350c89fa19",
+      "selectedFive": [
+        {
+          "id": "hare",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\hare.7326f063231c.png",
+          "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "longtailed-tit",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\longtailed-tit.f8fb47aac4da.png",
+          "sha256": "f8fb47aac4da913314bcf8f2af45763b058bea7bd36a5dae9690d4a7966881fb",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "bramble-berries",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\bramble-berries.fcd765bdb4e6.png",
+          "sha256": "fcd765bdb4e62c93dc88385dec9d5eb10b45e77992974f9214062718cfb192bf",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "bee-dogrose",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\bee-dogrose.4a5518d82907.png",
+          "sha256": "4a5518d82907d9c0401e83d8af8406d42296592c532d5589c95fe072c6856fcc",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "snail-dock",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\snail-dock.3136912464ef.png",
+          "sha256": "3136912464efa40b700b89c624f9913069aea2627d9c07e9fea5156645e041fd",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        }
+      ]
+    },
+    {
+      "id": "embertrace-chaparral",
+      "options": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\widget-options.json",
+      "optionsSha256": "779811672155c171ad76875526d37d46fc2b840a01c915ca4fa0f50deef52f16",
+      "selectedFive": [
+        {
+          "id": "quail-manzanita",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\quail-manzanita.49be3811.png",
+          "sha256": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "brushrabbit-sage",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\brushrabbit-sage.7f25bf75.png",
+          "sha256": "7f25bf75691d9927a8a787e9472e0bfdd671f3c601d62abb40ba27ddfb9d2375",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "fence-lizard",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\fence-lizard.327aab0a.png",
+          "sha256": "327aab0ada395a1c098e63a0331d78a740410fe8731415f9083fdc555baa4680",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "california-poppies",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\california-poppies.626186df.png",
+          "sha256": "626186df65f6dd9461fafce325128aa1142d6be2ef8121aa553985d4f3f450c6",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": "monarch-milkweed",
+          "actualSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\monarch-milkweed.8a1c5f0f.png",
+          "sha256": "8a1c5f0fbff97b42f183c6e247c35884e35fddce67d1805139308b39af7ed984",
+          "dimensions": [
+            1024,
+            1024
+          ]
+        }
+      ]
+    }
+  ],
+  "actualImages": 10
+}

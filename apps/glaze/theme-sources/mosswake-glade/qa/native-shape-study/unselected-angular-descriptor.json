@@ -1,0 +1,19 @@
+{
+  "themeId": "mosswake-glade",
+  "recipe": [
+    "arch",
+    "mosswakeBadger",
+    "mosswakeShoots",
+    "beads",
+    "leaf",
+    "basin",
+    "ticket"
+  ],
+  "art": {
+    "mosswakeBadger": "M 15 45 Q 22 29 42 35 Q 51 23 70 32 Q 86 37 87 58 L 97 66 L 88 68 L 84 60 L 83 80 L 72 80 L 70 62 L 53 64 L 49 81 L 38 81 L 40 59 L 30 62 L 26 78 L 16 78 L 20 59 L 10 59 L 4 54 L 15 45 Z M 26 38 Q 20 26 26 25 Q 33 25 34 35 M 16 43 Q 24 42 31 35 M 12 49 Q 22 48 28 41 M 16 47 L 18 47 M 8 53 L 10 53 M 46 42 L 46 51 M 42 46 L 51 46 M 57 37 L 57 47 M 52 42 L 62 42 M 68 43 L 68 53 M 63 48 L 73 48 M 78 48 L 78 57 M 74 52 L 82 52",
+    "mosswakeShoots": "M 15 58 L 20 63 M 15 63 L 20 58 M 31 51 L 31 59 M 27 55 L 35 55 M 44 25 Q 42 18 46 12 Q 52 13 48 18 Q 44 19 44 15 M 60 28 Q 57 18 62 11 Q 67 10 67 14 Q 66 18 62 16 M 76 35 Q 76 24 81 21 Q 86 21 85 25 Q 83 28 79 25 M 30 78 L 30 84 M 38 78 L 38 85 M 45 81 L 45 86"
+  },
+  "direction": "Low recognizable badger with wedge muzzle, four short legs and pale-mask stripe contours. Small radial leafy shoots and three sporophyte capsules translate living moss texture into live native designs; arch bezel, bead ticks, leaf hands, basin charge gauge and ticket calendar keep the woodland language.",
+  "ornament": "M 22 78 Q 30 49 23 24 Q 16 21 18 15 Q 24 10 28 17 Q 29 23 23 24 M 48 83 Q 49 51 56 36 Q 51 34 54 28 Q 60 24 64 30 Q 66 36 59 39 M 72 78 Q 68 51 76 19 Q 71 16 75 11 Q 81 8 85 14 Q 86 20 79 23 M 17 81 L 26 74 M 19 73 L 25 82 M 43 84 L 50 77 M 45 77 L 51 84",
+  "ornamentDirection": "A small airy sprig of three moss sporophyte stems/capsules with short star-shoot strokes fits quiet native headers. No full creature compressed into a corner; larger badger heroes stay whole."
+}

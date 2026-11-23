@@ -1,0 +1,1 @@
+Six selected unmodified built-in outputs:five independent art generations and separately generated own-five-reference civic port wallpaper. Exact prompts/raw dimensions/hashes/internal reference roles in provenance.json. All originals contained proportionally for production;no crop on Artwork.

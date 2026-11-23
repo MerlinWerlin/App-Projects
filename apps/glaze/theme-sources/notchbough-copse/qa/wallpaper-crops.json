@@ -1,0 +1,38 @@
+{
+  "themeId": "notchbough-copse",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.de7ef85c.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "de7ef85c6790a679e6e72f38dd8379e5efe4356683c1ee0e9cc9040a1d72bce7",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.6f834f7b.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "6f834f7b3ef6c324bb5045ee7e3746f990bcbf01bc97e52cc560916669e7b21f",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.6ffd8cdd.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "6ffd8cdd21c61df371450694c1198e2871c6ea616a24b077f1fbdc9f4ea07a44",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Whole bird, dormouse, leaf/catkin/berry/bough ends and lower trunk tip retained in all3actualencodedphonecrops. Fuller tall scene; no actual clipping and no automatic pullback."
+  }
+}

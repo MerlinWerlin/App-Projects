@@ -1,0 +1,15 @@
+{
+  "themeId": "limecut-relay",
+  "scope": "Actual coordinator working-tree parser and production SVG renderer; baseline planner designs augmented with source ornament. No runtime source edits, installed iOS or publication claim.",
+  "runtime": "C:/Users/jared/Documents/Codex/2026-11-14/files-pasted-by-the-user-glaze/work/App-Projects/apps/glaze/src/core",
+  "moduleSourceHashes": {
+    "themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "designedWidgets.ts": "00cf3e71e3de28d1db69b26f7eb76b9e54e924c110b519d784cf305add176376"
+  },
+  "nativeLayouts": 9,
+  "ornamentPlacements": 4,
+  "calendarLayoutsWithoutStackedHero": 3,
+  "aspectPreservingPlacement": true,
+  "liveValueChangesVerified": 9
+}

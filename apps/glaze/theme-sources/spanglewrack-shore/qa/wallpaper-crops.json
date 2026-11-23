@@ -1,0 +1,38 @@
+{
+  "themeId": "spanglewrack-shore",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.6dc9f0e2.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "6dc9f0e290f6ccdbc0a2d1b40dfdb3ccd3b19520e25b5dfb840f56a0e42ccb8b",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.b4a60ff9.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "b4a60ff9f52d984e0f16953defec05544f6def0b3618c15f10f74a3f97caef72",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.78bf9297.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "78bf92974d1f954dcb9b64739be398d69b86281b800c114926a966a87e3409c3",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Final1290x2796/1179x2556/750x1334encodedphonecrops allviewed whole. Bothshorelipends/naturalwracktips haveclearsidebackgroundmargin. Ploverbill/tail/feet/toes, sealall4flippers/face/whiskers andseahollyhead/bract/leafspinetips retained. Tallscene remains substantial, originalsidecutcrop/one layout-onlyinset retained;5standaloneart/nativeunchanged."
+  }
+}

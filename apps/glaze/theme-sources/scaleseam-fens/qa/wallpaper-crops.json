@@ -1,0 +1,38 @@
+{
+  "themeId": "scaleseam-fens",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.0d38a6e8.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "0d38a6e81e6c69fb38c69220d3e1e6bfdab431cc7ff9700324ec35c69a310989",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.c16bd036.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "c16bd0362ec9330fa948b4fa5f7e05bbe532f2e88e61917ac163ef2fe35b54ec",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.284748f4.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "284748f4b2a5d1b8d1f202c8a3ec465fc30cd4fc59bde40ff38a7d7f213d5d6d",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Whole moorhen and all long toes/bill/tail, two whole iris flowers and leaf tips, whole marigold and rush heads, bank/ripple ends retained in all3actualencodedvariants. Fuller tall scene, no actual clipping or automatic pullback."
+  }
+}

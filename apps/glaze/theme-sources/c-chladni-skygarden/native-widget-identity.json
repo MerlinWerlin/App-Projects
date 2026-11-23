@@ -1,0 +1,22 @@
+{
+  "theme": "c-chladni-skygarden",
+  "recipe": [
+    "arch",
+    "cChladniArbor",
+    "cChladniNodes",
+    "cut",
+    "leaf",
+    "trail",
+    "band"
+  ],
+  "art": {
+    "cChladniArbor": "M 50 81 Q 49 58 48 47 Q 27 28 19 45 M 48 47 Q 35 9 55 8 Q 71 5 72 25 M 50 59 Q 68 47 81 57 M 71 23 Q 59 22 57 42 L 50 54 Q 70 64 87 52 L 81 42 Q 80 26 71 23 Z M 23 43 Q 14 42 12 57 L 5 69 Q 23 80 40 68 L 34 58 Q 32 44 23 43 Z M 82 56 Q 73 56 71 68 L 65 78 Q 80 89 96 76 L 90 68 Q 89 57 82 56 Z M 5 69 Q 22 61 40 68 M 50 54 Q 69 45 87 52 M 65 78 Q 80 69 96 76 M 17 55 Q 23 50 29 56 Q 31 62 24 63 Q 17 62 17 55 Z M 62 38 Q 60 29 67 29 Q 74 30 71 38 Z M 77 65 Q 84 61 86 69 L 78 71 Z M 50 80 Q 32 83 24 94 Q 33 98 39 91 M 50 80 Q 45 91 50 99 Q 58 100 56 93 M 50 80 Q 71 84 79 95 Q 71 99 65 91 M 41 37 Q 34 45 44 51 M 49 65 Q 42 70 48 76",
+    "cChladniNodes": "M 9 44 Q 25 16 47 28 M 12 20 Q 33 28 40 57 M 11 54 Q 31 61 45 37 M 58 78 Q 71 50 95 61 M 60 52 Q 82 61 89 89 M 59 88 Q 80 97 95 72"
+  },
+  "ornament": "M 17 72 Q 28 45 49 47 Q 66 48 82 23 M 49 47 Q 51 67 77 78 M 18 25 Q 24 35 37 40 M 62 22 Q 61 31 58 36",
+  "ornamentDirection": "A compact asymmetric OPEN three-way nodal junction and two short approaching wave fragments. Branching grain-network fragment with breathing room,avoiding an enclosing cell or genericX/control icon.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026,following Jared Both-corner steering and nodal-network first-sample review.",
+  "direction": "Three-bellpod arbor with open mouths/rootfeet and sparse nodal junctions in larger native areas. Arch dial,cut marks,leaf hands,trail battery,band calendar. Dedicated open nodal-junction fragment keeps small headers quiet.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms;no raster readings.",
+  "registryIntegration": "Coordinator owns shared source/Swift integration and installed-device qualification. Lane source-only."
+}

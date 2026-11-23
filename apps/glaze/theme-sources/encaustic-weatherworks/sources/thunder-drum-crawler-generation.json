@@ -1,0 +1,18 @@
+{
+  "id": "thunder-drum-crawler",
+  "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject THUNDER DRUM CRAWLER: a low elongated tracked utility vehicle seen from front-left, supporting a huge HORIZONTAL COBALT DRUM with ivory stretched end skins and orange hoops across its back. Two visibly articulated orange mallet arms on the chassis are poised over the big drum, one at each end, striking it to manufacture thunder. A short open ivory horn at front releases two simple painted shockwave arcs, not lightning icons or text. Six small road wheels within each heavy petrol caterpillar track, orange riveted chassis, no cabin, face, tank gun, people, cloud, furnace or screw. Recognisable mobile percussion workshop with useful construction; wide horizontal silhouette, large drum axis left-to-right and low tracks distinguish this clearly from a tall press or round kiln. All wheels, mallets and horn fully visible inside generous true alpha margins. Use opaque hot wax painted ridges/scraping, not realistic metal toy.",
+  "tool": "built-in image_gen",
+  "source": "sources/thunder-drum-crawler.baeac118.png",
+  "sourceSha256": "baeac118a4ffc87e99f6b0a6a3871dcfb5d6a569a69b335179da41b43cff8f9f",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "selectedFile": "widgets/thunder-drum-crawler.f0bc14b0.png",
+  "sha256": "f0bc14b0dbe79a54460af6c421239fe6cded31ba9ee7a5c140e4cbdc04b89062",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

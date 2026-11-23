@@ -1,0 +1,179 @@
+{
+  "theme": "combedslip-fencerow",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Hand-shaped earthenware with broad alternating light and dark wet-clay slips drawn through with a comb to make repeated feathered passages.",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Create one separate original full-bleed opaque portrait iPhone wallpaper for COMBEDSLIP FENCEROW. Use the own cedar waxwing image as the craft reference only. A miniature shallow earthenware diorama of a North American fencerow on an autumn morning. One cedar waxwing in profile on a short weathered ceramic horizontal fence rail, one small seated groundhog slightly right below it on a low clay bank, and two close dried milkweed pods on a stem at the left of the same bank. The rail is supported at both ends by very low understated posts. A few ground texture clods only within this group make a single coherent connected diorama of a real habitat. The three dominant forms have broad continuous honey and espresso wet clay trails, several clear repeating transverse FEATHER COMB pulls, soft satin firing reflection and a few rim pores. No comb texture on the muted continuous deep teal backdrop. Handmade clay bodies with coherent shaded volume, one surface glaze highlight, tactile detail at visible raw ochre sidewalls along earthenware bank and pods. Entire central group including BOTH complete tapered dry-bank ends, two full rail ends, outer stems, all paws, beak, tail, wing and crest inside the INNER 61 PERCENT OF WIDTH. Side margin of 19 percent all the way on both sides. Ceiling for the whole scene at 43 percent canvas height, no objects in top forty percent. Bottom of the bank by 78 percent canvas height. Soft visible shadow remains near the miniature, not extending to an edge. The same quiet dim petrol teal continues above and around on the monochrome dark blue-green ground, no abrupt horizon. Imagine the camera well back from a SMALL sufficient trio of wildlife; maintain generous sides and ample overhead backdrop. No lettering, UI, labels, borders, buildings, ornaments, human figures, extra animals, edges framing the phone or loose cut objects.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.2bafff28.png",
+      "sourceSha256": "2bafff281de48a106073140d623eeb103f6317ccbafc0ae790367675f9412312",
+      "sourceDimensions": [
+        941,
+        1672
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "bf5598781cd738589f2cbbfa8c445ad4bfe482d8da639186eae92124b0febebf",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "cedar-waxwing",
+          "file": "sources/cedar-waxwing.d7a8dc95.png",
+          "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "cedar-waxwing",
+      "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side. FIRST SUBJECT: One entire identifiable CEDAR WAXWING in left profile on a short attached dry fence-row twig of the same earthenware. Lean long smooth fawn body, triangular swept crest, compact beak, distinct continuous black eye mask bounded by a fine cream stripe, one dark small eye, one partly visible folded wing, straight tapered tail with full pale yellow terminal bar, and exactly two petite believable feet gripping the twig. The broad folded wing and upper flank are ONE substantial satin slip field with near-black and honey contrasting medium-width parallel trails and three distinct aligned feather bends through those same trails. Make the body broad enough to read the repeated combed flow within the wing. The unpatterned cream head and buff breast preserve waxwing anatomy and the clean black mask reads first. Protect the shape of the central short crest peak, beak, twig ends, toes and yellow lower tail end. All comfortably inside the border. A faint red earthen slip tip on the wing can be one tiny restrained accent. No graphic decorative swirls or carved linework. No round medallion, branch extending beyond the two feet, berries in the beak or printed clay extras.",
+      "tool": "built-in image_gen",
+      "source": "sources/cedar-waxwing.d7a8dc95.png",
+      "sourceSha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/cedar-waxwing.be6c2e96.png",
+      "sha256": "be6c2e966eccb4427eda2525b36d1f92b46e1408cb7f233e53c44f2af508d1d2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "groundhog",
+      "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side.  NEW SEPARATE SUBJECT. One entire GROUNDHOG sitting on its haunches in a left-facing three-quarter view, watching at the edge of a field. Stocky continuous rounded back, modest blunt muzzle, two small natural round ears, just one natural dark visible eye, two short front paws held low and joined to the shoulders, two broad rear feet on either side of the base of the rump, one very short gently tapered tail arching away from the near hip. One broad volume across near back and haunch carries thick alternating honey-clay and espresso slips swept into three distinct transverse comb pulls. Unpatterned muted oat chest and cheeks, tiny incisor hint optional, narrow russet piece of dry raw clay edge beneath the haunch. Sculpture should actually look like a muscular chunky rodent. No vegetation, plinth, gloved human shapes or floating marks. Entire toes and tail inside the border. The own cedar waxwing is a material reference only. Transfer its fired satin clay, visible raw clay depth and broad curved honey-black slip continuity. Use the completely different subject and shape above.",
+      "tool": "built-in image_gen",
+      "source": "sources/groundhog.2987f0be.png",
+      "sourceSha256": "2987f0be4d457e01bc2cca7eab7a253f50a93d5523f4b85d2b82a77d4f445464",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/groundhog.4776ec2e.png",
+      "sha256": "4776ec2ed8b6def4361916eee4573c6a10ac51bc8fcf5fe659dad9ca81ece9d9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "cedar-waxwing",
+          "file": "sources/cedar-waxwing.d7a8dc95.png",
+          "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/groundhog-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/groundhog-exact-tool-result.json"
+    },
+    {
+      "id": "striped-skunk",
+      "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side.  NEW SEPARATE SUBJECT. One whole adult STRIPED SKUNK, viewed three-quarter side on, walking to the right with all four integrated short paws arranged clearly and a single full brush tail rising behind to the left. A small head with tiny round ears and pointed muzzle. The dominant natural body ground is espresso-black, separated by exactly two thick defining warm pale dorsal stripes roughly following the back. At the broad outward tail face, use a separate strong field of five thick alternating honey and dark clay trails pulled across with two visible comb bends. The two pale dorsal stripes read as simple natural markings on the main body. Keep the object materially tactile with low raised links and satin highlight, no naturalistic fur or detached twigs. Tail tip shown whole. The own cedar waxwing is a material reference only. Transfer its fired satin clay, visible raw clay depth and broad curved honey-black slip continuity. Use the completely different subject and shape above.",
+      "tool": "built-in image_gen",
+      "source": "sources/striped-skunk.58933300.png",
+      "sourceSha256": "5893330067465a710b6a7cb82ca0fb400fa10bc55ce9fec74fef0f11a3d8f351",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/striped-skunk.289c82bd.png",
+      "sha256": "289c82bd44d266d334750158aa436214d14f12cfd04decce0db9c9097da96ddc",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "cedar-waxwing",
+          "file": "sources/cedar-waxwing.d7a8dc95.png",
+          "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/striped-skunk-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/striped-skunk-exact-tool-result.json"
+    },
+    {
+      "id": "black-swallowtail",
+      "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side.  NEW SEPARATE SUBJECT. One whole EASTERN BLACK SWALLOWTAIL butterfly presented open-wing directly from above, with exactly two intact large triangular upper forewings and two smaller hindwings with exactly two single short hindwing tails, one tail on each hindwing. Exactly six small attached feet, two antennae and a slim body. Wings held apart enough at the body to count the legs, each leg tapered and fully connected. Wing body is broad shallow convex fired clay dominated by espresso. One clear feather-combed slip field per wing pair with broad honey and very dark clay trails, coordinated at diagonals but hand-drawn. Outside each combed field few tiny pale yellow spots in a natural row near the outer wing edges, very restrained blue hint before each hindwing tail and one tiny russet eyespot near each lower inside edge. Keep the outside profile naturally proportioned and the four wing boundaries legible. No background or stick. The own cedar waxwing is a material reference only. Transfer its fired satin clay, visible raw clay depth and broad curved honey-black slip continuity. Use the completely different subject and shape above.",
+      "tool": "built-in image_gen",
+      "source": "sources/black-swallowtail.d0f8e3e8.png",
+      "sourceSha256": "d0f8e3e8168c731d540ff27ce3a47f09433c07fcd44225e28cceeb76d74769a0",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/black-swallowtail.8bc5b83a.png",
+      "sha256": "8bc5b83a87f143e5518e96635e3654e206a36587db65706ad7381114ed76b8da",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "cedar-waxwing",
+          "file": "sources/cedar-waxwing.d7a8dc95.png",
+          "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/black-swallowtail-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/black-swallowtail-exact-tool-result.json"
+    },
+    {
+      "id": "milkweed-pods",
+      "prompt": "COMBEDSLIP FENCEROW for Glaze. One separate original square pure artwork of a whole recognizable North American fencerow specimen in hand-shaped fired earthenware, isolated on genuine transparent alpha. The dominant tactile effect is deliberately broad WET COMBED SLIPWARE. A near-black coffee-colored liquid clay ground and several pale golden cream slip trails are run across the broad continuous convex surface. While both are wet the actual comb is dragged perpendicularly through THE SAME CONTINUOUS PARALLEL TRAILS, giving each trail matching repeated stretched curves, alternating inward and outward. Four to six clearly visible thick honey-and-black slip trails, bending in two or three aligned feather passages across each large field, with substantial dark negative intervals. Each line flows uninterrupted between turns. Keep the strokes broad enough to read at 85 pixels. The material looks like a hand-formed, low rounded, compact clay sculpture or steep low relief with a quiet exposed dark ochre wall on one edge. A thin patient satin-fired glaze catches soft raking light with a restrained single broad highlight. Very modest pinholes and rough pores around the exposed raw clay edge. Main form entirely made of clay. Clay is physically thick below a very thin surface skin. One defined face of visible decoration, clear broad quiet sections and true anatomical silhouette. Avoid whole-face plain terracotta, hairline smoke and soot, incised white grooves, cracked stone, independent hairline marbling, geological banded stone, metallic foil, loose feathers or feather-shaped components, herringbone textile, wood grain, dots everywhere, exaggerated chrome gloss, polymer shine, busy botanical pattern outside the specimen, cartoon eyes. No edge frame, saucer, rectangle, plaque, ceramic tile backing, dipped display pedestal, environment, corner art, cast ground shadow, logo, signature, UI or writing. Preserve all body appendages on a balanced form, with a comfortable transparent border on every side.  NEW SEPARATE SUBJECT. One complete asymmetric hand-shaped COMMON MILKWEED autumn specimen. Three joined pointed seed pods on one short leaning stem, one mature pod split down a continuous edge toward the viewer with a restrained set of ivory attached seeds inside, two sealed prominent wide pods behind at different angles. Both sealed seedpod faces show broad honey and espresso slip trails with clear aligned perpendicular feather drags across the same trails. Unpatterned narrow chestnut raw clay edge on the open pod lip. One narrow curling brown leaf behind. Omit loose flying wisps or fluff, ink clouds, old labels, display cards and detachable seeds. The form is sculpted earthenware with broad compact pod contours and uneven satin depth, every attached tip completely visible. The own cedar waxwing is a material reference only. Transfer its fired satin clay, visible raw clay depth and broad curved honey-black slip continuity. Use the completely different subject and shape above.",
+      "tool": "built-in image_gen",
+      "source": "sources/milkweed-pods.ef2f06fd.png",
+      "sourceSha256": "ef2f06fd71ef79af59e1c06aff3db1bf42f37f24e0cfaf4b6996b7475acaad94",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/milkweed-pods.45f088cb.png",
+      "sha256": "45f088cb5f6ce2655044ad8d9a00115db4dbf66ae5a79ab6e9ddb6b5f483c7ba",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "cedar-waxwing",
+          "file": "sources/cedar-waxwing.d7a8dc95.png",
+          "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/milkweed-pods-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/milkweed-pods-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "materialReview": {
+    "status": "coordinator accepted first sample unchanged",
+    "record": "qa/material-sample/coordinator-material-approval.json",
+    "authority": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts."
+  }
+}

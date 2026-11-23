@@ -1,0 +1,1 @@
+Unselected original wallpaper and wind-sail artwork plus exact built-in composition repair lineage. Wallpaper crew was pulled back and edge-touching props restored; wind-sail upper tip reconstructed with whole figure scaled down. Both selected repaired originals are retained unchanged in sources; packaging only fits complete originals.

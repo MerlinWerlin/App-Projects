@@ -1,0 +1,92 @@
+[
+  {
+    "id": "kingfisher-twig",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      114,
+      157,
+      1053,
+      1011
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "hedgehog-hawthorn",
+    "originalDimensions": [
+      1536,
+      1024
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      145,
+      270,
+      1071,
+      945
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "moth-wings",
+    "originalDimensions": [
+      1536,
+      1024
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      86,
+      311,
+      1113,
+      920
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "fern-fiddlehead",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      206,
+      77,
+      949,
+      1124
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "oak-acorns",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      100,
+      106,
+      1120,
+      1100
+    ],
+    "wholeOriginalContained": true
+  }
+]

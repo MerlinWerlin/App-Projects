@@ -1,0 +1,62 @@
+[
+  {
+    "id": "wren-twig",
+    "label": "Wren Twig",
+    "kind": "art",
+    "image": "wren-twig.e2a10d9b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "dormouse-hazel",
+    "label": "Hazel Dormouse",
+    "kind": "art",
+    "image": "dormouse-hazel.efdc0a39.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "red-fox",
+    "label": "Red Fox",
+    "kind": "art",
+    "image": "red-fox.fa29ad81.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "lady-fern",
+    "label": "Fern Frond",
+    "kind": "art",
+    "image": "lady-fern.cd5e227c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "oak-acorns",
+    "label": "Oak Acorns",
+    "kind": "art",
+    "image": "oak-acorns.898fe1cb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

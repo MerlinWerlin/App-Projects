@@ -1,0 +1,159 @@
+{
+  "theme": "roseghost-fen",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Warm anthotype-inspired plant-pigment contact prints",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "lantern-bladderwort",
+      "label": "Lantern Bladderwort",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept production illustration. GLAZE ROSEGHOST FEN. ONE new separate square1024x1024 pure artwork: LANTERN BLADDERWORT, an invented living wetland plant. A compact asymmetric tuft of thin curling underwater roots supports two broad droplet-shaped translucent bladder leaves, a single arching stem and three small hooded flowers, with delicate branching capillary veins inside the broad leaf forms. It must read clearly as a tangible wild flowering marsh plant, never as cups, vases, lamps, machinery or abstract symbols. The distinctive image process is a WARM ANTHOTYPE-INSPIRED PLANT-PIGMENT CONTACT PRINT: entirely flat soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale fine capillary-vein voids, gently sun-faded contact edges, mottled bleaching and subtle translucent overlap. Darkest pigment muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. Broad readable botanical silhouette and beautiful close-up pigment detail. No outline drawing, black ink contour, glossy3D modelling, lighting shadows, paper cutout, cyan-blue engineering print or polished sculpture. Paper/pigment texture belongs ONLY inside the coloured subject marks. Empty surrounding area must be TRUE TRANSPARENT ALPHA, and small open gaps/veins may be transparent. No rectangular paper backing, cream square, tile, ground, floor, halo, border or frame. Whole plant and every root/flower inside central72% of square with at least14% empty alpha on every side; no clipping. Flat contact-print artwork only, no text, letters, numerals, clocks/dials, date/battery/weather readings, UI, logo, watermark or signature. A single individual original asset, no collage/contact sheet/multiple panels.",
+      "source": "sources/lantern-bladderwort.8d482e372f74.png",
+      "sourceSha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/lantern-bladderwort.a68c5c93abb8.png",
+      "sha256": "a68c5c93abb834a617b0f510740616925995419936b54f23338cfc00649e3a76",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits."
+    },
+    {
+      "id": "jointed-horsetail",
+      "label": "Jointed Horsetail",
+      "tool": "built-in image_gen",
+      "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different subject described below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. A strong readable tangible natural silhouette with close-up pigment detail. No outline drawing, black ink contour, glossy3D modelling, lighting shadows, paper cutout, cyan blueprint or polished sculpture. Pigment/paper grain occurs ONLY inside the subject marks; the surrounding canvas and open gaps must be true transparent alpha. No rectangular backing, floor, soil mound, halo, frame or border. Entire subject central72% with at least14% empty alpha on every side, every root/leaf/appendage whole. No text, letters, numerals, clocks/dials/readings, UI, logo, watermark or signature. One individual original asset, no collage or panels. JOINTED HORSETAIL: an invented wetland reed colony with THREE unequal thick segmented stalks rooted in one narrow branching rhizome. One stalk forks into a broad fan of short whorled needle leaves; one curls outward at its elbow; the shortest bears a compact cone-shaped pollen head. Clear rhythmic joint nodes and sparse fine radial leaf whorls, a strong tall asymmetric living plant silhouette. No bell flowers, bladder leaves, pitcher mouths, animal, mechanism or container. Flat plant-pigment contact print; the anatomy is shown through bleached tissue/vein patterns, never3D shading.",
+      "source": "sources/jointed-horsetail.1885ec276391.png",
+      "sourceSha256": "1885ec27639183e3a65cac55dc8c9a0bd58b31d4f0af3cfc5e15784c240d5a7d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/jointed-horsetail.6007a153279e.png",
+      "sha256": "6007a153279ef3420675b790b85fbb88ec653b8a8c839d6a40aa3884058284f4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/lantern-bladderwort.8d482e372f74.png",
+          "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+          "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "cup-crown-pitcher",
+      "label": "Cup Crown Pitcher",
+      "tool": "built-in image_gen",
+      "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different subject described below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. A strong readable tangible natural silhouette with close-up pigment detail. No outline drawing, black ink contour, glossy3D modelling, lighting shadows, paper cutout, cyan blueprint or polished sculpture. Pigment/paper grain occurs ONLY inside the subject marks; the surrounding canvas and open gaps must be true transparent alpha. No rectangular backing, floor, soil mound, halo, frame or border. Entire subject central72% with at least14% empty alpha on every side, every root/leaf/appendage whole. No text, letters, numerals, clocks/dials/readings, UI, logo, watermark or signature. One individual original asset, no collage or panels. CUP-CROWN PITCHER: a low wide rosette of THREE unequal carnivorous pitcher LEAVES growing from one twisting exposed rhizome. Each living leaf is a folded fluted trumpet with an organic scalloped hood, a veined rim and a pale hollow mouth; tallest rear pitcher curves over one small side pitcher, while a broad frontal pitcher opens sideways. Clearly a wild botanical plant with soft irregular membranes and branching veins, no ceramic cup/vase/handle, furniture, architecture, mechanical tubes, bell-flower stalk or bladder leaves. Distinct broad compact silhouette, all root tips and hoods complete. Entirely flat warm photobleached pigment contact image, no3D modelling.",
+      "source": "sources/cup-crown-pitcher.dfbab0dc3d36.png",
+      "sourceSha256": "dfbab0dc3d366bb9087dbded7af81ee65d206eb6cfc443f3e4ccdd343fa170df",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/cup-crown-pitcher.749bdbedb532.png",
+      "sha256": "749bdbedb532228d146609507bf6d426b3e4031c283ce89c33edb96b8a262956",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/lantern-bladderwort.8d482e372f74.png",
+          "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+          "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "webtoe-reed-frog",
+      "label": "Webtoe Reed Frog",
+      "tool": "built-in image_gen",
+      "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different living natural subject below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale branching capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. The animal is an artistic plant-pigment imprint, with a strong readable silhouette and fine bleached tissue texture; no3D modelling, glossy highlights, lighting shadows, black outline, paper cutout or cyan blueprint. True transparent alpha everywhere outside the animal and through open gaps; pigment grain ONLY inside subject marks. No paper backing, square/rectangle, floor, perch, soil, halo, frame or border. Entire animal and every appendage central72% with at least14% empty alpha all sides, no clipping. No text, letters/numerals, clocks/readings, UI, logo, signature or watermark. One original individual asset, no collage or panels. WEBTOE REED FROG: one invented living marsh frog in a low asymmetric crouch, broad folded hind thighs, exactlyFOUR coherent legs, oversized open webbed toe fans, a rounded translucent throat pouch, two small raised friendly eyes and a slightly pointed leaf-shaped head turned left. Its back and throat carry branching reed/leaf vein impressions, and its soft flank has sparse oval bleached stomata patches. No accessories or mechanical parts. Distinct horizontal body silhouette, separated toe gaps all clear, not a plant rosette or a pressed dead specimen. The entire crouching frog is a flat warm pigment/contact shadow, no bulky3D volume or hard cast shadow.",
+      "source": "sources/webtoe-reed-frog.ef636244484b.png",
+      "sourceSha256": "ef636244484b72da9bfc0d483133476fdaf141381eee9ed8fe68c467ea68136e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/webtoe-reed-frog.d03664f54573.png",
+      "sha256": "d03664f54573b6fb81c9140a570feb552700d08f9bf3fe6de6ef21ffbd697f29",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/lantern-bladderwort.8d482e372f74.png",
+          "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+          "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "sailwing-reed-beetle",
+      "label": "Sailwing Reed Beetle",
+      "tool": "built-in image_gen",
+      "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different living natural subject below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale branching capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. The animal is an artistic plant-pigment imprint, with a strong readable silhouette and fine bleached tissue texture; no3D modelling, glossy highlights, lighting shadows, black outline, paper cutout or cyan blueprint. True transparent alpha everywhere outside the animal and through open gaps; pigment grain ONLY inside subject marks. No paper backing, square/rectangle, floor, perch, soil, halo, frame or border. Entire animal and every appendage central72% with at least14% empty alpha all sides, no clipping. No text, letters/numerals, clocks/readings, UI, logo, signature or watermark. One original individual asset, no collage or panels. SAILWING REED BEETLE: one invented living wetland beetle in an oblique upright stance, with exactlySIX slender jointed legs, two long curved antennae, a compact segmented thorax/abdomen and TWO very broad asymmetrically raised leaf-like wing covers. One cover opens high and narrow while the other fans low and broad, revealing two fine translucent inner flight membranes. Pale branching reed veins within the pigment wing fields, dusty-rose dorsal body and rusty-apricot tips. No flower stem, rosette, frog, machinery or object props. Readable leaf-sail insect silhouette with complete antenna/leg/wing tips and generous transparent gaps. Flat plant-pigment sun-print image only, never3D insect photography.",
+      "source": "sources/sailwing-reed-beetle.1f14bdd62e26.png",
+      "sourceSha256": "1f14bdd62e261e82d13e7a2faca3466e20df20971973c19266efad3ccbf3d5ea",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/sailwing-reed-beetle.545c0a54afac.png",
+      "sha256": "545c0a54afac10ca15391d1f6caaafd76a27a045ad735a8a295eaaa3bcf9b06c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/lantern-bladderwort.8d482e372f74.png",
+          "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+          "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Layout-only framing repair of this exact ROSEGHOST FEN wallpaper. Preserve the five approved plant/animal identities, pigment texture, rose/mauve/rust/oat palette, poses, relative arrangement and one coherent wetland habitat. The original group is too large: the frog feet are too low for shorter phone crops, the left leaf and right pitcher approach screen edges, and the beetle reaches too high. UNIFORMLY ZOOM OUT the whole five-organism habitat grouping by about35percent, and recenter the complete group near x50%,y63% of the same tall1290:2796 portrait. Keep every primary organism comfortably inside x20â€“80% and y45â€“80%, including all frog toes, beetle antenna/wing tips, pitcher hoods, flowers and root ends. The beetle remains on its reed just above the plants, but all its anatomy stays below y45%. Fill newly opened space with the same softly mottled pale oat paper above and pale natural wetland ground/water traces below. The bottom20percent must have quiet ground/water texture only, with visible space beneath the frog feet; upper43percent almost empty paper. Natural incidental grass/ground traces may continue off-screen. Keep the broad plant-pigment contact-print colour fields, fine capillary-vein voids and flat sun-faded granular texture; no new3D lighting, new subjects, new poses or different art process. Do not turn the scene into five separate panels. No text, lettering, numerals, UI, clocks/readings, frame/border, watermark or phone mockup. Opaque full-bleed paper wallpaper. This is a modest whole-group scale/reposition edit, not a redesign.",
+      "source": "sources/wallpaper.91e0a6f901b0.png",
+      "sourceSha256": "91e0a6f901b0779adc8892c06b079ce16217ae5b37b4ae33f7f04cad4ce59427",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "de17568407efacf1ad4367580196ce60dd4c2cf7873486182eac8aff6eb739fc",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Whole final portrait exported to1290x2796 with a subpixel aspect adjustment; thumbnail derived from the same image. Builtin layout edit supplies focal breathing room.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-wallpaper.2cc7af6190a9.png",
+          "sha256": "2cc7af6190a9a12e92937743e21582925a3e5808c245b04d71068de2f94f6638",
+          "purpose": "Layout-only repair of own separately generated habitat scene."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

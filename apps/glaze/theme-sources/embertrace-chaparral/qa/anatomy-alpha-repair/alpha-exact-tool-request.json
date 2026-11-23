@@ -1,0 +1,8 @@
+{
+  "id": "california-poppies",
+  "prompt": "BACKGROUND EXTRACTION ONLY from input1, own corrected Embertrace Chaparral California-poppy ceramic spray. Preserve EXACT complete existing ceramic subject: three four-petaled flowers, correct LONG SLENDER pointed seed pod at left, all fine divided leaves/connected stems, precise positions/proportions, pale warm burnished unglazed clay, thin black sinuous carbon trails, smoke deposits ON ceramic, warm iron blush and soft subject lighting. REMOVE ONLY the faint broad SEMITRANSPARENT WHITE-GRAY MATTE CLOUD and cast haze/shadow behind/around the subject. Every pixel outside actual ceramic silhouette must be TRUE EMPTY ALPHA0, including ALL gaps between stems, divided leaves and petals, and ALL broad surrounding canvas. No opaque white/gray background, veil, vignette, residual haze, glow or drop shadow. Retain ceramic bodies and every fine petal/leaf/stem/pod tip fully intact; do not cut/crop/recolor/recompose the subject and do not remove smoke marks that are actually ON clay. Clean natural antialiased silhouette edge only; no broad translucent fringe extending into background. Whole subject safely central with same original ample alpha margins. No added ground/backing/plaque/frame/UI/text. Single own source input only. Output genuinely transparent PNG.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-f0e2c4d5-f469-4b82-ac77-6c83dcdd21ee.png"
+  ]
+}

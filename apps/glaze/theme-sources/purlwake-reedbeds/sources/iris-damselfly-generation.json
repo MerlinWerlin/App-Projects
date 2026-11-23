@@ -1,0 +1,18 @@
+{
+  "id": "iris-damselfly",
+  "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. Subject IRIS DAMSELFLY: one recognizable natural iris flowering stem with ONE large open bloom showing THREE broad gently drooping outer falls and THREE narrower upright inner standards, one closed tapered bud, TWO long pointed sword-shaped leaves. A small recognizable damselfly rests beside the lower leaf: one slender coherent segmented body, TWO antennae, FOUR narrow wings folded together beside body and SIX tiny coherent legs, no giant jeweled eyes. No pot/vase/ground or backing leaf. Iris petals/leaf/stem and insect made from short dense directional fields of coarse hollow HELICAL METAL PURL SPRING TUBES with visible spiral ridges/cut open ends and couching stitches; champagne-silver petals with gilt lips/veins, antique-gilt insect and restrained olive silk leaf accents. No colored enamel, beads, sequins, gems, smooth gold casting, ordinary soft silk flower or wire cage. Whole flower/petal lobes, bud, two leaf tips and insect wing/antenna/leg tips fully contained within generous true alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/iris-damselfly.c02e774d.png",
+  "sourceSha256": "c02e774d214dab1c9466d1931da5aa6d770f9c494c3a7e330c091deab87b31f5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/iris-damselfly.1a2da2e5.png",
+  "sha256": "1a2da2e5962308b3a355f536fa37357481d85de0bc1985d539a9676230431471",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

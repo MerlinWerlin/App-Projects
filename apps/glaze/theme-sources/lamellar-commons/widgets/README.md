@@ -1,0 +1,1 @@
+Five individual original artworks fitted whole on transparent 1024px canvases, without crops or manual content changes. widget-options.json supplies five pure-art selections for small and large Artwork slots.

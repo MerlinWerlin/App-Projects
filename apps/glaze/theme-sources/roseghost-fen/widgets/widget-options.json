@@ -1,0 +1,62 @@
+[
+  {
+    "id": "lantern-bladderwort",
+    "label": "Lantern Bladderwort",
+    "kind": "art",
+    "image": "lantern-bladderwort.a68c5c93abb8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "jointed-horsetail",
+    "label": "Jointed Horsetail",
+    "kind": "art",
+    "image": "jointed-horsetail.6007a153279e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "cup-crown-pitcher",
+    "label": "Cup Crown Pitcher",
+    "kind": "art",
+    "image": "cup-crown-pitcher.749bdbedb532.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "webtoe-reed-frog",
+    "label": "Webtoe Reed Frog",
+    "kind": "art",
+    "image": "webtoe-reed-frog.d03664f54573.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "sailwing-reed-beetle",
+    "label": "Sailwing Reed Beetle",
+    "kind": "art",
+    "image": "sailwing-reed-beetle.545c0a54afac.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

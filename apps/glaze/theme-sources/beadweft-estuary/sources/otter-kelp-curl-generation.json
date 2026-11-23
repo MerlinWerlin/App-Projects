@@ -1,0 +1,18 @@
+{
+  "id": "otter-kelp-curl",
+  "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject OTTER KELP CURL: one naturally proportioned ADULT OTTER floats curled on its side/back, head at upper-left, long tapered tail curling around toward lower-right into a broad open C. Umber/brown cylindrical beads form sleek body contour, oyster-cream bead muzzle/throat/belly accents, two small dark eye beads, short fine THREAD whiskers, no giant cartoon eyes or smile. One forepaw rests near chest, the other at belly, two webbed hind feet clearly visible at the right inside the tail curve; no clothes or held objects. THREE long flat kelp ribbons in teal/kelp-gold curve loosely below and behind the otter, anchored to a tiny open bead holdfast near tail, no rectangular water or scenic background. Distinct low horizontal curling mammal silhouette, genuine coastal wildlife rather than stuffed animal or jewellery charm. Whole nose, whiskers, paws, tail tip, kelp blades and holdfast inside broad real alpha margins. Beads follow fur direction in staggered rows, actual hollow ends/raised rims/thread bridges visible across body and kelp, no smooth sculpted mass.",
+  "tool": "built-in image_gen",
+  "source": "sources/otter-kelp-curl.671a6dfd.png",
+  "sourceSha256": "671a6dfdedd62ff6381a2a9a035a601efbbfa26cc01bd42f6eec389912b6b9ee",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/otter-kelp-curl.3548e8ef.png",
+  "sha256": "3548e8ef4267e04db8abfef7c3583b62f792507dac7c030eb51189fa0526fc2c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

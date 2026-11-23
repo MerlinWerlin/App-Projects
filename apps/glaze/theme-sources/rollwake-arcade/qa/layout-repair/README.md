@@ -1,0 +1,1 @@
+One wallpaper-only correction pulls back to fit the whole platform inside the canvas. Original raw, exact initial own first reference, and exact edit request/result retained. All5standaloneart/native/palette unchanged by hash; finalactualcropreview inparentqa. No standaloneartchange or coordinator/Jaredapproval.

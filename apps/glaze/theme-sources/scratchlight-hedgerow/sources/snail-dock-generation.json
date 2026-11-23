@@ -1,0 +1,26 @@
+{
+  "id": "snail-dock",
+  "label": "Dockleaf Snail",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar GARDEN SNAIL gliding across ONE gently cupped DOCK LEAF. Natural rounded spiral shell with clear concentric growth bands and ivory scratched ridges over broad black reserve, elongated soft pebbled body, TWO long upper eyestalks plus TWO short lower sensory feelers, all four coherent and separate. Broad lance-shaped slightly wavy leaf with midrib and lateral ivory scratch-veins, a short natural stalk, no pot/rock/ground. Side three-quarter view makes shell spiral/body/whole leaf obvious. Whole shell, tail, foot, four tentacle tips, complete leaf tip and stem inside generous alpha margins.",
+  "source": "sources/snail-dock.e0ec744bc342.png",
+  "sourceSha256": "e0ec744bc3425b1eda53823f4330734cf5afaf507837511353687619a2a53ab1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/snail-dock.3136912464ef.png",
+  "sha256": "3136912464efa40b700b89c624f9913069aea2627d9c07e9fea5156645e041fd",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/hare.dcc38cfb5aaf.png",
+      "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+      "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "theme": "silverthorn-dunes",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Bidri-inspired blackened zinc-alloy relief with flush-hammered silver wire and foil inlays",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "SILVERTHORN DUNES, original opaque portrait9:16 phone wallpaper. A QUIET WIDE DISTANT VIEW of a very small coherent REAL DESERT habitat vignette rendered in physical BIDRI-INSPIRED blackened zinc-alloy low relief on warm sand-tan matte paper #CFB18A. One recognizable natural fennec walking right, a small long-legged jerboa near three dunegrass leaves, one horned viper resting in a continuous low S, two desert-rose flowers with oval leaves, and one plump standing sandgrouse near a short acacia branch. Natural animal anatomy/proportions, whole ears/tails/legs/leaf tips, no fantasy machines, jewelry or abstract geometry replacing bodies. Smooth satin BLACK METAL dominates at least80percent of all fauna/flora surfaces; only a FEW BROAD TAPERED SILVER FOIL/WIRE STRIPS HAMMERED FLUSH into cut channels trace ears/cheeks/tail, snake chevrons, bird wing bands and flower/leaf veins. Tiny irregular hammered inlay seams and directional silver glints, no dense pale fur scratches, hatching, fine etched line art, colored enamel, nacre, all-silver sculptures, chrome reflections, raised wire cages or plastic. Vignette is a small natural arrangement, not five separated panels or badges: fennec near centre-left, jerboa slightly higher left, desert rose growing at right, sandgrouse lower-right and viper low-centre, short acacia twigs and tiny dunes connect forms subtly. COMPOSITION CRITICAL: all flora/fauna and dune marks must fit within CENTRAL52PERCENT OF IMAGE WIDTH, x24to76percent, and between y42and68percent image height. Keep subjects distant and small. Upper40percent, bottom28percent and wide side margins EMPTY uninterrupted warm sand-tan paper with only faint fibres. No trees/canopy/celestial objects outside this tiny central group. No ground shelf, frame, border, medallion, text, letters, numbers, clock/date/battery/weather values, logo, UI or signature. Subtle relief contact shadows inside vignette only. Entire artwork in one unified black-metal/silver-inlay material; calm icon and clock space.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.65cd661b.png",
+      "sourceSha256": "65cd661bda3f42e7f66865274dda11393513673b4059d9fd3ed4d024785df003",
+      "sourceDimensions": [
+        941,
+        1672
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "0055826c4ae7993f5846185e6e43152cb4f690a1e4c8dfbab9dcca84d8f2372e",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fennec-thornsprig",
+      "prompt": "Edit this EXACT fennec fox and acacia twig artwork. Preserve natural pose, coherent four legs/paws, giant natural ears, pointed muzzle, long bushy tail, whole twig and generous true alpha margins. MATERIAL CORRECTION ONLY: remove the dense fine hairlike pale scratches from the black body entirely. Make most body surfaces SMOOTH UNINTERRUPTED SATIN BLACKENED ZINC METAL with broad gentle curved metal planes, no paper grain, scratched fur, hatching or white pointillism. Replace those many thin lines with ONLY A FEW VISIBLY BROAD TAPERED FLUSH SILVER INLAY STRIPS: two smooth broad inner-ear rim strips, three short broad cheek/chest strips, two curved shoulder strips, two short flank strips and three broad tapering strips at tail tip. Each silver strip is FLAT HAMMERED INTO A CUT CHANNEL level with the black metal surface, 5 to10 times broader than the old fine scratches, with tiny irregular hammered seams and restrained directional metallic reflections. More than80percent of body remains uninterrupted satin-black metal reserve, clearly worked METAL rather than flat white-on-black scratchboard, ink etching, silver fur photo, raised wire/cloisonne or glossy lacquer. Inlay lines follow anatomical contours, no flowers, scrollwork, jewelry or extra decoration. Twig retains only a few broad flush silver midrib strips on black leaves. Keep all anatomy and alpha exterior/open limb gaps intact; no ground, shadow, backing, halo, frame, text or UI.",
+      "tool": "built-in image_gen",
+      "source": "sources/fennec-thornsprig.af76a26e.png",
+      "sourceSha256": "af76a26e1ae9d326c9814ad5e5c46fa86fbf9f54f89dd0d91137455b4b6d7b44",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fennec-thornsprig.a748c3cb.png",
+      "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/fennec-thornsprig-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/fennec-thornsprig.original.f8ea23a6.png",
+        "sha256": "f8ea23a642fff85bbad36d121c0d76d560a295905c199a849384b4a70ea64590"
+      }
+    },
+    {
+      "id": "jerboa-dunegrass",
+      "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject JERBOA DUNEGRASS: one natural adult jerboa in a gentle low hop toward upper-left, giant natural hind feet and long thin hind shanks, exactly TWO short forelegs held near chest and TWO long hindlegs with complete feet, coherent little rounded head with natural long ears and small eyes, single long thin tail curving in an open arc toward right with a small brush tip. No kangaroo body, costume, wings or artificial springs. A separate compact tuft of three arching dune grasses near the lower left, not scenery or a ground pad. Satin-black zinc body with few broad tapered silver inlays following cheeks, haunch and tail, narrow flush silver inner-ear patches, only two broad cheek and haunch strips; black-grass leaves with broad flush silver midribs. Entire ears, four limbs/feet, long tail and all grass tips fully contained with generous true alpha margins. Keep instantly recognizable real jerboa anatomy; no extra legs, tail loop ring or ornate floral overlay. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+      "tool": "built-in image_gen",
+      "source": "sources/jerboa-dunegrass.8f1a15c3.png",
+      "sourceSha256": "8f1a15c33761bfe74988d5fb0058bcc4f49dce946aab32063f77d263cd3f719a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/jerboa-dunegrass.46c66651.png",
+      "sha256": "46c66651804091231dae4e483f6d45e69d24673782e559dd7b606ff703d5c5dd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hornedviper-tamarisk",
+      "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject HORNEDVIPER TAMARISK: one recognizable natural desert horned viper resting in ONE low open S-curve, continuous snake body of even natural taper, broad coherent triangular head facing left and TWO small horn scales above the eyes, single closed mouth and single pointed tail visible separately at right. No ouroboros ring, knot, split neck, multiple heads, extra tail or legs. A short upright tamarisk sprig beside the rear coil with tiny scale leaves, no ground pad. Satin matte blackened zinc low-relief snake with few broad flush-inlaid silver chevron strips and narrow bright structural contour seams; large black patina spaces between sparse silver marks, not a solid silver snake or all-over floral decoration. Twig fine black metal with silver vein inlay. Whole head, both horns, continuous S-body, tail tip and sprig complete within generous alpha margins. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+      "tool": "built-in image_gen",
+      "source": "sources/hornedviper-tamarisk.5898ed77.png",
+      "sourceSha256": "5898ed776c99722c06f39dcfd42cce8ceee8e083a823dd413c496a7c86266714",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hornedviper-tamarisk.0cdd69d2.png",
+      "sha256": "0cdd69d29eccac501711eb9a34072625e7829fca0cbcd5027742e0a951863953",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "desertrose-bloom",
+      "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject DESERTROSE BLOOM: a recognizable natural desert rose (Adenium) botanical sprig with exactly TWO open trumpet flowers showing FIVE broad overlapping petals each, one small closed bud and FOUR broad smooth oval pointed leaves on one slightly thick branching stem. Do not include pot, vase, soil, bonsai plaque, frame or root pedestal. Blackened zinc low-relief petals and leaves with sparse broad silver wire/foil hammered flush into cut channels: slender natural radial petal veins and thin bright petal lips, leaf central veins and a few branches. Black satin metal remains dominant in petals and leaves; no colored enamel, gemstones, nacre, white porcelain flowers or all-silver sculpture. Familiar organic floral shapes and normal botanical proportions, not a jeweled mandala or gear rosette. Whole flower lobes, bud, leaf tips and stem end visible inside generous alpha margins. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+      "tool": "built-in image_gen",
+      "source": "sources/desertrose-bloom.62275fcf.png",
+      "sourceSha256": "62275fcfe2a72f64ad58c3828462f03ad8240669a2c0342f5bba9a5bf31b7c1a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/desertrose-bloom.7e244a43.png",
+      "sha256": "7e244a43cb3e9ffd24765d397de9a1621f9ac9148ea652c89dfe40b443ee0d5e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "sandgrouse-acacia",
+      "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject SANDGROUSE ACACIA: one natural adult sandgrouse standing in relaxed three-quarter profile toward left, compact plump ground-bird body, small coherent head, short fine beak, closed folded wings, complete tapered tail and exactly TWO short coherent legs with visible three front toes and rear toe on each foot. A single low horizontal acacia twig with a few tiny paired leaflets sits alongside feet, no ground pad or perch platform. Natural bird anatomy, no long heron legs, duck bill, giant cartoon eyes, costume or machine. Satin-black zinc low relief with restrained sparse broad silver wire/foil inlay tracking actual feather shafts and scalloped wing edges, slim face line and neck specks. Broad black metal feather forms, no many layered cut feathers or all-silver body, no raised cloisonne wires, no generic floral scrollwork on bird. Entire beak, head, tail, both feet/toes and twig complete inside generous true alpha margins. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+      "tool": "built-in image_gen",
+      "source": "sources/sandgrouse-acacia.6665b466.png",
+      "sourceSha256": "6665b46635e281068b314c662376239f40e9da0a26c3961fdc13bf32c51f9fcc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/sandgrouse-acacia.892db732.png",
+      "sha256": "892db7329de8288bd2dd2c0f63e1c84e3fae69fbedaeed7d3fb609636dfd0ebf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

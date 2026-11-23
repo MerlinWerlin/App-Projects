@@ -1,0 +1,1 @@
+Six selected unmodified built-in outputs:five independent artwork generations and final own-reference dune habitat wallpaper. Exact prompts/raw dimensions/hashes/reference lineage in provenance.json. No external visual inputs.

@@ -1,0 +1,180 @@
+[
+  {
+    "id": "paper-carnival",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\paper-carnival\\v6\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "confetti-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\paper-carnival\\v6\\widget-confetti-snail.dd3b1238.webp",
+        "sha256": "dd3b1238cc61215ba1d78588cbd37aae8882e2fcc6c107dd3048e24d4388a7fc"
+      },
+      {
+        "optionId": "paper-dragon-kite",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\paper-carnival\\v6\\widget-paper-dragon-kite.980cf85e.webp",
+        "sha256": "980cf85ef4abbb33c5a0d199a5a1f1b7ddfdd5303e9cdbbb1db99f95d714e503"
+      },
+      {
+        "optionId": "pinwheel-trio",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\paper-carnival\\v6\\widget-pinwheel-trio.d4ea7b9c.webp",
+        "sha256": "d4ea7b9c10f94216a9bff5325e81e4b3f430a87c7e7ffc3e380a1066dc52de0c"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\paper-carnival\\v6\\widget-small.2b91da39.webp",
+        "sha256": "2b91da39c453375575464c02a7aa1fedee19351bdc5958d9f48e09bb9159362d"
+      }
+    ]
+  },
+  {
+    "id": "puffin-fold",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "cliff-strata",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-cliff-strata.3514833f.webp",
+        "sha256": "3514833fde31a0f69b513a2c4c405cc45f64f2096d416eea295a735c5a096e74"
+      },
+      {
+        "optionId": "egg-progress",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-egg-progress.2145988c.webp",
+        "sha256": "2145988cb3575a69960d87e612bfd94888152675908b6eb0d4ec4cbe48d5d6a4"
+      },
+      {
+        "optionId": "paper-flight",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-paper-flight.310ee665.webp",
+        "sha256": "310ee66592fd1074a62f4ac3d414c3187137f80b535dda039379de4773130b63"
+      },
+      {
+        "optionId": "puffin-perch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\puffin-fold\\v1\\widget-puffin-perch.3993576f.webp",
+        "sha256": "3993576fbf0bbd689bd40988a615fb70b33d2f1b0a7224502230c6dbcbca6b5a"
+      }
+    ]
+  },
+  {
+    "id": "marquetry-arc",
+    "origin": "historical_cached_live_before_PR307",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "chevron-grain",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-chevron-grain.94c0c565.webp",
+        "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc"
+      },
+      {
+        "optionId": "nested-arch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-nested-arch.20144052.webp",
+        "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096"
+      },
+      {
+        "optionId": "veneer-sun",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-veneer-sun.1fc211fe.webp",
+        "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543"
+      }
+    ]
+  },
+  {
+    "id": "paper-carnival",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\paper-carnival\\v7\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "confetti-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\paper-carnival\\v7\\widget-confetti-snail.dd3b1238.webp",
+        "sha256": "dd3b1238cc61215ba1d78588cbd37aae8882e2fcc6c107dd3048e24d4388a7fc"
+      },
+      {
+        "optionId": "paper-dragon-kite",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\paper-carnival\\v7\\widget-paper-dragon-kite.980cf85e.webp",
+        "sha256": "980cf85ef4abbb33c5a0d199a5a1f1b7ddfdd5303e9cdbbb1db99f95d714e503"
+      },
+      {
+        "optionId": "pinwheel-trio",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\paper-carnival\\v7\\widget-pinwheel-trio.d4ea7b9c.webp",
+        "sha256": "d4ea7b9c10f94216a9bff5325e81e4b3f430a87c7e7ffc3e380a1066dc52de0c"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\paper-carnival\\v7\\widget-small.2b91da39.webp",
+        "sha256": "2b91da39c453375575464c02a7aa1fedee19351bdc5958d9f48e09bb9159362d"
+      },
+      {
+        "optionId": "paper-carousel",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\paper-carnival\\v7\\widget-paper-carousel.f0d88dd9.webp",
+        "sha256": "f0d88dd9525319d5d9425b28484209804716c571f8ce7b1254e7b527fec21547"
+      }
+    ]
+  },
+  {
+    "id": "puffin-fold",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "cliff-strata",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-cliff-strata.3514833f.webp",
+        "sha256": "3514833fde31a0f69b513a2c4c405cc45f64f2096d416eea295a735c5a096e74"
+      },
+      {
+        "optionId": "paper-flight",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-paper-flight.310ee665.webp",
+        "sha256": "310ee66592fd1074a62f4ac3d414c3187137f80b535dda039379de4773130b63"
+      },
+      {
+        "optionId": "puffin-perch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-puffin-perch.3993576f.webp",
+        "sha256": "3993576fbf0bbd689bd40988a615fb70b33d2f1b0a7224502230c6dbcbca6b5a"
+      },
+      {
+        "optionId": "paper-lighthouse",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-paper-lighthouse.b36f7e52.webp",
+        "sha256": "b36f7e52fb6e3e56be7dfaa6fedf34bc36534528cbbb86943dde62e3682203f3"
+      },
+      {
+        "optionId": "paper-fishing-boat",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\puffin-fold\\v2\\widget-paper-fishing-boat.48436bd7.webp",
+        "sha256": "48436bd7222477368b6d9f2b0f79f46c3c133421a4ca3de237e1256ae08d27a4"
+      }
+    ]
+  },
+  {
+    "id": "marquetry-arc",
+    "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\manifest.json",
+    "actualAppSelector": true,
+    "selections": [
+      {
+        "optionId": "chevron-grain",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-chevron-grain.94c0c565.webp",
+        "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc"
+      },
+      {
+        "optionId": "nested-arch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-nested-arch.20144052.webp",
+        "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096"
+      },
+      {
+        "optionId": "veneer-sun",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-veneer-sun.1fc211fe.webp",
+        "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543"
+      },
+      {
+        "optionId": "bowtie-inlay",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-bowtie-inlay.bc521627.webp",
+        "sha256": "bc5216271b5cb3aa5cfa04346b4a6e066cf2e96d000346804bb5c742bbed4677"
+      },
+      {
+        "optionId": "veneer-wave",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-veneer-wave.8fdca9e0.webp",
+        "sha256": "8fdca9e0cda4113e7c9c116a314ffc4a8c0d0947bcc08794da4703f361116750"
+      }
+    ]
+  }
+]

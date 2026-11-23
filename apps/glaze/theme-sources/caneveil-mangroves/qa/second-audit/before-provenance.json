@@ -1,0 +1,129 @@
+{
+  "theme": "caneveil-mangroves",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Fused murrine glass-cane cross-sections with coarse embedded radial flowers, continuous vitreous joins and longitudinal cut-lip stripes",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Precise LAYOUT-ONLY edit of input1, own original Caneveil Mangroves wallpaper. Keep exact fused murrine cane-glass mangrove habitat, gecko, leaf/branch/root arrangement, propagules, mudskipper, shallow water oval, embedded coarse colored cane flowers and longitudinal stripes, palette, lighting, subtle quiet pistachio background and portrait aspect ratio. Scale the ENTIRE existing connected habitat uniformly to65percent of its CURRENT width and height, as ONE unit, without changing any individual organism or object proportions or spacing within it. Place the uniformly smaller complete habitat horizontally centered with its overall center at57percent canvas height. Extend/reconstruct only the same quiet pale pistachio #D9DCC1 background around it; match smooth subtle background perfectly, no visible rectangular pasted edge. Final whole habitat should occupy about HALF total canvas width, with at least24percent quiet background on BOTH left/right sides. Preserve complete leaf/root/gecko tail/fins/propagule tips, no crop, no duplicate or new organism/object. No border/corner branches/extra flowers, no enlarged individual gecko, no reframing zoom, no text/UI. Keep original internal murrine material and anatomy unchanged. Opaque full wallpaper, no transparency.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.e1cb3592.png",
+      "sourceSha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "07ab75ed8e5108802fa358b6ef681f5f3028748f951b45175590f58d953c4777",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.50b70662.png",
+        "sha256": "50b70662fd1a6744f203926dddd71b8e3b1e626f25450358af7ca5fd98bd07d0"
+      }
+    },
+    {
+      "id": "gecko-leaf",
+      "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. FIRST MATERIAL SAMPLE: one familiar natural mangrove gecko viewed from slightly above, crawling diagonally upper right across ONE complete narrow mangrove leaf. Natural slender tapering torso, modest head and small dark natural eyes, exactly FOUR coherent splayed legs with delicate adhesive toe pads, one long complete gently curling tail. All four feet/toes, snout and tail tip clearly separated and whole. No chibi toy face, jewels or costume. Make the broad dorsal torso show only about NINE LARGE RADIAL CANE CROSS-SECTIONS: coarse ivory-centered emerald/cobalt/honey star-flowers embedded THROUGH a continuous fused-glass body. Cross-sections appear as actual irregularly sheared rod ends fused flush, with thin clear casing and heat-rounded joins. On the curled tail and cut leaf lip, expose longitudinal parallel internal color stripes of those SAME composite glass canes, proving three-dimensional rod structure. Not a gecko wearing painted flowers or a mosaic of separate loose beads. Leaf likewise is one continuous fused-glass silhouette with coarse cane structure, no dangling disc chain.",
+      "tool": "built-in image_gen",
+      "source": "sources/gecko-leaf.704a800f.png",
+      "sourceSha256": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/gecko-leaf.74db5286.png",
+      "sha256": "74db52863e6c44bbd1316ecc4600d3d2b86b00fb415536cac4aff678a99eb854",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "mudskipper-root",
+      "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One recognizable real mudskipper resting diagonally left on one complete short mangrove prop-root fork. Wide natural fish head, two small raised eyes at top, tapering fish body and full broad finned tail. Exactly TWO broad fanlike PECTORAL FINS support the front, one modest dorsal fin and small pelvic fin below: a fish, no four mammal legs, lizard toes or ears. Coarse honey/ivory-centered cobalt and moss-green cane cross-sections embedded in fused body; longitudinal rod bands at tail fin lip and root edge. One coherent whole fish and one root fork, no platform or aquarium.",
+      "tool": "built-in image_gen",
+      "source": "sources/mudskipper-root.53fa2b24.png",
+      "sourceSha256": "53fa2b245aa89dab585ec95aeb8e425b0a5f82c6282d1fe5f5a2289fc6c576a5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/mudskipper-root.166a1faf.png",
+      "sha256": "166a1faf9dbfe4e255f6fa3863f5fe678d86fb26850f779f52048a42b460f212",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fiddlercrab-sedge",
+      "prompt": "Precise ANATOMY-ONLY correction of input1, own original Caneveil Mangroves fused murrine fiddler crab. Retain exact composition, natural broad carapace, TWO eyes, ONE large left claw and ONE small right claw, raised-claw pose, sedge, coarse embedded ivory/cobalt/emerald cane flowers, longitudinal cane bands, continuous glass material, palette, lighting and framing. Correct missing walking legs: a real fiddler crab has FOUR PAIRS of WALKING LEGS plus the TWO CLAWS, TEN coherent appendages TOTAL. Current image shows only three walking legs per side. ADD ONE coherent rear walking leg on EACH SIDE, placed behind the existing legs, splayed outward into clear available alpha space. Final has exactly FOUR separately countable segmented slim walking legs on LEFT and exactly FOUR on RIGHT, all eight complete tips visible, plus two claw-bearing arms. Keep all joints connected naturally under lateral carapace, no floating/disconnected legs or extra eyes/claws. Add only this missing walking-leg pair and adjust minimum spacing to keep all eight individually readable. Every new leg uses same clear fused glass with longitudinal colored cane stripes. Preserve all other subjects/material/position unchanged. TRUE TRANSPARENT ALPHA including between all legs, no halo/gray backing/ground/shadow/frame/text/UI. Complete whole anatomy, all eight walking feet and both claws/sedge remain within generous alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/fiddlercrab-sedge.cd99d894.png",
+      "sourceSha256": "cd99d894ece93b78a6ddee91c95ceeca49667197793d552d6a735999620ca25b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fiddlercrab-sedge.53969b72.png",
+      "sha256": "53969b72b8adfbf33b2926df767f6344f523a8bec2dc6ec28c30a85eb161d139",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/fiddlercrab-sedge-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-repair/fiddlercrab-sedge.original.e6040ae2.png",
+        "sha256": "e6040ae2e30b3afe2d9734f42d20ec357e67054a53941648322fbb24d291084d"
+      }
+    },
+    {
+      "id": "mangrove-propagules",
+      "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. A clear botanical cluster: one complete gently curving mangrove branch with TWO opposite pairs of smooth elliptical leaves, TWO long tapered pendulous propagules and THREE small recognizable ivory four-petaled mangrove flowers with small golden centers. Leaves/propagules arranged asymmetrically, natural connected branch growth, no wreath or symmetrical bouquet. Broad leaves contain coarse emerald/cobalt/honey flowerlike embedded cane sections, thin cut lips reveal parallel longitudinal cane stripes. Actual small mangrove flowers remain distinct from the larger embedded glass cane structures. No insects, vase or badge.",
+      "tool": "built-in image_gen",
+      "source": "sources/mangrove-propagules.e1a48cb0.png",
+      "sourceSha256": "e1a48cb0bb00908b45c7703fcd03e331534786dc3020eef0cca1d870c50ec981",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/mangrove-propagules.526f5240.png",
+      "sha256": "526f5240320889577f26969b43bf22073518f41aa5610ce18d0e37ce116cb967",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "egret-roots",
+      "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar little egret stands naturally in right-facing profile among TWO short complete branching mangrove prop roots. Slender S-curved neck, modest narrow head, long pointed dark bill, slim natural body with folded wings, exactly TWO long slim coherent dark legs and delicate complete toes. Ivory/cobalt/honey coarse cane cross-sections embedded into continuous fused-glass feather shapes, not literal plumage ornaments, root cut lips expose colored rod stripes. Recognizable bird proportions, no giant toy eye, no extra legs or duck web feet. Whole bill, crown, tail and both feet plus roots entirely inside margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/egret-roots.aeecdff4.png",
+      "sourceSha256": "aeecdff42e6913fdc9f8403d817bc54bd1e71a62e66ecd6612087038cd61101f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/egret-roots.14d267b0.png",
+      "sha256": "14d267b0b43589601353caf7c82076c5eb61eab05804817dab5d0d8c97f8fec3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

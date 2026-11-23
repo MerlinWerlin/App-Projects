@@ -1,0 +1,204 @@
+{
+  "themeId": "beadweft-estuary",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#102C31",
+    "#1A3D42"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "kingfisher-reeds",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        35,
+        28,
+        139,
+        143
+      ],
+      "asset": "widget-kingfisher-reeds.f0fc3664.webp",
+      "assetSha256": "f0fc366456366354fa763f209346db31b71bfb3630ff91a9f5194f20e48aa163"
+    },
+    {
+      "option": "kingfisher-reeds",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        76,
+        70,
+        298,
+        315
+      ],
+      "asset": "widget-kingfisher-reeds.f0fc3664.webp",
+      "assetSha256": "f0fc366456366354fa763f209346db31b71bfb3630ff91a9f5194f20e48aa163"
+    },
+    {
+      "option": "otter-kelp-curl",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        29,
+        39,
+        141,
+        132
+      ],
+      "asset": "widget-otter-kelp-curl.f27c8874.webp",
+      "assetSha256": "f27c8874b5178980e7e889895084b546b4e8fc63566bc2849a6f813831b8d427"
+    },
+    {
+      "option": "otter-kelp-curl",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        63,
+        93,
+        302,
+        292
+      ],
+      "asset": "widget-otter-kelp-curl.f27c8874.webp",
+      "assetSha256": "f27c8874b5178980e7e889895084b546b4e8fc63566bc2849a6f813831b8d427"
+    },
+    {
+      "option": "iris-waterbeetle",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        31,
+        24,
+        133,
+        145
+      ],
+      "asset": "widget-iris-waterbeetle.cd46a060.webp",
+      "assetSha256": "cd46a0606a1310f37145f5688d9825d461c0d9f6b506cc9312604f8adb1364c6"
+    },
+    {
+      "option": "iris-waterbeetle",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        67,
+        62,
+        286,
+        319
+      ],
+      "asset": "widget-iris-waterbeetle.cd46a060.webp",
+      "assetSha256": "cd46a0606a1310f37145f5688d9825d461c0d9f6b506cc9312604f8adb1364c6"
+    },
+    {
+      "option": "hermit-tidepool",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        31,
+        46,
+        134,
+        122
+      ],
+      "asset": "widget-hermit-tidepool.73a59c09.webp",
+      "assetSha256": "73a59c0932d1a05f8191e45957968b0fd7f257aec068d020faa65753a603ee3b"
+    },
+    {
+      "option": "hermit-tidepool",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        67,
+        108,
+        286,
+        271
+      ],
+      "asset": "widget-hermit-tidepool.73a59c09.webp",
+      "assetSha256": "73a59c0932d1a05f8191e45957968b0fd7f257aec068d020faa65753a603ee3b"
+    },
+    {
+      "option": "saltmarsh-moth",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        33,
+        33,
+        137,
+        139
+      ],
+      "asset": "widget-saltmarsh-moth.776d59f5.webp",
+      "assetSha256": "776d59f50d16a4ab87c125967e6a4d7e145c66da204c525358d6484957c05345"
+    },
+    {
+      "option": "saltmarsh-moth",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        72,
+        80,
+        294,
+        307
+      ],
+      "asset": "widget-saltmarsh-moth.776d59f5.webp",
+      "assetSha256": "776d59f50d16a4ab87c125967e6a4d7e145c66da204c525358d6484957c05345"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

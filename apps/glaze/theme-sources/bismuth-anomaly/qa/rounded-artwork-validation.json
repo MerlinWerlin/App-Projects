@@ -1,0 +1,89 @@
+{
+  "artworks": 5,
+  "encodedAssets": true,
+  "actualBlendMath": true,
+  "actualThemeGradient": true,
+  "fitInset": 0.06,
+  "stressCornerRadius": 0.24,
+  "installedDeviceVerified": false,
+  "allCoreSilhouettesRetained": true,
+  "batchThemesReviewed": 32,
+  "encodedAssetHashes": {
+    "archive-tortoise": "594faefd4b64c70694bcdedb623a28e31f4f8119e21f8dbb327c306c11fe8dbd",
+    "lantern-heron": "dcc2d7b4db33b2304d79e85fe3145ed24a1f0fc56af712b04d7c67e6a2ede242",
+    "switchback-ferry": "4dff31dd56c7f449b0023ea1fccc1b6cd0e7ab1b931bec57124b03642f3c5a01",
+    "storm-mill": "86afca0002096e558054f550ca57ecf74b85f14d0dc29b14b83b60a4bb30a9fe",
+    "parcel-porter": "49d9bafe2fab7a78492263d66e7ee0c4e7ce27de92d1aee8a6519c78fefccdd9"
+  },
+  "theme": "bismuth-anomaly",
+  "sourceHashes": {
+    "archive-tortoise": "94d6a3bd3b0ca34e8d5081f6bc387788bf45478dce56b66bbb5c0c5fb5aea54d",
+    "lantern-heron": "43accb8efceb13b219e9ad7ed0a9d12e65d9640cfb570b7cd10ed7956781f5ba",
+    "switchback-ferry": "6527a7fafaec040708e6010cc176e7b19cd2854bbc940dce40c59ef0af711c7c",
+    "storm-mill": "a892901058e4f07a7f1a95bdecb756c07728369ca7ce5ee195523da496427bd8",
+    "parcel-porter": "e608852ab6524f72e552f20f6cce0feabdb65f7caf4c0127c3fdfff5a9ea254d"
+  },
+  "reviewed": true,
+  "perArtwork": [
+    {
+      "id": "archive-tortoise",
+      "label": "Archive Tortoise",
+      "blend": "transparent",
+      "corePixels": 52841,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "archive-tortoise-170.png",
+      "tiny": "archive-tortoise-85.png"
+    },
+    {
+      "id": "lantern-heron",
+      "label": "Lantern Heron",
+      "blend": "transparent",
+      "corePixels": 36402,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "lantern-heron-170.png",
+      "tiny": "lantern-heron-85.png"
+    },
+    {
+      "id": "switchback-ferry",
+      "label": "Switchback Ferry",
+      "blend": "transparent",
+      "corePixels": 61346,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "switchback-ferry-170.png",
+      "tiny": "switchback-ferry-85.png"
+    },
+    {
+      "id": "storm-mill",
+      "label": "Storm Mill",
+      "blend": "transparent",
+      "corePixels": 88774,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "storm-mill-170.png",
+      "tiny": "storm-mill-85.png"
+    },
+    {
+      "id": "parcel-porter",
+      "label": "Parcel Porter",
+      "blend": "transparent",
+      "corePixels": 80202,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "parcel-porter-170.png",
+      "tiny": "parcel-porter-85.png"
+    }
+  ],
+  "gradient": [
+    "#20251C",
+    "#20251C"
+  ],
+  "note": "Quiet theme backgrounds and whole silhouettes inspected at170px and85px. Radius24% is a deliberate UI clipping stress model, not installed-device evidence."
+}

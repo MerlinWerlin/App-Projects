@@ -1,0 +1,26 @@
+{
+  "id": "longtailed-tit",
+  "label": "Hawthorn Tit",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar LONG-TAILED TIT perched on a SHORT HAWTHORN TWIG. Tiny round pale head/body, dark eye-mask, small pointed beak, short rounded wings, extremely long narrow straight dark tail angled down-right, TWO natural feet gripping twig. Two small lobed hawthorn leaves and three round berries on twig, subordinate. Scratch ivory short feather strokes and tiny leaf veins into black reserves. Natural perched bird side three-quarter view, calm posture. Complete tail tip, beak, both toes, twig ends, leaf tips and berries all fully inside ample margins; not a blue tit/parrot, no extra bird.",
+  "source": "sources/longtailed-tit.0dfa4dabb647.png",
+  "sourceSha256": "0dfa4dabb64740268cdd8301d35770d7ab404d4ad73cad6ac623ae9ad6444e43",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/longtailed-tit.f8fb47aac4da.png",
+  "sha256": "f8fb47aac4da913314bcf8f2af45763b058bea7bd36a5dae9690d4a7966881fb",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/hare.dcc38cfb5aaf.png",
+      "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+      "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+    }
+  ]
+}

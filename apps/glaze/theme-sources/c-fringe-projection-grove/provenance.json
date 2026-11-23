@@ -1,0 +1,171 @@
+{
+  "theme": "c-fringe-projection-grove",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "split-vane-fern",
+      "sourceImage": "sources/split-vane-fern.574544607c70.png",
+      "sourceSha256": "574544607c70827d81727d395db8a77061d1a488413dbb399f81ef980813dfe5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 565311,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRINGE GROVE. A tangible invented NATURE ecosystem revealed by fictional STRUCTURED-LIGHT SINUSOIDAL FRINGE PROJECTION PROFILOMETRY. Medium: clean optical laboratory exposure of neutral matte grey ORGANIC FORMS illuminated by ONE common projector casting about18 broad parallel BLACK-GREY-WHITE SINUSOIDAL LIGHT BANDS across each complete subject. The bands are an illumination signal: projected bright-white peaks, charcoal troughs and smooth grey transitions bend/compress/shift across leaf folds, bellies and curved wings as a measured-depth pattern. A common mostly vertical projector direction continues consistently across the form, displaced by its contours. There is no coloured body surface, glossy shine, metallic reflection or material grain. Soft neutral volume is present only to describe the tangible organism; high-contrast deformed light fringes are the unmistakable dominant visual language, legible at small size. Think a precise optical3D-scanning exposure, not a normal nature painting. The projected bands must NEVER be physical ribs, carved grooves, stacked sheets, concentric rings, bark texture, feathers, real zebra stripes, ink hatching, engraving, a print pattern, wireframe, rainbow interference, coloured registration, fluorescent fibres, heat map, speckled dots or X-ray anatomy. No luminous corona, fog, particles or surrounding beam. Complete natural structure has believable connections and strong silhouette, with open spaces through curled leaves/wings. Fictional artistic scan, not an actual measured experiment. No text, labels, scale bars, coordinates, numerals, clock faces, readings, graphs, logos or watermark. Subject: SPLIT-VANE FERN: one rooted low fan fern with a short thick curved central rachis and TWO unequal sweeping fronds that split into SIX broad hooked leaf vanes in total. Broad continuous leaf faces and large open cutouts, not fine feathery foliage. Three thick natural roots form a small tripod beneath. One frond curls forward, the other arches back. Recognizably a lush living plant, no pot, no architectural arch or ornamental sculpture. Three-quarter view, every hook/root/frond whole. Asset: ONE separate square1024x1024 pure-art widget. Whole subject inside central75%canvas with generous completely empty margins, every root/leaf/wing/foot intact. True transparent alpha outside and through all open gaps. No rectangular backing, floor, ground, shadow, extra specimens, frame, panel, contact sheet, UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 765108
+    },
+    {
+      "id": "cupfold-orchid",
+      "sourceImage": "sources/cupfold-orchid.e5e7725add36.png",
+      "sourceSha256": "e5e7725add3654f3e779ae128ce2bed8f8ac8e8b0d6e2b32a14022dc5fc37650",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cupfold-orchid.a70a8f4c1426.png",
+      "sha256": "a70a8f4c142683f49fab46c572be4e9372f8f168fa811455a115a1af5e4e054a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 738587,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRINGE GROVE. A tangible invented NATURE ecosystem revealed by fictional STRUCTURED-LIGHT SINUSOIDAL FRINGE PROJECTION PROFILOMETRY. Medium: clean optical laboratory exposure of neutral matte grey ORGANIC FORMS illuminated by ONE common projector casting about18 broad parallel BLACK-GREY-WHITE SINUSOIDAL LIGHT BANDS across each complete subject. The bands are an illumination signal: projected bright-white peaks, charcoal troughs and smooth grey transitions bend/compress/shift across leaf folds, bellies and curved wings as a measured-depth pattern. A common mostly vertical projector direction continues consistently across the form, displaced by its contours. There is no coloured body surface, glossy shine, metallic reflection or material grain. Soft neutral volume is present only to describe the tangible organism; high-contrast deformed light fringes are the unmistakable dominant visual language, legible at small size. Think a precise optical3D-scanning exposure, not a normal nature painting. The projected bands must NEVER be physical ribs, carved grooves, stacked sheets, concentric rings, bark texture, feathers, real zebra stripes, ink hatching, engraving, a print pattern, wireframe, rainbow interference, coloured registration, fluorescent fibres, heat map, speckled dots or X-ray anatomy. No luminous corona, fog, particles or surrounding beam. Complete natural structure has believable connections and strong silhouette, with open spaces through curled leaves/wings. Fictional artistic scan, not an actual measured experiment. No text, labels, scale bars, coordinates, numerals, clock faces, readings, graphs, logos or watermark. Subject: CUPFOLD ORCHID: one graceful fleshy curved plant stem supporting THREE unequal folded CUP BLOOMS at different heights, one open side-facing flower, one upward-facing broad cup and one drooping closed bud. TWO thick basal leaves curl outward into a shallow S, with a compact root crown below. Organic orchid-like growth with strong natural asymmetry; no eyes/faces, glass goblets, pots or ordinary cut-flower still life. Three-quarter view reveals bloom hollows and smooth folded lips. Asset: ONE separate square1024x1024 pure-art widget. Whole subject inside central75%canvas with generous completely empty margins, every root/leaf/wing/foot intact. True transparent alpha outside and through all open gaps. No rectangular backing, floor, ground, shadow, extra specimens, frame, panel, contact sheet, UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 707197
+    },
+    {
+      "id": "braidroot-sapling",
+      "sourceImage": "sources/braidroot-sapling.545f55f43b83.png",
+      "sourceSha256": "545f55f43b835b441dad6dd92043fb7d5085ab403641654bd20d7fa64aa0b4c4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/braidroot-sapling.47d545a1ae96.png",
+      "sha256": "47d545a1ae964207787f80b01b590e2d70aa499a4ab7c716bc435c178e09c121",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 553547,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRINGE GROVE. A tangible invented NATURE ecosystem revealed by fictional STRUCTURED-LIGHT SINUSOIDAL FRINGE PROJECTION PROFILOMETRY. Medium: clean optical laboratory exposure of neutral matte grey ORGANIC FORMS illuminated by ONE common projector casting about18 broad parallel BLACK-GREY-WHITE SINUSOIDAL LIGHT BANDS across each complete subject. The bands are an illumination signal: projected bright-white peaks, charcoal troughs and smooth grey transitions bend/compress/shift across leaf folds, bellies and curved wings as a measured-depth pattern. A common mostly vertical projector direction continues consistently across the form, displaced by its contours. There is no coloured body surface, glossy shine, metallic reflection or material grain. Soft neutral volume is present only to describe the tangible organism; high-contrast deformed light fringes are the unmistakable dominant visual language, legible at small size. Think a precise optical3D-scanning exposure, not a normal nature painting. The projected bands must NEVER be physical ribs, carved grooves, stacked sheets, concentric rings, bark texture, feathers, real zebra stripes, ink hatching, engraving, a print pattern, wireframe, rainbow interference, coloured registration, fluorescent fibres, heat map, speckled dots or X-ray anatomy. No luminous corona, fog, particles or surrounding beam. Complete natural structure has believable connections and strong silhouette, with open spaces through curled leaves/wings. Fictional artistic scan, not an actual measured experiment. No text, labels, scale bars, coordinates, numerals, clock faces, readings, graphs, logos or watermark. Subject: BRAIDROOT SAPLING: one complete young invented woodland tree with TWO thick trunks twisting together once around an OPEN central gap, separating above into THREE short curved branches. Each branch carries only TWO broad rolled paddle leaves, SIX leaves total, some folded toward and some away from the projector. A broad exposed root flare has FOUR short rooted toes. One living tree with sensible continuous growth, no bonsai pot, stone, house, machinery, textured bark or human face. Three-quarter view, full leaves/root flare. Asset: ONE separate square1024x1024 pure-art widget. Whole subject inside central75%canvas with generous completely empty margins, every root/leaf/wing/foot intact. True transparent alpha outside and through all open gaps. No rectangular backing, floor, ground, shadow, extra specimens, frame, panel, contact sheet, UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 794514
+    },
+    {
+      "id": "bell-leaf-grazer",
+      "sourceImage": "sources/bell-leaf-grazer.0b2a0f0b7a92.png",
+      "sourceSha256": "0b2a0f0b7a92fbed935665fcb9227875fc1c072defe675795081837c85f7e744",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/bell-leaf-grazer.b8807a463101.png",
+      "sha256": "b8807a463101f0f39c275aabb368453193851597449aa98dd9b16c3b4532a3c8",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 648392,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRINGE GROVE. A tangible invented NATURE ecosystem revealed by fictional STRUCTURED-LIGHT SINUSOIDAL FRINGE PROJECTION PROFILOMETRY. Medium: clean optical laboratory exposure of neutral matte grey ORGANIC FORMS illuminated by ONE common projector casting about18 broad parallel BLACK-GREY-WHITE SINUSOIDAL LIGHT BANDS across each complete subject. The bands are an illumination signal: projected bright-white peaks, charcoal troughs and smooth grey transitions bend/compress/shift across leaf folds, bellies and curved wings as a measured-depth pattern. A common mostly vertical projector direction continues consistently across the form, displaced by its contours. There is no coloured body surface, glossy shine, metallic reflection or material grain. Soft neutral volume is present only to describe the tangible organism; high-contrast deformed light fringes are the unmistakable dominant visual language, legible at small size. Think a precise optical3D-scanning exposure, not a normal nature painting. The projected bands must NEVER be physical ribs, carved grooves, stacked sheets, concentric rings, bark texture, feathers, real zebra stripes, ink hatching, engraving, a print pattern, wireframe, rainbow interference, coloured registration, fluorescent fibres, heat map, speckled dots or X-ray anatomy. No luminous corona, fog, particles or surrounding beam. Complete natural structure has believable connections and strong silhouette, with open spaces through curled leaves/wings. Fictional artistic scan, not an actual measured experiment. No text, labels, scale bars, coordinates, numerals, clock faces, readings, graphs, logos or watermark. Subject: BELL-LEAF GRAZER: one small grounded invented forest animal with a low pear-shaped torso, THREE stout bent walking legs with broad rounded feet, a wide blunt scoop-shaped grazing mouth near the ground, TWO large bell-shaped leafy ear vanes that curve outward and a short tail curled underneath the rear. One complete believable creature, gentle grazing posture, three-quarter front view, no ordinary rabbit/snail/mammal, horns, saddle, human face or mechanical parts. Ear vanes are smooth flesh/leaf structures rather than a patterned skin motif. Asset: ONE separate square1024x1024 pure-art widget. Whole subject inside central75%canvas with generous completely empty margins, every root/leaf/wing/foot intact. True transparent alpha outside and through all open gaps. No rectangular backing, floor, ground, shadow, extra specimens, frame, panel, contact sheet, UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 658375
+    },
+    {
+      "id": "siltwing-moth",
+      "sourceImage": "sources/siltwing-moth.3c8aabe4ac98.png",
+      "sourceSha256": "3c8aabe4ac98224fb34d09714c31c02589a2a9ec5c715ced9b2f4fd36a8a2368",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/siltwing-moth.6d13873c7bd2.png",
+      "sha256": "6d13873c7bd2dec6a84ccb8669b018f4bac1d4d492729465ee33036859b6a98b",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 727680,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRINGE GROVE. A tangible invented NATURE ecosystem revealed by fictional STRUCTURED-LIGHT SINUSOIDAL FRINGE PROJECTION PROFILOMETRY. Medium: clean optical laboratory exposure of neutral matte grey ORGANIC FORMS illuminated by ONE common projector casting about18 broad parallel BLACK-GREY-WHITE SINUSOIDAL LIGHT BANDS across each complete subject. The bands are an illumination signal: projected bright-white peaks, charcoal troughs and smooth grey transitions bend/compress/shift across leaf folds, bellies and curved wings as a measured-depth pattern. A common mostly vertical projector direction continues consistently across the form, displaced by its contours. There is no coloured body surface, glossy shine, metallic reflection or material grain. Soft neutral volume is present only to describe the tangible organism; high-contrast deformed light fringes are the unmistakable dominant visual language, legible at small size. Think a precise optical3D-scanning exposure, not a normal nature painting. The projected bands must NEVER be physical ribs, carved grooves, stacked sheets, concentric rings, bark texture, feathers, real zebra stripes, ink hatching, engraving, a print pattern, wireframe, rainbow interference, coloured registration, fluorescent fibres, heat map, speckled dots or X-ray anatomy. No luminous corona, fog, particles or surrounding beam. Complete natural structure has believable connections and strong silhouette, with open spaces through curled leaves/wings. Fictional artistic scan, not an actual measured experiment. No text, labels, scale bars, coordinates, numerals, clock faces, readings, graphs, logos or watermark. Subject: SILTWING MOTH: one complete invented woodland insect with a thick short central body and FOUR unequal broad softly lobed wings, arranged in a shallow banking flight. Each of the TWO largest wings has ONE large rounded slit opening near its trailing edge; small lower wings curve forward. Short curved antennae and SIX thick tucked legs, clear open negative gaps. A distinct mothlike animal with broad smooth continuous wing membranes, not ordinary butterfly spots, feathered bird, geometric fan or paper plane. Three-quarter diagonal view; all wing tips/antennae/legs whole. Asset: ONE separate square1024x1024 pure-art widget. Whole subject inside central75%canvas with generous completely empty margins, every root/leaf/wing/foot intact. True transparent alpha outside and through all open gaps. No rectangular backing, floor, ground, shadow, extra specimens, frame, panel, contact sheet, UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 652468
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.15259a17e276.png",
+      "sourceSha256": "15259a17e2769fa94eef3e996d164b835ffd447f66bb038b0fa125e544f6fe75",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "df1e47b2a6a58889c9a7c8f80e91a77aa182224226398ce186f0480989582bbb",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2181780,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRINGE GROVE. A tangible invented NATURE ecosystem revealed by fictional STRUCTURED-LIGHT SINUSOIDAL FRINGE PROJECTION PROFILOMETRY. Medium: clean optical laboratory exposure of neutral matte grey ORGANIC FORMS illuminated by ONE common projector casting about18 broad parallel BLACK-GREY-WHITE SINUSOIDAL LIGHT BANDS across each complete subject. The bands are an illumination signal: projected bright-white peaks, charcoal troughs and smooth grey transitions bend/compress/shift across leaf folds, bellies and curved wings as a measured-depth pattern. A common mostly vertical projector direction continues consistently across the form, displaced by its contours. There is no coloured body surface, glossy shine, metallic reflection or material grain. Soft neutral volume is present only to describe the tangible organism; high-contrast deformed light fringes are the unmistakable dominant visual language, legible at small size. Think a precise optical3D-scanning exposure, not a normal nature painting. The projected bands must NEVER be physical ribs, carved grooves, stacked sheets, concentric rings, bark texture, feathers, real zebra stripes, ink hatching, engraving, a print pattern, wireframe, rainbow interference, coloured registration, fluorescent fibres, heat map, speckled dots or X-ray anatomy. No luminous corona, fog, particles or surrounding beam. Complete natural structure has believable connections and strong silhouette, with open spaces through curled leaves/wings. Fictional artistic scan, not an actual measured experiment. No text, labels, scale bars, coordinates, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. Use five own artwork originals as identity references. ONE quiet natural woodland glade: braidroot sapling grows on a low bank, split-vane fern spreads by a shallow hollow, cupfold orchid blooms beside it, bell-leaf grazer feeds low between the plants and a SMALL siltwing moth banks just above the fern. Connected natural habitat, low quiet soil and a few smooth root curves, no buildings/roads/machines or extra organisms. All FIVE complete focal subjects must fit within horizontal10%to90%andvertical46%to77%ofcanvasheight. IMPORTANT upper43%remains featureless deep muted blue-teal, no moth/leaf there; bottom20%quiet dark ground. Keep moth small about20%imagewidth, all leaves/roots/antennae/legs/wings fully inside safe margins. Shared mostly vertical black-grey-white light fringes bend over all five forms and a little foreground soil; calm landscape may bleed at edges, primary organisms may not. No beam, fog, glowing sky or scenery distractions; no collage, labels, UI or frame.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "split-vane-fern",
+          "sourceImage": "sources/split-vane-fern.574544607c70.png",
+          "sha256": "574544607c70827d81727d395db8a77061d1a488413dbb399f81ef980813dfe5"
+        },
+        {
+          "id": "cupfold-orchid",
+          "sourceImage": "sources/cupfold-orchid.e5e7725add36.png",
+          "sha256": "e5e7725add3654f3e779ae128ce2bed8f8ac8e8b0d6e2b32a14022dc5fc37650"
+        },
+        {
+          "id": "braidroot-sapling",
+          "sourceImage": "sources/braidroot-sapling.545f55f43b83.png",
+          "sha256": "545f55f43b835b441dad6dd92043fb7d5085ab403641654bd20d7fa64aa0b4c4"
+        },
+        {
+          "id": "bell-leaf-grazer",
+          "sourceImage": "sources/bell-leaf-grazer.0b2a0f0b7a92.png",
+          "sha256": "0b2a0f0b7a92fbed935665fcb9227875fc1c072defe675795081837c85f7e744"
+        },
+        {
+          "id": "siltwing-moth",
+          "sourceImage": "sources/siltwing-moth.3c8aabe4ac98.png",
+          "sha256": "3c8aabe4ac98224fb34d09714c31c02589a2a9ec5c715ced9b2f4fd36a8a2368"
+        }
+      ],
+      "generationStages": "Five independent artwork generations; separately generated habitat wallpaper using five own original artwork identity references."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared requested tangible subjects and suitable small corner companions. Full artworks retain their space; a separate restrained native ornament serves the small headers."
+}

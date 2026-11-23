@@ -1,0 +1,18 @@
+{
+  "id": "tide-stair-inn",
+  "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject TIDE-STAIR INN: a tall strongly tapering guesthouse of FOUR OFFSET TERRACES climbing from lower-right to upper-left, crowned by a single sharply swept saffron roof. One complete exterior lavender SPIRAL STAIR wraps around the left side on narrow supports, visibly connecting each terrace; tiny simple ivory open-arch guest doors and low railings explain the inn. A small projecting boat-landing stair descends from the lowest terrace, no water/background. Top room narrow, bottom terrace broad, dramatic stepped triangular silhouette, open arcades in the two middle levels and small roofed lookout. Asymmetric vertical architecture, not a standard cottage/castle or ordinary object. Use the sand-pour material in all walls, stairs, roof and rails. Whole roof tip and all stairs fully visible with true empty alpha around.",
+  "tool": "built-in image_gen",
+  "source": "sources/tide-stair-inn.6b85d275.png",
+  "sourceSha256": "6b85d2752982024a9e2ef74c12c5584d31f1e26b2790ffa09e31adebe85f6f05",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/tide-stair-inn.adb594c8.png",
+  "sha256": "adb594c8b091542b1172ba91ea591f4a7bb9ac6d184d02b2bfb51cdf14c67cca",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

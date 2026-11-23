@@ -1,0 +1,56 @@
+{
+  "theme": {
+    "id": "durumfold-meadow",
+    "name": "Durumfold Meadow",
+    "packVersion": 1,
+    "minAppVersion": "1.0.44",
+    "artworks": [
+      "robin-twig",
+      "farfalle-butterfly",
+      "garden-snail",
+      "poppy-stems",
+      "sitting-hare"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1215392,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "globalCounts": {
+    "themes": 86,
+    "artworks": 430,
+    "nativePlans": 774
+  },
+  "scopedTests": {
+    "pass": 63,
+    "fail": 0,
+    "skip": 0
+  },
+  "fullCoreSuite": {
+    "pass": 2024,
+    "fail": 0,
+    "skip": 0,
+    "lastLocalCount": 83,
+    "unchangedRuntimeSinceThen": true,
+    "lastAllFiveGreenHead": "2c90cabec46bc206afbb8d42ce570e693efebad0"
+  },
+  "typechecks": "core and node pass at86",
+  "fiveSeparateWholeOriginals": true,
+  "actualAppSelectorAndNativePlanner": true,
+  "nativePlansChangeWithLiveInput": true,
+  "batteryNullZeroAndFull": true,
+  "roundedArtworkSolidSilhouettesRetained": true,
+  "actualCompactNativeStrokesRetainedInRoundedStress": true,
+  "compactPlacements": 4,
+  "minimumAppVersion": "1.0.44",
+  "todaySamePointSizeAsOrdinaryDates": true,
+  "calendarPointSizes": [
+    12,
+    19
+  ],
+  "equalityFixtureThemes": 301,
+  "allThreeEncodedPhoneCropsViewed": true,
+  "rendererSha256": "b449a47325934d5b060904b15cff3c8cf0cf1ea7b76d523a41ab096e84b47920",
+  "physicalDeviceTest": false,
+  "published": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "gecko-leaf",
+  "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. FIRST MATERIAL SAMPLE: one familiar natural mangrove gecko viewed from slightly above, crawling diagonally upper right across ONE complete narrow mangrove leaf. Natural slender tapering torso, modest head and small dark natural eyes, exactly FOUR coherent splayed legs with delicate adhesive toe pads, one long complete gently curling tail. All four feet/toes, snout and tail tip clearly separated and whole. No chibi toy face, jewels or costume. Make the broad dorsal torso show only about NINE LARGE RADIAL CANE CROSS-SECTIONS: coarse ivory-centered emerald/cobalt/honey star-flowers embedded THROUGH a continuous fused-glass body. Cross-sections appear as actual irregularly sheared rod ends fused flush, with thin clear casing and heat-rounded joins. On the curled tail and cut leaf lip, expose longitudinal parallel internal color stripes of those SAME composite glass canes, proving three-dimensional rod structure. Not a gecko wearing painted flowers or a mosaic of separate loose beads. Leaf likewise is one continuous fused-glass silhouette with coarse cane structure, no dangling disc chain.",
+  "transparent_background": true,
+  "source": "sources/gecko-leaf.704a800f.png",
+  "themeId": "caneveil-mangroves",
+  "sourceSha256": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "copiedOriginal": "sources/gecko-leaf.704a800f.png",
+  "preview": "qa/material-sample/approved-full-170-85-review.png",
+  "status": "Exact first gecko retained unchanged as selected production source after full17085 and actual nine-neighbor coordinator approval.",
+  "previewProcessing": "Whole source fitted to840px inside1024alpha canvas, shown with Fit6% geometry at540/170/85 and conservative rounded mask. No subject crop/recolour/paint; no actual full-pack/installed-device claim.",
+  "approval": "qa/material-sample/coordinator-material-approval.json"
+}

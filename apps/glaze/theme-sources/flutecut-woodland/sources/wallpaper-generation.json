@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Edit this exact Flutecut Woodland wallpaper to fix composition only. Preserve all five recognizable natural subjects and the hand-cut corrugated cardboard broad kraft panels, coarse wavy cut-edge flutes, torn liner fibres, sage/berry accents, pale aqua matte paper and coherent woodland arrangement. SHRINK THE ENTIRE COMPLETE WOODLAND GROUP TO 68 PERCENT OF ITS CURRENT SIZE, maintaining its own relative proportions and relationships. Recenter that smaller whole group horizontally and at 54 percent image height. ALL owl, oak twig, leaves, hedgehog, squirrel, tail, foxglove, fern, brambles, beetle and log must be entirely inside the CENTRAL 62 PERCENT OF IMAGE WIDTH, no subject outside x19 to81percent. Whole group between y37 and72percent. Extend the existing pale aqua blank paper naturally above, below and on both sides, leaving generous quiet upper32percent and bottom24percent. Every twig, leaf, tail, leg and flower intact, no cropping. Do not enlarge any animal, add plants or alter the artwork. No frame, text, logo, UI, clock/date/battery marks or new decoration. Opaque portrait wallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.401d7962.png",
+  "sourceSha256": "401d7962ad9be68c52e624e221797733d21f9f198dda538c170940bc8d91016e",
+  "sourceDimensions": [
+    941,
+    1671
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "d91332ce5b3500ab331baa52691baf2f5b79e3239a46e62e6defb871a3a2d486",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.eac226df.png",
+    "sha256": "eac226dfdd17eb4a89d72e25819b92abfc42bfc01054c3013469b1dedbb80cdb"
+  }
+}

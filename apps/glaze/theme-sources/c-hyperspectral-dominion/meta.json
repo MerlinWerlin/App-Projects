@@ -1,0 +1,16 @@
+{
+  "name": "Hyperspectral Dominion",
+  "mood": "Uncharted territories resolved as impossible spectral maps.",
+  "tags": [
+    "hyperspectral",
+    "cartography",
+    "remote-sensing",
+    "experimental"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native vector paths. Imaginary geographies.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data.",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}

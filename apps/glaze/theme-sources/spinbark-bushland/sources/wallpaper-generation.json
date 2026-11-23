@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "SPINBARK BUSHLAND, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect about0.4614. One coherent recognizable AUSTRALIAN EUCALYPTUS BUSHLAND EDGE handcrafted entirely from SOLID NATURAL WOOD turnedonlathe: substantialovoid/spindle/half-shellcomponents,3to5coarsecircumferentialparting/gougerings wrappingeachcomponentturningaxis, steppedshoulders/smallfittedtenons/circularendgraincutfaces andgrainchangesatjoints. Smoothmattewaxedcreamholly/maple/honeywood/russetredgum/darkwalnut, drypores/woodgrain, noshinyplastic/paint/enamel/resin/metal. Image1 ownkookaburra is bird/materialreference, Image2 ownechidna is animal/materialreference, Image3 owneucalyptusgumnuts is plant/materialreference. IntegrateintoONEnewunifiedcoherenthabitat, nocollage/panels. ONEwhole recognizable LAUGHING KOOKABURRA perchedmidRIGHT facinginwardLEFT onshortslopingbranch: largecreammaplehead/darkwalnuteyestripe/smallflushdarkwoodeye, longstoutstraightpointedconicalbill, creamovoidbreastwith3boldcurvedlathepartinggrooves, broadwalnutfoldedwingwithsteppedtoolgrooves, wholesolidrussettail, exactly2wholefeet/toesgripbranch. ONEwhole SHORT-BEAKED ECHIDNA walkslowerLEFT facinginwardRIGHT, longnarrowtubularpointedsnout/tinyeye/noexternalears, lowstockybody/4wholelegs/diggingclaws, about20latheturnedsolidtaperedwoodspindlespines each2or3coarsepartingrings, naturalcream/honey/russet/walnutfields, nothedgehog/fuzzyfur/pencilshavings. A tallslender EUCALYPTUS forkedbranch growsfromlowercenterandrisesbehindtowardupperLEFT, bearingTHREEwholewoodyGUMNUTCAPSULES andTHREElongnarrowlanceolateleaves atdifferentheights. Capsuleslatheturnedurns with3circumferentialgrooves/circularendgrainmouthrim/3smalltriangularvalvetipsinside, naturalthinbranchcollars, notemptyteacups. Leaveslongsplitturnedspindlehalf-shells, taperedwholepointswithfewcurvedtoolgrooves andlonggrain. Lowirregularasymmetricalbushgroundlip madeof2or3connectedwarmturnedwoodrootsections and2slendergrassblades connectscene, noovalpedestal/flatrectangularplaque/frame/enclosingarch/wreath. Entireorganisms/plants/rootliteralwoodcomponents, no realfur/feathers/skin/foliageunderneath, noflatveneer/openwoodlaths, paintedpencilshavings/woodwool, burntwooddrawings/paper/straw/huskpleats, metalguilloche ormetaldiscs. Coarsepartinggrooves/turnedprofileclearatsmallsize. Background quietUNIFORM DEEPTEAL #38504F withbarelyvisiblemattesofttexture, nophotographictrees/scenery/busywoodgrainbackground. SubstantialTALLcomposition extendsfromroughly24percentto82percentcanvasheight and80to84percentWIDTH. ImportantquietUPPER22percent andquietLOWER18percent: ALLlowestroot/grass/echidnaclaw/tail/branchendtip at orABOVE82percentheight. EVERYoutermostbill/tail/foot/spine/gumnutlip/valve/leafpoint/rootpoint at least8to10percentinfromSIDEedges; noforegoundtouchesimageedge. Whole2kookafeet/bill/tail, echidna4legs/longsnout/allspinetips,3gumnuts/lips/valves/3leaves/branchends andgrass/rootlipends completelyretained. No tinysceneinexcessiveemptyborder andnogiantscroppedanimal. Softdiffusesidelightrevealswoodpores/annulartoolgrooves/endgrain, no externalcastshadow/halo/glow. Noletters/numbers/text, dates/time/clockfaces/battery/weatherreadings, UI/phonemockup/logo/signature. Deliveronlyfinishedcoherentverytallwallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.cdec5363.png",
+  "sourceSha256": "cdec5363812cedf0c64f54a13b7c29a4d71f6ba52466855baa2e00bd35798f9b",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "43ed362845542eba192651e3d1458ec4393c7a358defaace5067fc746b37ab54",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "laughing-kookaburra",
+      "file": "sources/laughing-kookaburra.1310a212.png",
+      "sha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "shortbeaked-echidna",
+      "file": "sources/shortbeaked-echidna.52b7a3f7.png",
+      "sha256": "52b7a3f736036b532dcba6a69e8c021cb4927d4dc1959cc512564b42428034a3",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "eucalyptus-gumnuts",
+      "file": "sources/eucalyptus-gumnuts.84a44c29.png",
+      "sha256": "84a44c294a98cc8695204e17a2e11e3331d861b3eef3a6154d63ffd312cae322",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

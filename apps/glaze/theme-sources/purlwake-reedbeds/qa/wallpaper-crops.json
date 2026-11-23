@@ -1,0 +1,34 @@
+{
+  "themeId": "purlwake-reedbeds",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.30339c37.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "30339c3701c066462eb67a5b7223995b7973dbc443e11e059e6fac81526dd251",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.346b24b4.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "346b24b4c8325394a8eb435bb11a181c957c29f80a25e558bdd917ebaf2acfce",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.661b0c5a.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "661b0c5a6198cdd7fd3416ea701dcbdbb2710e07eb18e98e76fb5b3c8916da16",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Passed all three actual encoded phone crops: complete five-subject gilt-purl reedbed, all ears/tails/paws/bills/crests/toes/fins/wings/antennae/petals/reed tips whole, broad quiet plum sides and lower/upper areas. Uniform layout-only pullback preserves original, exact requests and initial approved-vole/selected-repaired-grebe reference lineage."
+}

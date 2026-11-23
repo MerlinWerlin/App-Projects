@@ -1,0 +1,18 @@
+{
+  "id": "tectonic-envelope",
+  "prompt": "One separate original square 1024x1024 production artwork for COPPER SELVEDGE, handwoven METAL TEXTILE relief. Subject: a TECTONIC ENVELOPE, a jagged low hexagonal fragment of woven copper terrain that is split through the middle into two accordion-folded ridges, revealing an oxidised turquoise inner chasm whose woven threads bridge the gap diagonally. Distinct broad angular diamond silhouette viewed nearly top down, no dangling waterfall. The entire impossible landform is literally warp-and-weft: narrow annealed copper ribbons interlace over-under with verdigris metal filaments, each topographic plane bends as woven sheet, loose selvedge fringe at only two broken corners, hammered edges and tiny tooling scratches. Rich warm copper #CE8657 with turquoise #65BAA9 and deep dark-green shadows. Tactile museum craft photography, low grazing light, shallow bas-relief, readable bold silhouette. Whole subject isolated in central 65% with 18% empty transparent alpha margins. No flat square backing plate, no floor/pedestal, no paper, wood or cloth, no everyday object or animal. No text, numerals, writing, logo, border, UI, clocks, batteries, dates or other live-value imagery. ONE artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/tectonic-envelope.50ac53cc.png",
+  "sourceSha256": "50ac53cceb2ef48fc2f51a2aa8eb826045c8e601e4061262111a38fd9035ef51",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/tectonic-envelope.0af1aeee.png",
+  "sha256": "0af1aeee1d829978e7a55599c16687bf877cc0123e4e82c222e47ecbc78f0d0e",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,46 @@
+{
+  "theme": {
+    "id": "rimebranch-tundra",
+    "name": "Rimebranch Tundra",
+    "packVersion": 1,
+    "minAppVersion": "1.0.44",
+    "artworks": [
+      "ptarmigan-willow",
+      "arctic-hare",
+      "muskox",
+      "arctic-poppy",
+      "dwarf-willow"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1309180,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "globalCounts": {
+    "themes": 72,
+    "artworks": 360,
+    "nativePlans": 648
+  },
+  "scopedTests": {
+    "pass": 63,
+    "fail": 0,
+    "skip": 0
+  },
+  "fullCoreTests": {
+    "pass": 2024,
+    "fail": 0,
+    "skip": 0
+  },
+  "typechecks": "core and node pass",
+  "fiveArtworksSeparateOriginals": true,
+  "nativePlansRealAndChanging": true,
+  "batteryNullZeroAndFull": true,
+  "roundedArtworkCoreSilhouettesRetained": true,
+  "actualNativeCompanionsRetainedInRoundedStress": true,
+  "compactPlacements": 4,
+  "largeHeroLayoutsByteIdenticalWithAndWithoutCompanion": 5,
+  "minimumAppVersion": "1.0.44",
+  "previewRendererSha256": "d222a8f3b5322b3787769d9fde15f5aec22782433bed9c376b6665e8b8c493c7",
+  "physicalDeviceTest": false,
+  "published": false
+}

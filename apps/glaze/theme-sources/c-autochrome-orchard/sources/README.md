@@ -1,0 +1,1 @@
+Six selected unmodified built-in image outputs: five distinct real nature artworks and final own-reference orchard habitat wallpaper. Exact generation prompts, raw dimensions, hashes and reference lineage in provenance.json. Any unselected studies remain outside selected sources. No external or neighbor image inputs.

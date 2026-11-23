@@ -1,0 +1,159 @@
+{
+  "theme": "pellicle-shoal",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Wet bacterial-cellulose-inspired fibrous membrane sculpture macro photography",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "seadragon",
+      "label": "Leafy Sea Dragon",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL: a fictional sea organism sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES, thin cloudy translucent bio-fibre membranes. Convincing physical macro photography. Very thin naturally wrinkled amber/tea/ivory laminae, densely visible fine cellulose fibrils, irregular torn fibrous edges, softer doubled opaque fold lips, little water beads caught only at seams. Light passes diffusely through cloudy fibre, with overlapping folds and visibly loose membrane sections. No smooth solid core, no glass, polished resin, clear jelly candy, gelatin, plastic, fabric weave, paper quilling, metal, wood or ordinary animal skin. Use light warm amber and pale oyster fibres on true alpha. SUBJECT: one complete alert LEAFY SEA DRAGON floating upright in a gentle S posture. Long narrow curled snout, tiny dark eye, fine ridged flexible neck, broad delicate leaf-shaped flaps branching from head/back/belly and tail; those flaps are translucent thin torn cellulose sheets with clear fibrils and stronger thick fold ribs, with genuine see-through gaps between them. Two small delicate pectoral fins, long curling tapering tail fully visible. The creature must read immediately as a real coherent sea-dragon silhouette, not a random abstract sheet or flower. Entire subject and every flap/tail tip comfortably within central70% of canvas, generous truly empty transparent margins on all sides. No underwater scenery, external bubbles or glow, floor, cast shadow, opaque backing panel, frame, text, numerals, clock/battery/calendar or UI. One subject only, no sheet/collage. Retain clear silhouettes at85px.",
+      "source": "sources/seadragon.8b72684483bd.png",
+      "sourceSha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/seadragon.5743037c00cf.png",
+      "sha256": "5743037c00cf5464f7d4664b66d2c76c77d23f20960e56f224e4e1bf6a92dae2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits."
+    },
+    {
+      "id": "dumbo-octopus",
+      "label": "Dumbo Octopus",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL, fictional sea organisms sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES. Our own reference sea-dragon supplies only the physical material and soft lighting; create a different subject. Very thin cloudy translucent amber/tea/ivory bio-fibre membranes, densely visible fine cellulose fibrils, irregular torn fibrous edges, doubled opaque fold lips and a few water beads at seams. Diffuse light through cloudy fibre with loose folded laminae and genuine gaps, convincing macro craft photograph. No smooth solid core, glass, glossy resin, gelatin candy, plastic, ordinary animal skin, woven fabric, wood shavings, paper quilling, metal or thread. Entire subject inside central70% with generous true transparent margins; every projecting arm, fin or tail whole. No environment, exterior glow, external bubbles, floor, cast shadow, backing panel, frame, typography, UI or clock/battery/calendar symbols. One readable singular silhouette at85px, no sheet/collage. SUBJECT: one complete DUMBO OCTOPUS, floating front three-quarter view, with a broad rounded but softly folded mantle made of overlapping thin cloudy cellulose, TWO clear large ear-like fins extending sideways, two tiny recessed dark eyes and EIGHT distinct gently curled short arms. A thin ruffled web connects the upper portions of the eight arms but their separate tips remain clearly visible around the lower silhouette. Folded thick opaque ridges define the mantle, with thinner translucent panels between them and tiny fibrils across each film. No extra eyes or faces, no tentacle bouquet, no seahorse or shell.",
+      "source": "sources/dumbo-octopus.61c5efbb98f5.png",
+      "sourceSha256": "61c5efbb98f590cb4df4790fb8c406f6599865989a3dff997009021e1a71c415",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dumbo-octopus.38025fb8725d.png",
+      "sha256": "38025fb8725d7a6f6f2f8aa708ef43eb9eaf0734239a72a0cc46fc9001a65e8f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/seadragon.8b72684483bd.png",
+          "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+          "purpose": "Own first artwork supplies wet fibrous membrane material and lighting only; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "chambered-argonaut",
+      "label": "Chambered Argonaut",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL, fictional sea organisms sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES. Our own reference sea-dragon supplies only the physical material and soft lighting; create a different subject. Very thin cloudy translucent amber/tea/ivory bio-fibre membranes, densely visible fine cellulose fibrils, irregular torn fibrous edges, doubled opaque fold lips and a few water beads at seams. Diffuse light through cloudy fibre with loose folded laminae and genuine gaps, convincing macro craft photograph. No smooth solid core, glass, glossy resin, gelatin candy, plastic, ordinary animal skin, woven fabric, wood shavings, paper quilling, metal or thread. Entire subject inside central70% with generous true transparent margins; every projecting arm, fin or tail whole. No environment, exterior glow, external bubbles, floor, cast shadow, backing panel, frame, typography, UI or clock/battery/calendar symbols. One readable singular silhouette at85px, no sheet/collage. SUBJECT: one complete CHAMBERED ARGONAUT, a living small octopus curled within one broad thin ribbed bowl-like nautiloid shell. The shell is entirely cloudy ivory cellulose pellicle, gently translucent, with a single elegant open coil silhouette and strong radiating crumpled fold ribs, open lip facing left. A small amber soft head and two tiny dark eyes peek from that lip; a handful of delicate slender curling arms and TWO broader membranous paddle-arms extend gently around the rim. The thin shell is a visibly fibrous wet sheet folded into a shell, not smooth calcite or glass, not concentric paper-quilling rolls. Keep the open shell lip and individual arms clear. No sea-dragon or broad elephant ears.",
+      "source": "sources/chambered-argonaut.5b45711aec0b.png",
+      "sourceSha256": "5b45711aec0b4e8590a81e299ff23221d95ed3b7a7c0b8beea4ccd800db0c6d1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/chambered-argonaut.3a936d1d6d11.png",
+      "sha256": "3a936d1d6d11ed251deb34089fbaf5b91d795702bf46e87b32c4c172b68f4acc",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/seadragon.8b72684483bd.png",
+          "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+          "purpose": "Own first artwork supplies wet fibrous membrane material and lighting only; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "sailfin-ray",
+      "label": "Sailfin Ray",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL, fictional sea organisms sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES. Our own reference sea-dragon supplies only the physical material and soft lighting; create a different subject. Very thin cloudy translucent amber/tea/ivory bio-fibre membranes, densely visible fine cellulose fibrils, irregular torn fibrous edges, doubled opaque fold lips and a few water beads at seams. Diffuse light through cloudy fibre with loose folded laminae and genuine gaps, convincing macro craft photograph. No smooth solid core, glass, glossy resin, gelatin candy, plastic, ordinary animal skin, woven fabric, wood shavings, paper quilling, metal or thread. Entire subject inside central70% with generous true transparent margins; every projecting arm, fin or tail whole. No environment, exterior glow, external bubbles, floor, cast shadow, backing panel, frame, typography, UI or clock/battery/calendar symbols. One readable singular silhouette at85px, no sheet/collage. SUBJECT: one whole SAILFIN RAY seen in a gently tilted three-quarter overhead view. Broad diamond-shaped paired pectoral wings, small rounded central head with two tiny dark eyes and a low central ridge, one long slender curling tail extending below and around right. The left and right wings are broad open wet cellulose sails with visibly cloudy fibrous thin panels, crumpled radiating fold ribs, irregular softly fringed edges and slightly raised tips. Main body narrow and folded, not a smooth solid stingray model. No extra fins, not a bat; no seahorse, shell or elephant ears. Keep both wing tips and the complete long tail comfortably inside generous transparent margins.",
+      "source": "sources/sailfin-ray.3a9d135cc161.png",
+      "sourceSha256": "3a9d135cc16117f775ebbb02cc0433e1808405c8e2aa7fd05fc66737c28f7e6e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/sailfin-ray.aa94b502aa5a.png",
+      "sha256": "aa94b502aa5ae28bce4db0e526f52fbc4ad8eea14b622df49f0c488ff0498661",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/seadragon.8b72684483bd.png",
+          "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+          "purpose": "Own first artwork supplies wet fibrous membrane material and lighting only; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "ribbon-flatworm",
+      "label": "Ribbon Flatworm",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL, fictional sea organisms sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES. Our own reference sea-dragon supplies only the physical material and soft lighting; create a different subject. Very thin cloudy translucent amber/tea/ivory bio-fibre membranes, densely visible fine cellulose fibrils, irregular torn fibrous edges, doubled opaque fold lips and a few water beads at seams. Diffuse light through cloudy fibre with loose folded laminae and genuine gaps, convincing macro craft photograph. No smooth solid core, glass, glossy resin, gelatin candy, plastic, ordinary animal skin, woven fabric, wood shavings, paper quilling, metal or thread. Entire subject inside central70% with generous true transparent margins; every projecting arm, fin or tail whole. No environment, exterior glow, external bubbles, floor, cast shadow, backing panel, frame, typography, UI or clock/battery/calendar symbols. One readable singular silhouette at85px, no sheet/collage. SUBJECT: one whole broad RIBBON FLATWORM gliding in an elegant low horizontal S with a wide undulating ruffled mantle and two small curled ear-like head folds at left. A single continuous amber/ivory fibrous cellulose ribbon, with thin translucent side flounces and thicker doubled pale fold lips, changing from a broad flat head region into a gently tapering folded tail at right. Side flounces wave in three or four large distinctive curls, not dozens of tentacles. A slightly raised longitudinal soft fold traces the back. No eyes drawn on top, no vertebrate face, shell, fins or legs. Show the entire continuous body and both head folds with comfortable transparent margin, no clipped ribbon ends.",
+      "source": "sources/ribbon-flatworm.1c5bb3fdd726.png",
+      "sourceSha256": "1c5bb3fdd7260ab0f4b123baa4f84c822d222bcec46296932d5ebab85ba28f4f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ribbon-flatworm.e85cfe171f8f.png",
+      "sha256": "e85cfe171f8fbffc33249beb5f1811c850c8c5fc55e96461cc5a10159f170c69",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/seadragon.8b72684483bd.png",
+          "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+          "purpose": "Own first artwork supplies wet fibrous membrane material and lighting only; distinct new subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: precise-object-edit. LAYOUT-ONLY breathing-room edit of our own PELLICLE SHOAL habitat. Preserve exactly these FIVE organisms, every identity, pose, anatomy, cloudy translucent amber/ivory wet-cellulose membrane, visible bio-fibre texture, torn fold lips and seam beads. Preserve relative arrangement: sea-dragon behind left, whole broad-winged ray behind right, octopus centre, argonaut low-left, ribbon flatworm low-right. Keep all five and only five. Uniformly REDUCE the entire five-subject gathering to76% of its current scale; centre it horizontally and arrange the whole reduced gathering a little lower, with topmost sea-dragon leaf and ray wing no higher than42% of image height, lowest shell lip/tentacle/tail no lower than75%. Extend the SAME quiet plum-slate water and low pale cellulose reef around it. Entire gathering must fit within central74% width, leaving at least13% completely quiet water at BOTH sides, and25% quiet ground/water below every body part. All arm tips, frills, ray wings/long tail, argonaut shell lip and dragon leaves/tail remain fully whole. These are framing changes only: do not redesign, smooth, recolour, regrow or remove any form. Maintain same tactile physical material, diffuse lighting and coherent depth. Upper40% quiet plum-slate water, no added objects or foreground growth. No panels, added borders, blank bands, collage, text, UI, new animals, new faces or opaque boxes. Continuous full-bleed opaque portrait phone wallpaper. The centred shorter phone crop removing9% of top/bottom must still show all five forms comfortably inside its edges.",
+      "source": "sources/wallpaper.3724f5a64a73.png",
+      "sourceSha256": "3724f5a64a7369733e408a22f6c52a95ebe814aefe68707003066dd4ae5c0951",
+      "sourceDimensions": [
+        759,
+        2071
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "37f32c80c20cd63ebcbcf983b62db2c4082298bfeb5ee614c9130508486022a9",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own layout-only habitat pullback, then central aspect export at1290x2796. All five independent artworks/native subject unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-wallpaper.4bc5e13afa05.png",
+          "sha256": "4bc5e13afa05cd567b6abf15f44054715ad078bb2e9b6a162dbae36d93ab68e9",
+          "purpose": "Own separately generated habitat; layout-only breathing-room edit."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

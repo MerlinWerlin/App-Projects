@@ -1,0 +1,8 @@
+{
+  "status": "accepted by coordinator actual material gate",
+  "sourceSha256": "c05f96782984fac2ba2a6542a3a5624b04dc3f0c0c0821927f3b8fe6e0253fa7",
+  "selectedSource": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-b77fd77c-0fa1-4f9e-8ceb-22570e38208e.png",
+  "coordinatorThread": "01a1d970-a578-73a0-914a-c0fe7c9e031e",
+  "verbatimVerdict": "B40 c05f9678 material sample ACCEPTED UNCHANGED after full170/85 and actual neighbor review: retain broad solid laths, true open triangular cells, visible lap notches/endgrain. Expand remaining4/WP with that own first reference only.",
+  "scope": "Coordinator material review, never Jared approval. First source frozen unchanged; four new separate generations use only own accepted first as material reference."
+}

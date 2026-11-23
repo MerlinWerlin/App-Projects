@@ -1,0 +1,100 @@
+{
+  "review": "All five original1254-square leaf carriers and pictured wildlife viewed full/170/85. Alpha16/96 bounds all strictly inside raw frame; some original lobe/twig/petiole margins are tight5to17px, reported honestly. Entire originals uniformly contained900within1024 RGBA to provide final margins, preserving every original endpoint and alpha without crop/stretch/creative code edits or alpha cleanup. Raw frame alpha maxima1to2 are faint export fringes, not visible halo. Original fig/robin source SHA unchanged from accepted prototype.",
+  "assets": [
+    {
+      "id": "fig-leaf-robin",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          56,
+          10,
+          1199,
+          1237
+        ],
+        "96": [
+          56,
+          11,
+          1199,
+          1236
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "nasturtium-frog",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          79,
+          32,
+          1183,
+          1232
+        ],
+        "96": [
+          79,
+          32,
+          1183,
+          1231
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "linden-sprig-squirrel",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          76,
+          5,
+          1173,
+          1248
+        ],
+        "96": [
+          77,
+          6,
+          1173,
+          1247
+        ]
+      },
+      "edgeAlphaMaximum": 2,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "curled-hosta-snail",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          41,
+          55,
+          1206,
+          1212
+        ],
+        "96": [
+          41,
+          56,
+          1206,
+          1211
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "ginkgo-pair-butterfly",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          17,
+          91,
+          1230,
+          1223
+        ],
+        "96": [
+          17,
+          92,
+          1229,
+          1222
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

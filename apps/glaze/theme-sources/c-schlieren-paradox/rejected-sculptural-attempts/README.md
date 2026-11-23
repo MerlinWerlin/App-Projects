@@ -1,0 +1,1 @@
+Rejected first wallpaper and two specimen attempts: they resemble metallic coil sculpture instead of flat optical density-gradient imagery. Original PNGs, prompts and hashes retained; none selected in the final pack.

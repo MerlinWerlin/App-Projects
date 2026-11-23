@@ -1,0 +1,26 @@
+{
+  "id": "poppy-stems",
+  "label": "Shell Poppies",
+  "tool": "built-in image_gen",
+  "prompt": "ONE completely NEW independent Glaze Nature artwork for DURUMFOLD MEADOW. Our OWN accepted robin reference supplies ONLY discrete UNCOOKED TRICOLOUR DURUM PASTA construction, surface grain and palette; never copy its bird, twig or composition. Build the described whole familiar natural subject entirely from a FEW recognizable separate matte hard dry golden semolina, muted TOMATO-RED and SPINACH-GREEN PASTA PIECES: curved grooved conchiglie shell cups, rimmed orecchiette, genuinely hollow bevel-cut penne, pinched scalloped farfalle, fusilli/cavatappi and thin bent bucatini. Clear physical assembly seams; fine starchy semolina grain and broad shell grooves must survive85px. Restrained macro miniature photography, believable coherent body support. Not real feathers/fur/skin/wing membrane beneath food decorations, not generic soft dough/clay/marzipan, wax, orange peel, satin, wood, corrugated paper/card flutes, plush, cooked wet pasta or sauce. NO plate/bowl/cutlery, food pile, packaging/brand, kitchen, human hands, backdrop rectangle, display pedestal, floor/cast shadow, glow/halo, text, labels, numbers, clock/date/battery/UI or mockup. Whole subject centered in CENTRAL66percent square width/height with all tips WHOLE and at least15percent quiet TRUE TRANSPARENT alpha outer margins and real open gaps. Original artistic dry-pasta sculpture interpretation, no actual handmade-object claim. ONE complete small familiar FIELD POPPY plant with TWO red blooms on gently bowed green bucatini stems: one open flower with exactlyFOUR broad overlapping TOMATO-RED conchiglie shell-pasta petals surrounding a compact tiny dark toasted-pasta center; the second partly side-facing four-petal bloom, plus ONE closed green shell-pasta bud. Broad dry-shell grooves and rims remain obvious, no realistic tissue or paper petals. Two complete modest SPINACH-GREEN deeply lobed leaves assembled from small scalloped farfalle pieces and a short whole stem base. All petal tips, bud, leaf lobes and stem ends whole. Keep stems open, no dense bouquet, pot, ground or plaque.",
+  "source": "sources/poppy-stems.7439963480c1.png",
+  "sourceSha256": "7439963480c103ec733a33ab3cd08178581aa277b143907d741d1cfabf779839",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/poppy-stems.fcfe266a.png",
+  "sha256": "fcfe266a0a84cd8078ab2187ddb25a6fb4ad936b0336ef70c05dff363359cfe2",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+  "references": [
+    {
+      "file": "sources/robin-twig.deab67584264.png",
+      "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+      "purpose": "Own accepted robin supplies discrete dry-pasta material only; independent different natural subject."
+    }
+  ]
+}

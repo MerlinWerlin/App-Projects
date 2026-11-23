@@ -1,0 +1,119 @@
+{
+  "theme": "gyotaku-slipstream",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Direct ink-rubbed marine specimen impressions, transferred scale/scute ridges, fin-ray comb traces, dry print skips and fibrous pressure edges",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1290x2796 tall portrait Nature phone wallpaper: an airy coherent MARINE INK-IMPRESSION PANORAMA across one gently curving band of sparse seagrass. Five recognisable natural organisms: a long flyingfish with two wide pectoral fin fans upper-left, a broad lionfish with a tall radial crown of dorsal spines upper-right, a round puffer with short fins and tiny prickles lower-left beside one small spiral shell, a low horseshoe crab with complete long tapered telson beside tidegrass lower-centre, and one elongated squid at right with triangular fins/short arm crown/two long curved tentacles. Preserve clear natural anatomy, no invented machines/hybrids. Physical DIRECT INK-RUBBED SPECIMEN IMPRESSION PRINT: natural scale/scute ridge transfers, comb-like fin-ray ink traces, dry contact skips, broken pressure edges, small ink pools and paper fibres, dry Prussian-blue #173B4B ink dominant with a few tiny muted vermilion #B65B48 contact accents. Not brush-painted watercolor, warm plant-pigment sun-print silhouettes, mezzotint crosshatch, technical cyanotype lines, X-ray skeletons or glossy3Danimals. Quiet warm ivory fibrous paper #E2D9BC ground for dark phone icons. ENTIRE COMPLETE MARINE GROUP confined inside CENTRAL60%WIDTH andBETWEEN36%AND72%HEIGHT, including all fins/spines/tails/tentacles and seagrass ends. Upper33% and bottom24% completely quiet matching paper. Very small central natural print band with open unprinted spaces, no enclosing frame/rectangle/backing panel or5separate tiles/contact-sheet layout. No underwater photographic scenery, sea floor/border, calligraphy/stamps/seals/signatures, typography/letters/numbers/labels/measurement marks, clocks/date/battery/weather values, UI or logos. Wholly original image; no external specimen image inputs.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.1cd32b5e.png",
+      "sourceSha256": "1cd32b5eb012d358bc532a33ac63c58881575e7a5c12eac3749ec5a3d0cde485",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "395dafc86221fff95eb6a26c4d5c719004727d4a3f0c3bbff2fcfac89651534a",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "flyingfish-surge",
+      "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject FLYINGFISH SURGE, FIRST PRINT-MATERIAL SAMPLE: one natural FLYING FISH seen in a gentle three-quarter side profile, long slender body curves diagonally upward right, small natural head and one plain dark printed eye, deep FORKED TAIL far lower left. TWO exceptionally broad PECTORAL FINS fan outward at different angles like open triangular wings, one wide upper-left and one narrower lower-right, plus two tiny lower fins, each fin consists of many individual parallel transferred FIN-RAY INK TRACES with actual unprinted alpha spaces between rays. Body clearly shows patchy paired natural SCALE-RIDGE TRANSFER IMPRESSIONS and dry rubbed print skips, dark blue ink density from pressure, ragged broken edge, no continuous clean outlined vector fish or engraved hatchwork. No bones/X-ray skeleton visible, no brush-swept watercolor shading, no3Dwetfish/photo. A SINGLE short curved eelgrass ink impression lies well below the body, separate and sparse, no water scenery or splashes. Tiny vermilion accent only on one fin edge. Pure printed INK MARKS with unprinted areas truly transparent, NO ivory paper fill/backing/halo. Whole fish, BOTH fin tips, forked tail tips and eelgrass ends safely contained central64% with18% or more transparent margin. No stamps/seals/calligraphy, measurement marks, labels, typography or signature. No external specimen reference inputs, wholly original image.",
+      "tool": "built-in image_gen",
+      "source": "sources/flyingfish-surge.71b64d8d.png",
+      "sourceSha256": "71b64d8dc65370a883ce17046669ef4d5cc425f921dc48ac78a6e39d5193c2d3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/flyingfish-surge.d1002423.png",
+      "sha256": "d10024236cafa216953090d8c0c117b6e4640bd61fd14f9919c15c7786c55a7f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "lionfish-fan",
+      "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject LIONFISH FAN: one natural LIONFISH in broad three-quarter side profile faces LEFT, short deep body covered in uneven vertical SKIN-RIDGE INK TRANSFER BANDS, small plain dark printed eye, natural mouth and no jewel/cartoonface. Above it a spectacular tall semicircular crown of LONG DORSAL SPINES radiates at unequal angles, each spine a dry pressure-transferred ink trace with broken printed edges; two broad PECTORAL FIN FANS spread down-left and down-right with thin comb-like fin-ray impressions and unprinted alpha between rays. Short fan tail projects right. This must read as a direct rubbed specimen impression with strong dry skips/scale texture, not engraved crosshatch, X-ray bones or softly watercolor-modelled3Dfish. Dark Prussian blue ink only with one tiny vermilion mark at a fin base. Compact high spiky radial silhouette contrasting long flyingfish wings, no shell/plant/scenery or backdrop. Complete every dorsal spine, both pectoral fan tips, tail and mouth central and contained with at least18% actual transparent margins, all unprinted spaces truly alpha.",
+      "tool": "built-in image_gen",
+      "source": "sources/lionfish-fan.4b427260.png",
+      "sourceSha256": "4b427260fffa292438e076da413bbb646d71f1fc126db87dd7dbf808c326eeaa",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/lionfish-fan.d1172aa0.png",
+      "sha256": "d1172aa0a2dd486463b24d3e7174a49d8d597d52784339f15838838c860891c3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "puffer-shellcurl",
+      "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject PUFFER SHELLCURL: one natural inflated PUFFERFISH in slightly oblique side profile faces right, round compact body, small natural snout with one simple dark printed eye, one short fan tail left, two tiny side fins and a low dorsal fin. Surface made of many tiny irregular PRICKLE AND SCALE-POINT INK IMPRESSIONS around a broken dry perimeter, a patch of dense directly transferred skin texture low left and large irregular unprinted alpha skips elsewhere; natural print-pressure pattern, NOT soft watercolor shading, stippled3Dball, engraved mathematical dots or X-ray bones. One small SPIRAL GASTROPOD SHELL IMPRESSION curves below-left, its whorl ridges rubbed in broken ink segments, not literal porcelain. Ink Prussian blue with one tiny muted vermilion dry mark near one fin. Strong broad rounded fish and little spiral shape, completely different silhouette from long flyingfish or tall spiky lionfish. All prickles, fin/tail tips, muzzle and shell whorl complete and inside generous true alpha margins. No paper fill/backing/scenery/frame/halo, only ink and real unprinted gaps.",
+      "tool": "built-in image_gen",
+      "source": "sources/puffer-shellcurl.02ef92a8.png",
+      "sourceSha256": "02ef92a8a715725928b21c914e372e9f06ec37b5616636bdbd0949b01e3f65c5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/puffer-shellcurl.0e05bab6.png",
+      "sha256": "0e05bab647f7aef6f0380f12125e8b70fb4522eede82f03d175bbf146b0cd07e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "horseshoe-tidegrass",
+      "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject HORSESHOE TIDEGRASS: one recognisable natural HORSESHOE CRAB seen from a slightly tilted top/side view. Broad gently domed HORSESHOE SHIELD faces lower-left, clear curved front rim, two small natural printed eye spots, rear hinged abdominal section with paired short side spines and one very LONG TAPERED STRAIGHT TELSON pointing upper-right. Several coherent jointed walking legs are partly visible beneath near shield rim, far legs naturally occluded, no human/cartoonface. Shield/abdomen are direct rubbed SCUTE-RIDGE INK TRANSFER, curved broken pressure traces, dry skips and irregular ink contact patches, NOT smooth watercolor modelling, engraved technical linework or X-ray skeleton. TWO sparse long TIDEGRASS BLADES curve up-left beside shell, subtle natural stem impressions, no scenery or water rectangle. Prussian-blue ink and tiny vermilion accent near hinge only. Broad low shield plus long diagonal tail silhouette unlike round puffer or fin-fanned fish. Whole telson, shield rim, all visible legs/spines and both grass tips contained with generous true alpha margins; only ink/unprinted alpha, no pale fill/backing/halo.",
+      "tool": "built-in image_gen",
+      "source": "sources/horseshoe-tidegrass.d825720c.png",
+      "sourceSha256": "d825720cf617fa0bf82b3e640ea48864d5411c4565b6cfca2dde7ffd93ca3ce1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/horseshoe-tidegrass.9e24dce5.png",
+      "sha256": "9e24dce58b701a49237f313738097fc42318af5409e05781bc9f49b8c2f17b17",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "squid-ribbon",
+      "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject SQUID RIBBON: one recognisable natural SQUID oriented vertically but gently leaning LEFT, elongated tapered mantle uppermost with TWO triangular side fins, small coherent head below mantle with one simple dark printed eye, a compact crown of short curling arms and TWO much longer feeding tentacles sweeping down-right in an open loose S. Natural soft-body silhouette, not octopus/bellflower/alien, no cartoonface. Mantle has dry directly transferred fine SKIN-CONTACT MOTTLES and irregular pressure skip patches, fins show thin combed FIN-RAY-LIKE CONTACT TRACES, arm/tentacle underside has a few broken SUCKER-RIDGE INK TRACES, all uneven print transfer, NOT soft watercolor volume shading or X-ray skeleton/engraved technical hatch. Prussian-blue ink with one tiny vermilion dry accent at fin base. A vertical ribbon-like silhouette and open curling arm negative spaces very different from winged fish, radial lionfish, round puffer or shield crab. Every mantle fin tip, short arm end and BOTH long tentacle tips must be complete and contained central64% with generous actual alpha margins, no clipped curls. No plant/ground/scenery/backing/pale fill/halo, only printed ink and true transparent unprinted gaps.",
+      "tool": "built-in image_gen",
+      "source": "sources/squid-ribbon.5af58b1a.png",
+      "sourceSha256": "5af58b1a5d29c1ea579865bcedeba59bef8f5ee64688c7c856abd0570f26c269",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/squid-ribbon.88d4003c.png",
+      "sha256": "88d4003c529efbfa768ffe88016077f7688fbd3bd57a7098a98d2de5ff75eb20",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

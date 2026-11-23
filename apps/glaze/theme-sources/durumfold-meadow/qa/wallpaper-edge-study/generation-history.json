@@ -1,0 +1,54 @@
+{
+  "stages": [
+    {
+      "stage": "wallpaper",
+      "file": "qa/wallpaper-edge-study/initial-scene.76c91ef1d561.png",
+      "sha256": "76c91ef1d56181fcfff7f3f5c57866c66ba4903d5a20d64985f714037b890ede",
+      "prompt": "Create ONE coherent original DURUMFOLD MEADOW PHONE WALLPAPER from the FIVE OWN reference artworks. Recompose one connected tall small meadow habitat, not five pasted stickers. Every animal/plant is physically assembled from a few discrete UNCOOKED TRICOLOUR DURUM PASTA PIECES: hard matte golden semolina grain, tomato-red and spinach-green broad grooved conchiglie shells, rimmed orecchiette cups, truly hollow penne ends, scalloped pinched farfalle and thin bent bucatini stems. Preserve the charming recognizable natural anatomy/material of the references; five standalone originals stay unchanged. Whole golden/red/green robin with TWO complete gripping feet perches at midleft on one open green pasta-grass stalk; a whole long-eared hare with FOUR coherent paws sits lower-right; a whole coiled shell-pasta garden snail with FOUR feelers rests lower-left; TWO tall red four-petal shell poppies and one bud rise through the center; one complete four-wing red/green farfalle butterfly with two antennae hovers in a clear upper-right gap. A few short grooved green pasta leaves/stalks make an irregular open natural meadow base, no plate/plaque/oval tray. All forms distinct and whole, a substantial upright habitat with real vertical presence, fine dry-pasta seams and broad visible grooves, restrained tangible miniature lighting. Opaque softly textured pale dusty LAVENDER background #D9D8E5 throughout, quiet and clean, no hard backdrop rectangle. IMPORTANT PHONE FRAMING: this working portrait canvas will be centered-cropped to1290x2796 (also1179x2556 and750x1334). If delivered in the usual1024x1536 working ratio, confine ALL physical endpoints to central60\u00e2\u20ac\u201c62percent raw WIDTH (roughlyx200..830), spanning about27percent to80percent raw HEIGHT. This becomes a large85\u00e2\u20ac\u201c90percent PHONE WIDTH, not a tiny island; give the tall poppies/hare/butterfly real vertical height. Do not fill the entire wider raw canvas and crop fern/wing/ear/twig tips. Keep key subjects whole inside those boundaries, upperquarter and bottom15percent quiet. Whole beak/tail/twofeet, fourharepaws/twoears/tail, fourbutterflywings/twoantennae/legs, snailfoot/fourfeelers, everypetal/bud/leaf/stem tip. No ordinary natural feathers/fur/tissue beneath food, soft clay/marzipan, wax, orange peel, paper/corrugatedcard, fabric/ribbon, gloss/sauce/wet cookedpasta, ingredients pile, kitchen, packaging/brand, bowl/cutlery, extra creatures, equipment, corner ornaments, border, letters/text/numbers, clock/date/battery/UI or phone mockup. Artistic dry-pasta sculpture interpretation, no authentic handmade-object claim.",
+      "references": [
+        {
+          "file": "sources/robin-twig.deab67584264.png",
+          "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/farfalle-butterfly.29563dd6bdbb.png",
+          "sha256": "29563dd6bdbb6d334cd37bc21ce48ab93ec7e53f2dd1e1e9366f1c8e5413e61b",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/garden-snail.010c8f8d46b4.png",
+          "sha256": "010c8f8d46b43858eacbb092582a043bdb3c71473b5c50d334286e17a311cd68",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/poppy-stems.7439963480c1.png",
+          "sha256": "7439963480c103ec733a33ab3cd08178581aa277b143907d741d1cfabf779839",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/sitting-hare.9f07d83c80ae.png",
+          "sha256": "9f07d83c80ae3e9e0fb2d6854d824d0f443a190acf2d40ba1e750f3b0e7eae38",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        }
+      ],
+      "selected": false
+    },
+    {
+      "stage": "wallpaper-phone-fit",
+      "file": "sources/wallpaper.9ec5e408d686.png",
+      "sha256": "9ec5e408d68613e86f70d8e193b308f1aafdd2ef3c4bc8039b737b272e168818",
+      "prompt": "EDIT OUR OWN attached DURUMFOLD MEADOW scene ONLY, preserving every existing pasta animal/plant and its material, color, pose, anatomy, detailed grooves and relative arrangement. ACTUAL centered1290x2796 PHONE export clips the robin's two hollow tail tubes/lefttwig, butterfly's rightwing and outer grass endpoints. Make ONE exact framing correction: uniformly scale the ENTIRE existing connected physical scene to67percent (aboutTWO THIRDS) of its CURRENT physical scene size; do NOT merely scale individual animals or remove anything. Recenter the resulting whole habitat at x50percent/y54percent of this same portrait canvas and seamlessly extend the same pale dusty-lavender background around it. Target physical habitat endpoints aboutx200..830 in1024px-wide working output, sourcey400..1245 in1536px-height; the narrow actual PHONE crop then shows a large~88percent width scene with real55percent vertical presence. This is the only needed framing correction, not a tiny-island pullback. Keep whole robin/twofeet/beak/bothhollowtailtubes/twigleaves, hare/twoears/fourpaws/tail, butterfly/fourwings/twoantennae/sixlegs, snail/wholefoot/fourfeelers, allpoppypetals/bud/leaves/stems/grass endpoints. Preserve natural distinct forms and exact dry tricolour pasta process; no redraw, no changed poses, no added creatures or props. Quiet matching lavender background on all sides, no rectangle/plate/plaque, no border/corner decoration/text/labels/UI/numbers. The five standalone artworks remain unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-scene.76c91ef1d561.png",
+          "sha256": "76c91ef1d56181fcfff7f3f5c57866c66ba4903d5a20d64985f714037b890ede",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        }
+      ],
+      "selected": true
+    }
+  ],
+  "reason": "Actual initial three phone exports clipped endpoints; one targeted whole-scene framing adjustment makes the tall habitat fill nearly the phone width with all key subjects whole. No further generic margin pullback.",
+  "fiveStandaloneArtworksByteUnchanged": true
+}

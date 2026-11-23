@@ -1,0 +1,62 @@
+[
+  {
+    "id": "robin-twig",
+    "label": "Durum Robin",
+    "kind": "art",
+    "image": "robin-twig.3a99a0a4.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "farfalle-butterfly",
+    "label": "Farfalle Butterfly",
+    "kind": "art",
+    "image": "farfalle-butterfly.3a105801.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "garden-snail",
+    "label": "Lumaconi Snail",
+    "kind": "art",
+    "image": "garden-snail.c2e2cbc7.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "poppy-stems",
+    "label": "Shell Poppies",
+    "kind": "art",
+    "image": "poppy-stems.fcfe266a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "sitting-hare",
+    "label": "Penne Hare",
+    "kind": "art",
+    "image": "sitting-hare.c93e67f1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "theme": "zipfrond-grove",
+  "files": {
+    "meta.json": "9df9d5c19e489e81d17ae69723aae1fbf6a19682bd979f38b33861e43b76bab5",
+    "palette.json": "16c4fe57d7fee4cff80c06e7d560e6448e324f6824e780668810a908fb4b5f59",
+    "sources/fern-fiddlehead.9db112894ba6.png": "9db112894ba6e5d0aeb52d6542a513865e0703abd7ef33366c9ced939ff821c7",
+    "sources/hedgehog-hawthorn.b098b760576c.png": "b098b760576c4e99467a62063752cb0b22b261f0e5a20dd5a9e5cc05d4d57091",
+    "sources/kingfisher-twig.01f4cf6f2d0e.png": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+    "sources/moth-wings.882f415a3a1c.png": "882f415a3a1c054e3146a03cdb7b718957aa9ca4191b25e5cb9611356895a2f9",
+    "sources/oak-acorns.7d70a9b64aff.png": "7d70a9b64affb08115a229a040e61dc19173c2cca8c54b13c3c3dde499ed0e12",
+    "sources/wallpaper.6fe87adb8adb.png": "6fe87adb8adbb1abd8277a784e0a0939b4827600f110c9bc75945c190ce827e0",
+    "widgets/fern-fiddlehead.8998107b.png": "8998107be0e5260374f8f4ff74a4ba236b894e6f09b1543e20e089222c03f031",
+    "widgets/hedgehog-hawthorn.895dc947.png": "895dc947573d13105275d32f5d7b408480284142fdaf602a2d70174239a98b7e",
+    "widgets/kingfisher-twig.1ca5f0f7.png": "1ca5f0f722f34ad5587f26570907f36be9d70c1ce7c4e9511c090ff17a477fae",
+    "widgets/moth-wings.5ce44e55.png": "5ce44e5548c67b17549c9b0c3515681c133b652c052e8ff6585fdbb7fe437401",
+    "widgets/oak-acorns.2f07c5c0.png": "2f07c5c01286103cef569f7d4c61fc5bfea5b0f9fccc14e781ee286c9f9db687",
+    "widgets/widget-options.json": "537e9ee3c91830af506221cba2b0e92802b5e2e8d63c83239d8555c168cae7a7"
+  },
+  "fiveArtGenerationRecords": [
+    {
+      "id": "kingfisher-twig",
+      "label": "Zip Kingfisher",
+      "tool": "built-in image_gen",
+      "prompt": "ONE original standalone Glaze Nature material prototype for ZIPFROND GROVE. A complete instantly recognizable COMMON KINGFISHER bird perched on one short open alder twig with TWO whole small leaves. Natural compact bird proportions, broad head, very long straight pointed beak, dark round eye, short neck, folded wing, short tail, TWO coherent gripping bird feet, all whole. The entire bird and twig are a tangible ingenious miniature assembled ONLY from FEW BROAD STRIPS OF VINTAGE ZIPPER FASTENER: coarse dull brass interlocking teeth with clearly visible stepped block shapes along MOSS-GREEN COTTON ZIPPER TAPES, stitched woven selvedge edges, opposing toothed rails visibly meeting and separating. Body made from3broad curved paired-rail zipper loops with dark green tape planes between chunky brass teeth, an overlapping folded wing built from ONE flat wide green tape wedge with a full coarse brass-tooth border; complete long straight beak constructed from a tapering closed paired-rail strip with visible interlocks, metal-stop eye, tiny folded tape feet gripping a rolled green zipper-tape twig. One small old functional ZIPPER SLIDER with a short slotted metal pull lies integrated at lower wing seam, unmistakably showing this is a fastener, not jewelry. Thick coarse rectangular teeth must remain readable as repeating interlocks at85px, unlike thin smooth wire coils, copper textile weave, corrugated paper, seed beads or film-strip windows. Brass teeth have satin worn edges, cotton tape is matte moss green, broad sparse tape folds with tiny stitches. No ordinary painted feathers, realistic animal surface, chainmail, fabric plush toy, lace, loose draped silk, ribbons without teeth, gold purl tubes or smooth metal animal sculpture. Gentle neutral macro product-photography lighting; no glow or cast shadow outside physical object. Entire complete recognizable bird and twig centered within CENTRAL66percent SQUARE canvas width and height, ALL beak/tail/feet/leaf tips whole with generous at least15percent true transparent outer margins. Clean TRANSPARENT ALPHA background and open gaps; no backing, plaque, rectangle, display stand, clothing, bag, sewing tools, hands, loose buttons or props. No text, labels, numbers, logos, clocks, dates, battery readings, UI, frame or mockup. Original artistic fastener-construction interpretation, not an actual handmade physical artwork claim.",
+      "source": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+      "sourceSha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kingfisher-twig.1ca5f0f7.png",
+      "sha256": "1ca5f0f722f34ad5587f26570907f36be9d70c1ce7c4e9511c090ff17a477fae",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+      "references": []
+    },
+    {
+      "id": "hedgehog-hawthorn",
+      "label": "Zip Hedgehog",
+      "tool": "built-in image_gen",
+      "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE whole recognizable EUROPEAN HEDGEHOG walking gently in side profile, low elongated oval body, small pointed natural snout with tiny dark metal-stop nose and eye, one small visible rounded ear and FOUR complete small separated paws. Back is built from5short broad overlapping green zipper loops, their coarse brass rails lifted in slight radial arcs suggesting natural spines while leaving broad green tape faces visible; coherent animal silhouette, not a pinecone or gear. Low head and belly are folded green/rust tape wedges with chunky tooth seams. One short open hawthorn twig with TWO small lobed zipper-tape leaves lies beside the feet. Small slider integrated along lower flank. Whole four paws, snout, twig and leaf tips fully in frame.",
+      "source": "sources/hedgehog-hawthorn.b098b760576c.png",
+      "sourceSha256": "b098b760576c4e99467a62063752cb0b22b261f0e5a20dd5a9e5cc05d4d57091",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/hedgehog-hawthorn.895dc947.png",
+      "sha256": "895dc947573d13105275d32f5d7b408480284142fdaf602a2d70174239a98b7e",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+          "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+          "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+        }
+      ]
+    },
+    {
+      "id": "moth-wings",
+      "label": "Zip Moth",
+      "tool": "built-in image_gen",
+      "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE whole recognizable LARGE MOTH with FOUR broad spread wings: two rounded triangular forewings above and two smaller rounded hindwings below, bilateral natural insect anatomy, narrow segmented abdomen, small head, TWO short softly comb-like antennae and SIX small coherent legs. Each wing is ONE broad matte green cotton zipper-tape plane bounded by a full course of worn brass interlocking teeth, and one short curved opposing-rail fold divides each forewing; small rusty-orange cloth crescent nearer each lower wing, no gemstone eye spots. Abdomen is a closed paired-rail zipper with a tiny functional slider at its centre. Natural moth outline distinct from mechanical airplane or fabric bow. All four wing tips, both whole antennae and all leg tips inside generous quiet margins; no flowers/background.",
+      "source": "sources/moth-wings.882f415a3a1c.png",
+      "sourceSha256": "882f415a3a1c054e3146a03cdb7b718957aa9ca4191b25e5cb9611356895a2f9",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/moth-wings.5ce44e55.png",
+      "sha256": "5ce44e5548c67b17549c9b0c3515681c133b652c052e8ff6585fdbb7fe437401",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+          "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+          "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+        }
+      ]
+    },
+    {
+      "id": "fern-fiddlehead",
+      "label": "Zip Fern",
+      "tool": "built-in image_gen",
+      "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE whole recognizable BOTANICAL FERN FROND, gently arcing upward with7pairs of separate broad lanceolate pinnae tapering in size towards a complete thin terminal tip, a whole curved petiole below, and ONE small natural coiled fiddlehead beside its base. Main rachis is a narrow closed moss-green zipper rail. Each pinna is a broad matte green tape leaf-plane with one complete chunky worn-brass tooth border and a clearly tucked narrow stitched base, not a smooth metal leaf or loose strip fringe; few rusty-orange tape undersides visible at gentle turns. Coiled fiddlehead uses ONE open paired-rail zipper curl with a small integrated slider, dark green cotton clear between stepped teeth. Airy familiar natural botanical shape, whole14pinnae/tip/petiole/fiddlehead without cropping.",
+      "source": "sources/fern-fiddlehead.9db112894ba6.png",
+      "sourceSha256": "9db112894ba6e5d0aeb52d6542a513865e0703abd7ef33366c9ced939ff821c7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fern-fiddlehead.8998107b.png",
+      "sha256": "8998107be0e5260374f8f4ff74a4ba236b894e6f09b1543e20e089222c03f031",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+          "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+          "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+        }
+      ]
+    },
+    {
+      "id": "oak-acorns",
+      "label": "Zip Oak",
+      "tool": "built-in image_gen",
+      "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE complete recognizable OAK TWIG with THREE broad naturally lobed oak leaves alternating along one short arcing branch and TWO whole hanging ACORNS with distinct cups and oval nuts. Each lobed leaf is ONE broad moss-green cotton tape plane with6rounded natural side lobes and one short complete terminal tip, its continuous lobed edge traced by coarse individual brass zipper teeth; a central closed paired rail suggests the midvein, tiny stitched entry pinch at its base. Whole acorn nuts are folded rusty-orange cotton zipper tapes, their cups formed from short joined coarse-tooth rails; small integrated slider at the branch fork. Do not add generic round leaves, flowers or geometric badges. All three leaves, both acorn tips/cups and twig ends whole inside wide transparent margins.",
+      "source": "sources/oak-acorns.7d70a9b64aff.png",
+      "sourceSha256": "7d70a9b64affb08115a229a040e61dc19173c2cca8c54b13c3c3dde499ed0e12",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/oak-acorns.2f07c5c0.png",
+      "sha256": "2f07c5c01286103cef569f7d4c61fc5bfea5b0f9fccc14e781ee286c9f9db687",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+          "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+          "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+        }
+      ]
+    }
+  ],
+  "published": false
+}

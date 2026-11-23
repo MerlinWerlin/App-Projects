@@ -1,0 +1,168 @@
+{
+  "id": "c-confocal-bridgeworks",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "ciliary-weir",
+    "axon-hoist",
+    "vesicle-lift",
+    "spindle-turnstile",
+    "synaptic-span"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.1778fe75.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 12024,
+    "sha256": "1778fe75434391ee719f80f3586d55c5d695e9570d2c7b05d7db4d68fe7866c4",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed separately generated weir, clamp hoist, two-stage lift, three-blade turnstile and double-arch span at210/150px and actual encoded85px. Distinct working silhouettes, common magenta membrane/cyan interior fibre/lime vesicle channels, genuine transparent hollow spaces.",
+    "wallpaper": "Viewed all three actual encoded device variants after layout-only edit. All five complete working structures, both bridge deck ends, lift roots, hoist clamp/foot and turnstile roots stay inside each frame. Ground fibres may bleed. Quiet upper field and bottom ground retained.",
+    "native": "Viewed all nine real app renderer previews using current coordinator source in scratch. Clear live readings; dedicated membrane/fibre/vesicle fragment occupies compact calendar and clock header positions with breathing room.",
+    "roundedArtworkCorners": "Viewed5 new encoded assets using actual widgetThemeFrom/widgetBackgroundStops, Fit6% inset and conservative20% rounded mask. All visible alpha16 retained. Quiet aubergine theme corners support the detailed channels."
+  },
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation, not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-confocal-bridgeworks",
+    "backgroundStops": [
+      "#130D1F",
+      "#281B39"
+    ],
+    "pieces": [
+      {
+        "id": "ciliary-weir",
+        "sha256": "d3f763f16799e01509d8dd7d7d787fb977e933e2090c092d32d97d1dbae4c9b2",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "axon-hoist",
+        "sha256": "9ebe258647a1f494cd89fdf63cb41bc4810c5716daa766a77cb8ecf28c9bc2cc",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "vesicle-lift",
+        "sha256": "017645820db635fd470807a5dafb0870933a82435b05d6b75d44b4b2e3e9f775",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "spindle-turnstile",
+        "sha256": "b092eb3ae8d7593805541eb1261bed245e9a50e293095dbac53f6594197ca6df",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "synaptic-span",
+        "sha256": "062edbf6025fab024ce70f1a626c695990ee1554164a9f5f9324cfb378be4e12",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "packTestEvidence": "Actual offline builder v1:9 encoded assets/1.37MB. Full decodes, dimensions, source/encoded hashes, real manifest/catalogue parsers,5 pure-art selections,9 changing native layouts, optional ornament roundtrip and battery null/0/100 pass. Common47 pipeline checks previously passed; no shared runtime edits."
+}

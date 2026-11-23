@@ -1,0 +1,222 @@
+{
+  "theme": "shellspeck-blackthorn",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Opaque broken eggshell fragments individually inlaid in glossy black lacquer, with irregular chipped lips, natural nutmeg speckles and thin dark lacquer seams",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "SHELLSPECK BLACKTHORN. Use case: illustration-story. ONE coherent portrait1290x2796 nature WALLPAPER, opaque full quiet smoky moss-green #34443B field. The ENTIRE nature habitat is an expertly handmade EGGSHELL-INLAY OBJECT: broad OPAQUE MATTE warm-ivory thin irregular broken eggshell chips, some natural tan/nutmeg speckles, individually set into GLOSSY BLACK LACQUER core exactly shaped to natural forms; thin dark seams and occasional small chipped lips. NO real fur/feathers/animal skin anywhere. INPUT1 OWN APPROVED REFINED851 tit, INPUT2 own selected hare, INPUT3 own corrected PLANT-ONLY blackthorn branch are MATERIAL/NATURAL ANATOMY references only. Never change these standalone assets. Show ONE substantial TALL natural BLACKTHORN COPSE habitat with a gently curving tall trunk/three irregular branch forks, FIVE toSEVEN modest whole WHITE FIVE-PETALED blossoms and a few closed buds along mostly bare thorny twigs before leaves. ONE familiar small long-tailed TIT at middle-left perched coherently with TWO whole feet on one twig, short bill/small natural eye/round modest body/whole long graduated tail pointing diagonally down-right toward CENTER, not toward canvas edge. Bird complete about22percent canvas HEIGHT including long tail; no giant chibi head or eye. ONE familiar natural HARE sits at lower-right, lean body and long upright TWO whole ears, coherent front paws/folded long hind legs/short whole tail, about27percent canvas HEIGHT, familiar proportions, no toy/chibi pose. A few low natural grass blades and low irregular ground edge connect the shrub base to hare; no enclosed oval/circular plaque, display plinth, tray or diorama base. No other fauna, no snail/hedgehog. Every animal part including face/throat/underbelly/ears/paws is actual matte opaque shell chips/black lacquer. Entire habitat occupies about80percent WIDTH and50to55percent HEIGHT, from about26percent to79percent canvas height. ABSOLUTE side margins: ALL branch/petal/tail/ear/whisker/toe/ground tips start NO EARLIER than10percent full width and end NO LATER than90percent full width. Complete organic ground edge left/right, all key silhouettes whole. Generous tall branching/flower presence, not tiny floating island or low sticker strip. At least25percent quiet matching green above, about20percent below and10percent each side. Cream shell remains OPAQUE/matte, no mother-of-pearl shine, no ceramic glaze/crackle, metalcellwalls/metal/gems, painted feather/fur texture, loose scatter, frame/corner flourishes, text/UI/clock/date/battery/weather values/logo/signature. Full matching opaque background, no pasted rectangle or transparent wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.0f35fdf2.png",
+      "sourceSha256": "0f35fdf24f25c82292a0c50475b877814b595372cd5987d0af49803dda9f8fec",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "d33f04b7a538da0a37267813eb4ce80425a72b2a0b3d77dbdd7e53cfbcf9186a",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "longtailed-tit",
+          "file": "sources/longtailed-tit.4e1af7a5.png",
+          "sha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 2,
+          "id": "hare-hazel",
+          "file": "sources/hare-hazel.721da0fc.png",
+          "sha256": "721da0fc2cf3b6ea6541f4f3372b2731726e8f11597934c6d84e204996fdd851",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 3,
+          "id": "blackthorn-blossoms",
+          "file": "sources/blackthorn-blossoms.4896490a.png",
+          "sha256": "4896490ae9c256e679cc020d45c5e3a4aba7d64c12b5a68954a51e20bdb17d7f",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "longtailed-tit",
+      "prompt": "Use case: precise-object-edit. One targeted MATERIAL correction to INPUT1, own initial Shellspeck Blackthorn tit prototype. Preserve exact whole recognizable long-tailed tit pose, head/bill/small eye, long complete graduated tail, two coherent feet/toes, short blackthorn twig, two thorns, three whole five-petaled blossoms, monochrome ivory/tan/black palette, composition, true transparency and generous margins. CHANGE ONLY stray REAL FEATHERS/FUZZ in cheek, around eye, throat and lower belly into the SAME literal opaque matte thin broken EGGSHELL CHIPS already covering the bird, seated in glossy black lacquer core. The entire bird must be an expertly handmade eggshell-inlay object; no real feather/fur/body visible anywhere under the shell. Face and throat use just5to8 broad smooth irregular opaque ivory shell chips with small tan speckles and tiny naturally chipped lips, delicately curved to coherent bird form. Lower belly uses3to5 same broad chips; thin black lacquer gaps, not a painted feather pattern. Keep modest natural eye as one tiny black lacquer recess with restrained catchlight, not bead/gem/chibi eye. Keep all already-good coarse shell fragments, black lacquer wing/tail areas, blossoms and twig exact in construction; do not add many micro-cracks, metallic cell walls, porcelain glaze, iridescent nacre, extra fauna, jewellery bail, ground/plaque or scenery. Whole bill/tail/paws/flowers/thorns/twig tips remain complete. Preserve TRUE ALPHA exterior/open branch gaps, no halo/shadow/text/UI. Output only corrected standalone bird artwork.",
+      "tool": "built-in image_gen",
+      "source": "sources/longtailed-tit.4e1af7a5.png",
+      "sourceSha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/longtailed-tit.2f5d99af.png",
+      "sha256": "2f5d99af07238f6538a9a0793ad2580e216755a21bcbfd8033567836192c3b0c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/longtailed-tit-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/longtailed-tit.original.df83950a.png",
+        "sha256": "df83950a36c4a192fb54094ee95cb8b047eb96d6593607c1d4d1384f410f7fd1"
+      },
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "longtailed-tit-unselected-original",
+          "file": "qa/material-repair/longtailed-tit.original.df83950a.png",
+          "sha256": "df83950a36c4a192fb54094ee95cb8b047eb96d6593607c1d4d1384f410f7fd1",
+          "role": "Own initial unselected prototype EDIT TARGET for one material-only correction; exact original retained unchanged."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/longtailed-tit-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/longtailed-tit-exact-tool-result.json"
+    },
+    {
+      "id": "hedgehog-bramble",
+      "prompt": "SHELLSPECK BLACKTHORN, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real blackthorn-copse wildlife and plants with clear natural anatomy FIRST. Unmistakable literal BROKEN EGGSHELL INLAY: thin OPAQUE MATTE warm-white and ivory eggshell shards, some natural soft tan/nutmeg speckles, individually seated into a very thin sculpted GLOSSY BLACK LACQUER core cut EXACTLY to the organism silhouette. BROAD irregular polygonal chips have naturally broken uneven edges, a few tiny concave chipped lips/white thickness, and thin DARK LACQUER seams between actual separate pieces. About20to35 legible broad chips across a main animal, not microscopic tile dust or painted crackle. Restrained whites/ivories/tan and black only; soft diffuse side light, matte shell contrasts with small glossy lacquer gaps. Natural coherent shape dominates, thin low relief1to3mm, no inflated toy volume. No iridescent nacre/abalone, pearl beads or large carved mother-of-pearl plates; no fired porcelain/ceramic glaze, pierced holes/lace, colored enamel/metal cell walls, polished marble/crackle network, paper pieces, fabric, metal inlay, gold, wire, silver or gems. No eggs/chick/eggshell vessel, no jewellery pin/hook/bail/brooch, medallion/plaque/backing sheet/rectangular base/hoop/ring. Whole subject central64percent with18percent genuine empty ALPHA margin EACH side; open branch/anatomy gaps transparent. No scenery/ground, detached loose scattered chips, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar whole natural European hedgehog walking right, small tapered snout, tiny modest natural eye, two small coherent ears, four short coherent feet with whole toes and a short complete tail. Recognizable low rounded prickly back, represented by modest dark lacquer spine points along the silhouette with short opaque irregular eggshell chips inside, not giant bone spikes. One small nearby bramble fork with TWO serrated leaves and THREE dark berries, no ground/plinth. Body and snout show broad matte ivory lightly mottled broken eggshell inlay with thin black glossy seams; bramble predominantly black lacquer with a few small shell fragments. Natural animal first, no toy/chibi, porcelain statue or white fur painting. All ears/snout/paws/tail/spine/leaf tips whole. INPUT1 is OWN APPROVED REFINED EGGSHELL-INLAY TIT, MATERIAL ONLY for opaque speckled thin broad irregular eggshell pieces and glossy black lacquer seams. New requested subject/pose/composition generated separately; do not copy/add tit or its twig/flowers to this asset. EVERY part of the new subject including face, throat, underbelly, ears, paws or shell MUST be actual opaque eggshell chips and/or small glossy black lacquer areas. NO underlying real fur, feathers, natural animal skin, fuzzy fibre or hair anywhere. Same broad chipped matte white/ivory/tan shell construction, not painted crackle or silver-lined enamel cells. Modest eyes and floral stamens are BLACK LACQUER, no pearls, gold/silver/brass or jewels. True transparent exterior/gaps, whole silhouette.",
+      "tool": "built-in image_gen",
+      "source": "sources/hedgehog-bramble.1885af35.png",
+      "sourceSha256": "1885af359ceb0891919223ee04da8f1b6b66e058422897c01dae72d0eb53f378",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hedgehog-bramble.acbde117.png",
+      "sha256": "acbde11757c43a2139b39bd51a04837473485fb60b52f637447bf42b57d9b327",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "longtailed-tit",
+          "file": "sources/longtailed-tit.4e1af7a5.png",
+          "sha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/hedgehog-bramble-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/hedgehog-bramble-exact-tool-result.json"
+    },
+    {
+      "id": "hare-hazel",
+      "prompt": "SHELLSPECK BLACKTHORN, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real blackthorn-copse wildlife and plants with clear natural anatomy FIRST. Unmistakable literal BROKEN EGGSHELL INLAY: thin OPAQUE MATTE warm-white and ivory eggshell shards, some natural soft tan/nutmeg speckles, individually seated into a very thin sculpted GLOSSY BLACK LACQUER core cut EXACTLY to the organism silhouette. BROAD irregular polygonal chips have naturally broken uneven edges, a few tiny concave chipped lips/white thickness, and thin DARK LACQUER seams between actual separate pieces. About20to35 legible broad chips across a main animal, not microscopic tile dust or painted crackle. Restrained whites/ivories/tan and black only; soft diffuse side light, matte shell contrasts with small glossy lacquer gaps. Natural coherent shape dominates, thin low relief1to3mm, no inflated toy volume. No iridescent nacre/abalone, pearl beads or large carved mother-of-pearl plates; no fired porcelain/ceramic glaze, pierced holes/lace, colored enamel/metal cell walls, polished marble/crackle network, paper pieces, fabric, metal inlay, gold, wire, silver or gems. No eggs/chick/eggshell vessel, no jewellery pin/hook/bail/brooch, medallion/plaque/backing sheet/rectangular base/hoop/ring. Whole subject central64percent with18percent genuine empty ALPHA margin EACH side; open branch/anatomy gaps transparent. No scenery/ground, detached loose scattered chips, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar natural brown hare sitting in side view facing left: long upright TWO whole ears of slightly unequal tilt, small natural dark eye, modest narrow muzzle, long strong folded hind legs and two coherent front paws, small complete tail. Natural lean hare body, no rabbit chibi proportions or enormous bead eyes. Beside one short hazel sprig with TWO broad rounded serrated leaves and TWO small oval hazelnuts, no ground/base. Pale warm ivory and lightly tan-speckled opaque eggshell fragments individually set in thin black lacquer silhouette, few broad irregular chips on each ear/haunch, thin dark glossy seams. Whole ears/whiskers/paws/tail/leaves/nuts/stem ends inside margins. INPUT1 is OWN APPROVED REFINED EGGSHELL-INLAY TIT, MATERIAL ONLY for opaque speckled thin broad irregular eggshell pieces and glossy black lacquer seams. New requested subject/pose/composition generated separately; do not copy/add tit or its twig/flowers to this asset. EVERY part of the new subject including face, throat, underbelly, ears, paws or shell MUST be actual opaque eggshell chips and/or small glossy black lacquer areas. NO underlying real fur, feathers, natural animal skin, fuzzy fibre or hair anywhere. Same broad chipped matte white/ivory/tan shell construction, not painted crackle or silver-lined enamel cells. Modest eyes and floral stamens are BLACK LACQUER, no pearls, gold/silver/brass or jewels. True transparent exterior/gaps, whole silhouette.",
+      "tool": "built-in image_gen",
+      "source": "sources/hare-hazel.721da0fc.png",
+      "sourceSha256": "721da0fc2cf3b6ea6541f4f3372b2731726e8f11597934c6d84e204996fdd851",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hare-hazel.adaada6b.png",
+      "sha256": "adaada6b68bcb0bf8735b999d538bdecf315ded84c042bd122f37ffcf0650d03",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "longtailed-tit",
+          "file": "sources/longtailed-tit.4e1af7a5.png",
+          "sha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/hare-hazel-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/hare-hazel-exact-tool-result.json"
+    },
+    {
+      "id": "blackthorn-blossoms",
+      "prompt": "PLANT-ONLY SUBJECT CORRECTION. Use case: precise-object-edit. INPUT1 is OWN mistaken blackthorn output containing a HARE. REMOVE THE ENTIRE HARE/ANIMAL COMPLETELY, including all head/body/ears/whiskers/feet/tail. The FINAL IMAGE MUST CONTAIN ZERO ANIMALS, ZERO BIRDS, ZERO INSECTS, ZERO FACES OR EYES. Retain/recompose ONLY ONE natural short FORKED BLACKTHORN TWIG with FIVE small WHITE FIVE-PETALED BLOSSOMS, SIX small CLOSED BUDS, TWO short THORNS and no leaves. A coherent asymmetrical upright branching botanical study fills central64percent, generous18percent real alpha on all sides. Some flowers face forward, some tilt naturally; five whole petal faces on each, black lacquer slender stamens. Every petal face contains a few actual thin irregular opaque matte speckled ivory EGGSHELL fragments set in glossy black lacquer, tiny chipped lips/dark seams, no iridescent nacre/metal/gem or smooth porcelain. Twig/buds/thorns black lacquer with a few sparse small shell chips. INPUT2 own approved851 tit is MATERIAL ONLY for opaque shell/lacquer construction; NEVER copy/include the bird, feet, head, body, tail or any animal part. Replace the space where the mistaken hare was with GENUINE TRANSPARENT ALPHA, not ground/background, a ghost silhouette, plaque or panel. Every flower/bud/thorn/twig end complete, natural connected branching not wreath/vase. No loose scattered fragments, foliage or scenery. Absolutely PLANTS ONLY, just one blackthorn flowering twig, no fauna. No text/UI/logo/values, no cast shadow/halo; true transparent exterior and branch gaps.",
+      "tool": "built-in image_gen",
+      "source": "sources/blackthorn-blossoms.4896490a.png",
+      "sourceSha256": "4896490ae9c256e679cc020d45c5e3a4aba7d64c12b5a68954a51e20bdb17d7f",
+      "sourceDimensions": [
+        1246,
+        1263
+      ],
+      "selectedFile": "widgets/blackthorn-blossoms.f570b259.png",
+      "sha256": "f570b259ed9c9b7e877c206d842503d04709375ff5a56c0e7d78adf437cc056c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/subject-repair/blackthorn-blossoms-history.json",
+      "referencedImage": {
+        "file": "qa/subject-repair/blackthorn-blossoms.original.1101aea2.png",
+        "sha256": "1101aea2ee0a7113cb7129cf3579717036cf1471cee09ddeb16547bed835e4e9"
+      },
+      "materialReference": {
+        "id": "longtailed-tit",
+        "source": "sources/longtailed-tit.4e1af7a5.png",
+        "sourceSha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+        "role": "Material reference only; target subject/geometry retained."
+      },
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "blackthorn-blossoms-unselected-original",
+          "file": "qa/subject-repair/blackthorn-blossoms.original.1101aea2.png",
+          "sha256": "1101aea2ee0a7113cb7129cf3579717036cf1471cee09ddeb16547bed835e4e9",
+          "role": "Own initial unselected prototype EDIT TARGET for one material-only correction; exact original retained unchanged."
+        },
+        {
+          "order": 2,
+          "id": "longtailed-tit",
+          "file": "sources/longtailed-tit.4e1af7a5.png",
+          "sha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/blackthorn-blossoms-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/blackthorn-blossoms-exact-tool-result.json"
+    },
+    {
+      "id": "garden-snail",
+      "prompt": "SHELLSPECK BLACKTHORN, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real blackthorn-copse wildlife and plants with clear natural anatomy FIRST. Unmistakable literal BROKEN EGGSHELL INLAY: thin OPAQUE MATTE warm-white and ivory eggshell shards, some natural soft tan/nutmeg speckles, individually seated into a very thin sculpted GLOSSY BLACK LACQUER core cut EXACTLY to the organism silhouette. BROAD irregular polygonal chips have naturally broken uneven edges, a few tiny concave chipped lips/white thickness, and thin DARK LACQUER seams between actual separate pieces. About20to35 legible broad chips across a main animal, not microscopic tile dust or painted crackle. Restrained whites/ivories/tan and black only; soft diffuse side light, matte shell contrasts with small glossy lacquer gaps. Natural coherent shape dominates, thin low relief1to3mm, no inflated toy volume. No iridescent nacre/abalone, pearl beads or large carved mother-of-pearl plates; no fired porcelain/ceramic glaze, pierced holes/lace, colored enamel/metal cell walls, polished marble/crackle network, paper pieces, fabric, metal inlay, gold, wire, silver or gems. No eggs/chick/eggshell vessel, no jewellery pin/hook/bail/brooch, medallion/plaque/backing sheet/rectangular base/hoop/ring. Whole subject central64percent with18percent genuine empty ALPHA margin EACH side; open branch/anatomy gaps transparent. No scenery/ground, detached loose scattered chips, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar whole garden snail gliding to the LEFT on ONE small narrow serrated blackthorn leaf, recognizable rounded spiral shell above a long coherent natural foot. TWO long upper eye-bearing tentacles and TWO shorter lower feelers, all FOUR tips whole, one complete pointed rear foot-tail. Shell broad oval in side view with a natural gradual whorl, built from a few broad opaque irregular broken ivory/tan-speckled eggshell fragments in black lacquer, NOT mother-of-pearl iridescence, glass, porcelain glaze or metal spiral wire. Snail foot and head low glossy charcoal lacquer with sparse small matte shell chips following natural anatomy, no cartoon eyes or smile. Leaf thin black lacquer with a few ivory shell inlays and two tiny whole thorns on short stem, no ground/base or surrounding wreath. Whole shell/tentacles/foot-tail/leaf/branch ends inside margins. INPUT1 is OWN APPROVED REFINED EGGSHELL-INLAY TIT, MATERIAL ONLY for opaque speckled thin broad irregular eggshell pieces and glossy black lacquer seams. New requested subject/pose/composition generated separately; do not copy/add tit or its twig/flowers to this asset. EVERY part of the new subject including face, throat, underbelly, ears, paws or shell MUST be actual opaque eggshell chips and/or small glossy black lacquer areas. NO underlying real fur, feathers, natural animal skin, fuzzy fibre or hair anywhere. Same broad chipped matte white/ivory/tan shell construction, not painted crackle or silver-lined enamel cells. Modest eyes and floral stamens are BLACK LACQUER, no pearls, gold/silver/brass or jewels. True transparent exterior/gaps, whole silhouette.",
+      "tool": "built-in image_gen",
+      "source": "sources/garden-snail.036e666d.png",
+      "sourceSha256": "036e666da6cb1203ac0723de49984d8068c8b15598529795b9abb8f397a959f0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/garden-snail.91ffa09f.png",
+      "sha256": "91ffa09fe5a9b988b11d39cc438d192a436114c696b6f8c1b01ad1c0291d4121",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "longtailed-tit",
+          "file": "sources/longtailed-tit.4e1af7a5.png",
+          "sha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/garden-snail-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/garden-snail-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

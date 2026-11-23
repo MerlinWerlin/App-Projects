@@ -1,0 +1,129 @@
+{
+  "theme": "flutecut-woodland",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-cut laminated corrugated-cardboard bas-relief, exposed wavy flutes, parallel channels and torn kraft-paper cut lips",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Edit this exact Flutecut Woodland wallpaper to fix composition only. Preserve all five recognizable natural subjects and the hand-cut corrugated cardboard broad kraft panels, coarse wavy cut-edge flutes, torn liner fibres, sage/berry accents, pale aqua matte paper and coherent woodland arrangement. SHRINK THE ENTIRE COMPLETE WOODLAND GROUP TO 68 PERCENT OF ITS CURRENT SIZE, maintaining its own relative proportions and relationships. Recenter that smaller whole group horizontally and at 54 percent image height. ALL owl, oak twig, leaves, hedgehog, squirrel, tail, foxglove, fern, brambles, beetle and log must be entirely inside the CENTRAL 62 PERCENT OF IMAGE WIDTH, no subject outside x19 to81percent. Whole group between y37 and72percent. Extend the existing pale aqua blank paper naturally above, below and on both sides, leaving generous quiet upper32percent and bottom24percent. Every twig, leaf, tail, leg and flower intact, no cropping. Do not enlarge any animal, add plants or alter the artwork. No frame, text, logo, UI, clock/date/battery marks or new decoration. Opaque portrait wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.401d7962.png",
+      "sourceSha256": "401d7962ad9be68c52e624e221797733d21f9f198dda538c170940bc8d91016e",
+      "sourceDimensions": [
+        941,
+        1671
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "d91332ce5b3500ab331baa52691baf2f5b79e3239a46e62e6defb871a3a2d486",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.eac226df.png",
+        "sha256": "eac226dfdd17eb4a89d72e25819b92abfc42bfc01054c3013469b1dedbb80cdb"
+      }
+    },
+    {
+      "id": "tawny-owl-oak",
+      "prompt": "FLUTECUT WOODLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Familiar real woodland organism/group with natural recognizable proportions, face, body and coherent anatomy; handmade material SUPPORTS the nature subject rather than replacing it with abstract geometry. Physical handcraft HAND-CUT AND LAMINATED CORRUGATED CARDBOARD BAS-RELIEF: broad thin FLAT KRAFT PANELS, clearly visible coarse WAVY FLUTE CROSS-SECTIONS along cut edges, some outer liners peeled back to expose straight PARALLEL CORRUGATION CHANNELS, rough torn paper fibres at knife-cut lips and a few thin stacked layers. Natural kraft #AA7F4F, pale liner #D7BE8B, deep umber #5A402B, restrained sage #859976 and muted berry #A35344 accents. Unpadded thin3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm card craft, matte fibres and exposed stock construction, not smooth3Dplastic/clay/wood toy, plush/felt/fluffy wool, quilled rolled coils, loose wood shavings, film strips, feather vanes or printed faux cardboard texture. Clear whole natural silhouette first. No costumes/machines/house-shaped animals, giant cartoon eyes, abstract polygon/cube body or furniture. Major spaces and openings genuinely alpha transparent. Whole complete subject SMALL central64%, at least18% true alpha margin EVERY side, no clipped ear/tail/wing/foot/leaf. No ground/scenery/plinth/backing plaque/rectangle/frame/border, halo/glow/drop shadow, text/letters/numbers/labels, clock/date/battery/weather values, UI, logo or signature. Subject TAWNY OWL OAK, FIRST CARDBOARD MATERIAL SAMPLE: one natural adult TAWNY OWL perched on ONE short diagonal OAK TWIG. Normal round head WITHOUT ear tufts, two modest dark eyes within soft round facial disks, a small tucked pale beak, natural tapered oval body, two resting closed wings, short tail and exactly TWO coherent taloned feet gripping twig. Recognizable natural bird proportions, no giant jewel/button eyes or toyhouse face. Build the owl from just a FEW BROAD CONTOUR-CUT CORRUGATED CARD PANELS: one whole belly/chest panel, one broad whole wing panel on either side, simple stacked face plates. DO NOT tile many little feather/leaf-shaped pieces. Actual two flat kraft LINERS sandwich an open WAVY CORRUGATED LAYER, clearly exposed as coarse hollow FLUTE MOUTHS along all cut wing/belly/face edges; one narrow outer liner strip peeled from chest shows straight parallel stock channels. Not thin accordion-folded/pleated paper fans, quilled coils, wooden splinters, feather shafts/barbs or printed fake corrugation. Twig has TWO whole lobed OAK LEAVES and one small ACORN, each broad flat cut corrugated stock, no central feather shafts. Entire head/beak, wing/tail, both feet, twig ends, complete leaf tips and acorn inside central64% with at least18% real alpha margins. No ground/plinth/scenery/backing/halo or cast shadow. Natural kraft/liner/umber with tiny sage leaf accent only.",
+      "tool": "built-in image_gen",
+      "source": "sources/tawny-owl-oak.b3275fc1.png",
+      "sourceSha256": "b3275fc131445afe07f671a5e766b42aa4caca86f47db6449a01f1598a361fea",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tawny-owl-oak.cdd74878.png",
+      "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hedgehog-bramble",
+      "prompt": "FLUTECUT WOODLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Familiar real woodland organism/group with natural recognizable proportions, face, body and coherent anatomy; handmade material SUPPORTS the nature subject rather than replacing it with abstract geometry. Physical handcraft HAND-CUT AND LAMINATED CORRUGATED CARDBOARD BAS-RELIEF: broad thin FLAT KRAFT PANELS, clearly visible coarse WAVY FLUTE CROSS-SECTIONS along cut edges, some outer liners peeled back to expose straight PARALLEL CORRUGATION CHANNELS, rough torn paper fibres at knife-cut lips and a few thin stacked layers. Natural kraft #AA7F4F, pale liner #D7BE8B, deep umber #5A402B, restrained sage #859976 and muted berry #A35344 accents. Unpadded thin3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm card craft, matte fibres and exposed stock construction, not smooth3Dplastic/clay/wood toy, plush/felt/fluffy wool, quilled rolled coils, loose wood shavings, film strips, feather vanes or printed faux cardboard texture. Clear whole natural silhouette first. No costumes/machines/house-shaped animals, giant cartoon eyes, abstract polygon/cube body or furniture. Major spaces and openings genuinely alpha transparent. Whole complete subject SMALL central64%, at least18% true alpha margin EVERY side, no clipped ear/tail/wing/foot/leaf. No ground/scenery/plinth/backing plaque/rectangle/frame/border, halo/glow/drop shadow, text/letters/numbers/labels, clock/date/battery/weather values, UI, logo or signature. Subject HEDGEHOG BRAMBLE: one natural HEDGEHOG in low three-quarter side profile walks RIGHT, long gently pointed pale muzzle with tiny dark nose/eye, small round ear, squat oval back, exactly FOUR short coherent legs/feet beneath body and a tiny short tail. Back is ONE broad contour-cut CORRUGATED KRAFT PANEL with a finely serrated/scored upper outline suggesting natural spines; peeled outer liner exposes parallel stock ribs, not hundreds of individual feather tiles or loose wooden/needle bristles. Two simple broad side/belly panels complete body, actual wavy flute mouths between flat liners visible at all cut lips. A short BRAMBLE SPRIG lies beside rear feet with3serrated sage leaves and TWO small muted berry fruit clusters made from flat card cut shapes, no ground pad. Natural recognizable hedgehog proportions and gait, not toy/carvedwood/plush or a box-shaped body. Strong low horizontal silhouette distinct from upright owl. Entire muzzle/nose, ear, back-spine edge, all4feet/tail and every bramble leaf/fruit tip contained central64% with generous true alpha margins. No scene/backing/halo/shadow.",
+      "tool": "built-in image_gen",
+      "source": "sources/hedgehog-bramble.56463749.png",
+      "sourceSha256": "56463749c307364c534d0049626d84f315839e024d00a1ad5702bb732619721c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hedgehog-bramble.13042cf5.png",
+      "sha256": "13042cf59943304892ed3bbc961fc08f7c3fa68ae8af00602764a6889e7350ad",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "red-squirrel-hazel",
+      "prompt": "FLUTECUT WOODLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Familiar real woodland organism/group with natural recognizable proportions, face, body and coherent anatomy; handmade material SUPPORTS the nature subject rather than replacing it with abstract geometry. Physical handcraft HAND-CUT AND LAMINATED CORRUGATED CARDBOARD BAS-RELIEF: broad thin FLAT KRAFT PANELS, clearly visible coarse WAVY FLUTE CROSS-SECTIONS along cut edges, some outer liners peeled back to expose straight PARALLEL CORRUGATION CHANNELS, rough torn paper fibres at knife-cut lips and a few thin stacked layers. Natural kraft #AA7F4F, pale liner #D7BE8B, deep umber #5A402B, restrained sage #859976 and muted berry #A35344 accents. Unpadded thin3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm card craft, matte fibres and exposed stock construction, not smooth3Dplastic/clay/wood toy, plush/felt/fluffy wool, quilled rolled coils, loose wood shavings, film strips, feather vanes or printed faux cardboard texture. Clear whole natural silhouette first. No costumes/machines/house-shaped animals, giant cartoon eyes, abstract polygon/cube body or furniture. Major spaces and openings genuinely alpha transparent. Whole complete subject SMALL central64%, at least18% true alpha margin EVERY side, no clipped ear/tail/wing/foot/leaf. No ground/scenery/plinth/backing plaque/rectangle/frame/border, halo/glow/drop shadow, text/letters/numbers/labels, clock/date/battery/weather values, UI, logo or signature. Subject RED SQUIRREL HAZEL: one recognisable natural RED SQUIRREL sits upright in three-quarter profile facing LEFT, modest dark eye, pointed little muzzle, TWO small ear tufts, TWO forepaws holding one HAZELNUT and TWO hindfeet gripping a short HAZEL TWIG. A huge bushy natural tail curves upward right as ONE broad C-shaped CONTOUR-CUT CORRUGATED CARD PANEL with gently serrated outside edge, NOT a rolled spiral paper coil or many feather/leaf tiles. Body/chest/winglike side contours are just a few broad kraft panels, pale liner belly, muted reddish-brown outer liner, open wavy flute cross-sections at cut edges and one narrow peeled liner area exposes straight parallel channels. Natural squirrel body/limb/tail proportions, no costume or toyhouse/cartoonface. Hazel twig has TWO rounded serrated sage leaves and one small nut husk, all whole corrugated-stock shapes with visible fluted lips, no feather shafts/wood grain. Tall rounded C-tail and upright mammal silhouette distinct from owl and low hedgehog. Whole ear/tail tips, both forepaws/nut, both hindfeet and every twig/leaf end safely contained central64% with generous real alpha margin, no ground/scene/backing/halo/shadow.",
+      "tool": "built-in image_gen",
+      "source": "sources/red-squirrel-hazel.b22cf434.png",
+      "sourceSha256": "b22cf434f79788bd38f753248fae776ccc7af0bd412e621e251ce4eb039f2d55",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/red-squirrel-hazel.bf031b4d.png",
+      "sha256": "bf031b4df94e51cb0a88ed3c8794d9ae45e9c347fe750f0381a5a4a753adbf26",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "foxglove-fern",
+      "prompt": "FLUTECUT WOODLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Familiar real woodland organism/group with natural recognizable proportions, face, body and coherent anatomy; handmade material SUPPORTS the nature subject rather than replacing it with abstract geometry. Physical handcraft HAND-CUT AND LAMINATED CORRUGATED CARDBOARD BAS-RELIEF: broad thin FLAT KRAFT PANELS, clearly visible coarse WAVY FLUTE CROSS-SECTIONS along cut edges, some outer liners peeled back to expose straight PARALLEL CORRUGATION CHANNELS, rough torn paper fibres at knife-cut lips and a few thin stacked layers. Natural kraft #AA7F4F, pale liner #D7BE8B, deep umber #5A402B, restrained sage #859976 and muted berry #A35344 accents. Unpadded thin3\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u01535mm card craft, matte fibres and exposed stock construction, not smooth3Dplastic/clay/wood toy, plush/felt/fluffy wool, quilled rolled coils, loose wood shavings, film strips, feather vanes or printed faux cardboard texture. Clear whole natural silhouette first. No costumes/machines/house-shaped animals, giant cartoon eyes, abstract polygon/cube body or furniture. Major spaces and openings genuinely alpha transparent. Whole complete subject SMALL central64%, at least18% true alpha margin EVERY side, no clipped ear/tail/wing/foot/leaf. No ground/scenery/plinth/backing plaque/rectangle/frame/border, halo/glow/drop shadow, text/letters/numbers/labels, clock/date/battery/weather values, UI, logo or signature. Subject FOXGLOVE FERN: one recognizable natural FOXGLOVE SPIKE arches gently RIGHT, bearing SIX drooping long tubular thimble-shaped bell flowers mostly along one side, one closed upper bud and TWO broad oval basal leaves. Flowers have muted berry-pink outer liners, pale paper mouths with a few small umber natural spots, coarse exposed WAVY FLUTE STOCK at each cut lip; each flower built from just2simple broad curved card panels, not smooth ceramic or tiny feather mosaics. Beside it one tall natural FERN FROND curls diagonally left, six pairs of clear lobed leaflets cut together from ONE broad thin corrugated sheet with open gaps, sage outer liner partly peeled to reveal straight parallel channels, visible hollow wavy cross-sections along cut edges. Natural coherent plant structure/recognizable species silhouettes, no vase/pot/soil/box/abstractgeometry, two short joined stem ends only. Tall asymmetrical plant-and-frond composition distinct from animals, few broad contour-cut stock panels, torn paper lips. All bell rims, bud tip, every fern leaflet end, basal leaves and lowest stems contained central64% with generous real alpha margins. No backing/frame/halo/shadow or loose scraps.",
+      "tool": "built-in image_gen",
+      "source": "sources/foxglove-fern.4b57ae0d.png",
+      "sourceSha256": "4b57ae0d3a88a4c63f1d85e484121ee397279e631dd123cf97506b77bc50e213",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/foxglove-fern.198c8622.png",
+      "sha256": "198c8622f2bf81ba0338db9c543ff9924cef75d4f3fe59161252b81c7cd9eabb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "stag-beetle-log",
+      "prompt": "Edit this exact corrugated-cardboard stag beetle and fallen log artwork. Preserve the same physical hand-cut broad kraft liner panels, exposed coarse wavy flute cross-sections, peeled parallel channels, colors, natural woodland identity and genuine alpha transparency. Correct only beetle anatomy and spacing: give the beetle EXACTLY SIX clearly visible coherent jointed walking legs, THREE emerging from each side of the thorax under the wing cases. The current right-side rear leg is hidden/missing: add a plainly visible third right-side rear leg extending to the lower right around the edge of the log, while preserving the other five legs. Two branching mandibles, two antennae, two closed oval wing cases with centre seam remain. Every leg must have a visible connection and foot, no extra disconnected limbs. Whole complete beetle and short log with generous true transparent margins; no background, scene, base plaque, text, shadow or halo. Do not change the style into feathers, wood wool, quilling, plastic or geometric toy. Output one complete standalone artwork on transparent alpha.",
+      "tool": "built-in image_gen",
+      "source": "sources/stag-beetle-log.2814eba4.png",
+      "sourceSha256": "2814eba4f795d64b7f4d809b643cef9a038f251f206fd329bbd39e6f1c76199a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/stag-beetle-log.08bdba7e.png",
+      "sha256": "08bdba7e6c46e8e3518b61f0070a62eec92b9c0cdd3a2a6e470f52369bae2616",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/stag-beetle-log-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-repair/stag-beetle-log.original.410f8860.png",
+        "sha256": "410f88602cd769331ba1eaa43187f9c1a5b182e2b255d8c63b58a53df3d97dec"
+      }
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

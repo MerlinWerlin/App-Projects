@@ -1,0 +1,46 @@
+{
+  "id": "hitchrush-riverbank",
+  "lane": "B38",
+  "category": "Nature",
+  "status": "Accepted corrected3a source after exactlyONE construction correction; expanding four separately with ONLY accepted refined3a material ref and fuller taller WP. First approved raw frozen.",
+  "process": "Coarse hand-tied macrame square knots and double half-hitch collars in matte twisted three-ply cotton cord, with open knot windows and short turned ends",
+  "subjects": [
+    "otter-rushes",
+    "kingfisher-willow",
+    "frog-sedge",
+    "watermint",
+    "dragonfly-loosestrife"
+  ],
+  "world": "Familiar riverbank wildlife and plants in broad hand-tied cotton knots over quiet smoky berry-brown.",
+  "baselineSearch": "Exact macrame/knotwork/cavandoli process terms absent across139baseline+84source provenances; positive basketry/cord/lace/crochet neighbors retained, not a no-textile-neighbor claim. Exact ID collision checked.",
+  "neighbors": [
+    "Woven Wander actual historical4/acceptedunpublished5: coil-basket/plaitedfern/wovenpangolin/raffiachameleon/plaiteddragonfly; need coarse tied intersecting cotton collars visibly different from flat raffia weaving/plaits.",
+    "Berry Stitch historical4/accepted5: actual yarn/crochet needlework with baskets/teapot/stitched objects, no needle-crochet loop fill allowed.",
+    "Moonpatch historical4/accepted5: actual padded quilt/kite/rocket/moonrover cloth panels and seams, no padding/patchwork allowed.",
+    "B17 Bobbinbound fine paired-thread linen needlelace, no fine mesh/picot loops.",
+    "B22 Tautline cotton chords stretched between brass pins, no straight tense network/pins/backing.",
+    "B31 Purlwake hollow helical sewn metal spring tubes, no coils/metal shine.",
+    "B35 Ribbonrise broad smooth satin tucked stitch planes, no broad flat satin faces here.",
+    "B16 Cutstack layered raw cotton reverse-applique panels and cut openings, no cut sheet layers.",
+    "B5 Flockquake velour pile, no fluffy fur or fibre halo."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://herreshoff.org/2020/06/fancyknotwork2/",
+      "scope": "Primary marine museum teaching text: square knots/half-hitches and cotton cord form bars and spirals. Process text only, no specimen images used."
+    },
+    {
+      "url": "https://www.dmc.com/GB/en-GB/sbs-macrame-stitch-diagrams",
+      "scope": "Primary cord manufacturer teaching text: square knot alternates two half knots around filler cords; repeated half knots twist. Text only, no diagrams/images as inputs."
+    },
+    {
+      "url": "https://www.fiberartsalliance.org/Basic_Techniques_M-Z/macrame",
+      "scope": "Primary fiber arts teaching alliance: macrame knot structure, plyed cord twist and short tucked finishing. Text only."
+    }
+  ],
+  "cornerCompanion": "Whole familiar low-bodied otter with short ears/muzzle, four short coherent feet and complete long tapering tail beside short rushes; visible square-knot crossing paths as detail. Reel rim echoes open cord-knot loops, small bead hour marks, leaf hands, basin charge and folio calendar. Compact companion is a short open reed fork with ONE open knot collar and two very short turned cord ends, no full animal, whole net, tassel fringe, enclosing hoop or medallion. Clock contour chosen for the craft, calendar-only badge independently maintains normal point size.",
+  "firstGateCriterion": "Reject if85px reads as existing woven raffia/crochet toy instead of conspicuous coarse square-knot crossings and half-hitch collars.",
+  "selectedRefinedSourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+  "executedCreativeCorrectionCount": 1,
+  "materialApproval": "knot-generation/material-approval.json"
+}

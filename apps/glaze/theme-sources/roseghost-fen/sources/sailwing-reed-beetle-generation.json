@@ -1,0 +1,26 @@
+{
+  "id": "sailwing-reed-beetle",
+  "label": "Sailwing Reed Beetle",
+  "tool": "built-in image_gen",
+  "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different living natural subject below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale branching capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. The animal is an artistic plant-pigment imprint, with a strong readable silhouette and fine bleached tissue texture; no3D modelling, glossy highlights, lighting shadows, black outline, paper cutout or cyan blueprint. True transparent alpha everywhere outside the animal and through open gaps; pigment grain ONLY inside subject marks. No paper backing, square/rectangle, floor, perch, soil, halo, frame or border. Entire animal and every appendage central72% with at least14% empty alpha all sides, no clipping. No text, letters/numerals, clocks/readings, UI, logo, signature or watermark. One original individual asset, no collage or panels. SAILWING REED BEETLE: one invented living wetland beetle in an oblique upright stance, with exactlySIX slender jointed legs, two long curved antennae, a compact segmented thorax/abdomen and TWO very broad asymmetrically raised leaf-like wing covers. One cover opens high and narrow while the other fans low and broad, revealing two fine translucent inner flight membranes. Pale branching reed veins within the pigment wing fields, dusty-rose dorsal body and rusty-apricot tips. No flower stem, rosette, frog, machinery or object props. Readable leaf-sail insect silhouette with complete antenna/leg/wing tips and generous transparent gaps. Flat plant-pigment sun-print image only, never3D insect photography.",
+  "source": "sources/sailwing-reed-beetle.1f14bdd62e26.png",
+  "sourceSha256": "1f14bdd62e261e82d13e7a2faca3466e20df20971973c19266efad3ccbf3d5ea",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sailwing-reed-beetle.545c0a54afac.png",
+  "sha256": "545c0a54afac10ca15391d1f6caaafd76a27a045ad735a8a295eaaa3bcf9b06c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+  "references": [
+    {
+      "file": "sources/lantern-bladderwort.8d482e372f74.png",
+      "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+      "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+    }
+  ]
+}

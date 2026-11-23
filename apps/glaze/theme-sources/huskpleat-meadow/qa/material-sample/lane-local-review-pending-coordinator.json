@@ -1,0 +1,19 @@
+{
+  "status": "accepted for lane-local expansion; coordinator review pending",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "sourceSha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+  "selectedSource": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-4b28d6e6-05e1-4007-8a2f-3eb1262aa372.png",
+  "scope": "Actual full540/170/85 alpha composites and6own+all15A17/A18/Pithcurl+27actualbaseline neighbor boards viewed. Whole natural barnowl clear. Broad matte dry leaf sheets carry longitudinalplant ribs, gathered/pinched folds and curled thin lips with a small bindingcollar; different from smooth satin stitches, flushstrawintarsia, wickerweave, solid ragpulp, cardboardflutes, rigid pasta, paintedserrated pencilshavings and citruspeel. First raw selected unchanged. No coordinator or Jared approval. Original human fallback authorizes isolated collision-checked work during messaging outage.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 intent dispatch failed",
+      "delivery": "unknown"
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 actual first-material-gate dispatch failed",
+      "delivery": "unknown"
+    }
+  ]
+}

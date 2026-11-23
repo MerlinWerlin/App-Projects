@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Layout-only repair of this same Vaneleaf Highland feather-mosaic wallpaper. Preserve exactly the ibex/bellflower, marmot/saxifrage, chough/juniper, edelweiss rosette and scarab/gentian habitat, natural anatomy, fine physical feather-VANE PANELS with narrow shafts/parallel barbs, clipped edges and slight overlap, existing sage/cream/apricot/slateblue colours on ink-plum. SCALE DOWN the ENTIRE CONNECTED HABITAT and place ALL shapes inside CENTRAL62%WIDTH andBETWEEN34%AND72%HEIGHT. Restore/complete any plant/rock edge currently touching the original boundary, including edelweiss outer petals/leaves and far gentian tips. Both ibex horn tips, all4feet/tail, marmot tail/paws, chough beak/tail, all flower/leaf tips and beetle must be fully contained. Upper30% and bottom24% completely quiet matching plum ground, safe for1290x2796 and750x1334 centre crops. Fine barbs and feather shafts must remain evident, not generic smooth paper leaves/wood shavings/fur or3Dclay. No new subjects, extra limbs, frame/backing plate, text, UI or shadow; composition scale/position only, never crop to force fit.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.3f334114.png",
+  "sourceSha256": "3f33411455f623a1e1627e698d5f7825e38678c3b50d7c2101ec7dfcd6c5e15c",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "cc2c5993e718747509a4c3532ead0375f8063f9a8028bda3add95f6b8daf7943",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.b0aaf587.png",
+    "sha256": "b0aaf587c82024891c65a5fb3441a6dfda9d8937142cf8a8986fbc9b2761ef96"
+  }
+}

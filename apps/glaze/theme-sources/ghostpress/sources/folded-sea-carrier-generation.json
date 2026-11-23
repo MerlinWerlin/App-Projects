@@ -1,0 +1,18 @@
+{
+  "id": "folded-sea-carrier",
+  "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: FOLDED-SEA CARRIER, a recognisable sturdy sharp-bowed canal vessel with high riveted-looking gunwales, a little wheelhouse at the stern with one door/two windows and a short angled smokestack, two side stabiliser pontoons, anchor and mooring cleats. Its large open cargo hold carries an ENTIRE IMPOSSIBLE FOLDED SEA: three broad angular paper wave-planes stack and turn vertically into a huge crest, with tiny impressed foam ridges that all remain connected inside the hold. The vessel transports water itself as a cargo, clear construction and whimsical purpose. Three-quarter side view, wide readable hull silhouette, all bow/stern/pontoons complete. Keep it a shallow inkless pressed-paper relief, charcoal rag texture and compressed fibrous ivory edges, no printed ink, no freestanding miniature materials, not a normal decorative paper boat. Pure art, no numbers, logos or clocks.",
+  "tool": "built-in image_gen",
+  "source": "sources/folded-sea-carrier.76419d86.png",
+  "sourceSha256": "76419d86b65a9622b7474de80511fac390a0026a8ffa6b5b73b30b90963c63ee",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folded-sea-carrier.b29cd6bb.png",
+  "sha256": "b29cd6bb9b3dedb0218809c35a524b1c88018fcb9db98df4880a877279468a09",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "thistle-bumble",
+  "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject THISTLE BUMBLE: one tall natural THISTLE with a large open terracotta/mauve flower head made as many thin straight radiating cotton chords ending at tiny dull brass pinheads, prickly sage-green involucre of open triangular thread fans below, two angular lobed spiny leaves and one smaller closed side bud. A single BUMBLEBEE hovers above-left, small ochre/ink striped body, TWO paired translucent OPEN THREAD WINGS, six tiny thread legs, little antennae, natural insect with no cartoonface. The bee and flower are connected compositionally by proximity, not thread ropes between animals. Very sparse matte cotton tension construction with actual pin wraps and open gaps, no solid embroidered patch or fabric back. Tall branching botanical shape plus tiny airborne insect; no vase/ground/scenery. Entire thistle spikes, stalk base, leaves, bud and bee wings/antennae central and complete within generous true alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/thistle-bumble.8fbcd128.png",
+  "sourceSha256": "8fbcd1282d23b2b0f5b9eed9e51ad2a98dd3a51da3054d3f1205efef038eb5cd",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/thistle-bumble.d0e8095e.png",
+  "sha256": "d0e8095e6d3a40700d7d973a3ee70f05f6424f24c21e4ef8958131ef6444e40b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

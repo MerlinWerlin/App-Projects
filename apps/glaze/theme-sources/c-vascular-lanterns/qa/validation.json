@@ -1,0 +1,194 @@
+{
+  "id": "c-vascular-lanterns",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "lantern-vein-cage",
+    "magnolia-veins",
+    "hydrangea-veins",
+    "luffa-veins",
+    "milkweed-veins"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.38ec3d59.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 15280,
+    "sha256": "38ec3d59fd313ede38b9a3c6741c7bcc9b76cf684a381a8d3df8769f5513e002",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "b449a47325934d5b060904b15cff3c8cf0cf1ea7b76d523a41ab096e84b47920"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full selected generated sources, all five together and actual encoded85px assets. Whole lantern/berry/stalk, broad pointed leaf/petiole, three-floret four-sepal spray/forked stems, whole elongated luffa vascular fruit and opened two-valve milkweed pod/tiny seed have distinct natural silhouettes. Dry matte coarse ribs and fine irregular rejoining biological veins/fibres with genuine empty cells remain visible, without paired woven threads/metal/opaque membrane. First cleaned calyx920cec30 accepted after actual full170/85/eight-neighbor gate and retained unchanged. Four other subjects generated independently; each selected art has one own-source background/empty-cell extraction, initial original/prompt/hash retained. No creative code art editing or alpha cleanup.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556,750x1334 phone crops. One fuller/taller coherent naturally arranged botanical still life against a quiet olive field; whole five organs and every leaf/stalk/flower/luffa/pod endpoint retained in all three. Fine network gaps show the same scene background; no clipped key subjects, five separate cards or tiny island. Single own-five-reference wallpaper, five hashes/five distinct own sources, no framing edit or pullback.",
+    "native": "Viewed all nine actual current coordinator SVG native layouts after the final new-theme glyph contrast adjustment to5.1578:1 on tile. Supported lozenge clock contour follows the pointed calyx, original calyx/ribs/small berry in larger fields, bead marks/leaf hands, column battery and folio calendar. Quiet separate small open natural leaf-vein sprig in compact headers, no miniature cage portrait or surrounding mesh. All nine change with readings; battery null/0/100 and ornament roundtrip pass. Today pointsize/bold and independently adapting marker use coordinator-owned current renderer; no contour-driven font shrinking or automatic square requirement. Windows SVG evidence, not Apple New York or installed-device qualification.",
+    "roundedArtworkCorners": "All32Cthemes/160actual encoded artworks retain every visible alpha16 pixel on actual app gradient/Fit6percent inset/conservative20percent rounded mask, original art unchanged. C32 whole originals uniformly contained900within1024; no organ or tip cropped. Own five rounded tiles viewed with quiet matching olive corners. Layout simulation, not installed-device proof."
+  },
+  "ownerSteeringReview": "Less abstract recognizable real Nature, whole familiar botanical organs and physically open dry vascular structures. Different complete silhouettes, a fuller/taller coherent wallpaper, quiet matching Artwork backgrounds and small natural native-header companions. Artistic preparation interpretation, not authentic collected specimens or exact species/laboratory evidence.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-vascular-lanterns",
+    "backgroundStops": [
+      "#35433A",
+      "#53604D"
+    ],
+    "pieces": [
+      {
+        "id": "lantern-vein-cage",
+        "sha256": "3c45773d39e1d26cba52037ad60c77b835dd0361388dbf0bc1a15b8714c8f4a5",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "magnolia-veins",
+        "sha256": "3c11c3b60510411db5c7f066bb0a49a47817e03e2ce767a2d1aff7348d10202d",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "hydrangea-veins",
+        "sha256": "7099f616cfd8dd7a6966755351fbe3402606d0bc1fb2cfda26e8a7a8d149c26f",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "luffa-veins",
+        "sha256": "b87b61cb462bbd6720f52ef5ef67a039674294e19b019bdb747194fdbd6cc5fe",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "milkweed-veins",
+        "sha256": "88eb02aaa7b8e0fa47f622d24e0c0085f88efa6a2fa2aede94b777193aff5d74",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 5,
+  "packTestEvidence": "Actual offline builder v1:9assets/1993900bytes/minApp1.0.44. Actual manifest/catalogue parsers,5pure-art/9changingnative,ornament roundtrip,battery null0/100,Nature resolver,full selectedsource+normalized+encoded+5history image decode/dimensions/hashes,6selected/noorphans,5own-art editrefs and5own-WP refs/5distinct verified. All5full85/9native/3phonecrops/own5rounded viewed;32C/160encodedart retain alpha16. Shared runtime untouched; coordinator owns combined Swift/device qualification.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832",
+  "acceptedFirstRawUnchanged": true,
+  "unselectedHistoryHashesMatched": 5,
+  "fullSelectedAndHistorySourceDecode": true,
+  "sourceOutputCount": 11,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#EFE1C4",
+    "tile": "#53604D",
+    "actualCoreRatio": 5.157799447723198,
+    "minimum": 4.5,
+    "onlyThisNewThemeChanged": true
+  },
+  "scope": "Actual source/encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device or Apple New York claim. No shared/release/publication edits."
+}

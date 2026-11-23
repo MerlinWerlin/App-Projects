@@ -1,0 +1,38 @@
+{
+  "themeId": "pipework-tearoom",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.bf038b1e.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "bf038b1e4125cc4845f55a20e99d1fe30fe39819ad094f74a26148751a4e7911",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.d4e2f6f5.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "d4e2f6f5fe161ce058758f78d54615b4de4867b9a5e2a472aea3fe7012ff414f",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.31a5618a.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "31a5618a380a9bdb21492d779010cfda60087483f86befbdbc57a31a3cdf22fb",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Fan lid tips/spout, roaster crank/cooling wing, trolley wheels/shelves, condenser/basin and oven paddle/feet remain complete in all three actual encoded crops including750x1334. Quiet upper/lower aubergine ground retained."
+  }
+}

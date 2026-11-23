@@ -1,0 +1,18 @@
+{
+  "id": "saddle-seed-carrier",
+  "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject SADDLE SEED CARRIER: one low broad FOUR-WHEELED utility cart. TWO enormous bulbous dried-gourd PANNIERS hang either side of a shallow concave SADDLE-SHAPED CENTRAL LOADING CHANNEL, one near pannier's round hinged lid stands fully OPEN, the other lid shut with a small shell latch. A few large natural seed shapes visible inside only one open pannier, not spilled scenery. The channel curves upward at both ends; two dark reed cross axles support FOUR small thick pierced-shell WHEELS, visible as near pair and partial far pair. A long bent U-shaped push handle extends left/back, no animal or rider. Distinct squat horizontal asymmetrical transport silhouette, actual storage/hinges/axles clearly useful. Amber speckled hard rind, ivory fibrous cut lips around lids/wheels, slate-blue inner pannier lining and tiny flax/reed joins. Entire open lid, handle, saddle ends and all wheels centrally contained, every major gap transparent.",
+  "tool": "built-in image_gen",
+  "source": "sources/saddle-seed-carrier.a98bbfe3.png",
+  "sourceSha256": "a98bbfe3e0f8db54a83817c5842057cdb78039c962033afa0ee64801609dc9db",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/saddle-seed-carrier.4d10b687.png",
+  "sha256": "4d10b687650605b0473ff86b22dfeb0e45e6c14835fd27fb5ce4a53e3de5bac1",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

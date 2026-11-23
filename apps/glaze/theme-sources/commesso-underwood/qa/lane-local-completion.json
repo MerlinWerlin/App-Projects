@@ -1,0 +1,24 @@
+{
+  "status": "complete source candidate; coordinator material and integration review pending",
+  "scope": "Lane-local candidate quality review. Coordinator material/integration review pending because all3dispatches failed with MCP-32000; deliveryunknown. Original human brief explicitly permits isolated collision-checked lane work during messaging outage. No coordinator or Jared approval, publication or installed-device claim.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 Codex app tool request failed",
+      "delivery": "unknown",
+      "informationalIntentOnly": true
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "Same request error on bounded retry",
+      "delivery": "unknown",
+      "informationalIntentOnly": true
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 material-gate dispatch failed",
+      "delivery": "unknown",
+      "informationalIntentOnly": false
+    }
+  ]
+}

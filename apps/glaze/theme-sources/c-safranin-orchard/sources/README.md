@@ -1,0 +1,1 @@
+Six selected unmodified built-in output PNGs: five independent whole botanical thin-section interpretations and one opaque coherent own-five-reference wallpaper. First strawberrybb68 unchanged. No creative edits; whole original art contained900within1024 RGBA. Exact prompts, content hashes and five own wallpaper reference links in prompts/provenance.

@@ -29,7 +29,8 @@ export const CATALOG_CACHE_FILE = 'catalog.json';
  * T178: part of the cache stamp. Bump it whenever the app's catalogue handling changes, so the
  * first launch of that code fetches a fresh catalogue instead of trusting a copy older code saved.
  */
-export const CATALOG_CLIENT_REV = 'github-catalog-20261104';
+// 1.0.44: catalog-v2.json (src/core/packCatalog.ts APP_CATALOG_FILE) replaces catalog.json for this build.
+export const CATALOG_CLIENT_REV = 'r2-catalog-v2-20261123';
 
 /** A replaced GitHub catalogue can retain a stale CDN redirect even after an ETag refresh.
  * Give each actual catalogue request a fresh URL; versioned manifests and art stay immutable.

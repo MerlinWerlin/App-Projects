@@ -1,0 +1,36 @@
+{
+  "initial": {
+    "prompt": "ONE original standalone Glaze Nature artwork, first material/process sample for Guilloche Copse. A whole instantly recognizable Eurasian wren perched on one thin curved hawthorn twig with two small whole leaves: compact plump bird, short pointed beak, dark round eye, folded wing, longish tail held cocked upwards, TWO tiny coherent grasping bird feet. Render as a completely FLAT TWO-DIMENSIONAL SINGLE-INK INTAGLIO PRINT formed from BOLD ENGINE-ENGRAVED GUILLOCHE LINEWORK. The bird's entire form is built from interlacing nested elliptical wave loops and rhythmic rosette arcs, with wide repeated loop bands clearly visible at85px; dense loops model the rounded breast, a broad long nested-oval rosette defines the folded wing, and tightly repeating fan arcs define the raised tail. The mechanics of overlapping precise continuous curved loops must be the dominant distinctive style, not ordinary feather hatching, pencil scribble, crosshatch engraving, scratchboard cuts, woodblock gouges, stitch/thread/lace mesh, laser-projected surface stripes or a 3D metal brooch. Use only one matte deep petrol-blue ink #20536A; subtle dry print bite and tiny ink pooling in intersections, controlled open negative spaces between loops, no gradients or 3D lighting, no gold/enamel or glossy surfaces. Natural wren silhouette and anatomy remain immediately readable; the geometric line system supports a familiar real bird, never an abstract rosette in place of a body. Whole subject and twig centered occupying central68percent of SQUARE canvas width and central60percent height, all beak/tail/feet/leaf tips whole with generous margins. TRUE TRANSPARENT ALPHA background and between printed lines; no paper rectangle, no drawn border, no cast shadow, no background color, no halo, no lettering/numbers/labels, no collage, no UI or clock. Refined original graphical artwork, no referenced artist or copied design.\n",
+    "file": "qa/first-material-study/initial-wren.2af1425f158b.png",
+    "sha256": "2af1425f158b6a4141004ef973bde28be5b44793a56721b71a58638112d56c31",
+    "references": [],
+    "selected": false
+  },
+  "selectedMaterialRefinement": {
+    "id": "wren-twig",
+    "label": "Wren Twig",
+    "tool": "built-in image_gen",
+    "prompt": "Correct the LINE GEOMETRY and printed-ink character of this same OWN whole wren/twig material prototype. Preserve the recognizable whole wren pose, two feet, beak, eye, cocked tail, curved twig, two leaves, flat single petrol-blue ink #20536A and transparent alpha. Replace ALL regular diagonal diamond-mesh/net/lace areas on breast, head and wing with broad elaborate TRUE GUILLOCHE SPIROGRAPH ROSETTE linework: nested offset multi-lobed circular/elliptical epitrochoid curves that oscillate in rounded petal-like interlacing lobes, creating precise low-frequency curved interference bands. The breast contains ONE large elliptical multi-lobed rosette following its rounded silhouette; the folded wing contains a narrower nested multi-lobed oval rosette with visible open fan pockets; tail uses nested oscillating fan arcs. It must read unmistakably as flat engine-engraved intaglio printing, visibly different from tied bobbin lace or any woven thread. No diagonal warp/weft lattice, fabric/fibres/thread, circular stitch knots, raised wire, fuzzy lines, shaded mesh or paper-cut filigree. Single matte uniformly flat blue ink lines with restrained dry print bite. Broader separated rosette arcs readable at85px, not a chaotic nest of hair-thin lines. No realistic feather hatching or 3D metal. Keep whole natural coherent bird anatomy and ample true transparent margins. No panel, paper rectangle, background, shadow, lettering, symbols or UI. Preserve the bird silhouette; change only the internal printed geometry and flat-ink material.",
+    "source": "sources/wren-twig.2d8e172e0f05.png",
+    "sourceSha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "selectedFile": "widgets/wren-twig.e2a10d9b.png",
+    "sha256": "e2a10d9ba15a952a0d021bfc668c1904e14892588791626265bc2c77e64b653f",
+    "dimensions": [
+      1200,
+      1200
+    ],
+    "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+    "references": [
+      {
+        "file": "qa/first-material-study/initial-wren.2af1425f158b.png",
+        "sha256": "2af1425f158b6a4141004ef973bde28be5b44793a56721b71a58638112d56c31",
+        "purpose": "Own initial whole wren, correcting only mesh-like geometry to broad flat printed rosettes."
+      }
+    ]
+  },
+  "reason": "First image looked too much like a lace mesh; larger clear printed multi-lobed rosette geometry gives a distinct flat graphical process."
+}

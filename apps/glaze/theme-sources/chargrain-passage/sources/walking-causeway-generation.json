@@ -1,0 +1,18 @@
+{
+  "id": "walking-causeway",
+  "prompt": "CHAR GRAIN PASSAGE / chargrain-passage for Glaze. ONE original 1024x1024 pure artwork of a tangible invented transit construction. Flat hand PYROGRAPHY burned into PALE BIRCH VENEER: dark sepia scorched contours, fine hot-point stippled shading, uneven burnt-line thickness, irregular heat-bloom halos, pale wood fibres and continuous warm horizontal grain visible THROUGH the drawing, sparse chalk-white rub highlights. Treat the entire subject as a flat burn-drawn illustration on the image plane, not carved wooden objects, marquetry/inlay, laser-cut model, paper etching, ink print, pencil drawing, CGI or3D product render. Palette pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D and chalk #F4EADB only. Strong simplified silhouette, readable useful construction and access, distinct central subject occupying central65% with at least16% genuine transparent alpha around all sides and through large voids. Woodgrain is retained only within pale illustrated subject fields; no rectangular wooden plaque or backing, no floor/scenery, border, frame, text, letters, symbols/numbers, signs, clocks/dials, date/battery/weather readings, logos, people or UI. Subject WALKING CAUSEWAY: one long slender pedestrian BRIDGE DECK with low railings and THREE wide arch cutouts under its beam, mounted on SIX LONG ARTICULATED LEGS, three visibly on each side, that can lift the entire bridge and walk it between riverbanks. Foreground legs have clear round knee pivots and big oval flat footpads, posed in an asymmetric careful stride: one foot lifted and tilted, two planted. The deck has one short entrance stair folded down at left and a hand-cranked turning joint at right, no roof, cabins, wheels, humans or boat. Wide elevated insectlike silhouette but unmistakably a useful portable crossing, no generic bug/robot. At least two large open gaps between legs. Complete bridge ends, railings, all six legs and footpads stay in central65% with roomy alpha. Emphasise flat PYROGRAPHIC burn contour and hot-point stipple/heat halos over continuous birch grain, not literal mechanical wooden sculpture.",
+  "tool": "built-in image_gen",
+  "source": "sources/walking-causeway.f7ffe442.png",
+  "sourceSha256": "f7ffe4427711e7d79f2bc33847783796bbfe6e93acd4f943e34bc58ece75b57c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/walking-causeway.16da2849.png",
+  "sha256": "16da2849cd09f496130d1a667195b02d6e08a7f3cfd4f0e3dae29f4308c6bd1e",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

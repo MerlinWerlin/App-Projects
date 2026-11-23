@@ -1,0 +1,16 @@
+{
+  "name": "Thermographic Nightshift",
+  "mood": "Caretakers and warm-rooted organisms keep a frozen cultivation clearing alive in soft infrared.",
+  "tags": [
+    "thermography",
+    "infrared",
+    "cultivation",
+    "tangible-world"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity paths. Fictional infrared world.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. ",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}

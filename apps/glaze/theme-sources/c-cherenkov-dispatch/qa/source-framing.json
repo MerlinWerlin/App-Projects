@@ -1,0 +1,100 @@
+{
+  "review": "All5 complete conic silhouettes,paddles/keels,hall decks/supports,courier cape/hands/feet/beam,gate leaves/pylons,sorter arms/legs inside original alpha16/96 bounds. All5 edgealpha maximum1. Landscape ferry source1536x1024 contained in1024square without cropping.",
+  "assets": [
+    {
+      "id": "keelbeam-ferry",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          107,
+          208,
+          1433,
+          832
+        ],
+        "96": [
+          107,
+          208,
+          1432,
+          831
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "split-level-hall",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          62,
+          327,
+          1187,
+          932
+        ],
+        "96": [
+          63,
+          328,
+          1186,
+          931
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "beacon-courier",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          35,
+          116,
+          1146,
+          1176
+        ],
+        "96": [
+          36,
+          117,
+          1146,
+          1176
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "reversing-gate",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          47,
+          194,
+          1200,
+          1047
+        ],
+        "96": [
+          48,
+          195,
+          1200,
+          1047
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "tripod-sorter",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          80,
+          159,
+          1166,
+          1110
+        ],
+        "96": [
+          81,
+          159,
+          1165,
+          1110
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

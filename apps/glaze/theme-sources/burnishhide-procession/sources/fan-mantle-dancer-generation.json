@@ -1,0 +1,23 @@
+{
+  "id": "fan-mantle-dancer",
+  "prompt": "Composition repair for this benign tooled-leather fan-mantle dancer illustration. Keep the same adult dancer, raised knee, two outstretched arms and hands holding the five-panel mantle, planted foot, scarf, headdress and oxblood/tan/turquoise flat die-pressed leather cameo style. Expand the transparent canvas and scale the ENTIRE artwork down to fit central70% of a square, leaving15% or more truly empty alpha margin on EVERY side. Reconstruct the small clipped top headdress plume and the outermost left/right mantle rims so the entire fan outline is complete and all contours have visible empty margin. Keep every internal gap transparent. Do not alter the pose, palette, stamped rosette/hatch patterns, stitching or shallow bevel details. No backing, halo, floor, scenery, rectangular panel, border, text, numbers or added props.",
+  "tool": "built-in image_gen",
+  "source": "sources/fan-mantle-dancer.1b524ccd.png",
+  "sourceSha256": "1b524ccd39932af2fdc715fd98d06f61793454340a01971a742cc7746379c47a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fan-mantle-dancer.d90fae45.png",
+  "sha256": "d90fae4504ce69b794acb32b8f043f892c03f81c7d517c89fe12a1d07753457c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/crop-repair/fan-mantle-dancer-history.json",
+  "referencedImage": {
+    "file": "qa/crop-repair/fan-mantle-dancer.original.0286c8c0.png",
+    "sha256": "0286c8c0068c7c564263a75799c05a6607dc217eaf0d58d7ed5010d02c3ebbef"
+  }
+}

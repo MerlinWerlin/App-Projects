@@ -1,0 +1,34 @@
+{
+  "id": "otter-rushes",
+  "prompt": "ONE targeted CONSTRUCTION correction to own INPUT1 Hitchrush Riverbank otter. Use case: precise-object-edit. Preserve EXACT whole natural otter silhouette, modest head/ears/muzzle/two tiny eyes/whiskers, FOUR short coherent legs/webbed paws and complete long tapering curved tail, same short THREE-blade rush sprig and seedhead, same ecru/taupe/sage palette, true-alpha exterior, whole pose and generous margins. CHANGE the BASKET-WEAVE GRID across TORSO ONLY into unmistakable HAND-TIED MACRAME SQUARE-KNOT UNITS. Remove continuous straight horizontal/vertical warp-weft rows. Build torso from8to12 discrete BROAD ALTERNATING SQUARE KNOTS: each visible unit has TWO thick outer working cords cross into a small central oval collar around TWO filler cords, forming a knot with bulging side loops and short curved saddle, then cords turn diagonally toward the next knot. Clear irregular staggered rounded knot units, no regular woven chessboard. Small visible true-TRANSPARENT negative windows separate the knotted groups; every apparent hole opens all the way through to alpha, NO WHITE BACKING/FILL inside body holes. Keep matte coarse THREE-PLY TWISTED COTTON strands with subtle fibers, no crochet/knit rows, lace mesh, braided raffia leaf scales or shiny metal-purl spirals. Tail/legs/neck may retain their existing legible double-half-hitch collars and turned cord ends, but no smooth filled fabric body behind knots. No extra strands as animal limbs, no loose tassel fringe beyond silhouette. Natural otter remains recognizable first, no stuffed toy padding or huge eye. Only material/construction changes on torso/open gaps; do not replace whole animal or change anatomy/pose/plants. No ground/backing/hoop/plaque/text/UI/values, no new objects or fauna. True alpha exterior AND every open knot window.",
+  "tool": "built-in image_gen",
+  "source": "sources/otter-rushes.3a4856da.png",
+  "sourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/otter-rushes.f593fbc1.png",
+  "sha256": "f593fbc14d9df4e05cb8f4c50210f96d49901f02a4617d8beed1a3ab81713390",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/otter-rushes-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/otter-rushes.original.afe98cad.png",
+    "sha256": "afe98cad15f2ece4642ad3f6b931b89f57d6dff03369b2b48958600dcaf011dd"
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "otter-rushes-unselected-original",
+      "file": "qa/material-repair/otter-rushes.original.afe98cad.png",
+      "sha256": "afe98cad15f2ece4642ad3f6b931b89f57d6dff03369b2b48958600dcaf011dd",
+      "role": "Own initial unselected prototype EDIT TARGET for one material-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/otter-rushes-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/otter-rushes-exact-tool-result.json"
+}

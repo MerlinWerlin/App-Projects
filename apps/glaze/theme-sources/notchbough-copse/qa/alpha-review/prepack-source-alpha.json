@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "nuthatch-hazel",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-b77fd77c-0fa1-4f9e-8ceb-22570e38208e.png",
+      "sha256": "c05f96782984fac2ba2a6542a3a5624b04dc3f0c0c0821927f3b8fe6e0253fa7",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        31,
+        17,
+        1240,
+        1210
+      ]
+    },
+    {
+      "id": "dormouse-bramble",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-c70ace3c-f144-4f9d-8c32-ce833e926b7d.png",
+      "sha256": "8ef92380d13541d43af08775bef23f8fea4dad652f93ef46ccadd1812953e4ca",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        9,
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stag-beetle",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-9ca39a89-99d6-41f0-9e85-3a6a56ad3bf7.png",
+      "sha256": "093e90ba4335ab59ccc6c901eead457781c41fcfb2036ba36d2d50dbb12624e3",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        9,
+        1240,
+        1254
+      ]
+    },
+    {
+      "id": "hazel-catkins",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-6c0b6c14-a29e-4873-ae27-c17b5b5f3a24.png",
+      "sha256": "951b70d64c36faded5f83386dabaaa523eebdf375cc28857e3e6b5f969c559e1",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1248,
+        1254
+      ]
+    },
+    {
+      "id": "pipistrelle-bat",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-6f201f07-b5ba-4eea-9a13-f1e5b49a619a.png",
+      "sha256": "1095182cc13d897e1e4eee5318cf5dc5bb801ed60ea63ea746d386641969e4a4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        10,
+        47,
+        1244,
+        1229
+      ]
+    }
+  ]
+}

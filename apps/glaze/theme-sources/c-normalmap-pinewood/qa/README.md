@@ -1,0 +1,1 @@
+Facetlight Pinewood passed local build, image decoding, hash and selector checks. Visual review covered five encoded 85 px artworks, five rounded tiles, nine changing live previews and three wallpaper variants. The initial wallpaper and one layout edit are linked with verified hashes. See validation.json for details.

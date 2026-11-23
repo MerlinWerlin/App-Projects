@@ -1,0 +1,16 @@
+{
+  "name": "Ashloop Riverbank",
+  "mood": "Riverbank wildlife shaped from continuous steam-bent timber with curved grain, open ribs and small wood pegs.",
+  "tags": [
+    "steam-bent-wood",
+    "solid-wood-grain",
+    "open-rib-sculpture",
+    "riverbank-nature"
+  ],
+  "credits": "Glaze original artwork, built-in OpenAI image generation; original native widget geometry by lane B.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Make exactly one camera-distance layout revision of this attached Ashloop Riverbank wallpaper; the attached scene is the edit target. Pull the static camera back by about one third, keeping the same portrait aspect, tiny scene and exact relative placement and orientation of beaver on left, the merganser on right, and one little arrowhead plant between them. All original surfaces remain in genuine continuous steam-bent ash with curved wood grain, open rib bays and tiny copper tacks. Same muted spruce stage, same cohesive shallow swerved wooden bank. All recognizable wildlife and feet remain complete, nothing else added. Most important is substantially more horizontal margin. Center the entire assembled display and its soft contact shadow within the middle 62 percent of total image width, and around 62 percent of total canvas height. Leave at least 19 percent of uninterrupted spruce image sides at both left and right so the entire beaver paddle tail, both tips of the wooden bank, both birds head and tail tips, the plant and all feet are entirely visible. This is a continuous gentle visual pull-back only; do not introduce a white frame, make a new background, squeeze widths, add or rearrange parts. Retain the original very tall phone frame, the deep olive-spruce backdrop, natural cozy timber material, relative scale, top open dark space and soft modest ground contact shadow. No text, reflections, smoke, UI or framing marks.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Edit this EXACT Purlwake Reedbeds goldwork wallpaper, LAYOUT ONLY. Preserve all five recognizable natural subjects, dense SHORT HELICAL CUT-PURL METAL TUBES, open cut mouths/spiral ridges/couching stitches, gilt/silver/olive colors and existing arrangement exactly. Uniformly shrink the ENTIRE COMPLETE EXISTING HABITAT GROUP to65PERCENT OF ITS CURRENT WIDTH AND HEIGHT, including vole/tail/paws, all rush/reed tips, grebe/bill/crest/feet/ripples, pike/fins/tail, iris/bud/leaves/damselfly and all marshmarigold flowers/kidney leaves/current/grass strokes. Everything shrinks/moves together, no independent resizing, redrawing, deletion or additions. Recenter the smaller complete group horizontally at57PERCENT imageheight. Every element inside central60percent imagewidth and y44to70percent imageheight, with clearly WIDE QUIET PLUM MARGINS ON BOTH SIDES and BELOW. Naturally extend same quiet smoky-plum #343039 matte textile-paper field above/below/sides; upper40percent and bottom28percent remain empty. Whole every ear/tail/paw/bill/crest/toe/fin/wing/antenna/petal/reed/leaf end intact. Keep purl SPRING-WIRE construction; no smooth castgold, ordinary soft-thread fill, glassbeads/enamel, wool/felt, new plants/background decorations, hoop/frame, lettering/numbers, clock/date/battery/UI, halo/glow or cast-shadow plaque. Opaque portrait phone wallpaper, same exact already-correct natural goldwork reedbed, just one uniform pulled-back composition.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.85be2d02.png",
+  "sourceSha256": "85be2d0208d8b8d9a3bb8c624b97d26fc32243350d3c8324e60cbfd3e36b3995",
+  "sourceDimensions": [
+    941,
+    1671
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "3d18232585b98e08dd41b4b4693b39a69d5104075695d29f122bcee3336f62b1",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.cfd21df1.png",
+    "sha256": "cfd21df1c5b2ff3a28a143c997ca1f7178dff2c2ed6df3c7b62d3ff9221b179b"
+  }
+}

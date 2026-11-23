@@ -1,0 +1,18 @@
+{
+  "id": "foldwing-mooring-tower",
+  "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject FOLDWING MOORING TOWER: one tall narrow open arch tower with TWO ENORMOUS LEAF-SHAPED DOCKING WINGS opening outward from a visible round pivot at its TOP. Each wing has three nested reverse-applique coloured channels and one wide open tapered slot; they are rigid mooring cradles, not feathers or real leaves. The tower has three open access arches and one small wraparound boarding balcony halfway up, narrow stair inside. At lower-right a short articulated mooring arm ends in an open ring cleat, attached to tower with a thick textile hinge pivot. Three small buttress feet integral at bottom, no ground platform, airship or people. Dramatic tall V-topped open silhouette, recognisable hinged public docking station rather than abstract plant/ordinary tree. Entire wing tips, cleat, balcony and feet visible with broad alpha margin, especially large empty band above wings. All beams and wings rendered as thin stitched cut-back cotton fields with rolled edges.",
+  "tool": "built-in image_gen",
+  "source": "sources/foldwing-mooring-tower.a6fd1e1f.png",
+  "sourceSha256": "a6fd1e1fe80bc06aeafdf5de672f889be002d37929ba2133969cf4bf742dcef6",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/foldwing-mooring-tower.55992a8a.png",
+  "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

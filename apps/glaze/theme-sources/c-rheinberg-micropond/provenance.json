@@ -1,0 +1,171 @@
+{
+  "theme": "c-rheinberg-micropond",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "radiating-desmid",
+      "sourceImage": "sources/radiating-desmid.71676fb21b1c.png",
+      "sourceSha256": "71676fb21b1cf2584e89c932116584de80fb63450b231eaa4dbb378f855faec3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/radiating-desmid.276715b85aae.png",
+      "sha256": "276715b85aaea12a572618d3147ad6ed7ed68f7f4e6b7128f0b356c316f68d05",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 923856,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. Subject: RADIATING DESMID: one complete single-celled alga made of TWO UNEQUAL broad star-shaped cell halves joined at a narrow central isthmus. Each half has FIVE stout bifurcating lobes with rounded tips,not needle spines; slight natural asymmetry. Broad central blue hydrated fields,amber cell walls and sparse internal granules. A single connected living cell,flat slight oblique microscope view; open spaces between all lobes. Not a snowflake,jewel,flower ornament or geometric diagram. Asset: ONE separate square1024x1024 pure-art widget. Entire complete organism/colony and every lobe,rootlet,cilium,leg/claw must fit central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through natural open gaps; retain watery translucency inside bodies. No blue rectangular field or dark backing,floor,ground,shadow,glow fog,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 757151
+    },
+    {
+      "id": "stalked-rotifer",
+      "sourceImage": "sources/stalked-rotifer.bf67bf920058.png",
+      "sourceSha256": "bf67bf920058e1ec9c7a0db05550a0e82aea8aedb536907943b919907b8209f9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/stalked-rotifer.7922f93bc1eb.png",
+      "sha256": "7922f93bc1eb41facf897dbda82bc64e8ed9df1d3e00738b8b885bc4079bbe55",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 655355,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. Subject: STALKED ROTIFER: one complete graceful pond micro-animal,an elongated soft tapering body with TWO broad ciliated crown discs near its open head,a slightly folded translucent blue body with warm granular inclusions,a curved narrow attaching stalk and a split two-toed foot below. Two ciliary discs read as one crown mechanism,not eyes. Strong asymmetric S-shaped posture,three-quarter optical view,all cilia/stalk/toes complete. No ordinary insect,faucet,flower or mechanical wheel. Asset: ONE separate square1024x1024 pure-art widget. Entire complete organism/colony and every lobe,rootlet,cilium,leg/claw must fit central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through natural open gaps; retain watery translucency inside bodies. No blue rectangular field or dark backing,floor,ground,shadow,glow fog,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 897101
+    },
+    {
+      "id": "waterbear",
+      "sourceImage": "sources/waterbear.6223faa357d0.png",
+      "sourceSha256": "6223faa357d0e9eefb70cb04034dfe155808559324b75a4cc9fd49a4c10c8aac",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/waterbear.2bb427a3be10.png",
+      "sha256": "2bb427a3be1079b1e8235dc93213bec3062bdbdde56eabbd2bc569d212755b20",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 744148,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. Subject: WATERBEAR: one complete stout tardigrade-inspired microscopic animal with a softly segmented long barrel body,EIGHT short thick lobopod legs with tiny hooked claw tips,a rounded forward snout with one small mouth opening and no human/cartoon face. Walking slowly in three-quarter side view,front pair reaching forward. Hydrated translucent blue cuticle,sparse warm internal granules,thin amber scattering boundaries around body/leg folds; natural tissue rather than armour,X-ray organs or toy plastic. All8 legs and body ends whole. Asset: ONE separate square1024x1024 pure-art widget. Entire complete organism/colony and every lobe,rootlet,cilium,leg/claw must fit central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through natural open gaps; retain watery translucency inside bodies. No blue rectangular field or dark backing,floor,ground,shadow,glow fog,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 785289
+    },
+    {
+      "id": "chain-diatom",
+      "sourceImage": "sources/chain-diatom.bd3d771075db.png",
+      "sourceSha256": "bd3d771075db20626147193042f77e32a48aae95a9d88870594363672fca6380",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/chain-diatom.64aa4dae1372.png",
+      "sha256": "64aa4dae1372305bc9c8e60a232f20c6c26632ac9c5b59c5f6022936db77f566",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 183527,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. Subject: CHAIN DIATOM: ONE connected gently curved chain colony of SEVEN unequal elongated canoe-shaped diatom cells. Cells attach tip-to-tip in a loose angular S,with small visible neck gaps and subtle alternating tilt,one coherent colony rather than separate specimens. Each blue translucent cell has a thin amber rim,a few sparse warm granular pore rows and one clear central watery field. Strong long diagonal silhouette,all7 connected cells complete. No DNA helix,train,jewellery chain,leaf garland or labelled diagram. Asset: ONE separate square1024x1024 pure-art widget. Entire complete organism/colony and every lobe,rootlet,cilium,leg/claw must fit central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through natural open gaps; retain watery translucency inside bodies. No blue rectangular field or dark backing,floor,ground,shadow,glow fog,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 998244
+    },
+    {
+      "id": "duckweed-raft",
+      "sourceImage": "sources/duckweed-raft.a3bc16d4a55c.png",
+      "sourceSha256": "a3bc16d4a55ccbb97c971d1bf724903ecfb5d11c5ca2695e8ab3909e75a4f03f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/duckweed-raft.ae8daa597815.png",
+      "sha256": "ae8daa59781501ffc088d828c4c96cc34e2053502243ca3e9539b4577831191d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 726340,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. Subject: DUCKWEED ROOTLET RAFT: one small complete floating plant cluster with THREE unequal rounded oval fronds,one tiny folded daughter frond at a junction,and FIVE stout gently curling rootlets hanging underneath at different lengths. Slight three-quarter side view reveals one frond edge curled upward and the dangling roots,not a top-down flat symbol. Thin hydrated blue frond fields,delicate amber cell boundaries and sparse warm granular inclusions,watery natural growth. No pot,pond water patch,tree trunk,architecture,veins rendered as metal or extra organisms. Asset: ONE separate square1024x1024 pure-art widget. Entire complete organism/colony and every lobe,rootlet,cilium,leg/claw must fit central72%canvas with generous truly empty margins. Genuine transparent alpha outside and through natural open gaps; retain watery translucency inside bodies. No blue rectangular field or dark backing,floor,ground,shadow,glow fog,extra specimens,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 795570
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.37b45e89e3af.png",
+      "sourceSha256": "37b45e89e3af49f3a7efbd8e8737adb3bb36ed0e53dba114a3032fc5fafcdc99",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "fdefa618a57a68cd02afe6ec5b5167fea90362f7d06bbb8e06dfdfd3dd815e3b",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2647140,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. Use five own selected artwork originals as identity references. One coherent imagined near-surface pond microhabitat at a shared artistic scale: duckweed fronds float across a shallow curved meniscus with their rootlets suspended below,waterbear walks on a low soft sediment ridge,rotifer attaches to a thin root,radiating desmid drifts nearby and seven-cell chain-diatom arcs through the clear water. Preserve exact five identities and amber/cobalt microscopy process. All FIVE complete organisms/colony must fit within horizontal10%to90%andvertical48%to78%ofcanvasheight. IMPORTANT upper45%quiet deep cobalt-blue water with no organisms/roots/particles;bottom20%quiet darker water/sediment. Small desmid and diatom stay in the focal group,not floating high. Sparse very dim fluid meniscus/sediment contours connect the natural habitat; no scenic sky,buildings,machines or extra animals. All lobes,rootlets,ciliary crowns,legs/claws and chain endpoints have clear breathing room. Terrain/water may bleed,complete focal organisms may not. One habitat scene,not a specimen sheet or collage. No text,UI,frame or measurement marks.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "radiating-desmid",
+          "sourceImage": "sources/radiating-desmid.71676fb21b1c.png",
+          "sha256": "71676fb21b1cf2584e89c932116584de80fb63450b231eaa4dbb378f855faec3"
+        },
+        {
+          "id": "stalked-rotifer",
+          "sourceImage": "sources/stalked-rotifer.bf67bf920058.png",
+          "sha256": "bf67bf920058e1ec9c7a0db05550a0e82aea8aedb536907943b919907b8209f9"
+        },
+        {
+          "id": "waterbear",
+          "sourceImage": "sources/waterbear.6223faa357d0.png",
+          "sha256": "6223faa357d0e9eefb70cb04034dfe155808559324b75a4cc9fd49a4c10c8aac"
+        },
+        {
+          "id": "chain-diatom",
+          "sourceImage": "sources/chain-diatom.bd3d771075db.png",
+          "sha256": "bd3d771075db20626147193042f77e32a48aae95a9d88870594363672fca6380"
+        },
+        {
+          "id": "duckweed-raft",
+          "sourceImage": "sources/duckweed-raft.a3bc16d4a55c.png",
+          "sha256": "a3bc16d4a55ccbb97c971d1bf724903ecfb5d11c5ca2695e8ab3909e75a4f03f"
+        }
+      ],
+      "generationStages": "Five independent artwork generations; separately generated natural microhabitat wallpaper using five own original identity references."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "More nature worlds per Jared,with tangible coherent habitat and both native/Artwork corner care. Distinct Rheinberg-inspired optical process,not another physical material."
+}

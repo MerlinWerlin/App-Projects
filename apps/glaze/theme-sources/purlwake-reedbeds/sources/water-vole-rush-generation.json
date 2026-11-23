@@ -1,0 +1,18 @@
+{
+  "id": "water-vole-rush",
+  "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. FIRST MATERIAL SAMPLE WATER VOLE RUSH: one recognizable natural adult water vole walks quietly toward right, low rounded body, coherent short blunt muzzle, two small rounded ears, modest normal dark eyes, exactly FOUR short coherent legs with complete delicate natural paws/toes, one complete slender tail about half body length curving behind left. No smiling chibi face, giant toy eyes, rabbit ears, mouse cheese/costume or mechanical parts. Three short whole rush blades and one small seedhead beside front feet, no ground pad or habitat platform. Build vole entirely from DENSE SHORT CUT-PURL METAL SPRING TUBES laid in directional fur rows: each tube visibly consists of a many-turn continuous GOLDEN WIRE HELIX, with spring ridges and open cut ends, not one smooth bead or long metal ribbon. Slight coarse purl variation makes construction legible at170and85pixels. Tiny pale-silver purl highlights at cheeks/belly, fine olive silk at rush stems, rest gilt purl. Natural outline dominant, no generic decorative floral overprint. Whole muzzle/ears/tail, all four paws/toes and rush tips inside generous true alpha margins. No smooth silver cast skin, nacre/enamel/gems, pins/clasp/ring/brooch mount or cloth rectangle.",
+  "tool": "built-in image_gen",
+  "source": "sources/water-vole-rush.7085d1d8.png",
+  "sourceSha256": "7085d1d870bd3875cdc73b6ea94aec5acd5605385d369a57f6105125bf632c85",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/water-vole-rush.0916c484.png",
+  "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

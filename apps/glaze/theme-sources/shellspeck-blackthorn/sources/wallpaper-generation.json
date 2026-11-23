@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "SHELLSPECK BLACKTHORN. Use case: illustration-story. ONE coherent portrait1290x2796 nature WALLPAPER, opaque full quiet smoky moss-green #34443B field. The ENTIRE nature habitat is an expertly handmade EGGSHELL-INLAY OBJECT: broad OPAQUE MATTE warm-ivory thin irregular broken eggshell chips, some natural tan/nutmeg speckles, individually set into GLOSSY BLACK LACQUER core exactly shaped to natural forms; thin dark seams and occasional small chipped lips. NO real fur/feathers/animal skin anywhere. INPUT1 OWN APPROVED REFINED851 tit, INPUT2 own selected hare, INPUT3 own corrected PLANT-ONLY blackthorn branch are MATERIAL/NATURAL ANATOMY references only. Never change these standalone assets. Show ONE substantial TALL natural BLACKTHORN COPSE habitat with a gently curving tall trunk/three irregular branch forks, FIVE toSEVEN modest whole WHITE FIVE-PETALED blossoms and a few closed buds along mostly bare thorny twigs before leaves. ONE familiar small long-tailed TIT at middle-left perched coherently with TWO whole feet on one twig, short bill/small natural eye/round modest body/whole long graduated tail pointing diagonally down-right toward CENTER, not toward canvas edge. Bird complete about22percent canvas HEIGHT including long tail; no giant chibi head or eye. ONE familiar natural HARE sits at lower-right, lean body and long upright TWO whole ears, coherent front paws/folded long hind legs/short whole tail, about27percent canvas HEIGHT, familiar proportions, no toy/chibi pose. A few low natural grass blades and low irregular ground edge connect the shrub base to hare; no enclosed oval/circular plaque, display plinth, tray or diorama base. No other fauna, no snail/hedgehog. Every animal part including face/throat/underbelly/ears/paws is actual matte opaque shell chips/black lacquer. Entire habitat occupies about80percent WIDTH and50to55percent HEIGHT, from about26percent to79percent canvas height. ABSOLUTE side margins: ALL branch/petal/tail/ear/whisker/toe/ground tips start NO EARLIER than10percent full width and end NO LATER than90percent full width. Complete organic ground edge left/right, all key silhouettes whole. Generous tall branching/flower presence, not tiny floating island or low sticker strip. At least25percent quiet matching green above, about20percent below and10percent each side. Cream shell remains OPAQUE/matte, no mother-of-pearl shine, no ceramic glaze/crackle, metalcellwalls/metal/gems, painted feather/fur texture, loose scatter, frame/corner flourishes, text/UI/clock/date/battery/weather values/logo/signature. Full matching opaque background, no pasted rectangle or transparent wallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.0f35fdf2.png",
+  "sourceSha256": "0f35fdf24f25c82292a0c50475b877814b595372cd5987d0af49803dda9f8fec",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "d33f04b7a538da0a37267813eb4ce80425a72b2a0b3d77dbdd7e53cfbcf9186a",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "longtailed-tit",
+      "file": "sources/longtailed-tit.4e1af7a5.png",
+      "sha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "hare-hazel",
+      "file": "sources/hare-hazel.721da0fc.png",
+      "sha256": "721da0fc2cf3b6ea6541f4f3372b2731726e8f11597934c6d84e204996fdd851",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "blackthorn-blossoms",
+      "file": "sources/blackthorn-blossoms.4896490a.png",
+      "sha256": "4896490ae9c256e679cc020d45c5e3a4aba7d64c12b5a68954a51e20bdb17d7f",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

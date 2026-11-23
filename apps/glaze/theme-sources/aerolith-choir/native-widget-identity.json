@@ -1,0 +1,19 @@
+{
+  "themeId": "aerolith-choir",
+  "recipe": [
+    "pebble",
+    "aerolithVault",
+    "aerolithPores",
+    "pearls",
+    "leaf",
+    "basin",
+    "folio"
+  ],
+  "art": {
+    "aerolithVault": "M 9 91 L 12 43 Q 15 14 36 10 Q 43 9 48 28 Q 76 16 90 44 Q 99 62 90 91 Z M 23 86 L 24 51 Q 24 31 38 30 Q 52 33 49 58 L 46 86 M 49 86 Q 53 45 73 41 Q 88 46 82 72 L 77 86 M 14 66 Q 48 58 90 66 M 18 78 Q 52 69 87 78 M 24 21 C 18 22 19 29 24 29 C 30 28 29 21 24 21 Z",
+    "aerolithPores": "M 12 44 C 8 23 34 17 36 37 C 38 56 16 60 12 44 Z M 49 17 C 46 5 65 5 66 17 C 67 31 50 32 49 17 Z M 59 54 C 59 35 88 33 91 53 C 93 73 62 77 59 54 Z M 26 83 C 23 67 45 63 46 80 C 47 95 28 97 26 83 Z M 76 87 C 76 77 89 75 91 86 C 93 96 78 99 76 87 Z"
+  },
+  "direction": "Porous vaulted aerolith and bubble-cavity detail; irregular pebble dial with pearl markers and leaf hands, fluid basin charge gauge and folio calendar. Native values stay live.",
+  "ornament": "M 20 82 L 20 49 C 18 21 36 12 55 18 C 78 18 86 43 82 80 Z M 35 71 L 35 48 Q 36 34 50 35 Q 63 37 66 52 L 66 71 Z M 60 27 Q 72 25 72 36 Q 62 42 60 27 Z",
+  "ornamentDirection": "One porous foam arch and a single open cavity, rather than a whole cellular building."
+}

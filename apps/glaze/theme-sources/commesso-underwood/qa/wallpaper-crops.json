@@ -1,0 +1,38 @@
+{
+  "themeId": "commesso-underwood",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.abb1513e.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "abb1513e93189f77baf09cabcb3bc592757949747eefede367ff6bcc6319fe53",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.50304abd.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "50304abd0593e5b17deb534e4c4ccfc62dca0fd232160a0b0aed1bdf25728f90",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.17ca430e.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "17ca430e638018318effcb3485682179c7ad62e1e1ba7526e5f6fef02112a7dc",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Whole bullfinch bill/tail/twofeet, squirrel ears/curledtail/paws/feet/acorn, oaklobes/acorncups/branchends, fern/banktips retained in all3actual encoded phonevariants. Fuller tallcomposition; no crop repair."
+  }
+}

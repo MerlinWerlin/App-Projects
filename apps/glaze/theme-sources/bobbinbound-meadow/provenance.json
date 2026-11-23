@@ -1,0 +1,119 @@
+{
+  "theme": "bobbinbound-meadow",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Handworked paired-thread linen lace with braided contour cords, open diamond grounds and picot edges",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original1290x2796 portrait phone wallpaper for GLAZE BOBBINBOUND MEADOW, now a NATURE-LED meadow habitat. In the lower middle, a small thrush perches on an arched fruiting orchard bough, a wild hare crouches among broad clover leaves, three fern fronds unfold beside two woodland mushrooms, a dragonfly rests across reeds above a tiny pond opening, and a bumblebee approaches a tall curved foxglove spray. Each living subject has recognisable natural anatomy and strong different silhouette. One coherent organic meadow edge, no buildings, machines, vehicles, garden infrastructure or decorative doilies. Medium is HANDMADE DEEP-PLUM LINEN LACE: paired twisted/braided thread paths, thick bundled outline cords for readable silhouettes, small knotted joins, open diamond grounds, scalloped picot edge loops, matte linen fibres and tiny hand-tension variation. All animals, plants and habitat are actual flat unpadded handworked lace depictions, not natural leaf veins/coral, wire, grown material, crochet/plush, cut-applique cloth fill, paper or CGI sculptures. Deep plum #332536, soft thread highlights #705568, sparse undyed ivory bindings #F0DEC2 on warm apricot woven linen #E3C3A5. Keep upper50% completely quiet plain linen for dark icons. IMPORTANT CROP SAFETY: every complete bird/hare/fern/flower/dragonfly lies within central75% width and between50% and85% canvas height, including all ears, toes, wing tips and flower bells. Leave bottom12% quiet linen too, so1290x2796 AND750x1334 crops retain the whole natural composition. A single gently curving lace ground stem connects the habitat, no enclosing frame or rectangular patch. No words, lettering, numbers, labels, clocks/gauges/readings, date/battery/weather values, UI, logos, signatures, borders or mockup.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.4336e816.png",
+      "sourceSha256": "4336e8164a635a1818e4b9f4302e143f8a476146b3e1475bc9be9891846e2db7",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "63ce5194e95b2b9bf7cf18bc6a23bdca92fb805c77d112ab84e6d26c2d470404",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "orchard-songbranch",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject ORCHARD SONGBRANCH: one naturally proportioned thrush perches in three-quarter LEFT profile on a single gracefully arching fruit-tree bough. Two feet visibly grip the bough, long tail angles down-right, head tilts up as if singing with slightly open beak. One folded wing has three clear rows of plum linen feather-loop lace, breast spots are small dark knots on an airy undyed-ivory ground. Three small round fruit and five broad leaves hang asymmetrically from the branch below and at right; leaf interiors are deliberate bobbin-twist diamond grounds, not natural skeletal veins. A single small blossom at left, no extra birds, nests, scenery, tools or human objects. Strong open diagonal bough, full bird silhouette and fruit make an actual orchard-edge nature scene, not an abstract ornament or stuffed bird toy. Entire beak, tail, claws, branch ends, fruit stems and leaves fully visible inside generous alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/orchard-songbranch.8f8c6f91.png",
+      "sourceSha256": "8f8c6f914a2af77557918c211c266f63e141a2fdf0591cf9fb8ec83c43b79e77",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/orchard-songbranch.8591b0d3.png",
+      "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fern-and-fungi",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject FERN AND FUNGI: a real woodland-edge cluster with THREE DISTINCT FERN FRONDS emerging from one compact shared root crown. Left frond tall and unfurled with paired small leaflets, middle frond curls into a large open fiddlehead spiral, right frond arches low over TWO MUSHROOMS of unequal size. One mushroom has a broad slightly tilted cap with clear radial lace gill loops beneath, the second is small and narrow with a rounded cap. A tiny airy moss tuft connects the root crown and mushroom stems, not a rectangular ground mat. Natural botanical proportions and a wide-open C-shaped negative space inside the curled frond, different upright and arched silhouettes. Every leaflet is visibly paired twisted linen loops with picot ends, caps are bundled cord rims over open diamond grounds, sparse ivory bindings. No face, character costume, vessel, garden structure or animal. Whole frond tips, cap rims, stems and root tuft completely visible with generous alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/fern-and-fungi.db705bd2.png",
+      "sourceSha256": "db705bd2d5740f174427e6ee01fbabd2efcc3363d4b0f6e6a29dbdad4673bf49",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fern-and-fungi.01b81777.png",
+      "sha256": "01b81777adf822ecbd64a6407bfbdc1c4ae219f29512ecac8e9781d11aec708c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "clover-hare",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject CLOVER HARE: one naturally proportioned ADULT WILD HARE crouched alert in three-quarter RIGHT profile, long lean hindquarters, narrow muzzle, two very long ears with one upright and one angled back. Both forepaws visible together under chest, one long folded hind foot extends slightly forward and tiny tail remains visible at left. Calm dark eye is one small thread knot, no cartoon oversized eye, smile, clothes or accessories. Body contour is thick paired plum linen braid around an open diamond-lace flank, lean anatomy retained rather than round stuffed-bunny body; inner ears and underside have restrained ivory thread bindings. THREE broad clover leaves and two small clover flower heads grow beside the front paws, linked by one low curved stem, no grass mat or scenery. Strong low alert animal silhouette with tall asymmetrical ears, actual meadow wildlife. Entire ear tips, muzzle, whisker loops, tail, all paws and clover leaves/flowers inside generous alpha margins. Clearly flat lace depiction, not real fur, plush, knitted rabbit toy or natural skeleton specimen.",
+      "tool": "built-in image_gen",
+      "source": "sources/clover-hare.10f94034.png",
+      "sourceSha256": "10f94034e3156f3b1d656be0dc0adc67322a73cef991293dfd310ce84bb2b092",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/clover-hare.f259aa68.png",
+      "sha256": "f259aa6810f289a3fc676f7fa8df6708ed67d15de7fec500fea3ae50f796d785",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "pond-reeds-dragonfly",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject POND REEDS AND DRAGONFLY: one naturally proportioned DRAGONFLY rests diagonally across two tall curved reed stems above a small OPEN OVAL POND EDGE. Exactly FOUR long transparent diamond-lace wings, two forewings swept upper-left and upper-right, two shorter hindwings lower-left/lower-right, one long segmented braided abdomen, two small joined eye knots and six tiny leg loops grip the reeds. Three narrow reed leaves and TWO cattail-like seed heads rise asymmetrically, one tall at left and one low at right. One broad round floating pond leaf with a notch sits below, and a single curved paired-cord ripple outlines part of the pond, no opaque water/background fill or ground rectangle. Clear wide dragonfly cross/curved reed silhouette, actual wet meadow nature. All wing tips, abdomen end, reed tops, leaf edge and ripple end contained with generous alpha. Every vein is visibly twisted/braided handmade linen and picot joins, no metal wire, real insect photograph or gossamer glow.",
+      "tool": "built-in image_gen",
+      "source": "sources/pond-reeds-dragonfly.e6fd8b1e.png",
+      "sourceSha256": "e6fd8b1efcb5e9f43d0b9452ae6e80e90dde9828b521a39d8e677173cf70fa17",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/pond-reeds-dragonfly.c9d1e3b7.png",
+      "sha256": "c9d1e3b771c45a8f1cd74385d8e416127e9f9c26e1594add36cd526d3af49d9f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "foxglove-bumble",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject FOXGLOVE AND BUMBLEBEE: one tall gracefully arching foxglove flower stem with FIVE LARGE HANGING BELL FLOWERS of unequal sizes, broad pleated basal leaves and two small unopened top buds. Each flower is open enough to show its scalloped ivory-bound mouth and deeper plum open diamond-lace bell, thick braided stem and paired loop leaf edges. One naturally proportioned BUMBLEBEE approaches from upper-left with compact round thorax, clear striped abdomen made of alternating plum/ivory thread bands, exactly two visible translucent diamond-lace wings and six short looped legs reaching toward the largest bell; no anthropomorphic face or costume. A small gently curved root stem connects basal leaves, no pot/ground mat or garden structure. Strong tall S-shaped flower silhouette counterbalanced by the small hovering bee, actual living meadow pollination scene. Whole stem tip, buds, all flower lips, leaf tips, bee antennae/wings/legs completely visible within broad genuine alpha margin. Handmade paired linen twists and picot joins throughout, no actual insect photo, plush, wire or solid embroidered fill.",
+      "tool": "built-in image_gen",
+      "source": "sources/foxglove-bumble.eb97211a.png",
+      "sourceSha256": "eb97211a786a17f348b0dff5534c3d6a61265b9be377ec697e260ba6e87a44a7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/foxglove-bumble.2eec2e1e.png",
+      "sha256": "2eec2e1e85f89b016770eefb7435641f8bc541bde3d16f6b2705b9fd678d92a1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

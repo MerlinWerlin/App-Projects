@@ -1,0 +1,18 @@
+{
+  "theme": "turgor-tableau",
+  "direction": "Three relaxed tension curves echo the inflated membranes without crowding the date.",
+  "runtimeSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "nativeIdentitySha256": "2cca24870edc326badb13197e197186ecd21cf9838af7ffbedcab06e2eb8f36d",
+  "actualTypeScriptRenderer": true,
+  "beforeControl": "Same complete identity with only optional ornament omitted.",
+  "largerHeroLayoutsByteIdentical": 5,
+  "compactLayoutsUniformlyAspectFitted": 4,
+  "fullHeroPathsRetained": true,
+  "reviewed": true,
+  "installedDeviceVerified": false,
+  "swiftEvidence": "Actual identity parser and complete WidgetKit extension compile in PR346 macOS CI; these screenshots use the app TypeScript preview renderer."
+}

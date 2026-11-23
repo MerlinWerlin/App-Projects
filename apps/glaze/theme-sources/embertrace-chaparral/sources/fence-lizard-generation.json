@@ -1,0 +1,18 @@
+{
+  "id": "fence-lizard",
+  "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. One familiar western fence lizard resting along ONE short complete dry chaparral twig, natural slender body with low small scale ridges modelled in clay, modest pointed head, tiny dark eye, exactly FOUR coherent splayed legs with complete delicate natural toes and one long whole gently curving tail. No chibi smile, giant eyes or extra feet. Warm ivory hand-formed unglazed clay, sparse black carbonized horsehair trails with small smoky halos across body/tail, a faint iron blush under flank, no painted scale pattern or gemstones. All four feet, toes, snout, tail and both twig ends safely inside alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/fence-lizard.3225c3e5.png",
+  "sourceSha256": "3225c3e53ab00a38d6278d208e16a679cb1999ee8d2fcd3088e746350c15eeac",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fence-lizard.327aab0a.png",
+  "sha256": "327aab0ada395a1c098e63a0331d78a740410fe8731415f9083fdc555baa4680",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

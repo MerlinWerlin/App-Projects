@@ -1,0 +1,1 @@
+Initial wallpaper used the own approved tapir only as pulp-material/anatomy reference; source/hash and exact tool request retained. The selected wallpaper is a layout-only uniform whole-habitat pullback using that initial wallpaper as its sole input. Old original, both exact requests and two-stage lineage retained; no material alteration by packaging.

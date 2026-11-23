@@ -1,0 +1,18 @@
+{
+  "id": "snail-bracken",
+  "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject SNAIL BRACKEN: one natural garden SNAIL travelling right, long low body, two long upper feelers and two tiny lower feelers, a large side-facing coiled spiral shell raised shallowly from thin tin sheet. The shell whorl has fine radial chased lines and deliberately uneven hammer dimples, pewter with restrained antique-brass rim and blue oxidation, no glossy jewel finish. Above its shell ONE small arch of bracken with5 pairs of short distinct leaflets curves from low left over the shell, without touching either feeler. Snail sits on one narrow curled fallen leaf blade; transparent negative space between fern, shell and body. A compact broad rounded asymmetrical vignette. Entire antennae, tail, shell whorl, fern/leaf tips complete within alpha margins. Natural animal, no home/cargo/costume, no thick pedestal or extra animals.",
+  "tool": "built-in image_gen",
+  "source": "sources/snail-bracken.c2dd41b7.png",
+  "sourceSha256": "c2dd41b72e35e149f1e05371c57707d00a5030698b1d91a9eb8c87b4fa630829",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/snail-bracken.5c8d44af.png",
+  "sha256": "5c8d44af0126c3a7de200bc6713b3c95533e8649cb3c3539e5c8c5b33379c350",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

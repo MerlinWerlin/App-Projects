@@ -1,0 +1,66 @@
+{
+  "scope": "First material sample; actual observed material neighbors; no images used as generation inputs.",
+  "candidateGenerated": true,
+  "sources": [
+    {
+      "label": "B32 gecko candidate",
+      "medium": "Fused coarse cane cross-sections",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-f55c6520-b964-4875-8cf4-068a44fdb946.png",
+      "sha256": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5"
+    },
+    {
+      "label": "Lumen Mosaic actual",
+      "medium": "Brass-led stained-glass iris",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\lumen-mosaic\\widgets\\widget-stained-glass-iris.b4fa5f9e.webp",
+      "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e"
+    },
+    {
+      "label": "Sea Glass Sunday actual",
+      "medium": "Unpatterned frosted sea-glass crab",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\sea-glass-sunday\\widgets\\widget-sea-glass-crab.1abec885.webp",
+      "sha256": "1abec8852e6b049060bcaa0c6b724d244664ceff50f05e3259b7925c10af8af5"
+    },
+    {
+      "label": "Frostglass Passage actual",
+      "medium": "Frosted crystalline glass pinecone",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\frostglass-passage\\widgets\\widget-frostglass-pinecone.7d5516dc.webp",
+      "sha256": "7d5516dc1ccab40cfe01ca470f7bf98979fa88e3e8312f6edb78130ac834782e"
+    },
+    {
+      "label": "Kaleido Cobalt actual",
+      "medium": "Enamel top / glass wedges / brass",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\kaleido-cobalt\\widgets\\widget-optical-spinning-top.dfedb092.webp",
+      "sha256": "dfedb0925dfb7e23d90dea74e3cfcecee9ba891a3e3acae84e955f5b88c9d288"
+    },
+    {
+      "label": "Cobalt Caravan actual",
+      "medium": "Lapis veins / gold / ivory cabochon",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\cobalt-caravan\\widgets\\widget-lapis-dune-scarab.cb0909ba.webp",
+      "sha256": "cb0909ba05570feb1a3b8be006246b52ac53a883139764642ed5ba49a7e23b48"
+    },
+    {
+      "label": "B3 enamel actual",
+      "medium": "Metal leading / enamel cells",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\enamel-reliquary\\widgets\\trident-of-the-lost-sea.4ff30a41.png",
+      "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be"
+    },
+    {
+      "label": "B18 seedbeads actual",
+      "medium": "Separate cylinders / holes / thread",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\beadweft-estuary\\widgets\\kingfisher-reeds.769e09df.png",
+      "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5"
+    },
+    {
+      "label": "B25 frit actual",
+      "medium": "Fused rough powdered glass grains",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\fritcast-zenithworks\\widgets\\foldwing-mirror-hall.378ba16f.png",
+      "sha256": "378ba16fb2e5baf329784fc3b5670c68079640b2655b577698cc9b6bfee227ee"
+    },
+    {
+      "label": "B8 shell actual",
+      "medium": "Iridescent shell wafers / black lacquer",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\nacre-nomads\\widgets\\orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb"
+    }
+  ]
+}

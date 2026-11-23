@@ -1,0 +1,40 @@
+{
+  "scope": "Read-only before/after diagnostic in same raw-coordinate torso region. Actual composition/open-window judgement comes from full17085 planned-background visual review; counts alone do not establish material distinction. No raster edits.",
+  "executedCreativeCorrections": 1,
+  "stages": [
+    {
+      "stage": "held_initial",
+      "sourceSha256": "afe98cad15f2ece4642ad3f6b931b89f57d6dff03369b2b48958600dcaf011dd",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bodyRegion": [
+        400,
+        340,
+        1040,
+        760
+      ],
+      "clearAlphaAtMost16": 59062,
+      "opaqueNearWhite": 1336,
+      "regionPixels": 268800
+    },
+    {
+      "stage": "single_corrected_candidate",
+      "sourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "bodyRegion": [
+        400,
+        340,
+        1040,
+        760
+      ],
+      "clearAlphaAtMost16": 81558,
+      "opaqueNearWhite": 0,
+      "regionPixels": 268800
+    }
+  ]
+}

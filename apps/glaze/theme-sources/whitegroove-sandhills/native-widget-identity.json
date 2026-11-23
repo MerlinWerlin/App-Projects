@@ -1,0 +1,18 @@
+{
+  "themeId": "whitegroove-sandhills",
+  "recipe": [
+    "wave",
+    "whitegrooveLark",
+    "whitegrooveCut",
+    "cut",
+    "needle",
+    "tiles",
+    "folio"
+  ],
+  "art": {
+    "whitegrooveLark": "M 19 31 L 36 31 Q 44 23 54 32 Q 59 38 63 42 Q 73 43 79 50 L 92 62 L 90 69 L 77 66 Q 57 79 43 67 Q 30 62 32 45 L 19 36 Z M 44 34 L 45 35 M 34 43 Q 42 47 47 54 Q 52 48 60 46 M 52 53 Q 62 48 73 53 Q 70 61 62 66 Z M 49 70 L 47 79 L 37 84 M 58 73 L 57 84 L 67 84 M 29 87 Q 56 85 76 81",
+    "whitegrooveCut": "M 12 24 Q 32 27 53 18 Q 69 13 88 24 M 13 38 Q 32 37 39 50 Q 49 62 65 54 Q 76 47 88 51 M 39 50 Q 47 42 51 31 M 65 54 Q 66 66 76 71 M 15 71 Q 28 62 43 71 Q 57 81 72 79 L 83 73"
+  },
+  "ornament": "M 19 61 Q 30 56 41 58 Q 53 61 61 53 Q 68 45 79 47 M 45 59 Q 49 47 57 41 M 45 59 Q 50 70 65 71",
+  "direction": "The wave rim follows a dune crest. A chunky meadowlark profile and single-block cut field paths inform cut hour markers, needle hands, tile battery and folio calendar. The compact companion uses one short unprinted channel with two small branching ends."
+}

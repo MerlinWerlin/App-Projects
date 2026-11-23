@@ -1,0 +1,18 @@
+{
+  "id": "folding-tea-trolley",
+  "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3â€“5mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject FOLDING TEA TROLLEY: one invented mobile tea-service WORK CART with a tall narrow OPEN SCISSOR-LIFT FRAME. TWO large crossing hinged X arms support THREE thin cantilevered stepped serving shelves: bottom extends right, middle extends left, top small round shelf high right, all visibly useful ledges with tiny rim rails. ONE big spoked wheel low left, TWO small trailing caster wheels right, an oversized curved push handle rising left. Above, a small diagonally folded BELLOWS CANOPY of five stiff accordion panels shelters just the upper shelf. A single pear-shaped unlabeled tea canister rests low, no cups or routine utensil collection. Hinges and wheel axle joints explicit; striking zigzag asymmetric tall silhouette with ample negative space through X frame and shelves. Every component constructed from thin matte piped icing ridges, shell-swags and nozzle-bead joins. Entire canopy tips, push handle, shelf ends and ALL3wheels contained, no cutoff.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-tea-trolley.9295eaf8.png",
+  "sourceSha256": "9295eaf8d1e673e3c392be51ac32fa4e93f7ed043929ddccb3a91f138e3d22e1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-tea-trolley.c3528ba8.png",
+  "sha256": "c3528ba831a1c79e586911ba0b0798a41f865f4eba8a8397a64c6df3883d6636",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

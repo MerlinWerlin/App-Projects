@@ -1,0 +1,8 @@
+{
+  "note": "Glaze 1.0.44: catalog-v2.json = every entry of this frozen legacy catalog.json, unchanged, plus the new themes of dist/extraordinary-packs. catalog.json itself is never written again (builds 1.0.37 to 1.0.43 read it).",
+  "legacyCatalog": "catalog.json",
+  "legacyCatalogSha256": "97a7a132865f005d93b7cebad21aecec57a57d9e3bf8e50790486ec52b7ddc55",
+  "legacyPackCount": 141,
+  "appCatalog": "catalog-v2.json",
+  "newThemeMinAppVersion": "1.0.44"
+}

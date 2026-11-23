@@ -1,0 +1,7 @@
+{
+  "theme": "c-fraunhofer-masquerade",
+  "ornament": "M 14 70 Q 15 32 50 18 Q 85 32 86 70 Q 50 84 14 70 Z M 50 73 L 50 25 M 50 73 L 28 35 M 50 73 L 18 54 M 50 73 L 72 35 M 50 73 L 82 54 M 12 75 Q 50 96 88 75 M 18 84 Q 50 100 82 84 M 25 91 Q 50 100 75 91",
+  "ornamentDirection": "Native companion ornaments: one fringed carnival fan and three open diffraction-ripple bands. Full courier/buildings/ferry/beast/harvester remain in Artwork; native corners carry a restrained light-process fragment.",
+  "scope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+  "runtimeSupport": "Coordinator implementing optional TS/Swift ornament field."
+}

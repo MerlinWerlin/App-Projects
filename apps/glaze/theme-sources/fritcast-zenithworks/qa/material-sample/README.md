@@ -1,0 +1,1 @@
+Exact first foldwing mirror-hall sample retained unchanged in selected sources, with full/170px/85px material comparison and coordinator approval before expansion. This sample board is material review only; actual full pack/native/rounded/crop QA is stored in parent qa. Baseline neighbor source hashes and material distinctions retained. No installed device or publication claim.

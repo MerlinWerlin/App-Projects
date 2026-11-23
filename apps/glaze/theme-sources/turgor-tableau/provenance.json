@@ -1,0 +1,97 @@
+{
+  "themeId": "turgor-tableau",
+  "lane": "A",
+  "published": false,
+  "style": "Airbrushed opaque latex pressure sculpture; stretched skins, saddle membranes and eccentric counterweights.",
+  "artworks": [
+    {
+      "id": "folded-lung",
+      "prompt": "Use case: stylized-concept. Original Glaze theme TURGOR TABLEAU. Visual language: surreal pressure-inflated LATEX TOPOLOGY, deliberately stylised airbrushed physical sculpture photographed like a bold editorial miniature. Opaque satin membranes, soft swollen edges, subtle taut stretch lines and a few carefully painted seam creases; not transparent glass, polished chrome, porous foam, plush, food, rubber ducks or familiar balloon toys. Saturated cobalt blue, opaque vermilion-coral and warm buttercream, broad clean colour fields with softly sprayed shading and crisp graphic silhouettes. The surreal logic must be unmistakable in the form itself. No ordinary objects, no recognisable real animal, no eyes or faces, no text, no numbers, no logos, no interface, no clock or other baked live values. Asset: one separate original 1024-square pure artwork. Subject: FOLDED LUNG: an invented inflated cobalt breathing organ folds into four offset accordion lobes, a huge coral-red interior slit cutting upward through all of them. Two pale cream pressure tendrils curl from only one end. A compact asymmetric near-vertical sculptural silhouette, biological but not a real anatomical lung, no flat shelf or closed ring. Entire single composition fully visible, centered with at least 15 percent genuinely transparent margin, strong readable 170-pixel silhouette. Transparent empty background and voids. No floor, background tone, square shadow, mockup, frame, labels or extra objects. Keep broad opaque colour planes; avoid fine complicated decoration.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/folded-lung.png",
+      "sourceSha256": "76ed496dec72c6b23e30a733d54c8a690994f9e923ef5f0eeca3bfd0cc0f6cda",
+      "image": "widgets/folded-lung.png",
+      "sha256": "7b4f0d597d18f168a2131ff202b0c7cce6cbf1455a5a29ff49dc94352a45e163",
+      "export": "Entire original fitted within a 960px box on a transparent 1024px square; no crop or content alteration."
+    },
+    {
+      "id": "clasped-horizon",
+      "prompt": "Use case: stylized-concept. Original Glaze theme TURGOR TABLEAU. Visual language: surreal pressure-inflated LATEX TOPOLOGY, deliberately stylised airbrushed physical sculpture photographed like a bold editorial miniature. Opaque satin membranes, soft swollen edges, subtle taut stretch lines and a few carefully painted seam creases; not transparent glass, polished chrome, porous foam, plush, food, rubber ducks or familiar balloon toys. Saturated cobalt blue, opaque vermilion-coral and warm buttercream, broad clean colour fields with softly sprayed shading and crisp graphic silhouettes. The surreal logic must be unmistakable in the form itself. No ordinary objects, no recognisable real animal, no eyes or faces, no text, no numbers, no logos, no interface, no clock or other baked live values. Asset: one separate original 1024-square pure artwork. Subject: CLASPED HORIZON: a broad buttercream inflated membrane shelf passes through an impossible vertical cobalt pressure loop, while a thick vermilion soft ribbon is pinched across them in the opposite direction. The three swollen planes interlock through huge clean voids without joining into a normal knot. One hollow horizontal composition, strange and poised, no legs, no pedestal. Entire single composition fully visible, centered with at least 15 percent genuinely transparent margin, strong readable 170-pixel silhouette. Transparent empty background and voids. No floor, background tone, square shadow, mockup, frame, labels or extra objects. Keep broad opaque colour planes; avoid fine complicated decoration.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/clasped-horizon.png",
+      "sourceSha256": "b3c96adbca1302c0e8264f4fd3e089baac70303f0ce21665bc1642383347cdba",
+      "image": "widgets/clasped-horizon.png",
+      "sha256": "9057a5dd02a76c0bddedb20daa3039eaf075c4395f84949a394c6d802ddcdbc3",
+      "export": "Entire original fitted within a 960px box on a transparent 1024px square; no crop or content alteration."
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "Use case: stylized-concept. Original Glaze theme TURGOR TABLEAU. Visual language: surreal pressure-inflated LATEX TOPOLOGY, deliberately stylised airbrushed physical sculpture photographed like a bold editorial miniature. Opaque satin membranes, soft swollen edges, subtle taut stretch lines and a few carefully painted seam creases; not transparent glass, polished chrome, porous foam, plush, food, rubber ducks or familiar balloon toys. Saturated cobalt blue, opaque vermilion-coral and warm buttercream, broad clean colour fields with softly sprayed shading and crisp graphic silhouettes. The surreal logic must be unmistakable in the form itself. No ordinary objects, no recognisable real animal, no eyes or faces, no text, no numbers, no logos, no interface, no clock or other baked live values. Asset: one very tall opaque portrait phone wallpaper in a 9:19.5 composition. On a deep cobalt-blue seamless matte field, an impossible landscape of pressure-inflated buttercream planes, coral-red saddle membranes and rounded cobalt void towers gathers along the lowest quarter only. The masses interpenetrate through three enormous clean holes and stretched necks, making a miniature surreal elastic canyon. Deliberately hand-airbrushed broad colour planes and soft spray-gun edge gradients, slightly theatrical and physically impossible. Upper three quarters stays quiet matte cobalt #16367A with only extremely subtle sprayed light falloff for readable phone widgets. Keep important lower sculpture inside a narrow central column for a safe tall centre crop. No cloud/space motifs or real architecture. No transparency, no text, numbers, clocks, UI, app icons, borders or device mockup.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/wallpaper.png",
+      "sourceSha256": "52a982a2f6a3d5c3ead89316a0e59f8db1f765f37125ef892081a9a56a27198f",
+      "image": "wallpapers/wallpaper.png",
+      "sha256": "52a982a2f6a3d5c3ead89316a0e59f8db1f765f37125ef892081a9a56a27198f",
+      "export": "Original portrait retained unchanged."
+    },
+    {
+      "id": "counterweight-veil",
+      "prompt": "Use case: stylized-concept. Original Glaze theme TURGOR TABLEAU. Visual language: surreal pressure-inflated LATEX TOPOLOGY, deliberately stylised airbrushed physical sculpture photographed like a bold editorial miniature. Opaque satin membranes, soft swollen edges, subtle taut stretch lines and a few carefully painted seam creases; not transparent glass, polished chrome, porous foam, plush, food, rubber ducks or familiar balloon toys. Saturated cobalt blue, opaque vermilion-coral and warm buttercream, broad clean colour fields with softly sprayed shading and crisp graphic silhouettes. The surreal logic must be unmistakable in the form itself. No ordinary objects, no recognisable real animal, no eyes or faces, no text, no numbers, no logos, no interface, no clock or other baked live values. Asset: one separate original 1024-square pure artwork. Subject: COUNTERWEIGHT VEIL: a single luminous vermilion stretched latex membrane forms a huge saddle between three unequal bulbous buttercream anchor nodules, with a tiny cobalt inflated counterweight below connected by an impossibly thin stretched neck. A low wide membrane with one pinched dramatic curve and two huge arching negative spaces. No sails, no wings, no familiar balloon or toy, no legs. Entire single composition fully visible, centered with at least 15 percent genuinely transparent margin, strong readable 170-pixel silhouette. Transparent empty background and voids. No floor, background tone, square shadow, mockup, frame, labels or extra objects. Keep broad opaque colour planes; avoid fine complicated decoration.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/counterweight-veil.png",
+      "sourceSha256": "98e62fbd091c34c5a668eb3eb763eaa07a60ca05318f177a30e334cd1c97276a",
+      "image": "widgets/counterweight-veil.png",
+      "sha256": "faf517c26467bc9ada31bc7610aa6315fa21616390c2d8628d06878cf75a7f1c",
+      "export": "Entire original fitted within a 960px box on a transparent 1024px square; no crop or content alteration."
+    },
+    {
+      "id": "borrowed-axis",
+      "prompt": "Use case: stylized-concept. Create a completely NEW original square 1024x1024 pure-art image for Glaze TURGOR TABLEAU. Image1 is only a reference for the pressure-inflated latex surface, bold colour and airbrushed miniature style, not an edit target or silhouette to copy. Subject: BORROWED AXIS: a compact diagonally floating abstract pressure lifeform with three huge buttercream inflated funnel chambers pointing in incompatible directions around a small coral-red saddle membrane. A cobalt-blue split neck runs through their shared central void and emerges as a long flat pleated ribbon, with tiny soft blister seams at one side. One impossible organism with a broad angular yet swollen silhouette and large clean negative spaces. No conventional torus, basin, ordinary balloon, animal, shell, furniture, ring, letters or symbols; the geometry should be startling and impossible to name as a household object. Opaque satin latex membranes with tiny stretched creases, soft swollen edges and deliberate hand-airbrushed shadows; strong cobalt blue, vermilion-coral and buttercream palette. Strong graphic silhouette visible in a170pixel widget; entire subject within central72percent of a SQUARE canvas with real transparent empty margins and transparent holes. No glow, no floor, no cast shadow rectangle, no background colour, no text, no digits, no UI, no mockup, no clock or live readings. It must be a genuinely strange invented form, not a decorated ordinary object.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/borrowed-axis.png",
+      "sourceSha256": "fc5aa44d0fb1ba0975789d72bbb367707fa212afde492e9796b5da5201ee3998",
+      "referenceSource": "sources/folded-lung.png",
+      "image": "widgets/borrowed-axis.png",
+      "sha256": "22fc8531c61007908afd288e5875a1a9e1dd6dfde1261cd91c1355ebc41873d0",
+      "export": "Entire original fitted within a 960px box on a transparent 1024px square; no crop or content alteration."
+    },
+    {
+      "id": "tension-crawler",
+      "prompt": "Use case: stylized-concept. Create ONE completely NEW original square1024x1024 pure-art widget image for Glaze TURGOR TABLEAU. Image1 is only the reference for opaque satin latex pressure membranes, cobalt/coral/buttercream colour and hand-airbrushed sculptural finish, not its silhouette. Subject TENSION CRAWLER: an extraordinary invented low, wide living pressure structure, one enormous coral-red stretched skin draped across five unequal buttercream hollow pressure bulbs. Six cobalt-blue ribbon-like limbs extend in wildly different directions underneath, folding flat then inflating at their ends. The upper skin has three gigantic clean saddle-shaped voids and one off-centre raised folded crest. Whole form hovers in a poised impossible walking gesture, no animal head, no face, no eyes and no resemblance to an actual animal or inflatable toy. Strong horizontal asymmetric silhouette, COMPLETELY DIFFERENT from a vertical spiral, ring, funnels or interlocking loops. Soft bulging edges, taut tension creases and stylised airbrushed editorial miniature shading. No ordinary object, no instrument, no pool, no letters or symbol-shaped outline. Entire single creature inside central72percent of a square transparent canvas, generous clear margins, genuinely transparent voids and outside. No floor, no glow, no coloured backing, no rectangular shadow, no text, numbers, UI, clock or live values. It should read as an impossible living material world, not a normal plastic toy.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/tension-crawler.png",
+      "sourceSha256": "84a23f83c35ab79cd014ef48ee70f6d9df4c2a22822eeea1abdb210ded8241bc",
+      "referenceSource": "sources/folded-lung.png",
+      "image": "widgets/tension-crawler.png",
+      "sha256": "73069d457bfd1049ea0ca04f167ff71e4ef960fdf14afbc52f2a7a02483f09e8",
+      "export": "Entire original fitted within a 960px box on a transparent 1024px square; no crop or content alteration."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pressure-crown",
+      "prompt": "Use case: stylized-concept. Original Glaze theme TURGOR TABLEAU. Visual language: surreal pressure-inflated LATEX TOPOLOGY, deliberately stylised airbrushed physical sculpture photographed like a bold editorial miniature. Opaque satin membranes, soft swollen edges, subtle taut stretch lines and a few carefully painted seam creases; not transparent glass, polished chrome, porous foam, plush, food, rubber ducks or familiar balloon toys. Saturated cobalt blue, opaque vermilion-coral and warm buttercream, broad clean colour fields with softly sprayed shading and crisp graphic silhouettes. The surreal logic must be unmistakable in the form itself. No ordinary objects, no recognisable real animal, no eyes or faces, no text, no numbers, no logos, no interface, no clock or other baked live values. Asset: one separate original 1024-square pure artwork. Subject: PRESSURE CROWN: a strange open cobalt pressure basin whose thick swollen rim erupts into seven unequal buttercream folded lobes curving inward. Three coral-red membrane bridges span its central void at different heights. Three-quarter overhead view, broad round low profile, not jewellery, a flower, a shell, a normal crown or household bowl. The surface is elastic, taut and softly airbrushed, not ceramic. Entire single composition fully visible, centered with at least 15 percent genuinely transparent margin, strong readable 170-pixel silhouette. Transparent empty background and voids. No floor, background tone, square shadow, mockup, frame, labels or extra objects. Keep broad opaque colour planes; avoid fine complicated decoration.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/pressure-crown.png",
+      "sourceSha256": "21dfab1a8f8ec9e0c4b428d3ac9a49b4ff503d3e406b0e50d168c4adbf1d4671",
+      "rejection": "Too similar to an ordinary inflatable ring."
+    },
+    {
+      "id": "split-volume",
+      "prompt": "Use case: stylized-concept. Original Glaze theme TURGOR TABLEAU. Visual language: surreal pressure-inflated LATEX TOPOLOGY, deliberately stylised airbrushed physical sculpture photographed like a bold editorial miniature. Opaque satin membranes, soft swollen edges, subtle taut stretch lines and a few carefully painted seam creases; not transparent glass, polished chrome, porous foam, plush, food, rubber ducks or familiar balloon toys. Saturated cobalt blue, opaque vermilion-coral and warm buttercream, broad clean colour fields with softly sprayed shading and crisp graphic silhouettes. The surreal logic must be unmistakable in the form itself. No ordinary objects, no recognisable real animal, no eyes or faces, no text, no numbers, no logos, no interface, no clock or other baked live values. Asset: one separate original 1024-square pure artwork. Subject: SPLIT VOLUME: an upright vermilion inflated cuboid has been pulled apart diagonally into two offset rounded masses, while a continuous cream membrane twists through an impossible square opening to reconnect them. A small cobalt pressure blister protrudes from the lower mass. A bold vertical geometric silhouette with a huge obvious void and beautiful stretched latex creases; not a normal cube, block toy, letters or known object. Entire single composition fully visible, centered with at least 15 percent genuinely transparent margin, strong readable 170-pixel silhouette. Transparent empty background and voids. No floor, background tone, square shadow, mockup, frame, labels or extra objects. Keep broad opaque colour planes; avoid fine complicated decoration.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/split-volume.png",
+      "sourceSha256": "700fdacf2c2eb48642fcfaf23bffe1ad445b95bb3198a16c6f24391784d4aa13",
+      "rejection": "Letter-shaped toy appearance conflicts with the original-world brief."
+    },
+    {
+      "id": "memory-loom",
+      "prompt": "Use case: stylized-concept. Create a completely NEW original square 1024x1024 pure-art image for Glaze TURGOR TABLEAU. Image1 is only a reference for the pressure-inflated latex surface, bold colour and airbrushed miniature style, not an edit target or silhouette to copy. Subject: MEMORY LOOM: an impossible vertically hovering pressure organism, five unequal flattened cobalt pillow chambers layered along one crooked spine, each chamber pierced by a different large curved cavity. Between the chambers, coral-red tensile membrane struts twist at right angles and a thin buttercream pressure tube threads upward through all five voids before splitting into three irregular inflated bulbs. A strange articulated living topology, not furniture or a machine; no ordinary woven loom, no closed ring, no bowl, no flower, no toy and absolutely no letter-shaped silhouette. Keep the form asymmetric and unlike a familiar symbol. Opaque satin latex membranes with tiny stretched creases, soft swollen edges and deliberate hand-airbrushed shadows; strong cobalt blue, vermilion-coral and buttercream palette. Strong graphic silhouette visible in a170pixel widget; entire subject within central72percent of a SQUARE canvas with real transparent empty margins and transparent holes. No glow, no floor, no cast shadow rectangle, no background colour, no text, no digits, no UI, no mockup, no clock or live readings. It must be a genuinely strange invented form, not a decorated ordinary object.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/memory-loom.png",
+      "sourceSha256": "3d28f7afb617493b062adcfea514f4c0b34ca1b358a6d2fe2eb59a480018ede2",
+      "referenceSource": "sources/folded-lung.png",
+      "rejection": "Too close to the selected Folded Lung spiral silhouette."
+    }
+  ]
+}

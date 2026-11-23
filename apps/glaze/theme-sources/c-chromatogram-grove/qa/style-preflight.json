@@ -1,0 +1,119 @@
+{
+  "theme": "c-chromatogram-grove",
+  "status": "Root accepted exact firsta939f613 after full17085/allthree actualneighbor boards; expansion approved without creative edits to first source.",
+  "sample": {
+    "id": "ginkgo-chromatogram",
+    "selected": true,
+    "sourceSha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467",
+    "prompt": "ONE original square transparent Glaze Artwork, PIGMENT PASSAGE. A WHOLE immediately recognizable GINKGO FAN LEAF SHAPE cut from ONE thin matte warm-white CELLULOSE CHROMATOGRAPHY PAPER sheet, with broad familiar fan, subtle shallow top notch, irregular softly scalloped outer fan margin and one COMPLETE slender curved paper petiole. This is a physical THIN PAPER cutout, not actual leaf tissue, a photograph of a leaf, folded origami, cast paper-pulp sculpture or painted leaf. Clearly visible fine porous cellulose fibres and a tiny natural paper edge thickness, no paper backing rectangle. Whole intact familiar botanical silhouette FIRST.\nDistinctive FOREGROUND IMAGE-MAKING PROCESS: PLANT-PIGMENT PAPER CHROMATOGRAPHY. From the narrow petiole wick, a dried plant-extract migration has risen and FANNED OUT over this paper, separating into FOUR BROAD UNEQUAL gently bowed coloured MIGRATION ZONES: deep blue-green, olive-green, warm yellow and a narrow amber-orange. Each separate absorbed pigment band has a concentrated slightly darker advancing front and an irregular finely feathered capillary leading edge, a few short directional wick fingers and lighter dissolved tails behind it. Distinct UNSTAINED WARM-WHITE PAPER INTERVALS separate the bands. Let the broad migration fronts and white paper gaps remain OBVIOUS AT85PX. Near the petiole remains a small darker green absorbed origin patch, no pencil baseline. Some uncoloured porous paper stays above the last front and at the fan margins. All pigment is INSIDE the same flat paper fibres; no surface paint, raised ridges, glossy ink, ordinary smooth gradient, watercolour brush wash/splatter/marbling, regular decorative stripes or a graphic bar chart. Colour sequence/shape is an ORIGINAL ARTISTIC INTERPRETATION, not an authentic analytical sample, measuredRf trace or exact pigment identification. No green leaf veins or wildlife picture inside the paper, no contact-print photographic silhouette, sun-bleached rose print, optical rainbow interference, detector pixels, fluorescence, metallic foil, thread or fibre sculpture. Photograph almost straight down with restrained soft light revealing the dry matte paper edge/porosity without shiny3D volume. Whole fan/petiole/every paper endpoint inside central70percent square, generous minimum15percent genuinely ALPHAZERO exterior each side and through natural open outside gaps. No background/table/floor, cast shadow outside cutout, lab beaker/strip/ruler/equipment, rectangle, label, writing, numbers, axes, UI/clock/date/battery/weather readings, logo, frame or other object. One whole nature-shaped chromatography-paper object on true transparent exterior. No external visual input or named artist style. The paper leaf and petiole are fully OPAQUE throughout: the white intervals are uncoloured solid paper, never alpha holes. Transparency is ONLY outside the exact whole cut-paper silhouette and in its open top notch.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        38,
+        110,
+        1215,
+        1199
+      ],
+      "96": [
+        39,
+        110,
+        1215,
+        1199
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "roseghost-fen",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\roseghost-fen\\widgets\\webtoe-reed-frog.d03664f54573.png",
+      "sha256": "d03664f54573b6fb81c9140a570feb552700d08f9bf3fe6de6ef21ffbd697f29"
+    },
+    {
+      "theme": "c-chlorotype-leaflight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chlorotype-leaflight\\widgets\\fig-leaf-robin.38da7049abf5.png",
+      "sha256": "38da7049abf5c24be36ac6cfe8b575d40339e2328a99046a2a5cd1a886b5ac2b"
+    },
+    {
+      "theme": "ragcast-canopy",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\ragcast-canopy\\widgets\\morpho-fern.09d2dcd6.png",
+      "sha256": "09d2dcd660a744e4c521bc767784136f36aac45f568d715d5d38d0abff77f666"
+    },
+    {
+      "theme": "floatink-stormcrew",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\floatink-stormcrew\\widgets\\kite-rig-mender.549312ad.png",
+      "sha256": "549312ad520840c1abd5a9df5c509d20ea1ba9dc281c1eed9540c2a6db679f2f"
+    },
+    {
+      "theme": "c-hyperspectral-dominion",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-hyperspectral-dominion\\widgets\\estuary-crown.2f94324139fe.png",
+      "sha256": "2f94324139fe31da72364059b423ae0ad7209ce54783d9c44bc935b98a43f48d"
+    },
+    {
+      "theme": "c-isoclinic-menagerie",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-isoclinic-menagerie\\widgets\\trifurcate-sifter.bb8e8be196b0.png",
+      "sha256": "bb8e8be196b0fc5518d03d02cf109b4ce481d6273ca8ffddea1894486e11dc42"
+    },
+    {
+      "theme": "otter-wash",
+      "optionId": "kelp-wash",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\widget-kelp-wash.16befa11.webp",
+      "sha256": "16befa114a59740308f7c62fe01b248c410f73cd2e434be7d81ae93a724fa0ae",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\manifest.json",
+      "selectorProof": "outputs/chromatogram-published-neighbor-selections.json"
+    },
+    {
+      "theme": "clover-nap",
+      "optionId": "daisy-ladybird",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\clover-nap\\v8\\widget-daisy-ladybird.c95b5f93.webp",
+      "sha256": "c95b5f93b962047c27f2ffa74adb27a2fdedef2d3ea515388883b634c6393cfd",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\clover-nap\\v8\\manifest.json",
+      "selectorProof": "outputs/chromatogram-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Whole familiar ginkgo fan/notch/curved petiole retained. Thin matte cream porous cellulose carrier and four bowed blue-green/olive/yellow/amber zones with concentrated feathered fronts, directional capillary fingers and white paper intervals visible atfull/170. At85 clear banded nature silhouette; actual gate must decide whether the migration process reads distinctly from ordinary watercolour/decorative stripes, Roseghost contact-print pigments and C1/C6 spectral bands. Source margins tight at widest fan edges, whole-source structural containment will preserve complete original. No selected asset/refinement/four/WP yet.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "paper-pigment",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\chromatogram-first-paper-pigment-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "bands",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\chromatogram-first-bands-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "watercolour",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\chromatogram-first-watercolour-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ],
+  "coordinatorGate": "Root accepted firsta939f613 without creative edits after viewing full17085 and allthree actualneighbor boards. Whole ginkgo carrier/unequal separated feathered fronts/unstained gaps remain clear at85, distinct from leaf photos/contactprints/ordinarywatercolour/interference. Expand four independent familiar natural cut-carrier silhouettes and fuller/taller own-reference WP; matte opaque paper, front separation and whole tips required. Artistic interpretation, no measured lab-data claim. Arch/fan native and quiet ginkgo header accepted."
+}

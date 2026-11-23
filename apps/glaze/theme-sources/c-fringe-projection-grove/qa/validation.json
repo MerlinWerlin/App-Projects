@@ -1,0 +1,169 @@
+{
+  "id": "c-fringe-projection-grove",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "split-vane-fern",
+    "cupfold-orchid",
+    "braidroot-sapling",
+    "bell-leaf-grazer",
+    "siltwing-moth"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.bc295df6.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 11744,
+    "sha256": "bc295df6810c3d3ead1d266a10e6bc5e4d2f55f1b4c9c474bda1e4c41c7d6314",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed independent fern/orchid/sapling/grazer/moth together at210/150px and actual encoded85px. Different complete organic silhouettes, coherent neutral forms/projected sinusoidal fringes, true transparent exterior and holes. Source alpha16/96 confirms complete leaf tips,roots,wings,antennae,feet.",
+    "wallpaper": "Viewed all3 actual encoded phone variants. Five distinct natural organisms share one connected glade; primary leaves,crowns,wings,antennae,body/feet remain whole. Quiet blue-teal upper field,ground roots/soil may continue naturally through frame edges. Small moth stays below upper icon field.",
+    "native": "Viewed all9 actual coordinator renderer previews in scratch. Readings clear; fern hero/wavefronts stay in larger compositions and dedicated curled leaf/3-fringe ornament sits compactly in headers.",
+    "roundedArtworkCorners": "Viewed all5 encoded artworks with real app background stops,Fit6%inset,conservative20%roundedmask. All visible alpha16 retained. Quiet muted blue-teal corners support complete organic silhouettes."
+  },
+  "ownerNatureSteering": "Jared explicitly requested nature worlds; C16 harbour proposal changed to grove before any generation. Nature-led plants/insect/small fauna, not mechanical scenery.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-fringe-projection-grove",
+    "backgroundStops": [
+      "#11272A",
+      "#203B3D"
+    ],
+    "pieces": [
+      {
+        "id": "split-vane-fern",
+        "sha256": "b5dc2a9e66e6838cf189bf0a35228335accfcd9a03e65cff98548e4b09ab4dea",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "cupfold-orchid",
+        "sha256": "dd84e742f82a0d0e81db287c86b98a6136b8a782822040d9a9f0b0de0d7f1ec0",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "braidroot-sapling",
+        "sha256": "877c5c65b0a9fb707117c5bfcdd63e3b38b0b87b9c2b0bcb35e416a69dd64db6",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "bell-leaf-grazer",
+        "sha256": "fa8897c92bff7e063a7742c3980042f47487ecaf75734fa64dcad13975554b98",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "siltwing-moth",
+        "sha256": "8c12086102d79350da2f0226c1152c5073e9510ad44f08fedd01a1e42db8a77a",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "packTestEvidence": "Actual offline builder v1:9assets/0.73MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and5own wallpaper reference hashes pass. Common47 pipeline checks previously passed; no shared runtime edits."
+}

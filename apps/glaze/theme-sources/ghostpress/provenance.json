@@ -1,0 +1,121 @@
+{
+  "theme": "ghostpress",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Inkless dry-emboss inspired graphite rag-paper harbour relief",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 Glaze GHOSTPRESS wallpaper. An inkless blind dry-embossed illustration in heavy matte GRAPHITE COTTON-RAG PAPER. In lower45% a tangible invented harbour: low canal banks lead to a tiny inhabited lock-gate house above three sluice openings at lowerleft; a narrow counterweighted raised drawbridge crosses the canal to right; a small sharp-bowed vessel carries an enormous folded paper wave in its open hold. Clear constructed miniature places, visible doors/windows, mooring cleats and gate mechanisms, all integrated in one continuous impressed-paper scene, not pasted separate icons. Keep composition calm, all architecture small and low in frame. Upper55% quiet dark graphite paper grain with only subtle long sunken canal lines near the base. No ink/foil, colours come solely from sharp grazing warm-white light on pressed fibrous ridges and plum-gray recesses. Compressed paper fibres, clear embossed outlines, shallow low relief, no separate3D foam/plastic/stone miniature materials. Palette charcoal #26252D, gray #8D8790, ivory #EAE4DE highlights. No people, text, numerals, symbols, signs, clock/date/battery/weather readings, UI, logo, frame, phone mockup or collage. One continuous art wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.0f0ea741.png",
+      "sourceSha256": "0f0ea7414b68de6daacaf675549b931290e8924674ca3b6a12040c98db1f86ec",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "902bb09d2141fd2259bac5acea5ce2b5fde625d5738568e698a2c82411b4fc97",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "lock-gate-house",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: LOCK-GATE HOUSE in an invented paper harbour. A tiny narrow three-storey dwelling perches above a visibly constructed canal sluice: pitched asymmetric roof, two little window bays, a clear front door reached by an outside zigzag stair, three broad rectangular hinged floodgate leaves below the house, one gate raised exposing the archway of water. Add a small counterweight block suspended from a rigid paper strut, one chimney and a maintenance balcony. Readable actual architecture and gate mechanism, full complete miniature place, not disconnected abstract shapes. Still one shallow inkless impressed paper illustration with tactile compressed rag fibres and ivory lit edges, NOT a separate 3D building or toy. Strong compact house-over-sluice silhouette, no baked live values, clock or text.",
+      "tool": "built-in image_gen",
+      "source": "sources/lock-gate-house.7623ae7c.png",
+      "sourceSha256": "7623ae7cde0a71837e216ceb329c2251a7bf2a479181a07d07b484725e4972e8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/lock-gate-house.9e532331.png",
+      "sha256": "9e532331f645f6cd09e27dd6d52d2a427299f3be8771715fda627e6b0fa2271e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "walking-archive",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: WALKING ARCHIVE, a squat travelling harbour library with a pitched split roof, a readable front door and two big bay windows showing tiny recessed book spines WITHOUT writing. Its body stands on FOUR distinctly jointed mechanical legs, each ending in a folded little flight of stairs as a broad walking foot; one foot lifted mid-step. A counterweight drawer projects behind, and a narrow balcony wraps one side. Coherent constructed inhabited machine with clear joints/hinges and supporting structure, compact low heavy archive body over four spread stair-feet, not a normal house on stilts and not an abstract shape. Make it an original inkless embossed graphite rag-paper illustration: shallow pressed planes, fibrous edges and ivory grazing highlights, no ink/metal/plastic/foam material or freestanding toy. Entire legs/roof fit in view, generous transparent margin.",
+      "tool": "built-in image_gen",
+      "source": "sources/walking-archive.f36b6c4b.png",
+      "sourceSha256": "f36b6c4b5db3fa43053ca1affc5ae1454a75a812dcf7803aacd6a0148cabb998",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/walking-archive.6586b2eb.png",
+      "sha256": "6586b2eb8c2d1f0740e63464e2503a3efd648fc7019acb5e84541c622ddf4982",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folded-sea-carrier",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: FOLDED-SEA CARRIER, a recognisable sturdy sharp-bowed canal vessel with high riveted-looking gunwales, a little wheelhouse at the stern with one door/two windows and a short angled smokestack, two side stabiliser pontoons, anchor and mooring cleats. Its large open cargo hold carries an ENTIRE IMPOSSIBLE FOLDED SEA: three broad angular paper wave-planes stack and turn vertically into a huge crest, with tiny impressed foam ridges that all remain connected inside the hold. The vessel transports water itself as a cargo, clear construction and whimsical purpose. Three-quarter side view, wide readable hull silhouette, all bow/stern/pontoons complete. Keep it a shallow inkless pressed-paper relief, charcoal rag texture and compressed fibrous ivory edges, no printed ink, no freestanding miniature materials, not a normal decorative paper boat. Pure art, no numbers, logos or clocks.",
+      "tool": "built-in image_gen",
+      "source": "sources/folded-sea-carrier.76419d86.png",
+      "sourceSha256": "76419d86b65a9622b7474de80511fac390a0026a8ffa6b5b73b30b90963c63ee",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folded-sea-carrier.b29cd6bb.png",
+      "sha256": "b29cd6bb9b3dedb0218809c35a524b1c88018fcb9db98df4880a877279468a09",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "rain-harvester-tower",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: RAIN-HARVESTER TOWER for the paper harbour. A tall narrow open-framework collector stands on three broad arched feet, supporting a large faceted water tank with a clear front maintenance door and a wraparound access ladder. Above it three huge asymmetric open trumpet funnels face different directions like listening ears, connected by visible narrow chutes to the tank. One folded sheet of paper rain is being guided down a chute; a large crooked spout empties into a small attached side cistern. Clear believable assembly, platforms, supports and fluid route, strange useful architecture with a sharply branched top silhouette. No level marks, text or weather reading. Treat all material as ONE shallow inkless embossed graphite-paper illustration, fibres pressed around little window/chute edges, ivory raking light, no coloured ink or actual separate3D object. Whole funnels/tank/feet visible with generous transparent margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/rain-harvester-tower.09b641f2.png",
+      "sourceSha256": "09b641f22be2dee2de7ead5213a36cc02524ae6a53cfee1563e1ce6a629d9cfd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/rain-harvester-tower.ba684390.png",
+      "sha256": "ba68439077def343fd2771d322a8d758f5d2c6ced751f4f0409f5da6adb8f5db",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "counterweight-drawbridge",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: COUNTERWEIGHT DRAWBRIDGE of the paper harbour. One complete compact bridge with two arched masonry-like piers, an off-centre hinged central span raised at a steep bent angle, a narrow walking deck with fine railings, two gantry struts holding large unequal suspended square balance blocks, visible rigid linkages to the pivot and one little keeper's alcove built into the left pier. The right half of the raised deck folds impossibly back to form a small sheltered landing, but its function and bridge construction remain obvious. Broad low asymmetric side-three-quarter view, legs/piers/balance weights all visible. An inhabited useful place rather than abstract geometry; no vehicle, house roof or tower duplicate. Same inkless embossed graphite rag-paper relief, shallow die impressions, compressed fibrous edges and ivory raking highlights. No ink, printed values, signs, clock, dates or numerals. Full complete asset in transparent margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/counterweight-drawbridge.fdaad125.png",
+      "sourceSha256": "fdaad125454c23514e623e5b9845185928dd8ed1a8da0c604c5ab1bce34ed1f7",
+      "sourceDimensions": [
+        1398,
+        1125
+      ],
+      "selectedFile": "widgets/counterweight-drawbridge.337873e8.png",
+      "sha256": "337873e8859674c18a2d4a163ae601f6adf9a42ca7c78a2ea2039faafed4cf0d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "ownerDirection": "2026-11-22: Jared likes the art styles and asks to bridge them into something tangible.",
+  "abstractStudies": "qa/abstract-studies/provenance.json"
+}

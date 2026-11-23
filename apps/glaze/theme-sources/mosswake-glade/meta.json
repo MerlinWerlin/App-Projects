@@ -1,0 +1,18 @@
+{
+  "name": "Mosswake Glade",
+  "mood": "Living moss and pale lichen form familiar woodland wildlife in a quiet birch-cream glade.",
+  "tags": [
+    "nature",
+    "moss",
+    "lichen",
+    "topiary",
+    "woodland",
+    "wildlife"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Familiar natural forms interpreted as fictional botanical topiary sculptures, not documentary wildlife.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Tiny living moss star-shoot cushions, pale branching reindeer lichen and sparse sporophyte capsules construct complete recognizable woodland fauna and fern. Exact original prompts, own-reference hashes and layout-only habitat correction retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

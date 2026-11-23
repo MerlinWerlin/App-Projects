@@ -1,0 +1,68 @@
+{
+  "stages": [
+    {
+      "stage": "wallpaper",
+      "file": "qa/wallpaper-edge-study/wallpaper.5217c4f74664.png",
+      "sha256": "5217c4f7466408cb69c97f91ce74eb07696a7dc1906c65f5e5b3d47932236095",
+      "prompt": "Create ONE original portrait PHONE WALLPAPER for ZIPFROND GROVE, a VERY TALL 9:19.5 composition suitable for1290x2796 export. Our FIVE OWN reference artworks define only their recognizable natural subjects and physical zipper-sculpture process. Recompose a single connected woodland habitat; do not paste five sticker images or draw five separate islands. Build every plant and animal from broad moss/olive matte COTTON ZIPPER TAPES, worn dull-BRASS coarse stepped interlocking teeth rails and a few rusty-orange tapes, with occasional integrated functional sliders. Tangible careful miniature object photography, restrained directional light on matte cotton and solid brass, clear cloth joins; no wire coils, shiny satin, corrugated paper, film holes, beads, jewelry, stuffed toys or conventional natural feathers/fur. Fill roughly82\u00e2\u20ac\u201c87percent of PHONE WIDTH with the full scene and give it substantial vertical presence: scene from about27percent to83percent phone height. Tall oak sprig with3whole lobed leaves and2acorns rises on right; a complete fern frond and coiled fiddlehead rise at left; a whole long-beaked kingfisher with2feet rests on an oblique central twig; a whole four-paw hedgehog walks in a low zipper-tape clearing; a whole four-wing moth with antennae hovers in an open gap. Correct whole natural silhouettes, separated readable forms and open negative spaces, roots/twig ends connect the habitat without a rectangular plaque. Everything is the SAME coarse zipper construction. Important: scene is large and tall, not a tiny ornament in an empty ocean. All bird beak/tail/feet, fern leaflets/fiddlehead/petiole, oak leaves/acorns, hedgehog paws/snout, moth antennae/wingtips and ground endpoints remain WHOLE inside the frame and the central phone crops. Deep muted petrol-blue smooth background, quiet upperquarter for time and lower15percent for icons, soft minimal contact shadows only, no horizon stripe, fabric backing rectangle, corner ornaments, border, text, labels, UI, clockface, dates, numbers, battery or mockup. All five reference originals remain unchanged. This is artistic physical-zipper sculpture interpretation, not a claim of an actual handmade object.",
+      "references": [
+        {
+          "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+          "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        },
+        {
+          "file": "sources/hedgehog-hawthorn.b098b760576c.png",
+          "sha256": "b098b760576c4e99467a62063752cb0b22b261f0e5a20dd5a9e5cc05d4d57091",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        },
+        {
+          "file": "sources/moth-wings.882f415a3a1c.png",
+          "sha256": "882f415a3a1c054e3146a03cdb7b718957aa9ca4191b25e5cb9611356895a2f9",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        },
+        {
+          "file": "sources/fern-fiddlehead.9db112894ba6.png",
+          "sha256": "9db112894ba6e5d0aeb52d6542a513865e0703abd7ef33366c9ced939ff821c7",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        },
+        {
+          "file": "sources/oak-acorns.7d70a9b64aff.png",
+          "sha256": "7d70a9b64affb08115a229a040e61dc19173c2cca8c54b13c3c3dde499ed0e12",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        }
+      ],
+      "selected": false
+    },
+    {
+      "stage": "wallpaper-phone-fit",
+      "file": "qa/wallpaper-edge-study/wallpaper-phone-fit.e86cc538b1ab.png",
+      "sha256": "e86cc538b1abdd1c1ddce72941719cbf684a492310e4d7d01747a2474af2948d",
+      "prompt": "EDIT OUR OWN ZIPFROND GROVE WALLPAPER ONLY. Preserve the exact existing complete zipper-built kingfisher, hedgehog, four-wing moth, fern/fiddlehead, oak/acorns, cotton/brass material, colors, relative arrangement and continuous clearing. The actual 1290x2796,1179x2556,1080x2340 centered phone exports currently clip the side fern and oak because the generated source is wider than those phone ratios. Make ONE precise framing correction, not a redesign: uniformly scale the WHOLE connected existing habitat down just enough that its leftmost-to-rightmost physical endpoint occupies about60\u00e2\u20ac\u201c62percent of this generated portrait canvas width, centered; keep every existing endpoint whole. This becomes about85\u00e2\u20ac\u201c89percent of the narrow exported phone width. Maintain a tall substantial coherent habitat with source vertical extent roughly45\u00e2\u20ac\u201c50percent of canvas height, centered slightly below midpoint (top~28percent,bottom~80percent). Retain whole original natural forms and zipper construction; keep orange accents, broad matte green tape and coarse dull-brass teeth clear. Extend only the same deep petrol background around the group as needed. The final PHONE export must have a large tall scene, not a tiny island, no additional pullback beyond the numeric framing. No new subjects, no changed poses, no decorative border or extra corners, no labels/text/UI, no duplicate animal/plant, no pale halos. Five standalone artworks are unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/wallpaper.5217c4f74664.png",
+          "sha256": "5217c4f7466408cb69c97f91ce74eb07696a7dc1906c65f5e5b3d47932236095",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        }
+      ],
+      "selected": false
+    },
+    {
+      "stage": "wallpaper-edge",
+      "file": "sources/wallpaper.6fe87adb8adb.png",
+      "sha256": "6fe87adb8adbb1abd8277a784e0a0939b4827600f110c9bc75945c190ce827e0",
+      "prompt": "One final small PHONE-EDGE correction to OUR OWN attached wallpaper; keep the EXACT complete existing zipper scene, poses, anatomy, cotton/brass material, colors, detailed teeth and arrangement. The current centered 1290x2796 phone crop retains source x155..865 and just clips the outermost right oak-tip atx866. Uniformly reduce the entire scene by ONLY10percent of its CURRENT SIZE (90percent scale, not a big pullback), same center, and fill exposed area seamlessly with the same plain petrol background. Final physical scene should span approximately source x201..832 in a1020px-wide output (about62percent raw width, about89percent actual narrow PHONE width). Keep its tall proportions and vertical center; do not shrink further or create a tiny island. Preserve every whole bird/beak/feet, hedgehog/paws, moth/antennae/wingtip, fern/fiddlehead, oak/acorn, twig and root endpoint with no creative redesign or duplicate objects. No text, borders, extra ornaments, UI, labels or halos. Five standalone artworks stay unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/wallpaper-phone-fit.e86cc538b1ab.png",
+          "sha256": "e86cc538b1abdd1c1ddce72941719cbf684a492310e4d7d01747a2474af2948d",
+          "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+        }
+      ],
+      "selected": true
+    }
+  ],
+  "reason": "Initial phone crops clipped fern/oak; first correction left outermost golden oak-tip atx866 against actual retained-rightx865.49. Final small10percent own-scene correction retains whole habitat at about90percent exported phone width with substantial vertical presence. No generic side-margin pullback; actual clipping was observed.",
+  "fiveStandaloneArtworksByteUnchanged": true
+}

@@ -1,0 +1,1 @@
+Six selected unmodified built-in image outputs: five separate nature artworks and final exact-own-five-reference habitat wallpaper. Maple includes one own-study edit removing an unintended insect; the initial output is retained outside selected sources. Exact prompts, raw dimensions, hashes and own-reference lineage in provenance.json. No external or neighbor image inputs.

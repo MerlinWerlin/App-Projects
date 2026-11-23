@@ -1,0 +1,49 @@
+{
+  "id": "wallpaper",
+  "prompt": "SECOND AUDIT ribbonrise-hedgerow. Use case: precise-object-edit, WALLPAPER COMPOSITION ONLY, portrait1290x2796. Input1 is the EXACT OWN EXISTING WALLPAPER edit target. Other ordered inputs are OWN FROZEN raw artwork MATERIAL/ANATOMY references ONLY, never edit those assets. Keep this theme material, palette, familiar natural anatomy and tangible world. Recompose the SAME ribbonwork hedgerow as a substantial portrait Nature illustration. Whole connected habitat occupies80\u201388percent WIDTH and50\u201355percent HEIGHT, horizontally centered, from about27percent to82percent canvas height. Let the natural one-sided foxglove spike and short fern grow TALLER upwards in the center, with THREE toFIVE whole spotted tubular pink bells and closed terminal buds. Enlarge whole familiar robin at lower left to about20percent full canvas HEIGHT, short bill/two coherent feet/whole tail. Whole field mouse lower right about17percent full canvas HEIGHT, modest ears/four coherent paws/complete long curling tail. Keep the low connected blackberry bramble with THREE dark-plum berries, whole pointed leaflets and TWO dogrose flowers. No other fauna or scenery. Preserve short BROAD SMOOTH SATIN ribbon planes, curled/turned lips with lighter undersides, tiny pinched entry joins and tucked tips, not fine thread-shaded fill, loose long drapery or tied bows. Support linen only directly under stitches; no backing sheet, padded quilt toy or jewellery plaque. Every flower/fern/leaf/bud/bill/toe/ear/tail/branch/berry tip whole inside5\u20139percent side margins, about18percent quiet bottom and25percent quiet top. Background stays smoky violet #463D4E. No tiny floating island or low horizontal stamp. Enlarge/recompose only this wallpaper. Do NOT preserve the old tiny scale. No automatic pullback or anamorphic animal stretch; make a new natural composition with larger whole figures and more vertical plant/terrain structure. Keep all key subjects COMPLETE through both tall and shorter phone crops: all important tips between approximately25percent and84percent full canvas height, no cropped extremity. Full coherent opaque matching background, no borders/corner frills, text/letters/numbers, dates/clock/battery/weather values, icons/UI/logo/signature, people, buildings or sports equipment. Do not change any selected five artwork or native identity; output only the edited wallpaper raster.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.ab41be4f.png",
+  "sourceSha256": "ab41be4f5d52bc885ba66c1a76ce9e571fde5cf98aa19ce4c80742b208438160",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "85c184b8b5b7d6405630f8c538e7fbf5c2dadadd2ec50f363341bcae214903d9",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/second-audit/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/second-audit/previous-selected-wallpaper.png",
+    "sha256": "d0479755dee41960409dbe61d32b9df6d05348310ec9c861af34315ea68ddf13"
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "d0479755dee41960409dbe61d32b9df6d05348310ec9c861af34315ea68ddf13",
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only."
+    },
+    {
+      "order": 2,
+      "file": "sources/foxglove-fern.adabbef6.png",
+      "sha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    },
+    {
+      "order": 3,
+      "file": "sources/robin-dogrose.78157645.png",
+      "sha256": "781576454530b5c2dc48840765f6a6c8c12680c0ac064cc8b2a2314d5f633726",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    },
+    {
+      "order": 4,
+      "file": "sources/fieldmouse-blackberry.e36425e9.png",
+      "sha256": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    }
+  ]
+}

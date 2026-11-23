@@ -1,0 +1,22 @@
+{
+  "theme": "c-nearinfrared-hawthorn",
+  "recipe": [
+    "oval",
+    "cPaleleafHawthorn",
+    "cPaleleafVeins",
+    "cut",
+    "leaf",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "cPaleleafHawthorn": "M 84 96 Q 61 71 46 46 Q 34 26 28 16 M 46 47 Q 64 40 71 29 M 57 65 Q 48 76 43 82 M 45 46 Q 26 53 20 58 M 30 31 Q 11 35 13 23 Q 2 17 14 11 Q 8 1 23 7 Q 30 0 35 12 Q 47 5 46 19 Q 58 27 43 32 Q 39 39 30 31 Z M 66 40 Q 52 35 59 26 Q 51 17 65 18 Q 66 4 76 15 Q 89 7 86 23 Q 99 26 88 35 Q 87 48 76 41 Z M 43 85 Q 26 91 25 77 Q 13 71 27 64 Q 25 52 38 59 Q 48 47 52 62 Q 65 60 60 73 Q 72 84 56 88 Q 49 98 43 85 Z M 60 69 L 72 61 M 28 54 Q 25 62 19 65 M 27 55 Q 33 62 32 69 M 22 56 L 13 55 M 31 56 L 42 60 M 13 50 Q 20 47 23 54 Q 26 61 18 64 Q 10 66 8 59 Q 6 53 13 50 Z M 5 64 Q 12 62 16 68 Q 19 76 11 79 Q 3 82 2 74 Q 2 67 5 64 Z M 26 66 Q 34 62 38 70 Q 42 77 34 81 Q 26 84 22 77 Q 19 71 26 66 Z M 40 55 Q 48 52 52 59 Q 55 67 47 70 Q 39 72 36 65 Q 33 59 40 55 Z",
+    "cPaleleafVeins": "M 28 16 L 36 31 M 28 17 L 17 11 M 31 22 L 44 18 M 34 28 L 17 24 M 71 29 L 78 17 M 69 33 L 60 26 M 74 26 L 87 25 M 43 82 L 39 61 M 42 77 L 28 71 M 42 71 L 56 68 M 44 83 L 55 85 M 14 57 L 18 59 M 7 71 L 10 74 M 29 72 L 33 75 M 42 61 L 46 64"
+  },
+  "ornament": "M 28 85 Q 42 61 61 28 M 38 66 Q 18 62 22 49 Q 12 37 29 37 Q 25 22 43 27 Q 48 10 63 15 Q 77 21 66 34 Q 85 35 76 49 Q 78 62 58 61 Q 51 72 43 69 M 39 59 L 28 50 M 48 45 L 63 46 M 55 34 L 46 27",
+  "ornamentDirection": "One small natural rounded-lobed hawthorn leaf edge,open atits stem base,withcentral midrib andthree short branching veins. Quiet real botanical fragment withroom around it,no surrounding plate orcontrol-like crossing.",
+  "ornamentProvenance": "Original authored100x100 SVG paths,22November2026,following theactual hawthorn sample andBoth-corner steering.",
+  "direction": "Three actual lobed hawthorn leaves,four haws,twig andthorn withnatural vein details inlarger native areas. Oval dial,cut markers,leaf hands,column battery andfolio calendar. Dedicated compact hawthornleaf fragment keeps headers quiet.",
+  "values": "Existing live nativeClock/Battery/Calendar mechanisms;no raster readings.",
+  "registryIntegration": "Coordinator owns shared source/Swift integration andinstalled-device qualification. Lane source-only."
+}

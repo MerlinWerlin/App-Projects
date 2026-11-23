@@ -1,0 +1,25 @@
+{
+  "theme": "c-nomarski-dunefield",
+  "scope": "Only compact ornament and its direction description changed;actual app renderer source copied to scratch,no shared runtime/generated registry changes.",
+  "sourceAndEncodedInputHashesUnchanged": 27,
+  "fullSubjectDetailRecipeAndOtherDescriptorFieldsIdentical": true,
+  "allNineNativeLayoutsValidated": true,
+  "allNineChangeWithReadings": true,
+  "batteryNullZeroHundredPass": true,
+  "unchangedFullNativeSvgs": [
+    "clock-small",
+    "clock-large",
+    "battery-small",
+    "battery-medium",
+    "battery-large"
+  ],
+  "changedCompactPlacements": [
+    "clock-medium",
+    "calendar-small",
+    "calendar-medium",
+    "calendar-large"
+  ],
+  "reviewArtifact": "header-before-after.jpg",
+  "installedDeviceValidation": false,
+  "visualReview": "Viewed all9 actual native renderer layouts and before/after crops of all4 affected headers. Open3lobed leaf-edge fragment and offset second phase contour stay open and distinct at tiny size,fit native headers with clear text margins. Larger5SVGs unchanged."
+}

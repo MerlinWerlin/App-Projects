@@ -1,0 +1,129 @@
+{
+  "theme": "floatink-stormcrew",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Floating-ink water-marbling transferred to thin fibrous rice paper, irregular nested ink rings, broken tide lines and pooled contour edges",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Layout-only composition repair to this Floatink Stormcrew wallpaper. Preserve the SAME five full adult weather-maintenance workers, poses, useful tools, marbled indigo/vermilion/ivory floating-ink paper print style and fine rice-paper fibres. SCALE DOWN and centre the ENTIRE CREW AND EVERY PROP to fit CENTRAL62%WIDTH andBETWEEN35%AND73%HEIGHT. Restore any currently edge-touching portions so both ends of the service walkway, sweeper feet/handle, kite/sail tips, courier bowls/yoke and all hands/feet are COMPLETE with generous quiet paper around. Upper32% and bottom24% clean matching pale oyster fibrous paper; no new motifs. One intact smaller connected work group safe for1290x2796 and750x1334 centre crops. Keep FLAT MATTE PRINTED PAPER, irregular fine nested ink rings/broken tide lines and ink pooling rather than glossy3D clay/marble bands. No new people, extra limbs, backdrop panel/border/frame, letters, numbers, UI or shadow. Composition scale/position correction only; never crop props to force the fit.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.8e636e19.png",
+      "sourceSha256": "8e636e194d98b701a152068ca2eb4540f63443a3efa052e479ed64f9aed16121",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "ed789e6ecdbf08ba0406e234d64bf5dc2e92a316141a27225ee945090d301d3e",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.b0c40a75.png",
+        "sha256": "b0c40a754c61ef669ca7ccece900a3cf16c91b77ff364a92c34fb6e0fc5328c6"
+      }
+    },
+    {
+      "id": "kite-rig-mender",
+      "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject KITE RIG MENDER: one tall adult woman in indigo/ivory marbled-paper work overalls, natural adult face, hair tied in small practical bun. She stands in an asymmetrical braced stance, BOTH feet fully visible, left hand low and right hand raised holding one long split-bamboo spar. Above-left a HUGE OPEN ANGULAR KITE has one triangular marbled sail stretched over a thin four-point frame, one corner folded back to expose repair ribs and tension cord. A small work basket with coiled plain rope and a blunt spool hangs at her hip; no weapons or scissors. One long tail ribbon curves down beside her left leg without looping around feet. Clear useful kite-rig inspection/mending role, diagonal mast and enormous airy triangular wing contrast tall human. Entire kite/spar tips, hands, feet, ribbon and basket contained central64% within real transparent margins. Thin matte paper prints/fine broken floating-ink rings throughout clothing and sail, no3D cloth sculpture/backing rectangle/halo.",
+      "tool": "built-in image_gen",
+      "source": "sources/kite-rig-mender.aafa26c3.png",
+      "sourceSha256": "aafa26c3794921e0e86712d029aa67b97a122b6f1082e29d33f6ddb6318f7fe6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kite-rig-mender.549312ad.png",
+      "sha256": "549312ad520840c1abd5a9df5c509d20ea1ba9dc281c1eed9540c2a6db679f2f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "bellows-cloud-sweeper",
+      "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject BELLOWS CLOUD SWEEPER: one short broad ADULT man in a low deeply braced pushing stance at LEFT, natural adult face with small beard, BOTH hands gripping the two handles of an enormous low WHEELED ACCORDION BELLOWS at right. The bellows has TWO open ribbed end frames,6large angular paper pleats and TWO small spoked wheels, a long soft CURVED flattened wind-guiding nozzle bends upward then down-right like a broad scoop, a practical gentle air-moving workshop tool rather than cannon/weapon. Worker wears loose indigo/vermilion marbled-paper overalls with rolled sleeves and sturdy wrapped shoes, both bent legs/feet visible. A short plain hose connects rear handles to bellows frame; no clouds/smoke hiding geometry and no separate terrain. Very wide low horizontal silhouette, clear human effort and engineering purpose. Every worker/tool shape visibly FLAT MATTE fine floating-ink rings transferred onto fibrous rice-paper, not3Dcloth/marblepottery. Entire nozzle, handles, hands, feet and wheels inside ample true alpha margin.",
+      "tool": "built-in image_gen",
+      "source": "sources/bellows-cloud-sweeper.d4e9b5ff.png",
+      "sourceSha256": "d4e9b5ffca4c3781f4e63b4348ef9679969ddd1b70cd42d1ad5d25f50e151b49",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "selectedFile": "widgets/bellows-cloud-sweeper.87102b83.png",
+      "sha256": "87102b834a8c13cf042f9f6948ab9fcace394164c8dfda2b7c25c8ee2d34198c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "rain-chain-rigger",
+      "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject RAIN CHAIN RIGGER: one adult woman kneels in a three-quarter side pose facing right, one knee down and one foot planted, BOTH hands carefully connecting a plain short RAIN CHAIN of several small open collecting cups beside a compact THREE-RUNG FOLDING LADDER. A large FLAT REEL of spare chain rests in a curved shoulder/backpack frame behind her, its few chain loops orderly and open, not tangled across body. Her posture is a low triangular working silhouette, ladder leans inward creating an open tall diagonal at right, small tool pouch at waist. Functional rain-chain maintenance role, natural coherent TWO arms/TWO legs with hands/foot/knee distinct, adult face/hair in practical bun, loose indigo/vermilion/ivory work garments. All clothing, reel, ladder and chain rendered as thin flat matte water-marbled rice-paper prints with fine nested broken ink rings and fibres; no glossy ceramic bowls, metal3Dchain or toy. No floor/ground pad, scenic wall or extra worker. Full ladder top/feet, reel, hands, chain's lowest cup and worker shoes contained within generous transparent alpha.",
+      "tool": "built-in image_gen",
+      "source": "sources/rain-chain-rigger.dba86efb.png",
+      "sourceSha256": "dba86efb5c5827df599ca5a9490a989683af181150ad4091c94aafbaf5b4d6cf",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/rain-chain-rigger.269a0d24.png",
+      "sha256": "269a0d24623a6dfbf9d5ce78a47d1ffee63ca715958de26103595828b7e3ef1c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "wind-sail-tender",
+      "prompt": "Composition-only repair of this same Floatink Stormcrew wind-sail tender. The highest hooked sail currently touches/cuts off at the top image edge. SCALE DOWN the ENTIRE adult figure, both wind scoops, rods, harness, hands and feet together, placing the WHOLE GROUP inside CENTRAL65% of a square with at least17% real transparent margin on ALL4sides. Fully reconstruct the tiny missing upper sail/rib portion so the top hook and every rod end are complete and surrounded by transparent alpha. Preserve exact useful braced pose, TWO hands/TWO legs, asymmetric high-left and low-right sails, indigo/vermilion/ivory floating-ink marbling on thin matte rice-paper, visible fibres and dry contours. No new people/props, cropping to force fit, halo/backing/background/drop shadow or UI. Keep all actual openings alpha transparent. This is a flat marbled-paper print silhouette, not glossy3Dclay/stone.",
+      "tool": "built-in image_gen",
+      "source": "sources/wind-sail-tender.9912f549.png",
+      "sourceSha256": "9912f54938062d003f65155d54594524b4ef9a6ccf3cef5052dd12baf0252444",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/wind-sail-tender.34eeadf5.png",
+      "sha256": "34eeadf5b8eeb9b3778b01b0028d6de405d7abd739eff7c0fa1b531af9a8cffe",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wind-sail-tender-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wind-sail-tender.original.2de0b4d9.png",
+        "sha256": "2de0b4d923ff3cc80b062211c71ede4d2f7cf549a4b71259da66ccd19e3b7ca7"
+      }
+    },
+    {
+      "id": "dew-bowl-courier",
+      "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject DEW BOWL COURIER: one tall lean ADULT woman in a long decisive STRIDING SIDE PROFILE facing left, one foot far forward/one far back, TWO legs and TWO arms clearly coherent. A curved SHOULDER YOKE rests behind her neck, BOTH hands gripping it at different heights. TWO suspended collecting bundles hang at either end on plain cords: each is a stack of3large thin IRREGULAR LEAF-SHAPED DEW BOWLS with fluted rims, one tiny collecting spout under each bottom bowl, no teacups or routinekitchenwares. One stack low left, other higher right, asymmetrical balanced carrying function. A long loose work apron flares narrowly with movement, small tied-back hair and calm adult face, no flowing costumecape or extra props. Wide yoke and long stride give a different diagonal silhouette from stationary sail tender or kneeling rigger. Each bowl/garment/yoke is FLAT MATTE fine floating-ink water-marbling on fibrous paper, irregular nested ink rings/pooled edges, not glossy3Dceramic/agate/stone. Entire yoke tips, cords, bowl rims/spouts, hands, hair and BOTH whole feet contained in ample true alpha margins; no backing/ground/halo/shadow.",
+      "tool": "built-in image_gen",
+      "source": "sources/dew-bowl-courier.9e43670d.png",
+      "sourceSha256": "9e43670d6c6be5beb584eaad45bbd1df8b4841e115159df5cf982491a314de22",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dew-bowl-courier.83c18ec5.png",
+      "sha256": "83c18ec5959ecc400c957fa75121be88ae7e46d77ce1ff61aa5c5ebde81741d3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

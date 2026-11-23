@@ -1,0 +1,18 @@
+{
+  "id": "spiral-cistern",
+  "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject SPIRAL CISTERN: a TALL NARROW cylindrical reservoir tower with a completely OPEN HOLLOW TOP BOWL, thick layered rim and simple carved concentric water ripples visible inside. A single wide WALKABLE SPIRAL ACCESS RAMP with low pierced rail winds around the tower exactly one-and-a-half turns, joining a broad open arch entrance at bottom to the top rim. The cylinder wall has two tall recessed arch slots so hollow depth and large gaps are readable. A short slender intake trough projects into the top from upper-left, pouring one small connected carved water ribbon, while one controlled outlet lip projects from low right. Heavy round base integral to the tower only, no surrounding ground tile. Clear tall corkscrew silhouette, useful public water store rather than generic lighthouse, castle or decorative column. Put the complete tower, all ramp rail tips, intake and outlet SMALL enough within central60%, with a broad transparent band above bowl and below entrance step. Red lacquer layer strata conspicuous at rim/ramp cuts; no text or markings.",
+  "tool": "built-in image_gen",
+  "source": "sources/spiral-cistern.130f7453.png",
+  "sourceSha256": "130f74538802a4ee063373ded28d54c14e7d30d0d99894019b9f25d18ffbc967",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/spiral-cistern.93446f18.png",
+  "sha256": "93446f189f0d77bb82a850769343e7748bc026d426a1b8871988a2c4fd53f6fd",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

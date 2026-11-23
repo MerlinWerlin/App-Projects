@@ -1,0 +1,18 @@
+{
+  "id": "ribbon-post-runner",
+  "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject RIBBON POST RUNNER: one invented ADULT COURIER striding briskly in profile to the RIGHT, wearing a simple short terracotta tunic, teal cropped trousers, ivory scarf streaming back and teal flat work shoes. Exactly TWO ARMS AND TWO LEGS. Both arms cradle a single enormous chalk-ivory BLANK MESSAGE RIBBON REEL horizontally across the chest, fingers/hands visible naturally supporting its two ends; a second smaller teal-flanged reel rides on a broad shoulder harness against the back. A short unmarked ivory ribbon tail curls backward near the scarf, not writing or a banner. Calm focused angular face in side profile, no mask, cap with small asymmetric brim. Long forward step and bent rear knee, strong open diagonal running silhouette and meaningful load, friendly original mural character, not a generic delivery driver with cardboard box. No postal logos, badges, letters, envelope icons, weapon or readable marks. Complete scarf tips, reel, face, hands and both feet fully visible inside alpha. ALL body/clothes/props depicted as flat sgraffito-cut coloured lime plaster, chipped chalk lips and scratched mineral layers, no realistic human render or ceramic doll.",
+  "tool": "built-in image_gen",
+  "source": "sources/ribbon-post-runner.4e7ce72d.png",
+  "sourceSha256": "4e7ce72d0694c0c3f59a2ed5d12777757d2e363c1684b33486eb0f9e8c89a0b8",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ribbon-post-runner.4feb79fb.png",
+  "sha256": "4feb79fb5c8026bcd279cae542c6f941e9b9c498f84aede0c59591f3ba0754ae",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

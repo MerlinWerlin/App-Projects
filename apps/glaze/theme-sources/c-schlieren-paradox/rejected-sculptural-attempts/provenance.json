@@ -1,0 +1,73 @@
+{
+  "theme": "c-schlieren-paradox",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.b3dde3300232.png",
+      "sourceSha256": "b3dde3300232c9b01438cfb14dbbf1886f3d5e81326b2b1a332cc695bd0bfecf",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "abdf5d6357482c52bf7f559754d1eabf07b589f6a1f0a6f09c3c725754664daa",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2711591,
+      "processing": "Whole composition fitted to 1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme SCHLIEREN PARADOX. Medium: high-speed knife-edge schlieren and shadowgraph photography of impossible air-density wavefronts. Forms are made only of alternating sharp near-black and warm ivory refraction boundaries, fine nested shock contours and slight amber edge dispersion. Strong graphic density-gradient imaging, microscopically rippled optical texture, controlled photographic contrast. Absolutely no solid objects or materials, no smoke, fire, liquid, glass sculpture, mineral, rainbow, neon, particle dots, sparkle trails, brush strokes, pencil drawing or engravings. No text, labels, digits, time, dates, readings, UI, logo or watermark. This is fictional optical art, not actual research measurement. Asset: ONE original portrait phone wallpaper, composition1290x2796. Warm luminous chalk-ivory field. In the lower two-thirds an enormous asymmetric saddle-shaped shockfront intersects a staircase of separated wave edges; one small detached refractive iris hovers lower left. Crisp dark edges tracing invisible air, with paper-thin bright gaps between contours, amber only at a few crests. Upper third mostly quiet uniform warm ivory, middle right spacious for widgets. No objects, no horizon or landscape, no paper texture, no border. Opaque full-bleed composition, no mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "mach-saddle",
+      "sourceImage": "sources/mach-saddle.ee31045d722d.png",
+      "sourceSha256": "ee31045d722db960c3472d1c1fea8edc5f22e98a2979e48e1dee1ec8449cf601",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/mach-saddle.d2b0b63374d0.png",
+      "sha256": "d2b0b63374d04d84dc3db48f8d3af24b11e3d9125d8003a79dd817fdd2e50a7a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 441937,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme SCHLIEREN PARADOX. Medium: high-speed knife-edge schlieren and shadowgraph photography of impossible air-density wavefronts. Forms are made only of alternating sharp near-black and warm ivory refraction boundaries, fine nested shock contours and slight amber edge dispersion. Strong graphic density-gradient imaging, microscopically rippled optical texture, controlled photographic contrast. Absolutely no solid objects or materials, no smoke, fire, liquid, glass sculpture, mineral, rainbow, neon, particle dots, sparkle trails, brush strokes, pencil drawing or engravings. No text, labels, digits, time, dates, readings, UI, logo or watermark. This is fictional optical art, not actual research measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject MACH SADDLE: a broad skew triangular shock envelope folding once at its middle into an asymmetric saddle; twelve closely spaced dark/ivory contour echoes wrap the front, three separated cusp rays extend from its narrow right tip. Low wide triangular silhouette with an open central bite, entirely optical density gradients, no solid wedge. Centre whole event with15%clear margins. True transparent alpha outside and between open contours; black and ivory edge pairs remain visible. No opaque tile, backdrop, ground, shadow, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 912313
+    },
+    {
+      "id": "vortex-rook",
+      "sourceImage": "sources/vortex-rook.73d54d0c3659.png",
+      "sourceSha256": "73d54d0c3659aae99f171cb2611928987fd88c0ba174dac5d96542255cadc2fc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/vortex-rook.a5ee89303bb1.png",
+      "sha256": "a5ee89303bb12f36dcead29f45925cde1bdbfc7e58dead339a9628fbfac7b4c9",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 715753,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme SCHLIEREN PARADOX. Medium: high-speed knife-edge schlieren and shadowgraph photography of impossible air-density wavefronts. Forms are made only of alternating sharp near-black and warm ivory refraction boundaries, fine nested shock contours and slight amber edge dispersion. Strong graphic density-gradient imaging, microscopically rippled optical texture, controlled photographic contrast. Absolutely no solid objects or materials, no smoke, fire, liquid, glass sculpture, mineral, rainbow, neon, particle dots, sparkle trails, brush strokes, pencil drawing or engravings. No text, labels, digits, time, dates, readings, UI, logo or watermark. This is fictional optical art, not actual research measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject VORTEX ROOK: five unequal elliptical shock loops stacked vertically around a kinked invisible axis, the lowest loop opens sideways into a short hooked tail, top loop is tiny and tilted. Each loop is resolved into three crisp alternating dark/ivory refractive contours; distinct open spaces between them. Tall stepped silhouette, no actual rook, tower, object or vessel. Full optical event centred with15%clear margins. True transparent alpha outside and through loops; no tile, backdrop, floor, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixels": 838926
+    }
+  ],
+  "published": false
+}

@@ -1,0 +1,89 @@
+{
+  "artworks": 5,
+  "encodedAssets": true,
+  "actualBlendMath": true,
+  "actualThemeGradient": true,
+  "fitInset": 0.06,
+  "stressCornerRadius": 0.24,
+  "installedDeviceVerified": false,
+  "allCoreSilhouettesRetained": true,
+  "batchThemesReviewed": 32,
+  "encodedAssetHashes": {
+    "hollow-horn-stag": "0aa334dcfd2959bb5e0c0b7d3f14934745f50b7a93ebe5f4fe4fcab1da222768",
+    "bell-shell-mantis": "5d1db3cf5a67ce5cf019e26c2498cf89cb9b365a969e0c6e3c981495b096ec13",
+    "split-sail-newt": "f0755dcf6c4421ae79f8269655adb4b0ff6a355c3867e6d8e475d5e518eae11d",
+    "lantern-snail": "dfd867feeb4916319a76683c2169bed65710c40dc289157ea4c5177a30999cb7",
+    "cradle-moth": "b727a1ac9c4f5e6564e82e6f5170bf7dc8a2ec614a23ac3b1bfc5cdfacbae766"
+  },
+  "theme": "spallwork-sanctuary",
+  "sourceHashes": {
+    "hollow-horn-stag": "2a80442de1576cee433975fb305980a2148f29ee26a56da29f76f7f718aab5f6",
+    "bell-shell-mantis": "8424e3ee27866bf98760d5778b29619cad7b042c1e3afb8b9ee05a67b88b8514",
+    "split-sail-newt": "fddc891aadae2cbc7f44618cfec98ff06cea83603adafec76018dd4f31a6eaf3",
+    "lantern-snail": "595b3aaac39cadbcb97f16a4040643260e77e667a4c905b6ce81fa693bf65567",
+    "cradle-moth": "2e558d3fe89748bed425ef76f68e5d8ff97840b7a1903216848d8393aa27c48c"
+  },
+  "reviewed": true,
+  "perArtwork": [
+    {
+      "id": "hollow-horn-stag",
+      "label": "Hollow Horn Stag",
+      "blend": "transparent",
+      "corePixels": 54286,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "hollow-horn-stag-170.png",
+      "tiny": "hollow-horn-stag-85.png"
+    },
+    {
+      "id": "bell-shell-mantis",
+      "label": "Bell Shell Mantis",
+      "blend": "transparent",
+      "corePixels": 41121,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "bell-shell-mantis-170.png",
+      "tiny": "bell-shell-mantis-85.png"
+    },
+    {
+      "id": "split-sail-newt",
+      "label": "Split Sail Newt",
+      "blend": "transparent",
+      "corePixels": 46465,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "split-sail-newt-170.png",
+      "tiny": "split-sail-newt-85.png"
+    },
+    {
+      "id": "lantern-snail",
+      "label": "Lantern Snail",
+      "blend": "transparent",
+      "corePixels": 93116,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "lantern-snail-170.png",
+      "tiny": "lantern-snail-85.png"
+    },
+    {
+      "id": "cradle-moth",
+      "label": "Cradle Moth",
+      "blend": "transparent",
+      "corePixels": 46405,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "cradle-moth-170.png",
+      "tiny": "cradle-moth-85.png"
+    }
+  ],
+  "gradient": [
+    "#E9CD9C",
+    "#E9CD9C"
+  ],
+  "note": "Quiet theme backgrounds and whole silhouettes inspected at170px and85px. Radius24% is a deliberate UI clipping stress model, not installed-device evidence."
+}

@@ -19,6 +19,13 @@ The app picks staging only when the build has Expo extra `packEnv: "staging"`; o
 - **Cache-Control.** `art/**` objects (content-hashed files and versioned manifests) are `public, max-age=31536000, immutable`. `catalog.json` is `public, max-age=300`. The catalogue cache stamp includes the base URL, so the first launch of 1.0.37 fetches the R2 catalogue fresh.
 - **Privacy.** Downloads come from Cloudflare (`*.r2.dev`), which sees the phone's IP address like any website. Glaze sends no personal data, so "Data Not Collected" still holds.
 
+### catalog-v2.json (1.0.44+)
+
+Glaze 1.0.44 reads `catalog-v2.json` (`APP_CATALOG_FILE` in `src/core/packCatalog.ts`); builds 1.0.37 to 1.0.43 read `catalog.json`. `catalog.json` is frozen: its SHA-256 is pinned in `scripts/packs/catalog-v2-lock.json` (`97a7a132…`, 141 themes) and nothing writes it any more.
+- `catalog-v2.json` = every entry of the live `catalog.json`, unchanged and in order, + the new themes built by `scripts/packs/extraordinary_themes.mjs` (manifests `minAppVersion` 1.0.44, so an older build that somehow saw one refuses the download).
+- Publish: `gh workflow run glaze-publish-r2.yml -R MerlinWerlin/App-Projects -f mode=catalog-v2 -f dry_run=true`, then `-f dry_run=false`. It runs `scripts/packs/publish_catalog_v2.mjs`: the new themes' hashed files, then their manifests (both If-None-Match, immutable), then `catalog-v2.json` last; then over the public URL every new manifest and image by SHA-256, `catalog-v2.json` by SHA-256, every catalogued theme's manifest parses for 1.0.44, and the live `catalog.json` hash is still the locked one. `catalog.json` is refused by `assertNeverLegacy` in every plan.
+- Next new themes: add them to the new-theme build and re-run the same mode; `catalog-v2.json` is regenerated (short cache, max-age 300).
+
 ### Publish to R2 (workflow)
 
 `.github/workflows/glaze-publish-r2.yml`, manual dispatch, `dry_run` defaults to **true**:

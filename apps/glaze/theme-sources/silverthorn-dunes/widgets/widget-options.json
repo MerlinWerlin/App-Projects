@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fennec-thornsprig",
+    "kind": "art",
+    "image": "fennec-thornsprig.a748c3cb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fennec Thornsprig"
+  },
+  {
+    "id": "jerboa-dunegrass",
+    "kind": "art",
+    "image": "jerboa-dunegrass.46c66651.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Jerboa Dunegrass"
+  },
+  {
+    "id": "hornedviper-tamarisk",
+    "kind": "art",
+    "image": "hornedviper-tamarisk.0cdd69d2.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hornedviper Tamarisk"
+  },
+  {
+    "id": "desertrose-bloom",
+    "kind": "art",
+    "image": "desertrose-bloom.7e244a43.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Desertrose Bloom"
+  },
+  {
+    "id": "sandgrouse-acacia",
+    "kind": "art",
+    "image": "sandgrouse-acacia.892db732.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sandgrouse Acacia"
+  }
+]

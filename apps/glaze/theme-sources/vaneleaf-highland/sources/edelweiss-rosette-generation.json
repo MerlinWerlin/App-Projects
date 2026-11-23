@@ -1,0 +1,23 @@
+{
+  "id": "edelweiss-rosette",
+  "prompt": "Transparent-background repair ONLY of this same cut-feather-mosaic edelweiss. REMOVE COMPLETELY every pale cream/grey backing, fill, halo and shadow BEHIND, AROUND and BETWEEN the actual feather petals, stems, leaves and flower stars. Those areas must be REAL FULLY TRANSPARENT ALPHA with no pale residue. Preserve exactly the complete three edelweiss flower stars, small ochre disk-floret clusters, all feather-vane bracts and basal leaves, narrow shafts/fine parallel barbs, sage/apricot/slate accents, thin clipped physical edges and current botanical composition. Do not erase actual cream feather petals or crop any leaf/tip. Keep the whole botanical group central65% of a square with at least16% true alpha margins every side. This must be a pure transparent featherwork cutout on a dark widget, not a scene or backed applique patch. No new props, loose feathers, text, values, UI or shadows.",
+  "tool": "built-in image_gen",
+  "source": "sources/edelweiss-rosette.3850c9f7.png",
+  "sourceSha256": "3850c9f77cb78df955fcfe9b62fa42e7e121ee2216563caf7a5b1e5147a09caa",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/edelweiss-rosette.1ca92954.png",
+  "sha256": "1ca929549f6200a3dfca88dc305a3fc6084c6f87f014a31930c4122ab83029f8",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/alpha-repair/edelweiss-rosette-history.json",
+  "referencedImage": {
+    "file": "qa/alpha-repair/edelweiss-rosette.original.05440557.png",
+    "sha256": "05440557753d138c28ab8a73eed8226964c714b66e81a2e0a684e9d36988fd83"
+  }
+}

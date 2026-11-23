@@ -1,0 +1,7 @@
+{
+  "theme": "c-radiographic-deepwatch",
+  "ornament": "M 20 73 L 20 49 Q 20 20 50 20 Q 80 20 80 49 L 80 73 Z M 30 73 Q 30 39 50 25 Q 70 39 70 73 M 20 53 L 80 53 M 50 22 L 50 73 M 13 81 L 25 70 L 37 81 L 25 91 Z M 63 81 L 75 70 L 87 81 L 75 91 Z M 43 43 Q 50 36 57 43 L 57 58 Q 50 64 43 58 Z",
+  "ornamentDirection": "Native companion ornaments: a braced pressure dome, small central chamber and two sparse cartilage cells. Full abyssal organisms/observatory remain Artwork. A structural fragment keeps small corners airy and theme-matched.",
+  "scope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+  "runtimeSupport": "Coordinator implementing optional TS/Swift ornament field."
+}

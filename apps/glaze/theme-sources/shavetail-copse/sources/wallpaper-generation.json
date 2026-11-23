@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT ONLY OUR OWN attached SHAVETAIL COPSE wallpaper framing. Actual centered1290x2796/1179x2556/750x1334 PHONE exports crop the left fern pinnae and the right butterfly wing/squirrel tail. Preserve the exact same complete dry pencil-shaving habitat, five natural subjects, poses/anatomy, broad radial rawwood faces, thin jagged teal/cobalt/green paint rims and pale blue-grey background. Uniformly scale the ENTIRE connected existing physical scene to67percent (roughlyTWO THIRDS) of its CURRENT physical scene size, not separate subjects and not another redesign. Center the resulting group at50percent width/54percent height of this portrait working canvas, seamlessly extend only the same plain background around it. Desired resulting group is aboutx190..830,y450..1215 on1024x1536 working output: final narrow PHONE shows a large~88\u00e2\u20ac\u201c90percent width habitat with real50percent vertical presence and quiet upperclock/bottomicon space. This is ONE specific correction for observed actual cropping, no extra pullback after that. Keep WHOLE fern and every pinna/fiddlehead/stalk, blue tit/beak/longtail/twofeet/twigleaves, squirrel/acorn/twoears/fourpaws/entire archedfan tail, butterfly/fourwings/twoantennae/legs, bothsixpetalflowers/bud/leaves/stems and all ground endpoints. No new subjects, no changed poses, no duplicate leaf/tool, no whole pencil/sharpener/packaging, no rectangle/plate/plaque/frame/extra corner ornament/text/UI/numbers. Preserve all five standalone artworks unchanged. Artistic thinwood-shaving sculpture interpretation.",
+  "source": "sources/wallpaper.21224ef17eb3.png",
+  "sourceSha256": "21224ef17eb32fd72e7abcf59089b3bea9575008d011dec0c604e1dabe0b5e93",
+  "sourceDimensions": [
+    1024,
+    1536
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "02a5eed61f779618b34e592a422be7fa242ff4a770123a062b9a4e476a324e2d",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own five-reference connected woodland, then one own-scene uniform67percent framing correction because actual phone crops clipped fern pinnae, butterfly wing and squirrel tail. Mechanical aspect-preserving1290x2796 cover trims quiet blue-grey only. Five standalone artworks unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-scene.c645e759b31a.png",
+      "sha256": "c645e759b31ab3c76c44941b09af24759ada295edfada70ab7fb2130f47040e2",
+      "purpose": "Own ordered five material/subject references or own complete scene framing."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

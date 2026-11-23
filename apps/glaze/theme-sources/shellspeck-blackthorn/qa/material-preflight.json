@@ -1,0 +1,53 @@
+{
+  "id": "shellspeck-blackthorn",
+  "lane": "B37",
+  "category": "Nature",
+  "status": "Accepted refined851 source after exactlyONE authorized material correction and actualfull17085/neighbor review; expanding four separate own-ref851 artworks and fuller taller WP. First approved material frozen.",
+  "process": "Opaque broken eggshell fragments individually inlaid in glossy black lacquer, with irregular chipped lips, natural nutmeg speckles and thin dark lacquer seams",
+  "subjects": [
+    "longtailed-tit",
+    "hedgehog-bramble",
+    "hare-hazel",
+    "blackthorn-blossoms",
+    "garden-snail"
+  ],
+  "world": "Familiar blackthorn-copse birds, blossoms and wildlife in opaque eggshell inlay over quiet smoky moss-green.",
+  "baselineSearch": "Exact ID absent and no positive literal eggshell-inlay process in139baseline+80source provenance scan. B1 eggshell-thin porcelain is a thickness adjective; broad shell/lacquer/crackle neighbors remain positive and are actually inspected.",
+  "neighbors": [
+    "B8 nacre lacquer: iridescent polished mollusc shell plates versus opaque matte irregular eggshell chips.",
+    "B1 hand-pierced ivory porcelain: complete thin fired ceramic with cut apertures versus separately laid broken fragments in lacquer.",
+    "B3 cloisonne enamel: colored fused glass cells with metal boundaries versus white brittle random shell chips and lacquer gaps.",
+    "B33 unglazed horsehair clay: smooth opaque clay and sparse carbon strands versus separate sharp shell fragments.",
+    "B15 carved red lacquer has deep integral carved layers versus individually laid opaque shell fragments.",
+    "Porcelain Tide accepted5 includes blue-and-white crackle ceramic seahorse, not shell-chip inlay.",
+    "Silver Orchard accepted5 includes actual iridescent pear-blossom shell petals/enamel/silver, not opaque broken eggshell.",
+    "Calla Obscura accepted5 includes actual pearly garden snail/silver moth and smooth white calla/pearl vase; primary distinction must be visible matte opaque separate chip edges/lacquer seams."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://www.metmuseum.org/art/collection/search/487314",
+      "scope": "Primary museum process text describes tiny crushed eggshell particles placed individually in fresh lacquer. No image or named-designer style used."
+    },
+    {
+      "url": "https://www.metmuseum.org/art/collection/search/855066",
+      "scope": "Primary museum text explicitly contrasts opaque white eggshell with pearly mother-of-pearl. Process/material contrast only, no artist composition/image input."
+    },
+    {
+      "url": "https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/british-trees/a-z-of-british-trees/blackthorn/",
+      "scope": "Primary Woodland Trust botany: white blossoms in spring before leaves, natural thorny branching; text only."
+    },
+    {
+      "url": "https://www.rspb.org.uk/birds-and-wildlife/long-tailed-tit",
+      "scope": "Primary RSPB natural bird profile: small rounded bird and tail longer than its body; text only."
+    },
+    {
+      "url": "https://www.woodlandtrust.org.uk/blog/hawthorn-and-blackthorn-difference/",
+      "scope": "Primary Woodland Trust: five-petaled white blackthorn blossoms before leaves; text only."
+    }
+  ],
+  "cornerCompanion": "Whole familiar long-tailed tit with short bill, round body, long complete tail and two coherent feet on a blackthorn twig; irregular shell chips with subtle curled lips as detail. Facet rim echoes the angular broken inlay pieces, cut hour marks, needle hands, tiled charge and band calendar. Compact companion is a short open thorned twig and just two small irregular shell fragments, no whole bird, mosaic medallion or flower wreath. Calendar-only badge adapts independently; date size does not determine clock face.",
+  "rasterGenerationPerformed": true,
+  "firstSourceSha256": "df83950a36c4a192fb54094ee95cb8b047eb96d6593607c1d4d1384f410f7fd1",
+  "selectedRefinedSourceSha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+  "materialApproval": "egg-generation/material-approval.json"
+}

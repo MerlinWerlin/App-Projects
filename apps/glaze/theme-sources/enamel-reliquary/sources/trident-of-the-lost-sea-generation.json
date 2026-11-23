@@ -1,0 +1,18 @@
+{
+  "id": "trident-of-the-lost-sea",
+  "prompt": "ONE original standalone square1024x1024 Glaze ENAMEL RELIQUARY artwork, a flat physical molten cloisonne enamel fossil mosaic. Subject: TRIDENT OF THE LOST SEA, a single invented extinct fossil cross-section shaped as three unequal thick branching lobes, large open Y silhouette, one lobe curls inward while the other two fork out, no face, limbs or identifiable modern creature. Raised uneven hair-thin brass cloisons partition the lobes into tiny irregular cells and large long anatomical chambers; opaque sulphur-yellow enamel forms a central spine, turquoise enamel the outer layers, orange and oxblood glass fill peripheral chambers. Visible firing bubbles, minute pits, orange-peel glaze, kiln-scorched copper rims and crazing; luxurious shallow craft relief photographed almost straight down, crisply metallic/brilliant enamel. Entire asymmetrical shape isolated centrally within18% true transparent alpha margin, no surrounding slab, background, floor, border or jewellery hardware. Compact strong thumbnail silhouette, not a real starfish, coral, shell, dinosaur bone or botanical specimen. No text, numerals, labels, dates, clock, hands/dials, battery, UI or logo. One independent artwork, no grid/contact sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/trident-of-the-lost-sea.bb68457d.png",
+  "sourceSha256": "bb68457d258a41e62d409c3adaca3e0a5f0baa2e191e55891d4c1d8157e5c946",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/trident-of-the-lost-sea.4ff30a41.png",
+  "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

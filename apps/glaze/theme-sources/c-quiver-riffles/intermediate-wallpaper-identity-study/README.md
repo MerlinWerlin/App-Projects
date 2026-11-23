@@ -1,0 +1,1 @@
+Unselected first wallpaper retained with exact prompt/hash/five original own reference hashes. Built-in identity edit corrects skipper/three-wing seed/S-larva silhouettes using3 exact own source supports. Original mangrove/damselfly/layout preserved.

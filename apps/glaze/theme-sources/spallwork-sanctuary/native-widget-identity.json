@@ -1,0 +1,19 @@
+{
+  "themeId": "spallwork-sanctuary",
+  "recipe": [
+    "shield",
+    "spallworkStag",
+    "spallworkSeeds",
+    "pins",
+    "needle",
+    "basin",
+    "board"
+  ],
+  "art": {
+    "spallworkStag": "M 22 44 L 11 38 L 8 31 L 24 30 L 28 22 L 34 26 L 33 39 L 41 52 L 73 51 L 82 62 L 89 68 L 82 68 L 78 58 L 77 87 L 71 87 L 69 69 L 47 70 L 41 88 L 34 88 L 38 60 L 30 51 Z M 28 25 L 22 14 L 15 10 M 22 14 L 31 9 L 33 5 M 28 25 L 40 15 L 51 10 L 59 5 M 40 15 L 42 8 M 51 10 L 58 17 L 67 18 M 46 62 Q 45 53 51 53 Q 57 54 55 63 Z M 58 62 Q 57 53 63 53 Q 69 54 67 63 Z M 14 34 L 16 34",
+    "spallworkSeeds": "M 13 81 Q 10 61 25 49 Q 40 61 37 81 Z M 25 73 L 25 32 Q 15 39 9 30 Q 12 18 25 32 Q 32 15 42 23 Q 43 36 25 32 M 57 88 Q 49 65 70 49 Q 91 65 83 88 Z M 70 78 L 70 30 Q 53 35 51 22 Q 61 11 70 30 Q 79 11 91 20 Q 91 35 70 30 M 15 82 Q 25 88 36 82 M 58 89 Q 70 97 82 89"
+  },
+  "direction": "Hollow-horn seed-guardian stag, branching flaked horns and sheltered seeds. Shield dial, pin markers and needle hands; seed-basin charge indicator and board calendar. Native values remain live.",
+  "ornament": "M 20 61 L 26 76 L 44 84 L 67 78 L 82 61 L 65 64 L 52 60 L 36 65 Z M 50 64 Q 36 50 50 36 Q 66 49 50 64 Z M 50 39 L 50 22 Q 65 16 70 25 Q 66 37 50 31",
+  "ornamentDirection": "One chipped seed cradle and sprout complement the sanctuary creatures without a tiny stag in the calendar."
+}

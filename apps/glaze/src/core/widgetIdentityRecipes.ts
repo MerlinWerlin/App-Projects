@@ -1,4 +1,5 @@
 import type { IdentityArt } from './widgetIdentityArt.ts';
+import { EXTRAORDINARY_RECIPES } from './extraordinaryThemeIdentities.ts';
 
 export const FACES = ['circle', 'square', 'arch', 'facet', 'petal', 'seal', 'lozenge', 'oval', 'octagon', 'pebble', 'shield', 'reel', 'hex', 'wave'] as const;
 export const MARKS = ['bars', 'beads', 'cut', 'pins', 'dash', 'pearls', 'rays', 'staples'] as const;
@@ -20,6 +21,7 @@ export type WidgetIdentityRecipe = readonly [
 ];
 
 export const WIDGET_IDENTITY_RECIPES: Readonly<Record<string, WidgetIdentityRecipe>> = {
+  ...EXTRAORDINARY_RECIPES,
   'after-rain': ['pebble', 'rain', 'droplet', 'beads', 'leaf', 'basin', 'band'],
   'agate-apricot': ['pebble', 'agate', 'facet', 'cut', 'wedge', 'column', 'folio'],
   'airmail-daydream': ['seal', 'balloon', 'letter', 'dash', 'needle', 'trail', 'ticket'],

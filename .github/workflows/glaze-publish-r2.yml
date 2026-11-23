@@ -14,6 +14,11 @@ on:
         description: 'Build, verify and plan only (no uploads)'
         type: boolean
         default: true
+      mode:
+        description: 'full = the legacy complete set incl. catalog.json; catalog-v2 = Glaze 1.0.44 new themes + catalog-v2.json only (never catalog.json)'
+        type: choice
+        options: [full, catalog-v2]
+        default: full
 
 permissions:
   contents: read
@@ -23,6 +28,7 @@ concurrency:
 
 jobs:
   r2:
+    if: ${{ inputs.mode != 'catalog-v2' }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     defaults:
@@ -109,3 +115,52 @@ jobs:
       - name: Every theme fills Artwork 1-5 with five different pieces (live catalogue)
         if: ${{ !inputs.dry_run }}
         run: node scripts/packs/check_r2_artwork.mjs --base "$PUBLIC_URL" --all --out dist/r2-artwork.json | tee -a "$GITHUB_STEP_SUMMARY"
+
+  # Glaze 1.0.44 (scripts/packs/publish_catalog_v2.mjs): the 111 new themes and catalog-v2.json, which
+  # only 1.0.44+ reads. catalog.json (builds 1.0.37 to 1.0.43) is never in the plan, and its live
+  # SHA-256 must equal scripts/packs/catalog-v2-lock.json before, during and after.
+  catalog-v2:
+    if: ${{ inputs.mode == 'catalog-v2' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+        working-directory: apps/glaze
+    env:
+      PUBLIC_URL: ${{ vars.GLAZE_R2_PUBLIC_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r scripts/packs/requirements-images.txt
+      - name: Pack tests
+        run: node --test "scripts/packs/*.test.mjs"
+      - name: Build and audit the new themes
+        run: |
+          node scripts/packs/extraordinary_themes.mjs
+          python scripts/packs/verify_extraordinary_images.py
+      - name: Plan catalog-v2.json (no writes)
+        run: |
+          [ -n "$PUBLIC_URL" ] || { echo 'repo variable GLAZE_R2_PUBLIC_URL is not set'; exit 1; }
+          node scripts/packs/publish_catalog_v2.mjs --base "$PUBLIC_URL" | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glaze-catalog-v2
+          path: |
+            apps/glaze/dist/catalog-v2
+            apps/glaze/dist/extraordinary-packs/catalog.json
+            apps/glaze/dist/extraordinary-packs/art/**/manifest.json
+          retention-days: 14
+      - name: Upload new files, manifests, then catalog-v2.json; verify over the public URL
+        if: ${{ !inputs.dry_run }}
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: node scripts/packs/publish_catalog_v2.mjs --base "$PUBLIC_URL" --upload --verify | tee -a "$GITHUB_STEP_SUMMARY"

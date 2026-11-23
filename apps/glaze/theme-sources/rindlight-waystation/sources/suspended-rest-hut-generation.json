@@ -1,0 +1,18 @@
+{
+  "id": "suspended-rest-hut",
+  "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject SUSPENDED REST HUT: one round CRESCENT-SHELL REST CABIN hangs from TWO long opposing arched carved gourd SPINES that meet high above it. The cabin is a hollow dried calabash pod with a large round open doorway facing viewer-left, one curved shell door swung fully OPEN to right, a small slate-blue resting bench visible inside, pierced irregular ventilation holes along the upper rind. Two plain flax suspension ropes connect cabin top to open supporting arch, visible knots/reed pegs; a FOUR-RUNG rope ladder hangs below the doorway. The supporting spines sweep down to TWO wide splayed shell feet left/right, creating an airy open A shape around the cabin. No tree/plant, ground or people. Strong asymmetric hanging rounded cabin and arch silhouette, clear shade/rest/access purpose, not birdhouse/ornament. Entire arch tips, door lip, ladder bottom and support feet complete inside generous actual alpha margins. Warm dry speckled shell, fibrous pale pith at all cut edges, real alpha through piercings and support gaps.",
+  "tool": "built-in image_gen",
+  "source": "sources/suspended-rest-hut.daafe7e3.png",
+  "sourceSha256": "daafe7e3e29a0d1d263ed2cf1c9f50cde4d5b5292c4e858d004470b2f0bef941",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/suspended-rest-hut.3d12dbdd.png",
+  "sha256": "3d12dbdd695f2043964094d5246a20e6b66e9f132bccad189062a22842c2b3cf",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

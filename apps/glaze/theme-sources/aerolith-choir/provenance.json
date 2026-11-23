@@ -1,0 +1,74 @@
+{
+  "themeId": "aerolith-choir",
+  "lane": "A",
+  "style": "Tactile stop-motion cellular foam miniatures, porous matte apricot pigment and impossible architectural negative spaces.",
+  "published": false,
+  "artworks": [
+    {
+      "id": "cavity-cathedral",
+      "prompt": "Use case: stylized-concept. Asset: one original isolated square artwork for the Glaze theme Aerolith Choir, 1024 x 1024, truly transparent background. Invent a CAVITY CATHEDRAL: one impossible palm-sized architectural lifeform grown from pale apricot cellular foam. The body is a slanted perforated monolith whose irregular bubble cavities merge into a vast single curved vault; three thin extruded membrane bridges reach across its negative space, and two coral-red porous nodules cluster only near one corner. It floats freely, no pedestal and no ordinary building details. Art style: tactile, whimsical stop-motion set sculpture, handmade and slightly lopsided, soft mineral pigment dust and porous matte skin, extremely soft side lighting and visible tiny tool imperfections. Give it a strong graphic, gently surreal silhouette, warm chalk peach and biscuit cream with small oxidised vermilion accents. It must look nothing like glossy 3D product photography, glass, metal, coral from the ocean, a normal castle or conventional white organic architecture. Show the whole single form at three-quarter angle with 14 percent transparent margin; all cavities readable at widget size, only a few large openings and delicate secondary pores. No text, digits, labels, logo, clock, furniture, flowers, ordinary props, floor or coloured backdrop. This is one unique invented structure, not multiple image panels.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-b5629773-926a-4d6d-a14e-664dff9ffd62.png",
+      "sourceSha256": "01259ac29fe8bed05ac80a49ea45fd296b7ec6dddffc3bab3a24d54903a15e38",
+      "image": "widgets/cavity-cathedral.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": null
+    },
+    {
+      "id": "bellows-bloom",
+      "prompt": "Use case: stylized-concept. Create a completely new original isolated square Glaze widget artwork, 1024 square. Image 1 is a MATERIAL AND ART-PROCESS REFERENCE ONLY, not an edit target. Reuse the material language and palette, but invent a completely different subject and silhouette. Subject: a BELLOWS BLOOM: an invented flowerlike breathing sculpture made from nine irregular upright folded foam fins, arranged in an asymmetric expanding fan around a deep coral-red porous core. Each fin has huge soft oval perforations and paper-thin cell membranes; a short crooked pale stem supports it with no ground. Its silhouette is a loose tall fan, unlike the single solid vaulted monolith in the reference. No recognisable real flower, coral, cabbage, shell or normal architectural model. Style: Whimsical tactile stop-motion set sculpture: dusty matte biscuit-cream and pale apricot cellular foam, subtle coral-red accents, tiny hand-made tool imperfections, soft even side lighting and large legible negative spaces. Not glossy or metallic. Entire single form visible with at least 12 percent clear margin, readable at 170-pixel widget size. Truly transparent background and transparent holes. No background, no floor, no pedestal, no cast-shadow rectangle. No text, digits, logo, watermark, borders, clock or UI. Do not copy the composition or geometry of Image 1.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-5a02b923-49c8-476b-bb93-6fb5f5cef181.png",
+      "sourceSha256": "05c2c6a107f5e13d011b5bec1c20f8f10703f598e4385395b80d876f1478109f",
+      "image": "widgets/bellows-bloom.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-b5629773-926a-4d6d-a14e-664dff9ffd62.png"
+    },
+    {
+      "id": "pore-shelled-nomad",
+      "prompt": "Use case: stylized-concept. Create a completely new original isolated square Glaze widget artwork, 1024 square. Image 1 is a MATERIAL AND ART-PROCESS REFERENCE ONLY, not an edit target. Reuse the material language and palette, but invent a completely different subject and silhouette. Subject: a PORE-SHELLED NOMAD: a strange handmade creature with a wide, low, porous pumpkin-like foam shell split by three huge arch-shaped cavities. Six delicate curved cream foam legs support it; a coral-red folded membrane hangs from its front like an abstract breathing fan. No real animal head, no eyes, no ordinary turtle or mushroom. Entire character in profile, a low horizontal silhouette very different from the reference's tall monolith. Style: Whimsical tactile stop-motion set sculpture: dusty matte biscuit-cream and pale apricot cellular foam, subtle coral-red accents, tiny hand-made tool imperfections, soft even side lighting and large legible negative spaces. Not glossy or metallic. Entire single form visible with at least 12 percent clear margin, readable at 170-pixel widget size. Truly transparent background and transparent holes. No background, no floor, no pedestal, no cast-shadow rectangle. No text, digits, logo, watermark, borders, clock or UI. Do not copy the composition or geometry of Image 1.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-974056ff-5fc3-4fc6-8f52-d11eeac22670.png",
+      "sourceSha256": "fef339cc2b88ebd982eda4d38eae6fde8064302a5eaefa2abdb13570cb64d14b",
+      "image": "widgets/pore-shelled-nomad.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-b5629773-926a-4d6d-a14e-664dff9ffd62.png"
+    },
+    {
+      "id": "thread-tail-comet",
+      "prompt": "Use case: stylized-concept. One completely new original isolated square 1024 x 1024 widget artwork for aerolith-choir. Image 1 is a material and style reference only, not an edit target. Invent this different subject: A THREAD-TAIL COMET: an invented airborne fossil shaped like a flattened asymmetrical pebble of pale apricot cellular foam, perforated by five large uneven voids. From its rear stream four extremely long soft cream tendrils, each itself a chain of tiny hollow foam cells. The red porous core is visible only through one opening. It sweeps diagonally upward in a long elegant S gesture. No normal shell, rock, meteor, fish, bird or real animal, and no legs. It is a surreal soft aerolith with a flowing cellular tail, different from the monolith, fan, seed and nomad. Leave ample transparent margin and keep the full tendrils in frame. Handmade whimsical stop-motion set sculpture in matte biscuit-cream and pale apricot cellular foam, coral-red porous accents, soft side lighting, tiny irregular tool imperfections and beautifully soft, tactile mineral pigment texture. Strong legible silhouette, truly transparent backdrop including holes. No floor, no painted background, no pedestal, no rectangular shadow. No text, numerals, clocks, UI, logo, border or ordinary props.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-82b19507-20d8-4d56-b1dd-6e78a0a70479.png",
+      "sourceSha256": "e1bcc5d1b96994d4e7f113148072956754099ca8c3e590f22cc1f0891c94cc39",
+      "image": "widgets/thread-tail-comet.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-b5629773-926a-4d6d-a14e-664dff9ffd62.png"
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "Use case: stylized-concept. Create a premium original very tall PORTRAIT phone wallpaper, 9:19.5 design. Image 1 is only a tactile foam material/process reference, not an object to paste into the scene. A quiet impossible world called AEROLITH CHOIR: in the lowest quarter, a miniature landscape of pale peach cellular-foam vaults, floating perforated dunes and thin membrane bridges makes a soft theatre of architectural negative space. Shapes feel hand-built for a whimsical stop-motion set, slightly lopsided, powder-dusted and matte, with enormous readable bubble cavities and a few tiny coral-red nodules. The upper three-quarters is deep quiet charcoal-slate #273536 with extremely subtle soft dusty texture and barely visible drifting cellular shadows, deliberately calm for phone widgets. Warm soft side light on the lower sculpture contrasts beautifully with the dark blue-slate surroundings. All important sculptural forms stay in a narrow central column for a tall centre crop. No real ocean coral or familiar buildings, no shiny product-render aesthetic. No words, numbers, time, dates, UI, icons, borders or phone mockup. Opaque full-bleed wallpaper, no transparency.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-52eb6a66-2457-44b1-93ec-9193713979e4.png",
+      "sourceSha256": "823ae11eecfec013a8cb35db4248b058c14fd5eacd8670f8b9bc62925b98e201",
+      "image": "wallpapers/wallpaper.png",
+      "width": 852,
+      "height": 1847,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-b5629773-926a-4d6d-a14e-664dff9ffd62.png"
+    },
+    {
+      "id": "levitating-seed-engine",
+      "prompt": "Use case: stylized-concept. One completely new original isolated square 1024 x 1024 widget artwork for aerolith-choir. Image 1 is a material and style reference only, not an edit target. Invent this different subject: A LEVITATING SEED ENGINE: one large cracked spherical foam seed, with half of its shell peeled into a spiralling cantilever. Inside the exposed cavity hover three irregular coral-red porous kernels connected by thin warm-cream membrane threads. A cluster of tiny hollow cells trails to one side like an invented reproductive mechanism. Broad round silhouette with asymmetric spiral opening, clearly different from a cathedral, fan or walking animal. No ordinary egg, fruit, jewellery or real seed. Entire subject in frame, 12 percent margin. Handmade whimsical stop-motion set sculpture in matte biscuit-cream and pale apricot cellular foam, coral-red porous accents, soft side lighting, tiny irregular tool imperfections and beautifully soft, tactile mineral pigment texture. Strong legible silhouette, truly transparent backdrop including holes. No floor, no painted background, no pedestal, no rectangular shadow. No text, numerals, clocks, UI, logo, border or ordinary props.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-3e9d02dd-f4b5-43ea-aa87-7c241053602c.png",
+      "sourceSha256": "2405877e43ab6a7508209b501f54df75bb47ea9edd69c9041bc5afd9b3472fcc",
+      "image": "widgets/levitating-seed-engine.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-b5629773-926a-4d6d-a14e-664dff9ffd62.png"
+    }
+  ]
+}

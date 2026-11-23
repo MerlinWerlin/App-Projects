@@ -1,0 +1,18 @@
+{
+  "id": "fern-fiddlehead",
+  "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject FERN FIDDLEHEAD: one mature graceful FERN FROND arches diagonally from low left to upper right, about7 pairs of distinct lobed leaflets along a narrow midrib; each thin tin leaflet has shallow raised lengthwise vein and tiny punch dimples, crisp folded edge, blue-green patina in recesses. At its base one young fiddlehead rises as a tightly curled natural spiral, plus one tiny unrolling side leaf. A narrow open common stem/root tip, NO pot or soil clump. The arch and curled fiddlehead form a clear airy botanical silhouette. Distinct individual irregular leaflets, no generic feather or symmetrical metal wreath. Complete every leaflet tip, outer frond tip, curled spiral and root end, substantial alpha around whole group.",
+  "tool": "built-in image_gen",
+  "source": "sources/fern-fiddlehead.d2d01e0b.png",
+  "sourceSha256": "d2d01e0ba4f4c565408b7ef93c6cbb42e0feaccc5e5459a2721c398e221e63f0",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fern-fiddlehead.ede17d73.png",
+  "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

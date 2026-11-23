@@ -1,0 +1,45 @@
+{
+  "id": "california-poppies",
+  "scope": "Two separate actual built-in own-source edits, in this exact order. No postprocess masking or subject paint.",
+  "original": {
+    "file": "qa/anatomy-alpha-repair/initial-crowned-capsule.b32a80c0.png",
+    "sha256": "b32a80c04414d1e365791ddb57f2ee1ce46e60ccf80e56d3ed98a3ef9f6c9541",
+    "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. A natural asymmetric botanical spray of THREE recognizable California poppy cup flowers, two open four-petaled flowers and one half-open side-view cup, ONE whole tapering seed pod, short connected stems and finely divided sparse natural leaves. Graceful connected botanical growth, no vase or bouquet wrap. Entire spray is thin warm ivory burnished unglazed ceramic, hand-pinched petal lips with subtle finger marks. Sparse incidental burnt horsehair squiggles cross a few petals and seed pod with localized smoky plumes; faint warm iron blush within cups only. No painted orange petals, glossy glaze, ornamental floral scrollwork, crackle mesh or literal loose hair. Whole petal/leaf/stem tips inside margins.",
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+  "edits": [
+    {
+      "kind": "botanical-anatomy",
+      "prompt": "Precise BOTANICAL ANATOMY-ONLY correction of input1, own Embertrace Chaparral ceramic California poppy spray. Preserve all THREE existing four-petaled cup flowers, stems, finely divided leaves, overall composition, exact burnished warm ivory unglazed clay material, five separated sinuous carbon trails, localized smoke deposits, restrained iron blush, lighting/framing and clean transparent alpha. Change ONLY the rounded OVOID CROWNED SEED CAPSULE at lower left. Replace that one capsule with a real California poppy Eschscholzia californica fruit: LONG SLENDER NARROW CYLINDRICAL TAPERING POD, roughly five times longer than its width, gently upward-pointing, a small pointed closed tip and faint longitudinal seam, NO flat daisy-like stigma crown/disc or bulbous opium-poppy capsule. Keep it connected to the SAME existing short stem, within the same left-side clear area and original overall alpha-safe margins. Use identical pale ceramic and one thin wandering carbon strand with tiny smoke edge across the new slender pod. No new flowers/leaves, no extra pods, no recompose/rescale of whole spray and no change to other anatomy or material. All petals/leaves/stems/new long pod wholly visible. TRUE TRANSPARENT ALPHA including gaps, no halo/backing/ground/shadow/frame/text/UI. Single own original input only.",
+      "referencedImage": "qa/anatomy-alpha-repair/initial-crowned-capsule.b32a80c0.png",
+      "referencedImageSha256": "b32a80c04414d1e365791ddb57f2ee1ce46e60ccf80e56d3ed98a3ef9f6c9541",
+      "exactToolRequest": "qa/anatomy-alpha-repair/anatomy-exact-tool-request.json",
+      "selectedSource": "qa/anatomy-alpha-repair/intermediate-slender-pod-with-haze.8f0bf6cb.png",
+      "selectedSourceSha256": "8f0bf6cb5a48c453da874a8303d9c6d863c076e27ea96437315c87f16559fdba",
+      "reason": "Replace rounded crowned capsule with long slender California-poppy seed pod; flowers/stems/material retained."
+    },
+    {
+      "kind": "background-extraction",
+      "prompt": "BACKGROUND EXTRACTION ONLY from input1, own corrected Embertrace Chaparral California-poppy ceramic spray. Preserve EXACT complete existing ceramic subject: three four-petaled flowers, correct LONG SLENDER pointed seed pod at left, all fine divided leaves/connected stems, precise positions/proportions, pale warm burnished unglazed clay, thin black sinuous carbon trails, smoke deposits ON ceramic, warm iron blush and soft subject lighting. REMOVE ONLY the faint broad SEMITRANSPARENT WHITE-GRAY MATTE CLOUD and cast haze/shadow behind/around the subject. Every pixel outside actual ceramic silhouette must be TRUE EMPTY ALPHA0, including ALL gaps between stems, divided leaves and petals, and ALL broad surrounding canvas. No opaque white/gray background, veil, vignette, residual haze, glow or drop shadow. Retain ceramic bodies and every fine petal/leaf/stem/pod tip fully intact; do not cut/crop/recolor/recompose the subject and do not remove smoke marks that are actually ON clay. Clean natural antialiased silhouette edge only; no broad translucent fringe extending into background. Whole subject safely central with same original ample alpha margins. No added ground/backing/plaque/frame/UI/text. Single own source input only. Output genuinely transparent PNG.",
+      "referencedImage": "qa/anatomy-alpha-repair/intermediate-slender-pod-with-haze.8f0bf6cb.png",
+      "referencedImageSha256": "8f0bf6cb5a48c453da874a8303d9c6d863c076e27ea96437315c87f16559fdba",
+      "exactToolRequest": "qa/anatomy-alpha-repair/alpha-exact-tool-request.json",
+      "selectedSource": "sources/california-poppies.7bbce666.png",
+      "selectedSourceSha256": "7bbce666e0fb09f6f6f90ba90a461d2a6ae4f2d707fc651f37319b234bbc76a6",
+      "reason": "Remove actual faint background haze around corrected whole spray, preserve pod and fine leaves."
+    }
+  ],
+  "botanicalTextReferences": [
+    {
+      "url": "https://linnet.geog.ubc.ca/Atlas/Atlas.aspx?sciname=Eschscholzia+californica",
+      "finding": "UBC flora describes linear capsules3\u20139cm; text only, no photo input."
+    },
+    {
+      "url": "https://plants.sc.egov.usda.gov/DocumentLibrary/plantguide/pdf/pg_esca2.pdf",
+      "finding": "USDA California poppy guide; primary botany text only, no photo input."
+    }
+  ]
+}

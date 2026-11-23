@@ -1,0 +1,18 @@
+{
+  "themeId": "spanglewrack-shore",
+  "recipe": [
+    "circle",
+    "paillePlover",
+    "pailleRows",
+    "beads",
+    "needle",
+    "trail",
+    "ledger"
+  ],
+  "art": {
+    "paillePlover": "M 27 28 Q 17 24 15 36 L 5 39 L 16 43 Q 24 64 48 67 Q 69 69 79 57 L 91 65 L 81 47 Q 71 33 54 34 L 38 37 Q 34 29 27 28 M 21 34 L 22 35 M 35 42 Q 53 37 70 50 L 57 60 L 38 55 Z M 41 67 L 37 87 L 26 94 M 56 67 L 62 86 L 75 92 M 16 43 Q 25 48 33 43 M 21 47 Q 28 52 36 46",
+    "pailleRows": "M 13 30 Q 20 42 29 30 Q 38 42 47 30 Q 56 42 65 30 Q 74 42 83 30 M 21 42 Q 29 55 38 42 Q 47 55 56 42 Q 65 55 74 42 M 13 54 Q 22 67 31 54 Q 40 67 49 54 Q 58 67 67 54 Q 76 67 85 54 M 23 32 L 23 35 M 41 32 L 41 35 M 59 32 L 59 35 M 32 44 L 32 47 M 50 44 L 50 47 M 68 44 L 68 47"
+  },
+  "ornament": "M 20 62 Q 28 77 43 76 Q 57 75 63 61 M 34 48 Q 43 63 57 62 Q 71 61 77 47 M 40 61 L 43 64 M 53 49 L 56 52 M 42 62 L 48 58 M 55 50 L 61 46",
+  "direction": "Natural ringed plover and shallow overlapping punched-metal disc embroidery. Circle clock rim recalls solid stamped disc perimeter, bead markers tiny center punches and needle hands anchoring stitches. Trail charge traces a curved anchoring-thread path; ledger calendar keeps simple row rules. Compact companion is only two shallow overlapping cup arcs plus two short anchoring stitches, open and sparse; no whole bird, dense scales/rosette, bead outline or open wire-ring chainmail. Retain shipped calendar/date/highlight/identity outline behavior, no date-containment gate."
+}

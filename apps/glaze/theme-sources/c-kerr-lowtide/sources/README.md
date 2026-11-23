@@ -1,0 +1,1 @@
+Six selected unmodified built-in outputs:five independently generated shore-life artworks and final identity-edited habitat wallpaper. Exact prompts/raw dimensions/hashes/own reference stages in provenance.json. First wallpaper archived separately; primary science references are text-only background, not image inputs.

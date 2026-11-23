@@ -1,0 +1,221 @@
+{
+  "theme": "c-colored-shadow-meadow",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "quail-three-shadows",
+      "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+      "sourceSha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/quail-three-shadows.2125e5293342.png",
+      "sha256": "2125e529334272272f03a23df4e2bdf44acad1c2b8e4cb983fa62c218b7be9fc",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 445421,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Create one original square Glaze Artwork study for Shadowlight Meadow. One complete and immediately recognizable California quail, standing quietly in profile with its head turned slightly toward the viewer. Whole rounded gray-brown body, tiny pale facial bar, small dark curved topknot with its full tip, short tail and both visible feet. Restrained natural warm gray and taupe plumage with a few broad underside scale marks and a dark eye. Real gentle wildlife proportions. A clean, quiet illustrative finish, with a little natural down and no bright unnatural color on the bird.\n\nShow a stylized colored-shadow scene. From the SAME two real foot contacts the quail casts THREE broad, flattened silhouette shadows along a single implied pale ground plane, in three progressively different directions. They stretch outward behind the visible bird in three directions: dusty cyan left and back, dusty magenta right and back, warm golden ochre diagonally forward. They are solid readable areas of shadow with very soft penumbra at each outside edge. Each shadow has a visibly flattened whole quail body projection, with its associated footprint narrowing into the shared dark origin at the actual feet. The far edge can show a short flattened topknot or bill, but the shadows are low flat cast shapes, never three upright birds. The shadows partly overlap near the feet in distinctly darker small intersection shapes, then separate into broad colored areas farther out. Keep the single opaque bird in front and its clean unfringed body clearly separate visually from the three thinner ground marks. The three shadows supply enough shape and color to read at 85 px. This is an original artistic depiction of colored cast shadows under three light colors, without an actual measurement or calibration.\n\nThe real quail, legs, crest and all three shadow endpoints are fully contained within the central 72 percent of the canvas. Only the quail and its actual colored shadows are visible, with transparency elsewhere. The ground is implied by the flattened shadows and foot contacts. Do not add a rectangular backing, floor slab, display disc, drawn horizon, dark platform, layer of fog, halo, ring of highlights, veins, halo outline, detached swirls, ornamental paint stroke, light beams, reflection, wet glossy texture, neon contours, red and cyan misregistration, unfocused duplicate figures, existing photographs, labels, text, UI, numbers, logos or watermark. Quiet edges and truly transparent empty corners. No external images.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 863907
+    },
+    {
+      "id": "cottontail-shadows",
+      "sourceImage": "sources/cottontail-shadows.205b251f2ae7.png",
+      "sourceSha256": "205b251f2ae7a08a7aa23e310de4207c1fa1981933a434885b8eb8402b939b8d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cottontail-shadows.1781156d7041.png",
+      "sha256": "1781156d7041d0a708bd3734823d41096da6cf11dfc00a7ad929375fa6a4b21a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 465401,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Create one original transparent square Glaze Artwork image for Shadowlight Meadow. The input is our own exact first quail and serves as a paint, shadow and framing reference only. Use subdued natural color, realistic recognizable anatomy, gentle warm diffuse detail and a clear whole profile. The distinct new natural subject is described below. Make its natural anatomy and complete outline obvious at 85 px. Use no quail parts or copied pose.\n\nProject three colored shadows in the same flat ground plane, attached exactly to the subject's ground contacts. Use the original quail's dusty cyan, dusty magenta and ochre shadow colors. Three broad shadows stretch left, right and diagonally forward so their far ends remain visibly distinct. Give each a wide opaque core and a softly graduating, compact edge. Each shadow retains the compressed silhouette of this new subject with its clear identifying parts, rather than the original quail. The three shadows partly overlap close to the real ground contacts, with a small deeper area there. No colored fringes on the main subject. Space stays quiet around the whole subject and shadows.\n\nSubject. A whole desert cottontail in a compact sitting side profile. Two separate long ears with their full tips, one small nose and dark eye, two real forepaws, a visible rounded hind foot and natural white tail. Soft warm sandy gray and pale underside. The upright bunny is broad enough to read at small size. The three magenta, cyan, and ochre shadows start under the paws and stretch flat into legible rabbit-shaped ends, each with a distinct pair of compressed ear silhouettes.\n\nFit everything including all three shadows and all natural extremities inside the central 72 percent of the canvas. Make the entire outside transparent. The shadows imply the ground. Keep only the whole natural subject and its three shadows. No scenery, horizon, framed area, floor rectangle, opaque disc, display plinth, paper border, exterior fog, loose specks, reflections, neon lines, lights, cast highlights, third physical subject, duplicate floating forms, UI, text, data, logos or watermark. This is original fictional art about colored shadows, with no real capture or measurement. No external images.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 873596,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+        "sha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a"
+      }
+    },
+    {
+      "id": "poppy-shadows",
+      "sourceImage": "sources/poppy-shadows.73216b18e88b.png",
+      "sourceSha256": "73216b18e88b4cba9349be8ea288796d43b6053bef06a6eb2206d50290487d59",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/poppy-shadows.14402b3368ea.png",
+      "sha256": "14402b3368eabcb1314965d560206200deb6c6207b4d15073f4b65d67c7dfa58",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 411918,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Create one original transparent square Glaze Artwork image for Shadowlight Meadow. The input is our own exact first quail and serves as a paint, shadow and framing reference only. Use subdued natural color, realistic recognizable anatomy, gentle warm diffuse detail and a clear whole profile. The distinct new natural subject is described below. Make its natural anatomy and complete outline obvious at 85 px. Use no quail parts or copied pose.\n\nProject three colored shadows in the same flat ground plane, attached exactly to the subject's ground contacts. Use the original quail's dusty cyan, dusty magenta and ochre shadow colors. Three broad shadows stretch left, right and diagonally forward so their far ends remain visibly distinct. Give each a wide opaque core and a softly graduating, compact edge. Each shadow retains the compressed silhouette of this new subject with its clear identifying parts, rather than the original quail. The three shadows partly overlap close to the real ground contacts, with a small deeper area there. No colored fringes on the main subject. Space stays quiet around the whole subject and shadows.\n\nSubject. A whole California poppy with a prominent open golden cup, one smaller bud, natural lobed blue-green leaves and gently bending connected stems. Show the full plant to a single small base which naturally meets the implied ground. Three flat cast forms spread from that one base. Each has a clear low elongated projection of the bloom and one stem. Natural gold flower and quiet leaves are primary.\n\nFit everything including all three shadows and all natural extremities inside the central 72 percent of the canvas. Make the entire outside transparent. The shadows imply the ground. Keep only the whole natural subject and its three shadows. No scenery, horizon, framed area, floor rectangle, opaque disc, display plinth, paper border, exterior fog, loose specks, reflections, neon lines, lights, cast highlights, third physical subject, duplicate floating forms, UI, text, data, logos or watermark. This is original fictional art about colored shadows, with no real capture or measurement. No external images.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 918878,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+        "sha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a"
+      }
+    },
+    {
+      "id": "fence-lizard-shadows",
+      "sourceImage": "sources/fence-lizard-shadows.61a2b0757e6a.png",
+      "sourceSha256": "61a2b0757e6a46db3d76c7422026cd184e7ec4a2ed712d66bf1aa69985e9b728",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/fence-lizard-shadows.2562e054d83b.png",
+      "sha256": "2562e054d83bb6fa12a543ae7835574b4a8c085f824fab12f2c3bdc13a972111",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 440001,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: precise-object-edit. Use the exact original own lizard as the sole edit target. Make one narrowly localized anatomy correction. Remove the tiny stray real-looking paw and toes sticking out below the lower edge of the tail, just behind the nearer hind leg, at about x 300 and y 735 in the 1254-square input. This tiny isolated fifth paw is tan on top of the teal shadow. Replace only that stray paw with the continuation of the teal shadow and naturally transparent edging around the tail. Leave the tail itself unchanged.\n\nThe lizard retains exactly four anatomically connected limbs: the large near hind foot left of center, the far hind foot partly visible under the middle belly, the large near front foot beneath the chest and the far front foot to the right. Recheck that there are four physical feet in total and no extra toes directly under the curled tail. Preserve the complete original head, nostril, eye, proportions, gray-brown scales, blue throat, curved tail and all the four sound limbs. Preserve the three flattened dusty teal, dusty magenta and ochre cast silhouettes, with their full furthest endpoints, soft edges and similar contact overlaps. Preserve the full framing and transparent exterior, including the tiny clear spaces. No new branch, background, floor shape, detached paws, mist, edge border, letters, logo, watermark or halo. No external images.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 907562,
+      "directEditReference": {
+        "sourceImage": "intermediate-art-studies/fence-lizard-shadows-first.916215278530.png",
+        "sha256": "916215278530a19364af5a19ef21d2426520a7cee0d535f84f8f562c889fbe80"
+      },
+      "generationStages": [
+        {
+          "stage": "original",
+          "selected": false,
+          "record": "intermediate-art-studies/fence-lizard-first-generation.json",
+          "sourceSha256": "916215278530a19364af5a19ef21d2426520a7cee0d535f84f8f562c889fbe80",
+          "ownMaterialStyleReference": {
+            "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+            "sha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a"
+          }
+        },
+        {
+          "stage": "one anatomy correction",
+          "selected": true,
+          "soleDirectEditReference": {
+            "sourceImage": "intermediate-art-studies/fence-lizard-shadows-first.916215278530.png",
+            "sha256": "916215278530a19364af5a19ef21d2426520a7cee0d535f84f8f562c889fbe80"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mushroom-shadows",
+      "sourceImage": "sources/mushroom-shadows.0f04ff40c5d7.png",
+      "sourceSha256": "0f04ff40c5d78ca4658777395131e6e9bb7b8dbd348e771706f59214865ef95d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/mushroom-shadows.db863d5ef6a1.png",
+      "sha256": "db863d5ef6a1e127cc2a04e0dd02c7966b8c6ac1759771646d5ee3f4610c37df",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 478709,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Create one original transparent square Glaze Artwork image for Shadowlight Meadow. The input is our own exact first quail and serves as a paint, shadow and framing reference only. Use subdued natural color, realistic recognizable anatomy, gentle warm diffuse detail and a clear whole profile. The distinct new natural subject is described below. Make its natural anatomy and complete outline obvious at 85 px. Use no quail parts or copied pose.\n\nProject three colored shadows in the same flat ground plane, attached exactly to the subject's ground contacts. Use the original quail's dusty cyan, dusty magenta and ochre shadow colors. Three broad shadows stretch left, right and diagonally forward so their far ends remain visibly distinct. Give each a wide opaque core and a softly graduating, compact edge. Each shadow retains the compressed silhouette of this new subject with its clear identifying parts, rather than the original quail. The three shadows partly overlap close to the real ground contacts, with a small deeper area there. No colored fringes on the main subject. Space stays quiet around the whole subject and shadows.\n\nSubject. One whole pair of tan meadow mushrooms in soft warm ivory and sand. One broad domed open cap with simple gills and sturdy stalk and one little domed cap on a shorter adjacent stem. Both whole bases touch a shared invisible ground plane. Three broad cast silhouette shapes showing the combined two caps and stems diverge in dusty teal, golden ochre and magenta. A darker overlap attaches them naturally. No moss slab or decorative sprays.\n\nFit everything including all three shadows and all natural extremities inside the central 72 percent of the canvas. Make the entire outside transparent. The shadows imply the ground. Keep only the whole natural subject and its three shadows. No scenery, horizon, framed area, floor rectangle, opaque disc, display plinth, paper border, exterior fog, loose specks, reflections, neon lines, lights, cast highlights, third physical subject, duplicate floating forms, UI, text, data, logos or watermark. This is original fictional art about colored shadows, with no real capture or measurement. No external images.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 860263,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+        "sha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a"
+      }
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.5a7514ce1523.png",
+      "sourceSha256": "5a7514ce1523712dee0a9f00767f89a2e6c4802dfea523ce904ebbb425d09485",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "421dae60ec0ada6fb63d7344a113f4bdd4eb35a7990d3dc1658390075ba1d044",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 4110685,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Create one original complete opaque portrait phone wallpaper for Glaze Shadowlight Meadow, close to the 1290 by 2796 aspect ratio. Use our exact own quail reference as the only image input. Preserve the quiet natural finish, real anatomy, soft pale stone color, and the broad dusty teal, magenta and ochre colored shadows. Place the complete quail in one calm spring meadow clearing with a pale sandy floor, subtle grasses and a little warm atmospheric distance. Every living form belongs to one natural place. Keep subjects whole, strong and separated.\n\nA whole California quail with full crest and feet is prominent at the middle right. Farther left a full sandy cottontail sits with both ears, small tail and four sound paws. An open California poppy with full cup, a bud and blue-green leaves sits above and right of the quail, visibly planted. A whole western fence lizard with exactly four limbs and one curling tail is near the foreground floor, with ample separation from the other animals. Two warm ivory mushrooms grow on the lower right. Each subject casts a few clearly grounded, flat directional shadows in the same subdued teal, faded rose and ochre. Repeat a single coherent left, right and diagonal cast direction throughout the image. Keep each natural subject singular and natural-colored, with bolder shadows from the three-dimensional objects and modestly softer compressed shadows for the smaller specimens. The projected shapes must share the true contact points and lie continuously across the same floor. Darker intersections touch the plant bases and paws. Do not let separate shadow groups interlock so much they lose their recognizable origin. Original artistic colored shadow depiction.\n\nBuild the scene across a continuous warm stone-toned clearing, with subdued sage meadow grass and lightly suggested hills. Keep the outer margins quietly legible and the upper 25 to 30 percent pale, low in detail, and free of strong pattern. The five subjects and their main cast endpoints occupy roughly 72 to 76 percent of width and around 52 percent of canvas height, with room at the sides and below for all phone crops. A few small natural grasses or pebbles connect the ground but do not cross the clear silhouettes. No bright artificial lights, stage, framed tile, panels, dark cast silhouette duplicates standing upright, decorative neon effects, conspicuous colored outlines, glitter, studio plinth, phone mockup, text, numbers, live readings, logos or watermark. No external visual references.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "quail-three-shadows",
+          "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+          "sha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a"
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Whole recognizable meadow species with three broad cast shadows. The Artwork corners use warm stone and contain the complete shadow footprint. Compact live cards use a separate plain meadow grass seedhead.",
+  "conceptReferences": [
+    {
+      "url": "https://annex.exploratorium.edu/xref/exhibits/colored_shadows.html",
+      "scope": "Read the exhibit creators' explanation of the color left on the surface when one light is blocked. Use the broad colored silhouettes and darker overlap as artistic conventions. No figure or photography is used."
+    },
+    {
+      "url": "https://www.exploratorium.edu/snacks/colored-shadows",
+      "scope": "Read the explanation of complementary cast shadow colors and darker areas where several colors are blocked. A generic effect informs this fictional art, with no image or exact physical measurement used."
+    }
+  ],
+  "conceptReferenceScope": "Exploratorium's explanation of overlapping colored cast shadows informed the artistic visual idea.",
+  "selectedFirstPrototypeSha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a",
+  "newImageOutputs": 7,
+  "creativeRasterEdits": 1,
+  "creativeEditScope": "Full, 170 px and 85 px views show four physical limbs, complete curled tail and lifted head. The small extra foot below the tail is gone. The three flat cast shadows retain their digits and full endpoints. The visible exterior remains transparent, with a very small maximum frame alpha of 2.",
+  "unselectedGenerations": 1,
+  "unselectedHistory": [
+    {
+      "id": "fence-lizard-shadows",
+      "selected": false,
+      "sourceImage": "intermediate-art-studies/fence-lizard-shadows-first.916215278530.png",
+      "sourceSha256": "916215278530a19364af5a19ef21d2426520a7cee0d535f84f8f562c889fbe80",
+      "record": "intermediate-art-studies/fence-lizard-first-generation.json",
+      "reason": "A small stray fifth physical foot protrudes beneath the curled tail. The other four visible limbs and three broad shadow directions are clear."
+    }
+  ],
+  "artworkOwnStudyReferenceUses": 5,
+  "artworkOwnStudyDistinctReferenceImages": 2,
+  "artworkOriginalStyleReferenceUses": 4,
+  "artworkDirectEditReferenceUses": 1,
+  "wallpaperReferenceUsesAcrossStages": 1,
+  "wallpaperDistinctReferenceImages": 1,
+  "intendedMinAppVersion": "1.0.44",
+  "coordinatorFirstMaterialAccepted": true,
+  "coordinatorIntegrationPending": true
+}

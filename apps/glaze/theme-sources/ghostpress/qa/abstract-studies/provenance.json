@@ -1,0 +1,19 @@
+{
+  "status": "superseded by Jared tangible-subject steering on2026-11-22",
+  "studies": [
+    {
+      "id": "hinged-hollow",
+      "source": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-7cdd69c0-7d22-4aaa-a81a-1c8139b9da33.png",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. Subject: HINGED HOLLOW, a wide flattened tear-shaped cavity whose two sides are pressed at incompatible depths; three small angular cantilevered terraces step across its middle, while one thin sunken channel loops out through the torn upper corner. Bold broad asymmetric open silhouette, five distinguishable impressed planes and one deep negative pocket; no circular bezel or clock, no stairs, tools or animals.",
+      "retainedFile": "qa/abstract-studies/hinged-hollow.png",
+      "sha256": "158a52a13a1f4eee25cb4d5b1879be6e24466e18bc05fa211310f236c243ef0a"
+    },
+    {
+      "id": "negative-corona",
+      "source": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-192f4cca-7c31-414e-a163-f596161a7432.png",
+      "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. Subject: THE NEGATIVE CORONA, a squat irregular five-lobed outer silhouette, with a very deep offset square cavity and four small oblique triangular embossed islands hovering at different implied depths inside it. Each lobe has a different sequence of sunken nested corner lines. The lobe on lower-right is folded inward by the die so its shadow faces the wrong direction. Closed compact composition, no circular ring, sun, star, flower, animal, familiar object or letter; a strange topology pressed into paper. Keep all white highlights attached to fibrous impressed paper edges, not printed ink.",
+      "retainedFile": "qa/abstract-studies/negative-corona.png",
+      "sha256": "8523b51a59d83b35d4d43be9afd914cd7557e48517657c7e48671acefefdecbc"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "themeId": "tautline-scrubland",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.301288c3.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "301288c3dc0cb1ae0c38415e956a6cd6cd7942fad38ca60896a9239c993bb232",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.4f871e02.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "4f871e02748678da46425d386636773c0490244788ccc05192fe8b732f052cf7",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.dc2dd105.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "dc2dd1052ee2dfa5fd2f2e643fd5705913be7b572d72d2053c30c5373e55bbc8",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Complete hoopoe crest/beak/tail, gecko/thyme, thistle/bee, tortoise/caper and swallowtail/fennel kept in all actual encoded phone crops including750x1334. Outer sprigs were reconstructed and habitat reduced in the selected built-in layout repair."
+  }
+}

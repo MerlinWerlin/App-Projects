@@ -1,0 +1,38 @@
+{
+  "themeId": "tinwake-understory",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.ade3f7a4.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "ade3f7a4d08e7b4b1dd95e7b08e38a409922233923a25aeebcdb6eb06dfdb060",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.23b9d09b.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "23b9d09b7d49f5d7fd1f0158e9d5edcec23e3e3ab24b0877c76020ce9a872348",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.ed294c09.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "ed294c09dad02e28451fb00dfd29deec3b5838b68f680dcb39beb2f6c7ac0500",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Complete outer fern tips/fiddlehead, woodpecker/birch, salamander feet/tail, snail feelers, fungi/woodlouse and woodland leaf edges preserved in all three actual encoded wallpaper variants, including750x1334. Quiet oxidised ground surrounds habitat."
+  }
+}

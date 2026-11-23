@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "SECOND AUDIT embertrace-chaparral. Use case: precise-object-edit, WALLPAPER COMPOSITION ONLY, portrait1290x2796. Input1 is the EXACT OWN EXISTING WALLPAPER edit target. Other ordered inputs are OWN FROZEN raw artwork MATERIAL/ANATOMY references ONLY, never edit those assets. Keep this theme material, palette, familiar natural anatomy and tangible world. Recompose the SAME quail/rabbit/chaparral habitat as a substantial portrait nature illustration. Whole connected habitat occupies80\u201388percent WIDTH and50\u201355percent HEIGHT, horizontally centered, from about27percent to82percent canvas height. Enlarge natural whole California quail at left to about24percent full canvas HEIGHT, with the complete modest comma topknot, short beak and both whole feet. Whole natural brush rabbit at right about20percent full canvas HEIGHT, modest ears/four coherent paws/complete short tail. Let the connected manzanita branch fork upward naturally into a TALLER small shrub, with a few whole oval leaves and TWO long-stemmed poppy cups rising behind the animals, small sage sprig low. Do not add other fauna, vases or scenery. Keep pale hand-shaped burnished UNGLAZED ivory ceramic with sparse separated UNBRANCHED sinuous/open-loop carbon strands and small localized smoke deposits ON clay, restrained warm iron blush. No marble/crackle network, painted fur or glossy glaze. All stems/ears/crest/toes/tail/petal/leaf tips whole inside5\u20139percent side margins, about18percent quiet bottom and25percent quiet top. Background stays warm sage-gray #B7B5A9. Not a tiny island or low horizontal miniature. Enlarge/recompose only this wallpaper. Do NOT preserve the old tiny scale. No automatic pullback or anamorphic animal stretch; make a new natural composition with larger whole figures and more vertical plant/terrain structure. Keep all key subjects COMPLETE through both tall and shorter phone crops: all important tips between approximately25percent and84percent full canvas height, no cropped extremity. Full coherent opaque matching background, no borders/corner frills, text/letters/numbers, dates/clock/battery/weather values, icons/UI/logo/signature, people, buildings or sports equipment. Do not change any selected five artwork or native identity; output only the edited wallpaper raster.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.fcfe1cc8.png",
+  "sourceSha256": "fcfe1cc84e612e5450e2d32a72944858e100ffb278a20f818409ce8df52e42a0",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "b420826a3f5153d01855d0121a5f3a9373274099b43034cdcfa22ab88863b2f8",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/second-audit/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/second-audit/previous-selected-wallpaper.png",
+    "sha256": "5dfad0fe045e6b9ef2b4f27978327e6e851754b6380b98d72c76f39dd31534eb"
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "5dfad0fe045e6b9ef2b4f27978327e6e851754b6380b98d72c76f39dd31534eb",
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only."
+    },
+    {
+      "order": 2,
+      "file": "sources/quail-manzanita.25cfcc80.png",
+      "sha256": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    },
+    {
+      "order": 3,
+      "file": "sources/brushrabbit-sage.0a2ff8b2.png",
+      "sha256": "0a2ff8b2664af9298248ff190ab11d3e9b9b116910296442c1eb3b111b54e74e",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    }
+  ]
+}

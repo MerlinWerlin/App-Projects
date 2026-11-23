@@ -1,0 +1,18 @@
+{
+  "id": "sunken-burst",
+  "prompt": "ONE individual original square1024x1024 production artwork for FLOCKQUAKE. SUNKEN BURST: a dense ACID-LIME velour stencil starburst with eleven very uneven blunt and pointed rays, dramatically compressed on its left and stretched to the lower right, with a thick CORAL off-centre sunken polygon patch inside and a short COBALT forked fissure cutting across the patch and two outer rays. Bold compact jagged almost-exploding silhouette, not a conventional sun symbol, flower, badge, clock dial, logo or object. Entire thing is a PHYSICAL ELECTROSTATIC FLOCK PRINT: exceptionally short upright densely deposited velvet fibres, strongly matte saturated surface, crisp hand-cut stencil contours, tiny fibre dust and subtle0.5mm raised edge shadows, no stuffed/plush body, fabric weave, stitches, fur or 3D sculpture. View straight down on shallow printed layers, central65% and18% fully alpha-transparent empty margins. Lime #B5E247 dominant, coral #F5838C and cobalt #343AB5, no gradients or shiny shading. No backing sheet, backdrop, paper rectangle, frame, floor or pedestal. No text, lettering, numbers, signature, UI, logos, dates, clock hands, battery/weather values. One artwork only, no collage or variants.",
+  "tool": "built-in image_gen",
+  "source": "sources/sunken-burst.40415edd.png",
+  "sourceSha256": "40415edd1b3f6ed5ac958a67688c2a3df9c94bb9d8e557d93a9e3f45193d3df0",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sunken-burst.d1d388fd.png",
+  "sha256": "d1d388fdc9742b0e86fe5b707fa385bf862365806bf4ff48748aa4bd0b8f670f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

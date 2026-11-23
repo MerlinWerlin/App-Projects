@@ -1,0 +1,9 @@
+{
+  "id": "articulated-skybridge",
+  "prompt": "EDIT FIRST IMAGE ONLY, the articulated skybridge. SECOND IMAGE is an approved FRIT GLASS MATERIAL REFERENCE ONLY, not its building shape. Repair the bridge: REMOVE ALL pale grey/cream backing, halo, drop shadow and opaque filler behind/around/between the bridge, including BOTH doorway arches, the huge gap under centre deck and every opening through rails/piers. Those gaps must be true transparent alpha. Pull the WHOLE COMPLETE bridge back to fit central66% of square with at least16% real alpha margins on all4sides, fully restoring the currently clipped far-right folding end/rail and left staircase. Preserve exact wide articulated3-flight walkway, two different pierced support piers, two hinge pivots, linkages and little centre mirror baffles; no new buildings or props. Make ALL SURFACES including ribs, warm ochre hinges/rails, cobalt piers and lime decks use the same clearly ROUGH TINY FUSED GLASS FRIT GRAINS, cloudy chipped thin lips and granular matte texture visible in second approved sample. No smooth bright gold enamel borders, metal/plastic/clay surfaces or bead holes/threads. Keep same lime/cobalt/ochre/oyster colours. Entire stair ends, rails and feet complete with true transparent openings; no background/frame/scene/text/UI.",
+  "referenced_image_paths": [
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-968c7869-5fd2-41c4-be56-81bf887c82b8.png",
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-b620f136-3f69-451a-af96-a92c09968c46.png"
+  ],
+  "transparent_background": true
+}

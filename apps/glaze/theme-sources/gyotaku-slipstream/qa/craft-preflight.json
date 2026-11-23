@@ -1,0 +1,12 @@
+{
+  "id":"gyotaku-slipstream",
+  "lane":"B26",
+  "category":"Nature",
+  "process":"Direct ink-rubbed marine specimen impressions with transferred scale/scute ridge patterns, fin-ray comb traces, dry ink skips and unprinted negative gaps on fibrous paper",
+  "subjects":["flyingfish-surge","lionfish-fan","puffer-shellcurl","horseshoe-tidegrass","squid-ribbon"],
+  "world":"Five strongly different real marine silhouettes, not multiple same-pose fish variants: long winged flyingfish, radial-spined lionfish, round puffer, long-tailed shield crab and vertical squid/tentacle grouping.",
+  "baselineSearch":"Specific whole themes/ and pack-artwork/ provenance/meta exact-process search found0, not a claim of zero printing neighbors. Coordinator reviewed the actual original flyingfish sample at full/170/85 against Roseghost, Burr, brush-ink and cyanotype directions and accepted the gate before expansion. Preserve named neighbors/hashes/exact sample, keep dry transferred scale/fin structures dominant and avoid soft watercolor modelling. No external specimen images used as generation inputs.",
+  "neighbors":["Roseghost Fen: actual current coordinator medium read as warm anthotype-inspired plant-pigment contact prints. Sun-exposed plant silhouettes differ from direct rubbed ink-scale/fin-ray impressions; actual sample gate required.","Bamboo Ink: actual East Asian brush-ink on fibrous rice-paper with drybrush/wet-ink edges, not physical scale-ridge transfer.","Blueprint Bureau: technical cyanotype line illustration, no drawn measurement lines/labels/engraved hatchwork should enter specimen impression.","Burr Hinterland: mezzotint/chine-colle tonal burr prints, not direct specimen-rub impressions."],
+  "direction":"One Prussian-blue ink with tiny vermilion accent, visible dry print skips and scale/fin impression textures; no watercolor brush painting, glossy sculpture or optical/scientific scan language.",
+  "cornerCompanion":"One short fin-ray comb and two small irregular scale-impression chips."
+}

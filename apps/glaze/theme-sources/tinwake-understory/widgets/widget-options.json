@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fern-fiddlehead",
+    "kind": "art",
+    "image": "fern-fiddlehead.ede17d73.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fern Fiddlehead"
+  },
+  {
+    "id": "spotted-salamander",
+    "kind": "art",
+    "image": "spotted-salamander.4b700601.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Spotted Salamander"
+  },
+  {
+    "id": "snail-bracken",
+    "kind": "art",
+    "image": "snail-bracken.5c8d44af.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Snail Bracken"
+  },
+  {
+    "id": "woodpecker-birch",
+    "kind": "art",
+    "image": "woodpecker-birch.f579d58d.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Woodpecker Birch"
+  },
+  {
+    "id": "toadstool-woodlouse",
+    "kind": "art",
+    "image": "toadstool-woodlouse.84443267.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Toadstool Woodlouse"
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "theme": "enamel-reliquary",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Furnace-fired cloisonne enamel imaginary fossil mosaics",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall 1290:2796 portrait production wallpaper for Glaze ENAMEL RELIQUARY. A physical furnace-fired CLOISONNE ENAMEL FOSSIL MOSAIC: macro photograph looking straight down on an enormous matte blackened burgundy copper plate whose lower half contains fractured cross-sections of completely imaginary extinct lifeforms. Hair-thin uneven raised brass wires separate pools of molten opaque and translucent enamel, pooled turquoise, sulphur yellow, tangerine and oxblood; little firing bubbles, orange-peel pits, crazing and occasional black scorched copper edges make the kiln process unmistakable. Lower-left a broad split three-pronged fossil cross-section opens into chambers; lower-right a ladder-like ribbon fossil is cut diagonally and several fan ridges radiate through the mosaic, separated by broad dark negative spaces. Feels like a jeweller fired a geological map of an invented lost biosphere, NOT conventional dinosaur bones, shell collection, stained-glass window or polished gemstones. Flat shallow relief, extreme tactile macro material detail, controlled sharp glints rather than 3D creatures. Upper 45% remains quiet near-black plum #261422 with subtle scorched metal patina and only a few hairline brass seams for phone readability. Palette #261422, brass #CF9A48, turquoise #4BC1B0, sulphur #E5CC58, orange #D86C3F. No words, letters, numerals, labels, symbols, clock hands/dials, dates, battery readings, UI, logos, border, mockup or collage. One continuous crafted wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.ffbb64ce.png",
+      "sourceSha256": "ffbb64ce2c60bf70ae339f9c3d1a30b1d0a69165f6d2ab4d38cbe4b9ad40f10b",
+      "sourceDimensions": [
+        851,
+        1848
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "4080acfc6e727948be342d2844e582851dbe4161f94e477ba446b79c3e21c2a9",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "trident-of-the-lost-sea",
+      "prompt": "ONE original standalone square1024x1024 Glaze ENAMEL RELIQUARY artwork, a flat physical molten cloisonne enamel fossil mosaic. Subject: TRIDENT OF THE LOST SEA, a single invented extinct fossil cross-section shaped as three unequal thick branching lobes, large open Y silhouette, one lobe curls inward while the other two fork out, no face, limbs or identifiable modern creature. Raised uneven hair-thin brass cloisons partition the lobes into tiny irregular cells and large long anatomical chambers; opaque sulphur-yellow enamel forms a central spine, turquoise enamel the outer layers, orange and oxblood glass fill peripheral chambers. Visible firing bubbles, minute pits, orange-peel glaze, kiln-scorched copper rims and crazing; luxurious shallow craft relief photographed almost straight down, crisply metallic/brilliant enamel. Entire asymmetrical shape isolated centrally within18% true transparent alpha margin, no surrounding slab, background, floor, border or jewellery hardware. Compact strong thumbnail silhouette, not a real starfish, coral, shell, dinosaur bone or botanical specimen. No text, numerals, labels, dates, clock, hands/dials, battery, UI or logo. One independent artwork, no grid/contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/trident-of-the-lost-sea.bb68457d.png",
+      "sourceSha256": "bb68457d258a41e62d409c3adaca3e0a5f0baa2e191e55891d4c1d8157e5c946",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/trident-of-the-lost-sea.4ff30a41.png",
+      "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folded-ladder-fossil",
+      "prompt": "One new separate square1024x1024 production artwork for ENAMEL RELIQUARY: FOLDED LADDER FOSSIL, an imaginary extinct ribbon-organism cross-section preserved as a flat handmade furnace-fired cloisonne enamel mosaic. A long flattened S-shaped ribbon bent back once sharply at its middle, with broad rectangular anatomical chambers that alternate left/right and a smooth double turquoise outer rim; two short side fins folded inward leave a long dark slit through the core. Strong elongated diagonally curved silhouette, absolutely unlike a trident or shell, no eye, face or recognisable modern animal. Uneven raised thin brass partitions, translucent oxblood and tangerine pooled enamel in ladder cells, sulphur-yellow connective ribs, turquoise #4BC1B0 edge, firing bubbles, orange peel pits, fine crazing and scorched black burgundy copper rim. Jeweller's shallow physical glass relief, photographed straight down with precise metallic glints, no elaborate 3D body. Complete shape central65%,18% genuine transparent alpha empty margin; no slab or backing plate, hardware, pendant loop, floor, background, pedestal or frame. No text, numbers, writing, labels, logos, UI, clocks/dials/hands, dates or percentages. Only one artwork, no variants or contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/folded-ladder-fossil.556e7549.png",
+      "sourceSha256": "556e7549924af42ede4829e3776e1868490cdc69f61b7ca24886e02ead1927de",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folded-ladder-fossil.09aed4b2.png",
+      "sha256": "09aed4b2dc378421deb65f376b68032d003aba7e396c316e01ae5500b7dc8672",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fan-of-lost-tides",
+      "prompt": "ONE new individual original square1024x1024 Glaze ENAMEL RELIQUARY artwork. Subject: FAN OF LOST TIDES, an imaginary extinct sessile lifeform cross-section with a broad offset flared silhouette. Eight unequal broad enamel vanes rise from a short forked base, three of them turn through a half twist so their internal layered anatomy shows; the resulting contour resembles a broken asymmetric sail, NOT a flower, real shell, coral, leaf, butterfly or jewellery brooch. Made as a FLAT physical furnace-fired cloisonne enamel mosaic, hand-bent thin uneven brass wires outline organic cells; broad pools of turquoise #4BC1B0 fade into sulphur yellow and dark oxblood along each vane, with isolated orange cells. Distinct glass firing bubbles, orange-peel pits, crackled crazing, blackened copper edges, shallow physical relief, precise low angle reflections, museum jewellery-craft macro photography from directly above. Entire irregular specimen central65%,18% alpha-transparent margin, no backing plate/slab, ground, floor, background, frame, hanging loop or hardware. No text/numerals/labels/logos/UI, date, time, dial or battery readings. Only ONE pure-art asset, no collage or five-panel sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/fan-of-lost-tides.37caaf64.png",
+      "sourceSha256": "37caaf648833a0a9a29be503f1d59b7c2cfcb1fec4b0c7a3d9a725a66f9ae35b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fan-of-lost-tides.15778b57.png",
+      "sha256": "15778b57b8ef614b80a2aa4ee512d8489130543e19b0881e9ef13412a220abc6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "ruptured-carapace",
+      "prompt": "ONE original standalone1024x1024 square art asset for ENAMEL RELIQUARY. RUPTURED CARAPACE: the flat cross-section of an imaginary extinct armoured organism, a compact wide asymmetrical oval with one deep V-shaped break at the upper-right edge, exposing three offset nested hexagonal chambers. An arched sulphur-yellow spinal band runs across the upper left, turquoise enamel forms broad irregular outer plates, dark oxblood inner void-cells contrast orange glass lobules. NO branching, stems, fins, shell spiral, fan, face, eyes or recognisable modern animal. A sculpted furnace-fired CLOISONNE ENAMEL MOSAIC with very thin uneven raised brass partition wires, glistening pooled enamel, micro firing bubbles, crackle crazing, orange-peel pits, scorched black copper edges. Physical kiln-crafted surface photographed directly above, shallow relief with precise warm glints, not a gemstone or painting. Whole closed heavy silhouette central65%,18% fully transparent alpha margin, no backdrop, floor, slab, base, border, jewellery attachment or hardware. No words, numbers, labels, dates, clocks/dials/hands, battery readings, UI or logos. ONE artwork only, no contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/ruptured-carapace.cd45892f.png",
+      "sourceSha256": "cd45892f0e44a062b99ca40911ddf7f71a54dcbdf81828e522277bdd45dc2041",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ruptured-carapace.90e7d9ca.png",
+      "sha256": "90e7d9ca43e208ffebdf28f9777b9cf3c2545dd829ca1ec0c0f7355451b3b8c1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "drowned-light-fossil",
+      "prompt": "ONE original individual1024x1024 square production artwork for Glaze ENAMEL RELIQUARY. COMB OF DROWNED LIGHT: an imaginary extinct fossil cross-section with one long slender horizontal zigzag backbone and seven unequal tapered geometric teeth extending downward at staggered angles, while two enormous open elongated chambers extend upward at the left end. Strong asymmetric linear silhouette, like a strange prehistoric signal preserved in glass, NOT a real comb, tool, bone, fish skeleton or identifiable animal; no face or eyes. Entire artifact is a shallow flat furnace-fired cloisonne enamel mosaic: irregular tiny raised brass wire partitions, dark turquoise outer rim, sulphur-yellow backbone, tangerine and translucent oxblood anatomical chamber cells. Glossy pooled glass with obvious little firing bubbles, orange peel pits, fine crackle crazing, scorched dark burgundy copper edges; precise craft photography from directly above, no heavy 3D depth. Whole coherent shape central65% with18% empty real transparent alpha margin on every side, no background, backing slab, floor, stand, border, jewel hardware or pendant. No text, numbers, symbols, logos, UI, dates, battery level, clocks/dials/hands. One pure art asset, no collage, grid or variants.",
+      "tool": "built-in image_gen",
+      "source": "sources/drowned-light-fossil.ae71d171.png",
+      "sourceSha256": "ae71d171da0072f7c777ccb6edcc3f5e6d7de1180616c90f36ec2947db9abde4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/drowned-light-fossil.326bf834.png",
+      "sha256": "326bf834b7cda9ecebefd9a29c6eea67303d9d49585b23bee59156a1e3050562",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

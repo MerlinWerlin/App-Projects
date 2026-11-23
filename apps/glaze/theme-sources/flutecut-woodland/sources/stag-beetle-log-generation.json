@@ -1,0 +1,23 @@
+{
+  "id": "stag-beetle-log",
+  "prompt": "Edit this exact corrugated-cardboard stag beetle and fallen log artwork. Preserve the same physical hand-cut broad kraft liner panels, exposed coarse wavy flute cross-sections, peeled parallel channels, colors, natural woodland identity and genuine alpha transparency. Correct only beetle anatomy and spacing: give the beetle EXACTLY SIX clearly visible coherent jointed walking legs, THREE emerging from each side of the thorax under the wing cases. The current right-side rear leg is hidden/missing: add a plainly visible third right-side rear leg extending to the lower right around the edge of the log, while preserving the other five legs. Two branching mandibles, two antennae, two closed oval wing cases with centre seam remain. Every leg must have a visible connection and foot, no extra disconnected limbs. Whole complete beetle and short log with generous true transparent margins; no background, scene, base plaque, text, shadow or halo. Do not change the style into feathers, wood wool, quilling, plastic or geometric toy. Output one complete standalone artwork on transparent alpha.",
+  "tool": "built-in image_gen",
+  "source": "sources/stag-beetle-log.2814eba4.png",
+  "sourceSha256": "2814eba4f795d64b7f4d809b643cef9a038f251f206fd329bbd39e6f1c76199a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/stag-beetle-log.08bdba7e.png",
+  "sha256": "08bdba7e6c46e8e3518b61f0070a62eec92b9c0cdd3a2a6e470f52369bae2616",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/stag-beetle-log-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-repair/stag-beetle-log.original.410f8860.png",
+    "sha256": "410f88602cd769331ba1eaa43187f9c1a5b182e2b255d8c63b58a53df3d97dec"
+  }
+}

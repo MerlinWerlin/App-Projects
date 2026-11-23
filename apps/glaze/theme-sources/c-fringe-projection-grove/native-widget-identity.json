@@ -1,0 +1,22 @@
+{
+  "theme": "c-fringe-projection-grove",
+  "recipe": [
+    "wave",
+    "cFringeFern",
+    "cFringeWavefronts",
+    "dash",
+    "leaf",
+    "trail",
+    "band"
+  ],
+  "art": {
+    "cFringeFern": "M 50 83 Q 60 65 49 48 Q 40 38 38 23 M 43 44 Q 15 13 8 36 Q 9 13 24 15 Q 44 18 48 42 Z M 49 53 Q 18 31 10 54 Q 6 32 25 33 Q 46 35 53 53 Z M 52 63 Q 28 45 20 69 Q 11 48 30 47 Q 49 48 57 65 Z M 49 36 Q 62 7 85 14 Q 99 20 89 38 Q 92 20 75 22 Q 61 25 54 41 Z M 55 49 Q 76 23 94 39 Q 99 51 89 62 Q 94 48 79 47 Q 67 46 57 57 Z M 57 63 Q 74 45 84 60 Q 90 74 77 80 Q 83 68 73 67 Q 65 66 58 72 Z M 50 81 L 35 93 L 47 89 L 53 98 L 59 86 L 73 94 L 65 82",
+    "cFringeWavefronts": "M 10 25 Q 26 10 37 29 Q 54 57 74 26 Q 86 10 95 25 M 8 45 Q 26 30 39 49 Q 57 75 75 47 Q 87 31 97 44 M 6 65 Q 24 50 38 70 Q 57 97 77 67 Q 89 51 98 64"
+  },
+  "ornament": "M 22 73 Q 18 31 52 20 Q 79 13 84 46 Q 80 67 54 77 Q 41 83 22 73 Z M 26 68 Q 34 46 62 34 Q 75 28 79 44 M 33 74 Q 42 52 68 43 Q 79 40 80 50 M 44 77 Q 49 62 73 53",
+  "ornamentDirection": "One curled leaf fragment holding three gently bent fringe trajectories. Organic process echo with quiet space around it, separate from the complete fern hero.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026; Jared nature/Both-corner steering.",
+  "direction": "Six hooked fern vanes and three wavefront curves for larger native areas. Wave dial,dash marks,leaf hands,trail battery and band calendar. Dedicated leaf/three-fringe ornament stays compact in headers.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms; no fixed readings in raster artwork.",
+  "registryIntegration": "Coordinator owns actual shared source/Swift integration and device qualification. Lane source-only."
+}

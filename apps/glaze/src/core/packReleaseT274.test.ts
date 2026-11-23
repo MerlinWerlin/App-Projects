@@ -5,7 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { isPackReleaseTag, packObjectUrl, packReleaseBase } from './packHost.ts';
-import { CATALOG_FILE, manifestPath, packFolder, parseCatalog } from './packCatalog.ts';
+import { APP_CATALOG_FILE, manifestPath, packFolder, parseCatalog } from './packCatalog.ts';
 import { isArtPackId, PALETTE_KEYS } from './artPack.ts';
 import { downloadRemoteArtPack, fetchCatalogText, PackError, type Transport } from './packDownloader.ts';
 import { remoteArtThemes } from './remoteCatalog.ts';
@@ -171,11 +171,11 @@ test('a glaze-packs-v2 pack: catalogue from v1, thumb + manifest + every asset f
     entry('old-pack', { packVersion: 1, manifest: manifestPath('old-pack', 1), bytes: one.bytes, thumb: one.thumb }),
     entry('new-pack', { packVersion: 1, manifest: manifestPath('new-pack', 1), bytes: two.bytes, thumb: two.thumb, release: 'glaze-packs-v2' }),
   ]);
-  files.set(packObjectUrl(V1, CATALOG_FILE), new TextEncoder().encode(JSON.stringify(cat)));
+  files.set(packObjectUrl(V1, APP_CATALOG_FILE), new TextEncoder().encode(JSON.stringify(cat)));
   const { t, urls } = memHost(files);
 
   const text = await fetchCatalogText(t, V1);
-  assert.deepEqual(urls, [`${V1}/catalog.json`]);
+  assert.deepEqual(urls, [`${V1}/catalog-v2.json`]);
   const parsed = parseCatalog(JSON.parse(text));
   assert.equal(parsed.ok, true);
   if (!parsed.ok) return;

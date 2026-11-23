@@ -1,0 +1,226 @@
+{
+  "theme": "c-safranin-orchard",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "strawberry-section",
+      "sourceImage": "sources/strawberry-section.bb68f7a6d45c.png",
+      "sourceSha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/strawberry-section.65c51856f18f.png",
+      "sha256": "65c51856f18f7281558037f114307d744194b796f938533b2c266a584d71dda5",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 891333,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE square transparent original Glaze pure-art asset, CELLBLOOM ORCHARD. ONE ENTIRE immediately recognizable longitudinal STRAWBERRY SECTION: familiar gently asymmetric heart/teardrop berry outline, complete pointed lower end, a small crown of THREE in-plane cut sepal tips and one COMPLETE short curved stalk. The whole thin SECTION is intact, not half a thick3D fruit and not a random round microscope field. Clear broad pale central pith, a few peripheral seed/achene chambers and tiny naturally branching vascular strands. Keep familiar strawberry form FIRST, gently diagonal but almost front-on.\nForeground process: a SINGLE VERY THIN microtomed botanical tissue plane, seen in brightfield-style transmitted light after DIFFERENTIAL SAFRANIN/FAST-GREEN-TYPE CELL-WALL STAINING. Dry-looking flat positive crimson/red lignified vascular strands and seed-coat walls within a fine green/turquoise network of non-lignified plant cell walls. Unequal softly polygonal cell chambers with PALE CREAM/PINK LUMENS, occasional small dark crimson cellular dots, faintly wavering biological wall junctions. Distinct anatomical regions: larger soft polygonal pulp cells, narrow elongated cells along the branching conducting strands, denser small peripheral cells. Continuous real-looking tissue, not separate beads/chips. Make the fine positive stained WALL NETWORK and internal biological chamber layout clearly legible at85px while keeping whole organ recognizable; artistic enlarged histological scale, not an authentic specimen, exact species anatomy, measured cell map or diagnostic image. Stains live INSIDE thin biological walls, no luminous outline or emission. Predominantly pale green cell field with restrained positive crimson strands and seed chambers, no natural glossy red strawberry skin/juicy flesh photograph.\nONE FLAT PLANE, negligible thickness, no perspective stack, rounded3D shading or translucent animal volume. No fluorescent neon glow, confocal optical slabs, cyan cables/lime vesicles, Rheinberg amber edge light, optical phase-relief gradients, X-ray bones, cleared whole-animal anatomy or classified spectral-map blocks. No glass/crystal/gel jewel, stained-glass window, mosaic tesserae, eggshell chips, dark grout/metal solder, reflective bevels, paper carrier/painted leaf/printed ink illustration, lace/open vascular net or embossed foam cells. Cell lumens are very pale solid tissue depiction, not alpha holes. Genuine ALPHAZERO exterior only outside whole tissue outline and through real gaps between crown tips/stalk. No backing white rectangle, glass slide/coverslip border, mount, tabletop/floor, external cast shadow, lab tools, scale bars, labels, writing/numbers, axes/graphs, UI/clock/date/battery values, logos or frames. Whole berry/crown/stalk and every endpoint comfortably inside central70percent square with minimum15percent true transparent exterior all sides. No external visual input or named artist style.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 752842
+    },
+    {
+      "id": "pea-pod-section",
+      "sourceImage": "sources/pea-pod-section.3fb2f5792af6.png",
+      "sourceSha256": "3fb2f5792af6666068c6e794918b59c829cdce19cfb49221d12d30e4683c7a49",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/pea-pod-section.0f125d2ff551.png",
+      "sha256": "0f125d2ff551b93c88fe89450f77bb64b41fb219125534ccd5b0ca19d6295c5d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 395771,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE square transparent original Glaze pure-art asset, CELLBLOOM ORCHARD. ONE ENTIRE recognizable long gently curved PEA POD in one thin LONGITUDINAL SECTION: full tapered two pod ends and complete short pedicel, FIVE distinct rounded pea/seed chambers along one coherent central seam, unequal seed interiors and continuous thin outer pod wall. Broad natural low diagonal silhouette. Each pea and pod is part of the SAME flat physical section; no pile of loose peas, open thick3Dbean sculpture, bowl or invented animal. Interior chamber/seed-coat cell fields and connecting vascular strand clear, no labels.\nForeground process: a SINGLE VERY THIN microtomed botanical tissue plane, seen in brightfield-style transmitted light after DIFFERENTIAL SAFRANIN/FAST-GREEN-TYPE CELL-WALL STAINING. Dry-looking flat positive crimson/red lignified vascular strands and selected peripheral walls within a fine green/turquoise network of non-lignified plant cell walls. Unequal softly polygonal cell chambers with PALE CREAM/PINK LUMENS, occasional small dark crimson cellular dots, faintly wavering biological wall junctions. Distinct anatomical regions: larger soft polygonal soft-tissue cells, narrow elongated cells along the branching conducting strands, denser small peripheral cells. Continuous real-looking tissue, not separate beads/chips. Make the fine positive stained WALL NETWORK and internal biological chamber layout clearly legible at85px while keeping whole organ recognizable; artistic enlarged histological scale, not an authentic specimen, exact species anatomy, measured cell map or diagnostic image. Stains live INSIDE thin biological walls, no luminous outline or emission. Predominantly pale green cell field with restrained positive crimson strands and seed chambers, no natural glossy plant skin or juicy food photograph.\nONE FLAT PLANE, negligible thickness, no perspective stack, rounded3D shading or translucent animal volume. No fluorescent neon glow, confocal optical slabs, cyan cables/lime vesicles, Rheinberg amber edge light, optical phase-relief gradients, X-ray bones, cleared whole-animal anatomy or classified spectral-map blocks. No glass/crystal/gel jewel, stained-glass window, mosaic tesserae, eggshell chips, dark grout/metal solder, reflective bevels, paper carrier/painted leaf/printed ink illustration, lace/open vascular net or embossed foam cells. Cell lumens are very pale solid tissue depiction, not alpha holes. Genuine ALPHAZERO exterior only outside whole tissue outline and through real gaps between crown tips/stalk. No backing white rectangle, glass slide/coverslip border, mount, tabletop/floor, external cast shadow, lab tools, scale bars, labels, writing/numbers, axes/graphs, UI/clock/date/battery values, logos or frames. Whole natural section and every endpoint comfortably inside central70percent square with minimum15percent true transparent exterior all sides. No external visual input or named artist style. Keep larger unequal pale cell lumens and a few positive crimson conducting strands visible at85px; the finest cell mesh is secondary. Do not thicken walls into glass grout or alter the recognizable whole section outline.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 917156
+    },
+    {
+      "id": "daffodil-bud-section",
+      "sourceImage": "sources/daffodil-bud-section.d659b47f6810.png",
+      "sourceSha256": "d659b47f6810e68744072da65bd4bf5d1805fbecbcf516369a4d25a34f3356ac",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/daffodil-bud-section.a45fbbc3b0bf.png",
+      "sha256": "a45fbbc3b0bfbf6e50c200c7639981724469827fb965626700158622ae35cb02",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 480583,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE square transparent original Glaze pure-art asset, CELLBLOOM ORCHARD. ONE ENTIRE recognizable DAFFODIL BUD in one thin LONGITUDINAL SECTION: long narrow pointed outer bud sheath with a hint of folded trumpet/petal tissue INSIDE, small rounded basal ovary/seed-chamber region, complete gently curving short stem and ONE slender whole basal leaf in the same cut plane. Familiar upright botanical bud, not tulip vase or generic geometric cell cluster. Different compact denser anther/petal fields and larger basal ovary cells, positive crimson conducting strand through pale green wall network. No thick fleshy blossom sculpture or bouquet.\nForeground process: a SINGLE VERY THIN microtomed botanical tissue plane, seen in brightfield-style transmitted light after DIFFERENTIAL SAFRANIN/FAST-GREEN-TYPE CELL-WALL STAINING. Dry-looking flat positive crimson/red lignified vascular strands and selected peripheral walls within a fine green/turquoise network of non-lignified plant cell walls. Unequal softly polygonal cell chambers with PALE CREAM/PINK LUMENS, occasional small dark crimson cellular dots, faintly wavering biological wall junctions. Distinct anatomical regions: larger soft polygonal soft-tissue cells, narrow elongated cells along the branching conducting strands, denser small peripheral cells. Continuous real-looking tissue, not separate beads/chips. Make the fine positive stained WALL NETWORK and internal biological chamber layout clearly legible at85px while keeping whole organ recognizable; artistic enlarged histological scale, not an authentic specimen, exact species anatomy, measured cell map or diagnostic image. Stains live INSIDE thin biological walls, no luminous outline or emission. Predominantly pale green cell field with restrained positive crimson strands and seed chambers, no natural glossy plant skin or juicy food photograph.\nONE FLAT PLANE, negligible thickness, no perspective stack, rounded3D shading or translucent animal volume. No fluorescent neon glow, confocal optical slabs, cyan cables/lime vesicles, Rheinberg amber edge light, optical phase-relief gradients, X-ray bones, cleared whole-animal anatomy or classified spectral-map blocks. No glass/crystal/gel jewel, stained-glass window, mosaic tesserae, eggshell chips, dark grout/metal solder, reflective bevels, paper carrier/painted leaf/printed ink illustration, lace/open vascular net or embossed foam cells. Cell lumens are very pale solid tissue depiction, not alpha holes. Genuine ALPHAZERO exterior only outside whole tissue outline and through real gaps between crown tips/stalk. No backing white rectangle, glass slide/coverslip border, mount, tabletop/floor, external cast shadow, lab tools, scale bars, labels, writing/numbers, axes/graphs, UI/clock/date/battery values, logos or frames. Whole natural section and every endpoint comfortably inside central70percent square with minimum15percent true transparent exterior all sides. No external visual input or named artist style. Keep larger unequal pale cell lumens and a few positive crimson conducting strands visible at85px; the finest cell mesh is secondary. Do not thicken walls into glass grout or alter the recognizable whole section outline.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 906471
+    },
+    {
+      "id": "fern-crozier-section",
+      "sourceImage": "sources/fern-crozier-section.7b13f358291e.png",
+      "sourceSha256": "7b13f358291e58696c9d3a744591525a7c60ecbd4ce58f7a638f1a7cf049895f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/fern-crozier-section.d570df95794e.png",
+      "sha256": "d570df95794ebacfb05c3ceb582f9325c0f4d8447b87bfd4dd77f7c34497721d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 363936,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE square transparent original Glaze pure-art asset, CELLBLOOM ORCHARD. ONE ENTIRE familiar FERN CROZIER in one thin LONGITUDINAL SECTION: a clear continuous curled fiddlehead spiral at the top, complete long gently bending stalk down to its whole lower end, three tiny natural developing leaflet projections along the outer curve. The spiral is actual recognizable rolled fern growth, not a snail, metal spring or anonymous microscope disc. One flat cut tissue plane with larger cortex cell fields and a narrow continuous crimson conducting strand following the curl. Keep the open inner spiral gap genuinely empty alpha, not filled glass or paper backing. Every curved tip whole.\nForeground process: a SINGLE VERY THIN microtomed botanical tissue plane, seen in brightfield-style transmitted light after DIFFERENTIAL SAFRANIN/FAST-GREEN-TYPE CELL-WALL STAINING. Dry-looking flat positive crimson/red lignified vascular strands and selected peripheral walls within a fine green/turquoise network of non-lignified plant cell walls. Unequal softly polygonal cell chambers with PALE CREAM/PINK LUMENS, occasional small dark crimson cellular dots, faintly wavering biological wall junctions. Distinct anatomical regions: larger soft polygonal soft-tissue cells, narrow elongated cells along the branching conducting strands, denser small peripheral cells. Continuous real-looking tissue, not separate beads/chips. Make the fine positive stained WALL NETWORK and internal biological chamber layout clearly legible at85px while keeping whole organ recognizable; artistic enlarged histological scale, not an authentic specimen, exact species anatomy, measured cell map or diagnostic image. Stains live INSIDE thin biological walls, no luminous outline or emission. Predominantly pale green cell field with restrained positive crimson strands and seed chambers, no natural glossy plant skin or juicy food photograph.\nONE FLAT PLANE, negligible thickness, no perspective stack, rounded3D shading or translucent animal volume. No fluorescent neon glow, confocal optical slabs, cyan cables/lime vesicles, Rheinberg amber edge light, optical phase-relief gradients, X-ray bones, cleared whole-animal anatomy or classified spectral-map blocks. No glass/crystal/gel jewel, stained-glass window, mosaic tesserae, eggshell chips, dark grout/metal solder, reflective bevels, paper carrier/painted leaf/printed ink illustration, lace/open vascular net or embossed foam cells. Cell lumens are very pale solid tissue depiction, not alpha holes. Genuine ALPHAZERO exterior only outside whole tissue outline and through real gaps between crown tips/stalk. No backing white rectangle, glass slide/coverslip border, mount, tabletop/floor, external cast shadow, lab tools, scale bars, labels, writing/numbers, axes/graphs, UI/clock/date/battery values, logos or frames. Whole natural section and every endpoint comfortably inside central70percent square with minimum15percent true transparent exterior all sides. No external visual input or named artist style. Keep larger unequal pale cell lumens and a few positive crimson conducting strands visible at85px; the finest cell mesh is secondary. Do not thicken walls into glass grout or alter the recognizable whole section outline.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 942862
+    },
+    {
+      "id": "samara-section",
+      "sourceImage": "sources/samara-section.8195d548c965.png",
+      "sourceSha256": "8195d548c9651445ecb1ba6e6843940458ab201ff832ca290cb1af8dc9a25454",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/samara-section.cc394bc1a66e.png",
+      "sha256": "cc394bc1a66e465407fc261000dbc2f2ea217a253975114e5144c9d096fd71a3",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 576915,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE square transparent original Glaze pure-art asset, CELLBLOOM ORCHARD. ONE ENTIRE recognizable single winged MAPLE SAMARA in one thin LONGITUDINAL SECTION: rounded seed chamber at one end joined naturally to a broad elongated tapered papery wing, complete short pedicel, full soft wing margin and whole far wing tip. Asymmetric diagonal wind-seed silhouette, no leaf pair, bird, knife or propeller. Denser positive crimson cell walls around seed chamber, narrow conducting line into elongated pale green wing cells. Thin filled tissue depiction, no dry open skeletal lace, ordinary backlit seed photograph or glass wing sculpture.\nForeground process: a SINGLE VERY THIN microtomed botanical tissue plane, seen in brightfield-style transmitted light after DIFFERENTIAL SAFRANIN/FAST-GREEN-TYPE CELL-WALL STAINING. Dry-looking flat positive crimson/red lignified vascular strands and selected peripheral walls within a fine green/turquoise network of non-lignified plant cell walls. Unequal softly polygonal cell chambers with PALE CREAM/PINK LUMENS, occasional small dark crimson cellular dots, faintly wavering biological wall junctions. Distinct anatomical regions: larger soft polygonal soft-tissue cells, narrow elongated cells along the branching conducting strands, denser small peripheral cells. Continuous real-looking tissue, not separate beads/chips. Make the fine positive stained WALL NETWORK and internal biological chamber layout clearly legible at85px while keeping whole organ recognizable; artistic enlarged histological scale, not an authentic specimen, exact species anatomy, measured cell map or diagnostic image. Stains live INSIDE thin biological walls, no luminous outline or emission. Predominantly pale green cell field with restrained positive crimson strands and seed chambers, no natural glossy plant skin or juicy food photograph.\nONE FLAT PLANE, negligible thickness, no perspective stack, rounded3D shading or translucent animal volume. No fluorescent neon glow, confocal optical slabs, cyan cables/lime vesicles, Rheinberg amber edge light, optical phase-relief gradients, X-ray bones, cleared whole-animal anatomy or classified spectral-map blocks. No glass/crystal/gel jewel, stained-glass window, mosaic tesserae, eggshell chips, dark grout/metal solder, reflective bevels, paper carrier/painted leaf/printed ink illustration, lace/open vascular net or embossed foam cells. Cell lumens are very pale solid tissue depiction, not alpha holes. Genuine ALPHAZERO exterior only outside whole tissue outline and through real gaps between crown tips/stalk. No backing white rectangle, glass slide/coverslip border, mount, tabletop/floor, external cast shadow, lab tools, scale bars, labels, writing/numbers, axes/graphs, UI/clock/date/battery values, logos or frames. Whole natural section and every endpoint comfortably inside central70percent square with minimum15percent true transparent exterior all sides. No external visual input or named artist style. Keep larger unequal pale cell lumens and a few positive crimson conducting strands visible at85px; the finest cell mesh is secondary. Do not thicken walls into glass grout or alter the recognizable whole section outline.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 847176
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.c5a1f8c8268e.png",
+      "sourceSha256": "c5a1f8c8268ecdde89a842170ad8bf93d5543c284eed0b64176cab6fec22db4e",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "bbadc89b13d727ba107a3f6e8599fa5c027e80915f20e3b1bc3ade747cf2c1b8",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 4227777,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original OPAQUE PORTRAIT1290x2796 phone wallpaper, CELLBLOOM ORCHARD. The FIVE images are this theme OWN SUBJECT/MATERIAL REFERENCES, not edit targets. Image1 ENTIRE recognizable strawberry longitudinal thin section, full crown/short stalk/point, pale central pith, peripheral seed traces; Image2 ENTIRE gently curved pea-pod longitudinal section with FIVE pea chambers and whole pedicel/both pod tips; Image3 ENTIRE daffodil bud longitudinal section with folded inner trumpet/petal/anther fields, basal ovary, full stem and single basal leaf; Image4 ENTIRE fern crozier section, open fiddlehead spiral, full curved stalk and tiny developing leaflet projections; Image5 ENTIRE single winged maple samara section, full rounded seed chamber/pedicel and elongated tapered wing. Preserve each COMPLETE familiar natural outline, both ends and every small tip.\nPreserve the distinctive shared foreground process from all FIVE originals: ONE FLAT very thin botanical tissue plane per organ in brightfield-style transmitted light. Positive crimson/red conducting strands and selected peripheral/seed-coat walls inside fine unequal green/turquoise polygon CELL-WALL fields, PALE CREAM/PINK FILLED CELL LUMENS and occasional small cellular dots. Different sizes/shape of soft-tissue chambers and elongated conducting cells. Larger pale lumens/positive conducting strands remain clearly visible; delicate finer walls secondary. No glowing emission, neon confocal optical volumes,3Dcleared animal, X-ray bones, phase-relief shading, dry open vascular lace, paper carrier/ink illustration, juicy real food photography, glass/crystal jewellery, leaded stained-glass mosaic, shell chips/dark grout or surface paint. Strawberry first shape/material stays unchanged. This is an original ARTISTIC ENLARGED HISTOLOGY interpretation, not authentic specimens, exact species anatomy, measured cell maps, diagnostic imagery or experimental results.\nCreate ONE coherent airy naturally arranged botanical still life in a shared shallow plane/common restrained diffuse light. A rising organic arrangement: fern curl rises behind-left; whole broad strawberry at mid-left; tall whole bud/leaf rises right; whole winged samara sweeps above and slightly right; whole curved pea pod rests low across the group. All FIVE are separate complete real organ sections, no anatomical fusion/hybrid plant, no invented stem connections. Only inconspicuous original stem ends may approach; no outline covers another organ, wing, seed chamber, bud/petal, leaf, spiral or stalk tip. Varied sizes/angles and natural grouping, not equally spaced icons, five separate cards/tiles, contact sheet, scientific chart or floating disconnected mini islands. The fern inner spiral gap and other actual openings show the SAME scene background through them; tissue lumens remain pale filled material, not empty lace holes. Extremely restrained common near-contact shading only; no sculptural thickness or heavy plinth.\nFULLER AND TALLER group fills ABOUT84PERCENT WIDTH x8to92percent and ABOUT46PERCENT HEIGHT y35to81percent. Give the tall fern/bud real vertical presence and let the pod sweep low, no tiny central island. Every full section/endpoint/shadow INSIDE the frame with minimum8percent side margins. Upper33percent and bottom18percent quiet empty continuous PALE SAGE field #C6D6CC/#D9E4DD with restrained smooth tonal depth. Clear warm pale tissue contrast, gentle positive crimson/green detail, no busy grain/pattern or bright corners. No dark-field glow, landscape/horizon, tabletop edge, board/backing paper, glass slide/coverslip border, frame, tray, mounting pins, lab equipment, ruler/scale bar, specimen labels, writing/numbers/UI/readings/logo or phone mockup. Do not add fruit/flowers/animals, foliage decoration or scattered debris beyond the five references. Preserve all five whole sections/endpoints in1290x2796,1179x2556 and750x1334 centre crops.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "strawberry-section",
+          "sourceImage": "sources/strawberry-section.bb68f7a6d45c.png",
+          "sha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75"
+        },
+        {
+          "id": "pea-pod-section",
+          "sourceImage": "sources/pea-pod-section.3fb2f5792af6.png",
+          "sha256": "3fb2f5792af6666068c6e794918b59c829cdce19cfb49221d12d30e4683c7a49"
+        },
+        {
+          "id": "daffodil-bud-section",
+          "sourceImage": "sources/daffodil-bud-section.d659b47f6810.png",
+          "sha256": "d659b47f6810e68744072da65bd4bf5d1805fbecbcf516369a4d25a34f3356ac"
+        },
+        {
+          "id": "fern-crozier-section",
+          "sourceImage": "sources/fern-crozier-section.7b13f358291e.png",
+          "sha256": "7b13f358291e58696c9d3a744591525a7c60ecbd4ce58f7a638f1a7cf049895f"
+        },
+        {
+          "id": "samara-section",
+          "sourceImage": "sources/samara-section.8195d548c965.png",
+          "sha256": "8195d548c9651445ecb1ba6e6843940458ab201ff832ca290cb1af8dc9a25454"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "Original fuller/taller coherent own-five-reference botanical thin-section arrangement",
+          "prompt": "Use case: stylized-concept. ONE original OPAQUE PORTRAIT1290x2796 phone wallpaper, CELLBLOOM ORCHARD. The FIVE images are this theme OWN SUBJECT/MATERIAL REFERENCES, not edit targets. Image1 ENTIRE recognizable strawberry longitudinal thin section, full crown/short stalk/point, pale central pith, peripheral seed traces; Image2 ENTIRE gently curved pea-pod longitudinal section with FIVE pea chambers and whole pedicel/both pod tips; Image3 ENTIRE daffodil bud longitudinal section with folded inner trumpet/petal/anther fields, basal ovary, full stem and single basal leaf; Image4 ENTIRE fern crozier section, open fiddlehead spiral, full curved stalk and tiny developing leaflet projections; Image5 ENTIRE single winged maple samara section, full rounded seed chamber/pedicel and elongated tapered wing. Preserve each COMPLETE familiar natural outline, both ends and every small tip.\nPreserve the distinctive shared foreground process from all FIVE originals: ONE FLAT very thin botanical tissue plane per organ in brightfield-style transmitted light. Positive crimson/red conducting strands and selected peripheral/seed-coat walls inside fine unequal green/turquoise polygon CELL-WALL fields, PALE CREAM/PINK FILLED CELL LUMENS and occasional small cellular dots. Different sizes/shape of soft-tissue chambers and elongated conducting cells. Larger pale lumens/positive conducting strands remain clearly visible; delicate finer walls secondary. No glowing emission, neon confocal optical volumes,3Dcleared animal, X-ray bones, phase-relief shading, dry open vascular lace, paper carrier/ink illustration, juicy real food photography, glass/crystal jewellery, leaded stained-glass mosaic, shell chips/dark grout or surface paint. Strawberry first shape/material stays unchanged. This is an original ARTISTIC ENLARGED HISTOLOGY interpretation, not authentic specimens, exact species anatomy, measured cell maps, diagnostic imagery or experimental results.\nCreate ONE coherent airy naturally arranged botanical still life in a shared shallow plane/common restrained diffuse light. A rising organic arrangement: fern curl rises behind-left; whole broad strawberry at mid-left; tall whole bud/leaf rises right; whole winged samara sweeps above and slightly right; whole curved pea pod rests low across the group. All FIVE are separate complete real organ sections, no anatomical fusion/hybrid plant, no invented stem connections. Only inconspicuous original stem ends may approach; no outline covers another organ, wing, seed chamber, bud/petal, leaf, spiral or stalk tip. Varied sizes/angles and natural grouping, not equally spaced icons, five separate cards/tiles, contact sheet, scientific chart or floating disconnected mini islands. The fern inner spiral gap and other actual openings show the SAME scene background through them; tissue lumens remain pale filled material, not empty lace holes. Extremely restrained common near-contact shading only; no sculptural thickness or heavy plinth.\nFULLER AND TALLER group fills ABOUT84PERCENT WIDTH x8to92percent and ABOUT46PERCENT HEIGHT y35to81percent. Give the tall fern/bud real vertical presence and let the pod sweep low, no tiny central island. Every full section/endpoint/shadow INSIDE the frame with minimum8percent side margins. Upper33percent and bottom18percent quiet empty continuous PALE SAGE field #C6D6CC/#D9E4DD with restrained smooth tonal depth. Clear warm pale tissue contrast, gentle positive crimson/green detail, no busy grain/pattern or bright corners. No dark-field glow, landscape/horizon, tabletop edge, board/backing paper, glass slide/coverslip border, frame, tray, mounting pins, lab equipment, ruler/scale bar, specimen labels, writing/numbers/UI/readings/logo or phone mockup. Do not add fruit/flowers/animals, foliage decoration or scattered debris beyond the five references. Preserve all five whole sections/endpoints in1290x2796,1179x2556 and750x1334 centre crops.",
+          "references": [
+            {
+              "id": "strawberry-section",
+              "sourceImage": "sources/strawberry-section.bb68f7a6d45c.png",
+              "sha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75"
+            },
+            {
+              "id": "pea-pod-section",
+              "sourceImage": "sources/pea-pod-section.3fb2f5792af6.png",
+              "sha256": "3fb2f5792af6666068c6e794918b59c829cdce19cfb49221d12d30e4683c7a49"
+            },
+            {
+              "id": "daffodil-bud-section",
+              "sourceImage": "sources/daffodil-bud-section.d659b47f6810.png",
+              "sha256": "d659b47f6810e68744072da65bd4bf5d1805fbecbcf516369a4d25a34f3356ac"
+            },
+            {
+              "id": "fern-crozier-section",
+              "sourceImage": "sources/fern-crozier-section.7b13f358291e.png",
+              "sha256": "7b13f358291e58696c9d3a744591525a7c60ecbd4ce58f7a638f1a7cf049895f"
+            },
+            {
+              "id": "samara-section",
+              "sourceImage": "sources/samara-section.8195d548c965.png",
+              "sha256": "8195d548c9651445ecb1ba6e6843940458ab201ff832ca290cb1af8dc9a25454"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Less abstract whole familiar Nature in artistic enlarged brightfield botanical thin sections: strawberry, five-chamber pea pod, daffodil bud/stem/leaf, fern crozier and single winged maple samara. One flat pale FILLED tissue plane per organ, positive unequal green cell-wall fields and crimson conducting/seed traces; larger cell lumens/strands remain visible while fine cells stay delicate. Five distinct silhouettes, whole originals uniformly900within1024 RGBA, quiet pale sage/plum Artwork corners and separate small natural serrated leaf native-header companion. One fuller/taller own-five-reference wallpaper. Not authentic specimens, exact species anatomy, measured histology/cell maps, diagnostics or analytical data.",
+  "conceptReferences": [
+    {
+      "url": "https://mmegias.webs.uvigo.es/02-english/6-tecnicas/protocolos/p-tincion-safranina-a-v.php",
+      "scope": "University of Vigo primary atlas TEXT read: thin plant sections, differential safranin/fast-green staining distinguishes wall types; red secondary/cutine/suberin and green primary walls. General visual mechanism only, no protocol execution, specimen images or exact tissue claim."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39222359/",
+      "scope": "Primary research bibliographic search abstract on plant histological processing and safranin staining. Direct PubMed open exposed only footer; search abstract only, not full unseen paper."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12944482/",
+      "scope": "Primary research search abstract reports turquoise/magenta cell stains. Direct page recaptcha blocked; search snippet only, no unseen full text/image."
+    }
+  ],
+  "conceptReferenceScope": "Primary UniversityVigo atlas TEXT read for generic thin-section/differential plant-wall-stain language, two primary search abstracts explicitly limited by blocked/footer full pages. No external visual input or protocol execution. Actual nine-source and accepted published-selector material comparisons at full17085; exact first accepted unchanged.",
+  "unselectedHistory": [],
+  "artworkOwnStudyReferenceHashesMatched": 0,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "intendedMinAppVersion": "1.0.44",
+  "selectedFirstPrototypeSha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75",
+  "newImageOutputs": 6,
+  "creativeRasterEdits": 0
+}

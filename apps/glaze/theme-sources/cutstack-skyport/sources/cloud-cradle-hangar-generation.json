@@ -1,0 +1,18 @@
+{
+  "id": "cloud-cradle-hangar",
+  "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject CLOUD CRADLE HANGAR: one very BROAD OPENING CLAMSHELL BOAT HANGAR, a deep oval cradle base on four short splayed structural feet. Two enormous curved roof leaves hinge from opposite sides and open outward/upward like parted arms, each leaf bearing FOUR NESTED CUT-BACK COLOUR CHANNELS, clearly thin cloth layers with stitched rolled edges. Inside are two stacked open cradles on a small simple lift, holding one tiny long fork-tailed skyboat each; broad open space around boats, no people or props. Short boarding stair and low rail at front explain public access; two big round hinge pivots clearly attach roof leaves to base. No literal cloud, animal, ordinary shell specimen, wings on an organism, space rocket or scenery. Wide U-shaped open silhouette, recognisable useful storage/launch shelter rather than abstract nested arch. Full roof tips, hinge discs, boats, feet and stairs visible with real alpha margins. All forms flat reverse-applique cotton, no puffed quilt, clay or paper maquette.",
+  "tool": "built-in image_gen",
+  "source": "sources/cloud-cradle-hangar.5482a880.png",
+  "sourceSha256": "5482a880a88b07c814de14e18b13ceb54729e9e0cf7736080215706d977a35ed",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/cloud-cradle-hangar.c9eb79f9.png",
+  "sha256": "c9eb79f9f1c30adb06865a53758960f247e1974443b505e407cd1bde852dfa12",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,38 @@
+{
+  "themeId": "floatink-stormcrew",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.6c4693d3.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "6c4693d329bcd33de0206e1c6ad5178e84a23b2eb45ffd33f40f66f5e5ffcad1",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.08c533dc.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "08c533dc4a434e2c58320d61e19cd2f0abbb219f9ea0fd4427a0a74077fd5bf6",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.8817d3ef.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "8817d3ef9c6c81f22aec16f11fa081ab5fc12b501c7ecf3b953ab3ee4dffff6f",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "All five adult workers, full feet/hands, kite/sail tips, bellows wheels, ladder, chains and courier bowls retained in all actual encoded wallpaper crops including750x1334. Quiet paper ground surrounds crew."
+  }
+}

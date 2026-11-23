@@ -1,0 +1,1 @@
+Exact first flyingfish sample and full/170px/85px comparison retained, with coordinator material-gate approval before expansion and specific neighboring print-process comparisons. Source generation used no external specimen images. Parent qa stores actual full-pack/native/rounded/crop validation. No installed-device or publication claim.

@@ -1,0 +1,18 @@
+{
+  "id": "fault-splice",
+  "prompt": "ONE original standalone1024x1024 square artwork for FLOCKQUAKE. FAULT SPLICE: a wide low broken cobalt velour stencil landform made of two offset jagged plates separated by an irregular transparent crack. One thick CORAL stepped bridge stitches across the crack at a right angle, and three short ACID-LIME bars descend through different slots along the lower edge, each ending at a different height. Invented fractured weather-geology, bold horizontal complex silhouette, no arch/ring, plume, starburst, real bridge, machinery, face, letters or ordinary object. Entire color area is a PHYSICAL ELECTROSTATIC FLOCK PRINT, dense short upright soft velvet fibres, matte saturated pile with directional compressed patches, crisp hand-cut adhesive stencil outlines, tiny loose fibres, shallow0.5mm edge relief, straight overhead craft photograph. No woven fabric, stitches, stuffing/plush body, fur or plastic. Cobalt #343AB5 dominant, coral #F5838C and lime #B5E247. Motif whole within central65%,18% genuinely alpha-transparent margins; open cracks/slots transparent. No backdrop, square paper, tile, floor, pedestal, frame, text, numerals, symbols, logos, UI, clock/date/battery/weather values. One pure-art production asset, no grid/collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/fault-splice.5ee67eed.png",
+  "sourceSha256": "5ee67eedb16b8577f52aad12f42071f4b3989d020a620f816fab9ba05f19fd06",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fault-splice.b74ae4cd.png",
+  "sha256": "b74ae4cd62ef1d6d193fd430e6948bf8f57f0ed32beb8c83e5e5d99958456ca0",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

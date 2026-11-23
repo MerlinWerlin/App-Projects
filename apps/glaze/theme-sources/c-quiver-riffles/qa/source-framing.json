@@ -1,0 +1,100 @@
+{
+  "review": "All5 complete mangrove roots/leaves,skipper fins/tail,seed three blades,larva forked tail/paddles,damselfly wings/antennae/tail within original alpha16/96 bounds;all5 edgealpha maximum1.",
+  "assets": [
+    {
+      "id": "fan-root-mangrove",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          159,
+          141,
+          1073,
+          1181
+        ],
+        "96": [
+          159,
+          142,
+          1073,
+          1181
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "riffle-skipper",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          20,
+          262,
+          1218,
+          1105
+        ],
+        "96": [
+          21,
+          263,
+          1218,
+          1105
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "whorl-drift-seed",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          78,
+          94,
+          1130,
+          1171
+        ],
+        "96": [
+          79,
+          95,
+          1129,
+          1171
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "split-tail-larva",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          93,
+          149,
+          1196,
+          1092
+        ],
+        "96": [
+          93,
+          149,
+          1195,
+          1091
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "broadwing-damselfly",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          67,
+          176,
+          1160,
+          1132
+        ],
+        "96": [
+          68,
+          177,
+          1159,
+          1131
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

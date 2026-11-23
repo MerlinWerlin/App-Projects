@@ -1,0 +1,22 @@
+{
+  "theme": "c-chlorotype-leaflight",
+  "recipe": [
+    "petal",
+    "cSunheldFig",
+    "cSunheldRobinVeins",
+    "rays",
+    "leaf",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "cSunheldFig": "M 49 96 Q 51 86 50 77 Q 31 85 17 70 L 7 64 Q 21 61 25 55 Q 9 47 13 31 L 8 24 Q 26 19 34 32 Q 31 15 45 7 L 50 3 L 58 12 Q 71 21 65 34 Q 81 21 94 25 L 89 35 Q 94 52 76 57 Q 82 65 94 67 Q 80 84 55 78 Q 55 87 56 96",
+    "cSunheldRobinVeins": "M 50 77 L 50 10 M 49 69 L 20 67 M 50 56 L 18 33 M 51 56 L 84 34 M 53 70 L 82 68 M 32 68 Q 48 67 68 62 M 44 62 L 43 67 M 53 61 L 55 66 M 35 60 L 31 67 L 40 62 Q 56 66 61 52 Q 64 45 58 39 Q 62 31 54 28 Q 46 24 40 32 Q 35 39 39 46 Q 30 52 35 60 Z M 59 36 L 67 35 L 60 40 M 49 34 Q 50 32 52 34 Q 51 37 49 34 M 40 47 Q 51 44 55 51 Q 51 59 40 59"
+  },
+  "ornament": "M 25 86 Q 43 64 60 32 M 37 67 Q 19 66 24 52 Q 12 47 21 37 L 17 28 Q 35 22 42 33 Q 38 15 52 11 Q 68 17 63 35 Q 78 25 85 33 Q 89 47 74 55 Q 77 69 58 69 M 43 61 L 31 48 M 50 50 L 67 46 M 57 38 L 52 24",
+  "ornamentDirection": "A small open natural fig-leaf fragment with three gently lobed edges, curved petiole and short branching veins. No animal portrait in the compact corner, surrounding plate or frame.",
+  "ornamentProvenance": "Original authored100x100 SVG paths,22November2026,following the real fig-leaf carrier and both-corner steering.",
+  "direction": "Whole fig leaf with small perched robin and continuing veins in larger native fields. Petal dial, ray marks, leaf hands, column battery and folio calendar; separate natural lobed-leaf/vein fragment gives compact headers space.",
+  "values": "Existing live native Clock/Battery/Calendar at all three sizes; no raster readings.",
+  "registryIntegration": "Lane source-only. Coordinator owns shared registry/Swift integration and installed-device qualification. Candidate floor1.0.44."
+}

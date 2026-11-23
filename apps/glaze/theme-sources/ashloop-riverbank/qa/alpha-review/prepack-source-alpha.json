@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "beaver",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-b6f44472-2cbc-45cf-b5a0-72f31588f6f4.png",
+      "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        7,
+        1524,
+        1024
+      ]
+    },
+    {
+      "id": "common-merganser",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-ccb869ea-239d-4bde-a066-7da25017da38.png",
+      "sha256": "ffb06e9f4a723e2c5b1c41404ca4267e5b18d9b6dd083d3086dd09880e54ca4f",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        17,
+        1522,
+        1024
+      ]
+    },
+    {
+      "id": "american-mink",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-af599bc1-2b8e-4ce7-8a51-1d02fdbd53ad.png",
+      "sha256": "a6e4a28b5a3286ed3cbb53aa78bc7608015a60482586c7a546e2677d01c2f60d",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        13,
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "smallmouth-bass",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-1f6632e7-0b66-458a-b2c7-e24e5ff60766.png",
+      "sha256": "7d571c06cd78cad4646744ffed13fd1efd974dd68fc1340cdbf2d69b45e79ae7",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        9,
+        1758,
+        871
+      ]
+    },
+    {
+      "id": "arrowhead-leaves",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-d68ba59a-9a1b-442e-ad6d-82fe500bdc8f.png",
+      "sha256": "0ddbb0d83d7157ccdeb1def0091b039f4982607a94dae7d3484b9fb9850fab4e",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        14,
+        1522,
+        1024
+      ]
+    }
+  ]
+}

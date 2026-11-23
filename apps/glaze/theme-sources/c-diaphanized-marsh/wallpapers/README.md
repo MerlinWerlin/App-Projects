@@ -1,0 +1,1 @@
+Final coherent Rosefin Marsh habitat1290x2796; actual encoded1290x2796,1179x2556 and750x1334 variants plus240x520thumbnail visually reviewed. Five exact own artwork references, one own-scene pullback with four supports, no external visual inputs.

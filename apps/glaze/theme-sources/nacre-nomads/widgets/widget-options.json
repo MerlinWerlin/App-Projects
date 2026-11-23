@@ -1,0 +1,62 @@
+[
+  {
+    "id": "orchard-caravan",
+    "kind": "art",
+    "image": "orchard-caravan.56097594.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Orchard Caravan"
+  },
+  {
+    "id": "walking-waterwell",
+    "kind": "art",
+    "image": "walking-waterwell.efb365c7.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Walking Waterwell"
+  },
+  {
+    "id": "kite-market-wagon",
+    "kind": "art",
+    "image": "kite-market-wagon.e24eb809.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Kite Market Wagon"
+  },
+  {
+    "id": "folding-road-layer",
+    "kind": "art",
+    "image": "folding-road-layer.e7a53b04.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Road Layer"
+  },
+  {
+    "id": "mobile-bathhouse",
+    "kind": "art",
+    "image": "mobile-bathhouse.713f3fe8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mobile Bathhouse"
+  }
+]

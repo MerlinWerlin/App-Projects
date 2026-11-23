@@ -1,0 +1,119 @@
+{
+  "theme": "flockquake",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Electrostatic velour flock printing through adhesive stencils",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 portrait wallpaper for Glaze FLOCKQUAKE. Photograph straight down of an astonishing physical electrostatic FLOCK PRINT on very pale lilac paper: hand-cut adhesive stencils hold DENSE SHORT VELVET FIBRES standing upright, crisp stencil edges with tiny loose flock particles, clearly visible directional pile, 0.5mm raised velour relief with tiny edge shadows, NOT fuzzy toys, fabric weaving, plush sculpture or digital gradient. In lower55% an invented tectonic storm-world of broad flattened angular cobalt plaques, acid-lime zigzag pressure ridges and three large coral-pink perforated cloud slabs interlock at impossible offsets; bold asymmetric stencilled silhouettes, strange square apertures, disconnected small tabs floating in pale lilac negative-space channels. Every colored region has unmistakably matte densely flocked velvet pile, the paper negative spaces are perfectly bare and smooth. Low grazing light makes fibre detail and subtle raised stencil outlines visible without dimensional objects. Palette acid lime #B5E247, saturated cobalt #343AB5, coral #F5838C, deep purple #291747, paper #E5DDF0. Upper45% mostly calm bare lilac paper for icons with only a sparse flock-dust trace along one edge; strongest forms at base and right. Experimental art-school craftprint, playful yet expertly controlled, no real objects, animals, faces, letters, text, numbers, logos, borders, mockup, UI, clock/time/date/battery/weather readings. One continuous crafted wallpaper, no contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.3ef665c6.png",
+      "sourceSha256": "3ef665c66c0e0ce2b9308b14fd8dacd92b402a0cbb6cc69a1e9c98608b335c93",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "9fb40b1e9a9342b3bcb4c54d8360ebb21d7ad0aa629f9ccebe22bc521836a0f5",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "quake-aperture",
+      "prompt": "ONE original separate square1024x1024 pure artwork for Glaze FLOCKQUAKE. QUAKE APERTURE: a disconnected-but-interlocking angular arch made of three broad COBALT electrostatic-flocked stencil plaques, shifted at impossible offsets around a large sharply squared empty central opening. A thick ACID-LIME serrated pressure band crosses the arch diagonally and ends in three uneven teeth; a tiny CORAL flocked square floats just inside the opening. Extremely bold odd asymmetric silhouette, a stencilled storm-geology fragment, not a real building, toy, animal, letter or ordinary object. Unmistakable PHYSICAL FLOCK PRINT craft: dense very short matte upright velvet fibres, crisp hand-cut adhesive stencil edges, tiny loose flock particles, compressed directional pile and microscopic raised edge shadows. Flat 0.5mm surface relief, photograph directly above, no weaving, sewing, plush stuffing, plastic or digital gradient. Cobalt #343AB5, lime #B5E247, coral #F5838C, deep purple occlusion. Complete motif middle65% with18% genuinely transparent alpha margins; actual empty central opening transparent too, no paper sheet, backdrop, tile, floor, pedestal or frame. No text, letters, numbers, logo, UI, clocks, dates, battery/weather readings. One standalone asset, no collage or grid.",
+      "tool": "built-in image_gen",
+      "source": "sources/quake-aperture.350bcf8b.png",
+      "sourceSha256": "350bcf8bf55bf2887d18665a1e4f74526aab675b2716d95b47d66e0828679795",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/quake-aperture.31c804d2.png",
+      "sha256": "31c804d2306537d60e15d919464d2bae4e56f8a775b91d409d578aee8cca690d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "tilted-plume",
+      "prompt": "ONE standalone square1024x1024 original production artwork for FLOCKQUAKE. TILTED PLUME: a tall narrow CORAL electrostatic flock-print plume composed of five broad squared-off swept lobes leaning strongly to the left, divided by clean bare angular slits. A vertical ACID-LIME slim flat keystone slices through its lower half, while three COBALT trapezoidal flock tabs step upward along only the right edge. Strange wind-pressure diagram invented as a hand-cut velour stencil artwork, strong crooked rising silhouette with no enclosed arch, not a real feather, plant, animal, toy or familiar object. Material MUST be actual dense short matte upright velvet fibres electrostatically applied to adhesive stencil: directional pile, tiny loose fibre dust, compressed shallow texture, crisp cut edges with tiny shadows, 0.5mm surface relief. Straight overhead craft photography, flat graphic fields, not stuffed plush or woven/sewn felt sculpture. Palette coral #F5838C dominant, acidlime #B5E247 and cobalt #343AB5 accents. Whole motif central65%,18% genuinely alpha-transparent margin, background and slots fully transparent. No paper rectangle, tile, backdrop, floor, stand, frame, text, numerals, letters, logos, UI, clock, dates, battery/weather values. One distinct artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/tilted-plume.7674a2d5.png",
+      "sourceSha256": "7674a2d597abaf307823c497b8ff5fd1ea2947ae5117f9d93fa8175583961bd0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tilted-plume.6c581278.png",
+      "sha256": "6c581278243cdf06d2e38d8c7842aead84e7730a23725bb0e591dc37fb7f651a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "sunken-burst",
+      "prompt": "ONE individual original square1024x1024 production artwork for FLOCKQUAKE. SUNKEN BURST: a dense ACID-LIME velour stencil starburst with eleven very uneven blunt and pointed rays, dramatically compressed on its left and stretched to the lower right, with a thick CORAL off-centre sunken polygon patch inside and a short COBALT forked fissure cutting across the patch and two outer rays. Bold compact jagged almost-exploding silhouette, not a conventional sun symbol, flower, badge, clock dial, logo or object. Entire thing is a PHYSICAL ELECTROSTATIC FLOCK PRINT: exceptionally short upright densely deposited velvet fibres, strongly matte saturated surface, crisp hand-cut stencil contours, tiny fibre dust and subtle0.5mm raised edge shadows, no stuffed/plush body, fabric weave, stitches, fur or 3D sculpture. View straight down on shallow printed layers, central65% and18% fully alpha-transparent empty margins. Lime #B5E247 dominant, coral #F5838C and cobalt #343AB5, no gradients or shiny shading. No backing sheet, backdrop, paper rectangle, frame, floor or pedestal. No text, lettering, numbers, signature, UI, logos, dates, clock hands, battery/weather values. One artwork only, no collage or variants.",
+      "tool": "built-in image_gen",
+      "source": "sources/sunken-burst.40415edd.png",
+      "sourceSha256": "40415edd1b3f6ed5ac958a67688c2a3df9c94bb9d8e557d93a9e3f45193d3df0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/sunken-burst.d1d388fd.png",
+      "sha256": "d1d388fdc9742b0e86fe5b707fa385bf862365806bf4ff48748aa4bd0b8f670f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fault-splice",
+      "prompt": "ONE original standalone1024x1024 square artwork for FLOCKQUAKE. FAULT SPLICE: a wide low broken cobalt velour stencil landform made of two offset jagged plates separated by an irregular transparent crack. One thick CORAL stepped bridge stitches across the crack at a right angle, and three short ACID-LIME bars descend through different slots along the lower edge, each ending at a different height. Invented fractured weather-geology, bold horizontal complex silhouette, no arch/ring, plume, starburst, real bridge, machinery, face, letters or ordinary object. Entire color area is a PHYSICAL ELECTROSTATIC FLOCK PRINT, dense short upright soft velvet fibres, matte saturated pile with directional compressed patches, crisp hand-cut adhesive stencil outlines, tiny loose fibres, shallow0.5mm edge relief, straight overhead craft photograph. No woven fabric, stitches, stuffing/plush body, fur or plastic. Cobalt #343AB5 dominant, coral #F5838C and lime #B5E247. Motif whole within central65%,18% genuinely alpha-transparent margins; open cracks/slots transparent. No backdrop, square paper, tile, floor, pedestal, frame, text, numerals, symbols, logos, UI, clock/date/battery/weather values. One pure-art production asset, no grid/collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/fault-splice.5ee67eed.png",
+      "sourceSha256": "5ee67eedb16b8577f52aad12f42071f4b3989d020a620f816fab9ba05f19fd06",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fault-splice.b74ae4cd.png",
+      "sha256": "b74ae4cd62ef1d6d193fd430e6948bf8f57f0ed32beb8c83e5e5d99958456ca0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "stacked-silence",
+      "prompt": "ONE original independent square1024x1024 pure artwork for FLOCKQUAKE. STACKED SILENCE: three CORAL velour stencil slabs float at offset heights inside a tall irregular ACID-LIME stepped outer silhouette; the top slab has one long off-centre vertical slit, the middle slab two mismatched square holes, and the bottom slab a triangular bite in its side. Three small deep COBALT disconnected diamond tabs sit in the bare gaps between slabs. Odd asymmetric layered storm-pillar, bold closed-versus-empty rhythm, NOT a face, letter, house, cactus, tower, toy, tool or ordinary object. PHYSICAL ELECTROSTATIC FLOCK PRINT with dense short upright velvet fibres, matte saturated adhesive stencil fields, compressed directional pile, crisp hand-cut contours with minuscule0.5mm shadows, stray fibre grains. Flat top-down craft photograph, no fabric weaving, stitches, fur, stuffing/plush volume or plastic. Lime #B5E247, coral #F5838C, cobalt #343AB5. Entire silhouette complete within central65%,18% genuinely transparent alpha margins, gaps/holes transparent, no backing paper sheet, tile, background, floor, pedestal, frame or border. No text, numerals, logos, UI, clocks/time/date/battery/weather values. One separate artwork, no collage or grid.",
+      "tool": "built-in image_gen",
+      "source": "sources/stacked-silence.774021af.png",
+      "sourceSha256": "774021af45db010fbb3c1da03fe5c712ecd566c0902d1e5487dae833b20d5645",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/stacked-silence.2f2298c6.png",
+      "sha256": "2f2298c61da8e8ac5ecc8183ab5bcf4a11bec655c1f4b1c2f6906a8325077ca7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

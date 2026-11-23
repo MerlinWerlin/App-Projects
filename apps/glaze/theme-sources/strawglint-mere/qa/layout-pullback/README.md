@@ -1,0 +1,1 @@
+Layout-only own-scene edit uniformly pulled back the complete already-flat habitat. Previous selected flat wallpaper retained here; earlier three-input material edit still linked with exact selected source hashes. Five artworks/native geometry/palette unchanged, cryptographic proof in preserved-art-and-native.json. Actual final crop/build review in parent qa.

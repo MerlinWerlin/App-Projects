@@ -1,0 +1,18 @@
+{
+  "themeId": "vaneleaf-highland",
+  "recipe": [
+    "petal",
+    "featherEdelweiss",
+    "featherVanes",
+    "cut",
+    "leaf",
+    "column",
+    "band"
+  ],
+  "art": {
+    "featherEdelweiss": "M 48 43 Q 34 25 47 6 Q 61 22 52 43 M 54 43 Q 60 20 83 21 Q 80 43 58 48 M 58 52 Q 80 44 91 60 Q 69 69 55 58 M 49 59 Q 62 74 51 88 Q 37 73 44 59 M 40 56 Q 19 67 10 52 Q 27 37 42 47 M 40 43 Q 17 36 19 17 Q 39 17 46 39 M 43 44 L 55 44 L 59 53 L 51 61 L 41 56 Z M 49 61 L 46 94 M 47 83 Q 27 69 20 81 Q 30 96 46 89 M 48 72 Q 66 59 77 70 Q 65 86 47 80",
+    "featherVanes": "M 13 83 Q 13 41 42 10 Q 57 45 13 83 Z M 13 83 L 42 10 M 20 68 L 14 50 M 27 53 L 22 34 M 33 39 L 32 24 M 20 68 L 37 64 M 27 53 L 45 47 M 33 39 L 47 33 M 54 92 Q 49 52 82 24 Q 96 61 54 92 Z M 54 92 L 82 24 M 60 77 L 53 61 M 66 62 L 64 45 M 72 48 L 75 34 M 60 77 L 78 72 M 66 62 L 87 56 M 72 48 L 87 43"
+  },
+  "ornament": "M 23 82 Q 22 45 66 16 Q 82 54 23 82 Z M 23 82 L 66 16 M 33 67 L 24 52 M 43 52 L 38 36 M 52 37 L 54 25 M 33 67 L 55 62 M 43 52 L 70 46 M 52 37 L 72 32",
+  "direction": "Star edelweiss built from thin lance-shaped feather-vane bracts as full illustration; paired shafts and diagonal barb cuts as detail. Six-petal bezel, cut marks, leaf hands, column charge vessel and band calendar. Compact companion is one short tapered feather vane with a central shaft and three paired barb cuts, no complete habitat or animal in headers."
+}

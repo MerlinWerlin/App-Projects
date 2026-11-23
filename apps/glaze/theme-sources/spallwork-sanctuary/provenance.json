@@ -1,0 +1,86 @@
+{
+  "themeId": "spallwork-sanctuary",
+  "lane": "A",
+  "published": false,
+  "style": "Tactile macro photography of hand-knapped obsidian living seed guardians, with sharply concave conchoidal fracture scars and scalloped pressure-flaked edges.",
+  "direction": "Jared22Nov: keep the approved unusual art styles and bridge them into something tangible.",
+  "artworks": [
+    {
+      "id": "hollow-horn-stag",
+      "prompt": "Create one original Glaze SPALLWORK SANCTUARY artwork called HOLLOW-HORN STAG. A tangible invented forest guardian, unmistakably a standing stag with a long alert head, four slender articulated legs and huge asymmetrical branching horns, but constructed as a living knapped-obsidian sculpture. This is not a normal black deer: its rib-body is a broad open vaulted chamber with three little seed cradles sheltered inside, and its horns branch into broad thin forked stone lamellae with an open crooked arch. Material is black volcanic glass shaped by traditional percussion flaking: every surface has large sharply defined CONCAVE conchoidal flake scars, scalloped pressure-flaked edges, intersecting opaque charcoal planes and tiny grey-silver rim highlights. Strictly no liquid-smooth surfaces, rectangular hopper crystals, iridescent rainbow metal, polished gemstone or plastic. High-end tactile studio macro photography of a real knapped miniature, pale warm light raking across chipped concavities, strong black silhouette with readable subtle internal texture. Three-quarter view facing left; whole head, antlers, four feet and tail in frame. Central 78 percent of a SQUARE canvas, generous genuinely transparent alpha around and through every gap. No ground, pedestal, cast background shadow, text, logo, frame or collage. Intriguing calm crafted guardian with a purposeful seed-keeping anatomy, not horror, skeleton or cute cartoon. Visibly separate material from glossy magnetic fluid, porous foam, inflated latex or bismuth terraces.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/hollow-horn-stag.07ef4da328e9.png",
+      "sourceSha256": "07ef4da328e9f3cd159fbd7f8c63671125e8c051a659d910ae2f43b12f50f633",
+      "image": "widgets/hollow-horn-stag.2a80442de157.png",
+      "sha256": "2a80442de1576cee433975fb305980a2148f29ee26a56da29f76f7f718aab5f6",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "bell-shell-mantis",
+      "prompt": "Create ONE NEW Glaze SPALLWORK SANCTUARY artwork: BELL-SHELL MANTIS, a tangible invented insect guardian of the same sanctuary. Reference is ONLY the knapped volcanic-glass material, not the stag shape. Clear mantis silhouette in three-quarter view: compact triangular curious head, long narrow upright thorax, two folded long forearms, four thin jointed supporting legs with distinct feet. Its abdomen is a squat hanging bell-shaped hollow shell with one wide open resonating aperture, showing it can call across the sanctuary; small seed beads sit in two sheltered shell niches. Purposeful strange creature, not a conventional insect toy. Entirely hand-knapped black obsidian with LARGE CONCAVE conchoidal flake scars, scalloped pressure-flaked edges, tiny grey-silver highlights and opaque charcoal shadow planes. Tactile real miniature macro photography with raked warm light on chipped hollows, visibly not smooth resin, liquid, rectangular crystals or metal. Long diagonal asymmetric composition with the head high left and bell abdomen low right, not a standing deer pose; every leg/forearm and antenna fully in frame. Centered in square transparent alpha canvas with generous 12 percent margins, transparent gaps between limbs. No ground, plinth, halo, background shadow, text/logo/frame/collage, horror, bones, blood or weapon. Make the material and concrete insect anatomy readable at 85px.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/bell-shell-mantis.7e1a786dc709.png",
+      "sourceSha256": "7e1a786dc709972d9264ecb361d6f4ae1349065b3e9dc4a020587044c563b30e",
+      "referenceSources": [
+        "sources/hollow-horn-stag.07ef4da328e9.png"
+      ],
+      "image": "widgets/bell-shell-mantis.8424e3ee2786.png",
+      "sha256": "8424e3ee27866bf98760d5778b29619cad7b042c1e3afb8b9ee05a67b88b8514",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "split-sail-newt",
+      "prompt": "ONE NEW original Glaze SPALLWORK SANCTUARY artwork called SPLIT-SAIL NEWT. Use the reference only to match its hand-knapped black obsidian material and photographic finish; do not copy deer horns, head or body. A clearly recognizable low crawling newt with broad smooth-planed head, FOUR short splayed jointed legs, a very long tapered curling tail, and two separated tall ragged fin-sails along its back. Its back fins form sheltered troughs that carry a few small germinating seed husks: an invented living seed-ferry in a volcanic-glass sanctuary. Clean low horizontal side-three-quarter composition facing right, entire tail and all four feet visible, silhouette wholly different from tall stag and praying mantis. Every visible surface is large sharply concave percussion flake scars and crisp scalloped pressure-flaked edges, opaque charcoal planes with delicate grey-silver rim highlights, sophisticated real obsidian miniature photographed under warm raking studio light. No rainbow metal, rectangular hopper steps, smooth glass, glossy liquid, foam, latex, cute cartoon face or normal realistic wet reptile skin. Central78 percent of a square composition with generous genuine transparent alpha margin and holes, no ground/baseplate/background glow/cast background shadow. No words, numbers, logos, frame or collage. It should read as a tangible extraordinary newt, not an abstract stone pile.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/split-sail-newt.c87e69945136.png",
+      "sourceSha256": "c87e699451367376e31afdfae1cb063ff16a5bd859be0e8145f16d2a4f6c6132",
+      "referenceSources": [
+        "sources/hollow-horn-stag.07ef4da328e9.png"
+      ],
+      "image": "widgets/split-sail-newt.fddc891aadae.png",
+      "sha256": "fddc891aadae2cbc7f44618cfec98ff06cea83603adafec76018dd4f31a6eaf3",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "lantern-snail",
+      "prompt": "Create ONE NEW original Glaze SPALLWORK SANCTUARY artwork: LANTERN SNAIL. Reference is only the natural hand-knapped obsidian surface and studio macro style, not deer anatomy. Tangible invented seed-keeper snail, with a low broad crawling foot, a short curious head with two thick upright feelers and a large eccentric spiral shell. The shell is not smooth: build it from interlocking black volcanic-glass crescent plates with LARGE concave conchoidal percussion scars and scalloped chipped edges. One broad open chamber in its lower shell shelters a tiny warm glowing seed lantern under a little angular canopy; the spiral coil remains clearly recognizable, not a bowl or abstract ring. Compact rounded asymmetrical side view facing left; whole foot, shell and feelers in frame. Sophisticated photograph of a tactile physically made flint/obsidian miniature, opaque charcoal planes, fine grey-silver edge highlights, subtle warm lamp light confined to the tiny chamber. Not shiny metal, rainbow bismuth, liquid glass, inflated plastic, foam, regular geometric steps or cartoon. Entire isolated subject occupies central78percent of SQUARE canvas with genuine transparent alpha and generous margins including through the shell opening. No ground, plinth, background halo or cast shadow, words/numbers/logo/frame/collage, normal slimy skin or horror. Distinct squat circular silhouette compared with stag, mantis and long newt.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/lantern-snail.8e78fa5e991c.png",
+      "sourceSha256": "8e78fa5e991cab7437e8c57a7ec023b4b1a1167e88fa99c675477529321f217b",
+      "referenceSources": [
+        "sources/hollow-horn-stag.07ef4da328e9.png"
+      ],
+      "image": "widgets/lantern-snail.595b3aaac39c.png",
+      "sha256": "595b3aaac39cadbcb97f16a4040643260e77e667a4c905b6ce81fa693bf65567",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "cradle-moth",
+      "prompt": "ONE NEW original Glaze SPALLWORK SANCTUARY artwork called CRADLE MOTH. Reference only establishes the hand-knapped black obsidian material and realistic macro photograph, not a deer shape. A clearly recognizable broad-winged invented moth seen three-quarter slightly from above, four unequal outspread wings in a wide diagonal silhouette, a tiny central segmented body, two comb-like antennae and short tucked legs. The upper wings are large perforated crescent blades with several hollow arches; the two smaller lower wings curl under tiny sheltered seed cradles, so this living sanctuary guardian carries seedlings. Each wing and body is solid black volcanic glass shaped by percussion flaking, large sharply concave conchoidal scars, scalloped pressure-flaked edges, intersecting opaque charcoal planes and tiny grey-silver rim reflections. Warm soft raking light reveals tactile chips and recesses, realistic handcrafted miniature photography, not smooth insect illustration, normal scales, liquid, resin, metal, rainbow crystal terraces, foam or latex. One complete subject, no duplicate insects; strong wide moth silhouette readable at85px and visibly different from a snail/stag/mantis/newt. Center on SQUARE genuine transparent alpha canvas, leave generous12percent margins around every wing tip and antenna, no ground/plinth/background glow/cast shadow. No text, logo, number, frame, collage, horror or anatomy.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/cradle-moth.f51951218efd.png",
+      "sourceSha256": "f51951218efd9a7be94590e8f191bb26c211c70334b3ea67da37b08514667b89",
+      "referenceSources": [
+        "sources/hollow-horn-stag.07ef4da328e9.png"
+      ],
+      "image": "widgets/cradle-moth.2e558d3fe897.png",
+      "sha256": "2e558d3fe89748bed425ef76f68e5d8ff97840b7a1903216848d8393aa27c48c",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "One original portrait Glaze SPALLWORK SANCTUARY wallpaper, approximately1290:2796. A tangible enchanted seed sanctuary made from HAND-KNAPPED BLACK OBSIDIAN, with its distinctive large concave conchoidal percussion flake scars, scalloped chipped edges, opaque charcoal planes and tiny warm-grey silver rims. References set the material and invented stag and snail inhabitants, not a collage layout. Upper55percent is a clean quiet pale warm ochre field, soft subtle paperlike studio backdrop without grain/noise or objects, much negative space for app icons. In lower40percent create ONE physically coherent miniature sanctuary: a low uneven flaked-obsidian root ridge holds tiny protected seed cradles and a few fresh green sprouts; a hollow-horn stag stands slightly behind left-center, a low split-sail newt rests by the foreground ridge, a compact lantern snail with one tiny warm seed light rests to the right, and one small cradle moth hovers above the left ridge. Natural asymmetry and different scale/depth, not a row of giant isolated stickers. Fine-art tactile studio macro photograph, warm raking light across sharp black flake hollows, careful soft lower-ground shadows, calm magical sculpture world rather than horror. Thin dark architectural rock arches connect the lowest landforms; horizon low and broken, generous open space above. Genuinely opaque tall portrait wallpaper, no text/numbers/clock/battery/calendar/logo/border/mockup, no rainbow metal, smooth liquid, polished glass, foam, latex, crystal steps or ordinary deer photograph.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/wallpaper.9ac53df1f31f.png",
+      "sourceSha256": "9ac53df1f31f3309ba36fcd290bddafdfa093aa45029266f8c801f55474ff5a5",
+      "referenceSources": [
+        "sources/hollow-horn-stag.07ef4da328e9.png",
+        "sources/lantern-snail.8e78fa5e991c.png"
+      ],
+      "image": "wallpapers/wallpaper.png",
+      "sha256": "9ac53df1f31f3309ba36fcd290bddafdfa093aa45029266f8c801f55474ff5a5",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    }
+  ],
+  "rejectedAttempts": []
+}

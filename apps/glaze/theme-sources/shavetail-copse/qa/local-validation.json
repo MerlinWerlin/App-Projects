@@ -1,0 +1,50 @@
+{
+  "theme": {
+    "id": "shavetail-copse",
+    "name": "Shavetail Copse",
+    "packVersion": 1,
+    "minAppVersion": "1.0.44",
+    "artworks": [
+      "blue-tit-twig",
+      "squirrel-acorn",
+      "fan-butterfly",
+      "fern-fiddlehead",
+      "wood-anemones"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1301082,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "globalCounts": {
+    "themes": 91,
+    "artworks": 455,
+    "nativePlans": 819
+  },
+  "scopedTests": {
+    "pass": 63,
+    "fail": 0,
+    "skip": 0
+  },
+  "fullCoreSuite": {
+    "pass": 2024,
+    "fail": 0,
+    "skip": 0
+  },
+  "typechecks": "core and node passed",
+  "fiveSeparateWholeOriginals": true,
+  "actualAppSelectorAndNativePlanner": true,
+  "nativePlansChangeWithLiveInput": true,
+  "batteryNullZeroAndFull": true,
+  "roundedArtworkSolidSilhouettesRetained": true,
+  "compactNativeStrokesRetainedInRoundedStress": true,
+  "compactPlacements": 4,
+  "minimumAppVersion": "1.0.44",
+  "calendarRenderer": "Shipped theme outline and date code restored; Georgia preview baseline lift retained. No badge-fitting or containment gate.",
+  "georgiaBatteryGaugeClearanceCases": 297,
+  "allThreeEncodedPhoneCropsViewed": true,
+  "rendererSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913",
+  "reviewAuthority": "Lane A material and integration review; Claude audit runtime correction; neither is Jared approval.",
+  "physicalDeviceTest": false,
+  "published": false
+}

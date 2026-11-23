@@ -1,0 +1,129 @@
+{
+  "theme": "tautline-scrubland",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-tensioned pin-and-thread string art, straight cotton chords, tiny dull brass pin heads and visible wrap loops with open fan and triangular fields",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Composition/layout correction for this same Tautline Scrubland pin-and-thread wallpaper. Preserve the exact hoopoe/sage, gecko/thyme, thistle/bumblebee, tortoise/caper and swallowtail/fennel habitat, natural anatomy, straight cotton tension chords, dull brass pin heads, tiny wrap loops and existing colours. SCALE DOWN THE ENTIRE CONNECTED HABITAT to fit CENTRAL62% WIDTH andBETWEEN34% AND72%HEIGHT of the portrait. Fully restore/complete any sprig or thread-tip currently touching the image boundary, preserving same plant structure; all bird crest/beak/tail, gecko toes/tail, tortoise feet, butterfly antenna/wings and every outer flower/leaf tip must be contained with substantial quiet ground around. Upper30% and bottom24% quiet uninterrupted matte ink-navy ground matching existing. One intact smaller central habitat, no cut-off tips used to force fit, no added frame/panel/rectangle, new organisms, text, UI or shadow. Keep tactile cotton and physical pins, not glowing/scientific line art. Safe for narrow1290x2796 and shorter750x1334 centre crops.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.780b0a69.png",
+      "sourceSha256": "780b0a699b6a9f58b8eb215fe3a387624756643c462e2dcc41928dab6ac888e4",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "3374b0cca66b5c6616266e21d8241f4eef21d94151e44b7721699702214b2199",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.4260c721.png",
+        "sha256": "4260c7211b654c519f57972138056e232266d7250c10ac215217737d691d3ad8"
+      }
+    },
+    {
+      "id": "hoopoe-sage",
+      "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject HOOPOE SAGE: one recognisable natural HOOPOE in alert side profile faces right, a large partly opened FAN CREST of terracotta/ochre straight thread rays with dark tips, long gently downcurved pointed beak, folded bone/ink barred wing, long tapered tail, TWO clawed feet gripping one diagonal SAGE BRANCH. Sage has3pairs of elongated sage-green leaves and TWO sparse short lilac-grey flower spikes; natural plant structure and a few open pin-thread stem segments, no pot. Body/wing/crest/beak all clearly hand-tensioned straight cotton chords around tiny dull brass pins with little wrap loops, not solid embroidered fill or a braided rope contour. Tall diagonal bird-and-branch silhouette, whole natural anatomy, no jewellerybeads or glass. Complete crest tips/beak/tail/feet/leaf tips inside ample actual transparent margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/hoopoe-sage.c863610f.png",
+      "sourceSha256": "c863610f1044599930b418666710da98da73f5f18409fe463b3d3f1a8012f62e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hoopoe-sage.26051228.png",
+      "sha256": "260512287f7eb174c18f26ed552104f3921b1ca0330321193fcbdc3ffc6cb7f5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "gecko-thyme",
+      "prompt": "Natural-anatomy correction to this same pin-and-thread GECKO artwork. The gecko currently shows only THREE splayed legs. Add the missing FOURTH LEG: a far-side FORELEG extending clearly upward into empty alpha from the shoulder just behind the head, joint bent toward upper centre, ending in a separate little splayed foot with five rounded toe pads. Final gecko must have EXACTLY FOUR distinct coherent legs attached to correct paired shoulder/hip positions: two forelegs by the head and two hindlegs near tail base, every foot separated and readable. Preserve existing head/eye, THREE existing legs, long open-C tail, thyme sprig, colours and physical straight cotton chord/pin-head/thread-wrap craft. The added leg uses the SAME sparse triangular cotton fan/chord construction between tiny dull brass pins with real transparent gaps, not smooth fill or embroidery. Keep entire whole gecko, every toe, tail and sprig inside generous transparent alpha margin. No background/backing/halo/shadow, extra fifth leg, text or UI. Only repair missing natural foreleg.",
+      "tool": "built-in image_gen",
+      "source": "sources/gecko-thyme.8147d687.png",
+      "sourceSha256": "8147d6879c0eab82160c3750aca1bf6101691d13d6904e50dd58ab9541c6502d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/gecko-thyme.34ce9408.png",
+      "sha256": "34ce9408534f5c04fd575d2af2f5ee142cc0a271f9a277917d555590776fddc2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/gecko-thyme-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-repair/gecko-thyme.original.c1e6c8da.png",
+        "sha256": "c1e6c8da30c45959de9df069802b1d87cf1e9a8b94dd5d0386d177b1382a7294"
+      }
+    },
+    {
+      "id": "thistle-bumble",
+      "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject THISTLE BUMBLE: one tall natural THISTLE with a large open terracotta/mauve flower head made as many thin straight radiating cotton chords ending at tiny dull brass pinheads, prickly sage-green involucre of open triangular thread fans below, two angular lobed spiny leaves and one smaller closed side bud. A single BUMBLEBEE hovers above-left, small ochre/ink striped body, TWO paired translucent OPEN THREAD WINGS, six tiny thread legs, little antennae, natural insect with no cartoonface. The bee and flower are connected compositionally by proximity, not thread ropes between animals. Very sparse matte cotton tension construction with actual pin wraps and open gaps, no solid embroidered patch or fabric back. Tall branching botanical shape plus tiny airborne insect; no vase/ground/scenery. Entire thistle spikes, stalk base, leaves, bud and bee wings/antennae central and complete within generous true alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/thistle-bumble.8fbcd128.png",
+      "sourceSha256": "8fbcd1282d23b2b0f5b9eed9e51ad2a98dd3a51da3054d3f1205efef038eb5cd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/thistle-bumble.d0e8095e.png",
+      "sha256": "d0e8095e6d3a40700d7d973a3ee70f05f6424f24c21e4ef8958131ef6444e40b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "tortoise-caper",
+      "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject TORTOISE CAPER: one natural small TORTOISE walking left in gentle side/three-quarter view. Broad LOW DOMED SHELL divided into5or6large natural scute polygons, each scute a SPARSE OPEN FAN of straight ochre/bone cotton threads meeting a small dull brass centre pin and outer pins, real transparent gaps between threads; do not make a solid painted or embroidered shell. Small coherent head, short neck, FOUR low sturdy legs with fine toe ends and a tiny tail visible. Terracotta/ink cotton chord head/legs, no big cartoon eyes. A short CAPER SPRIG with3round sage leaves, one pale flower of long open pin-thread stamens and one closed oval bud curves behind the shell; no huge tree or pot. Low broad shell silhouette and airy fine sprig different from upright thistle/bird or curled gecko. Complete head, all4feet, tail, flower/leaf tips centrally contained in generous alpha margins. No soil/rock/baseplate/backing, no halo.",
+      "tool": "built-in image_gen",
+      "source": "sources/tortoise-caper.de0be629.png",
+      "sourceSha256": "de0be629dda08ce59a0f784aa9c5d00df4d6026ee99fcacb8cb3936e3b02fd5c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tortoise-caper.372b6054.png",
+      "sha256": "372b6054bafb4931164382ee4e6cd86d9e2b529c7b774fac4e1c6193db63b024",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "swallowtail-fennel",
+      "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject SWALLOWTAIL FENNEL: one large natural SWALLOWTAIL BUTTERFLY rests with wings spread at slightly unequal relaxed angles, TWO broad forewings and TWO smaller scalloped hindwings with unmistakable slender tail extensions, slim dark segmented body, TWO fine antennae and tiny natural legs. Bone/ochre wings with ink border bands and restrained terracotta small spots, all SPARSE STRAIGHT COTTON FAN CHORDS anchored at tiny dull brass pins, lots of open genuinely transparent line-field gaps, no painted/embroidered opaque wing fill. One delicate FENNEL STEM crosses diagonally below/right with TWO airy UMBEL flower heads of straight radiating thread rays ending in tiny ochre pin tips and a few very fine narrow sage leaves. Broad-wing insect against sparse asymmetrical plant branch, natural anatomy, not mothface/jewellery/emblem. Entire forewing tips, BOTH hindwing tails, antennae, fennel umbels and stalk/leaf tips contained with generous real alpha margins. No scenery, backing, hoop, pale halo/shadow or extra butterfly.",
+      "tool": "built-in image_gen",
+      "source": "sources/swallowtail-fennel.644d9b02.png",
+      "sourceSha256": "644d9b021e08726239158490bf26503cb62b7243fe05f203a6a4454a3599a995",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/swallowtail-fennel.a47fc604.png",
+      "sha256": "a47fc604606bab1dd5a77601a6f91d3eb07ce2212ef1de84ea1e52b25e616a14",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

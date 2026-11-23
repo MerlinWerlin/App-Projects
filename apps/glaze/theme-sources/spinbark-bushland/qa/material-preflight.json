@@ -1,0 +1,45 @@
+{
+  "id": "spinbark-bushland",
+  "lane": "B45",
+  "category": "Nature",
+  "process": "Solid natural-wood components shaped by spindle and off-axis lathe turning, coarse circumferential gouge/parting rings, circular end grain and fitted turned tenons",
+  "status": "Firstactualmaterial/full/85/neighbors/currentnativepassedlane-localreview; unchanged1310a212 selected. Intent+materialgate dispatchesfailedMCP-32000, deliveryunknown. Isolatedexpansionunderoriginalhumanfallback, coordinatormaterial/integrationpending.",
+  "subjects": [
+    "laughing-kookaburra",
+    "shortbeaked-echidna",
+    "eucalyptus-gumnuts",
+    "frilled-lizard",
+    "banksia"
+  ],
+  "world": "Australian bush life built from lathe-turned wood, with circular tool grooves, end grain and small fitted tenons.",
+  "cornerCompanion": "Whole familiar laughing kookaburra, lathe-shaped ovoids/spindles/half-shell components, coarse curved parting grooves and circular endgrain, natural wood fields. Lozenge clock echoes off-axis turned silhouettes, pin marks lathe center holes, baton hands tool-rest lines. Basin charge recalls a turned hollow bowl cross-section, band calendar short parting lines. Compact companion is only three short nested quarter-turn arcs plus one small tenon shoulder; no whole bird, full turned bowl/medallion, woodlath lattice, compass dial or enclosing rings. Retain shipped calendar/date/highlight/identity outlines; no date-containment design gate.",
+  "baselineSearch": "Exactwoodturn/lathekeywords absent currentRootsource/historical+acceptedbaseline manifests; spinbarkIDabsent. All15actualNotchbough/Shavetail/Guilloche and34actualMarquetry/Honeywood/FigNocturne/Saddlewoodselectorimages plus6own production images viewed/hashed/decoded. Guillocheactualmedium independentlyread: FLAT SINGLE PETROL-BLUE INK intaglio-inspired boldguilloche-rosette nature illustration, NOT metalguillocheenamel; earlierdraft/failedintent misdescription corrected before candidate generation. Newsolidturnedwoodvolume/coarsepartinggrooves/endgrain/fittedtenons differ fromflatguillocheprintedloopgeometry, flatwoodveneer/openlaths/paintedpencilshavings.",
+  "discardedPredecessor": {
+    "id": "gougeflight-canopy",
+    "reason": "LinocutprocessalreadyestablishedCloudwash; actual9selectorimages/hash/metadata viewed. ReleasedbeforeANYcandidateimage.",
+    "evidence": "../outputs/gougeflight-canopy-cloudwash-scout.json"
+  },
+  "firstGateCriterion": "At85mustreadcoarsecircumferentiallathepartinggrooves/shoulders onfewsolidovoid/spindlecomponentprofiles andfittedwoodjoints, notgenericwoodcarvedtoy/coatedanimal, flatveneerinlay/openlaths/serratedpencilshavings/woodwooloruniformmetalguilloche. WholefamiliarKookaburranaturalbill/head/feet/tail.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 predecessorrelease+Spinbarkintent dispatch failed",
+      "delivery": "unknown"
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 actualfirstmaterial-gate dispatch failed",
+      "delivery": "unknown"
+    }
+  ],
+  "coordinationFallbackAuthority": "Original human lane brief: If messaging is unavailable, stay strictly inside your assigned territory and use new, collision-checked IDs.",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "technicalReferences": [
+    {
+      "url": "https://heritagecrafts.org.uk/craft/wood-turning/",
+      "scope": "PrimaryHeritageCraftstechniqueTEXTonly: cuttingchisels/scrapers shape solidwood rotatingonlathe, includingartistic/sculpturalturning. Noartiststyle/objectreference/image/patterninput."
+    }
+  ],
+  "observedNeighborClarification": "ActualGuillocheprovenance medium read afterinitialscout: Flat single-ink bold guilloche-rosette intaglio-inspired nature illustration. No metal/enamel material claim for that existingtheme. All5actualimages retained andviewed.",
+  "neighborReview": "../outputs/spinbark-bushland-candidate-neighbor-review.json"
+}

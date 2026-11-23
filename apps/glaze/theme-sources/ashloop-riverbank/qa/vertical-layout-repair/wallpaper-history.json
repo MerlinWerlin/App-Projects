@@ -1,0 +1,24 @@
+{
+  "reason": "Coordinator found the complete prior crop too shallow vertically. This wallpaper-only visual change raises the merganser and arrowhead over the larger foreground beaver on a diagonal bank.",
+  "coordinatorThread": "01a1d970-a578-73a0-914a-c0fe7c9e031e",
+  "earlierVariantHistory": "qa/layout-repair/wallpaper-history.json",
+  "priorPullbackSource": "qa/vertical-layout-repair/wallpaper.prior-pullback.c94ad5f3.png",
+  "priorPullbackSha256": "c94ad5f3cd8ba45f63e89933360bd6dcc0dd8b4c54324e604a4ddb2f1fcdafe0",
+  "selectedSource": "sources/wallpaper.a01a0ada.png",
+  "selectedSha256": "a01a0ada2bdb8957516dda0a5e1c4a1043fb083e6bb6707bb3562802893cc56d",
+  "exactToolRequest": "qa/vertical-layout-repair/wallpaper-vertical-recompose-request.json",
+  "exactToolResult": "qa/vertical-layout-repair/wallpaper-vertical-recompose-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-prior-pullback",
+      "file": "qa/vertical-layout-repair/wallpaper.prior-pullback.c94ad5f3.png",
+      "sha256": "c94ad5f3cd8ba45f63e89933360bd6dcc0dd8b4c54324e604a4ddb2f1fcdafe0",
+      "role": "Exact own previous scene as sole edit input to raised diagonal composition."
+    }
+  ],
+  "wallpaperCentering": [
+    0.405,
+    0.5
+  ]
+}

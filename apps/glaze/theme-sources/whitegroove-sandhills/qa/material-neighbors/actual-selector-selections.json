@@ -1,0 +1,559 @@
+[
+  {
+    "id": "cloudwash",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cloudwash\\v6\\manifest.json",
+    "manifestSha256": "dd72ad1a8783dda6c9c82f21b5f5d9810f8fd3d41933c9a9226c604b5c07719e",
+    "selections": [
+      {
+        "optionId": "clothespin-bird",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cloudwash\\v6\\widget-clothespin-bird.424c32a2.webp",
+        "sha256": "424c32a2c160b9d3e67a74656c44ec15633737372d645e038b7e56c68128d3ff"
+      },
+      {
+        "optionId": "cloud-laundry-basket",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cloudwash\\v6\\widget-cloud-laundry-basket.b2ae0508.webp",
+        "sha256": "b2ae0508a0ac6a9e0c15f448d8e2c5416e2435270dca70a5271295df1c334497"
+      },
+      {
+        "optionId": "star-wash",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cloudwash\\v6\\widget-star-wash.2b34bf02.webp",
+        "sha256": "2b34bf0272fe5cbf6a586dd4f388d1cfb5f87a54b6d13f1c9b152310c4c3ce64"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cloudwash\\v6\\widget-small.5baf706c.webp",
+        "sha256": "5baf706cb432ae5930da4b77d1e9d4a081a3e20aecd15657386555f4f3a0ca13"
+      }
+    ]
+  },
+  {
+    "id": "matcha-riso-garden",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\matcha-riso-garden\\v7\\manifest.json",
+    "manifestSha256": "b71e57a5439b9e3c5f0f5bc1afdc3836f20d553b81885abefbf0606e3cb5219f",
+    "selections": [
+      {
+        "optionId": "riso-butterfly",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\matcha-riso-garden\\v7\\widget-riso-butterfly.f87b5650.webp",
+        "sha256": "f87b56503fe18f937dfd40c12fe90f6e987f264c4bfabbda12c9ea38fdeb7c6e"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\matcha-riso-garden\\v7\\widget-small.49c06d90.webp",
+        "sha256": "49c06d905ec9a49fbdd5d5d558736931dabd800fb712e663eed39bf5cb3ad613"
+      },
+      {
+        "optionId": "art-20261107-riso-foxglove",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\matcha-riso-garden\\v7\\widget-riso-foxglove.c2c5b1ee.webp",
+        "sha256": "c2c5b1ee4326849b75ba17e897368d3afa13006cf903f3a755bafce0e6f9eb84"
+      },
+      {
+        "optionId": "art-20261107-seed-packet",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\matcha-riso-garden\\v7\\widget-seed-packet.c90aa63d.webp",
+        "sha256": "c90aa63d57c905fa13057551da8ef6bc008730cfec192a47e049f306cfd84973"
+      }
+    ]
+  },
+  {
+    "id": "thistle-etch",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\manifest.json",
+    "manifestSha256": "07875e05bb3292c1b97d2f02954ad900b85fb17f36fcfb7e32ae4f6ab4101cb8",
+    "selections": [
+      {
+        "optionId": "seed-tuft",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-seed-tuft.b1694133.webp",
+        "sha256": "b16941334658bce55fa6408bf4416656c52acf4e469d9126d331b3eaf6baf2f8"
+      },
+      {
+        "optionId": "silver-leaf",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-silver-leaf.fd22a998.webp",
+        "sha256": "fd22a998f8e92c9f20e3f2b7d5c8600314e1062ee52bd9460f3dc0bb6b352c94"
+      },
+      {
+        "optionId": "thistle-head",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-thistle-head.d79ef931.webp",
+        "sha256": "d79ef93190e7b8ed5ec6d2533a03aa431362dea13bfe14bfdf2b99ef927dc6b8"
+      }
+    ]
+  },
+  {
+    "id": "calla-obscura",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\manifest.json",
+    "manifestSha256": "44d645f3f10206b405a2d228685635b5b09369db36be86593cccfa63c7d10e41",
+    "selections": [
+      {
+        "optionId": "calla-pair",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\widget-calla-pair.39444fb9.webp",
+        "sha256": "39444fb9365d12ca85c2fd91f4a6ddf126ca953922105254a973d4a9d8c7d31d"
+      },
+      {
+        "optionId": "dew-leaf",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\widget-dew-leaf.c4995fe9.webp",
+        "sha256": "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be"
+      },
+      {
+        "optionId": "pearl-vase",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\widget-pearl-vase.88208682.webp",
+        "sha256": "882086827160eedd4da30e8a5f2ffebdbb0b7298d2372bce3ac9527a9835289b"
+      }
+    ]
+  },
+  {
+    "id": "prism-orchard",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\prism-orchard\\v6\\manifest.json",
+    "manifestSha256": "5b67bb01ed60a03120304a4ae6bda0a7519154b788e04e14647811c719d61dd8",
+    "selections": [
+      {
+        "optionId": "glass-plum",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\prism-orchard\\v6\\widget-glass-plum.df948b64.webp",
+        "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f"
+      },
+      {
+        "optionId": "opal-tree-frog",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\prism-orchard\\v6\\widget-opal-tree-frog.87be490c.webp",
+        "sha256": "87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3"
+      },
+      {
+        "optionId": "petal-hummingbird",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\prism-orchard\\v6\\widget-petal-hummingbird.2e0c34fc.webp",
+        "sha256": "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\prism-orchard\\v6\\widget-small.f909d144.webp",
+        "sha256": "f909d1442ccc4efbae53946274a26c33bc99b538da67099eeee19df8ffa06f7d"
+      }
+    ]
+  },
+  {
+    "id": "persimmon-press",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\manifest.json",
+    "manifestSha256": "66e4cb4ba9eaea94541c0ecd1c11d062864e4093679528116a959822a47d6e63",
+    "selections": [
+      {
+        "optionId": "calyx-star",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\widget-calyx-star.03c4b550.webp",
+        "sha256": "03c4b550c2f4497e10a9ff8b697312ef652f58355dfd66a8cd8bc94d4425af1a"
+      },
+      {
+        "optionId": "carved-grain",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\widget-carved-grain.fff645ba.webp",
+        "sha256": "fff645ba9e6dcdb273baf200db4edfc4d6a31ffd391ee203c1826f727a6ffb1a"
+      },
+      {
+        "optionId": "persimmon-pair",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\widget-persimmon-pair.50a1cc0d.webp",
+        "sha256": "50a1cc0d1fcade11b419846621bd43eeb665a956d2cecfe04f8b57df7bde2dbe"
+      },
+      {
+        "optionId": "seed-progress",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\widget-seed-progress.b39236b1.webp",
+        "sha256": "b39236b1c278462752dcc65f1e774d6e2739722e4711b7bb44f73365ee13d1f6"
+      }
+    ]
+  },
+  {
+    "id": "silver-orchard",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\manifest.json",
+    "manifestSha256": "362c68c2e293fd4a5388a96f360d6eb719bb7b677e22750c5bd844fce73d829f",
+    "selections": [
+      {
+        "optionId": "glass-orchard-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-glass-orchard-snail.10df11be.webp",
+        "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+      },
+      {
+        "optionId": "silver-leaf-lantern",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-leaf-lantern.0e3e56b7.webp",
+        "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+      },
+      {
+        "optionId": "silver-dormouse",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-dormouse.9881d967.webp",
+        "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-small.089da6c1.webp",
+        "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+      }
+    ]
+  },
+  {
+    "id": "kingfisher-blue",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\manifest.json",
+    "manifestSha256": "0afb9bec0d088d3006a20521779c2a542cc5205e0eee6665ad8ca09f61a3736d",
+    "selections": [
+      {
+        "optionId": "production-20261101-reed-perch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-production-20261101-reed-perch.5ff8cbc5.webp",
+        "sha256": "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-small.a8a7097b.webp",
+        "sha256": "a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4"
+      },
+      {
+        "optionId": "art-20261106-kingfisher-dive",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-kingfisher-dive.a67ceba5.webp",
+        "sha256": "a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034"
+      },
+      {
+        "optionId": "art-20261106-river-feather",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-river-feather.a998b304.webp",
+        "sha256": "a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098"
+      }
+    ]
+  },
+  {
+    "id": "ginkgo-hour",
+    "origin": "historical_pre_PR307_cache",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\ginkgo-hour\\v7\\manifest.json",
+    "manifestSha256": "3e448ef3cc6076e62f4f769165d313ac98cd73fa77cf66fcc3ce47cc4866495b",
+    "selections": [
+      {
+        "optionId": "production-20261101-fan-leaf",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\ginkgo-hour\\v7\\widget-production-20261101-fan-leaf.b123eb23.webp",
+        "sha256": "b123eb23f7e170ea6ab60dea5c6417e47e5cf8116f098b1b5ddf0924e2483503"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\ginkgo-hour\\v7\\widget-small.ec1cc0f6.webp",
+        "sha256": "ec1cc0f6af82651c53af27f472b6d79b5fdabcef002ff0c6c25adcfac376d8dc"
+      },
+      {
+        "optionId": "art-20261106-ginkgo-ink",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\ginkgo-hour\\v7\\widget-ginkgo-ink.e4ccbf02.webp",
+        "sha256": "e4ccbf02db92195dbca36c4656f0afe34c74802deea6f0dcd83157032c7c9e86"
+      },
+      {
+        "optionId": "art-20261106-golden-leaf-mobile",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\ginkgo-hour\\v7\\widget-golden-leaf-mobile.5f40a92b.webp",
+        "sha256": "5f40a92bc6dfbea1c6fc486eaceb98acaf0b7b688600c45f823a45959d58e9a7"
+      }
+    ]
+  },
+  {
+    "id": "cloudwash",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cloudwash\\v7\\manifest.json",
+    "manifestSha256": "a1bcbda0d7e33e31b53831d0404fcd4c09011059e83322ae153469c739ba4dbc",
+    "selections": [
+      {
+        "optionId": "clothespin-bird",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cloudwash\\v7\\widget-clothespin-bird.424c32a2.webp",
+        "sha256": "424c32a2c160b9d3e67a74656c44ec15633737372d645e038b7e56c68128d3ff"
+      },
+      {
+        "optionId": "cloud-laundry-basket",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cloudwash\\v7\\widget-cloud-laundry-basket.b2ae0508.webp",
+        "sha256": "b2ae0508a0ac6a9e0c15f448d8e2c5416e2435270dca70a5271295df1c334497"
+      },
+      {
+        "optionId": "star-wash",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cloudwash\\v7\\widget-star-wash.2b34bf02.webp",
+        "sha256": "2b34bf0272fe5cbf6a586dd4f388d1cfb5f87a54b6d13f1c9b152310c4c3ce64"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cloudwash\\v7\\widget-small.5baf706c.webp",
+        "sha256": "5baf706cb432ae5930da4b77d1e9d4a081a3e20aecd15657386555f4f3a0ca13"
+      },
+      {
+        "optionId": "blue-laundry-iron",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cloudwash\\v7\\widget-blue-laundry-iron.b0e0287b.webp",
+        "sha256": "b0e0287be2d1bf671d8b204f466c33be63e5668ef98839e23b8e9068b629ac38"
+      }
+    ]
+  },
+  {
+    "id": "matcha-riso-garden",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\matcha-riso-garden\\v8\\manifest.json",
+    "manifestSha256": "01ad64cbec282a1e2dc5c4223568962273b3a2a4a616cb7d4ecc96d3ff5a844e",
+    "selections": [
+      {
+        "optionId": "riso-butterfly",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\matcha-riso-garden\\v8\\widget-riso-butterfly.f87b5650.webp",
+        "sha256": "f87b56503fe18f937dfd40c12fe90f6e987f264c4bfabbda12c9ea38fdeb7c6e"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\matcha-riso-garden\\v8\\widget-small.49c06d90.webp",
+        "sha256": "49c06d905ec9a49fbdd5d5d558736931dabd800fb712e663eed39bf5cb3ad613"
+      },
+      {
+        "optionId": "art-20261107-riso-foxglove",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\matcha-riso-garden\\v8\\widget-riso-foxglove.c2c5b1ee.webp",
+        "sha256": "c2c5b1ee4326849b75ba17e897368d3afa13006cf903f3a755bafce0e6f9eb84"
+      },
+      {
+        "optionId": "art-20261107-seed-packet",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\matcha-riso-garden\\v8\\widget-seed-packet.c90aa63d.webp",
+        "sha256": "c90aa63d57c905fa13057551da8ef6bc008730cfec192a47e049f306cfd84973"
+      },
+      {
+        "optionId": "riso-watering-can",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\matcha-riso-garden\\v8\\widget-riso-watering-can.25409f9b.webp",
+        "sha256": "25409f9bb8d144d25eeb242f43f33a1ba13f0d773f4a9c1f012f68f8d5ee5a7a"
+      }
+    ]
+  },
+  {
+    "id": "thistle-etch",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\thistle-etch\\v2\\manifest.json",
+    "manifestSha256": "e1f7dd4dd65da8492fadbca8b794e512d1adb004e9704de6ed018278d6fb8b2b",
+    "selections": [
+      {
+        "optionId": "seed-tuft",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\thistle-etch\\v2\\widget-seed-tuft.b1694133.webp",
+        "sha256": "b16941334658bce55fa6408bf4416656c52acf4e469d9126d331b3eaf6baf2f8"
+      },
+      {
+        "optionId": "silver-leaf",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\thistle-etch\\v2\\widget-silver-leaf.fd22a998.webp",
+        "sha256": "fd22a998f8e92c9f20e3f2b7d5c8600314e1062ee52bd9460f3dc0bb6b352c94"
+      },
+      {
+        "optionId": "thistle-head",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\thistle-etch\\v2\\widget-thistle-head.d79ef931.webp",
+        "sha256": "d79ef93190e7b8ed5ec6d2533a03aa431362dea13bfe14bfdf2b99ef927dc6b8"
+      },
+      {
+        "optionId": "lavender-pollen-bee",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\thistle-etch\\v2\\widget-lavender-pollen-bee.febdaa8a.webp",
+        "sha256": "febdaa8adee688cdfc092196482cd22020229e1e056a5ffee4dadad558c682ac"
+      },
+      {
+        "optionId": "thistle-goldfinch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\thistle-etch\\v2\\widget-thistle-goldfinch.1dbe66a7.webp",
+        "sha256": "1dbe66a797d26ab53437e3dcc87112b534f00e95bc48c101e89637b34f8f41e1"
+      }
+    ]
+  },
+  {
+    "id": "calla-obscura",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\manifest.json",
+    "manifestSha256": "6b02e5531594d1d4e6d31b60d46a2ecf23b7b493f500cc16b506310192ee4a02",
+    "selections": [
+      {
+        "optionId": "calla-pair",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-calla-pair.39444fb9.webp",
+        "sha256": "39444fb9365d12ca85c2fd91f4a6ddf126ca953922105254a973d4a9d8c7d31d"
+      },
+      {
+        "optionId": "dew-leaf",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-dew-leaf.c4995fe9.webp",
+        "sha256": "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be"
+      },
+      {
+        "optionId": "pearl-vase",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-pearl-vase.88208682.webp",
+        "sha256": "882086827160eedd4da30e8a5f2ffebdbb0b7298d2372bce3ac9527a9835289b"
+      },
+      {
+        "optionId": "silver-moth",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-silver-moth.f153e3a0.webp",
+        "sha256": "f153e3a0303f867931dd98aac5e97ae9ae91c9c62d32ce3060b05d6f219e1397"
+      },
+      {
+        "optionId": "pearl-garden-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-pearl-garden-snail.5f5dd19f.webp",
+        "sha256": "5f5dd19f8acdd29134d87998eff08fcbf03da4ae0117d364cfdb94ccf9e8bafc"
+      }
+    ]
+  },
+  {
+    "id": "prism-orchard",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\manifest.json",
+    "manifestSha256": "a5bd09932b2a368c9b04570efbb3678689c35b612c3599bdcc132148d8393f46",
+    "selections": [
+      {
+        "optionId": "glass-plum",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-glass-plum.df948b64.webp",
+        "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f"
+      },
+      {
+        "optionId": "opal-tree-frog",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-opal-tree-frog.87be490c.webp",
+        "sha256": "87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3"
+      },
+      {
+        "optionId": "petal-hummingbird",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-petal-hummingbird.2e0c34fc.webp",
+        "sha256": "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-small.f909d144.webp",
+        "sha256": "f909d1442ccc4efbae53946274a26c33bc99b538da67099eeee19df8ffa06f7d"
+      },
+      {
+        "optionId": "opal-butterfly",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-opal-butterfly.444dc4ac.webp",
+        "sha256": "444dc4acb555b63aaf4aa1d63af8e013c76194a746b9a36ab118c686be80aaa8"
+      }
+    ]
+  },
+  {
+    "id": "persimmon-press",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\manifest.json",
+    "manifestSha256": "631f3e3d86365719e538384b53e0a553775747dfc4660aa851781bd61aa702f5",
+    "selections": [
+      {
+        "optionId": "calyx-star",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-calyx-star.03c4b550.webp",
+        "sha256": "03c4b550c2f4497e10a9ff8b697312ef652f58355dfd66a8cd8bc94d4425af1a"
+      },
+      {
+        "optionId": "carved-grain",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-carved-grain.fff645ba.webp",
+        "sha256": "fff645ba9e6dcdb273baf200db4edfc4d6a31ffd391ee203c1826f727a6ffb1a"
+      },
+      {
+        "optionId": "persimmon-pair",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-persimmon-pair.50a1cc0d.webp",
+        "sha256": "50a1cc0d1fcade11b419846621bd43eeb665a956d2cecfe04f8b57df7bde2dbe"
+      },
+      {
+        "optionId": "harvest-basket",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-harvest-basket.d46fa736.webp",
+        "sha256": "d46fa7367059bbf563732758d7be8263b347f5a3952a3bd9d9e184b81dfa0db8"
+      },
+      {
+        "optionId": "orchard-songbird",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-orchard-songbird.80c2c739.webp",
+        "sha256": "80c2c7396f2002cb53c93583312b296afe8b11b1f480722248225eda43939a89"
+      }
+    ]
+  },
+  {
+    "id": "silver-orchard",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\manifest.json",
+    "manifestSha256": "f0c5454848045a5b87d6477f8eedfa515a1d4ac866a53b4e737b140eb42dd0c5",
+    "selections": [
+      {
+        "optionId": "glass-orchard-snail",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-glass-orchard-snail.10df11be.webp",
+        "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+      },
+      {
+        "optionId": "silver-leaf-lantern",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-leaf-lantern.0e3e56b7.webp",
+        "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+      },
+      {
+        "optionId": "silver-dormouse",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-dormouse.9881d967.webp",
+        "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-small.089da6c1.webp",
+        "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+      },
+      {
+        "optionId": "silver-pear-blossom",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-pear-blossom.885b3b43.webp",
+        "sha256": "885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b"
+      }
+    ]
+  },
+  {
+    "id": "kingfisher-blue",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\manifest.json",
+    "manifestSha256": "e137253905e6182b44962082bd713c2a90cbd7259cad318a5427554c85465cbf",
+    "selections": [
+      {
+        "optionId": "production-20261101-reed-perch",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-production-20261101-reed-perch.5ff8cbc5.webp",
+        "sha256": "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-small.a8a7097b.webp",
+        "sha256": "a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4"
+      },
+      {
+        "optionId": "art-20261106-kingfisher-dive",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-kingfisher-dive.a67ceba5.webp",
+        "sha256": "a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034"
+      },
+      {
+        "optionId": "art-20261106-river-feather",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-river-feather.a998b304.webp",
+        "sha256": "a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098"
+      },
+      {
+        "optionId": "river-reed-nest",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-river-reed-nest.84b040c6.webp",
+        "sha256": "84b040c675591b4fb95480c2fb747f082b355980e56edbdb929d6110a99d1592"
+      }
+    ]
+  },
+  {
+    "id": "ginkgo-hour",
+    "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+    "actualAppSelector": true,
+    "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\ginkgo-hour\\v8\\manifest.json",
+    "manifestSha256": "6196d5fba5ca2198fbb9ec0d1bae040811a3772ac783f71ffd5ffb044a073d28",
+    "selections": [
+      {
+        "optionId": "production-20261101-fan-leaf",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\ginkgo-hour\\v8\\widget-production-20261101-fan-leaf.b123eb23.webp",
+        "sha256": "b123eb23f7e170ea6ab60dea5c6417e47e5cf8116f098b1b5ddf0924e2483503"
+      },
+      {
+        "optionId": "hero-small",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\ginkgo-hour\\v8\\widget-small.ec1cc0f6.webp",
+        "sha256": "ec1cc0f6af82651c53af27f472b6d79b5fdabcef002ff0c6c25adcfac376d8dc"
+      },
+      {
+        "optionId": "art-20261106-ginkgo-ink",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\ginkgo-hour\\v8\\widget-ginkgo-ink.e4ccbf02.webp",
+        "sha256": "e4ccbf02db92195dbca36c4656f0afe34c74802deea6f0dcd83157032c7c9e86"
+      },
+      {
+        "optionId": "art-20261106-golden-leaf-mobile",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\ginkgo-hour\\v8\\widget-golden-leaf-mobile.5f40a92b.webp",
+        "sha256": "5f40a92bc6dfbea1c6fc486eaceb98acaf0b7b688600c45f823a45959d58e9a7"
+      },
+      {
+        "optionId": "golden-ginkgo-fruit",
+        "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\ginkgo-hour\\v8\\widget-golden-ginkgo-fruit.eab88e34.webp",
+        "sha256": "eab88e34cbd90783d5f520f295793338750c585bb92cbc412921b3046f978255"
+      }
+    ]
+  }
+]

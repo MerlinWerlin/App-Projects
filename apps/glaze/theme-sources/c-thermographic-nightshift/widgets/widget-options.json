@@ -1,0 +1,67 @@
+[
+  {
+    "id": "heat-gardener",
+    "kind": "art",
+    "image": "heat-gardener.be4fbf938451.png",
+    "sha256": "be4fbf93845150999255d381e3a37e9e0bef87eb0ab865a954287dd2ab5e9d79",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Heat Gardener"
+  },
+  {
+    "id": "frost-auger",
+    "kind": "art",
+    "image": "frost-auger.07f0318112d6.png",
+    "sha256": "07f0318112d6464ba28247fecf78c2deecfc1bd702f5bd765b06bb35d17268d4",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Frost Auger"
+  },
+  {
+    "id": "meltwing",
+    "kind": "art",
+    "image": "meltwing.8788fd1568af.png",
+    "sha256": "8788fd1568af4dd038407a2ed44e8b3afa4829c1a3f0b33e38e289789faea947",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Meltwing"
+  },
+  {
+    "id": "chimney-bloom",
+    "kind": "art",
+    "image": "chimney-bloom.b4563dd843a4.png",
+    "sha256": "b4563dd843a46741ff14038161427bf4ea08c6b7e524ddcdd995b6271f0a42f8",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Chimney Bloom"
+  },
+  {
+    "id": "nursery-walker",
+    "kind": "art",
+    "image": "nursery-walker.2c1a8f3a6d34.png",
+    "sha256": "2c1a8f3a6d34af23710c05b798b8259273e7d36abc9334113b2f6d6123251c06",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Nursery Walker"
+  }
+]

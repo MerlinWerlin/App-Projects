@@ -1,0 +1,204 @@
+{
+  "themeId": "rindlight-waystation",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#E7D8B7",
+    "#DCCAA4"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "shade-crown-well",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        34,
+        27,
+        137,
+        145
+      ],
+      "asset": "widget-shade-crown-well.0150c325.webp",
+      "assetSha256": "0150c325e5601fb72616a669273d711509017d3d0ae76a0b048f88c991f06a2a"
+    },
+    {
+      "option": "shade-crown-well",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        73,
+        68,
+        293,
+        321
+      ],
+      "asset": "widget-shade-crown-well.0150c325.webp",
+      "assetSha256": "0150c325e5601fb72616a669273d711509017d3d0ae76a0b048f88c991f06a2a"
+    },
+    {
+      "option": "saddle-seed-carrier",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        45,
+        143,
+        128
+      ],
+      "asset": "widget-saddle-seed-carrier.0b4558ed.webp",
+      "assetSha256": "0b4558ede2ba91fd438f070b58e10ee6b5ece72d7dfba5457abf6a73a7f61bc4"
+    },
+    {
+      "option": "saddle-seed-carrier",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        55,
+        105,
+        307,
+        283
+      ],
+      "asset": "widget-saddle-seed-carrier.0b4558ed.webp",
+      "assetSha256": "0b4558ede2ba91fd438f070b58e10ee6b5ece72d7dfba5457abf6a73a7f61bc4"
+    },
+    {
+      "option": "reed-whistle-beacon",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        33,
+        25,
+        137,
+        145
+      ],
+      "asset": "widget-reed-whistle-beacon.859424f9.webp",
+      "assetSha256": "859424f990e3c24761dabcd470bc1369950e29b9b0d1e37668ae8b34785de2b3"
+    },
+    {
+      "option": "reed-whistle-beacon",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        71,
+        63,
+        293,
+        319
+      ],
+      "asset": "widget-reed-whistle-beacon.859424f9.webp",
+      "assetSha256": "859424f990e3c24761dabcd470bc1369950e29b9b0d1e37668ae8b34785de2b3"
+    },
+    {
+      "option": "folding-rain-cistern",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        24,
+        30,
+        145,
+        142
+      ],
+      "asset": "widget-folding-rain-cistern.1e66af2c.webp",
+      "assetSha256": "1e66af2c1119bf75c46ba4a473466a78ac2a41d357205e234c7302d4d2ed6961"
+    },
+    {
+      "option": "folding-rain-cistern",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        52,
+        75,
+        312,
+        314
+      ],
+      "asset": "widget-folding-rain-cistern.1e66af2c.webp",
+      "assetSha256": "1e66af2c1119bf75c46ba4a473466a78ac2a41d357205e234c7302d4d2ed6961"
+    },
+    {
+      "option": "suspended-rest-hut",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        26,
+        144,
+        143
+      ],
+      "asset": "widget-suspended-rest-hut.4e2c81f5.webp",
+      "assetSha256": "4e2c81f55c0ce504d30f6c536f31b2ba0ab060c4f596a2f486bbd0734d9bbec1"
+    },
+    {
+      "option": "suspended-rest-hut",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        54,
+        66,
+        309,
+        315
+      ],
+      "asset": "widget-suspended-rest-hut.4e2c81f5.webp",
+      "assetSha256": "4e2c81f55c0ce504d30f6c536f31b2ba0ab060c4f596a2f486bbd0734d9bbec1"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Use case: composition repair for an existing Glaze portrait wallpaper. Keep the exact approved Burnishhide Procession artwork style, palette, five adult festival performers, identities, equipment, poses, scene architecture and carved hide material from this reference. Make ONE modest layout-only revision of the whole festival group: uniformly reduce and gently recenter the group so every performer, drum frame, toe, hand, antler, lantern, horn and banner has clear breathing room. The current shorter phone crop cuts the foreground drummer's legs/feet and the left lamplighter is close to the screen edge. Place ALL five primary performer silhouettes comfortably inside x=12\u00e2\u20ac\u201c88 percent and y=50\u00e2\u20ac\u201c84 percent of this same tall 1290:2796 portrait canvas. Show a broad natural patterned courtyard floor beneath their feet across the bottom16 percent, and quiet dyed ink-blue hide above the gathering. Architecture and incidental floor patterns may naturally continue beyond edges; primary bodies and props must remain complete. Preserve the original relative arrangement: standing antler lamplighter left, fan-mantle dancer centre, wheel-mask horn herald right, squat twin-drum gate drummer foreground left, kneeling bellows/banner standard bearer foreground right. Preserve all stamped rosettes, shallow bevelled incisions, pebbled leather, restrained oxblood/tan/turquoise tones, and flat artisan tooled-leather relief. Do not turn this into 3D figurines, plastic, metal, generic painting, different costume design or a new scene. No new characters or props, no duplication, no text/letters/numerals, clocks, date/battery readings, logos, borders, frames or phone mockups. Opaque full-bleed wallpaper with the same aspect ratio. This is a zoomout/reposition repair of the provided composition only.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.9159c6557654.png",
+  "sourceSha256": "9159c65576546bb209935cb391f28f7d2dbdec6f4bc8bb12ddff3588e23b1f47",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "beac3af012425202b4657d05af886486e226760b2e5ea4c066caeb1867777820",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Built-in imagegen layout-only scene repair; export complete portrait to1290x2796 with a subpixel aspect adjustment. No alteration of the five separate Artwork images, native paths or palette.",
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json",
+  "referencedImage": {
+    "file": "qa/wallpaper-edge-study/before-wallpaper.png",
+    "sha256": "817365f937fc20465d5611f8e0522fd5759663bc3706ecdc0bdd82488877ec82"
+  }
+}

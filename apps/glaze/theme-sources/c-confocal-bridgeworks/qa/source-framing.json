@@ -1,0 +1,100 @@
+{
+  "review": "Complete structures, supports, arches, clamps and dim fluorescent fringes fully inside original alpha16/96 source bounds.",
+  "assets": [
+    {
+      "id": "ciliary-weir",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          35,
+          404,
+          1219,
+          937
+        ],
+        "96": [
+          36,
+          405,
+          1218,
+          937
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeStructureAndFringeInsideFrame": true
+    },
+    {
+      "id": "axon-hoist",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          110,
+          245,
+          1156,
+          1111
+        ],
+        "96": [
+          111,
+          246,
+          1155,
+          1030
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeStructureAndFringeInsideFrame": true
+    },
+    {
+      "id": "vesicle-lift",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          195,
+          74,
+          1020,
+          1161
+        ],
+        "96": [
+          195,
+          75,
+          1020,
+          1160
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeStructureAndFringeInsideFrame": true
+    },
+    {
+      "id": "spindle-turnstile",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          32,
+          135,
+          1224,
+          1088
+        ],
+        "96": [
+          32,
+          136,
+          1223,
+          1087
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeStructureAndFringeInsideFrame": true
+    },
+    {
+      "id": "synaptic-span",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          54,
+          335,
+          1194,
+          1006
+        ],
+        "96": [
+          54,
+          336,
+          1194,
+          1006
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeStructureAndFringeInsideFrame": true
+    }
+  ]
+}

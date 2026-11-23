@@ -1,0 +1,100 @@
+{
+  "review": "All five complete originals inside alpha16/96 bounds, edgealpha maxima0or1. Hawthorn three leaves/four haws/thorn/twig, squirrel ears/nose/paws/nut/feet/whole bushy tail/hazel leaf/twig, wood-sorrel three heart leaflets/folded leaf/stem, thrush beak/wings/tail/feet/two leaves/twig, and butterfly antennae/whole ragged wings/legs/body/leaf/stem all retained. Full originals proportionally fitted1024square without cropping or creative alpha changes. Actual blue-slate full170/85 composites clean; sampled outer alpha0.",
+  "assets": [
+    {
+      "id": "hawthorn-sprig",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          211,
+          172,
+          1010,
+          1136
+        ],
+        "96": [
+          212,
+          173,
+          1009,
+          1135
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "red-squirrel-hazel",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          83,
+          128,
+          1162,
+          1132
+        ],
+        "96": [
+          85,
+          134,
+          1143,
+          1131
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "wood-sorrel",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          234,
+          166,
+          1016,
+          1109
+        ],
+        "96": [
+          234,
+          167,
+          1016,
+          1108
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "song-thrush",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          173,
+          179,
+          1078,
+          1055
+        ],
+        "96": [
+          174,
+          181,
+          1077,
+          1054
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "comma-butterfly-leaf",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          238,
+          216,
+          1084,
+          1151
+        ],
+        "96": [
+          239,
+          217,
+          1083,
+          1151
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

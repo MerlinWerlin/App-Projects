@@ -1,0 +1,194 @@
+{
+  "id": "c-normalmap-pinewood",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "pine-cone-direction",
+    "woodpecker-direction",
+    "squirrel-direction",
+    "shelf-fungi-direction",
+    "columbine-direction"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.b9df45c5.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 13322,
+    "sha256": "b9df45c5f8a3150540611a1d5cb3895b2ee6a6933dc30c3d6df6d3dbf498fc05",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Reviewed the whole pine cone, woodpecker with its twig, squirrel, shelf fungi and columbine together, then reviewed each actual encoded artwork at 85 px. Broad periwinkle faces, cyan left shoulders, rose right shoulders and mint upper lips recur at the natural shape boundaries. The outlines remain simple and recognizable. The accepted first pine cone is unchanged.",
+    "wallpaper": "Reviewed the three actual encoded phone crops. Each keeps the whole pine cone and stem, woodpecker bill and twig, squirrel tail and paws, shelf fungi and bark fragment, and columbine flower, bud, leaves and stalk. One layout edit curved the stalk down to the ground beside the squirrel and added faint tree contours behind the bird and fungi. The subject group occupies roughly 84 percent of the width, wider than the prompt target, with about eight percent clear side margins. The first version and exact references are preserved.",
+    "native": "Reviewed small, medium and large clock, battery and calendar previews through the current coordinator renderer. A cone outline and scale curves sit behind the live readings. The narrow plain pine sprig fits the compact clock and calendar headers. All nine previews change with readings. Ornament parsing and battery boundary states passed. This is local preview verification.",
+    "roundedArtworkCorners": "Reviewed the five encoded artworks on the rounded layout simulation. All 39 lane C themes and their 195 encoded artworks retain every visible alpha 16 pixel in the conservative layout check."
+  },
+  "ownerSteeringReview": "Recognizable woodland subjects use repeating directional color. Slate Artwork fields have open corners, and the native headers use a quiet plain pine sprig.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-normalmap-pinewood",
+    "backgroundStops": [
+      "#354650",
+      "#2B3B46"
+    ],
+    "pieces": [
+      {
+        "id": "pine-cone-direction",
+        "sha256": "c5995d03e5c7bcd347474fd1fbd702e52b104683b3f677cf1896544c7f7f80db",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "woodpecker-direction",
+        "sha256": "e1edc4a372ed78df532ee7a3aaf5cfcf7c8cb9ee788e1007590fc9d1bc5b63f5",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "squirrel-direction",
+        "sha256": "d5296e5f1e25bb8acd59cec0ea6485042dc4af6172c7edebc313aa40f7ceb8d1",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "shelf-fungi-direction",
+        "sha256": "81e03cb540f531453f1ff7709fc5ab3ca8347df3c4989791b466c22a897511d8",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "columbine-direction",
+        "sha256": "21be064ebbab08495768eff7c0b65a59425b7f87737c299f25b32cc83be9692a",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "wallpaperDistinctReferenceImages": 6,
+  "artworkOwnStudyReferenceHashesMatched": 4,
+  "packTestEvidence": "Offline builder v1 produced 9 assets totaling 582962 bytes at minApp 1.0.44. Verified all decoded sources and encoded images, five Artwork selections, nine live previews, battery boundary states, Nature browsing, ornament parsing, source references and complete provenance.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "7c7b0249658affcdb6c73de3f226765dd3246e9500048086115d06b913be5411",
+  "selectedFirstRawUnchanged": true,
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "newImageOutputs": 7,
+  "unselectedGenerations": 1,
+  "creativeRasterEdits": 1,
+  "artworkOwnStudyDistinctReferenceImages": 1,
+  "newThemePaletteContrast": {
+    "glyph": "#EBF1E9",
+    "tile": "#2B3B46",
+    "glyphTile": 10.06812001668761,
+    "text": "#EEF1EB",
+    "bg": "#354650",
+    "textBg": 8.592996803833428,
+    "minimum": 4.5,
+    "source": "C:/Users/jared/Documents/Codex/2026-11-14/files-pasted-by-the-user-glaze/work/App-Projects/apps/glaze/src/core/colour.ts"
+  },
+  "coordinatorFirstMaterialAccepted": true,
+  "coordinatorIntegrationPending": true,
+  "scope": "Local pack, source and preview verification. The coordinator accepted the first artwork. Full set review, canonical integration and device verification are pending."
+}

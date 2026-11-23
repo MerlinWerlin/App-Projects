@@ -1,0 +1,18 @@
+{
+  "themeId": "cutstack-skyport",
+  "recipe": [
+    "facet",
+    "cutMooring",
+    "cutChannels",
+    "cut",
+    "leaf",
+    "tiles",
+    "ledger"
+  ],
+  "art": {
+    "cutMooring": "M 48 38 C 18 35 9 17 7 9 C 32 8 46 21 48 38 Z M 52 38 C 82 35 91 17 93 9 C 68 8 54 21 52 38 Z M 45 40 L 55 40 L 59 88 L 41 88 Z M 47 52 L 53 52 M 45 66 L 55 66 M 43 79 L 57 79 M 35 67 L 65 67 M 36 72 L 64 72 M 41 88 L 34 94 L 43 94 M 59 88 L 66 94 L 57 94 M 57 77 L 72 72 L 81 78 M 80 78 C 80 72 91 72 91 78 C 91 84 80 84 80 78 Z",
+    "cutChannels": "M 12 27 Q 37 10 62 25 T 91 22 M 17 36 Q 39 21 61 35 T 87 32 M 19 46 Q 39 32 59 45 T 82 42 M 12 71 Q 36 57 59 70 T 91 68 M 18 80 Q 39 68 59 79 T 84 78 M 28 58 L 31 55 M 68 54 L 72 57"
+  },
+  "ornament": "M 18 62 Q 38 25 77 35 M 23 69 Q 42 37 76 44 M 30 77 Q 47 51 73 53 M 20 39 L 24 35 M 40 26 L 45 24 M 61 26 L 66 28",
+  "direction": "Folding-wing mooring mast with open levels as full illustration, nested cut-back cotton channels as detail; faceted port plate dial, cut marks, leaf-like ribbon hands, panelled charge cells and ledger calendar. Compact companion is three short rolled cut-channel arcs with three loose stitches, never a whole terminal or craft."
+}

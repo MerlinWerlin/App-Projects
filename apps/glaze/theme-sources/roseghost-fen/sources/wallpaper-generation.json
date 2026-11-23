@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Layout-only framing repair of this exact ROSEGHOST FEN wallpaper. Preserve the five approved plant/animal identities, pigment texture, rose/mauve/rust/oat palette, poses, relative arrangement and one coherent wetland habitat. The original group is too large: the frog feet are too low for shorter phone crops, the left leaf and right pitcher approach screen edges, and the beetle reaches too high. UNIFORMLY ZOOM OUT the whole five-organism habitat grouping by about35percent, and recenter the complete group near x50%,y63% of the same tall1290:2796 portrait. Keep every primary organism comfortably inside x20â€“80% and y45â€“80%, including all frog toes, beetle antenna/wing tips, pitcher hoods, flowers and root ends. The beetle remains on its reed just above the plants, but all its anatomy stays below y45%. Fill newly opened space with the same softly mottled pale oat paper above and pale natural wetland ground/water traces below. The bottom20percent must have quiet ground/water texture only, with visible space beneath the frog feet; upper43percent almost empty paper. Natural incidental grass/ground traces may continue off-screen. Keep the broad plant-pigment contact-print colour fields, fine capillary-vein voids and flat sun-faded granular texture; no new3D lighting, new subjects, new poses or different art process. Do not turn the scene into five separate panels. No text, lettering, numerals, UI, clocks/readings, frame/border, watermark or phone mockup. Opaque full-bleed paper wallpaper. This is a modest whole-group scale/reposition edit, not a redesign.",
+  "source": "sources/wallpaper.91e0a6f901b0.png",
+  "sourceSha256": "91e0a6f901b0779adc8892c06b079ce16217ae5b37b4ae33f7f04cad4ce59427",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "de17568407efacf1ad4367580196ce60dd4c2cf7873486182eac8aff6eb739fc",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Whole final portrait exported to1290x2796 with a subpixel aspect adjustment; thumbnail derived from the same image. Builtin layout edit supplies focal breathing room.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-wallpaper.2cc7af6190a9.png",
+      "sha256": "2cc7af6190a9a12e92937743e21582925a3e5808c245b04d71068de2f94f6638",
+      "purpose": "Layout-only repair of own separately generated habitat scene."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "beech-bandlight",
+    "sourceSha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b",
+    "rawAlpha16Bounds": [
+      179,
+      186,
+      1087,
+      1127
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "songbird-bandlight",
+    "sourceSha256": "c90baae546ea78b855eb7f4150cc027b72e9497f5471e3ada62e353dafdf98fa",
+    "rawAlpha16Bounds": [
+      101,
+      213,
+      1090,
+      1077
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "mushrooms-bandlight",
+    "sourceSha256": "4aac4bfbcf1a88ea5cffc04a2f5ba1a595e2b25a9e3641ff3ef573dcdb5ddf0d",
+    "rawAlpha16Bounds": [
+      119,
+      102,
+      1140,
+      1181
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "hedgehog-bandlight",
+    "sourceSha256": "6a724e891150dbd14b658f6661d3f81d5460a88cd3396ec0eb642e21ca082108",
+    "rawAlpha16Bounds": [
+      171,
+      395,
+      1107,
+      944
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "primrose-bandlight",
+    "sourceSha256": "f4e927f5e6750e258b2b3c81f4833614bc5679486fdb56060b2d93d008d59bd0",
+    "rawAlpha16Bounds": [
+      183,
+      123,
+      1030,
+      1154
+    ],
+    "frameAlphaMaximum": 0
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "id": "suspended-climber",
+  "prompt": "Composition/crop repair ONLY for this CHAR GRAIN PASSAGE suspended-climber artwork. Preserve exactly the cabin, two-pulley trolley, diagonal double cable, both anchor clevises, right counterweight, folded step, all component relationships and delicate PYROGRAPHY style (sepia burnt outlines, hot-point stipple, pale birch grain, heat halos and chalk rub). Enlarge the transparent composition canvas and scale the ENTIRE assembly down to fit the central70% of a1024x1024 square, with minimum15% genuinely empty transparent alpha on all four sides. Reconstruct the small clipped right end of the upper-right anchor clevis completely, and any clipped edge of the lower-left anchor, so both clevis bases are fully closed shapes with visible margins. Keep all cables attached and all original transparent gaps. No new object, background board, floor, frame, scenery, text, numbers or style change. The ENTIRE cabin, weights, two anchors and all ropes must be visible and uncropped.",
+  "tool": "built-in image_gen",
+  "source": "sources/suspended-climber.73be5359.png",
+  "sourceSha256": "73be5359e3c1dfc3f28bfae93af0690cd899558e2dae491f3dca76db4110f1ec",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/suspended-climber.a7e0805a.png",
+  "sha256": "a7e0805a3213f927c8b65909b397054dcaeb8f330a37aade716f48a242cb8821",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/crop-repair/suspended-climber-history.json",
+  "referencedImage": {
+    "file": "qa/crop-repair/suspended-climber.original.0e82375a.png",
+    "sha256": "0e82375a3b27a4ec412bfac9ad9f987f20a70fa3cd83d573c4b5e5d3cdd1be01"
+  }
+}

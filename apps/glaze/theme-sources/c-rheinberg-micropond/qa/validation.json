@@ -1,0 +1,169 @@
+{
+  "id": "c-rheinberg-micropond",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "radiating-desmid",
+    "stalked-rotifer",
+    "waterbear",
+    "chain-diatom",
+    "duckweed-raft"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.c51d86fe.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 11518,
+    "sha256": "c51d86fe0d8a20c0fc2241bfa8e5e5c3228b23107df07e5f8aafbdcddcf87933",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed5 separate desmid/rotifer/waterbear/chain-diatom/duckweed outputs together at210/150px and actual encoded85px. Five strongly different natural silhouettes;warm scattering boundaries/blue hydrated fields/granular inclusions coherent. True transparent exterior/open gaps,no blue rectangular backing. Initial desmid also viewed composited on actual theme tile colour.",
+    "wallpaper": "Viewed all3 actual encoded phone variants. All5 complete organism bodies/cilia/claws/rootlets/chain endpoints retained;quiet cobalt water above,one duckweed-root/meniscus/sediment habitat. Waterbear walks on bank,rotifer joins root,alga/diatom drift in shared water. No chopped focal anatomy.",
+    "native": "Viewed all9 real coordinator renderer previews in scratch. Petal/desmid/pearls/needle clock,column battery,folio calendar retain readable live values. Dedicated cilium/meniscus fragment fits compact header slots with breathing room.",
+    "roundedArtworkCorners": "Viewed5 actual encoded art assets with real app background stops,Fit6%inset,conservative20%roundedmask. Every visible alpha16 pixel retained;quiet cobalt corners support warm hydrated forms. UI layout simulation,not installed-device proof."
+  },
+  "ownerSteeringReview": "More nature worlds and tangible habitat per Jared. Full organisms have quiet matching Artwork corners;compact process fragment in native headers.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-rheinberg-micropond",
+    "backgroundStops": [
+      "#0E2444",
+      "#15335A"
+    ],
+    "pieces": [
+      {
+        "id": "radiating-desmid",
+        "sha256": "0b1fd9198ad57bbd8ee699704d41ef085145676b4d60fb34593947e1a3f0b722",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "stalked-rotifer",
+        "sha256": "fd2afd5a82593f44ed81e0dde6cdbf699ef031a20cb4290e8c2888d2e8743f99",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "waterbear",
+        "sha256": "226f7d2014ded93cc63091df49238cfee2a746b24fe9d076553d52cf53a96466",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "chain-diatom",
+        "sha256": "617679d519dad8980819dca1bf037739aebddea3c575731ddc760c48bedc87f0",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "duckweed-raft",
+        "sha256": "ec69beb25e005634638920b2349f163cc30ff8bc6ca1ba2dc56099c44b6e69f5",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "packTestEvidence": "Actual offline builder v1:9assets/1.33MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and5own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}

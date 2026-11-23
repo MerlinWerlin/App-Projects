@@ -1,0 +1,18 @@
+{
+  "id": "stacked-silence",
+  "prompt": "ONE original independent square1024x1024 pure artwork for FLOCKQUAKE. STACKED SILENCE: three CORAL velour stencil slabs float at offset heights inside a tall irregular ACID-LIME stepped outer silhouette; the top slab has one long off-centre vertical slit, the middle slab two mismatched square holes, and the bottom slab a triangular bite in its side. Three small deep COBALT disconnected diamond tabs sit in the bare gaps between slabs. Odd asymmetric layered storm-pillar, bold closed-versus-empty rhythm, NOT a face, letter, house, cactus, tower, toy, tool or ordinary object. PHYSICAL ELECTROSTATIC FLOCK PRINT with dense short upright velvet fibres, matte saturated adhesive stencil fields, compressed directional pile, crisp hand-cut contours with minuscule0.5mm shadows, stray fibre grains. Flat top-down craft photograph, no fabric weaving, stitches, fur, stuffing/plush volume or plastic. Lime #B5E247, coral #F5838C, cobalt #343AB5. Entire silhouette complete within central65%,18% genuinely transparent alpha margins, gaps/holes transparent, no backing paper sheet, tile, background, floor, pedestal, frame or border. No text, numerals, logos, UI, clocks/time/date/battery/weather values. One separate artwork, no collage or grid.",
+  "tool": "built-in image_gen",
+  "source": "sources/stacked-silence.774021af.png",
+  "sourceSha256": "774021af45db010fbb3c1da03fe5c712ecd566c0902d1e5487dae833b20d5645",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/stacked-silence.2f2298c6.png",
+  "sha256": "2f2298c61da8e8ac5ecc8183ab5bcf4a11bec655c1f4b1c2f6906a8325077ca7",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

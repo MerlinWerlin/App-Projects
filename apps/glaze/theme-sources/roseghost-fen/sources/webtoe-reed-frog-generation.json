@@ -1,0 +1,26 @@
+{
+  "id": "webtoe-reed-frog",
+  "label": "Webtoe Reed Frog",
+  "tool": "built-in image_gen",
+  "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different living natural subject below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale branching capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. The animal is an artistic plant-pigment imprint, with a strong readable silhouette and fine bleached tissue texture; no3D modelling, glossy highlights, lighting shadows, black outline, paper cutout or cyan blueprint. True transparent alpha everywhere outside the animal and through open gaps; pigment grain ONLY inside subject marks. No paper backing, square/rectangle, floor, perch, soil, halo, frame or border. Entire animal and every appendage central72% with at least14% empty alpha all sides, no clipping. No text, letters/numerals, clocks/readings, UI, logo, signature or watermark. One original individual asset, no collage or panels. WEBTOE REED FROG: one invented living marsh frog in a low asymmetric crouch, broad folded hind thighs, exactlyFOUR coherent legs, oversized open webbed toe fans, a rounded translucent throat pouch, two small raised friendly eyes and a slightly pointed leaf-shaped head turned left. Its back and throat carry branching reed/leaf vein impressions, and its soft flank has sparse oval bleached stomata patches. No accessories or mechanical parts. Distinct horizontal body silhouette, separated toe gaps all clear, not a plant rosette or a pressed dead specimen. The entire crouching frog is a flat warm pigment/contact shadow, no bulky3D volume or hard cast shadow.",
+  "source": "sources/webtoe-reed-frog.ef636244484b.png",
+  "sourceSha256": "ef636244484b72da9bfc0d483133476fdaf141381eee9ed8fe68c467ea68136e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/webtoe-reed-frog.d03664f54573.png",
+  "sha256": "d03664f54573b6fb81c9140a570feb552700d08f9bf3fe6de6ef21ffbd697f29",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+  "references": [
+    {
+      "file": "sources/lantern-bladderwort.8d482e372f74.png",
+      "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+      "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+    }
+  ]
+}

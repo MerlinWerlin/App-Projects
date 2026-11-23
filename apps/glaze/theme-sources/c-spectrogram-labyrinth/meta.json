@@ -1,0 +1,16 @@
+{
+  "name": "Spectrogram Labyrinth",
+  "mood": "Unrecorded acoustic worlds mapped into thermal frequency bins.",
+  "tags": [
+    "spectrogram",
+    "signal",
+    "frequency-bins",
+    "experimental"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native vector paths. Fictional signals.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording.",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "hare",
+    "label": "Listening Hare",
+    "kind": "art",
+    "image": "hare.7326f063231c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "longtailed-tit",
+    "label": "Hawthorn Tit",
+    "kind": "art",
+    "image": "longtailed-tit.f8fb47aac4da.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "bramble-berries",
+    "label": "Bramble Berries",
+    "kind": "art",
+    "image": "bramble-berries.fcd765bdb4e6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "bee-dogrose",
+    "label": "Dogrose Visitor",
+    "kind": "art",
+    "image": "bee-dogrose.4a5518d82907.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "snail-dock",
+    "label": "Dockleaf Snail",
+    "kind": "art",
+    "image": "snail-dock.3136912464ef.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

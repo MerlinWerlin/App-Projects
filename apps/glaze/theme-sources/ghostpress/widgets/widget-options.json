@@ -1,0 +1,62 @@
+[
+  {
+    "id": "lock-gate-house",
+    "kind": "art",
+    "image": "lock-gate-house.9e532331.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lock Gate House"
+  },
+  {
+    "id": "walking-archive",
+    "kind": "art",
+    "image": "walking-archive.6586b2eb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Walking Archive"
+  },
+  {
+    "id": "folded-sea-carrier",
+    "kind": "art",
+    "image": "folded-sea-carrier.b29cd6bb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folded Sea Carrier"
+  },
+  {
+    "id": "rain-harvester-tower",
+    "kind": "art",
+    "image": "rain-harvester-tower.ba684390.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rain Harvester Tower"
+  },
+  {
+    "id": "counterweight-drawbridge",
+    "kind": "art",
+    "image": "counterweight-drawbridge.337873e8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Counterweight Drawbridge"
+  }
+]

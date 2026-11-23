@@ -1,0 +1,1 @@
+Unselected original fern,prompt/rawhash retained. Botanical anatomy fine,but exteriorhaze alpha6to38 pollutedcorners;built-in alpha-only edit removesbackground whilepreservingplant. No Pythoncreativebackgroundprocessing.

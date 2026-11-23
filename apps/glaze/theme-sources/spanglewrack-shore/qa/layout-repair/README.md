@@ -1,0 +1,1 @@
+One wallpaper-only horizontalinset after actualencodedphonecrops showedleftshorelipcutatcanvasedge. Originalraw/exactinitial3ownreferences and exacteditrequest/result retained. All5standaloneart/native/palette unchanged by hash; finalactualcropreview inparentqa. No standaloneartchange or coordinator/Jaredapproval.

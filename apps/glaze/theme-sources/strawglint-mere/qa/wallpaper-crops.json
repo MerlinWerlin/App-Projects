@@ -1,0 +1,34 @@
+{
+  "themeId": "strawglint-mere",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.00aa8b1a.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "00aa8b1af0544a25407e6ff478ddcd2e56d1946f866728cd431f8d6411d0a9a3",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.9c51c13a.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "9c51c13a4fe645e8538a8a90f95e17587e38671711eb8f100e616fc89387bac8",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.97f47643.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "97f4764345978d7c6c13cc3bf6287de187d8826cc1d4e2daeaa908067806a1d0",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Final layout-only pullback passed all three actual encoded crops: complete already-flat habitat has broad blue side and lower margins, every frog/bird/leaf/reed/petal/antenna/tip intact. Previous selected flat wallpaper and exact own-scene request preserved in qa/layout-pullback; five art/native files unchanged."
+}

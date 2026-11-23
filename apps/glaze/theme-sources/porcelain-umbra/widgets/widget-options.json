@@ -1,0 +1,62 @@
+[
+  {
+    "id": "shadow-sluice",
+    "kind": "art",
+    "image": "shadow-sluice.8c3fbbb2.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shadow Sluice"
+  },
+  {
+    "id": "four-way-stair-knot",
+    "kind": "art",
+    "image": "four-way-stair-knot.81ec4636.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Four Way Stair Knot"
+  },
+  {
+    "id": "folding-eclipse-theatre",
+    "kind": "art",
+    "image": "folding-eclipse-theatre.6f17b3e3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Eclipse Theatre"
+  },
+  {
+    "id": "hanging-rain-vault",
+    "kind": "art",
+    "image": "hanging-rain-vault.62bb4be1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hanging Rain Vault"
+  },
+  {
+    "id": "labyrinth-seed",
+    "kind": "art",
+    "image": "labyrinth-seed.951d63e1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Labyrinth Seed"
+  }
+]

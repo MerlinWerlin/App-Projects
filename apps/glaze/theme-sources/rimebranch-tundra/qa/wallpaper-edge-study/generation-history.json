@@ -1,0 +1,57 @@
+{
+  "initial": {
+    "prompt": "Create a tall PORTRAIT PHONE WALLPAPER for the original Glaze theme Rimebranch Tundra, portrait aspect about1024x2200. Use these FIVE OWN art references in order: ptarmigan/willow, Arctic hare, muskox, Arctic poppy, dwarf willow. Preserve their recognizable natural anatomy and the SAME cool white/ice-blue hoarfrost sculpture material: interlocking angular hexagonal ice needles and crystalline dendritic fans, not actual feathers/fur/green plants, paper, foam or stone. One coherent tiny quiet tundra habitat, not five separate sticker panels. A broad stocky horned muskox stands centrally on a low irregular icy tundra hummock; the ptarmigan rests near one side, the hare crouches by the other, and the poppy and dwarf-willow grow around their feet. Retain whole horns, ears, every paw, petal, leaf and crystal tip. Natural intimate grouping, independently recognizable five subjects, delicate low crystalline sedges and a short icy ground shelf. No real furry animals, no glass spheres, no giant mountains, no floating icons, no frame or text. CRUCIAL COMPOSITION: the ENTIRE complete habitat group occupies only the central58percent of image WIDTH and vertical44\u00e2\u20ac\u201c68percent of image HEIGHT; focal center at56percent height. Leave very broad quiet margins on BOTH left/right and bottom; do not crop any branch or edge. The top40percent is empty atmospheric dark desaturated glacial navy, smoothly blending from #193748 to #24485B with subtle refined natural depth and no stars, speckled noise, halo or bright patches. Lower frame also remains quiet midnight blue around the small sculpted habitat. Expensive restrained macro diorama photography with soft top-left light, calm gentle shadows, pale cold surfaces and controlled tiny ice highlights. Do not fill the canvas with giant animals. Solid opaque wallpaper, not transparency. No lettering, labels, clocks, batteries, calendar, UI or product mockup.",
+    "file": "qa/wallpaper-edge-study/initial-scene.fcca12b3b03c.png",
+    "sha256": "fcca12b3b03c27219568fbd647d54131f00ca94cd1f037ed9602c420d28231e1",
+    "references": [
+      {
+        "file": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+        "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536"
+      },
+      {
+        "file": "sources/arctic-hare.daa98bebe5aa.png",
+        "sha256": "daa98bebe5aaa0fc6011e764904819ddb71097d9c7ad0d9f183045c59fa9bb55"
+      },
+      {
+        "file": "sources/muskox.6931fdc017b9.png",
+        "sha256": "6931fdc017b9b790697a4b1c7ef64bcd92f6fa3192156b11df94b17c4669677e"
+      },
+      {
+        "file": "sources/arctic-poppy.7c282cc9d208.png",
+        "sha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3"
+      },
+      {
+        "file": "sources/dwarf-willow.658a03c8b91c.png",
+        "sha256": "658a03c8b91c3e093b207714919e90ad2b40f46d38e7d9f6839a14a6f8fa60d9"
+      }
+    ],
+    "selected": false
+  },
+  "selectedEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Perform a LAYOUT-ONLY refinement of this exact OWN Rimebranch Tundra wallpaper. Preserve all five recognizable hoarfrost sculptures, every individual animal/plant silhouette, all anatomy, materials, lighting, ice crystal detail and their relative positions. Uniformly reduce the ENTIRE habitat group INCLUDING every icy ground shelf/stray ground branch to exactly70percent of its CURRENT size, then place the complete reduced group at the same horizontal center and around56percent of canvas height. Keep the tall portrait aspect and original glacial navy atmospheric palette. The complete habitat including all ground must now occupy at most66percent of frame WIDTH. Add broad quiet matching empty dark-blue space around BOTH sides, top and bottom, filling naturally with the same calm background. No tip, horn, wing, paw, leaf or ground edge may approach a screen edge. Do not enlarge any individual animal relative to the rest, do not change their poses, do not add or remove any subject, do not repaint the individual artwork style. In particular keep the whole horned muskox, hare, ptarmigan, poppy and dwarf-willow all exactly recognizable. No clouded white border, frame, text or UI. Preserve the exact image except for this uniform whole-group pullback and quiet background extension.",
+    "source": "sources/wallpaper.5b6def036b5d.png",
+    "sourceSha256": "5b6def036b5d92068e07e71f0cfea3669b904e70805666f23f6ac51ac220c81c",
+    "sourceDimensions": [
+      856,
+      1838
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "9144925a47e404f4d336e15a19ae6557069e4ba54ea568bbbe63583d98280202",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Built-in whole-group 70 percent layout pullback; mechanical portrait export to1290x2796. Independent art inputs and native vector art unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/initial-scene.fcca12b3b03c.png",
+        "sha256": "fcca12b3b03c27219568fbd647d54131f00ca94cd1f037ed9602c420d28231e1",
+        "purpose": "Own complete five-reference first scene; uniform framing correction only."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "Broad quiet screen-edge margins around every horn, paw, ear, leaf and crystalline ground tip in all phone crops."
+}

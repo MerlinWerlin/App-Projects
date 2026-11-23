@@ -1,0 +1,23 @@
+{
+  "id": "california-poppies",
+  "prompt": "BACKGROUND EXTRACTION ONLY from input1, own corrected Embertrace Chaparral California-poppy ceramic spray. Preserve EXACT complete existing ceramic subject: three four-petaled flowers, correct LONG SLENDER pointed seed pod at left, all fine divided leaves/connected stems, precise positions/proportions, pale warm burnished unglazed clay, thin black sinuous carbon trails, smoke deposits ON ceramic, warm iron blush and soft subject lighting. REMOVE ONLY the faint broad SEMITRANSPARENT WHITE-GRAY MATTE CLOUD and cast haze/shadow behind/around the subject. Every pixel outside actual ceramic silhouette must be TRUE EMPTY ALPHA0, including ALL gaps between stems, divided leaves and petals, and ALL broad surrounding canvas. No opaque white/gray background, veil, vignette, residual haze, glow or drop shadow. Retain ceramic bodies and every fine petal/leaf/stem/pod tip fully intact; do not cut/crop/recolor/recompose the subject and do not remove smoke marks that are actually ON clay. Clean natural antialiased silhouette edge only; no broad translucent fringe extending into background. Whole subject safely central with same original ample alpha margins. No added ground/backing/plaque/frame/UI/text. Single own source input only. Output genuinely transparent PNG.",
+  "tool": "built-in image_gen",
+  "source": "sources/california-poppies.7bbce666.png",
+  "sourceSha256": "7bbce666e0fb09f6f6f90ba90a461d2a6ae4f2d707fc651f37319b234bbc76a6",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/california-poppies.626186df.png",
+  "sha256": "626186df65f6dd9461fafce325128aa1142d6be2ef8121aa553985d4f3f450c6",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-alpha-repair/ordered-edit-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-alpha-repair/intermediate-slender-pod-with-haze.8f0bf6cb.png",
+    "sha256": "8f0bf6cb5a48c453da874a8303d9c6d863c076e27ea96437315c87f16559fdba"
+  }
+}

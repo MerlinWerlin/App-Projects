@@ -1,0 +1,18 @@
+{
+  "themeId": "ragcast-canopy",
+  "recipe": [
+    "pebble",
+    "pulpTapir",
+    "pulpFibres",
+    "dash",
+    "baton",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "pulpTapir": "M 16 57 Q 13 40 30 35 Q 45 29 61 38 Q 66 32 69 34 L 72 40 Q 80 41 84 48 L 92 56 Q 96 65 90 68 L 85 66 L 84 60 L 76 58 L 71 64 L 72 84 Q 69 89 64 87 L 61 68 L 55 69 L 54 86 L 48 86 L 46 70 Q 35 72 29 65 L 26 84 L 20 84 L 20 64 M 17 53 L 10 59 M 30 67 L 34 82 L 32 86 L 27 86 M 76 48 L 77 49 M 69 40 L 67 36 M 26 43 Q 43 36 56 42 M 21 52 L 29 51 M 34 49 L 43 48 M 48 51 L 56 52 M 36 59 L 45 60",
+    "pulpFibres": "M 11 18 L 25 14 L 36 18 L 48 13 L 62 17 L 73 14 L 89 19 M 13 32 L 26 29 L 37 33 L 50 28 L 64 32 L 77 29 L 88 33 M 20 48 L 31 44 L 43 49 L 56 44 L 69 49 L 82 46 M 13 65 L 25 61 L 38 66 L 51 62 L 65 67 L 80 63 L 90 66 M 22 82 L 34 78 L 47 83 L 61 79 L 76 84 M 28 13 L 30 20 M 56 28 L 58 34 M 40 62 L 42 69 M 70 79 L 72 86"
+  },
+  "ornament": "M 20 82 Q 40 55 75 20 M 33 65 Q 20 65 21 48 Q 35 48 38 59 M 46 49 Q 34 41 39 29 Q 53 33 54 42 M 59 36 Q 58 22 72 20 M 40 56 Q 55 58 62 48 M 52 42 Q 70 44 78 32 M 19 85 L 25 81 L 31 84 M 21 92 L 27 88 L 33 91",
+  "direction": "Recognizable short-trunk tapir profile with coherent four legs, rag-fibre mats as detail, soft irregular pebble rim, short flat fibre-dash markers, baton hands, compact column charge gauge and folio calendar. Compact companion is one short open palm-frond tip with paired leaflets and deckled rag-fibre seam ends, no whole animal or enclosing badge."
+}

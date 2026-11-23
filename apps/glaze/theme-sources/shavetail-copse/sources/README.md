@@ -1,0 +1,1 @@
+Lane A original Shavetail Copse Nature candidate for APPS A2. Five independent whole pencil-shaving nature artworks, own-reference portrait habitat, palette and live native Clock/Battery/Calendar identity with compact companion. Exact originals/prompts/ordered references and observed crop correction retained. No publication or merge without Jared OK.

@@ -1,0 +1,35 @@
+{
+  "prompt": "Use case: identity-preserving layout edit. Keep all FIVE exact Orientation Caravan creatures from this wallpaper and their flat false-colour EBSD grain signal: open-double-back-arch saddle porter, three-filter-jaw rear-fin grazer, crescent-arm wedge-head cairn lifter, coiled shovel-arm burrower and two-fan-wing bellows glider. Change composition only into ONE compact shallow valley migration scene. IMPORTANT: TOP45% OF THE ENTIRE IMAGE MUST BE EMPTY PALE IVORY, no wing or figure there. Reduce the glider substantially, to about25%imagewidth, place it flying just over the other four at50%to61%imageheight. Bring the four ground creatures together in a broad shallow crescent below, bodies/feet within57%to78%imageheight, all five focal silhouettes wholly within horizontal10%to90%. Ground animals walk/feed/lift/emerge on connected low pale segmented banks; plant the burrower tail into a little hollow. All complete jaws, scoops, feet, back arches and wing tips have breathing room. Bottom20% quiet pale segmented ground, terrain may bleed, complete creatures may not. Preserve five individual body designs and vivid grain orientations, tiny charcoal boundary seams and a few twin bands, no shading/material change/new creatures. Ground sparse light-grey grain segmentation, all activity middle-lower. One coherent world rather than collage/specimen sheet. Portrait1290x2796 opaque phone wallpaper. No text, readings, UI or frame.",
+  "reference": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-ebsd-caravan\\intermediate-wallpaper-layout-study\\wallpaper-initial.af73837da46a.png",
+  "directEditReference": {
+    "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.af73837da46a.png",
+    "sha256": "af73837da46a08ad823ab5a14321de02e6909f1ee96561b0e882eb05e1c0f220"
+  },
+  "internalArtworkReferences": [
+    {
+      "id": "saddleback-porter",
+      "sourceImage": "sources/saddleback-porter.067ede319439.png",
+      "sha256": "067ede31943933ddff5fa7f64bb5a032f65438f88064d85b5925995be8b346d5"
+    },
+    {
+      "id": "trident-grazer",
+      "sourceImage": "sources/trident-grazer.e54f51b8f068.png",
+      "sha256": "e54f51b8f06851caa9f9e29142a4b48b48d82c750e43a7968fdbbc86b169a473"
+    },
+    {
+      "id": "bellows-glider",
+      "sourceImage": "sources/bellows-glider.7f40ad298f58.png",
+      "sha256": "7f40ad298f58fe37460aa172bb95e9ed5ad3c6ef0e15a89981d67d448d97f6ad"
+    },
+    {
+      "id": "cairn-lifter",
+      "sourceImage": "sources/cairn-lifter.f03f59472064.png",
+      "sha256": "f03f59472064ac081e18d3c59a21df6c8723b1a9a7a5163bffec5677b8313664"
+    },
+    {
+      "id": "spindle-burrower",
+      "sourceImage": "sources/spindle-burrower.0274855e1a04.png",
+      "sha256": "0274855e1a045bbe5f7d8f4ad869492fe8f4d14b4647dafd1832a646b451ac23"
+    }
+  ]
+}

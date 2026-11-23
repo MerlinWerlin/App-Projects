@@ -1,0 +1,100 @@
+{
+  "review": "Selected art originals are1254square for oak/bird/iris and1312x1199 for hare/snail, whole real alpha16 bounds inside each frame and framealpha maximum1. Whole originals uniformly contained900within1024 RGBA with Lanczos, no crop/stretch/code alpha cleanup. Original oakcc3e2580/normalized33f97832/actualencoded dad7b2fa remain exact to first standalone codec study. Two own-subject material edits preserve full anatomy, all initial/raw/ref hashes retained. Single original opaque852x1847 wallpaper structurally fitted1290x2796; every key subject endpoint stays whole in all three actual encoded phone crops, wider/taller actual placement disclosed.",
+  "assets": [
+    {
+      "id": "oak-spiral-fronts",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          139,
+          133,
+          1118,
+          1160
+        ],
+        "96": [
+          140,
+          134,
+          1117,
+          1159
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "bullfinch-wavefronts",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          213,
+          263,
+          1043,
+          1061
+        ],
+        "96": [
+          214,
+          263,
+          1043,
+          1060
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "hare-wavefronts",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          77,
+          48,
+          1200,
+          1155
+        ],
+        "96": [
+          78,
+          49,
+          1199,
+          1154
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "iris-wavefronts",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          131,
+          97,
+          1058,
+          1179
+        ],
+        "96": [
+          132,
+          98,
+          1058,
+          1178
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "snail-wavefronts",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          133,
+          312,
+          1152,
+          936
+        ],
+        "96": [
+          134,
+          313,
+          1151,
+          936
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "theme": "c-ebsd-caravan",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "saddleback-porter",
+      "sourceImage": "sources/saddleback-porter.067ede319439.png",
+      "sourceSha256": "067ede31943933ddff5fa7f64bb5a032f65438f88064d85b5925995be8b346d5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/saddleback-porter.5f160e27cdc5.png",
+      "sha256": "5f160e27cdc543d15ca1313e66be1c3f447a5950d8a04c58f3674c1a6d8cb774",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 877151,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ORIENTATION CARAVAN. An invented migration of tangible functional fauna seen as a fictional ELECTRON BACKSCATTER DIFFRACTION ORIENTATION MAP. Image language: flat, sharply segmented POLYCRYSTALLINE GRAINS. Each irregular angular interlocking grain is ONE uniform saturated orientation colour: primary cobalt, carmine red, emerald green, hot fuchsia, cyan or acid yellow. Unequal grain sizes, long grains following limbs, little grains at joints, thin charcoal BLACK grain-boundary seams and occasional three-way junctions. Crisp oblique crystallographic twin bands cross a FEW grains, and tiny stepped detector pixels are just visible along some boundaries. The colour is a false-colour measurement signal, never a material surface. The whole recognizable subject silhouette is packed with hundreds of adjacent coloured grains, with NO shading, gradients, relief, highlights or volumetric modelling. Anatomy/working joints read through silhouette and negative gaps, not a black contour drawing laid over the map. Dense orientation segmentation remains visible at thumbnail size. Not a physical mosaic, stained glass, enamel, gemstones, bismuth, crystal sculpture, origami, low-poly3D model, paint, print, paper craft, contour map, terrain cartography, smooth rainbow interference, thermal field, fluorescent fibres, glowing rim, particle cloud or radiograph. Fictional artistic orientation map, not a real measured microscopy dataset. No text, grain numbers, scale bars, axes, orientation legends, labels, clock faces, readings, graphs, logos or watermark. Subject: SADDLEBACK PORTER: a low broad quadrupedal migration organism with FOUR thick bent walking legs, a short blunt downward-facing snout, small forward horn, and a large OPEN DORSAL CARGO VAULT formed by TWO unequal sweeping back arches and a flat shallow living carrying deck. The arches/deck are grown body parts, not harnesses, bags or a building. The empty vault space is open through the silhouette. A stout tapering rear tail counterbalances the forward step. Three-quarter side view, one front leg raised, warm useful pack-creature character, not a horse, elephant, turtle or ordinary animal. Asset: ONE separate square1024x1024 pure-art widget. Entire complete silhouette and every wing, jaw, foot, tail, arch and scoop inside central75%canvas with generous empty margins on all sides. GENUINE transparent alpha outside and through all open gaps. No backing plate, white rectangular field, floor, shadow, glow, extra animals, panel, frame, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 646777
+    },
+    {
+      "id": "trident-grazer",
+      "sourceImage": "sources/trident-grazer.e54f51b8f068.png",
+      "sourceSha256": "e54f51b8f06851caa9f9e29142a4b48b48d82c750e43a7968fdbbc86b169a473",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/trident-grazer.f5e72c1a8b79.png",
+      "sha256": "f5e72c1a8b795876e59cc3b10f4293a5077f8e3c64503f18c6458cc4aa0eb3db",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 867545,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ORIENTATION CARAVAN. An invented migration of tangible functional fauna seen as a fictional ELECTRON BACKSCATTER DIFFRACTION ORIENTATION MAP. Image language: flat, sharply segmented POLYCRYSTALLINE GRAINS. Each irregular angular interlocking grain is ONE uniform saturated orientation colour: primary cobalt, carmine red, emerald green, hot fuchsia, cyan or acid yellow. Unequal grain sizes, long grains following limbs, little grains at joints, thin charcoal BLACK grain-boundary seams and occasional three-way junctions. Crisp oblique crystallographic twin bands cross a FEW grains, and tiny stepped detector pixels are just visible along some boundaries. The colour is a false-colour measurement signal, never a material surface. The whole recognizable subject silhouette is packed with hundreds of adjacent coloured grains, with NO shading, gradients, relief, highlights or volumetric modelling. Anatomy/working joints read through silhouette and negative gaps, not a black contour drawing laid over the map. Dense orientation segmentation remains visible at thumbnail size. Not a physical mosaic, stained glass, enamel, gemstones, bismuth, crystal sculpture, origami, low-poly3D model, paint, print, paper craft, contour map, terrain cartography, smooth rainbow interference, thermal field, fluorescent fibres, glowing rim, particle cloud or radiograph. Fictional artistic orientation map, not a real measured microscopy dataset. No text, grain numbers, scale bars, axes, orientation legends, labels, clock faces, readings, graphs, logos or watermark. Subject: TRIDENT GRAZER: a squat horizontally long SIX-FOOTED animal with a broad forward head splitting into THREE heavy upward-curving filter jaws, one large vertical rear balancing fin and a thick barrel torso. Six short legs and three clearly separated blunt head jaws, no tiny spines. Grazing posture with head low, seen from three-quarter front. No ordinary antlers, tusked mammal, insect, fish or dinosaur; its large body and feeding mechanism feel physically workable. Asset: ONE separate square1024x1024 pure-art widget. Entire complete silhouette and every wing, jaw, foot, tail, arch and scoop inside central75%canvas with generous empty margins on all sides. GENUINE transparent alpha outside and through all open gaps. No backing plate, white rectangular field, floor, shadow, glow, extra animals, panel, frame, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 646643
+    },
+    {
+      "id": "bellows-glider",
+      "sourceImage": "sources/bellows-glider.7f40ad298f58.png",
+      "sourceSha256": "7f40ad298f58fe37460aa172bb95e9ed5ad3c6ef0e15a89981d67d448d97f6ad",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/bellows-glider.2a3f8af137e7.png",
+      "sha256": "2a3f8af137e70d69f3ba02e94a909a00a49f1b2dfd3123e2ccaacabf662447e5",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 769229,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ORIENTATION CARAVAN. An invented migration of tangible functional fauna seen as a fictional ELECTRON BACKSCATTER DIFFRACTION ORIENTATION MAP. Image language: flat, sharply segmented POLYCRYSTALLINE GRAINS. Each irregular angular interlocking grain is ONE uniform saturated orientation colour: primary cobalt, carmine red, emerald green, hot fuchsia, cyan or acid yellow. Unequal grain sizes, long grains following limbs, little grains at joints, thin charcoal BLACK grain-boundary seams and occasional three-way junctions. Crisp oblique crystallographic twin bands cross a FEW grains, and tiny stepped detector pixels are just visible along some boundaries. The colour is a false-colour measurement signal, never a material surface. The whole recognizable subject silhouette is packed with hundreds of adjacent coloured grains, with NO shading, gradients, relief, highlights or volumetric modelling. Anatomy/working joints read through silhouette and negative gaps, not a black contour drawing laid over the map. Dense orientation segmentation remains visible at thumbnail size. Not a physical mosaic, stained glass, enamel, gemstones, bismuth, crystal sculpture, origami, low-poly3D model, paint, print, paper craft, contour map, terrain cartography, smooth rainbow interference, thermal field, fluorescent fibres, glowing rim, particle cloud or radiograph. Fictional artistic orientation map, not a real measured microscopy dataset. No text, grain numbers, scale bars, axes, orientation legends, labels, clock faces, readings, graphs, logos or watermark. Subject: BELLOWS GLIDER: a broad asymmetric aerial organism with TWO enormous open pleated fan wings, short keel-shaped central torso, blunt forked head pointing left, three small tucked landing limbs and a short wide steering tail. One wing lifts high and the other sweeps forward, leaving broad angular negative gaps around the body. One complete gliding creature, not a butterfly, bat, paper plane, musical instrument or decorative fan. The wing pleats are clean silhouette lobes and darker boundary junctions within the same flat grain signal; no3D shading. Asset: ONE separate square1024x1024 pure-art widget. Entire complete silhouette and every wing, jaw, foot, tail, arch and scoop inside central75%canvas with generous empty margins on all sides. GENUINE transparent alpha outside and through all open gaps. No backing plate, white rectangular field, floor, shadow, glow, extra animals, panel, frame, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 665431
+    },
+    {
+      "id": "cairn-lifter",
+      "sourceImage": "sources/cairn-lifter.f03f59472064.png",
+      "sourceSha256": "f03f59472064ac081e18d3c59a21df6c8723b1a9a7a5163bffec5677b8313664",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cairn-lifter.486523b8a650.png",
+      "sha256": "486523b8a650aa5fdca947b5321cd35b9afde437198003bdd7ab377126964af2",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 824274,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ORIENTATION CARAVAN. An invented migration of tangible functional fauna seen as a fictional ELECTRON BACKSCATTER DIFFRACTION ORIENTATION MAP. Image language: flat, sharply segmented POLYCRYSTALLINE GRAINS. Each irregular angular interlocking grain is ONE uniform saturated orientation colour: primary cobalt, carmine red, emerald green, hot fuchsia, cyan or acid yellow. Unequal grain sizes, long grains following limbs, little grains at joints, thin charcoal BLACK grain-boundary seams and occasional three-way junctions. Crisp oblique crystallographic twin bands cross a FEW grains, and tiny stepped detector pixels are just visible along some boundaries. The colour is a false-colour measurement signal, never a material surface. The whole recognizable subject silhouette is packed with hundreds of adjacent coloured grains, with NO shading, gradients, relief, highlights or volumetric modelling. Anatomy/working joints read through silhouette and negative gaps, not a black contour drawing laid over the map. Dense orientation segmentation remains visible at thumbnail size. Not a physical mosaic, stained glass, enamel, gemstones, bismuth, crystal sculpture, origami, low-poly3D model, paint, print, paper craft, contour map, terrain cartography, smooth rainbow interference, thermal field, fluorescent fibres, glowing rim, particle cloud or radiograph. Fictional artistic orientation map, not a real measured microscopy dataset. No text, grain numbers, scale bars, axes, orientation legends, labels, clock faces, readings, graphs, logos or watermark. Subject: CAIRN LIFTER: a heavy upright TWO-LEGGED organism with a single broad wedge-shaped head merged into the upper torso, TWO huge crescent scoop forearms reaching around a spacious open central gap, thick bent hind legs with flat three-lobed feet, and a short stabilizing rear spur. No human face, clothes, robot joints, stone carried in arms or ordinary gorilla. A complete purposeful strong creature pausing mid-lift, three-quarter view. Big crescent arms, low centre of gravity and wedge head create an unmistakable silhouette. Asset: ONE separate square1024x1024 pure-art widget. Entire complete silhouette and every wing, jaw, foot, tail, arch and scoop inside central75%canvas with generous empty margins on all sides. GENUINE transparent alpha outside and through all open gaps. No backing plate, white rectangular field, floor, shadow, glow, extra animals, panel, frame, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 667771
+    },
+    {
+      "id": "spindle-burrower",
+      "sourceImage": "sources/spindle-burrower.0274855e1a04.png",
+      "sourceSha256": "0274855e1a045bbe5f7d8f4ad869492fe8f4d14b4647dafd1832a646b451ac23",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/spindle-burrower.98edcd62421a.png",
+      "sha256": "98edcd62421a0c80e684bd4297db675b80c2c2850e77a78ddde400f3b52694a7",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 736847,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ORIENTATION CARAVAN. An invented migration of tangible functional fauna seen as a fictional ELECTRON BACKSCATTER DIFFRACTION ORIENTATION MAP. Image language: flat, sharply segmented POLYCRYSTALLINE GRAINS. Each irregular angular interlocking grain is ONE uniform saturated orientation colour: primary cobalt, carmine red, emerald green, hot fuchsia, cyan or acid yellow. Unequal grain sizes, long grains following limbs, little grains at joints, thin charcoal BLACK grain-boundary seams and occasional three-way junctions. Crisp oblique crystallographic twin bands cross a FEW grains, and tiny stepped detector pixels are just visible along some boundaries. The colour is a false-colour measurement signal, never a material surface. The whole recognizable subject silhouette is packed with hundreds of adjacent coloured grains, with NO shading, gradients, relief, highlights or volumetric modelling. Anatomy/working joints read through silhouette and negative gaps, not a black contour drawing laid over the map. Dense orientation segmentation remains visible at thumbnail size. Not a physical mosaic, stained glass, enamel, gemstones, bismuth, crystal sculpture, origami, low-poly3D model, paint, print, paper craft, contour map, terrain cartography, smooth rainbow interference, thermal field, fluorescent fibres, glowing rim, particle cloud or radiograph. Fictional artistic orientation map, not a real measured microscopy dataset. No text, grain numbers, scale bars, axes, orientation legends, labels, clock faces, readings, graphs, logos or watermark. Subject: SPINDLE BURROWER: one vertically coiled digging organism whose thick tapered body forms a single open S-shaped corkscrew, with TWO broad shovel forelimbs projecting at different angles, a compact split head with a blunt off-centre wedge nose, and a pointed rooting tail planted below. One large loop-shaped empty space inside the coiled body. No legs at the bottom, no ordinary snake, snail shell, drill tool or geometric spiral; a complete alert animal with a tangible digging purpose, three-quarter upright view. Asset: ONE separate square1024x1024 pure-art widget. Entire complete silhouette and every wing, jaw, foot, tail, arch and scoop inside central75%canvas with generous empty margins on all sides. GENUINE transparent alpha outside and through all open gaps. No backing plate, white rectangular field, floor, shadow, glow, extra animals, panel, frame, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 723672
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.e2b7a07d60ab.png",
+      "sourceSha256": "e2b7a07d60abdee34024ae299c81c12d89d9314db72e8e20e5bd176575fbde20",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "31ddca1232c64dfc4a9862185b5031169ae14cec63c88997457ef943b5b16d41",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2051319,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: identity-preserving layout edit. Keep all FIVE exact Orientation Caravan creatures from this wallpaper and their flat false-colour EBSD grain signal: open-double-back-arch saddle porter, three-filter-jaw rear-fin grazer, crescent-arm wedge-head cairn lifter, coiled shovel-arm burrower and two-fan-wing bellows glider. Change composition only into ONE compact shallow valley migration scene. IMPORTANT: TOP45% OF THE ENTIRE IMAGE MUST BE EMPTY PALE IVORY, no wing or figure there. Reduce the glider substantially, to about25%imagewidth, place it flying just over the other four at50%to61%imageheight. Bring the four ground creatures together in a broad shallow crescent below, bodies/feet within57%to78%imageheight, all five focal silhouettes wholly within horizontal10%to90%. Ground animals walk/feed/lift/emerge on connected low pale segmented banks; plant the burrower tail into a little hollow. All complete jaws, scoops, feet, back arches and wing tips have breathing room. Bottom20% quiet pale segmented ground, terrain may bleed, complete creatures may not. Preserve five individual body designs and vivid grain orientations, tiny charcoal boundary seams and a few twin bands, no shading/material change/new creatures. Ground sparse light-grey grain segmentation, all activity middle-lower. One coherent world rather than collage/specimen sheet. Portrait1290x2796 opaque phone wallpaper. No text, readings, UI or frame.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.af73837da46a.png",
+        "sha256": "af73837da46a08ad823ab5a14321de02e6909f1ee96561b0e882eb05e1c0f220"
+      },
+      "internalArtworkReferences": [
+        {
+          "id": "saddleback-porter",
+          "sourceImage": "sources/saddleback-porter.067ede319439.png",
+          "sha256": "067ede31943933ddff5fa7f64bb5a032f65438f88064d85b5925995be8b346d5"
+        },
+        {
+          "id": "trident-grazer",
+          "sourceImage": "sources/trident-grazer.e54f51b8f068.png",
+          "sha256": "e54f51b8f06851caa9f9e29142a4b48b48d82c750e43a7968fdbbc86b169a473"
+        },
+        {
+          "id": "bellows-glider",
+          "sourceImage": "sources/bellows-glider.7f40ad298f58.png",
+          "sha256": "7f40ad298f58fe37460aa172bb95e9ed5ad3c6ef0e15a89981d67d448d97f6ad"
+        },
+        {
+          "id": "cairn-lifter",
+          "sourceImage": "sources/cairn-lifter.f03f59472064.png",
+          "sha256": "f03f59472064ac081e18d3c59a21df6c8723b1a9a7a5163bffec5677b8313664"
+        },
+        {
+          "id": "spindle-burrower",
+          "sourceImage": "sources/spindle-burrower.0274855e1a04.png",
+          "sha256": "0274855e1a045bbe5f7d8f4ad869492fe8f4d14b4647dafd1832a646b451ac23"
+        }
+      ],
+      "generationStages": "Five independent artwork generations; separately generated own-reference wallpaper; composition-only edit to restore upper quiet field and retain complete focal creatures across phone crops."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared requested tangible subjects and suitable small corner companions. Full artworks retain their space; a separate restrained native ornament serves the small headers."
+}

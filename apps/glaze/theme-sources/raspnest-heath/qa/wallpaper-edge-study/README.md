@@ -1,0 +1,1 @@
+Retained first generated habitat and initial selected export. Their five own references remain verified in initial-generation.json. Selected layout-only edit preserves all five subjects and creates clear side/bottom space. Native descriptor and five independent artworks are unchanged. Actual encoded crops reviewed in the integrated build.
