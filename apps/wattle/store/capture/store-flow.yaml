@@ -6,6 +6,7 @@ appId: ${APP_ID}
 ---
 - launchApp:
     appId: ${APP_ID}
+    stopApp: true
 - waitForAnimationToEnd:
     timeout: 15000
 - assertVisible: "Bend"
@@ -19,9 +20,11 @@ appId: ${APP_ID}
     optional: true
 - takeScreenshot: 02b-bend-result-more-${MODE}
 
-- openLink: wattle://
-- waitForAnimationToEnd:
-    timeout: 5000
+- scrollUntilVisible:
+    element:
+      text: "3-pt saddle"
+    direction: UP
+    optional: true
 - tapOn:
     text: "3-pt saddle"
     optional: true

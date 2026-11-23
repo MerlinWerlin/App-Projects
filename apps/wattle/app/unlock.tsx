@@ -69,8 +69,8 @@ export default function Unlock() {
   return (
     <View style={{ flex: 1, backgroundColor: theme.ground }}>
       <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + SPACE.xl }}>
-        <View style={[st.band, { backgroundColor: theme.accent, paddingTop: insets.top + SPACE.lg }]}>
-          <View style={[st.close, { top: insets.top + SPACE.xs }]}><IconBtn icon="close" label="Close" onPress={() => router.back()} /></View>
+        <View style={[st.band, { backgroundColor: theme.accent, paddingTop: SPACE.xl }]}>
+          <View style={[st.close, { top: SPACE.sm }]}><IconBtn icon="close" label="Close" onPress={() => router.back()} /></View>
           <Stripe width={72} />
           <Txt v="largeTitle" tone="onAccent" accessibilityRole="header" maxFontSizeMultiplier={1.5}>Wattle Full Unlock</Txt>
           <Txt v="title" tone="onAccent" maxFontSizeMultiplier={1.5}>Every calculator, one payment. No subscription.</Txt>

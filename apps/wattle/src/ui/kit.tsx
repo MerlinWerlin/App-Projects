@@ -14,10 +14,13 @@ export const DISCLAIMER = 'Estimate for licensed electricians. Check against AS/
 
 type Tone = 'ink' | 'ink2' | 'accent' | 'pass' | 'fail' | 'warn' | 'onAccent';
 
+/** Largest Dynamic Type scale per style: answers and labels stay on screen at the biggest accessibility sizes. */
+const MAX_SCALE: Partial<Record<keyof typeof TYPE, number>> = { label: 1.4, footnote: 1.6, subhead: 1.6, answer: 1.3, answerSm: 1.4, largeTitle: 1.5 };
+
 export function Txt({ v = 'body', tone = 'ink', style, children, ...rest }: { v?: keyof typeof TYPE; tone?: Tone; style?: StyleProp<TextStyle>; children: ReactNode; accessibilityRole?: 'header' | 'text'; numberOfLines?: number; maxFontSizeMultiplier?: number; selectable?: boolean }) {
   const { theme } = useApp();
   const color = tone === 'accent' ? theme.accentText : theme[tone];
-  return <Text style={[TYPE[v], { color }, style]} {...rest}>{children}</Text>;
+  return <Text style={[TYPE[v], { color }, style]} maxFontSizeMultiplier={MAX_SCALE[v] ?? 2} {...rest}>{children}</Text>;
 }
 
 /** Scrolling screen with a large title, safe areas and room above the tab bar. */
@@ -25,6 +28,7 @@ export function Screen({ title, sub, right, children, pushed }: { title: string;
   const { theme } = useApp();
   const insets = useSafeAreaInsets();
   return (
+    <View style={{ flex: 1, backgroundColor: theme.ground }}>
     <ScrollView
       style={{ flex: 1, backgroundColor: theme.ground }}
       contentContainerStyle={{ paddingTop: pushed ? SPACE.xs : insets.top + SPACE.sm, paddingBottom: SPACE.xxl, paddingHorizontal: SPACE.md, gap: SPACE.md }}
@@ -35,13 +39,16 @@ export function Screen({ title, sub, right, children, pushed }: { title: string;
       <View style={st.titleRow}>
         <View style={{ flex: 1 }}>
           <Stripe />
-          <Txt v="largeTitle" accessibilityRole="header" maxFontSizeMultiplier={1.6}>{title}</Txt>
-          {sub ? <Txt v="subhead" tone="ink2">{sub}</Txt> : null}
+          <Txt v="largeTitle" accessibilityRole="header" maxFontSizeMultiplier={1.4}>{title}</Txt>
+          {sub ? <Txt v="subhead" tone="ink2" maxFontSizeMultiplier={1.3}>{sub}</Txt> : null}
         </View>
         {right}
       </View>
       {children}
     </ScrollView>
+    {/* Content scrolls under the status bar otherwise: keep a solid strip behind it. */}
+    {!pushed ? <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: insets.top, backgroundColor: theme.ground }} /> : null}
+    </View>
   );
 }
 

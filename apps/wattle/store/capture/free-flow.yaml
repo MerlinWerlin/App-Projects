@@ -9,14 +9,19 @@ appId: ${APP_ID}
 - takeScreenshot: 30-free-first-launch
 - tapOn: "Got it"
 - tapOn:
-    text: "Offset depth \(rise\), mm"
+    text: "Offset depth.*, mm"
 - inputText: "100"
+- scrollUntilVisible:
+    element:
+      text: "End of conduit to obstacle, mm"
 - tapOn:
     text: "End of conduit to obstacle, mm"
 - inputText: "1000"
 - hideKeyboard:
     optional: true
-- scroll
+- scrollUntilVisible:
+    element:
+      text: "1027 mm"
 - assertVisible: "200 mm"
 - assertVisible: "1027 mm"
 - takeScreenshot: 31-free-offset-result

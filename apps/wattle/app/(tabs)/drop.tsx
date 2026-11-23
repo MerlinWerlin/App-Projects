@@ -43,8 +43,8 @@ export default function Drop() {
     { label: 'Voltage drop', value: `${fmt(r.value.vd, 2)} V  ·  ${fmt(r.value.pct, 2)} %` },
     { label: 'At the load', value: `${fmt(r.value.vEnd, 1)} V` },
     { label: `Max run at ${fmt(r.value.limitPct, 1)} %`, value: `${fmt(maxLen, 0)} ${lu}` },
-    ...(method === 'physics' ? [{ label: 'Equivalent', value: `${fmt(r.value.mvPerAm, 2)} mV/A·m` }] : []),
-    ...(method === 'physics' && r.value.minSize !== undefined ? [{ label: 'Smallest size (V-drop only)', value: r.value.minSize == null ? 'None listed' : `${r.value.minSize} mm²` }] : []),
+    ...(method === 'physics' ? [{ label: 'Equivalent mV/A·m', value: fmt(r.value.mvPerAm, 2) }] : []),
+    ...(method === 'physics' && r.value.minSize !== undefined ? [{ label: 'Smallest size by V-drop', value: r.value.minSize == null ? 'None listed' : `${r.value.minSize} mm²` }] : []),
   ] : [];
 
   return (

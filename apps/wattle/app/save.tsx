@@ -1,7 +1,7 @@
 /** Sheet: pick a job (or make one) for the result the person just tapped Save on. */
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { ScrollView, TextInput } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { addCalc, createJob } from '../src/core/jobs.ts';
 import { success } from '../src/native/haptics.ts';
@@ -25,6 +25,12 @@ export default function Save() {
     done();
   };
   return (
+    <>
+    <Stack.Screen options={{ headerLeft: () => (
+      <Pressable onPress={() => { clearPending(); router.back(); }} accessibilityRole="button" hitSlop={10} style={{ minHeight: 44, justifyContent: 'center' }}>
+        <Text style={[TYPE.body, { color: theme.accentText }]}>Cancel</Text>
+      </Pressable>
+    ) }} />
     <ScrollView style={{ backgroundColor: theme.ground }} contentContainerStyle={{ padding: SPACE.md, gap: SPACE.md, paddingBottom: insets.bottom + SPACE.lg }} keyboardShouldPersistTaps="handled">
       {!calc ? <Txt v="callout" tone="ink2">Nothing to save. Go back and tap Save under a result.</Txt> : (
         <>
@@ -46,5 +52,6 @@ export default function Save() {
         </>
       )}
     </ScrollView>
+    </>
   );
 }
