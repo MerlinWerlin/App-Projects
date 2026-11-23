@@ -63,8 +63,10 @@ test('country values match their sources', () => {
   assert.ok(Math.abs(COUNTRIES.US.materials[0]!.density - 1.661) < 0.002);
   assert.ok(Math.abs(COUNTRIES.CA.materials[0]!.density - 1.766) < 0.002);
   // IRC R401.3: 6 in in 10 ft = 1:20; NCC: 50 mm in 1 m = 1:20
-  assert.equal(COUNTRIES.US.falls.presets[0]!.ratio, 20);
-  assert.equal(COUNTRIES.AU.falls.presets[0]!.ratio, 20);
+  assert.ok(COUNTRIES.US.falls.presets.some(p => p.ratio === 20 && p.detail.includes('IRC R401.3')));
+  assert.ok(COUNTRIES.AU.falls.presets.some(p => p.ratio === 20 && p.detail.includes('NCC')));
+  // the default (first) preset is a paving fall, not the building-edge rule
+  for (const c of Object.values(COUNTRIES)) assert.ok(c.falls.presets[0]!.ratio >= 40, c.code);
   // Approved Document K private stair 2R + G 550–700
   assert.deepEqual(COUNTRIES.GB.stairs!.twoRG, [0.55, 0.7]);
 });

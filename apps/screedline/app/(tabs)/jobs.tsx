@@ -3,7 +3,7 @@ import { Alert, Image, Platform, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useApp } from '../../src/state/AppState';
 import { FONT, SPACE } from '../../src/theme/theme';
-import { Button, Group, Row, ScreedLine, T } from '../../src/ui/kit';
+import { Button, Group, Row, ScreedLine, T, StatusBarBackdrop } from '../../src/ui/kit';
 
 const EMPTY = require('../../assets/art/empty-jobs.jpg');
 
@@ -20,6 +20,7 @@ export default function JobsScreen() {
   const insets = useSafeAreaInsets();
   const when = (ms: number) => new Date(ms).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' });
   return (
+    <View style={{ flex: 1, backgroundColor: theme.ground }}>
     <ScrollView style={{ flex: 1, backgroundColor: theme.ground }} contentContainerStyle={{ paddingTop: insets.top + SPACE.m, paddingHorizontal: SPACE.l, paddingBottom: SPACE.xxl, gap: SPACE.l }}>
       <View style={{ gap: SPACE.s }} accessibilityRole="header">
         <ScreedLine theme={theme} width={56} />
@@ -45,5 +46,7 @@ export default function JobsScreen() {
         </View>
       )}
     </ScrollView>
+    <StatusBarBackdrop />
+    </View>
   );
 }

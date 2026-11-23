@@ -1,6 +1,7 @@
 /** Shared controls. Big targets (56 pt), high contrast, Dynamic Type safe. Colours only from the theme. */
 import { type ReactNode, useState } from 'react';
 import { InputAccessoryView, Keyboard, Platform, Pressable, StyleSheet, Text, TextInput, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useApp } from '../state/AppState';
 import { BOLD, FONT, RADIUS, SPACE, TARGET, type Theme } from '../theme/theme';
 import { haptic } from '../native/store';
@@ -176,3 +177,10 @@ export function Group({ children }: { children: ReactNode }) {
 const styles = StyleSheet.create({
   input: { minHeight: 64, borderRadius: RADIUS.m, flexDirection: 'row', alignItems: 'center', paddingHorizontal: SPACE.l },
 });
+
+/** Opaque strip behind the status bar on screens without a navigation bar, so scrolled content never sits under the clock. */
+export function StatusBarBackdrop() {
+  const { theme } = useApp();
+  const { top } = useSafeAreaInsets();
+  return <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: top, backgroundColor: theme.ground, borderBottomWidth: 0 }} />;
+}

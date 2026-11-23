@@ -54,7 +54,7 @@ def compose(shot, title, sub, dark, out):
     for ln in wrap(d, title, ft, W - 220):
         d.text((110, y), ln, font=ft, fill=ink)
         y += 138
-    y += 10
+    y += 30
     for ln in wrap(d, sub, fs, W - 220):
         d.text((110, y), ln, font=fs, fill=ink2)
         y += 64

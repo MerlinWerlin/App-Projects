@@ -23,14 +23,17 @@ appId: ${APP_ID}
     element:
       id: "tool-mesh"
     direction: DOWN
+    centerElement: true
 - takeScreenshot: 02-tools-${MODE}
 
 # Slab: result and working
 - stopApp
 - launchApp
-- extendedWaitUntil:
-    visible:
+- scrollUntilVisible:
+    element:
       id: "tool-slab"
+    direction: DOWN
+    centerElement: true
     timeout: 30000
 - tapOn:
     id: "tool-slab"
@@ -43,6 +46,7 @@ appId: ${APP_ID}
     element:
       id: "show-working"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "show-working"
 - scroll
@@ -55,6 +59,7 @@ appId: ${APP_ID}
     element:
       id: "tool-mesh"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "tool-mesh"
 - waitForAnimationToEnd
@@ -66,6 +71,7 @@ appId: ${APP_ID}
     element:
       id: "tool-falls"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "tool-falls"
 - waitForAnimationToEnd
@@ -82,6 +88,7 @@ appId: ${APP_ID}
     element:
       id: "tool-pavers"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "tool-pavers"
 - waitForAnimationToEnd
@@ -93,6 +100,7 @@ appId: ${APP_ID}
     element:
       id: "tool-retaining"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "tool-retaining"
 - waitForAnimationToEnd
@@ -104,6 +112,7 @@ appId: ${APP_ID}
     element:
       id: "tool-weather"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "tool-weather"
 - waitForAnimationToEnd

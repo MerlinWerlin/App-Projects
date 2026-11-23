@@ -12,12 +12,14 @@ appId: ${APP_ID}
     id: "country-${COUNTRY}"
 - tapOn:
     id: "country-continue"
-- extendedWaitUntil:
-    visible:
-      id: "tool-slab"
-    timeout: 30000
 - waitForAnimationToEnd
 - takeScreenshot: c1-home-${TAG}
+- scrollUntilVisible:
+    element:
+      id: "tool-slab"
+    direction: DOWN
+    centerElement: true
+    timeout: 30000
 - tapOn:
     id: "tool-slab"
 - waitForAnimationToEnd
@@ -26,6 +28,7 @@ appId: ${APP_ID}
     element:
       id: "show-working"
     direction: DOWN
+    centerElement: true
 - tapOn:
     id: "show-working"
 - scroll

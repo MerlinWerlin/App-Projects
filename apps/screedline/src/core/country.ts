@@ -125,9 +125,9 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
     ],
     falls: {
       presets: [
-        { label: '1:20', ratio: 20, detail: '50 mm over the first 1 m away from a building (NCC)' },
         { label: '1:60', ratio: 60, detail: '1.7 %, paths and driveways' },
         { label: '1:100', ratio: 100, detail: '1 %, common minimum for paving' },
+        { label: '1:20', ratio: 20, detail: '50 mm over the first 1 m away from a building (NCC)' },
       ],
       // ABCB Housing Provisions 2022 cl. 3.3.3(1).
       buildingNote: 'NCC: ground next to a building falls at least 50 mm over the first 1 m (25 mm for paving in low-rainfall areas).',
@@ -299,9 +299,9 @@ export const COUNTRIES: Record<CountryCode, CountryProfile> = {
     ],
     falls: {
       presets: [
-        { label: '1:20', ratio: 20, detail: '6 in within the first 10 ft away from the house (IRC R401.3)' },
         { label: '1:50', ratio: 50, detail: '2 %, paving within 10 ft of the house (IRC R401.3)' },
         { label: '1:100', ratio: 100, detail: '1 %, flattest common paving fall' },
+        { label: '1:20', ratio: 20, detail: '6 in within the first 10 ft away from the house (IRC R401.3)' },
       ],
       buildingNote: 'IRC R401.3: grade falls at least 6 in within the first 10 ft; paving next to the house at least 2 %.',
     },

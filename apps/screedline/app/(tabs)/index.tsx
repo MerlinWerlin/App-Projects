@@ -5,7 +5,7 @@ import { useApp } from '../../src/state/AppState';
 import { CAPTURE } from '../../src/state/capture';
 import { BOLD, FONT, RADIUS, SPACE } from '../../src/theme/theme';
 import { GROUPS, type Tool } from '../../src/tools/registry';
-import { Button, Card, Icon, ScreedLine, T } from '../../src/ui/kit';
+import { Button, Card, Icon, ScreedLine, T, StatusBarBackdrop } from '../../src/ui/kit';
 
 const WELCOME = require('../../assets/art/welcome.jpg');
 
@@ -16,6 +16,7 @@ export default function ToolsScreen() {
   const { width } = useWindowDimensions();
   const open = (t: Tool) => router.push(t.screen ? (t.screen as '/checklist') : { pathname: '/tool/[id]', params: { id: t.id } });
   return (
+    <View style={{ flex: 1, backgroundColor: theme.ground }}>
     <ScrollView style={{ flex: 1, backgroundColor: theme.ground }} contentContainerStyle={{ paddingTop: insets.top + SPACE.m, paddingHorizontal: SPACE.l, paddingBottom: SPACE.xxl }}>
       <View style={{ gap: SPACE.s, marginBottom: SPACE.l }} accessibilityRole="header">
         <ScreedLine theme={theme} width={56} />
@@ -77,5 +78,7 @@ export default function ToolsScreen() {
         </View>
       ))}
     </ScrollView>
+    <StatusBarBackdrop />
+    </View>
   );
 }

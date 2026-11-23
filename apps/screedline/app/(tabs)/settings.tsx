@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { parseNumber } from '../../src/core/units';
 import { useApp } from '../../src/state/AppState';
 import { FONT, SPACE } from '../../src/theme/theme';
-import { Choice, FieldShell, Group, NumberInput, Row, ScreedLine, SectionHeader, T } from '../../src/ui/kit';
+import { Choice, FieldShell, Group, NumberInput, Row, ScreedLine, SectionHeader, T, StatusBarBackdrop } from '../../src/ui/kit';
 import { useState } from 'react';
 
 export default function SettingsScreen() {
@@ -21,6 +21,7 @@ export default function SettingsScreen() {
     Alert.alert(r.ok ? 'Restored' : 'Restore purchases', r.ok ? (r.access.full ? 'Full Unlock is back on this phone.' : 'Your trial was found.') : r.message);
   };
   return (
+    <View style={{ flex: 1, backgroundColor: theme.ground }}>
     <ScrollView style={{ flex: 1, backgroundColor: theme.ground }} contentContainerStyle={{ paddingTop: insets.top + SPACE.m, paddingHorizontal: SPACE.l, paddingBottom: SPACE.xxl }} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
       <View style={{ gap: SPACE.s }} accessibilityRole="header">
         <ScreedLine theme={theme} width={56} />
@@ -61,5 +62,7 @@ export default function SettingsScreen() {
       </Group>
       <T kind="small" style={{ marginTop: SPACE.l, textAlign: 'center' }}>Screedline {Constants.expoConfig?.version ?? ''} · Quantities are estimates. Confirm with your supplier, and with your engineer for anything structural.</T>
     </ScrollView>
+    <StatusBarBackdrop />
+    </View>
   );
 }
