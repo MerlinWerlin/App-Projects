@@ -198,15 +198,18 @@ import Darwin
     let next = app.staticTexts["Next steps"].firstMatch
     let yes = app.buttons["Yes, use it"].firstMatch
     // A download started from the theme bar applies the theme by itself and opens Next steps.
+    // After a bar download the sheet shows "Loading…" while the theme is applied, then the bar reads "In use ✓".
+    let inUse = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "In use")).firstMatch
+    let useOnly = app.buttons.matching(NSPredicate(format: "label == %@", "Use this theme")).firstMatch
     let ready = Date().addingTimeInterval(150)
-    while Date() < ready && !next.exists && !yes.exists && !use.exists { settle(2) }
-    XCTAssertTrue(next.exists || yes.exists || use.exists, "\(name) did not finish downloading\n" + app.debugDescription)
+    while Date() < ready && !next.exists && !yes.exists && !inUse.exists && !useOnly.exists { settle(2) }
+    XCTAssertTrue(next.exists || yes.exists || inUse.exists || useOnly.exists, "\(name) did not finish downloading\n" + app.debugDescription)
     shot(app, "\(slug)-downloaded")
-    if !next.exists {
-      if !yes.exists { _ = reveal(use, in: app); use.tap(); settle(1.5) }
+    if !next.exists && !inUse.exists {
+      if !yes.exists { _ = reveal(useOnly, in: app); useOnly.tap(); settle(1.5) }
       if yes.waitForExistence(timeout: 10) { shot(app, "\(slug)-use-prompt"); yes.tap() }
     }
-    XCTAssertTrue(next.waitForExistence(timeout: 30) || app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "In use")).firstMatch.exists, "\(name) was not applied\n" + app.debugDescription)
+    XCTAssertTrue(next.waitForExistence(timeout: 30) || inUse.waitForExistence(timeout: 30), "\(name) was not applied\n" + app.debugDescription)
     settle(2)
     shot(app, "\(slug)-applied")
     tree(app, "\(slug)-applied")
