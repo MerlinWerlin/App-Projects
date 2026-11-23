@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.44: 111 new themes, each with five artworks, a wallpaper and its own Clock, Battery and Calendar designs. Every theme card now previews the theme with its own Clock widget and Phone, Messages and Camera icons. 1.0.44 reads catalog-v2.json; catalog.json stays frozen for older builds.",
+  "note": "Glaze 1.0.44 build 98: free themes no longer look zoomed in at the top of Themes (the large prints show the whole wallpaper). Theme cards are now half Clock and half Artwork, alternating along every row, each artwork picked to suit its theme and shipped in the app. Phone, Messages and Camera now sit up top beside the widget, like a real Home Screen. 1.0.44 reads catalog-v2.json; catalog.json stays frozen for older builds.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
