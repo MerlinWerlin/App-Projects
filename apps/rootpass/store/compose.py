@@ -25,7 +25,7 @@ SHOTS = [
     ('pdf', 'PRINT TRUE SCALE', 'Wrap it round the pipe and cut'),
     ('07-lobster', 'LOBSTER-BACKS', 'Every piece, every angle'),
     ('08-cutlist', 'CUT LISTS', 'Fewest lengths, kerf counted'),
-    ('10-weight', 'STEEL WEIGHT', 'Plate, tube, angle, bar'),
+    ('09-weight-top', 'STEEL WEIGHT', 'Sizes your supplier stocks'),
     ('02-home-tools', 'EIGHT WORKSHOP TOOLS', 'Big buttons. Glove friendly.'),
     ('05-saddle-working', 'SHOWS ITS WORKING', 'Check every number'),
     ('11-pcd', 'BOLT CIRCLES', 'Coordinates and drill template'),
@@ -101,21 +101,25 @@ def compose(raw: pathlib.Path, out: pathlib.Path, pdf: pathlib.Path | None):
             src = Image.open(files[0])
         img = background(i)
         d = ImageDraw.Draw(img)
-        d.text((W / 2, 250), title, font=big, fill=INK, anchor='mm')
+        size = 150
+        while size > 90 and d.textlength(title, font=ImageFont.truetype(str(FONT), size)) > W - 140:
+            size -= 6
+        d.text((W / 2, 250), title, font=ImageFont.truetype(str(FONT), size), fill=INK, anchor='mm')
         d.text((W / 2, 400), sub, font=small, fill=ORANGE, anchor='mm')
         if name == 'pdf':
             # A printed sheet on the bench: white paper with a soft shadow, slightly turned.
-            sheet = src.convert('RGB')
-            sw = 1180
-            sheet = sheet.resize((sw, int(sheet.height * sw / sheet.width)), Image.LANCZOS)
+            # Landscape sheet turned portrait so it fills the phone-shaped frame.
+            sheet = src.convert('RGB').rotate(90, expand=True)
+            sh = 1640
+            sheet = sheet.resize((int(sheet.width * sh / sheet.height), sh), Image.LANCZOS)
             shadow = Image.new('RGBA', (sheet.width + 80, sheet.height + 80), (0, 0, 0, 0))
             ImageDraw.Draw(shadow).rectangle([40, 40, sheet.width + 40, sheet.height + 40], fill=(0, 0, 0, 160))
             shadow = shadow.filter(ImageFilter.GaussianBlur(24))
             layer = Image.new('RGBA', shadow.size, (0, 0, 0, 0))
             layer.paste(shadow, (12, 22))
             layer.paste(sheet, (40, 40))
-            layer = layer.rotate(-4, expand=True, resample=Image.BICUBIC)
-            img.paste(layer, ((W - layer.width) // 2, 720), layer)
+            layer = layer.rotate(-3, expand=True, resample=Image.BICUBIC)
+            img.paste(layer, ((W - layer.width) // 2, 560), layer)
             d.text((W / 2, 2700), 'Every sheet carries a 100 mm check ruler', font=ImageFont.truetype(str(FONT), 64), fill=(195, 199, 206), anchor='mm')
         else:
             f = frame(src, 1060)

@@ -88,7 +88,8 @@ export function NumField({ label, value, onChange, unit, hint, step, min, intege
     void Haptics.selectionAsync().catch(() => undefined);
   };
   return (
-    <View style={{ gap: 6, flex: 1, minWidth: 140 }}>
+    // A field with − / + steppers needs room for three digits between them: on narrow phones it takes its own row.
+    <View style={{ gap: 6, flex: 1, minWidth: step ? 210 : 140 }}>
       <Txt v="label" tone="ink2">{label}</Txt>
       <View style={[st.field, { borderColor: invalid ? C.bad : focus ? C.accent : C.line }]}>
         {step ? <Stepper icon="remove" label={`Less ${label}`} onPress={() => bump(-step)} /> : null}
@@ -142,7 +143,7 @@ export function Segmented<T extends string>({ value, options, onChange, label }:
               accessibilityState={{ selected: on }}
               style={[st.segItem, on && { backgroundColor: C.accent }]}
             >
-              <Txt v="headline" tone={on ? 'accentInk' : 'ink2'} style={{ textAlign: 'center' }} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.7}>{o.label}</Txt>
+              <Txt v="headline" tone={on ? 'accentInk' : 'ink2'} style={{ textAlign: 'center' }} numberOfLines={o.label.includes(' ') ? 2 : 1} adjustsFontSizeToFit minimumFontScale={0.6}>{o.label}</Txt>
             </Pressable>
           );
         })}
