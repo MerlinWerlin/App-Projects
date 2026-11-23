@@ -1,0 +1,82 @@
+name: trammel store capture
+# Builds Trammel for the iOS simulator with EXPO_PUBLIC_TRAMMEL_CAPTURE=1 (store stub: every tool open; the paywall
+# shows the new-customer state for the purchase review screenshot), opens each screen by deep link on a 6.9-inch
+# iPhone simulator and saves screenshots (1320 x 2868) in light and dark. Also a functional smoke test: every route
+# must render without the app exiting. Nothing here ships anything.
+on:
+  workflow_dispatch:
+  # A branch push that changes the request file runs it too (workflow_dispatch needs the file on main first).
+  push:
+    branches-ignore: [main]
+    paths: ['apps/trammel/store/capture-request.txt']
+permissions:
+  contents: read
+concurrency:
+  group: trammel-store-capture-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  capture:
+    runs-on: xcode-27
+    timeout-minutes: 100
+    defaults:
+      run:
+        working-directory: apps/trammel
+    env:
+      EXPO_PUBLIC_TRAMMEL_CAPTURE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Select Xcode 27
+        run: |
+          X=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - name: Prebuild
+        run: |
+          npx expo prebuild --platform ios --no-install
+          cd ios && pod install > "$RUNNER_TEMP/pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/pods.log"; exit 1; }
+      - name: Build the simulator app
+        run: |
+          WS=$(ls -d ios/*.xcworkspace | head -1); SCHEME=$(basename "$WS" .xcworkspace)
+          xcodebuild -workspace "$WS" -scheme "$SCHEME" -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/derived" \
+            CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/build.log" 2>&1 \
+            || { tail -180 "$RUNNER_TEMP/build.log"; exit 1; }
+      - name: Capture every screen
+        run: |
+          APP=$(ls -d "$RUNNER_TEMP"/derived/Build/Products/Release-iphonesimulator/*.app | head -1)
+          BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
+          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS-27" in r for x in xs if x["name"].startswith("iPhone") and "Pro Max" in x["name"]];print(a[0]["udid"])')
+          xcrun simctl list devices available | grep "$DEVICE"
+          xcrun simctl boot "$DEVICE"; xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl status_bar "$DEVICE" override --time 9:41 --dataNetwork wifi --wifiBars 3 --cellularBars 4 --batteryState charged --batteryLevel 100 || true
+          xcrun simctl install "$DEVICE" "$APP"
+          OUT="$RUNNER_TEMP/out"; mkdir -p "$OUT"
+          FAIL=0
+          for MODE in light dark; do
+            xcrun simctl ui "$DEVICE" appearance $MODE
+            xcrun simctl terminate "$DEVICE" "$BID" 2>/dev/null || true
+            L=$(xcrun simctl launch "$DEVICE" "$BID"); PID=${L##* }
+            sleep 12
+            xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-00-home.png"
+            i=1
+            for R in stairs rafter hip crown mitre layout decking cutlist square arc convert pitch jobs settings paywall; do
+              xcrun simctl openurl "$DEVICE" "trammel:///$R"
+              sleep 5
+              xcrun simctl io "$DEVICE" screenshot "$OUT/$MODE-$(printf %02d $i)-$R.png"
+              if ! xcrun simctl spawn "$DEVICE" launchctl list | grep -q "$BID"; then echo "::error::Trammel exited on $R ($MODE)"; FAIL=1; L=$(xcrun simctl launch "$DEVICE" "$BID"); sleep 8; fi
+              i=$((i+1))
+            done
+          done
+          find ~/Library/Logs/DiagnosticReports -newer "$APP" -name '*.ips' -exec cp {} "$OUT/" \; 2>/dev/null || true
+          ls -la "$OUT"
+          exit $FAIL
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trammel-store-capture
+          path: ${{ runner.temp }}/out
+          if-no-files-found: ignore

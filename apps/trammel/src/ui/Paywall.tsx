@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { Alert, Linking, Text, View } from 'react-native';
 import { TRIAL_SKU, UNLOCK_SKU, unlockButton } from '../core/access.ts';
+import { CAPTURE } from '../native/store.ts';
 import { buy, refreshProducts, restorePurchases, useAccess } from '../state/access.ts';
 import { fonts, space, useTheme } from '../theme/theme.ts';
 import { Button, Card, P } from './kit.tsx';
@@ -23,7 +24,10 @@ export function accessLine(a: { state: string; daysLeft: number }): string {
 
 export function Paywall() {
   const t = useTheme();
-  const a = useAccess();
+  const live = useAccess();
+  // Simulator capture builds only (no App Store there): show the screen as a new customer sees it, for the in-app
+  // purchase review screenshot. Store and TestFlight builds never set EXPO_PUBLIC_TRAMMEL_CAPTURE.
+  const a = CAPTURE ? { ...live, state: 'new' as const, daysLeft: 7, canEdit: false, products: { [UNLOCK_SKU]: { id: UNLOCK_SKU, displayName: 'Trammel Full Unlock', displayPrice: 'A$4.99' } } } : live;
   const [busy, setBusy] = useState(false);
   const unlock = unlockButton(a.products[UNLOCK_SKU]?.displayPrice);
   const canStartTrial = a.state === 'new';

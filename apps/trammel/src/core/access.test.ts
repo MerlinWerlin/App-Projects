@@ -46,3 +46,8 @@ test('states: stub, new, trial, expired, unlocked; refunds never count', () => {
 test('the always-free tools are the ones the paywall copy promises', () => {
   assert.deepEqual(TOOLS.filter((t) => t.free).map((t) => t.id).sort(), ['convert', 'mitre', 'pitch', 'square']);
 });
+
+test('no build profile turns on the capture-only store stub', () => {
+  assert.doesNotMatch(read('eas.json'), /EXPO_PUBLIC_TRAMMEL_CAPTURE/);
+  assert.doesNotMatch(read('app.json'), /EXPO_PUBLIC_TRAMMEL_CAPTURE/);
+});
