@@ -1,0 +1,14 @@
+{
+  "theme": "jade-meridian",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "jade-pendant",
+      "replaces": "valley-disc",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a carved green jade bi disc (round with a central hole), hanging from a knotted red silk cord that enters from the top edge, a small red tassel below, soft light from the upper left, dark green background.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

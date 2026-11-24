@@ -1,0 +1,14 @@
+{
+  "theme": "honeywood",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "honeybee-flight",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real macro photograph: a single honeybee in flight, wings blurred, golden fur lit by warm honey-coloured sunlight. No flower. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

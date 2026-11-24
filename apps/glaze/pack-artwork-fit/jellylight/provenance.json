@@ -1,0 +1,14 @@
+{
+  "theme": "jellylight",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "moon-jelly",
+      "replaces": "glass-anemone",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real underwater photograph: a small moon jellyfish drifting in deep blue water, translucent bell softly glowing, fine tentacles. No bubbles.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

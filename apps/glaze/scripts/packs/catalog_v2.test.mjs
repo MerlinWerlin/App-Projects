@@ -139,7 +139,16 @@ test('art-fit overrides swap only version/bytes/manifest/thumb of a legacy entry
     const v5 = { ...o, packVersion: 5, manifest: 'art/old-one/v5/manifest.json', thumb: 'art/old-one/v5/t.webp' };
     assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [v5], overrideManifests: { 'old-one': { ...m, packVersion: 5 } } }), /must be v4/);
     assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [{ ...o, bytes: 1 }], overrideManifests: art.overrideManifests }), /bytes differ/);
-    assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [{ ...o, id: 'nope' }], overrideManifests: {} }), /not in catalog\.json/);
+    assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [{ ...o, id: 'nope' }], overrideManifests: {} }), /not catalogued/);
+    // a 1.0.44 new theme can be art-fitted too: v1 -> v2, only the four fields change, legacy untouched
+    const nm = manifest('new-one', 2, '1.0.44', [['w.0000abcd.webp', 'wallpaper', w], ['thumb.0000abcd.webp', 'thumb', t]]);
+    const n2 = { id: 'new-one', packVersion: 2, bytes: nm.totalBytes, manifest: 'art/new-one/v2/manifest.json', thumb: 'art/new-one/v2/thumb.0000abcd.webp' };
+    const both = mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [o, n2], overrideManifests: { ...art.overrideManifests, 'new-one': nm } });
+    const bout = JSON.parse(both.text).packs;
+    assert.equal(both.overridden, 2);
+    assert.deepEqual(bout[2], { ...themes.fresh.packs[0], packVersion: 2, bytes: n2.bytes, manifest: n2.manifest, thumb: n2.thumb });
+    assert.deepEqual(bout[1], legacy[1]);
+    assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [{ ...n2, packVersion: 3, manifest: 'art/new-one/v3/manifest.json', thumb: 'art/new-one/v3/t.webp' }], overrideManifests: { 'new-one': { ...nm, packVersion: 3 } } }), /must be v2/);
   } finally {
     rmSync(f.root, { recursive: true, force: true });
   }

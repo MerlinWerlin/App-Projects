@@ -1,0 +1,42 @@
+{
+  "theme": "saguaro-siesta",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "harris-hawk",
+      "replaces": "terracotta-snake",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a Harris's hawk soaring, chestnut shoulders and dark brown body, white tail base, warm late-afternoon desert light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "cactus-wren",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a cactus wren in flight, speckled brown-and-white, wings spread, warm desert light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "turkey-vulture",
+      "replaces": "art-20261107-turquoise-agave",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a turkey vulture soaring with wings in a shallow V, dark brown with silver flight feathers, warm desert light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "white-winged-dove",
+      "replaces": "art-20261107-desert-quail",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a white-winged dove in flight, soft tan-grey with bold white wing bars, warm desert light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "costas-hummingbird",
+      "replaces": "terracotta-armadillo",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a Costa's hummingbird hovering, purple gorget flared, wings blurred, warm desert light. No flower. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

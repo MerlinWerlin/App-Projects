@@ -1,0 +1,14 @@
+{
+  "theme": "ember-workshop",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "hanging-watch",
+      "replaces": "pocket-railway",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: an open brass pocket watch hanging by its chain from a small iron nail in the dark workshop wall, warm ember light from below-left, cream dial, only a faint soft shadow on the wall behind.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

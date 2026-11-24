@@ -1,0 +1,42 @@
+{
+  "theme": "frostglass-passage",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "ptarmigan-flight",
+      "replaces": "glacier-pebble",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a rock ptarmigan in white winter plumage in flight, black tail feathers showing, soft flat snowy light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "raven-snow",
+      "replaces": "ice-lantern",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a common raven gliding in a pale winter sky, wings spread, a few snowflakes on its feathers, soft flat light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "hawk-owl",
+      "replaces": "frost-fox",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a northern hawk owl in flight, long tail, barred grey-white plumage, yellow eyes, soft flat snowy light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "snow-bunting",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a snow bunting in flight, white wings with black tips, soft flat snowy light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "gyrfalcon",
+      "replaces": "frostglass-pinecone",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a white gyrfalcon in flight, speckled white plumage, wings spread, soft flat snowy light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "theme": "opal-abyss",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "moon-jelly",
+      "replaces": "moon-jelly-window",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real underwater photograph: a single moon jellyfish drifting in dark deep-blue water, translucent bell with four pale rings, fine trailing tentacles, soft light from above. No bubbles, no rays.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "anglerfish",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real deep-sea photograph: a small anglerfish in the dark blue water, its lure glowing soft blue-white, natural dark body. No ground.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "dumbo-octopus",
+      "replaces": "opal-starfish",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real deep-sea photograph: a dumbo octopus swimming in dark blue water, pale pink-peach body with ear-like fins, softly lit from above. No ground.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

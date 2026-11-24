@@ -1,0 +1,42 @@
+{
+  "theme": "crimson-reverie",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "lacquer-fan",
+      "replaces": "crimson-fan",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: an open folding fan with black lacquered ribs and a red silk leaf painted with tiny gold cranes, held upright in darkness, dramatic warm side light from the left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "origami-crane",
+      "replaces": "silk-crane",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a single origami crane folded from deep red washi paper with faint gold flecks, floating in darkness, warm low light from the left catching its folds. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "red-lantern",
+      "replaces": "silk-dragon",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a round red paper lantern glowing warmly from inside, hanging from a thin black cord that enters from the top edge, black lacquer top and bottom rims, gold tassel below. In darkness. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "red-camellia",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a single deep-red camellia blossom with golden stamens falling through darkness, petals velvety, warm low side light from the left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "jade-tassel",
+      "replaces": "crimson-silk-koi",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a carved pale-green jade pendant on a knotted red silk cord with a long red tassel, hanging from the top edge, in darkness, warm side light from the left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

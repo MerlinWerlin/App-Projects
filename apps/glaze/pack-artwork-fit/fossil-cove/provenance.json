@@ -1,0 +1,42 @@
+{
+  "theme": "fossil-cove",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "herring-gull",
+      "replaces": "fossil-ammonite",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a large herring gull gliding close to the camera, filling about 70% of the frame, with wings fully spread, white body and pale grey wings with black tips, bright soft overcast coastal light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "kittiwake",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a black-legged kittiwake in flight, white with grey wings and neat black wingtips, soft bright coastal light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "seabird-feather",
+      "replaces": "art-20261107-amber-inclusion",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real macro photograph: a single white-and-pale-grey gull feather drifting in the air, slightly curved, soft bright light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "oystercatcher",
+      "replaces": "art-20261107-mosaic-trilobite",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a Eurasian oystercatcher in flight, black-and-white with a long orange-red bill and pink legs trailing, soft coastal light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "day-moon",
+      "replaces": "sandstone-shark-tooth",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a pale waxing gibbous moon in a daytime sky, chalky white with soft grey maria and a soft curved terminator, slightly hazy. The unlit sliver is exactly the background colour.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "theme": "c-lenslet-maple",
+  "base": {
+    "packVersion": 1,
+    "manifestSha256": "f8deedc6886346bc9839bd33a9648e3611a8cb0a4dad57481eddd31d1eea9f0a"
+  },
+  "replace": [
+    {
+      "from": "fox-glade",
+      "id": "wren-flight",
+      "label": "Wren",
+      "file": "wren-flight.webp"
+    },
+    {
+      "from": "wren-glade",
+      "id": "comma-flight",
+      "label": "Comma butterfly",
+      "file": "comma-flight.webp"
+    },
+    {
+      "from": "acorn-glade",
+      "id": "samara-pair",
+      "label": "Maple seeds",
+      "file": "samara-pair.webp"
+    },
+    {
+      "from": "comma-glade",
+      "id": "owl-flight",
+      "label": "Tawny owl",
+      "file": "owl-flight.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

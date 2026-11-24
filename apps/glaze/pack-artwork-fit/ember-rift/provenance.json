@@ -1,0 +1,42 @@
+{
+  "theme": "ember-rift",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "lava-bomb",
+      "replaces": "cooling-lava",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a single glowing lava bomb arcing through the night, a dark crusted rock with bright orange-yellow cracks, a short fading spark trail behind it. Nothing else. No smoke cloud.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "rising-embers",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real long-exposure photograph: a bold, dense swirl of many bright glowing orange-yellow ember sparks rising upward through the night air, filling about 65% of the frame, crisp bright points with short warm streaks, clearly visible. Nothing else.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "raven-ember",
+      "replaces": "art-20261106-ember-geode",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a common raven in flight at night, wings spread, black feathers lit from below by warm orange lava glow. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "crescent-moon",
+      "replaces": "art-20261106-basalt-spires",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "A thin crescent moon, warm pale silver, crisp lunar detail on the lit limb, long-lens night photograph. ONLY the bright lit crescent is visible: the dark part of the moon is completely invisible, exactly the background colour (NO earthshine, no grey disc). Nothing else.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "meteor",
+      "replaces": "obsidian-arrowhead",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real long-exposure night photograph: a single big bright fireball meteor streaking diagonally down across the frame, a large blazing white-gold head with a warm orange glow and a THICK, bold, bright glowing trail that tapers over about 70% of the frame width, very clearly visible, high contrast. Nothing else, no landscape.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

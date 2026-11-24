@@ -1,0 +1,28 @@
+{
+  "theme": "lavender-nocturne",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "embroidered-moth",
+      "replaces": "teacup-village",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Fine hand embroidery stitched straight onto the dark plum linen, exactly like the wallpaper's embroidered cottage (satin stitch, French knots, visible thread sheen): a soft grey-and-lilac moth with feathery antennae, wings open.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "embroidered-moon",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Fine hand embroidery stitched straight onto the dark plum linen, exactly like the wallpaper's embroidered cottage (satin stitch, French knots, visible thread sheen): a crescent moon in pale gold thread with three tiny stitched stars around it.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "embroidered-owl",
+      "replaces": "lavender-embroidered-harp",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Fine hand embroidery stitched straight onto the dark plum linen, exactly like the wallpaper's embroidered cottage (satin stitch, French knots, visible thread sheen): a barn owl in flight, wings wide, cream and soft gold threads, heart-shaped face.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

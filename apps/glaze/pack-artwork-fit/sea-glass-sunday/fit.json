@@ -1,0 +1,28 @@
+{
+  "theme": "sea-glass-sunday",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "8904b499f916d156e81c2d3e9ef0944d0f9649427a0180498ffff87a211d0ec6"
+  },
+  "replace": [
+    {
+      "from": "art-20261107-tidepool-charm",
+      "id": "sugar-starfish",
+      "label": "Starfish",
+      "file": "sugar-starfish.webp"
+    },
+    {
+      "from": "art-20261107-shell-wind-chime",
+      "id": "hermit-crab",
+      "label": "Hermit crab",
+      "file": "hermit-crab.webp"
+    },
+    {
+      "from": "sea-glass-crab",
+      "id": "sea-glass-handful",
+      "label": "Sea glass",
+      "file": "sea-glass-handful.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

@@ -1,0 +1,39 @@
+{
+  "theme": "event-horizon",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "006445cfe6c913a158dcaf8df77697a65a9dcbb34f18432ba2c7f7a3fb30d88d"
+  },
+  "replace": [
+    {
+      "from": "gravity-hourglass",
+      "id": "spiral-galaxy",
+      "label": "Spiral galaxy",
+      "file": "spiral-galaxy.webp"
+    },
+    {
+      "from": "orbit-diamond",
+      "id": "rim-lit-planet",
+      "label": "Rocky planet",
+      "file": "rim-lit-planet.webp"
+    },
+    {
+      "from": "lensing-study",
+      "id": "red-giant",
+      "label": "Red giant",
+      "file": "red-giant.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "comet",
+      "file": "comet.webp"
+    },
+    {
+      "from": "photon-ribbon-helix",
+      "id": "ringed-giant",
+      "label": "Ringed planet",
+      "file": "ringed-giant.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

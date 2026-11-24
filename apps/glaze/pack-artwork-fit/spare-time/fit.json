@@ -1,0 +1,16 @@
+{
+  "theme": "spare-time",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "156f21f68a351ef33fec3224dd42484dc9fedf5dc8fce3faaf8ff9fd245bec4d"
+  },
+  "replace": [
+    {
+      "from": "bowling-satellite",
+      "id": "bowling-ball",
+      "label": "Bowling ball",
+      "file": "bowling-ball.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

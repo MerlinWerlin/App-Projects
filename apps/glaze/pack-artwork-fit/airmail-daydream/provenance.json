@@ -1,0 +1,42 @@
+{
+  "theme": "airmail-daydream",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "airmail-stamp",
+      "replaces": "stamp-terrarium",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a single vintage airmail postage stamp with perforated edges, a small engraved paper plane in blue ink and a red border, lying flat on the paper, slightly rotated.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "wax-seal-envelope",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: one cream airmail envelope with the red-and-blue striped border, closed with a round red wax seal, lying flat and slightly rotated.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "paper-plane",
+      "replaces": "art-20261106-mail-balloon",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a single folded white paper plane made from airmail paper (thin red-and-blue stripes on its edges) gliding in the air, seen slightly from above, soft even daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "letter-bundle",
+      "replaces": "art-20261106-paper-swallow",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a small bundle of three old letters and airmail envelopes tied with thin brown twine in a bow, lying flat.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "fountain-pen",
+      "replaces": "postal-satchel",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a single dark-blue fountain pen with a gold nib lying diagonally, its cap posted, a few small ink dots near the nib.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

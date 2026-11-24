@@ -1,0 +1,21 @@
+{
+  "theme": "obsidian-tide",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "driftwood",
+      "replaces": "audit-20261101-tidal-eye",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real aerial photograph seen from directly above: a single bleached twisted piece of driftwood lying on black volcanic sand, soft daylight.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "kelp-strand",
+      "replaces": "sea-glass-wave-sculpture",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real aerial photograph seen from directly above: a strand of olive-brown bull kelp with its bulb lying on black volcanic sand, wet sheen, soft daylight.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

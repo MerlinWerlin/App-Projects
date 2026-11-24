@@ -1,0 +1,14 @@
+{
+  "theme": "sonata-house",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "wall-violin",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: an antique violin with its bow hanging on the warm cream wall from a small brass hook, soft daylight from the left, only a faint soft shadow on the wall behind.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

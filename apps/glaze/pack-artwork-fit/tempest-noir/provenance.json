@@ -1,0 +1,28 @@
+{
+  "theme": "tempest-noir",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "storm-gull",
+      "replaces": "storm-glass",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a great black-backed gull battling a storm wind at night, wings bent, lit by a cold flash of lightning from the left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "lightning-fork",
+      "replaces": "art-20261107-lightning-coil",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real long-exposure night photograph: a single bold, thick, very bright branching fork of lightning running from the top to the bottom of the frame, intense white-hot core with blue-white glow and several clear branches, high contrast against the dark night. Nothing else, no clouds, no sea.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "storm-petrel",
+      "replaces": "art-20261107-rain-gauge",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a European storm petrel filling most of the frame, flying at night, wings angled, its white rump and the pale underwing bar clearly lit by a bright cold flash from the left so the bird reads clearly against the dark. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

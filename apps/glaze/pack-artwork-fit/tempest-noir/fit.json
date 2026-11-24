@@ -1,0 +1,28 @@
+{
+  "theme": "tempest-noir",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "08102e8f3f9681e99f3ad5f68e7175c2496d9dff68ea0b1f8015556eed6d2f3b"
+  },
+  "replace": [
+    {
+      "from": "storm-glass",
+      "id": "storm-gull",
+      "label": "Gull",
+      "file": "storm-gull.webp"
+    },
+    {
+      "from": "art-20261107-lightning-coil",
+      "id": "lightning-fork",
+      "label": "Lightning",
+      "file": "lightning-fork.webp"
+    },
+    {
+      "from": "art-20261107-rain-gauge",
+      "id": "storm-petrel",
+      "label": "Storm petrel",
+      "file": "storm-petrel.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

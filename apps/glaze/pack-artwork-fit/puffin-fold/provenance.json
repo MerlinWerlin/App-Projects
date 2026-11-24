@@ -1,0 +1,21 @@
+{
+  "theme": "puffin-fold",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "paper-kittiwake",
+      "replaces": "paper-lighthouse",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Layered paper-cut craft in the exact style of the wallpaper (cut card layers with soft tiny shadows between layers, matte paper texture): a white-and-grey paper kittiwake gliding.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "paper-gannet",
+      "replaces": "paper-fishing-boat",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Layered paper-cut craft in the exact style of the wallpaper (cut card layers with soft tiny shadows between layers, matte paper texture): a white paper gannet with black wingtips and a pale yellow head, diving.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

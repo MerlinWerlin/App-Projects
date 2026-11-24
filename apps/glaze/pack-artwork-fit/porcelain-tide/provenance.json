@@ -1,0 +1,28 @@
+{
+  "theme": "porcelain-tide",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "ink-tern",
+      "replaces": "blue-lotus-bowl",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Traditional blue-and-white Chinese porcelain ink painting style (cobalt-blue ink washes and fine brush lines on the cream paper), exactly like the wallpaper's ink waves: a single tern in flight, wings swept, painted with a few confident cobalt brush strokes.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "ink-crane",
+      "replaces": "porcelain-crane",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Traditional blue-and-white Chinese porcelain ink painting style (cobalt-blue ink washes and fine brush lines on the cream paper), exactly like the wallpaper's ink waves: a single red-crowned crane in flight, long neck stretched, wings wide, cobalt ink with a tiny touch of red on the crown. No sun, no circle.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "ink-swallows",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Traditional blue-and-white Chinese porcelain ink painting style (cobalt-blue ink washes and fine brush lines on the cream paper), exactly like the wallpaper's ink waves: two swallows darting together, slender forked tails, painted with quick cobalt brush strokes.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "theme": "blueprint-bureau",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "blueprint-lantern",
+      "replaces": "art-20261107-optical-lantern",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "A white-line architectural blueprint drawing, fine white technical ink lines with small dimension lines and construction circles, drawn straight on the plain blueprint-blue paper (no wash, no fill, no 3D): a brass optical magic lantern projector seen from the side, lens tube and chimney.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "blueprint-nautilus",
+      "replaces": "art-20261107-mechanical-nautilus",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "A white-line architectural blueprint drawing, fine white technical ink lines with small dimension lines and construction circles, drawn straight on the plain blueprint-blue paper (no wash, no fill, no 3D): a nautilus shell cross-section showing its chambers, with a golden-spiral construction line.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

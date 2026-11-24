@@ -1,0 +1,39 @@
+{
+  "theme": "saguaro-siesta",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "1aef0ac2965d58d5b0976e17e9eed3694cf945eaefbfe355a1e8f18d02c55b83"
+  },
+  "replace": [
+    {
+      "from": "terracotta-snake",
+      "id": "harris-hawk",
+      "label": "Harris's hawk",
+      "file": "harris-hawk.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "cactus-wren",
+      "file": "cactus-wren.webp"
+    },
+    {
+      "from": "art-20261107-turquoise-agave",
+      "id": "turkey-vulture",
+      "label": "Turkey vulture",
+      "file": "turkey-vulture.webp"
+    },
+    {
+      "from": "art-20261107-desert-quail",
+      "id": "white-winged-dove",
+      "label": "Dove",
+      "file": "white-winged-dove.webp"
+    },
+    {
+      "from": "terracotta-armadillo",
+      "id": "costas-hummingbird",
+      "label": "Hummingbird",
+      "file": "costas-hummingbird.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

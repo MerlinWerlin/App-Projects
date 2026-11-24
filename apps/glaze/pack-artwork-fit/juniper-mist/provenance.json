@@ -1,0 +1,21 @@
+{
+  "theme": "juniper-mist",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "waxwing-flight",
+      "replaces": "art-20261106-winter-terrarium",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a Bohemian waxwing in flight, crest raised, soft pinkish-grey with yellow tail tip, soft flat misty light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "goldcrest-flight",
+      "replaces": "juniper-mortar-pestle",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a goldcrest in flight, tiny olive-green bird with a yellow crown stripe, soft flat misty light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

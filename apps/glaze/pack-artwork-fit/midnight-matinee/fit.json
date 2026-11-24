@@ -1,0 +1,33 @@
+{
+  "theme": "midnight-matinee",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "6af4508e5991ef3e919023ee281ba61c5f9fef6907cfb08f92e07411d28e64b0"
+  },
+  "replace": [
+    {
+      "from": "popcorn-planet",
+      "id": "popcorn-box",
+      "label": "Popcorn",
+      "file": "popcorn-box.webp"
+    },
+    {
+      "from": "velvet-cinema-bat",
+      "id": "cinema-tickets",
+      "label": "Tickets",
+      "file": "cinema-tickets.webp"
+    },
+    {
+      "from": "velvet-moth",
+      "id": "projector-moth",
+      "label": "Moth",
+      "file": "projector-moth.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "curtain-tassel",
+      "file": "curtain-tassel.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

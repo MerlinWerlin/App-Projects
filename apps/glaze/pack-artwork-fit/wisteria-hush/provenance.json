@@ -1,0 +1,21 @@
+{
+  "theme": "wisteria-hush",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "wisteria-raceme",
+      "replaces": "art-20261107-wisteria-bell",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a single long lavender wisteria flower raceme hanging from a short twisted vine that enters from the top edge, soft diffuse light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "lilac-moth",
+      "replaces": "art-20261107-dew-snail",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a pale lilac-and-cream moth in flight, soft diffuse light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

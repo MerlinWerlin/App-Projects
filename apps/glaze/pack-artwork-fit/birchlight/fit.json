@@ -1,0 +1,39 @@
+{
+  "theme": "birchlight",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "492bb1ef3519e83dc3240ec1ae29759c283cff915b4ac5ba282394495208ed29"
+  },
+  "replace": [
+    {
+      "from": "amber-fern-frame",
+      "id": "falling-birch-leaf",
+      "label": "Birch leaf",
+      "file": "falling-birch-leaf.webp"
+    },
+    {
+      "from": "birch-seedpod",
+      "id": "goldeneye-flight",
+      "label": "Goldeneye",
+      "file": "goldeneye-flight.webp"
+    },
+    {
+      "from": "golden-leaf",
+      "id": "heron-flight",
+      "label": "Grey heron",
+      "file": "heron-flight.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "geese-skein",
+      "file": "geese-skein.webp"
+    },
+    {
+      "from": "amber-birch-mushroom",
+      "id": "mist-sun",
+      "label": "Morning sun",
+      "file": "mist-sun.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

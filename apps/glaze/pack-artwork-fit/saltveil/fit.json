@@ -1,0 +1,33 @@
+{
+  "theme": "saltveil",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "87d0b6cfeabfae33aa89669968a621158fedccf5165a7a489e492d864e0f57fb"
+  },
+  "replace": [
+    {
+      "from": "hero-small",
+      "id": "flamingo-aerial",
+      "file": "flamingo-aerial.webp"
+    },
+    {
+      "from": "art-20261106-sea-glass-shell",
+      "id": "salt-driftwood",
+      "label": "Salt driftwood",
+      "file": "salt-driftwood.webp"
+    },
+    {
+      "from": "halite-feather",
+      "id": "flamingo-feather",
+      "label": "Flamingo feather",
+      "file": "flamingo-feather.webp"
+    },
+    {
+      "from": "rose-glass-sailboat",
+      "id": "avocet-aerial",
+      "label": "Avocet",
+      "file": "avocet-aerial.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

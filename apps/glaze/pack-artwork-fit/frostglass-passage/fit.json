@@ -1,0 +1,39 @@
+{
+  "theme": "frostglass-passage",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "265438134a928fbf4024d8769d4fd9997b10b5392fd38dd9d435756ae30c6c62"
+  },
+  "replace": [
+    {
+      "from": "glacier-pebble",
+      "id": "ptarmigan-flight",
+      "label": "Ptarmigan",
+      "file": "ptarmigan-flight.webp"
+    },
+    {
+      "from": "ice-lantern",
+      "id": "raven-snow",
+      "label": "Raven",
+      "file": "raven-snow.webp"
+    },
+    {
+      "from": "frost-fox",
+      "id": "hawk-owl",
+      "label": "Hawk owl",
+      "file": "hawk-owl.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "snow-bunting",
+      "file": "snow-bunting.webp"
+    },
+    {
+      "from": "frostglass-pinecone",
+      "id": "gyrfalcon",
+      "label": "Gyrfalcon",
+      "file": "gyrfalcon.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

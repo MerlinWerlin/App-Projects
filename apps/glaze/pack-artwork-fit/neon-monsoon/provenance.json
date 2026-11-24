@@ -1,0 +1,35 @@
+{
+  "theme": "neon-monsoon",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "red-lantern",
+      "replaces": "neon-paper-fish",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real night photograph: a red paper lantern glowing, hanging from a thin black wire that enters from the top edge, wet with raindrops, magenta and cyan neon reflections on its sides. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "clear-umbrella",
+      "replaces": "rain-capsule",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real night photograph: an open clear plastic umbrella, tilted, covered in raindrops that catch pink and cyan neon light, white handle. Floating, nobody holding it. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "neon-sign",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real night photograph: a small glowing neon sign shaped like a steaming noodle bowl, hot pink and cyan tubes, hanging from two short wires from the top edge, raindrops on the tubes. No letters. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "crow-neon",
+      "replaces": "neon-origami-fox",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a crow in flight at night in rain, glossy black feathers catching magenta and cyan neon reflections. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

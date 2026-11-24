@@ -1,0 +1,22 @@
+{
+  "theme": "juniper-mist",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "e8e084400ea309d67b813a9caa3a84794d5edbd43d1335afacb536f0e21a3b63"
+  },
+  "replace": [
+    {
+      "from": "art-20261106-winter-terrarium",
+      "id": "waxwing-flight",
+      "label": "Waxwing",
+      "file": "waxwing-flight.webp"
+    },
+    {
+      "from": "juniper-mortar-pestle",
+      "id": "goldcrest-flight",
+      "label": "Goldcrest",
+      "file": "goldcrest-flight.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}
