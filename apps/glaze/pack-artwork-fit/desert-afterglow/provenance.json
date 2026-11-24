@@ -1,0 +1,49 @@
+{
+  "theme": "desert-afterglow",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "crescent-moon",
+      "replaces": "crescent-moon",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "eagle-owl",
+      "replaces": "desert-scarab",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a pharaoh eagle-owl in silent flight at dusk, broad wings spread, tawny mottled plumage, orange eyes, warm amber afterglow rim light from the lower right on a dark sky. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "sandgrouse-pair",
+      "replaces": "sandstone-arch",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: two sandgrouse flying together at dusk, pointed wings, sandy speckled plumage, warm amber afterglow rim light from the lower right. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "lanner-falcon",
+      "replaces": "pyramid",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a lanner falcon gliding at dusk, long pointed wings spread, pale cream underside with fine streaks, warm amber afterglow light from the lower right.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "tomb-bat",
+      "replaces": "solstice-seal",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: an Egyptian tomb bat in flight at dusk, wings fully spread showing the fine bones in the thin membranes, soft brown fur, warm amber afterglow light from the lower right glowing through the wing membranes. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "nightjar",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: an Egyptian nightjar in flight at dusk, long pointed wings and long tail spread, soft sandy-grey camouflaged plumage, warm amber afterglow light from the lower right. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -4,7 +4,11 @@
 // which this script can NEVER write: it is not in any plan, and the live copy's SHA-256 is checked
 // against scripts/packs/catalog-v2-lock.json before and after.
 //
-//   node scripts/packs/publish_catalog_v2.mjs --new dist/extraordinary-packs --base <public URL> [--out dist/catalog-v2] [--upload] [--verify]
+//   node scripts/packs/publish_catalog_v2.mjs --new dist/extraordinary-packs --base <public URL> [--overrides dist/art-fit] [--out dist/catalog-v2] [--upload] [--verify]
+//
+// --overrides (art-fit, scripts/packs/art_fit_packs.mjs): new versions of EXISTING themes, for
+// catalog-v2.json only. Those entries keep every field but packVersion, bytes, manifest and thumb, and
+// must move up by exactly one version; every other legacy entry stays byte-for-byte as served.
 //
 // 1. Fetch the live catalog.json, check its SHA-256 against the lock.
 // 2. catalog-v2.json = every live entry exactly as served (same JSON values, same order) + every new
@@ -55,7 +59,9 @@ export function assertNeverLegacy(keys) {
  * catalog-v2.json text from the live legacy catalogue text and the new-theme catalogue + manifests.
  * `newManifests` maps id -> parsed manifest JSON (for the minAppVersion floor).
  */
-export function mergeCatalogV2({ legacyText, lock, fresh, newManifests }) {
+export const OVERRIDE_FIELDS = Object.freeze(['packVersion', 'bytes', 'manifest', 'thumb']);
+
+export function mergeCatalogV2({ legacyText, lock, fresh, newManifests, overrides = [], overrideManifests = {} }) {
   const legacyBytes = Buffer.from(legacyText, 'utf8');
   assert.equal(sha256(legacyBytes), lock.legacyCatalogSha256, 'live catalog.json is not the locked one: reconcile before publishing');
   const legacy = JSON.parse(legacyText);
@@ -73,15 +79,34 @@ export function mergeCatalogV2({ legacyText, lock, fresh, newManifests }) {
     assert.equal(m.packVersion, p.packVersion, `${p.id}: catalogue and manifest versions differ`);
     assert.ok(compareVersions(m.minAppVersion, lock.newThemeMinAppVersion) >= 0, `${p.id}: minAppVersion ${m.minAppVersion} is below ${lock.newThemeMinAppVersion}`);
   }
-  const out = { format: legacy.format, version: legacy.version, generatedAt: fresh.generatedAt, packs: [...legacy.packs, ...fresh.packs] };
+  const over = new Map();
+  for (const o of overrides) {
+    const p = legacy.packs.find((x) => x.id === o.id);
+    assert.ok(p, `${o.id}: art-fit override for a theme that is not in catalog.json`);
+    assert.ok(!over.has(o.id), `${o.id}: overridden twice`);
+    assert.equal(o.packVersion, p.packVersion + 1, `${o.id}: art-fit must be v${p.packVersion + 1}`);
+    assert.equal(o.manifest, `art/${o.id}/v${o.packVersion}/manifest.json`, `${o.id}: override manifest path`);
+    assert.ok(o.thumb.startsWith(`art/${o.id}/v${o.packVersion}/`), `${o.id}: override thumb path`);
+    const m = overrideManifests[o.id];
+    assert.ok(m, `${o.id}: override manifest missing`);
+    assert.equal(m.id, o.id);
+    assert.equal(m.packVersion, o.packVersion, `${o.id}: override catalogue and manifest versions differ`);
+    assert.equal(m.totalBytes, o.bytes, `${o.id}: override bytes differ from the manifest`);
+    over.set(o.id, { ...p, ...Object.fromEntries(OVERRIDE_FIELDS.map((k) => [k, o[k]])) });
+  }
+  const out = { format: legacy.format, version: legacy.version, generatedAt: fresh.generatedAt, packs: [...legacy.packs.map((p) => over.get(p.id) ?? p), ...fresh.packs] };
   const text = JSON.stringify(out, null, 2) + '\n';
   const parsed = parseCatalog(JSON.parse(text));
   assert.ok(parsed.ok, `catalog-v2.json fails the app parser: ${parsed.ok ? '' : parsed.error}`);
   assert.equal(parsed.value.packs.length, legacy.packs.length + fresh.packs.length, 'the app parser dropped an entry');
   assert.ok(Buffer.byteLength(text) < CATALOG_MAX_BYTES, 'catalog-v2.json is over the app size limit');
   const back = JSON.parse(text).packs;
-  legacy.packs.forEach((p, i) => assert.deepEqual(back[i], p, `${p.id}: legacy entry changed`));
-  return { text, catalog: out, legacyCount: legacy.packs.length, newCount: fresh.packs.length };
+  legacy.packs.forEach((p, i) => {
+    if (!over.has(p.id)) return assert.deepEqual(back[i], p, `${p.id}: legacy entry changed`);
+    const strip = (e) => Object.fromEntries(Object.entries(e).filter(([k]) => !OVERRIDE_FIELDS.includes(k)));
+    assert.deepEqual(strip(back[i]), strip(p), `${p.id}: art-fit changed more than ${OVERRIDE_FIELDS.join('/')}`);
+  });
+  return { text, catalog: out, legacyCount: legacy.packs.length, newCount: fresh.packs.length, overridden: over.size };
 }
 
 function walk(dir) {
@@ -104,8 +129,18 @@ export function readNewThemes(dir) {
   return { root, fresh, newManifests };
 }
 
+/** The art-fit overrides (scripts/packs/art_fit_packs.mjs) from a built folder, or none. */
+export function readOverrides(dir) {
+  if (!dir) return { root: null, overrides: [], overrideManifests: {} };
+  const root = resolve(dir);
+  const overrides = JSON.parse(readFileSync(join(root, 'overrides.json'), 'utf8'));
+  const overrideManifests = {};
+  for (const o of overrides) overrideManifests[o.id] = JSON.parse(readFileSync(join(root, o.manifest), 'utf8'));
+  return { root, overrides, overrideManifests };
+}
+
 /** Upload plan: every new theme file, then every new manifest, then catalog-v2.json last. */
-export function planCatalogV2({ root, fresh }, catalogText) {
+export function planCatalogV2({ root, fresh }, catalogText, art = null) {
   const entry = (key, buf, kind, file = null) => ({ key, file, body: file ? null : buf, size: buf.length, md5: md5(buf), sha256: sha256(buf), contentType: contentTypeOf(key), cacheControl: cacheControlOf(key), kind });
   const files = [];
   const manifests = [];
@@ -117,6 +152,16 @@ export function planCatalogV2({ root, fresh }, catalogText) {
     const buf = readFileSync(p);
     if (key.endsWith('/manifest.json')) manifests.push(entry(key, buf, 'manifest', p));
     else files.push(entry(key, buf, 'file', p));
+  }
+  for (const o of art?.overrides ?? []) {
+    const folder = o.manifest.slice(0, o.manifest.lastIndexOf('/'));
+    for (const p of walk(join(art.root, folder))) {
+      const key = relative(art.root, p).split(sep).join('/');
+      const buf = readFileSync(p);
+      if (key.endsWith('/manifest.json')) manifests.push(entry(key, buf, 'manifest', p));
+      else files.push(entry(key, buf, 'file', p));
+    }
+    assert.ok(manifests.some((m) => m.key === o.manifest), `${o.id}: no override manifest in the plan`);
   }
   for (const p of fresh.packs) assert.ok(manifests.some((m) => m.key === p.manifest), `${p.id}: no manifest in the plan`);
   const plan = [...files, ...manifests, entry(APP_CATALOG_FILE, Buffer.from(catalogText, 'utf8'), 'catalog')];
@@ -181,7 +226,8 @@ export async function uploadPlan(plan, { env = process.env, log = console.log, c
 }
 
 /** --verify: everything over the public URL the app uses. */
-export async function verifyPublic({ base, plan, catalog, lock, fetcher = fetch, concurrency = 3, log = console.log }) {
+export async function verifyPublic({ base, plan, catalog, lock, fetcher = fetch, concurrency = 3, log = console.log, overridden = [] }) {
+  const checkImages = new Set(overridden);
   const report = { newObjects: 0, newImages: 0, manifestsResolved: 0, thumbs: 0 };
   // New theme objects (files + manifests) and catalog-v2.json by SHA-256.
   await pool(plan, concurrency, async (p) => {
@@ -204,7 +250,7 @@ export async function verifyPublic({ base, plan, catalog, lock, fetcher = fetch,
     assert.equal(thumb.status, 200, `${entry.id}: thumbnail HTTP ${thumb.status}`);
     report.thumbs++;
     report.manifestsResolved++;
-    if (compareVersions(parsed.value.minAppVersion, lock.newThemeMinAppVersion) >= 0) {
+    if (checkImages.has(entry.id) || compareVersions(parsed.value.minAppVersion, lock.newThemeMinAppVersion) >= 0) {
       const folder = entry.manifest.slice(0, entry.manifest.lastIndexOf('/'));
       for (const a of parsed.value.assets) {
         const img = await get(fetcher, `${base}/${folder}/${a.path}`);
@@ -232,12 +278,13 @@ if (isMain) {
     const lock = readLock();
     const themes = readNewThemes(value('--new', join(APP_ROOT, 'dist', 'extraordinary-packs')));
     const before = await fetchLegacy(base);
-    const merged = mergeCatalogV2({ legacyText: before.toString('utf8'), lock, fresh: themes.fresh, newManifests: themes.newManifests });
+    const art = readOverrides(value('--overrides', ''));
+    const merged = mergeCatalogV2({ legacyText: before.toString('utf8'), lock, fresh: themes.fresh, newManifests: themes.newManifests, overrides: art.overrides, overrideManifests: art.overrideManifests });
     mkdirSync(out, { recursive: true });
     writeFileSync(join(out, APP_CATALOG_FILE), merged.text);
-    const plan = planCatalogV2(themes, merged.text);
+    const plan = planCatalogV2(themes, merged.text, art);
     const kinds = plan.reduce((k, p) => ({ ...k, [p.kind]: (k[p.kind] ?? 0) + 1 }), {});
-    const summary = { legacyThemes: merged.legacyCount, newThemes: merged.newCount, catalogued: merged.catalog.packs.length, objects: plan.length, ...kinds, mb: +(plan.reduce((n, p) => n + p.size, 0) / 1e6).toFixed(1), catalogV2Sha256: sha256(Buffer.from(merged.text)), legacySha256: sha256(before), last: plan.at(-1).key };
+    const summary = { legacyThemes: merged.legacyCount, artFit: merged.overridden, newThemes: merged.newCount, catalogued: merged.catalog.packs.length, objects: plan.length, ...kinds, mb: +(plan.reduce((n, p) => n + p.size, 0) / 1e6).toFixed(1), catalogV2Sha256: sha256(Buffer.from(merged.text)), legacySha256: sha256(before), last: plan.at(-1).key };
     writeFileSync(join(out, 'plan.json'), JSON.stringify({ summary, keys: plan.map((p) => `${p.kind} ${p.key} ${p.sha256}`) }, null, 2) + '\n');
     console.log(`${args.includes('--upload') ? 'publish' : 'dry run'}: ${JSON.stringify(summary)}`);
     if (args.includes('--upload')) {
@@ -246,7 +293,7 @@ if (isMain) {
       const after = await fetchLegacy(base);
       assert.equal(sha256(after), lock.legacyCatalogSha256, 'live catalog.json changed during the publish');
     }
-    if (args.includes('--verify')) await verifyPublic({ base, plan, catalog: merged.catalog, lock });
+    if (args.includes('--verify')) await verifyPublic({ base, plan, catalog: merged.catalog, lock, overridden: art.overrides.map((o) => o.id) });
     console.log(`live catalog.json unchanged: sha256 ${sha256(await fetchLegacy(base))}`);
   } catch (e) {
     console.error(`error: ${e instanceof Error ? e.message : e}`);

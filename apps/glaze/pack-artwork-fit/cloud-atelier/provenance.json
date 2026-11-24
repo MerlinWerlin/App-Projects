@@ -1,0 +1,42 @@
+{
+  "theme": "cloud-atelier",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "dandelion-seed",
+      "replaces": "balloon-skiff",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "drifting-feather",
+      "replaces": "cloud-kite",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "swallow-glide",
+      "replaces": "paper-boat",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "pearl-balloon",
+      "replaces": "origami-cloud-swan",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "white-dove",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A single white dove in graceful flight, wings fully spread in an upstroke, seen slightly from below; feathers translucent at the tips, warm peach-gold rim light from a low sun at the lower right, soft and slightly dreamy like the wallpaper's soft sunset photograph.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

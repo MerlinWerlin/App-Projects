@@ -1,0 +1,39 @@
+{
+  "theme": "rosewater-reverie",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "48783c1c51e14bc30c4868400270037cd1fbd579fd271a3b49372cbe4a32c8b3"
+  },
+  "replace": [
+    {
+      "from": "glass-rose",
+      "id": "dusty-rose",
+      "label": "Dusty rose",
+      "file": "dusty-rose.webp"
+    },
+    {
+      "from": "pearl-ballet-brooch",
+      "id": "pointe-shoes",
+      "label": "Pointe shoes",
+      "file": "pointe-shoes.webp"
+    },
+    {
+      "from": "satin-swan",
+      "id": "satin-bow",
+      "label": "Satin bow",
+      "file": "satin-bow.webp"
+    },
+    {
+      "from": "pearl-shell",
+      "id": "pearl-strand",
+      "label": "Pearl strand",
+      "file": "pearl-strand.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "perfume-bottle",
+      "file": "perfume-bottle.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

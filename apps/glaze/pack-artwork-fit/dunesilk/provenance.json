@@ -1,0 +1,42 @@
+{
+  "theme": "dunesilk",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "darkling-beetle",
+      "replaces": "wind-lines",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "desert-rose",
+      "replaces": "art-20261106-desert-rose",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A large sandy gypsum desert-rose crystal cluster with layered petal-like blades, sharp detail, filling about 70% of the frame, soft bright high sun from the upper right, a soft short contact shadow directly beneath it. Photographic.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "fennec-fox",
+      "replaces": "art-20261106-dune-shell",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "lark-flight",
+      "replaces": "wind-carved-arch",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A REAL wildlife photograph (not an illustration, not a painting): a greater hoopoe-lark in flight with wings spread showing its black-and-white wing bars, sandy-buff body, long down-curved bill, shot with a telephoto lens in bright hazy desert light from the upper right, natural muted colours, slightly soft haze, true photographic feather detail. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "sand-feather",
+      "replaces": "sandstone-fennec",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A REAL macro photograph: a single small pale cream and light-buff feather (desaturated, the colour of pale sand, NOT orange) drifting in the air, slightly curved, fine soft barbs, bright hazy high sun from the upper right, natural muted colours. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

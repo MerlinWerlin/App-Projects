@@ -1,0 +1,45 @@
+{
+  "theme": "verdigris-voyage",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "b34bfb6e9d303e2e930d17dfc40dd6e68f274676c6b87e750da245f1952c5973"
+  },
+  "replace": [
+    {
+      "from": "copper-seed-capsule",
+      "id": "copper-airship",
+      "label": "Greenhouse airship",
+      "file": "copper-airship.webp"
+    },
+    {
+      "from": "terrarium-sailboat",
+      "id": "ornithopter",
+      "label": "Ornithopter",
+      "file": "ornithopter.webp"
+    },
+    {
+      "from": "greenhouse-airship",
+      "id": "crane-pair",
+      "label": "Cranes",
+      "file": "crane-pair.webp"
+    },
+    {
+      "from": "botanical-diving-bell",
+      "id": "botanical-balloon",
+      "label": "Botanical balloon",
+      "file": "botanical-balloon.webp"
+    },
+    {
+      "from": "glasswing-dragonfly-craft",
+      "id": "seed-glider",
+      "label": "Seed glider",
+      "file": "seed-glider.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "brass-hummingbird",
+      "file": "brass-hummingbird.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

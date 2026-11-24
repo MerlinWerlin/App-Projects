@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { assertNeverLegacy, mergeCatalogV2, planCatalogV2, readLock, readNewThemes, uploadPlan, verifyPublic } from './publish_catalog_v2.mjs';
+import { assertNeverLegacy, mergeCatalogV2, planCatalogV2, readLock, readNewThemes, readOverrides, uploadPlan, verifyPublic } from './publish_catalog_v2.mjs';
 
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const PAL = { bg: '#04182E', tile: '#0C2A40', glyph: '#E6FBFF', accent: '#5EE1D9', text: '#E9FAFF' };
@@ -108,4 +108,39 @@ test('public verify: every catalogued manifest must resolve, new images match, l
     const changed = new Map(f.objects); changed.set('catalog.json', Buffer.from('{}'));
     await assert.rejects(verifyPublic({ base: 'https://packs.test', plan, catalog: merged.catalog, lock: f.lock, fetcher: fakeFetch(changed), log: quiet }), /live catalog\.json changed/);
   } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test('art-fit overrides swap only version/bytes/manifest/thumb of a legacy entry and join the plan', () => {
+  const f = fixture();
+  try {
+    const themes = readNewThemes(f.newDir);
+    const artDir = join(f.root, 'art-fit');
+    const w = Buffer.from('w2'), t = Buffer.from('t2');
+    const m = manifest('old-one', 4, '1.0.37', [['w.0000abcd.webp', 'wallpaper', w], ['thumb.0000abcd.webp', 'thumb', t]]);
+    const put = (key, buf) => { mkdirSync(join(artDir, key, '..'), { recursive: true }); writeFileSync(join(artDir, key), buf); };
+    put('art/old-one/v4/w.0000abcd.webp', w);
+    put('art/old-one/v4/thumb.0000abcd.webp', t);
+    put('art/old-one/v4/manifest.json', Buffer.from(JSON.stringify(m)));
+    const o = { id: 'old-one', packVersion: 4, bytes: m.totalBytes, manifest: 'art/old-one/v4/manifest.json', thumb: 'art/old-one/v4/thumb.0000abcd.webp' };
+    writeFileSync(join(artDir, 'overrides.json'), JSON.stringify([o]));
+    const art = readOverrides(artDir);
+    const merged = mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, ...art });
+    const out = JSON.parse(merged.text).packs;
+    const legacy = JSON.parse(f.legacyText).packs;
+    assert.equal(merged.overridden, 1);
+    assert.deepEqual(out[0], { ...legacy[0], packVersion: 4, bytes: o.bytes, manifest: o.manifest, thumb: o.thumb });
+    assert.deepEqual(out[1], legacy[1]);
+    const plan = planCatalogV2(themes, merged.text, art);
+    assert.ok(plan.some((p) => p.key === 'art/old-one/v4/manifest.json' && p.kind === 'manifest'));
+    assert.ok(plan.some((p) => p.key === 'art/old-one/v4/w.0000abcd.webp' && p.kind === 'file'));
+    assert.equal(plan.at(-1).key, 'catalog-v2.json');
+    assert.ok(!plan.some((p) => p.key === 'catalog.json'));
+    // a skipped version, a wrong byte count or an unknown theme is refused
+    const v5 = { ...o, packVersion: 5, manifest: 'art/old-one/v5/manifest.json', thumb: 'art/old-one/v5/t.webp' };
+    assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [v5], overrideManifests: { 'old-one': { ...m, packVersion: 5 } } }), /must be v4/);
+    assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [{ ...o, bytes: 1 }], overrideManifests: art.overrideManifests }), /bytes differ/);
+    assert.throws(() => mergeCatalogV2({ legacyText: f.legacyText, lock: f.lock, ...themes, overrides: [{ ...o, id: 'nope' }], overrideManifests: {} }), /not in catalog\.json/);
+  } finally {
+    rmSync(f.root, { recursive: true, force: true });
+  }
 });

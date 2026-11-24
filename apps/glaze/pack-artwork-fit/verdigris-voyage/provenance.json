@@ -1,0 +1,49 @@
+{
+  "theme": "verdigris-voyage",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "copper-airship",
+      "replaces": "copper-seed-capsule",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Painterly illustration in the exact style of the reference wallpaper (soft gouache and watercolour, fine ink detail, muted seafoam and aged copper palette): a small elegant airship with a cigar-shaped envelope of riveted copper ribs and pale glass panels, a verdigris patina streaking the copper, and beneath it a tiny greenhouse gondola of glass panes full of ferns and trailing vines, brass propeller at the stern, a pennant ribbon trailing. Soft diffuse misty light from the upper left. Floating in clear air, no clouds, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "ornithopter",
+      "replaces": "terrarium-sailboat",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Painterly illustration in the exact style of the reference wallpaper (soft gouache and watercolour, fine ink detail, muted seafoam and aged copper palette): a small copper ornithopter flying machine with four long glass-and-copper-vein wings like a dragonfly's, a riveted copper body with a round glass porthole showing tiny green seedlings inside, verdigris patina on the seams, delicate brass tail fins. Soft diffuse misty light from the upper left. In flight, no clouds, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "crane-pair",
+      "replaces": "greenhouse-airship",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Painterly illustration in the exact style of the reference wallpaper (soft gouache and watercolour, muted seafoam palette, like the misty Chinese-mountain atmosphere of the wallpaper): two red-crowned cranes flying together, long necks outstretched, white wings with black trailing feathers, tiny red crowns, soft misty light. No clouds, no mountains, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "botanical-balloon",
+      "replaces": "botanical-diving-bell",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Painterly illustration in the exact style of the reference wallpaper (soft gouache and watercolour, fine ink detail, muted seafoam and aged copper palette): a small hot-air balloon whose envelope is a cage of curved copper ribs with pale green glass panes, like a greenhouse dome turned into a balloon, a woven brass basket below overflowing with ferns and a tiny potted lemon tree, verdigris patina on the copper. Soft diffuse misty light. Floating in clear air, no clouds, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "seed-glider",
+      "replaces": "glasswing-dragonfly-craft",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Painterly illustration in the exact style of the reference wallpaper (soft gouache and watercolour, fine ink detail, muted seafoam and aged copper palette): a tiny flying machine shaped like a maple seed (samara): one long translucent glass wing with fine copper veins and a riveted copper seed-pod cockpit with a small round window, spinning gently through the air, verdigris patina. Soft diffuse misty light. No clouds, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "brass-hummingbird",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Painterly illustration in the exact style of the reference wallpaper (soft gouache and watercolour, fine ink detail, muted seafoam and aged copper palette): a clockwork hummingbird automaton hovering, body of engraved copper and brass with verdigris patina, wings of thin glass panes in copper frames, a tiny visible gear at its chest, long fine beak. Soft diffuse misty light from the upper left. No flower, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

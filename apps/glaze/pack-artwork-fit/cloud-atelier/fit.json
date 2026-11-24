@@ -1,0 +1,39 @@
+{
+  "theme": "cloud-atelier",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "32acf634d273daff9885fd3a8ad9388db7540f0baf862126169b46155fba9fd9"
+  },
+  "replace": [
+    {
+      "from": "balloon-skiff",
+      "id": "dandelion-seed",
+      "label": "Dandelion seed",
+      "file": "dandelion-seed.webp"
+    },
+    {
+      "from": "cloud-kite",
+      "id": "drifting-feather",
+      "label": "Drifting feather",
+      "file": "drifting-feather.webp"
+    },
+    {
+      "from": "paper-boat",
+      "id": "swallow-glide",
+      "label": "Swallow",
+      "file": "swallow-glide.webp"
+    },
+    {
+      "from": "origami-cloud-swan",
+      "id": "pearl-balloon",
+      "label": "Pearl balloon",
+      "file": "pearl-balloon.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "white-dove",
+      "file": "white-dove.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

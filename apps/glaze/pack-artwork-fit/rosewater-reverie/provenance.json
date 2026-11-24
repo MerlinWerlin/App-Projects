@@ -1,0 +1,42 @@
+{
+  "theme": "rosewater-reverie",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "dusty-rose",
+      "replaces": "glass-rose",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "pointe-shoes",
+      "replaces": "pearl-ballet-brooch",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "satin-bow",
+      "replaces": "satin-swan",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "pearl-strand",
+      "replaces": "pearl-shell",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "perfume-bottle",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A small vintage cut-crystal perfume bottle with a faceted stopper, pale blush-pink liquid inside, soft diffuse light, delicate reflections, only a soft short contact shadow beneath it. Photographic, elegant, simple.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

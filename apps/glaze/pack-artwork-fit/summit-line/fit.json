@@ -1,0 +1,39 @@
+{
+  "theme": "summit-line",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "669da82ce540aafb368c1ef9784f0ee8aecac17cd28953261ffb6429f8eceb3a"
+  },
+  "replace": [
+    {
+      "from": "pine-rope-pendant",
+      "id": "golden-eagle",
+      "label": "Golden eagle",
+      "file": "golden-eagle.webp"
+    },
+    {
+      "from": "art-20261107-snowshoe-pair",
+      "id": "alpine-chough",
+      "label": "Alpine chough",
+      "file": "alpine-chough.webp"
+    },
+    {
+      "from": "alpine-ice-axe",
+      "id": "bearded-vulture",
+      "label": "Bearded vulture",
+      "file": "bearded-vulture.webp"
+    },
+    {
+      "from": "alpine-mountain-hut",
+      "id": "crescent-moon",
+      "label": "Crescent moon",
+      "file": "crescent-moon.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "snow-crystal",
+      "file": "snow-crystal.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

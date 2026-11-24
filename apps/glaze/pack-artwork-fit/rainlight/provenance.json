@@ -1,0 +1,49 @@
+{
+  "theme": "rainlight",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "black-umbrella",
+      "replaces": "audit-20261101-rain-window",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "street-lamp",
+      "replaces": "glass-umbrella",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "raindrop-macro",
+      "replaces": "rain-leaf",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "tea-mug",
+      "replaces": "koi",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "wet-cat",
+      "replaces": "rain-dragonfly",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A sleek black cat sitting upright and still, seen from the side, its fur damp with a few raindrops, a soft cyan rim light along its back and a plum rim light on its chest from off-frame blurred city lights, eyes catching a faint glint. Photographic, moody, dark. Only a faint soft contact shadow under its paws.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "wet-leaf",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A single wet autumn leaf (a small maple leaf, deep amber-red) seen close up, beaded with raindrops, as if stuck to a dark rainy window at night, soft cyan rim light on one edge and plum on the other from off-frame blurred city lights. Photographic macro, moody. No bokeh behind it.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}
