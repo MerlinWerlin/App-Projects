@@ -33,8 +33,10 @@ PITCH = 102 * PT
 # Alpine Starlight's Artwork 1-5, in the order the Widgets tab lists them.
 ART = ['copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon', 'spiral-galaxy']
 # The one artwork each store Home Screen shows (top corner). Any other theme: its Artwork 1.
-HERO = {'alpine-starlight': 'saturn-rings', 'desert-afterglow': 'crescent-moon',
-        'cloud-atelier': 'balloon-skiff', 'cobalt-caravan': 'oasis-bird'}
+# 1.0.44: only pieces that pass Jared's art-fit rules (glaze-art-fit/RUBRIC.md v2 + JARED_CALLS.md).
+HERO = {'alpine-starlight': 'saturn-rings', 'desert-afterglow': 'crescent-moon', 'cloud-atelier': 'dandelion-seed',
+        'rainlight': 'street-lamp', 'rosewater-reverie': 'dusty-rose', 'bluewing': 'sapphire-stag-beetle',
+        'bamboo-ink': 'resting-crane'}
 APPS_ROW = [('camera', 'Camera'), ('image', 'Photos'), ('clock', 'Clock'), ('sun', 'Weather')]
 APPS_ROW2 = [('mail', 'Mail'), ('map', 'Maps'), ('music', 'Music'), ('calendar', 'Calendar')]
 APPS_SIDE = [('book-open', 'Books'), ('edit-3', 'Notes'), ('folder', 'Files'), ('settings', 'Settings')]
@@ -54,19 +56,24 @@ def hexc(s):
 
 
 def remote_theme(theme_id, art=None):
-    """(wallpaper, [the one art piece], look) of a catalogue theme, from its pack manifest."""
-    cat = json.loads(fetch(f'{R2}/catalog.json'))
+    """(wallpaper, [the one art piece], look) of a catalogue theme, from its pack manifest.
+
+    1.0.44 reads catalog-v2.json (src/config/packs.ts), which serves the art-fit pack versions. The piece is
+    picked by its manifest widget id (HERO, or --art). A piece with background "wallpaper" is a transparent
+    cutout that the app sets over the slice of wallpaper behind the widget, so here it goes straight onto the
+    wallpaper; any other piece keeps the blended / rounded-tile look."""
+    cat = json.loads(fetch(f'{R2}/catalog-v2.json'))
     entry = next(p for p in cat['packs'] if p['id'] == theme_id)
     base = f"{R2}/{entry['manifest'].rsplit('/', 1)[0]}"
     man = json.loads(fetch(f"{R2}/{entry['manifest']}"))
     wall = next(a['path'] for a in man['assets'] if a['role'] == 'wallpaper' and a['height'] >= 2796)
-    # Artwork 1-5 exactly as the app picks them (scripts/packs/artwork-coverage.json, the same rule as
-    # src/core/artworkCoverage.ts), never simply the manifest's first art pieces (those can repeat a motif).
-    cov = json.loads((GLAZE / 'scripts/packs/artwork-coverage.json').read_text(encoding='utf8'))['perTheme'][theme_id]
-    art_base = f"{R2}/{cov['manifest'].rsplit('/', 1)[0]}"
     want = art or HERO.get(theme_id)
-    pick = next((i for i in cov['images'] if want and i.startswith(f'widget-{want}.')), cov['images'][0])
-    arts = [Image.open(io.BytesIO(fetch(f'{art_base}/{pick}'))).convert('RGB')]
+    pieces = [w for w in man['widgets'] if w.get('kind') == 'art' and 'small' in w.get('sizes', [])]
+    w = next((p for p in pieces if p['id'] == want), None)
+    if w is None:
+        raise SystemExit(f'{theme_id}: no small art piece {want!r}; pieces: {[p["id"] for p in pieces]}')
+    im = Image.open(io.BytesIO(fetch(f"{base}/{w['image']}")))
+    arts = [(im.convert('RGBA'), w.get('background'))]
     pal = man['palette']
     look = {'tile': hexc(pal['tile']), 'glyph': hexc(pal['glyph']),
             'texture': 'stars' if entry.get('category') == 'Space & Night' else 'grain'}
@@ -156,6 +163,12 @@ def blended(art):
 
 
 def widget(img, art, x, y, size):
+    art, background = art if isinstance(art, tuple) else (art, None)
+    if background == 'wallpaper' and art.mode == 'RGBA' and art.getextrema()[3][0] < 255:
+        # Seamless art-fit piece: the app draws the wallpaper slice behind it, so it sits on the wallpaper.
+        img.alpha_composite(art.resize((size, size), Image.LANCZOS), (x, y))
+        return
+    art = art.convert('RGB')
     b = blended(art)
     if b is not None:
         b = b.resize((size, size), Image.LANCZOS)
