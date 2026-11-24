@@ -17,7 +17,7 @@ permissions:
 jobs:
   capture:
     runs-on: xcode-27
-    timeout-minutes: 80
+    timeout-minutes: 100
     defaults:
       run:
         working-directory: apps/glaze
@@ -65,7 +65,7 @@ jobs:
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
       - name: Capture the store screens on a 6.9-inch iPhone
-        timeout-minutes: 40
+        timeout-minutes: 60
         run: |
           set -uo pipefail
           OUT="$RUNNER_TEMP/glaze-store-captures"; mkdir -p "$OUT/raw"
