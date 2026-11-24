@@ -144,10 +144,14 @@ jobs:
         run: |
           node scripts/packs/extraordinary_themes.mjs
           python scripts/packs/verify_extraordinary_images.py
+      - name: Build art-fit versions of existing themes (pack-artwork-fit, catalog-v2.json only)
+        run: |
+          [ -n "$PUBLIC_URL" ] || { echo 'repo variable GLAZE_R2_PUBLIC_URL is not set'; exit 1; }
+          node scripts/packs/art_fit_packs.mjs --base "$PUBLIC_URL" --out dist/art-fit | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Plan catalog-v2.json (no writes)
         run: |
           [ -n "$PUBLIC_URL" ] || { echo 'repo variable GLAZE_R2_PUBLIC_URL is not set'; exit 1; }
-          node scripts/packs/publish_catalog_v2.mjs --base "$PUBLIC_URL" | tee -a "$GITHUB_STEP_SUMMARY"
+          node scripts/packs/publish_catalog_v2.mjs --base "$PUBLIC_URL" --overrides dist/art-fit | tee -a "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         with:
           name: glaze-catalog-v2
@@ -155,6 +159,8 @@ jobs:
             apps/glaze/dist/catalog-v2
             apps/glaze/dist/extraordinary-packs/catalog.json
             apps/glaze/dist/extraordinary-packs/art/**/manifest.json
+            apps/glaze/dist/art-fit/overrides.json
+            apps/glaze/dist/art-fit/art/**/manifest.json
           retention-days: 14
       - name: Upload new files, manifests, then catalog-v2.json; verify over the public URL
         if: ${{ !inputs.dry_run }}
@@ -163,4 +169,4 @@ jobs:
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-        run: node scripts/packs/publish_catalog_v2.mjs --base "$PUBLIC_URL" --upload --verify | tee -a "$GITHUB_STEP_SUMMARY"
+        run: node scripts/packs/publish_catalog_v2.mjs --base "$PUBLIC_URL" --overrides dist/art-fit --upload --verify | tee -a "$GITHUB_STEP_SUMMARY"

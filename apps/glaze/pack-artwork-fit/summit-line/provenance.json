@@ -1,0 +1,42 @@
+{
+  "theme": "summit-line",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "golden-eagle",
+      "replaces": "pine-rope-pendant",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "alpine-chough",
+      "replaces": "art-20261107-snowshoe-pair",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "bearded-vulture",
+      "replaces": "alpine-ice-axe",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a bearded vulture (lammergeier) soaring with long narrow wings and wedge tail fully spread, rusty-orange chest and dark wings, lit by cool blue dusk light from the right.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "crescent-moon",
+      "replaces": "alpine-mountain-hut",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A thin crescent moon in a dusk sky, pale warm-white lit limb with fine lunar detail, long-lens photograph. ONLY the bright lit crescent is visible: the dark part of the moon is completely invisible, exactly the same colour as the background (NO earthshine, no grey disc, no outline). Nothing else: no stars, no halo, no mountains.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "snow-crystal",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A single real snow crystal (six-armed stellar dendrite) drifting, photographed macro, matte white with natural tiny imperfections, lit cool blue from the right, slightly soft. Not glassy, not a decoration, not an icon.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.44 build 98: free themes no longer look zoomed in at the top of Themes (the large prints show the whole wallpaper). Theme cards are now half Clock and half Artwork, alternating along every row, each artwork picked to suit its theme and shipped in the app. Phone, Messages and Camera now sit up top beside the widget, like a real Home Screen. 1.0.44 reads catalog-v2.json; catalog.json stays frozen for older builds.",
+  "note": "Glaze 1.0.44 build 99: art-fit pilot for 10 themes (Cloud Atelier, Aurora Haven, Summit Line, Saffron Courtyard, Rainlight, Glacier Quiet, Desert Afterglow, Dunesilk, Verdigris Voyage, Rosewater Reverie). Their small artwork is redrawn as single subjects that belong in the plain sky or wall where the widget sits, shipped as transparent cutouts so the real wallpaper shows behind them (no squares). New pack versions are in catalog-v2.json only; catalog.json stays frozen. Theme cards for six of them show the new art. Medium and large hero art is unchanged for now.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

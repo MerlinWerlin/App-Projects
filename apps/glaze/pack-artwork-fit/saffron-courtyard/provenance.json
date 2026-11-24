@@ -1,0 +1,42 @@
+{
+  "theme": "saffron-courtyard",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "hanging-lantern",
+      "replaces": "glazed-lemons",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A pierced brass Moroccan lantern hanging from a short dark iron chain that enters from the top edge, intricate star-pattern cut-outs, warm golden sunlight from the upper left; only its own very soft, faint shadow falling on the chalk wall just behind and to the lower right of it. Photographic, warm and sunny like the wallpaper.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "swallow-flight",
+      "replaces": "mosaic-sunbird",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a barn swallow darting in flight across a sunny courtyard, wings swept back, glossy blue back and rusty throat, warm golden sunlight from the upper left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "wall-plate",
+      "replaces": "pomegranate-court",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A round hand-painted Moroccan ceramic plate hung flat on the chalk wall, teal-green and cobalt geometric star pattern with a terracotta rim, glossy glaze catching warm sunlight from the upper left; only a thin soft shadow around its lower-right edge on the wall. Photographic, front-on.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "wall-planter",
+      "replaces": "mosaic-carafe",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A small terracotta pot of red geraniums held by a black wrought-iron wall bracket fixed to the chalk wall, trailing leaves, warm sunlight from the upper left, only its own soft short shadow on the wall to the lower right. Photographic, Andalusian-Moroccan courtyard style.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "bougainvillea-sprig",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A trailing sprig of magenta-pink bougainvillea with papery bracts and green leaves hanging down from the top edge of the frame (its stem enters from the top), warm sunlight from the upper left, a very soft faint shadow on the chalk wall behind it. Photographic.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

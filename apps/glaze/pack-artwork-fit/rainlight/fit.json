@@ -1,0 +1,45 @@
+{
+  "theme": "rainlight",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "2ef46cefe2fc065d6619fe4661ebde89d30ab4cb5e9f278e28c7ee7d96722b0c"
+  },
+  "replace": [
+    {
+      "from": "audit-20261101-rain-window",
+      "id": "black-umbrella",
+      "label": "Black umbrella",
+      "file": "black-umbrella.webp"
+    },
+    {
+      "from": "glass-umbrella",
+      "id": "street-lamp",
+      "label": "Street lamp",
+      "file": "street-lamp.webp"
+    },
+    {
+      "from": "rain-leaf",
+      "id": "raindrop-macro",
+      "label": "Raindrop",
+      "file": "raindrop-macro.webp"
+    },
+    {
+      "from": "koi",
+      "id": "tea-mug",
+      "label": "Tea by the window",
+      "file": "tea-mug.webp"
+    },
+    {
+      "from": "rain-dragonfly",
+      "id": "wet-cat",
+      "label": "Black cat",
+      "file": "wet-cat.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "wet-leaf",
+      "file": "wet-leaf.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

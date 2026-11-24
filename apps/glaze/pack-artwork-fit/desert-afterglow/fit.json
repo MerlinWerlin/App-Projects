@@ -1,0 +1,45 @@
+{
+  "theme": "desert-afterglow",
+  "base": {
+    "packVersion": 6,
+    "manifestSha256": "bf690bef57ac370714a86da545c03eb725447f3956197e7f9bbdaea759204264"
+  },
+  "replace": [
+    {
+      "from": "crescent-moon",
+      "id": "crescent-moon",
+      "label": "Crescent moon",
+      "file": "crescent-moon.webp"
+    },
+    {
+      "from": "desert-scarab",
+      "id": "eagle-owl",
+      "label": "Eagle-owl",
+      "file": "eagle-owl.webp"
+    },
+    {
+      "from": "sandstone-arch",
+      "id": "sandgrouse-pair",
+      "label": "Sandgrouse",
+      "file": "sandgrouse-pair.webp"
+    },
+    {
+      "from": "pyramid",
+      "id": "lanner-falcon",
+      "label": "Lanner falcon",
+      "file": "lanner-falcon.webp"
+    },
+    {
+      "from": "solstice-seal",
+      "id": "tomb-bat",
+      "label": "Tomb bat",
+      "file": "tomb-bat.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "nightjar",
+      "file": "nightjar.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

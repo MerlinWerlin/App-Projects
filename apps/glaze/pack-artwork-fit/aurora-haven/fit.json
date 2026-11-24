@@ -1,0 +1,39 @@
+{
+  "theme": "aurora-haven",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "54f72cbecd9019e977248cf93ba9f031ecc90cad55452d081e88b255cfe8098f"
+  },
+  "replace": [
+    {
+      "from": "snow-mushrooms",
+      "id": "snowy-owl",
+      "label": "Snowy owl",
+      "file": "snowy-owl.webp"
+    },
+    {
+      "from": "art-20261106-aurora-fox",
+      "id": "crescent-moon",
+      "label": "Crescent moon",
+      "file": "crescent-moon.webp"
+    },
+    {
+      "from": "art-20261106-aurora-prism",
+      "id": "raven-flight",
+      "label": "Raven",
+      "file": "raven-flight.webp"
+    },
+    {
+      "from": "aurora-seal",
+      "id": "snowflake-falling",
+      "label": "Snowflake",
+      "file": "snowflake-falling.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "pleiades",
+      "file": "pleiades.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

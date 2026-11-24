@@ -1,0 +1,40 @@
+{
+  "theme": "dunesilk",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "d6cb341d14985cf8d604a9dabbb80fa82e68b677bc00af112b5227ba43d39f16"
+  },
+  "replace": [
+    {
+      "from": "wind-lines",
+      "id": "darkling-beetle",
+      "label": "Darkling beetle",
+      "file": "darkling-beetle.webp"
+    },
+    {
+      "from": "art-20261106-desert-rose",
+      "id": "desert-rose",
+      "label": "Desert rose",
+      "file": "desert-rose.webp"
+    },
+    {
+      "from": "art-20261106-dune-shell",
+      "id": "fennec-fox",
+      "label": "Fennec fox",
+      "file": "fennec-fox.webp"
+    },
+    {
+      "from": "wind-carved-arch",
+      "id": "lark-flight",
+      "label": "Hoopoe-lark",
+      "file": "lark-flight.webp"
+    },
+    {
+      "from": "sandstone-fennec",
+      "id": "sand-feather",
+      "label": "Drifting feather",
+      "file": "sand-feather.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

@@ -1,0 +1,42 @@
+{
+  "theme": "glacier-quiet",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "arctic-tern",
+      "replaces": "frost-feather",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "whooper-swans",
+      "replaces": "glacial-iceberg",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: two whooper swans flying together side by side, long necks outstretched, white plumage softened by fog, black-and-yellow bills, soft flat overcast light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "eider-flight",
+      "replaces": "frozen-bubbles",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a common eider drake in flight, wings beating, crisp black-and-white plumage with a soft green nape, soft overcast fog light. No water, no shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "gull-feather",
+      "replaces": "dendritic-snow-crystal",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A single soft pale-grey and white gull feather drifting in the air, slightly curled, fine barbs visible, soft overcast fog light, photographic macro. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "great-skua",
+      "replaces": "glacial-cave-arch",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a great skua in flight, sturdy dark-brown bird with pale streaks and white wing flashes, wings spread in a glide, soft flat overcast fog light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "theme": "saffron-courtyard",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "1e9108d9695ced4100cb5b9b02fd18a1de48b8de216f1711e57379abb6976934"
+  },
+  "replace": [
+    {
+      "from": "glazed-lemons",
+      "id": "hanging-lantern",
+      "label": "Hanging lantern",
+      "file": "hanging-lantern.webp"
+    },
+    {
+      "from": "mosaic-sunbird",
+      "id": "swallow-flight",
+      "label": "Swallow",
+      "file": "swallow-flight.webp"
+    },
+    {
+      "from": "pomegranate-court",
+      "id": "wall-plate",
+      "label": "Painted plate",
+      "file": "wall-plate.webp"
+    },
+    {
+      "from": "mosaic-carafe",
+      "id": "wall-planter",
+      "label": "Geranium planter",
+      "file": "wall-planter.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "bougainvillea-sprig",
+      "file": "bougainvillea-sprig.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

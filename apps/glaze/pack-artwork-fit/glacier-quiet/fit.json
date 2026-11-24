@@ -1,0 +1,40 @@
+{
+  "theme": "glacier-quiet",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "01084ee04a39da326bea41d4fd303e8bfffec761a42b3c19723ca92883eebd1e"
+  },
+  "replace": [
+    {
+      "from": "frost-feather",
+      "id": "arctic-tern",
+      "label": "Arctic tern",
+      "file": "arctic-tern.webp"
+    },
+    {
+      "from": "glacial-iceberg",
+      "id": "whooper-swans",
+      "label": "Whooper swans",
+      "file": "whooper-swans.webp"
+    },
+    {
+      "from": "frozen-bubbles",
+      "id": "eider-flight",
+      "label": "Eider",
+      "file": "eider-flight.webp"
+    },
+    {
+      "from": "dendritic-snow-crystal",
+      "id": "gull-feather",
+      "label": "Gull feather",
+      "file": "gull-feather.webp"
+    },
+    {
+      "from": "glacial-cave-arch",
+      "id": "great-skua",
+      "label": "Great skua",
+      "file": "great-skua.webp"
+    }
+  ],
+  "note": "Art-fit pilot (owner 24 Nov 2026): single subjects that live in the plain upper sky/wall where the small widget sits, transparent, shown on the wallpaper slice."
+}

@@ -1,0 +1,42 @@
+{
+  "theme": "aurora-haven",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (Codex app / ask-codex)",
+  "artworks": [
+    {
+      "id": "snowy-owl",
+      "replaces": "snow-mushrooms",
+      "source": "first pilot (ChatGPT image)",
+      "prompt": "see glaze-art-fit/pilot/PROMPT.md or REGEN.md",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "crescent-moon",
+      "replaces": "art-20261106-aurora-fox",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A thin waxing crescent moon, cool silver-white, crisp lunar surface detail on the lit limb, like a long-lens night photograph. ONLY the bright lit crescent is visible: the dark part of the moon is completely invisible, exactly the same colour as the background (NO earthshine, no grey disc, no outline). Nothing else: no stars, no glow halo, no aurora.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "raven-flight",
+      "replaces": "art-20261106-aurora-prism",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a common raven in flight at night, wings spread wide, glossy black feathers picking up a faint cool green sheen from the aurora off-frame and pale moonlight from the upper left.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "snowflake-falling",
+      "replaces": "aurora-seal",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "A single real snowflake (stellar dendrite) photographed macro against the night, matte white crystal with fine natural branches, very faintly lit cool blue-green, slightly soft focus at the tips. Not glassy, not glowing, not an icon.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "pleiades",
+      "replaces": "hero-small",
+      "source": "pilot v2 (ChatGPT image via ask-codex)",
+      "prompt": "The Pleiades star cluster as seen in a real long-lens astrophotograph: a compact group of seven bright blue-white stars with soft natural glow and short faint diffraction, a few fainter stars around them, filling about 55% of the frame. No nebula clouds, no aurora, no landscape.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}
