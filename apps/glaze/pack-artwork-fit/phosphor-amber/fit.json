@@ -1,0 +1,16 @@
+{
+  "theme": "phosphor-amber",
+  "base": {
+    "packVersion": 3,
+    "manifestSha256": "70f85c4ff84467fd43260115e0e83b1c81595d6914b7bd12162ab331a7217fcf"
+  },
+  "replace": [
+    {
+      "from": "phosphor-nautilus",
+      "id": "pocket-terminal",
+      "label": "Pocket computer",
+      "file": "pocket-terminal.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

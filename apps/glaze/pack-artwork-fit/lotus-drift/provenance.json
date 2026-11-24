@@ -1,0 +1,35 @@
+{
+  "theme": "lotus-drift",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "heron-dusk",
+      "replaces": "art-20261107-lotus-tea-bowl",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a grey heron flying slowly at dusk, neck folded, legs trailing, soft cool blue dusk light with a faint warm glow on the underside. Muted. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "egret-flight",
+      "replaces": "art-20261107-pond-minnow",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a little egret in flight at dusk, white plumage lit faintly pink, wings arched, cool blue dusk light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "damselfly",
+      "replaces": "pond-water-strider",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a slender pink-red damselfly hovering, wings clear and faintly iridescent, cool dusk light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "crescent-moon",
+      "replaces": "pond-paper-boat",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "A thin crescent moon at dusk, pale warm white, soft and slightly hazy, long-lens photograph. ONLY the lit crescent is visible: the dark part is exactly the background colour (NO earthshine, no grey disc). Nothing else.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

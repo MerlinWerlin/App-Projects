@@ -1,0 +1,16 @@
+{
+  "theme": "jade-meridian",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "56c998d1fbb8e96b7689a95f62ed54b563ba0b0bf2609c87494f5d99471e4753"
+  },
+  "replace": [
+    {
+      "from": "valley-disc",
+      "id": "jade-pendant",
+      "label": "Jade bi",
+      "file": "jade-pendant.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

@@ -1,0 +1,21 @@
+{
+  "theme": "midnight-conservatory",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "c735ccf0ecdf4eb5eda51cb322d063ad75d3132fdb1bd2a0779abf2a3c8aaca9"
+  },
+  "replace": [
+    {
+      "from": "hanging-garden",
+      "id": "staghorn-basket",
+      "label": "Staghorn fern",
+      "file": "staghorn-basket.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "moth-on-glass",
+      "file": "moth-on-glass.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

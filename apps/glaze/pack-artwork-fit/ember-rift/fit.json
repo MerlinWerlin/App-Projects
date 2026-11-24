@@ -1,0 +1,39 @@
+{
+  "theme": "ember-rift",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "9faa220e1ff76b3c3eb19a51d182f553e2dbf211ccc234bbcd4c194766943185"
+  },
+  "replace": [
+    {
+      "from": "cooling-lava",
+      "id": "lava-bomb",
+      "label": "Lava bomb",
+      "file": "lava-bomb.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "rising-embers",
+      "file": "rising-embers.webp"
+    },
+    {
+      "from": "art-20261106-ember-geode",
+      "id": "raven-ember",
+      "label": "Raven",
+      "file": "raven-ember.webp"
+    },
+    {
+      "from": "art-20261106-basalt-spires",
+      "id": "crescent-moon",
+      "label": "Crescent moon",
+      "file": "crescent-moon.webp"
+    },
+    {
+      "from": "obsidian-arrowhead",
+      "id": "meteor",
+      "label": "Shooting star",
+      "file": "meteor.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

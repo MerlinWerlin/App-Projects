@@ -1,0 +1,34 @@
+{
+  "theme": "lotus-drift",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "9cc24e686cf29e9a7a587df64b7dd8c1da66e0a31519ba41594e6ee388825b28"
+  },
+  "replace": [
+    {
+      "from": "art-20261107-lotus-tea-bowl",
+      "id": "heron-dusk",
+      "label": "Heron",
+      "file": "heron-dusk.webp"
+    },
+    {
+      "from": "art-20261107-pond-minnow",
+      "id": "egret-flight",
+      "label": "Egret",
+      "file": "egret-flight.webp"
+    },
+    {
+      "from": "pond-water-strider",
+      "id": "damselfly",
+      "label": "Damselfly",
+      "file": "damselfly.webp"
+    },
+    {
+      "from": "pond-paper-boat",
+      "id": "crescent-moon",
+      "label": "Crescent moon",
+      "file": "crescent-moon.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

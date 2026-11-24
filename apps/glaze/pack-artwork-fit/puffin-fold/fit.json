@@ -1,0 +1,22 @@
+{
+  "theme": "puffin-fold",
+  "base": {
+    "packVersion": 2,
+    "manifestSha256": "cfa89ae7ac55eefebe9cd26222ce19bf3e8929844369f961abad6bfcbdaf8820"
+  },
+  "replace": [
+    {
+      "from": "paper-lighthouse",
+      "id": "paper-kittiwake",
+      "label": "Kittiwake",
+      "file": "paper-kittiwake.webp"
+    },
+    {
+      "from": "paper-fishing-boat",
+      "id": "paper-gannet",
+      "label": "Gannet",
+      "file": "paper-gannet.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

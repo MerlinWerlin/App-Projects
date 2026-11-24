@@ -1,0 +1,42 @@
+{
+  "theme": "event-horizon",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "spiral-galaxy",
+      "replaces": "gravity-hourglass",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a single face-on spiral galaxy, bright warm core and blue-white spiral arms with dark dust lanes, a few tiny stars around.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "rim-lit-planet",
+      "replaces": "orbit-diamond",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a rocky planet seen as a thin crescent, its sunlit rim lit warm orange from the lower left (by the black hole's accretion disk off-frame), the rest dark. ONLY the lit crescent shows; the dark side is the background colour.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "red-giant",
+      "replaces": "lensing-study",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a single red giant star, a large softly glowing orange-red sphere with a subtle mottled surface and gentle corona, filling about half the frame.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "comet",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a small comet with a bright compact head and a long faint blue-white ion tail and a softer dust tail, crossing diagonally.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "ringed-giant",
+      "replaces": "photon-ribbon-helix",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a pale banded gas giant with thin tilted rings, half lit from the lower left by warm orange light, the night side dark.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

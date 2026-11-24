@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.44 build 99: art-fit pilot for 10 themes (Cloud Atelier, Aurora Haven, Summit Line, Saffron Courtyard, Rainlight, Glacier Quiet, Desert Afterglow, Dunesilk, Verdigris Voyage, Rosewater Reverie). Their small artwork is redrawn as single subjects that belong in the plain sky or wall where the widget sits, shipped as transparent cutouts so the real wallpaper shows behind them (no squares). New pack versions are in catalog-v2.json only; catalog.json stays frozen. Theme cards for six of them show the new art. Medium and large hero art is unchanged for now.",
+  "note": "Glaze 1.0.44 build 100: art-fit rollout to the remaining 43 themes on the replace list (21 whole sets, 22 partial). 117 small artworks (hero-small included) are redrawn as single subjects that belong where the small widget sits (birds, moons and feathers in skies, flat-lay finds on paper and sand, wall pieces on walls, swimmers in deep water, space objects on starfields), shipped as transparent cutouts on the real wallpaper. Jared's keeps stay (Alpine Starlight, Bluewing beetle and wing studies, Bamboo Ink clouds, Nebula Veil hummingbird). New pack versions are in catalog-v2.json only; catalog.json stays frozen. 18 theme cards show the new art. Medium and large hero art is unchanged for now.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

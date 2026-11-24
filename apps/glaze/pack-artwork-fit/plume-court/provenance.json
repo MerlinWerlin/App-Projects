@@ -1,0 +1,35 @@
+{
+  "theme": "plume-court",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "peacock-feather",
+      "replaces": "porcelain-quail",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real macro photograph: a single peacock tail feather with its iridescent eye, drifting in the air, slightly curved, warm soft daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "peacock-flight",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: an Indian peacock in flight, long train streaming behind, blue neck shimmering, warm soft daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "swallowtail",
+      "replaces": "art-20261107-jade-plume",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a swallowtail butterfly in flight, pale yellow and black wings with blue and orange spots, warm daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "wall-lantern",
+      "replaces": "jade-court-coffer",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a classic black wrought-iron lantern with clear glass, mounted on a short scrolled iron bracket fixed to the cream stone wall, warm daylight from the left, only a very soft faint shadow on the wall behind it.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

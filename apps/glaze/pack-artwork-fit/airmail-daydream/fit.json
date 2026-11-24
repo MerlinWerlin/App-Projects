@@ -1,0 +1,39 @@
+{
+  "theme": "airmail-daydream",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "95db3010cb6e264bf1b68b7b8998822fef4f40d35387a8cb990481e241174d76"
+  },
+  "replace": [
+    {
+      "from": "stamp-terrarium",
+      "id": "airmail-stamp",
+      "label": "Airmail stamp",
+      "file": "airmail-stamp.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "wax-seal-envelope",
+      "file": "wax-seal-envelope.webp"
+    },
+    {
+      "from": "art-20261106-mail-balloon",
+      "id": "paper-plane",
+      "label": "Paper plane",
+      "file": "paper-plane.webp"
+    },
+    {
+      "from": "art-20261106-paper-swallow",
+      "id": "letter-bundle",
+      "label": "Letters",
+      "file": "letter-bundle.webp"
+    },
+    {
+      "from": "postal-satchel",
+      "id": "fountain-pen",
+      "label": "Fountain pen",
+      "file": "fountain-pen.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

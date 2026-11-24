@@ -1,0 +1,16 @@
+{
+  "theme": "indigo-current",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "20b881b0ba5527cca74416f8908064bee0bd9c7da50aece3e8f416658d709b0d"
+  },
+  "replace": [
+    {
+      "from": "paper-harbour",
+      "id": "paper-gull",
+      "label": "Gull",
+      "file": "paper-gull.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

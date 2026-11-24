@@ -1,0 +1,35 @@
+{
+  "theme": "kingfisher-blue",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "kingfisher-flight",
+      "replaces": "art-20261106-kingfisher-dive",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a common kingfisher in flight, wings blurred slightly, electric-blue back and orange belly, soft bright daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "kingfisher-feather",
+      "replaces": "art-20261106-river-feather",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real macro photograph: a single small kingfisher feather drifting in the air, iridescent turquoise-blue tip fading to dark grey at the base, soft daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "demoiselle",
+      "replaces": "river-reed-nest",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a banded demoiselle damselfly in flight, metallic blue-green body and dark blue wing bands, soft daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "sand-martin",
+      "replaces": "reed-bed-dragonfly",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a sand martin in flight, brown back, white belly with brown breast band, wings spread, soft daylight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

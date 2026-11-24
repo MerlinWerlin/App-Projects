@@ -1,0 +1,16 @@
+{
+  "theme": "stellar-cradle",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "f5ea74beacf5a9e972292b1a868735ec62e7aece32ddc664343a41a97c38a2d9"
+  },
+  "replace": [
+    {
+      "from": "nebula-egg",
+      "id": "bipolar-nebula",
+      "label": "Bipolar nebula",
+      "file": "bipolar-nebula.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

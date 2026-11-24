@@ -1,0 +1,15 @@
+{
+  "theme": "sonata-house",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "a053b6ba5ed59c6ebd349032b5a21bf6b26394583d38ee93f76ca05c302a68ab"
+  },
+  "replace": [
+    {
+      "from": "hero-small",
+      "id": "wall-violin",
+      "file": "wall-violin.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

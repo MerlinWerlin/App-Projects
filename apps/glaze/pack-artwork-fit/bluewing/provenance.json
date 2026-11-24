@@ -1,0 +1,21 @@
+{
+  "theme": "bluewing",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "morpho-flight",
+      "replaces": "art-20261106-sapphire-chrysalis",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a blue morpho butterfly in flight in darkness, wings open showing electric-blue iridescence, lit softly from the upper left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "holly-blue",
+      "replaces": "sapphire-bluebell",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a small holly blue butterfly in flight in darkness, pale silvery-blue wings half open, soft light from the upper left. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

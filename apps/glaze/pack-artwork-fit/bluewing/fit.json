@@ -1,0 +1,22 @@
+{
+  "theme": "bluewing",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "32b1192c7d7341028b3fdaaadb3637fc659760c7c16b32c0a8b2eba77561de6c"
+  },
+  "replace": [
+    {
+      "from": "art-20261106-sapphire-chrysalis",
+      "id": "morpho-flight",
+      "label": "Morpho",
+      "file": "morpho-flight.webp"
+    },
+    {
+      "from": "sapphire-bluebell",
+      "id": "holly-blue",
+      "label": "Holly blue",
+      "file": "holly-blue.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

@@ -1,0 +1,14 @@
+{
+  "theme": "firefly-grove",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "tawny-owl-flight",
+      "replaces": "mosswood-door",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a tawny owl gliding through a dark forest at night, wings spread, a few warm firefly glints near it. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

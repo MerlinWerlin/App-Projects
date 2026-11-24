@@ -1,0 +1,16 @@
+{
+  "theme": "sundew-ember",
+  "base": {
+    "packVersion": 6,
+    "manifestSha256": "d92d274739fe70867a4568aaf468dfb96cd390282c3a4d958f9521bcc35a9d28"
+  },
+  "replace": [
+    {
+      "from": "ruby-garden-beetle",
+      "id": "red-damselfly",
+      "label": "Damselfly",
+      "file": "red-damselfly.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

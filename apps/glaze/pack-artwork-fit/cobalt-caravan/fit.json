@@ -1,0 +1,15 @@
+{
+  "theme": "cobalt-caravan",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "d8301128a7d2cbc01f38157262be3e4eab08af3d49e1d0eb5002829f41313147"
+  },
+  "replace": [
+    {
+      "from": "hero-small",
+      "id": "gold-crescent",
+      "file": "gold-crescent.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

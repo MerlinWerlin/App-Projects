@@ -1,0 +1,39 @@
+{
+  "theme": "crimson-reverie",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "eb0ecd929894ac466ca6cc3febf7c229a0e41e27a5a864caf5db0f95f28378ad"
+  },
+  "replace": [
+    {
+      "from": "crimson-fan",
+      "id": "lacquer-fan",
+      "label": "Folding fan",
+      "file": "lacquer-fan.webp"
+    },
+    {
+      "from": "silk-crane",
+      "id": "origami-crane",
+      "label": "Paper crane",
+      "file": "origami-crane.webp"
+    },
+    {
+      "from": "silk-dragon",
+      "id": "red-lantern",
+      "label": "Paper lantern",
+      "file": "red-lantern.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "red-camellia",
+      "file": "red-camellia.webp"
+    },
+    {
+      "from": "crimson-silk-koi",
+      "id": "jade-tassel",
+      "label": "Jade pendant",
+      "file": "jade-tassel.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

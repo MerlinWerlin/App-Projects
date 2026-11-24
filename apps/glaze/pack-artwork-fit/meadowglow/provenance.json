@@ -1,0 +1,14 @@
+{
+  "theme": "meadowglow",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "skylark",
+      "replaces": "dew-grass-orb",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a skylark hovering in song flight, wings fluttering, warm hazy dawn light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

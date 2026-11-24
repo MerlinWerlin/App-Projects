@@ -1,0 +1,42 @@
+{
+  "theme": "birchlight",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "falling-birch-leaf",
+      "replaces": "amber-fern-frame",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a single small golden-yellow birch leaf falling through misty air, slightly twisted, soft diffuse fog light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "goldeneye-flight",
+      "replaces": "birch-seedpod",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a common goldeneye drake in flight over misty water, wings beating, white flanks and dark green-black head with the white cheek spot, soft flat fog light, slightly muted colours. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "heron-flight",
+      "replaces": "golden-leaf",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a grey heron flying slowly with neck folded and legs trailing, broad grey wings spread, soft flat misty light, muted colours. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "geese-skein",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a small skein of five greylag geese flying in a loose V formation, seen from below at a distance, soft misty light, muted. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "mist-sun",
+      "replaces": "amber-birch-mushroom",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a pale low autumn sun seen as a soft, clean, slightly warm white disc through thin fog, with a gentle soft glow fading into the fog colour around it. Nothing else.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

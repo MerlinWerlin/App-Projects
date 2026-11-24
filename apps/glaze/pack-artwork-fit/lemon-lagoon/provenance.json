@@ -1,0 +1,21 @@
+{
+  "theme": "lemon-lagoon",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "whole-lemon",
+      "replaces": "lemon-sailboat",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a single glossy lemon with a green leaf and a small white blossom, on pale lemon paper.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "lemon-half",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a lemon cut in half, juicy segments showing, on pale lemon paper.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

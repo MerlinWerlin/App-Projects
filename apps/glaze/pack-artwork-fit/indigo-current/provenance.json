@@ -1,0 +1,14 @@
+{
+  "theme": "indigo-current",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "paper-gull",
+      "replaces": "paper-harbour",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Layered paper-cut craft in the exact style of the wallpaper (cut card layers with soft tiny shadows between layers, matte paper texture): a white paper gull in flight with soft grey wingtip layers, on the indigo paper sky.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

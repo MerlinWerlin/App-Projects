@@ -81,8 +81,9 @@ export function mergeCatalogV2({ legacyText, lock, fresh, newManifests, override
   }
   const over = new Map();
   for (const o of overrides) {
-    const p = legacy.packs.find((x) => x.id === o.id);
-    assert.ok(p, `${o.id}: art-fit override for a theme that is not in catalog.json`);
+    // A legacy theme (catalog.json) or a 1.0.44 new theme; either way only catalog-v2.json changes.
+    const p = legacy.packs.find((x) => x.id === o.id) ?? fresh.packs.find((x) => x.id === o.id);
+    assert.ok(p, `${o.id}: art-fit override for a theme that is not catalogued`);
     assert.ok(!over.has(o.id), `${o.id}: overridden twice`);
     assert.equal(o.packVersion, p.packVersion + 1, `${o.id}: art-fit must be v${p.packVersion + 1}`);
     assert.equal(o.manifest, `art/${o.id}/v${o.packVersion}/manifest.json`, `${o.id}: override manifest path`);
@@ -94,15 +95,15 @@ export function mergeCatalogV2({ legacyText, lock, fresh, newManifests, override
     assert.equal(m.totalBytes, o.bytes, `${o.id}: override bytes differ from the manifest`);
     over.set(o.id, { ...p, ...Object.fromEntries(OVERRIDE_FIELDS.map((k) => [k, o[k]])) });
   }
-  const out = { format: legacy.format, version: legacy.version, generatedAt: fresh.generatedAt, packs: [...legacy.packs.map((p) => over.get(p.id) ?? p), ...fresh.packs] };
+  const out = { format: legacy.format, version: legacy.version, generatedAt: fresh.generatedAt, packs: [...legacy.packs, ...fresh.packs].map((p) => over.get(p.id) ?? p) };
   const text = JSON.stringify(out, null, 2) + '\n';
   const parsed = parseCatalog(JSON.parse(text));
   assert.ok(parsed.ok, `catalog-v2.json fails the app parser: ${parsed.ok ? '' : parsed.error}`);
   assert.equal(parsed.value.packs.length, legacy.packs.length + fresh.packs.length, 'the app parser dropped an entry');
   assert.ok(Buffer.byteLength(text) < CATALOG_MAX_BYTES, 'catalog-v2.json is over the app size limit');
   const back = JSON.parse(text).packs;
-  legacy.packs.forEach((p, i) => {
-    if (!over.has(p.id)) return assert.deepEqual(back[i], p, `${p.id}: legacy entry changed`);
+  [...legacy.packs, ...fresh.packs].forEach((p, i) => {
+    if (!over.has(p.id)) return assert.deepEqual(back[i], p, `${p.id}: ${i < legacy.packs.length ? 'legacy' : 'new-theme'} entry changed`);
     const strip = (e) => Object.fromEntries(Object.entries(e).filter(([k]) => !OVERRIDE_FIELDS.includes(k)));
     assert.deepEqual(strip(back[i]), strip(p), `${p.id}: art-fit changed more than ${OVERRIDE_FIELDS.join('/')}`);
   });

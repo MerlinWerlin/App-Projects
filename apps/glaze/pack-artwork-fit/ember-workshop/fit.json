@@ -1,0 +1,16 @@
+{
+  "theme": "ember-workshop",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "fbd6cc42d6bc8b72670e28e14a81ac9265694142d60f3b8d58f8c3ad94166480"
+  },
+  "replace": [
+    {
+      "from": "pocket-railway",
+      "id": "hanging-watch",
+      "label": "Pocket watch",
+      "file": "hanging-watch.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

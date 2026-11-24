@@ -1,0 +1,14 @@
+{
+  "theme": "spare-time",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "bowling-ball",
+      "replaces": "bowling-satellite",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real studio photograph: a single glossy coral-and-cream swirled bowling ball, soft studio light, only a faint soft contact shadow below it, pale blue backdrop.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

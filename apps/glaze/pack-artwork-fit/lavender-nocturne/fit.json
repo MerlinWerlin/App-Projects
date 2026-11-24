@@ -1,0 +1,27 @@
+{
+  "theme": "lavender-nocturne",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "5ba86444f80ab11a8dd5cd6e8d71ba6ccc318a76e19dcced6d3acc6dedf9aa13"
+  },
+  "replace": [
+    {
+      "from": "teacup-village",
+      "id": "embroidered-moth",
+      "label": "Moth",
+      "file": "embroidered-moth.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "embroidered-moon",
+      "file": "embroidered-moon.webp"
+    },
+    {
+      "from": "lavender-embroidered-harp",
+      "id": "embroidered-owl",
+      "label": "Barn owl",
+      "file": "embroidered-owl.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

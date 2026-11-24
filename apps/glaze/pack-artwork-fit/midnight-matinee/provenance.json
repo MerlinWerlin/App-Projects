@@ -1,0 +1,35 @@
+{
+  "theme": "midnight-matinee",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "popcorn-box",
+      "replaces": "popcorn-planet",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a classic red-and-white striped paper popcorn box overflowing with popcorn, in darkness, lit warmly from the front as if by a cinema screen. No shadow, no table.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "cinema-tickets",
+      "replaces": "velvet-cinema-bat",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a pair of vintage paper cinema admit-one tickets in cream and red, joined at a perforated edge, slightly curled, floating in darkness, warm front light. Blank (no readable text). No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "projector-moth",
+      "replaces": "velvet-moth",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Photographic, high detail, natural, like a crisp telephoto nature photograph: a pale moth fluttering in darkness, its wings lit warm gold as if crossing a projector beam. No beam visible. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "curtain-tassel",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a heavy gold rope curtain tie-back with a big gold tassel, hanging from the top edge in darkness, warm theatre light. No curtain. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

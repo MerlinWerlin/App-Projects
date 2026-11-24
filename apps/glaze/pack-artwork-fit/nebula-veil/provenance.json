@@ -1,0 +1,35 @@
+{
+  "theme": "nebula-veil",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "silver-satellite",
+      "replaces": "glass-satellite",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a small classic silver satellite with two blue solar panel wings and a dish, plain metal, lit by white starlight from the left.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "comet",
+      "replaces": "nebula-quill",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a small comet with a bright head and a long faint blue-white tail curving diagonally.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "ringed-planet",
+      "replaces": "nebula-aperture",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a ringed planet with soft violet-and-rose bands and thin tilted rings, half lit from the lower left, night side dark.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "spiral-galaxy",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a distant spiral galaxy seen at an angle, warm core and blue arms with violet-pink star-forming knots.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

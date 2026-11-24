@@ -1,0 +1,27 @@
+{
+  "theme": "porcelain-tide",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "b113e8793d326989ed085ff6e900fe30cd867a8dd1505a0f1a4f8f87f9de140c"
+  },
+  "replace": [
+    {
+      "from": "blue-lotus-bowl",
+      "id": "ink-tern",
+      "label": "Tern",
+      "file": "ink-tern.webp"
+    },
+    {
+      "from": "porcelain-crane",
+      "id": "ink-crane",
+      "label": "Crane",
+      "file": "ink-crane.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "ink-swallows",
+      "file": "ink-swallows.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

@@ -1,0 +1,35 @@
+{
+  "theme": "c-lenslet-maple",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "wren-flight",
+      "replaces": "fox-glade",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Flat vector-like illustration in the exact style of the wallpaper (simple shapes, warm orange/rust and cream on dark olive, subtle grain, no outlines): a small wren in flight, warm rust-brown, wings open, tail cocked.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "comma-flight",
+      "replaces": "wren-glade",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Flat vector-like illustration in the exact style of the wallpaper (simple shapes, warm orange/rust and cream on dark olive, subtle grain, no outlines): a comma butterfly in flight, scalloped orange wings with dark spots.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "samara-pair",
+      "replaces": "acorn-glade",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Flat vector-like illustration in the exact style of the wallpaper (simple shapes, warm orange/rust and cream on dark olive, subtle grain, no outlines): a joined pair of maple seeds (a double samara: two seeds at the centre with two long thin veined papery wings spreading out in a wide V), twirling down, warm rust and cream.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "owl-flight",
+      "replaces": "comma-glade",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Flat vector-like illustration in the exact style of the wallpaper (simple shapes, warm orange/rust and cream on dark olive, subtle grain, no outlines): a tawny owl gliding with wings spread, warm brown and cream, round face.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

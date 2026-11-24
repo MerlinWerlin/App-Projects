@@ -1,0 +1,33 @@
+{
+  "theme": "plume-court",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "8f969c0cf33321ef435dde6b622c733f42920985a9467ffb66fdb74fa8b3377f"
+  },
+  "replace": [
+    {
+      "from": "porcelain-quail",
+      "id": "peacock-feather",
+      "label": "Peacock feather",
+      "file": "peacock-feather.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "peacock-flight",
+      "file": "peacock-flight.webp"
+    },
+    {
+      "from": "art-20261107-jade-plume",
+      "id": "swallowtail",
+      "label": "Swallowtail",
+      "file": "swallowtail.webp"
+    },
+    {
+      "from": "jade-court-coffer",
+      "id": "wall-lantern",
+      "label": "Wall lantern",
+      "file": "wall-lantern.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

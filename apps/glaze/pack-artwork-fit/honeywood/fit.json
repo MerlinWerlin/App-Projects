@@ -1,0 +1,15 @@
+{
+  "theme": "honeywood",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "d670d9faf96cdce5d1ffea0725fafd3f8c429bfb40b0badf68d5d3ee71e7ab17"
+  },
+  "replace": [
+    {
+      "from": "hero-small",
+      "id": "honeybee-flight",
+      "file": "honeybee-flight.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

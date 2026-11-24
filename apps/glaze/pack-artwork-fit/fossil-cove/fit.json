@@ -1,0 +1,39 @@
+{
+  "theme": "fossil-cove",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "9011a9522bcabd67d571f5e12ebf0a3e3523ba74744dac292e4a590dc33f95da"
+  },
+  "replace": [
+    {
+      "from": "fossil-ammonite",
+      "id": "herring-gull",
+      "label": "Herring gull",
+      "file": "herring-gull.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "kittiwake",
+      "file": "kittiwake.webp"
+    },
+    {
+      "from": "art-20261107-amber-inclusion",
+      "id": "seabird-feather",
+      "label": "Gull feather",
+      "file": "seabird-feather.webp"
+    },
+    {
+      "from": "art-20261107-mosaic-trilobite",
+      "id": "oystercatcher",
+      "label": "Oystercatcher",
+      "file": "oystercatcher.webp"
+    },
+    {
+      "from": "sandstone-shark-tooth",
+      "id": "day-moon",
+      "label": "Day moon",
+      "file": "day-moon.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

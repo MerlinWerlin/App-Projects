@@ -1,0 +1,14 @@
+{
+  "theme": "phosphor-amber",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "pocket-terminal",
+      "replaces": "phosphor-nautilus",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph: a 1980s handheld pocket computer in cream plastic, its small screen glowing bright amber phosphor with a few lines of abstract dashes and a block cursor (no readable words), the amber glow lighting the keys, in darkness. No shadow, no desk.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

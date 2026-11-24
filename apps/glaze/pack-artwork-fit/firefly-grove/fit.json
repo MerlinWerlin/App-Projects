@@ -1,0 +1,16 @@
+{
+  "theme": "firefly-grove",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "7ba4680c7ccaf6b5546f35168d6771b9b0208b19bb537359accea9beb6c0c1af"
+  },
+  "replace": [
+    {
+      "from": "mosswood-door",
+      "id": "tawny-owl-flight",
+      "label": "Owl",
+      "file": "tawny-owl-flight.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

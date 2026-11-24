@@ -1,0 +1,33 @@
+{
+  "theme": "neon-monsoon",
+  "base": {
+    "packVersion": 7,
+    "manifestSha256": "0984e7cb6898f72389271905d1fdcc4747d7780d8ed5dc5f1fbf796ab36a5900"
+  },
+  "replace": [
+    {
+      "from": "neon-paper-fish",
+      "id": "red-lantern",
+      "label": "Paper lantern",
+      "file": "red-lantern.webp"
+    },
+    {
+      "from": "rain-capsule",
+      "id": "clear-umbrella",
+      "label": "Clear umbrella",
+      "file": "clear-umbrella.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "neon-sign",
+      "file": "neon-sign.webp"
+    },
+    {
+      "from": "neon-origami-fox",
+      "id": "crow-neon",
+      "label": "Crow",
+      "file": "crow-neon.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

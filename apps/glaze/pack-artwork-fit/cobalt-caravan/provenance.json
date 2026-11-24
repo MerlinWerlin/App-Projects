@@ -1,0 +1,14 @@
+{
+  "theme": "cobalt-caravan",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "gold-crescent",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "A thin crescent moon, warm gold-tinted, crisp lunar detail on the lit limb, long-lens night photograph, with one small bright star beside it. ONLY the lit crescent is visible: the dark part is exactly the background colour (NO earthshine). Nothing else.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

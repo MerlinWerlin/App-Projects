@@ -1,0 +1,16 @@
+{
+  "theme": "ochre-bend",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "34252e6e407d1344404479cb1523eecda947b316cb8c38b49567e3063c2d9a43"
+  },
+  "replace": [
+    {
+      "from": "sandstone-kingfisher",
+      "id": "galah-flight",
+      "label": "Galah",
+      "file": "galah-flight.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

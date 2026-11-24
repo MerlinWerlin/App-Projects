@@ -1,0 +1,16 @@
+{
+  "theme": "jellylight",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "d4343be3497ba64b7b25b82efef0df569ba16ec9e365841756e6b23bfda2ffad"
+  },
+  "replace": [
+    {
+      "from": "glass-anemone",
+      "id": "moon-jelly",
+      "label": "Moon jelly",
+      "file": "moon-jelly.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

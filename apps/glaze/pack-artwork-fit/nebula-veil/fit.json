@@ -1,0 +1,33 @@
+{
+  "theme": "nebula-veil",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "df7446ee6ceb8251a39ec8fad28a771d181f7cba7551a17fd502be62df17ffa2"
+  },
+  "replace": [
+    {
+      "from": "glass-satellite",
+      "id": "silver-satellite",
+      "label": "Satellite",
+      "file": "silver-satellite.webp"
+    },
+    {
+      "from": "nebula-quill",
+      "id": "comet",
+      "label": "Comet",
+      "file": "comet.webp"
+    },
+    {
+      "from": "nebula-aperture",
+      "id": "ringed-planet",
+      "label": "Ringed planet",
+      "file": "ringed-planet.webp"
+    },
+    {
+      "from": "hero-small",
+      "id": "spiral-galaxy",
+      "file": "spiral-galaxy.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

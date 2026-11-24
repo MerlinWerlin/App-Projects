@@ -1,0 +1,22 @@
+{
+  "theme": "wisteria-hush",
+  "base": {
+    "packVersion": 9,
+    "manifestSha256": "15289471758c5b0169d6ad7f1b8629d07f7236cd6bc827ea171ea9deec763950"
+  },
+  "replace": [
+    {
+      "from": "art-20261107-wisteria-bell",
+      "id": "wisteria-raceme",
+      "label": "Wisteria",
+      "file": "wisteria-raceme.webp"
+    },
+    {
+      "from": "art-20261107-dew-snail",
+      "id": "lilac-moth",
+      "label": "Moth",
+      "file": "lilac-moth.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

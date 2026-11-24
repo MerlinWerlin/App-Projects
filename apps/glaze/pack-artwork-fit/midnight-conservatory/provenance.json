@@ -1,0 +1,21 @@
+{
+  "theme": "midnight-conservatory",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "staghorn-basket",
+      "replaces": "hanging-garden",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real night photograph: a staghorn fern in a round wire basket lined with moss, hanging by three clearly visible dark iron chains that join at a ring at the very top edge of the frame, the whole thing shown with its chains, cool blue moonlight. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "moth-on-glass",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real night photograph: a large pale emperor moth resting on a rain-streaked glass pane, wings open, eye-spots, cool blue moonlight. Only the moth on plain colour.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

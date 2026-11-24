@@ -1,0 +1,28 @@
+{
+  "theme": "sea-glass-sunday",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "sugar-starfish",
+      "replaces": "art-20261107-tidepool-charm",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a single small sun-bleached sugar starfish lying on the pale sand.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "hermit-crab",
+      "replaces": "art-20261107-shell-wind-chime",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a small hermit crab in a pale whelk shell on the pale sand.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "sea-glass-handful",
+      "replaces": "sea-glass-crab",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph, seen from directly above (top-down flat lay), soft even daylight: a small loose cluster of five frosted sea-glass pieces (seafoam, aqua, white, pale amber) on the pale sand.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "theme": "stellar-cradle",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "bipolar-nebula",
+      "replaces": "nebula-egg",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Like a real deep-space astrophotograph, natural colours, no glow halo around the frame: a small bipolar nebula seen whole, two glowing lobes in orange and blue with a bright central star.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

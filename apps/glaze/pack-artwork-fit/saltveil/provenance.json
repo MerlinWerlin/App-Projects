@@ -1,0 +1,35 @@
+{
+  "theme": "saltveil",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "flamingo-aerial",
+      "replaces": "hero-small",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real aerial drone photograph seen from directly above: a single pink flamingo flying over the water, wings fully spread with black flight feathers, its neck stretched forward. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "salt-driftwood",
+      "replaces": "art-20261106-sea-glass-shell",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real aerial photograph seen from directly above: a small bleached twisted piece of driftwood encrusted with white salt crystals, lying in shallow pink water, soft daylight.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "flamingo-feather",
+      "replaces": "halite-feather",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real photograph seen from directly above: a single large vivid coral-pink flamingo feather with darker pink tips and crisp detail, floating flat on the water, filling about 65% of the frame, soft daylight. Strong saturated pink, clearly darker than the background.",
+      "cutout": "smooth-background matte, straight alpha"
+    },
+    {
+      "id": "avocet-aerial",
+      "replaces": "rose-glass-sailboat",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real aerial photograph seen from directly above: a pied avocet flying, black-and-white wings spread, thin upturned bill. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}

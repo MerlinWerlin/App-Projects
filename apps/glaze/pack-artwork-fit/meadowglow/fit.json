@@ -1,0 +1,16 @@
+{
+  "theme": "meadowglow",
+  "base": {
+    "packVersion": 8,
+    "manifestSha256": "612357063e54e7d238111c6e280a5e96b9017be0aaf2d6b7e0f4c3eb5197d64f"
+  },
+  "replace": [
+    {
+      "from": "dew-grass-orb",
+      "id": "skylark",
+      "label": "Skylark",
+      "file": "skylark.webp"
+    }
+  ],
+  "note": "Art-fit rollout (owner 24 Nov 2026): small art redrawn as single subjects that live in the plain region under the small widget, transparent, shown on the wallpaper slice."
+}

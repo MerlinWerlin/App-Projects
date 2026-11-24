@@ -1,0 +1,14 @@
+{
+  "theme": "sundew-ember",
+  "created": "2026-11-24",
+  "tool": "ChatGPT image generation (ask-codex)",
+  "artworks": [
+    {
+      "id": "red-damselfly",
+      "replaces": "ruby-garden-beetle",
+      "source": "art-fit rollout (ChatGPT image via ask-codex)",
+      "prompt": "Real macro photograph: a large red damselfly in flight in darkness, wings clear and catching warm light. No shadow.",
+      "cutout": "smooth-background matte, straight alpha"
+    }
+  ]
+}
