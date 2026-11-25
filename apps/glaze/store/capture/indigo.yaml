@@ -1,0 +1,41 @@
+# Shot 8 candidates for ${THEME}: its page in Lock Screen view, the wallpaper maker, and the Wallpapers tab.
+appId: ${APP_ID}
+---
+- runFlow:
+    file: page.yaml
+- scrollUntilVisible:
+    element:
+      text: "Lock Screen"
+    direction: DOWN
+    timeout: 10000
+    optional: true
+- tapOn:
+    text: "Lock Screen"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 15-${THEME}-lock-scrolled
+- swipe:
+    start: "50%,30%"
+    end: "50%,85%"
+    duration: 600
+- swipe:
+    start: "50%,30%"
+    end: "50%,85%"
+    duration: 600
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 16-${THEME}-lock
+- openLink: glaze://wallpaper?theme=${THEME}
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 60-${THEME}-wallpaper-maker
+- scroll:
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 61-${THEME}-wallpaper-maker-scrolled
+- openLink: glaze://wallpapers
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 62-wallpapers-tab

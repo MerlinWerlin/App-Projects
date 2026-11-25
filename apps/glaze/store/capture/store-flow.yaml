@@ -36,6 +36,10 @@ appId: ${APP_ID}
     file: page.yaml
     env:
       THEME: lavender-nocturne
+- runFlow:
+    file: indigo.yaml
+    env:
+      THEME: indigo-current
 
 # Free themes: prompt, Yes, next steps, the Widgets tab with their art, the plain page.
 - runFlow:
