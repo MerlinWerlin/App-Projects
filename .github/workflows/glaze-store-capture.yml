@@ -91,7 +91,7 @@ jobs:
           export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
           for TRY in 1 2; do
             maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro" store-flow.yaml || echo "maestro reported a failure (optional steps may have missed)"
-            ls ./*.png > /dev/null 2>&1 && break
+            find . "$OUT/maestro" -name '*.png' | grep -q . && break
             echo "No captures on try $TRY (driver start-up?); retrying once"
           done
           find . "$OUT/maestro" -name '*.png' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true

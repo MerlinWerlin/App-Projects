@@ -34,6 +34,10 @@ appId: ${APP_ID}
     file: page.yaml
     env:
       THEME: porcelain-tide
+# From the Themes tab, so Lavender Nocturne's back button says Themes (shot 7).
+- openLink: glaze://themes
+- waitForAnimationToEnd:
+    timeout: 3000
 - runFlow:
     file: page.yaml
     env:
