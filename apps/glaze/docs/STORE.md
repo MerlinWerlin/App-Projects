@@ -112,7 +112,7 @@ widget side is still found. The category can be changed with any later version.
 
 ## Screenshots (1.0.44)
 
-Seven 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
+Eight 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
 (real simulator captures of 1.0.44, plus Home Screens drawn from the themes' own files for shots 1 and 3). How they are made, and how to re-make them:
 `store/screenshots/README.md`. Glaze is iPhone-only, so there is no iPad set, and the 6.9-inch set covers every
 smaller iPhone.
@@ -124,8 +124,9 @@ smaller iPhone.
 | 3 | A look for every mood | Rosewater Reverie, Rainlight and Bluewing. |
 | 4 | Tap a theme, then tap Yes | Glaze puts it on your widgets, then shows the next steps. |
 | 5 | Make it yours with Custom widgets | Add your own pictures, or a favourite artwork. |
-| 6 | Over 250 original themes | Start with 10 free, including Alpine Starlight and Cloud Atelier. |
+| 6 | Over 250 original themes | Search by colour or mood. Start with 10 free. |
 | 7 | Matching icons for your apps | Every theme styles your icons to match. |
+| 8 | Every theme has its wallpaper | See it on your Lock Screen, then save it to Photos. |
 
 ### Honesty checks for the shots
 
@@ -133,7 +134,7 @@ smaller iPhone.
   before upload; if it ever drops to 250 or fewer, change the promotional text, description and shot 6.
 - **Free themes:** "10 free" = `FREE_THEME_IDS` in `src/core/freeThemes.ts` (unchanged in 1.0.44).
 - **No price in any shot** (the store localises it). 1.0.44 dropped the Glaze Plus sheet shot (Jared, 25 Nov 2026), so
-  the set is seven shots and none shows a price.
+  shot 8 is the Wallpaper screen instead, and no shot shows a price.
 - **Icons:** generic app labels and Glaze's own glyphs, never brand logos. The phone frame is a plain rounded rectangle.
 - The older sets (`assets/store/` 1290 x 2796, and the T267 HTML compositions) are out of date: do not upload them.
 

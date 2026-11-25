@@ -4,9 +4,9 @@
 on the Xcode 27 runner. Every artwork in them passes Jared's art-fit rules (`Documents/Claude/glaze-art-fit/RUBRIC.md` v2
 and `JARED_CALLS.md`); no hero-medium/large art from the themes still on old art. The Home Screens (shots 1 and 3) use
 one fit-approved Small piece per theme (`HERO` in `store/capture/home.py`). The Glaze Plus price sheet (the old shot 8)
-is dropped: Jared chose a seven-shot set for 1.0.44, so no screenshot shows a price.
+is dropped for 1.0.44 and shot 8 is now the Wallpaper screen (Jared, 25 Nov 2026), so no screenshot shows a price.
 
-Seven portrait shots for the **6.9-inch iPhone** display (1320 x 2868, RGB JPEG, quality 93, no chroma subsampling) in `6.9/`.
+Eight portrait shots for the **6.9-inch iPhone** display (1320 x 2868, RGB JPEG, quality 93, no chroma subsampling) in `6.9/`.
 Glaze is iPhone-only (`supportsTablet: false`), so no iPad set is needed, and App Store Connect scales the
 6.9-inch set down for every smaller iPhone, so no 6.5-inch set is needed either. `store/listing.json` points
 `APP_IPHONE_67` (Apple's API name for the 6.7/6.9-inch slot) at this folder.
@@ -18,8 +18,9 @@ Glaze is iPhone-only (`supportsTablet: false`), so no iPad set is needed, and Ap
 | 3 | `03-every-mood.jpg` | A look for every mood | Home Screens in Rosewater Reverie, Rainlight and Bluewing |
 | 4 | `04-use-this-theme.jpg` | Tap a theme, then tap Yes | Cloud Atelier with "Use this theme?" |
 | 5 | `05-custom-widgets.jpg` | Make it yours with Custom widgets | Widgets tab, Your artwork: Custom 1-5 with fit-approved art from Cobalt Caravan, Cloud Atelier and Alpine Starlight |
-| 6 | `06-themes.jpg` | Over 250 original themes | Themes tab: Alpine Starlight and Cloud Atelier featured, Premium · Free cards |
-| 7 | `07-matching-icons.jpg` | Matching icons for your apps | Cobalt Caravan's page: ivory icons on lapis |
+| 6 | `06-themes.jpg` | Over 250 original themes | Themes tab, a search for "indigo": Indigo Current first, then Toucan Loom, Tideleaf Meadow and more (wallpapers, clocks and icons only) |
+| 7 | `07-matching-icons.jpg` | Matching icons for your apps | Lavender Nocturne's page: ivory icons on its lavender-field wallpaper (no widget art; the Unlock bar is cropped off) |
+| 8 | `08-wallpapers.jpg` | Every theme has its wallpaper | Bamboo Ink's Wallpaper screen on the Lock Screen preview |
 
 ## Where they come from
 

@@ -75,12 +75,12 @@
       "n": 6,
       "slug": "themes",
       "kind": "phone",
-      "raw": "02-themes-scrolled",
+      "raw": "03-themes-search-indigo",
       "title": "Over 250 original themes",
-      "sub": "Start with 10 free.",
+      "sub": "Search by colour or mood. Start with 10 free.",
       "bg": [
-        "#EFE6FF",
-        "#FFE2EE"
+        "#E1E7F7",
+        "#EEE6FA"
       ],
       "glow": "#FFFFFF"
     },
