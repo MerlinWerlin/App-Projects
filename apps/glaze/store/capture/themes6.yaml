@@ -1,10 +1,46 @@
-# Shot 6 candidates: Indigo Current leading the Themes tab, three ways (Ocean & Water chip grid, a search, the rail).
+# Shot 6 candidates: Indigo Current leading the Themes tab (Ocean & Water chip grid, and a search).
+# The tab keeps its scroll position, so swipe back to the top (the chip row and search field) first.
 appId: ${APP_ID}
 ---
-# A: the Ocean & Water chip opens that category's grid (Curlfin Cove, Indigo Current, ...).
 - openLink: glaze://themes
 - waitForAnimationToEnd:
     timeout: 6000
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 03-themes-top
+# A: the Ocean & Water chip (the row scrolls sideways) opens that category's grid.
 - scrollUntilVisible:
     element:
       text: "Ocean & Water"
@@ -16,28 +52,61 @@ appId: ${APP_ID}
     optional: true
 - waitForAnimationToEnd:
     timeout: 8000
-- takeScreenshot: 03-themes-ocean-grid
-- scroll:
-    optional: true
+- takeScreenshot: 04-themes-ocean-grid
+- swipe:
+    start: "50%,70%"
+    end: "50%,45%"
+    duration: 900
 - waitForAnimationToEnd:
     timeout: 4000
-- takeScreenshot: 04-themes-ocean-grid-scrolled
+- takeScreenshot: 05-themes-ocean-grid-scrolled
 # B: a search for "indigo" (the field's accessibility label is "Search themes").
 - tapOn:
     text: "Ocean & Water"
     optional: true
-- openLink: glaze://themes
 - waitForAnimationToEnd:
-    timeout: 6000
+    timeout: 4000
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
 - tapOn:
-    text: "Search themes"
+    text: "Search themes.*"
     optional: true
 - inputText: "indigo"
 - hideKeyboard:
     optional: true
 - waitForAnimationToEnd:
     timeout: 6000
-- takeScreenshot: 05-themes-search-indigo
+- takeScreenshot: 06-themes-search-indigo
 - eraseText:
     charactersToErase: 6
     optional: true
@@ -46,4 +115,4 @@ appId: ${APP_ID}
     optional: true
 - waitForAnimationToEnd:
     timeout: 6000
-- takeScreenshot: 06-themes-search-ocean
+- takeScreenshot: 07-themes-search-ocean

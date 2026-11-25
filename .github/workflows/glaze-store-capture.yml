@@ -6,6 +6,10 @@ name: Glaze store capture
 # composed shots into apps/glaze/store/screenshots/6.9/.
 on:
   workflow_dispatch:
+    inputs:
+      flow:
+        description: 'Maestro flow in apps/glaze/store/capture (store-flow.yaml captures every screen)'
+        default: 'store-flow.yaml'
   push:
     branches: ['claude/glaze-store-*']
     paths: ['.github/workflows/glaze-store-capture.yml', 'apps/glaze/store/capture/**', 'apps/glaze/app/**', 'apps/glaze/src/**', 'apps/glaze/modules/**']
@@ -90,7 +94,7 @@ jobs:
           cd store/capture
           export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
           for TRY in 1 2; do
-            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro" store-flow.yaml || echo "maestro reported a failure (optional steps may have missed)"
+            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro" "${{ inputs.flow || 'store-flow.yaml' }}" || echo "maestro reported a failure (optional steps may have missed)"
             find . "$OUT/maestro" -name '*.png' | grep -q . && break
             echo "No captures on try $TRY (driver start-up?); retrying once"
           done
