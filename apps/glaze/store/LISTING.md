@@ -1,6 +1,6 @@
-# Glaze 1.0.41: App Store listing (first release)
+# Glaze 1.0.44: App Store listing (first release)
 
-Copy-paste text for App Store Connect > Glaze > iOS App > 1.0.41 > App Store tab (English (Australia) primary).
+Copy-paste text for App Store Connect > Glaze > iOS App > 1.0.44 > App Store tab (English (Australia) primary).
 `store/listing.json` holds the same fields for the store workflow; `docs/STORE.md` explains the rules. Every
 field is within Apple's limit (counts below). Nothing here names a competitor, shows a rank or badge, or claims
 Medium/Large, live or Lock Screen widgets: Glaze 1.0.41 has small Artwork 1-5 and Custom 1-5 widgets only.
@@ -24,7 +24,7 @@ With name option 2: `Aesthetic icons, widgets & art` (30)
 
 ## Promotional text (170 max)
 
-`Over 140 original themes, each with a wallpaper, matching icons and five artworks for your widgets. 10 premium themes are free; Glaze Plus unlocks the rest.` (156)
+`Over 250 original themes, each with a wallpaper, matching icons and five artworks for your widgets. 10 premium themes are free; Glaze Plus unlocks the rest.` (156)
 
 ## Keywords (100 max)
 
@@ -38,7 +38,7 @@ Commas, no spaces; no word from the name or subtitle repeated (Apple indexes tho
 Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widget art in the same style, all from one theme.
 
 THEMES
-- Over 140 original themes made for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
+- Over 250 original themes made for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
 - Every theme comes with a wallpaper, an icon style and five artworks for your widgets.
 - 10 premium themes are free, including Alpine Starlight and Cloud Atelier. Glaze Plus unlocks every other theme.
 - Starter themes are built into the app and work offline. Other themes download once, then stay on your iPhone.
@@ -97,7 +97,7 @@ address (`src/plus/PlusLockSheet.tsx`).
 
 ## Facts behind the numbers
 
-- "Over 140": 141 themes in the live catalogue on Cloudflare R2 (15 Nov 2026) + 3 bundled.
-- "10 premium themes free": `FREE_THEME_IDS` in `src/core/freeThemes.ts` (1.0.41).
+- "Over 250": 252 themes in `catalog-v2.json` on Cloudflare R2 (read by 1.0.44, 25 Nov 2026) + 3 bundled = 255.
+- "10 premium themes free": `FREE_THEME_IDS` in `src/core/freeThemes.ts` (unchanged in 1.0.44).
 - "A$2.99 a year": `store/SUBSCRIPTION.md`, product `com.jared797.glaze.yearly`, no introductory offer.
 - "11 languages": `CFBundleLocalizations` in `app.json`.

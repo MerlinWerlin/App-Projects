@@ -1,5 +1,5 @@
 {
-  "note": "Glaze App Store screenshots, 6.9-inch (1320 x 2868). raw = a capture from glaze-store-capture.yml (or home.py for shot 1). Captions follow docs/STORE.md: no competitor names, no ranks or badges, no live-wallpaper promise. Captured from Glaze 1.0.41 (yearly Glaze Plus, 10 free themes).",
+  "note": "Glaze App Store screenshots, 6.9-inch (1320 x 2868). raw = a capture from glaze-store-capture.yml (or home.py for shots 1 and 3). Captions follow docs/STORE.md: no competitor names, no ranks or badges, no live-wallpaper promise. Captured from Glaze 1.0.44 (catalog-v2: 252 themes + 3 bundled, yearly Glaze Plus, 10 free themes). Every artwork shown passes the art-fit rules (glaze-art-fit RUBRIC v2 + JARED_CALLS); no hero-medium/large art from themes still on old art. Shot 8 is still the 1.0.41 Plus sheet (A$2.99), see store/screenshots/README.md.",
   "shots": [
     {
       "n": 1,
@@ -33,15 +33,15 @@
       "slug": "every-mood",
       "kind": "trio",
       "raw": [
-        "00-home-desert-afterglow",
-        "00-home-cloud-atelier",
-        "00-home-cobalt-caravan"
+        "00-home-rosewater-reverie",
+        "00-home-rainlight",
+        "00-home-bluewing"
       ],
       "title": "A look for every mood",
-      "sub": "Desert Afterglow, Cloud Atelier and Cobalt Caravan.",
+      "sub": "Rosewater Reverie, Rainlight and Bluewing.",
       "bg": [
-        "#FFE7DA",
-        "#E2ECFA"
+        "#FBE3E6",
+        "#E2E6F6"
       ],
       "glow": "#FFFFFF"
     },
@@ -62,7 +62,7 @@
       "n": 5,
       "slug": "custom-widgets",
       "kind": "phone",
-      "raw": "31-widgets-custom",
+      "raw": "32-widgets-custom-top",
       "title": "Make it yours with Custom widgets",
       "sub": "Add your own pictures, or a favourite artwork.",
       "bg": [
@@ -76,7 +76,7 @@
       "slug": "themes",
       "kind": "phone",
       "raw": "02-themes-scrolled",
-      "title": "Over 140 original themes",
+      "title": "Over 250 original themes",
       "sub": "Start with 10 free, including Alpine Starlight and Cloud Atelier.",
       "bg": [
         "#EFE6FF",
