@@ -32,6 +32,10 @@ appId: ${APP_ID}
     file: page.yaml
     env:
       THEME: porcelain-tide
+- runFlow:
+    file: page.yaml
+    env:
+      THEME: lavender-nocturne
 
 # Free themes: prompt, Yes, next steps, the Widgets tab with their art, the plain page.
 - runFlow:
