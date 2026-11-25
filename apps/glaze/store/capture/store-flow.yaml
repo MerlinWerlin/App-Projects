@@ -21,6 +21,8 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 4000
 - takeScreenshot: 02-themes-scrolled
+- runFlow:
+    file: themes6.yaml
 
 # Premium themes' pages first (browsing is free): their "Got it" taps use up the rotating tips, so the
 # "Use this theme?" captures below have no tip banner behind them.
@@ -37,9 +39,9 @@ appId: ${APP_ID}
     env:
       THEME: lavender-nocturne
 - runFlow:
-    file: indigo.yaml
+    file: wallpaper.yaml
     env:
-      THEME: indigo-current
+      THEME: bamboo-ink
 
 # Free themes: prompt, Yes, next steps, the Widgets tab with their art, the plain page.
 - runFlow:
