@@ -3,11 +3,10 @@
 **25 Nov 2026 (1.0.44 remake):** shots 1-7 are from 1.0.44 (build 100, `catalog-v2.json`) via `glaze-store-capture.yml`
 on the Xcode 27 runner. Every artwork in them passes Jared's art-fit rules (`Documents/Claude/glaze-art-fit/RUBRIC.md` v2
 and `JARED_CALLS.md`); no hero-medium/large art from the themes still on old art. The Home Screens (shots 1 and 3) use
-one fit-approved Small piece per theme (`HERO` in `store/capture/home.py`). Shot 8 (Glaze Plus) is still the 1.0.41
-capture on purpose: the simulator's StoreKit returns the US price ($1.99), and the en-AU listing must show the real
-A$2.99. The sheet's content and terms are unchanged.
+one fit-approved Small piece per theme (`HERO` in `store/capture/home.py`). The Glaze Plus price sheet (the old shot 8)
+is dropped: Jared chose a seven-shot set for 1.0.44, so no screenshot shows a price.
 
-Eight portrait shots for the **6.9-inch iPhone** display (1320 x 2868, RGB JPEG, quality 93, no chroma subsampling) in `6.9/`.
+Seven portrait shots for the **6.9-inch iPhone** display (1320 x 2868, RGB JPEG, quality 93, no chroma subsampling) in `6.9/`.
 Glaze is iPhone-only (`supportsTablet: false`), so no iPad set is needed, and App Store Connect scales the
 6.9-inch set down for every smaller iPhone, so no 6.5-inch set is needed either. `store/listing.json` points
 `APP_IPHONE_67` (Apple's API name for the 6.7/6.9-inch slot) at this folder.
@@ -21,22 +20,18 @@ Glaze is iPhone-only (`supportsTablet: false`), so no iPad set is needed, and Ap
 | 5 | `05-custom-widgets.jpg` | Make it yours with Custom widgets | Widgets tab, Your artwork: Custom 1-5 with fit-approved art from Cobalt Caravan, Cloud Atelier and Alpine Starlight |
 | 6 | `06-themes.jpg` | Over 250 original themes | Themes tab: Alpine Starlight and Cloud Atelier featured, Premium · Free cards |
 | 7 | `07-matching-icons.jpg` | Matching icons for your apps | Cobalt Caravan's page: ivory icons on lapis |
-| 8 | `08-glaze-plus.jpg` | Every theme with Glaze Plus | The yearly Glaze Plus sheet (A$2.99 a year) |
 
 ## Where they come from
 
-- **Shots 2 and 4-8 are real captures** of the Glaze 1.0.44 simulator build on a Pro Max simulator
+- **Shots 2 and 4-7 are real captures** of the Glaze 1.0.44 simulator build on a Pro Max simulator
   (native 1320 x 2868), driven by Maestro, and checked by eye: no Preparing states, empty slots, tip banners or
   half-loaded art. `.github/workflows/glaze-store-capture.yml` runs
   `store/capture/store-flow.yaml` (deep links plus taps on "Yes, use it", "View widgets with this theme",
-  "Add to Custom N" and the Plus sheet). Status bar: 9:41, full battery.
+  and "Add to Custom N"). The flow still captures the Plus sheet (`50-plus`), but it is not used. Status bar: 9:41, full battery.
 - **Shots 1 and 3 are drawn, not captured:** the simulator can't install the icon profile or place widgets,
   so `store/capture/home.py` lays out a Home Screen from each theme's own published files: its full-size
   wallpaper, one fit-approved Small artwork from the theme's `catalog-v2` manifest (`HERO` in `home.py`), and icons in the theme's palette and texture as the app draws them (Feather glyphs; a
   starfield on night themes, grain on the rest). App labels are generic words; no brand logos anywhere.
-- **Price in shot 8:** the sheet shows A$2.99, the Australian price (the app's fallback when StoreKit has no
-  product). Later simulator runs get the live product from the US storefront and show $1.99; use the A$2.99
-  capture, because the listing's primary locale is Australia.
 - `store/capture/compose.py` puts the headline over each capture in a plain rounded phone (no Apple device
   art), using Inter / Inter Display (SIL OFL). Captions and themes per shot: `store/capture/shots.json`.
 
@@ -54,5 +49,4 @@ python store/capture/compose.py --raw <raw> --out store/screenshots/6.9
 
 No competitor names, no ranks, badges, ratings or download counts, no live-wallpaper promise
 (docs/STORE.md). "Over 250" = 252 themes in `catalog-v2.json` on Cloudflare R2 (25 Nov 2026) + 3 bundled; recount if the
-catalogue shrinks. "10 free" = `FREE_THEME_IDS` (`src/core/freeThemes.ts`). No price on the captions: the
-sheet in shot 8 shows the app's own fallback price (A$2.99) because the simulator has no App Store products.
+catalogue shrinks. "10 free" = `FREE_THEME_IDS` (`src/core/freeThemes.ts`). No price on the captions or in any shot.

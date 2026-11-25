@@ -88,7 +88,7 @@ Privacy Policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
 this file mirrors it. Glaze Plus is a yearly auto-renewing subscription (about A$2.99 a year, no trial) and 10
 themes are free. Guideline 3.1.2 needs the subscription's name, length and price plus a Terms of Use and Privacy
 Policy link in the description, so the "GLAZE PLUS" paragraph states them. If the final price tier changes, change
-"A$2.99" in listing.json, here and in the paywall shot. Apple's standard EULA is the Terms of Use.
+"A$2.99" in listing.json and here. Apple's standard EULA is the Terms of Use.
 
 ### Other fields
 
@@ -112,7 +112,7 @@ widget side is still found. The category can be changed with any later version.
 
 ## Screenshots (1.0.44)
 
-Eight 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
+Seven 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
 (real simulator captures of 1.0.44, plus Home Screens drawn from the themes' own files for shots 1 and 3). How they are made, and how to re-make them:
 `store/screenshots/README.md`. Glaze is iPhone-only, so there is no iPad set, and the 6.9-inch set covers every
 smaller iPhone.
@@ -126,17 +126,14 @@ smaller iPhone.
 | 5 | Make it yours with Custom widgets | Add your own pictures, or a favourite artwork. |
 | 6 | Over 250 original themes | Start with 10 free, including Alpine Starlight and Cloud Atelier. |
 | 7 | Matching icons for your apps | Every theme styles your icons to match. |
-| 8 | Every theme with Glaze Plus | One small yearly price. Cancel anytime. |
 
 ### Honesty checks for the shots
 
 - **Theme count:** "Over 250" = 252 themes in `catalog-v2.json` on Cloudflare R2 (1.0.44, 25 Nov 2026) + 3 bundled. Recount
   before upload; if it ever drops to 250 or fewer, change the promotional text, description and shot 6.
 - **Free themes:** "10 free" = `FREE_THEME_IDS` in `src/core/freeThemes.ts` (unchanged in 1.0.44).
-- **No price on the captions** (the store localises it). The Plus sheet in shot 8 was captured on 1.0.41, which showed
-  the app's fallback A$2.99 (the Australian price). From 1.0.42 the sheet shows only StoreKit's localised price, so a
-  re-capture needs StoreKit to return the product (a StoreKit configuration or sandbox), or the sheet shows
-  "Couldn't load the price · Try again" instead.
+- **No price in any shot** (the store localises it). 1.0.44 dropped the Glaze Plus sheet shot (Jared, 25 Nov 2026), so
+  the set is seven shots and none shows a price.
 - **Icons:** generic app labels and Glaze's own glyphs, never brand logos. The phone frame is a plain rounded rectangle.
 - The older sets (`assets/store/` 1290 x 2796, and the T267 HTML compositions) are out of date: do not upload them.
 
