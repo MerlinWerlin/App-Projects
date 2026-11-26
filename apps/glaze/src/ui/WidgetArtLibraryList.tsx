@@ -135,7 +135,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
   // small section shows; the empty note appears only when no size has anything.
   const shown = sections.filter((s) => s.rows.length);
   const rows = shown.flatMap((s) => s.rows);
-  const sizeName = (s: WidgetArtSize) => t(`ui.seamless.sizes.${s}` as never);
+  const sizeName = (s: WidgetArtSize) => (s === 'small' ? t('ui.seamless.sizes.small') : s === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large'));
 
   const openActions = (n: number, uri: string) => openArtworkActions(n, uri, t as never, toast, customLocked ? onCustomLocked ?? (() => undefined) : undefined);
 

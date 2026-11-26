@@ -108,6 +108,7 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
   );
 
   if (slots === null) return null;
+  const sizeName = (s: WidgetArtSize) => (s === 'small' ? t('ui.seamless.sizes.small') : s === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large'));
 
   return (
     <View style={[styles.wrap, style]}>
@@ -121,7 +122,7 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
         <View key={g.size} style={styles.section}>
           {/* Owner 2026-11-27: Small 1-5, Medium 6-7, Large 8-9, the same numbers as Artwork. */}
           <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.sectionTitle, { color: c.inkSecondary }]}>
-            {`${t(`ui.seamless.sizes.${g.size}` as never)} · ${g.first}–${g.first + g.count - 1}`}
+            {`${sizeName(g.size)} · ${g.first}–${g.first + g.count - 1}`}
           </Text>
           {slots.slice(g.first - 1, g.first - 1 + g.count).map((uri, i) => {
         const n = g.first + i;
