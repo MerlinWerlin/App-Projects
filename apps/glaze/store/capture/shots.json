@@ -1,5 +1,5 @@
 {
-  "note": "Glaze App Store screenshots, 6.9-inch (1320 x 2868). raw = a capture from glaze-store-capture.yml (or home.py for shot 1). Captions follow docs/STORE.md: no competitor names, no ranks or badges, no live-wallpaper promise. Captured from Glaze 1.0.41 (yearly Glaze Plus, 10 free themes).",
+  "note": "Glaze App Store screenshots, 6.9-inch (1320 x 2868). raw = a capture from glaze-store-capture.yml (or home.py for shots 1 and 3). Captions follow docs/STORE.md: no competitor names, no ranks or badges, no live-wallpaper promise. Captured from Glaze 1.0.44 (catalog-v2: 252 themes + 3 bundled, yearly Glaze Plus, 10 free themes). Every artwork shown passes the art-fit rules (glaze-art-fit RUBRIC v2 + JARED_CALLS); no hero-medium/large art from themes still on old art. Eight shots, none with a price: the Glaze Plus price sheet was dropped for 1.0.44 and shot 8 is the Wallpaper screen instead (Jared, 25 Nov 2026).",
   "shots": [
     {
       "n": 1,
@@ -33,15 +33,15 @@
       "slug": "every-mood",
       "kind": "trio",
       "raw": [
-        "00-home-desert-afterglow",
-        "00-home-cloud-atelier",
-        "00-home-cobalt-caravan"
+        "00-home-rosewater-reverie",
+        "00-home-rainlight",
+        "00-home-bluewing"
       ],
       "title": "A look for every mood",
-      "sub": "Desert Afterglow, Cloud Atelier and Cobalt Caravan.",
+      "sub": "Rosewater Reverie, Rainlight and Bluewing.",
       "bg": [
-        "#FFE7DA",
-        "#E2ECFA"
+        "#FBE3E6",
+        "#E2E6F6"
       ],
       "glow": "#FFFFFF"
     },
@@ -62,7 +62,7 @@
       "n": 5,
       "slug": "custom-widgets",
       "kind": "phone",
-      "raw": "31-widgets-custom",
+      "raw": "32-widgets-custom-top",
       "title": "Make it yours with Custom widgets",
       "sub": "Add your own pictures, or a favourite artwork.",
       "bg": [
@@ -75,12 +75,12 @@
       "n": 6,
       "slug": "themes",
       "kind": "phone",
-      "raw": "02-themes-scrolled",
-      "title": "Over 140 original themes",
-      "sub": "Start with 10 free, including Alpine Starlight and Cloud Atelier.",
+      "raw": "03-themes-search-indigo",
+      "title": "Over 250 original themes",
+      "sub": "Search by colour or mood. Start with 10 free.",
       "bg": [
-        "#EFE6FF",
-        "#FFE2EE"
+        "#E1E7F7",
+        "#EEE6FA"
       ],
       "glow": "#FFFFFF"
     },
@@ -88,25 +88,32 @@
       "n": 7,
       "slug": "matching-icons",
       "kind": "phone",
-      "raw": "13-cobalt-caravan-page",
+      "raw": "13-lavender-nocturne-page",
       "title": "Matching icons for your apps",
       "sub": "Every theme styles your icons to match.",
       "bg": [
-        "#DCE6F7",
-        "#EDE4FF"
+        "#E9E1F5",
+        "#F6E6F0"
       ],
-      "glow": "#FFFFFF"
+      "glow": "#FFFFFF",
+      "crop": [
+        0,
+        0,
+        1320,
+        2470
+      ],
+      "phoneWidth": 1120
     },
     {
       "n": 8,
-      "slug": "glaze-plus",
+      "slug": "wallpapers",
       "kind": "phone",
-      "raw": "50-plus",
-      "title": "Every theme with Glaze Plus",
-      "sub": "One small yearly price. Cancel anytime.",
+      "raw": "16-bamboo-ink-lock",
+      "title": "Every theme has its wallpaper",
+      "sub": "See it on your Lock Screen, then save it to Photos.",
       "bg": [
-        "#F6E4FF",
-        "#FFE6DA"
+        "#F1EBDD",
+        "#E3E9E0"
       ],
       "glow": "#FFFFFF"
     }

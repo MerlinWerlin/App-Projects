@@ -21,6 +21,8 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 4000
 - takeScreenshot: 02-themes-scrolled
+- runFlow:
+    file: themes6.yaml
 
 # Premium themes' pages first (browsing is free): their "Got it" taps use up the rotating tips, so the
 # "Use this theme?" captures below have no tip banner behind them.
@@ -32,6 +34,18 @@ appId: ${APP_ID}
     file: page.yaml
     env:
       THEME: porcelain-tide
+# From the Themes tab, so Lavender Nocturne's back button says Themes (shot 7).
+- openLink: glaze://themes
+- waitForAnimationToEnd:
+    timeout: 3000
+- runFlow:
+    file: page.yaml
+    env:
+      THEME: lavender-nocturne
+- runFlow:
+    file: wallpaper.yaml
+    env:
+      THEME: bamboo-ink
 
 # Free themes: prompt, Yes, next steps, the Widgets tab with their art, the plain page.
 - runFlow:
@@ -108,7 +122,7 @@ appId: ${APP_ID}
 # "Your artwork" from the middle to near the top, so Custom 1-5 fill the screen.
 - swipe:
     start: "50%,78%"
-    end: "50%,46%"
+    end: "50%,34%"
     duration: 900
 - waitForAnimationToEnd:
     timeout: 4000

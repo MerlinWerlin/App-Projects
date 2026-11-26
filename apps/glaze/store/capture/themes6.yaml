@@ -1,0 +1,132 @@
+# Shot 6 candidates: Indigo Current leading the Themes tab.
+# The tab keeps its scroll position, so swipe back to the top first.
+appId: ${APP_ID}
+---
+- openLink: glaze://themes
+- waitForAnimationToEnd:
+    timeout: 6000
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- waitForAnimationToEnd:
+    timeout: 4000
+# A: a search for "indigo" (Indigo Current is the first of the matches).
+- tapOn:
+    text: "Search themes.*"
+    optional: true
+- inputText: "indigo"
+- hideKeyboard:
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 03-themes-search-indigo
+- tapOn:
+    text: "Search themes.*"
+    optional: true
+- eraseText:
+    charactersToErase: 10
+- hideKeyboard:
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+# B: the Ocean & Water rail of big cards, moved one card along so Indigo Current leads.
+- scrollUntilVisible:
+    element:
+      text: "Ocean & Water"
+    direction: DOWN
+    speed: 60
+    timeout: 90000
+    centerElement: true
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 04-themes-ocean-rail-0
+- swipe:
+    start: "62%,72%"
+    end: "20%,72%"
+    duration: 1600
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 05-themes-ocean-rail-5
+- swipe:
+    start: "62%,72%"
+    end: "20%,72%"
+    duration: 1600
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 06-themes-ocean-rail-6
+# C: the Ocean & Water chip: swipe the chip row along, then tap it.
+- openLink: glaze://themes
+- waitForAnimationToEnd:
+    timeout: 4000
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "50%,25%"
+    end: "50%,90%"
+    duration: 300
+- swipe:
+    start: "90%,42%"
+    end: "30%,42%"
+    duration: 1200
+- tapOn:
+    text: "Ocean & Water"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 07-themes-ocean-grid

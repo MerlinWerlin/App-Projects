@@ -1,0 +1,11 @@
+# Just the Themes tab captures (shot 6), for a quick re-run: workflow_dispatch with flow=themes-only.yaml.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+- runFlow:
+    file: dismiss.yaml
+- runFlow:
+    file: themes6.yaml

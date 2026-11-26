@@ -1,7 +1,7 @@
 # App Store listing: final copy and screenshots
 
 T266 (owner-1101i #3, 1 Nov 2026) replaces the T67 draft. Paste the fields below into App Store Connect > Apps >
-Glaze > iOS App > version 1.0.41 > App Store tab (English (Australia) is the primary language; copy the same text to
+Glaze > iOS App > version 1.0.44 > App Store tab (English (Australia) is the primary language; copy the same text to
 English (U.S.) and English (U.K.) if those localisations are added). Character counts are checked by
 `src/core/t266Release.test.ts`.
 
@@ -33,7 +33,7 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
 | Name | `Glaze: Icon Themes & Widgets` | 28 | 30 |
 | Subtitle | `Aesthetic Home Screen Makeover` | 30 | 30 |
 | Keywords | `wallpaper,lock,custom,cute,pastel,kawaii,cozy,dark,color,photo,matching,artwork,shortcut,style,art` | 98 | 100 |
-| Promotional text | `Over 140 original themes, each with a wallpaper, matching icons and five artworks for your widgets. 10 premium themes are free; Glaze Plus unlocks the rest.` | 156 | 170 |
+| Promotional text | `Over 250 original themes, each with a wallpaper, matching icons and five artworks for your widgets. 10 premium themes are free; Glaze Plus unlocks the rest.` | 156 | 170 |
 
 - **Name:** "Glaze" first; "Icon Themes & Widgets" are the two most-searched outcome nouns. Fallback if the name is
   taken in App Store Connect: `Glaze: Themes & Widgets` (23).
@@ -50,7 +50,7 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
 Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widget art in the same style, all from one theme.
 
 THEMES
-- Over 140 original themes made for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
+- Over 250 original themes made for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
 - Every theme comes with a wallpaper, an icon style and five artworks for your widgets.
 - 10 premium themes are free, including Alpine Starlight and Cloud Atelier. Glaze Plus unlocks every other theme.
 - Starter themes are built into the app and work offline. Other themes download once, then stay on your iPhone.
@@ -88,7 +88,7 @@ Privacy Policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
 this file mirrors it. Glaze Plus is a yearly auto-renewing subscription (about A$2.99 a year, no trial) and 10
 themes are free. Guideline 3.1.2 needs the subscription's name, length and price plus a Terms of Use and Privacy
 Policy link in the description, so the "GLAZE PLUS" paragraph states them. If the final price tier changes, change
-"A$2.99" in listing.json, here and in the paywall shot. Apple's standard EULA is the Terms of Use.
+"A$2.99" in listing.json and here. Apple's standard EULA is the Terms of Use.
 
 ### Other fields
 
@@ -110,10 +110,10 @@ with practical tools (scanners, VPNs, calculators, file managers), so a theme ap
 chart places there and its pastel screenshots look out of place. Utilities stays as the secondary category so the
 widget side is still found. The category can be changed with any later version.
 
-## Screenshots (1.0.41, first release)
+## Screenshots (1.0.44)
 
 Eight 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
-(real simulator captures of 1.0.41, plus Home Screens drawn from the themes' own files for shots 1 and 3). How they are made, and how to re-make them:
+(real simulator captures of 1.0.44, plus Home Screens drawn from the themes' own files for shots 1 and 3). How they are made, and how to re-make them:
 `store/screenshots/README.md`. Glaze is iPhone-only, so there is no iPad set, and the 6.9-inch set covers every
 smaller iPhone.
 
@@ -121,22 +121,20 @@ smaller iPhone.
 |---|---|---|
 | 1 | Your whole Home Screen, one tap | Wallpaper, icons and widgets that match, from one theme. |
 | 2 | Five artworks with every theme | Artwork 1 to 5 widgets follow the theme you use. |
-| 3 | A look for every mood | Desert Afterglow, Cloud Atelier and Cobalt Caravan. |
+| 3 | A look for every mood | Rosewater Reverie, Rainlight and Bluewing. |
 | 4 | Tap a theme, then tap Yes | Glaze puts it on your widgets, then shows the next steps. |
 | 5 | Make it yours with Custom widgets | Add your own pictures, or a favourite artwork. |
-| 6 | Over 140 original themes | Start with 10 free, including Alpine Starlight and Cloud Atelier. |
+| 6 | Over 250 original themes | Search by colour or mood. Start with 10 free. |
 | 7 | Matching icons for your apps | Every theme styles your icons to match. |
-| 8 | Every theme with Glaze Plus | One small yearly price. Cancel anytime. |
+| 8 | Every theme has its wallpaper | See it on your Lock Screen, then save it to Photos. |
 
 ### Honesty checks for the shots
 
-- **Theme count:** "Over 140" = 141 themes in the live catalogue on Cloudflare R2 (15 Nov 2026) + 3 bundled. Recount
-  before upload; if it ever drops to 140 or fewer, change the promotional text, description and shot 6.
-- **Free themes:** "10 free" = `FREE_THEME_IDS` in `src/core/freeThemes.ts` (1.0.41).
-- **No price on the captions** (the store localises it). The Plus sheet in shot 8 was captured on 1.0.41, which showed
-  the app's fallback A$2.99 (the Australian price). From 1.0.42 the sheet shows only StoreKit's localised price, so a
-  re-capture needs StoreKit to return the product (a StoreKit configuration or sandbox), or the sheet shows
-  "Couldn't load the price · Try again" instead.
+- **Theme count:** "Over 250" = 252 themes in `catalog-v2.json` on Cloudflare R2 (1.0.44, 25 Nov 2026) + 3 bundled. Recount
+  before upload; if it ever drops to 250 or fewer, change the promotional text, description and shot 6.
+- **Free themes:** "10 free" = `FREE_THEME_IDS` in `src/core/freeThemes.ts` (unchanged in 1.0.44).
+- **No price in any shot** (the store localises it). 1.0.44 dropped the Glaze Plus sheet shot (Jared, 25 Nov 2026), so
+  shot 8 is the Wallpaper screen instead, and no shot shows a price.
 - **Icons:** generic app labels and Glaze's own glyphs, never brand logos. The phone frame is a plain rounded rectangle.
 - The older sets (`assets/store/` 1290 x 2796, and the T267 HTML compositions) are out of date: do not upload them.
 
