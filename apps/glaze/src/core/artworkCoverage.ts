@@ -5,21 +5,29 @@
 // scripts/packs/artwork-coverage.mjs runs it over every published pack (CI: glaze-artwork-coverage).
 import { isReplacedArtEdition } from './designedWidgets.ts';
 import { liveArtPlan, withLiveArt, type CountdownArtTargets } from './liveArt.ts';
-import { THEME_PACK_ART_SIZES, planThemePieces } from './themeArtSync.ts';
+import { ARTWORK_ONLY_SIZES, planThemePieces } from './themeArtSync.ts';
+import type { HomeOptionSize } from './widgetOptions.ts';
 import type { WidgetOption } from './widgetOptions.ts';
 
 /** Artwork slots on the Home Screen (ThemeArtKind.gallerySmallSlots). */
 export const ARTWORK_SLOTS = 5;
 
 /** The option ids of a theme's Artwork pieces, in slot order (before cycling). */
-export function plannedArtworkOptionIds(themeId: string, options: readonly WidgetOption[], targets: CountdownArtTargets = {}): string[] {
+export function plannedArtworkOptionIds(
+  themeId: string,
+  options: readonly WidgetOption[],
+  targets: CountdownArtTargets = {},
+  /** Owner 2026-11-27: medium = Artwork 6-7, large = 8-9 (default small, Artwork 1-5). */
+  size: HomeOptionSize = 'small',
+): string[] {
   const live = withLiveArt(themeId, options, { targets }).filter((o) => !isReplacedArtEdition(o));
   const planned = planThemePieces({
     themeId,
     themeName: '',
     options: live,
     name: () => '',
-    sizes: THEME_PACK_ART_SIZES,
+    sizes: [size],
+    artworkOnly: ARTWORK_ONLY_SIZES,
     // Only whether a piece is live matters here (a live piece is never Artwork).
     live: (o) => (liveArtPlan(themeId, o, { targets }) ? ({ kind: 'clock' } as never) : null),
   });

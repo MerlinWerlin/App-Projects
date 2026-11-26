@@ -109,8 +109,9 @@ test('no screen lists a theme\'s art outside the shared selection (the old all-o
     assert.doesNotMatch(src, /<ThemeWidgetArt\b|<WidgetArtMenu\b|<DesignedThemeWidgets\b/, f);
   }
   const list = readFileSync(join(ROOT, 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
-  assert.match(list, /artworkPieces\(pieces, activeThemeId, artwork\)/, 'My widget art reads the shared index list');
+  assert.match(list, /artworkPieces\(pieces, activeThemeId, artwork\[g\.size\], g\.size\)/, 'My widget art reads the shared index list');
   const sync = readFileSync(join(ROOT, 'src', 'core', 'themeArtSync.ts'), 'utf8');
-  assert.match(sync, /size === 'small' && option\.kind === 'art' && !live \? \{ artwork: true \}/);
-  assert.match(sync, /next\.artwork = planned\.filter\(\(p\) => p\.artwork === true/);
+  assert.match(sync, /const plainArt = option\.kind === 'art' && !live;/);
+  assert.match(sync, /\.\.\.\(plainArt \? \{ artwork: true \} : \{\}\)/);
+  assert.match(sync, /planned\.filter\(\(p\) => p\.artwork === true && p\.size === size/); assert.match(sync, /next\.artwork = listOf\(.small.\)/);
 });

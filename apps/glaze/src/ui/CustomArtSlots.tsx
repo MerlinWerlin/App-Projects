@@ -8,7 +8,9 @@ import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { ARTWORK_GROUPS, sizeOfArtworkNumber } from '../core/artworkSlots';
 import type { CustomArtList } from '../core/customArtSlots';
+import type { WidgetArtSize } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
 import { customArt } from '../native/customArt';
 import { chromeRadiusV2, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
@@ -26,6 +28,12 @@ type Props = {
 };
 
 const THUMB = 96;
+/** Owner 2026-11-27: Custom 6-7 (medium) and 8-9 (large) show in their widget's shape. */
+const THUMB_SIZE: Record<WidgetArtSize, { width: number; height: number }> = {
+  small: { width: THUMB, height: THUMB },
+  medium: { width: 132, height: 62 },
+  large: { width: 92, height: 96 },
+};
 
 export function CustomArtSlots({ onWatchHow, style }: Props) {
   const { c } = useColorsV2();
@@ -58,7 +66,7 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
     async (n: number) => {
       if (busy !== null) return;
       setNote(null);
-      const picked = await pickCustomArtPhoto();
+      const picked = await pickCustomArtPhoto(sizeOfArtworkNumber(n) === 'small' ? 'square' : 'widget');
       if (picked.kind === 'cancelled') return;
       if (picked.kind !== 'picked') {
         if (alive.current) setNote(t(picked.kind === 'denied' ? 'tabs.widgetsTab.custom.denied' : 'tabs.widgetsTab.custom.failed'));
@@ -109,8 +117,15 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
       <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), { color: c.inkSecondary }]}>
         {t('tabs.widgetsTab.custom.makeItYours')}
       </Text>
-      {slots.map((uri, i) => {
-        const n = i + 1;
+      {ARTWORK_GROUPS.map((g) => (
+        <View key={g.size} style={styles.section}>
+          {/* Owner 2026-11-27: Small 1-5, Medium 6-7, Large 8-9, the same numbers as Artwork. */}
+          <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.sectionTitle, { color: c.inkSecondary }]}>
+            {`${t(`ui.seamless.sizes.${g.size}` as never)} · ${g.first}–${g.first + g.count - 1}`}
+          </Text>
+          {slots.slice(g.first - 1, g.first - 1 + g.count).map((uri, i) => {
+        const n = g.first + i;
+        const thumbSize = THUMB_SIZE[g.size];
         const name = t('tabs.widgetsTab.custom.slot', { n });
         const working = busy === n;
         if (!uri) {
@@ -123,7 +138,7 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
               accessibilityLabel={t('tabs.widgetsTab.custom.addA11y', { n })}
               style={({ pressed }) => [styles.row, { borderColor: c.separator, opacity: pressed ? 0.6 : 1 }]}
             >
-              <View style={[styles.thumb, styles.empty, continuous, { borderColor: c.tint, backgroundColor: c.fill }]}>
+              <View style={[styles.thumb, thumbSize, styles.empty, continuous, { borderColor: c.tint, backgroundColor: c.fill }]}>
                 <Feather name="plus" size={28} color={c.tint} />
               </View>
               <View style={styles.text}>
@@ -142,7 +157,7 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
               recyclingKey={uri}
               cachePolicy="none"
               contentFit="cover"
-              style={[styles.thumb, { backgroundColor: c.surfaceRaised }]}
+              style={[styles.thumb, thumbSize, { backgroundColor: c.surfaceRaised }]}
               accessible
               accessibilityLabel={t('tabs.widgetsTab.custom.filledA11y', { n })}
               accessibilityIgnoresInvertColors
@@ -171,7 +186,9 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
             </View>
           </View>
         );
-      })}
+          })}
+        </View>
+      ))}
       {note ? (
         <Text accessibilityLiveRegion="polite" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.warn }]}>
           {note}
@@ -187,6 +204,8 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
 
 const styles = StyleSheet.create({
   wrap: { gap: spaceV2.sm },
+  section: { gap: spaceV2.xs },
+  sectionTitle: { marginTop: spaceV2.sm, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.4 },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
   empty: { borderWidth: 1.5, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' },

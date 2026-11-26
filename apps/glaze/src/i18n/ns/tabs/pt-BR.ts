@@ -65,7 +65,7 @@ export const ptBR: NonNullable<LocaleMessages['tabs']> = {
     // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
     custom: {
       title: "Suas imagens",
-      makeItYours: "Deixe com a sua cara: adicione aqui suas próprias imagens e coloque Personalizado 1 a 5 na Tela de Início.",
+      makeItYours: "Deixe com a sua cara: adicione aqui suas próprias imagens e coloque Personalizado 1 a 9 na Tela de Início.",
       privacy: "Suas imagens ficam neste iPhone. Elas nunca são enviadas.",
       slot: "Personalizado {n}",
       add: "Adicionar imagem",

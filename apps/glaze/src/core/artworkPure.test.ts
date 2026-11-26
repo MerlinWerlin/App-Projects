@@ -37,7 +37,7 @@ test('commitThemeArt writes the ordered artwork list; it survives a write and re
 
 test('the widget reads the same list (index.json artwork) before any fallback; one-time rebuild v6', () => {
   const W = (f: string) => readFileSync(join(process.cwd(), 'targets', 'widget', f), 'utf8');
-  assert.match(W('WidgetArtLibrary.swift'), /let artwork = \(root\["artwork"\] as\? \[Any\]\)/);
-  assert.match(W('ThemeArtWidgets.swift'), /if let list = snap\.artwork \{ return list\.filter \{ snap\.has\(\$0\) \} \}/);
+  assert.match(W('WidgetArtLibrary.swift'), /artwork: ids\("artwork"\), artworkMedium: ids\("artworkMedium"\), artworkLarge: ids\("artworkLarge"\)/);
+  assert.match(W('ThemeArtWidgets.swift'), /if let list = snap\.artworkList\(size: size\) \{ return list\.filter \{ snap\.has\(\$0\) \} \}/);
   assert.match(readFileSync(join(process.cwd(), 'src', 'store', 'widgetArtRecovery.ts'), 'utf8'), /glaze\.widgetArt\.recovered106\.v7/);
 });

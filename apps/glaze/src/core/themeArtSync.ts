@@ -39,7 +39,14 @@ export const THEME_ART_SIZES: readonly HomeOptionSize[] = Object.freeze(['small'
  * the app - remove them unless its the native ones"): a theme's pack art is small only (Artwork 1-5).
  * The native designed Clock / Battery / Calendar keep every size (plannedDesignedWidgets).
  */
-export const THEME_PACK_ART_SIZES: readonly HomeOptionSize[] = Object.freeze(['small'] as HomeOptionSize[]);
+export const THEME_PACK_ART_SIZES: readonly HomeOptionSize[] = Object.freeze(['small', 'medium', 'large'] as HomeOptionSize[]);
+
+/**
+ * Owner 2026-11-27 ("2 of each [medium and large] for each theme ... the number scheme for the
+ * galary"): medium and large pack art is back as Artwork 6-7 and 8-9, but only plain illustrations
+ * drawn for that size (no clock / date / live pictures, which stay small-only as on 2026-11-13).
+ */
+export const ARTWORK_ONLY_SIZES: readonly HomeOptionSize[] = Object.freeze(['medium', 'large'] as HomeOptionSize[]);
 
 /** One piece the theme should have in "My widget art". */
 export type PlannedThemePiece = Omit<WidgetArtPiece, 'file' | 'created' | 'size' | 'slot'> & {
@@ -68,6 +75,8 @@ export type PlanInput = {
   cap?: number;
   /** Owner 2026-11-13: the sizes to plan (default every Home Screen size). */
   sizes?: readonly HomeOptionSize[];
+  /** Owner 2026-11-27: sizes where only plain art (kind `art`, no live value) is planned. */
+  artworkOnly?: readonly HomeOptionSize[];
 };
 
 /**
@@ -89,8 +98,13 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
     for (const option of ordered) {
       const id = themePieceId(input.themeId, option.id, size);
       if (seen.has(id)) continue;
-      seen.add(id);
       const live = input.live?.(option, size) ?? null;
+      const plainArt = option.kind === 'art' && !live;
+      // Medium / large Artwork is art drawn FOR that size (its first listed size: the pack's
+      // medium-1 / large-2 pieces, hero-medium / hero-large), never a square small piece that also
+      // lists large and passes the aspect check.
+      if (input.artworkOnly?.includes(size) && (!plainArt || option.sizes[0] !== size)) continue;
+      seen.add(id);
       out.push({
         id,
         name: input.name(option, size, slot),
@@ -102,7 +116,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
         slot,
         optionId: option.id,
         ...(live ? { live } : {}),
-        ...(size === 'small' && option.kind === 'art' && !live ? { artwork: true } : {}),
+        ...(plainArt ? { artwork: true } : {}),
       });
       slot++;
     }
@@ -173,7 +187,15 @@ export function commitThemeArt(
   // Owner 2026-11-13: THE ordered Artwork list (pure illustrations, plan order). The app's My widget
   // art and the widget's Artwork n both read it, so in-app Artwork n = Home Screen Artwork n.
   const keptIds = new Set(kept.map((p) => p.id));
-  next.artwork = planned.filter((p) => p.artwork === true && keptIds.has(p.id)).map((p) => p.id);
+  // Owner 2026-11-27: one list per size (small = Artwork 1-5, medium = 6-7, large = 8-9).
+  const listOf = (size: WidgetArtSize) => planned.filter((p) => p.artwork === true && p.size === size && keptIds.has(p.id)).map((p) => p.id);
+  next.artwork = listOf('small');
+  const medium = listOf('medium');
+  const large = listOf('large');
+  if (medium.length) next.artworkMedium = medium;
+  else delete next.artworkMedium;
+  if (large.length) next.artworkLarge = large;
+  else delete next.artworkLarge;
   const retired = retire(lib.retired, gone, pieces);
   if (retired) next.retired = retired;
   else delete next.retired;

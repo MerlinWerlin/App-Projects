@@ -65,7 +65,7 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
     custom: {
       title: "你的作品",
-      makeItYours: "打造你的专属主题：在这里添加你自己的图片，然后把“自定义 1”到“自定义 5”放到主屏幕上。",
+      makeItYours: "打造你的专属主题：在这里添加你自己的图片，然后把“自定义 1”到“自定义 9”放到主屏幕上。",
       privacy: "你的图片只保存在这台 iPhone 上，绝不会上传。",
       slot: "自定义 {n}",
       add: "添加图片",

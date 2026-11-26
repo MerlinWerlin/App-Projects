@@ -66,6 +66,9 @@
 "Artwork 4" = "插画 4";
 "Artwork 5" = "插画 5";
 "Artwork 6" = "插画 6";
+"Artwork 7" = "插画 7";
+"Artwork 8" = "插画 8";
+"Artwork 9" = "插画 9";
 "Widget art" = "小组件图片";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
@@ -172,6 +175,10 @@
 "Custom 3" = "自定义 3";
 "Custom 4" = "自定义 4";
 "Custom 5" = "自定义 5";
+"Custom 6" = "自定义 6";
+"Custom 7" = "自定义 7";
+"Custom 8" = "自定义 8";
+"Custom 9" = "自定义 9";
 "Your own picture, added in Glaze." = "你在 Glaze 中添加的图片。";
 "Add a picture in Glaze" = "在 Glaze 中添加图片";
 "Your picture" = "你的图片";

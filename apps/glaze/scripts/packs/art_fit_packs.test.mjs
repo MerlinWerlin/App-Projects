@@ -76,3 +76,76 @@ test('every committed pack-artwork-fit/<id>/fit.json reads and names its art fil
   const fits = readFits(dir);
   assert.equal(fits.length, readdirSync(dir).filter((d) => existsSync(join(dir, d, 'fit.json'))).length);
 });
+
+// Owner 2026-11-27: 2 medium + 2 large artworks per theme (Artwork 6-7 / 8-9).
+test('buildFit replaces hero-medium / hero-large in their roles and adds medium / large art options', () => {
+  const { m, files } = base();
+  const add = [
+    ['widget-medium.ffff0000.webp', 'widget-medium', 1092, 510],
+    ['widget-large.abab0000.webp', 'widget-large', 1092, 1146],
+  ];
+  for (const [path, role, w, h] of add) {
+    const b = webp(w, h, 30 + w);
+    files.set(path, b);
+    m.assets.push({ path, role, width: w, height: h, bytes: b.length, sha256: sha(b), mime: 'image/webp' });
+  }
+  m.widgets.push({ id: 'hero-medium', kind: 'art', image: 'widget-medium.ffff0000.webp', sizes: ['medium', 'small', 'large'], fit: 'fit', background: 'wallpaper' });
+  m.widgets.push({ id: 'hero-large', kind: 'art', image: 'widget-large.abab0000.webp', sizes: ['large', 'small', 'medium'], fit: 'fit', background: 'wallpaper' });
+  const art = { 'comet.webp': webp(1092, 510, 41), 'meteor.webp': webp(1092, 510, 42), 'nebula.webp': webp(1092, 1146, 43), 'pleiades.webp': webp(1092, 1146, 44) };
+  const fit = {
+    theme: 'cloud-x', base: { packVersion: 7 },
+    replace: [{ from: 'hero-medium', id: 'comet', label: 'Comet', file: 'comet.webp' }, { from: 'hero-large', id: 'nebula', label: 'Nebula', file: 'nebula.webp' }],
+    add: [{ id: 'meteor', size: 'medium', label: 'Meteor', file: 'meteor.webp' }, { id: 'pleiades', size: 'large', label: 'Pleiades', file: 'pleiades.webp' }],
+  };
+  const { manifest } = buildFit(fit, m, files, (f) => art[f]);
+  const w = Object.fromEntries(manifest.widgets.map((x) => [x.id, x]));
+  assert.deepEqual(w.comet.sizes, ['medium', 'small', 'large'], 'a replaced hero keeps its own size first');
+  assert.deepEqual(w.meteor.sizes, ['medium']);
+  assert.deepEqual(w.pleiades.sizes, ['large']);
+  for (const id of ['comet', 'nebula', 'meteor', 'pleiades']) assert.equal(w[id].background, 'wallpaper');
+  const role = (id) => manifest.assets.find((a) => a.path === w[id].image).role;
+  assert.equal(role('comet'), 'widget-medium');
+  assert.equal(role('nebula'), 'widget-large');
+  assert.equal(role('meteor'), 'widget-art');
+  assert.equal(manifest.assets.filter((a) => a.role === 'widget-medium').length, 1, 'the old hero-medium file is gone');
+  assert.throws(() => buildFit({ ...fit, replace: [], add: [{ id: 'boat', size: 'medium', file: 'comet.webp' }] }, m, files, (f) => art[f]), /already a widget/);
+});
+
+test('buildAll chains stages: a later stage builds on the version the earlier one made', async () => {
+  const { mkdtempSync, writeFileSync, mkdirSync, readFileSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { buildAll } = await import('./art_fit_packs.mjs');
+  const root = mkdtempSync(join(tmpdir(), 'artfit-'));
+  const { m, files } = base();
+  const mBytes = Buffer.from(JSON.stringify(m));
+  const remote = new Map([[`art/cloud-x/v7/manifest.json`, mBytes], ...[...files].map(([p, b]) => [`art/cloud-x/v7/${p}`, b])]);
+  const stage = (name, fit, artFiles) => {
+    const d = join(root, name, 'cloud-x');
+    mkdirSync(d, { recursive: true });
+    writeFileSync(join(d, 'fit.json'), JSON.stringify(fit));
+    for (const [f, b] of Object.entries(artFiles)) writeFileSync(join(d, f), b);
+    return join(root, name);
+  };
+  const s1 = stage('one', { theme: 'cloud-x', base: { packVersion: 7, manifestSha256: sha(mBytes) }, replace: [{ from: 'boat', id: 'seed', file: 'seed.webp' }] }, { 'seed.webp': webp(1024, 1024, 50) });
+  // Stage two's base manifest is stage one's output, fetched from "R2" after publishing it.
+  const fetcher = async (url) => {
+    const rel = url.replace(/^https:\/\/x\//, '').replace(/\?.*$/, '');
+    if (rel === 'catalog-v2.json') return new Response(JSON.stringify({ packs: [{ id: 'cloud-x', manifest: 'art/cloud-x/v8/manifest.json' }] }), { status: 200 });
+    const b = remote.get(rel);
+    return b ? new Response(b, { status: 200 }) : new Response('', { status: 404 });
+  };
+  const out1 = join(root, 'out1');
+  mkdirSync(out1);
+  await buildAll({ base: 'https://x', fitDirs: [s1], outDir: out1, cacheDir: join(root, 'c1'), fetcher, log: () => {} });
+  for (const p of readdirSync(join(out1, 'art', 'cloud-x', 'v8'))) remote.set(`art/cloud-x/v8/${p}`, readFileSync(join(out1, 'art', 'cloud-x', 'v8', p)));
+  const v8 = remote.get('art/cloud-x/v8/manifest.json');
+  const s2 = stage('two', { theme: 'cloud-x', base: { packVersion: 8, manifestSha256: sha(v8) }, add: [{ id: 'comet', size: 'medium', file: 'comet.webp' }] }, { 'comet.webp': webp(1092, 510, 51) });
+  const out2 = join(root, 'out2');
+  mkdirSync(out2);
+  const over = await buildAll({ base: 'https://x', fitDirs: [s1, s2], outDir: out2, cacheDir: join(root, 'c2'), fetcher, log: () => {} });
+  assert.deepEqual(over.map((o) => [o.id, o.packVersion]), [['cloud-x', 9]], 'the last stage wins');
+  assert.ok(existsSync(join(out2, 'art', 'cloud-x', 'v8', 'manifest.json')) && existsSync(join(out2, 'art', 'cloud-x', 'v9', 'manifest.json')));
+  // A stage that skips a version is refused.
+  const bad = stage('bad', { theme: 'cloud-x', base: { packVersion: 7, manifestSha256: sha(mBytes) }, add: [{ id: 'x', size: 'large', file: 'x.webp' }] }, { 'x.webp': webp(1092, 1146, 52) });
+  await assert.rejects(buildAll({ base: 'https://x', fitDirs: [s1, bad], outDir: out2, cacheDir: join(root, 'c3'), fetcher, log: () => {} }), /previous stage/);
+});

@@ -37,6 +37,12 @@ struct GlazeThemeGalleryBundle: WidgetBundle {
     ThemeClockWidget()
     ThemeBatteryWidget()
     ThemeCalendarWidget()
+    // Owner 2026-11-27: Custom 6-7 (medium) and 8-9 (large) (CustomArtWidgets.swift). Here because
+    // GlazePersonalWidgetsBundle (Custom 1-5) would pass the builder's 9-entry limit.
+    CustomArtWidget6()
+    CustomArtWidget7()
+    CustomArtWidget8()
+    CustomArtWidget9()
   }
 }
 

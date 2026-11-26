@@ -157,6 +157,9 @@ export type ArtLibraryResult = WidgetsResult & {
   dir: string;
   /** Owner 2026-11-13: index.json `artwork` (the ordered Artwork list), null before 1.0.28's rebuild. */
   artwork?: string[] | null;
+  /** Owner 2026-11-27: index.json `artworkMedium` / `artworkLarge` (Artwork 6-7 / 8-9), null before 1.0.45. */
+  artworkMedium?: string[] | null;
+  artworkLarge?: string[] | null;
 };
 
 /** T146: linkStatus result (normalised status + why it is unavailable). */
@@ -561,7 +564,10 @@ async function artLibrary(): Promise<ArtLibraryResult> {
     const { mod, reason } = await artBridge();
     if (!mod) return { available: false, ok: false, reason, pieces: [], dir: '' };
     const { lib, dir } = await readArtIndex(mod);
-    return { available: true, ok: true, reason: null, pieces: listPieces(lib), dir, artwork: lib.artwork ?? null };
+    return {
+      available: true, ok: true, reason: null, pieces: listPieces(lib), dir,
+      artwork: lib.artwork ?? null, artworkMedium: lib.artworkMedium ?? null, artworkLarge: lib.artworkLarge ?? null,
+    };
   } catch {
     return { available: true, ok: false, reason: 'failed', pieces: [], dir: '' };
   }

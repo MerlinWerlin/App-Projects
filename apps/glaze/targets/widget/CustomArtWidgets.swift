@@ -19,10 +19,15 @@ import SwiftUI
 import WidgetKit
 
 enum CustomArtStore {
-  static let slotCount = 5
+  /// Owner 2026-11-27: Custom 1-5 small, 6-7 medium, 8-9 large (the same numbers as Artwork).
+  static let slotCount = 9
   /// The long edge of a stored picture (the bridge writes at most this) and of the decode here.
   /// A small widget is at most ~170 pt (510 px at 3x), so 600 px is sharp and only ~1.4 MB decoded.
   static let maxPixels = 600
+  /// Medium / large (364 pt wide, 1092 px at 3x): 1200 px, at most ~5.5 MB decoded.
+  static let wideMaxPixels = 1200
+
+  static func longEdge(slot: Int) -> Int { slot >= 6 ? wideMaxPixels : maxPixels }
   static let folder = "custom-art"
   static let manifest = "slots.json"
 
@@ -55,7 +60,7 @@ enum CustomArtStore {
       let source = CGImageSourceCreateWithURL(url as CFURL, [kCGImageSourceShouldCache: false] as CFDictionary),
       let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
         kCGImageSourceCreateThumbnailFromImageAlways: true, kCGImageSourceCreateThumbnailWithTransform: true,
-        kCGImageSourceThumbnailMaxPixelSize: maxPixels, kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
+        kCGImageSourceThumbnailMaxPixelSize: longEdge(slot: slot), kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
     else { return nil }
     return UIImage(cgImage: image)
   }
@@ -169,8 +174,19 @@ enum CustomArtKind {
     case 2: return "GlazeCustom2"
     case 3: return "GlazeCustom3"
     case 4: return "GlazeCustom4"
+    case 6: return "GlazeCustom6"
+    case 7: return "GlazeCustom7"
+    case 8: return "GlazeCustom8"
+    case 9: return "GlazeCustom9"
     default: return "GlazeCustom5"
     }
+  }
+
+  /// Owner 2026-11-27: 1-5 small, 6-7 medium, 8-9 large (ThemeArtKind.group, ARTWORK_GROUPS in TS).
+  static func family(slot: Int) -> WidgetFamily {
+    if slot >= 8 { return .systemLarge }
+    if slot >= 6 { return .systemMedium }
+    return .systemSmall
   }
 
   /// Fixed, fully written-out names: never an interpolated key (PR #283).
@@ -180,6 +196,10 @@ enum CustomArtKind {
     case 2: return "Custom 2"
     case 3: return "Custom 3"
     case 4: return "Custom 4"
+    case 6: return "Custom 6"
+    case 7: return "Custom 7"
+    case 8: return "Custom 8"
+    case 9: return "Custom 9"
     default: return "Custom 5"
     }
   }
@@ -191,7 +211,7 @@ enum CustomArtKind {
     }
     .configurationDisplayName(displayName(slot: slot))
     .description("Your own picture, added in Glaze.")
-    .supportedFamilies([.systemSmall])
+    .supportedFamilies([family(slot: slot)])
     .contentMarginsDisabled()
   }
 }
@@ -201,3 +221,10 @@ struct CustomArtWidget2: Widget { var body: some WidgetConfiguration { CustomArt
 struct CustomArtWidget3: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 3) } }
 struct CustomArtWidget4: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 4) } }
 struct CustomArtWidget5: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 5) } }
+// Owner 2026-11-27: Custom 6-7 (medium) and 8-9 (large).
+struct CustomArtWidget6: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 6) } }
+struct CustomArtWidget7: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 7) } }
+struct CustomArtWidget8: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 8) } }
+struct CustomArtWidget9: Widget { var body: some WidgetConfiguration { CustomArtKind.configuration(slot: 9) } }
+// Registered in GlazeThemeGalleryBundle (GlazeWidgetsBundle.swift): GlazePersonalWidgetsBundle is
+// at 7 entries and the @main block at its 9-entry limit.

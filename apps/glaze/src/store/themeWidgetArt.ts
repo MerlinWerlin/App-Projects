@@ -23,7 +23,7 @@ import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from 
 import { pickWallpaper } from '../core/packCatalog';
 import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
-import { THEME_PACK_ART_SIZES, composeOrder, isArtworkPiece, piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
+import { ARTWORK_ONLY_SIZES, THEME_PACK_ART_SIZES, composeOrder, isArtworkPiece, piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
 import { optionName, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
@@ -222,7 +222,9 @@ function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTarget
     options: options.filter(o => !isReplacedArtEdition(o)),
     cap: 40 - designed.length,
     // Owner 2026-11-13: pack art in small only; the designs above keep every size.
+    // Owner 2026-11-27: plus medium and large plain art (Artwork 6-7 and 8-9).
     sizes: THEME_PACK_ART_SIZES,
+    artworkOnly: ARTWORK_ONLY_SIZES,
     name: (option, size) => {
       const n = optionName(option, options, theme.name);
       return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;

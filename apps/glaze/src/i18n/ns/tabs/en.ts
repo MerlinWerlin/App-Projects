@@ -65,7 +65,7 @@ export const en = {
     // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
     custom: {
       title: "Your artwork",
-      makeItYours: "Make it yours: add your own pictures here, then put Custom 1 to 5 on your Home Screen.",
+      makeItYours: "Make it yours: add your own pictures here, then put Custom 1 to 9 on your Home Screen.",
       privacy: "Your pictures stay on this iPhone. They are never uploaded.",
       slot: "Custom {n}",
       add: "Add picture",
