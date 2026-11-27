@@ -149,7 +149,11 @@ Full notes, research and every draft: `marketing/discovery/DISCOVERY.md`.
   Backspin new keywords. No brand names in Apple keywords (guideline 2.3.7).
 - **Google Play** (Backspin and Linework short + full descriptions): saved in Play Console 16 Nov, waiting in Publishing
   overview for Jared to press Submit/Send for review (Claude's send click was blocked by the PC's permission check).
-- **In-App Events / Promotional Content**: drafts for Linework (Christmas cards, 1-24 Dec, submit by ~22 Nov), Couch
+- **Linework In-App Event "Trace your own Christmas cards"** was submitted to App Review on 21 Nov 2026 and is waiting for review.
+  - Runs 1 Dec 00:00 to 24 Dec 23:30 Sydney time; publishes from 22 Nov once approved.
+  - Special Event badge, no purchase needed, deep link `linework://templates`.
+  - Images: `marketing/linework/events/` (Nano Banana Pro camera-tracing shot).
+- **In-App Events / Promotional Content**: drafts for Couch
   (holiday TV nights, 20 Dec-5 Jan, may be rejected as not a real event) and Backspin on Play (Christmas party, if eligible).
 - **AlternativeTo**: Linework and Couch listings drafted; account needs Jared's yes.
 - **Pins**: every third 19:00 app pin links to the app's compare page (`utm_campaign=compare-2026-11`).
