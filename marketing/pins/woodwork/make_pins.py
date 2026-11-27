@@ -31,6 +31,15 @@ PINS = [
  ("WW-P18", "zigzag-record-tower", "00-main-square.jpg", "Zigzag Record Tower", "Three diamond bays for about 135 records"),
  ("WW-P19", "record-console", "00-main-square.jpg", "Record Console", "Three bays for about 120 records, square cuts only"),
  ("WW-P20", "king-bed-slat-headboard", "00-main-square.jpg", "King Bed with Slat Headboard", "Solid wood, glued like furniture, no screws on show"),
+ ("WW-P21", "spiral-plant-stand", "upload-jpg/00-main-square.jpg", "Spiral Plant Stand", "Eight pot shelves step round one post"),
+ ("WW-P22", "stacking-lp-crates", "upload-jpg/00-main-square.jpg", "Stacking LP Record Crates", "A set of three, about 50 records each"),
+ ("WW-P23", "slat-back-daybed", "upload-jpg/00-main-square.jpg", "Slat-back Daybed", "A deep sofa by day, a guest bed by night"),
+ ("WW-P24", "end-of-bed-shoe-bench", "upload-jpg/00-main-square.jpg", "End-of-Bed Shoe Bench", "A slatted seat with a shoe shelf underneath"),
+ ("WW-P25", "tree-bench", "upload-jpg/00-main-square.jpg", "Hexagon Tree Bench", "Six sections from one size of timber"),
+ ("WW-P26", "bird-feeding-table", "upload-jpg/00-main-square.jpg", "Bird Feeding Table", "A roofed table on a post, no concrete"),
+ ("WW-P27", "z-brace-garden-gate", "upload-jpg/00-main-square.jpg", "Z-Brace Garden Gate", "For the gate posts you already have"),
+ ("WW-P28", "cushion-deck-box", "upload-jpg/00-main-square.jpg", "Cushion Deck Box", "Light slatted storage for garden cushions"),
+ ("WW-P29", "rolling-kitchen-island", "upload-jpg/00-main-square.jpg", "Rolling Kitchen Island", "Two slatted shelves, a pine top, locking castors"),
 ]
 
 def centred(d, y, text, font, fill, maxw=900):
