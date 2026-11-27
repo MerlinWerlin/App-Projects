@@ -72,6 +72,19 @@ struct WidgetArtSnapshot {
   /// Owner 2026-11-13: index.json `artwork`, the current theme's Artwork pieces in slot order (pure
   /// illustrations only), written by the app (commitThemeArt). nil = an index from before 1.0.28.
   var artwork: [String]? = nil
+  /// Owner 2026-11-27: index.json `artworkMedium` / `artworkLarge`, the medium (Artwork 6-7) and
+  /// large (Artwork 8-9) lists, written the same way. nil = an index from before 1.0.45.
+  var artworkMedium: [String]? = nil
+  var artworkLarge: [String]? = nil
+
+  /// The ordered Artwork list of one size ("small" / "medium" / "large").
+  func artworkList(size: String) -> [String]? {
+    switch size {
+    case "medium": return artworkMedium
+    case "large": return artworkLarge
+    default: return artwork
+    }
+  }
 
   func has(_ id: String) -> Bool {
     records.contains { $0.id == id }
@@ -195,8 +208,13 @@ enum WidgetArtStore {
         }
       }
     }
-    let artwork = (root["artwork"] as? [Any])?.compactMap { $0 as? String }.filter { validID($0) }
-    return WidgetArtSnapshot(records: newestFirst, currentThemeId: current, retired: retired, unpinned: unpinned, artwork: artwork)
+    func ids(_ key: String) -> [String]? {
+      (root[key] as? [Any])?.compactMap { $0 as? String }.filter { validID($0) }
+    }
+    return WidgetArtSnapshot(
+      records: newestFirst, currentThemeId: current, retired: retired, unpinned: unpinned,
+      artwork: ids("artwork"), artworkMedium: ids("artworkMedium"), artworkLarge: ids("artworkLarge")
+    )
   }
 
   /// T259: true when a widget of `family` with no chosen piece shows the theme's plain background

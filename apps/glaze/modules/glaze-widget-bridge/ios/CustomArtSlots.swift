@@ -9,9 +9,24 @@ import Foundation
 import ImageIO
 import UIKit
 
+// Owner 2026-11-27: Custom 6-7 (medium) and 8-9 (large) as well, the same numbers as Artwork
+// (src/core/artworkSlots.ts ARTWORK_GROUPS). Their pictures are cut to the widget's own shape
+// (shape(slot:)) at up to wideMaxPixels on the long edge; slots.json keeps the same "1".."9" keys,
+// so Custom 1-5 pictures saved by earlier builds stay where they are.
 enum CustomArtSlots {
-  static let slotCount = 5
+  static let slotCount = 9
   static let maxPixels = 600
+  static let wideMaxPixels = 1200
+
+  /// width / height of a slot's picture: square for 1-5, the medium widget (364x170 pt) for 6-7,
+  /// the large widget (364x382 pt) for 8-9.
+  static func shape(slot: Int) -> CGFloat {
+    if slot >= 8 { return 364.0 / 382.0 }
+    if slot >= 6 { return 364.0 / 170.0 }
+    return 1
+  }
+
+  static func longEdge(slot: Int) -> Int { slot >= 6 ? wideMaxPixels : maxPixels }
   static let folder = "custom-art"
   static let manifest = "slots.json"
 
@@ -42,30 +57,43 @@ enum CustomArtSlots {
 
   /// The picture at `uri` as an upright square of at most maxPixels, or nil if unreadable.
   static func square(_ uri: String) -> UIImage? {
+    shaped(uri, aspect: 1, longEdge: maxPixels)
+  }
+
+  /// The picture at `uri`, centre-cut to `aspect` (width / height), at most `longEdge` px on its
+  /// long side, or nil if unreadable.
+  static func shaped(_ uri: String, aspect: CGFloat, longEdge: Int) -> UIImage? {
     let url: URL = uri.hasPrefix("file://") ? (URL(string: uri) ?? URL(fileURLWithPath: uri)) : URL(fileURLWithPath: uri)
     guard
       let source = CGImageSourceCreateWithURL(url as CFURL, [kCGImageSourceShouldCache: false] as CFDictionary),
       // Decode a little larger than the target so the square cut still has maxPixels on its short edge.
       let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
         kCGImageSourceCreateThumbnailFromImageAlways: true, kCGImageSourceCreateThumbnailWithTransform: true,
-        kCGImageSourceThumbnailMaxPixelSize: maxPixels * 2, kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
+        kCGImageSourceThumbnailMaxPixelSize: longEdge * 2, kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
     else { return nil }
-    let w = image.width, h = image.height
-    guard w >= 1, h >= 1 else { return nil }
-    let side = min(w, h)
-    guard let cropped = image.cropping(to: CGRect(x: (w - side) / 2, y: (h - side) / 2, width: side, height: side)) else { return nil }
-    let edge = CGFloat(min(side, maxPixels))
+    let w = CGFloat(image.width), h = CGFloat(image.height)
+    guard w >= 1, h >= 1, aspect > 0 else { return nil }
+    // The largest centred rectangle of the wanted shape.
+    let cw = min(w, h * aspect), ch = cw / aspect
+    let rect = CGRect(x: ((w - cw) / 2).rounded(.down), y: ((h - ch) / 2).rounded(.down), width: cw.rounded(.down), height: ch.rounded(.down))
+    guard rect.width >= 1, rect.height >= 1, let cropped = image.cropping(to: rect) else { return nil }
+    let k = min(1, CGFloat(longEdge) / max(rect.width, rect.height))
+    let size = CGSize(width: max(1, (rect.width * k).rounded()), height: max(1, (rect.height * k).rounded()))
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
     format.opaque = true
-    return UIGraphicsImageRenderer(size: CGSize(width: edge, height: edge), format: format).image { _ in
-      UIImage(cgImage: cropped).draw(in: CGRect(x: 0, y: 0, width: edge, height: edge))
+    return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+      UIImage(cgImage: cropped).draw(in: CGRect(origin: .zero, size: size))
     }
   }
 
   /// Saves the picture into `slot`, replacing (and deleting) any earlier one.
   static func save(slot: Int, uri: String, container: URL) -> Bool {
-    guard (1...slotCount).contains(slot), let image = square(uri), let data = image.jpegData(compressionQuality: 0.85) else { return false }
+    guard
+      (1...slotCount).contains(slot),
+      let image = shaped(uri, aspect: shape(slot: slot), longEdge: longEdge(slot: slot)),
+      let data = image.jpegData(compressionQuality: 0.85)
+    else { return false }
     let dir = directory(container)
     do {
       try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)

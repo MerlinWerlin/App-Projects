@@ -66,6 +66,9 @@
 "Artwork 4" = "アートワーク 4";
 "Artwork 5" = "アートワーク 5";
 "Artwork 6" = "アートワーク 6";
+"Artwork 7" = "アートワーク 7";
+"Artwork 8" = "アートワーク 8";
+"Artwork 9" = "アートワーク 9";
 "Widget art" = "ウィジェットのアート";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
@@ -172,6 +175,10 @@
 "Custom 3" = "カスタム 3";
 "Custom 4" = "カスタム 4";
 "Custom 5" = "カスタム 5";
+"Custom 6" = "カスタム 6";
+"Custom 7" = "カスタム 7";
+"Custom 8" = "カスタム 8";
+"Custom 9" = "カスタム 9";
 "Your own picture, added in Glaze." = "Glazeで追加した自分の画像。";
 "Add a picture in Glaze" = "Glazeで画像を追加";
 "Your picture" = "あなたの画像";

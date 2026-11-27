@@ -27,7 +27,7 @@ test('My widget art: Artwork 1-5 in order, a big number in the slot colour, no R
   // options just the native art works to the theme".
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
   // 1.0.39: each piece once; an empty slot is Preparing while the art is made, else the theme design.
-  assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: list\[i\] \?\? null \}\)\)/);
+  assert.match(list, /Array\.from\(\{ length: g\.count \}, \(_, i\) => \(\{ n: g\.first \+ i, p: list\[i\] \?\? null, preparing, size: g\.size \}\)\)/);
   assert.doesNotMatch(list, /i % list\.length/);
   assert.match(list, /if \(!p && !preparing\) \{/);
   assert.match(list, /number: \{ width: NUMBER, height: NUMBER/);
@@ -57,15 +57,24 @@ test('1.0.37: My widget art follows a theme change by itself and never shows the
 });
 
 // Owner 2026-11-13 ("remove them unless its the native ones"): the theme's pack art is small only.
-import { THEME_PACK_ART_SIZES, planThemePieces } from './themeArtSync.ts';
+// Owner 2026-11-27: plus medium / large plain art drawn for that size (Artwork 6-7 and 8-9).
+import { ARTWORK_ONLY_SIZES, THEME_PACK_ART_SIZES, planThemePieces } from './themeArtSync.ts';
 
-test('theme pack art is planned in small only; the app art menu shows on the Small tab only', () => {
-  assert.deepEqual([...THEME_PACK_ART_SIZES], ['small']);
-  const option = { id: 'moon', kind: 'art', image: 'moon.webp', sizes: ['small', 'medium', 'large'], width: 1024, height: 1024 } as never;
-  const planned = planThemePieces({ themeId: 't', themeName: 'T', options: [option], name: () => 'Moon', sizes: THEME_PACK_ART_SIZES });
-  assert.deepEqual([...new Set(planned.map((p) => p.size))], ['small']);
+test('theme pack art: every small piece, and medium / large only for plain art drawn for that size', () => {
+  assert.deepEqual([...THEME_PACK_ART_SIZES], ['small', 'medium', 'large']);
+  assert.deepEqual([...ARTWORK_ONLY_SIZES], ['medium', 'large']);
+  // A square small piece that also lists medium / large stays small only.
+  const moon = { id: 'moon', kind: 'art', image: 'moon.webp', sizes: ['small', 'medium', 'large'], width: 1024, height: 1024 } as never;
+  const clockL = { id: 'clock-l', kind: 'clock', image: 'c.webp', sizes: ['large'], width: 1092, height: 1146 } as never;
+  const wide = { id: 'medium-1', kind: 'art', image: 'm.webp', sizes: ['medium'], width: 1092, height: 510 } as never;
+  const tall = { id: 'large-1', kind: 'art', image: 'l.webp', sizes: ['large'], width: 1092, height: 1146 } as never;
+  const plan = (options: never[]) =>
+    planThemePieces({ themeId: 't', themeName: 'T', options, name: () => 'x', sizes: THEME_PACK_ART_SIZES, artworkOnly: ARTWORK_ONLY_SIZES });
+  assert.deepEqual([...new Set(plan([moon]).map((p) => p.size))], ['small']);
+  const all = plan([moon, clockL, wide, tall]);
+  assert.deepEqual(all.map((p) => [p.optionId, p.size, p.artwork === true]), [['moon', 'small', true], ['medium-1', 'medium', true], ['large-1', 'large', true]]);
   const store = readFileSync(join(process.cwd(), 'src', 'store', 'themeWidgetArt.ts'), 'utf8');
-  assert.match(store, /sizes: THEME_PACK_ART_SIZES,/);
+  assert.match(store, /sizes: THEME_PACK_ART_SIZES,\s*artworkOnly: ARTWORK_ONLY_SIZES,/);
   const menu = readFileSync(join(process.cwd(), 'src', 'ui', 'ThemeWidgetArt.tsx'), 'utf8');
   assert.match(menu, /if \(!home \|\| home !== 'small'\) return null;/);
 });

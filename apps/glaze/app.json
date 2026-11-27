@@ -3,7 +3,7 @@
     "name": "Glaze",
     "slug": "glaze",
     "scheme": "glaze",
-    "version": "1.0.44",
+    "version": "1.0.45",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {

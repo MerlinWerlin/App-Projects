@@ -18,6 +18,11 @@ import { syncThemeWidgetArt, THEME_ART_PENDING_KEY } from './themeWidgetArt';
 // illustrations only, no date / focus pictures) and the old medium / large copies go.
 // v7 (1.0.40): include the four new bundled illustrations when upgrading an active theme.
 const RECOVERY_KEY = 'glaze.widgetArt.recovered106.v7';
+// Owner 2026-11-27 (1.0.45, Artwork 6-9 and Custom 6-9): NOT a reset. One extra theme sync on the
+// first launch of 1.0.45, which only ADDS the theme's medium / large Artwork pieces and the index's
+// `artworkMedium` / `artworkLarge` lists. Pieces already made (Artwork 1-5) are skipped, own photos
+// and Custom 1-9 pictures (custom-art/, a separate store) are never touched. Retried next launch on failure.
+export const ARTWORK_SIZES_KEY = 'glaze.widgetArt.sizes1045.v1';
 let recovering: Promise<boolean> | null = null;
 let lastError: string | null = null;
 
@@ -61,6 +66,39 @@ async function rebuild(): Promise<boolean> {
     const library = await widgets.artLibrary();
     if (!library.ok) throw new Error('Could not read rebuilt widget art');
     await AsyncStorage.setItem(RECOVERY_KEY, 'complete');
+    // A full rebuild with this build's planner already made Artwork 6-9.
+    await AsyncStorage.setItem(ARTWORK_SIZES_KEY, 'complete');
+    return true;
+  } catch (error) {
+    lastError = (error instanceof Error ? error.message : String(error)).slice(0, 180);
+    return false;
+  }
+}
+
+/**
+ * 1.0.45: the one additive sync described at ARTWORK_SIZES_KEY. Never syncs a theme whose pack is not
+ * on the device (that would plan no art and empty the Artwork lists); it downloads it first, like rebuild.
+ */
+async function addArtworkSizes(): Promise<boolean> {
+  try {
+    if (await AsyncStorage.getItem(ARTWORK_SIZES_KEY) === 'complete') return true;
+    const lib = await widgets.artLibrary();
+    if (!lib.available) return false;
+    const id = await loadActiveThemeId();
+    if (!id) {
+      await AsyncStorage.setItem(ARTWORK_SIZES_KEY, 'complete');
+      return true;
+    }
+    await refreshCatalog(false);
+    const theme = await findAnyThemeById(id);
+    if (!theme) return false;
+    if (isRemoteArtTheme(theme) && !await remoteArtOnDevice(id)) {
+      if (!catalogPack(id)) return false;
+      if (await downloadRemoteArtToDevice(id)) return false;
+    }
+    const result = await syncThemeWidgetArt(theme);
+    if (!result.available || !result.ok || result.superseded) return false;
+    await AsyncStorage.setItem(ARTWORK_SIZES_KEY, 'complete');
     return true;
   } catch (error) {
     lastError = (error instanceof Error ? error.message : String(error)).slice(0, 180);
@@ -73,7 +111,7 @@ export function prepareWidgetArtRecovery(): Promise<boolean> {
   if (recovering) return recovering;
   recovering = (async () => {
     try {
-      if (await AsyncStorage.getItem(RECOVERY_KEY) === 'complete') return true;
+      if (await AsyncStorage.getItem(RECOVERY_KEY) === 'complete') return await addArtworkSizes();
       return await rebuild();
     } catch (error) {
       lastError = String(error).slice(0, 180);

@@ -66,6 +66,9 @@
 "Artwork 4" = "Opera 4";
 "Artwork 5" = "Opera 5";
 "Artwork 6" = "Opera 6";
+"Artwork 7" = "Opera 7";
+"Artwork 8" = "Opera 8";
+"Artwork 9" = "Opera 9";
 "Widget art" = "Arte del widget";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
@@ -172,6 +175,10 @@
 "Custom 3" = "Personale 3";
 "Custom 4" = "Personale 4";
 "Custom 5" = "Personale 5";
+"Custom 6" = "Personale 6";
+"Custom 7" = "Personale 7";
+"Custom 8" = "Personale 8";
+"Custom 9" = "Personale 9";
 "Your own picture, added in Glaze." = "La tua immagine, aggiunta in Glaze.";
 "Add a picture in Glaze" = "Aggiungi un'immagine in Glaze";
 "Your picture" = "La tua immagine";

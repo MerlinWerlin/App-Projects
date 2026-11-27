@@ -35,7 +35,7 @@ test('Preparing clears itself: the sync ends it, and a safety timer if no sync e
   const art = read('src', 'store', 'themeWidgetArt.ts');
   assert.match(art, /export function markThemeArtPending\(themeId: string\): void \{\s*setSyncStatus\(themeId, false\);/);
   assert.match(art, /if \(syncStatus\.syncing === themeId\) setSyncStatus\(null, true\);\s*\}, 60_000\);/);
-  assert.match(read('src', 'ui', 'WidgetArtLibraryList.tsx'), /const preparing = stale \|\| \(sync\.syncing !== null && list\.length < ARTWORK_SLOT_COUNT\);/);
+  assert.match(read('src', 'ui', 'WidgetArtLibraryList.tsx'), /const preparing = stale \|\| \(sync\.syncing !== null && list\.length < g\.count\);/);
 });
 
 // 1.0.39 (owner 2026-11-15): each artwork in My widget art has Save to Photos and Add to Custom 1-5,

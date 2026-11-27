@@ -65,7 +65,7 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
     custom: {
       title: "あなたのアートワーク",
-      makeItYours: "自分らしく：ここに自分の画像を追加して、カスタム 1〜5 をホーム画面に置きましょう。",
+      makeItYours: "自分らしく：ここに自分の画像を追加して、カスタム 1〜9 をホーム画面に置きましょう。",
       privacy: "画像はこの iPhone の中だけに保存され、アップロードされません。",
       slot: "カスタム {n}",
       add: "画像を追加",

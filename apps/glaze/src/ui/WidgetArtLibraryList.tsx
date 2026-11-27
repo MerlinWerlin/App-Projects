@@ -18,8 +18,8 @@ import { Feather } from '@expo/vector-icons';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { openArtworkActions } from './artworkActions';
 import { useToast } from './Toast';
-import { ARTWORK_SLOT_COUNT, artworkPieces, artworkSlotColour } from '../core/artworkSlots';
-import type { WidgetArtPiece } from '../core/widgetArtLibrary';
+import { ARTWORK_GROUPS, artworkPieces, artworkSlotColour } from '../core/artworkSlots';
+import type { WidgetArtPiece, WidgetArtSize } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
 import { loadActiveThemeId, useActiveThemeId } from '../store/activeTheme';
@@ -43,6 +43,15 @@ type Props = {
 // big number in the slot colour on the left and the artwork itself, large, on the right.
 const THUMB = 132;
 const NUMBER = 64;
+/**
+ * Owner 2026-11-27: Artwork 6-7 (medium) and 8-9 (large) show in the shape of their widget, at the
+ * same height as the square small thumbnails' area (medium 364x170 pt, large 364x382 pt).
+ */
+export const THUMB_SIZE: Record<WidgetArtSize, { width: number; height: number }> = {
+  small: { width: THUMB, height: THUMB },
+  medium: { width: 176, height: 82 },
+  large: { width: 126, height: 132 },
+};
 /** T238: the one-time clean-up runs once per app launch at most (it is a no-op once flagged). */
 let migrationTried = false;
 
@@ -54,7 +63,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
   const [pieces, setPieces] = useState<WidgetArtPiece[] | null>(null);
   const [dir, setDir] = useState('');
   const [storedThemeId, setStoredThemeId] = useState<string | null>(null);
-  const [artwork, setArtwork] = useState<string[] | null>(null);
+  const [artwork, setArtwork] = useState<Record<WidgetArtSize, string[] | null>>({ small: null, medium: null, large: null });
   // 1.0.37: the theme in use (updates the moment a theme is applied) and the art sync's progress.
   const liveThemeId = useActiveThemeId();
   const activeThemeId = liveThemeId ?? storedThemeId;
@@ -90,7 +99,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
       }
       setPieces(res.pieces.filter((p) => !!p && typeof p.id === 'string'));
       setDir(typeof res.dir === 'string' ? res.dir : '');
-      setArtwork(Array.isArray(res.artwork) ? res.artwork : null);
+      const listOf = (v: unknown) => (Array.isArray(v) ? (v as string[]) : null);
+      setArtwork({ small: listOf(res.artwork), medium: listOf(res.artworkMedium), large: listOf(res.artworkLarge) });
     } catch (e) {
       console.warn('[WidgetArt] library read failed', e);
       if (alive.current) setPieces(null);
@@ -104,18 +114,28 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
   if (pieces === null) return null;
 
   const base = dir.endsWith('/') ? dir : `${dir}/`;
-  // Artwork n = the theme's n-th small plain art piece, cycling (the same rule as the widget).
-  // Owner 2026-11-13: the same ordered list the Home Screen widgets read (index.json `artwork`).
-  const listed = artworkPieces(pieces, activeThemeId, artwork);
-  // 1.0.37: pieces of another theme (the index has not caught up with a theme change yet) are never shown.
-  const stale = !!activeThemeId && listed.some((p) => p.themeId !== activeThemeId);
-  const list = stale ? [] : listed;
-  // While the art is being made (or the index still lists the previous theme), unfilled slots are
-  // Preparing placeholders; once it is done, a slot with no piece shows the theme design (1.0.39: never
-  // a repeat, the same rule as the widget's ThemeArtSlots.piece).
-  const preparing = stale || (sync.syncing !== null && list.length < ARTWORK_SLOT_COUNT);
-  const rows: { n: number; p: WidgetArtPiece | null }[] =
-    preparing || list.length ? Array.from({ length: ARTWORK_SLOT_COUNT }, (_, i) => ({ n: i + 1, p: list[i] ?? null })) : [];
+  // Owner 2026-11-27: one section per size, numbered on from the last (small Artwork 1-5, medium
+  // 6-7, large 8-9: src/core/artworkSlots.ts ARTWORK_GROUPS, the same numbers as the Home Screen).
+  // Artwork n = the size's n-th plain art piece (the same rule as the widget), from the same ordered
+  // lists the Home Screen widgets read (index.json `artwork`, `artworkMedium`, `artworkLarge`).
+  const sections = ARTWORK_GROUPS.map((g) => {
+    const listed = artworkPieces(pieces, activeThemeId, artwork[g.size], g.size);
+    // 1.0.37: pieces of another theme (the index has not caught up with a theme change yet) are never shown.
+    const stale = !!activeThemeId && listed.some((p) => p.themeId !== activeThemeId);
+    const list = stale ? [] : listed;
+    // While the art is being made (or the index still lists the previous theme), unfilled slots are
+    // Preparing placeholders; once it is done, a slot with no piece shows the theme design (1.0.39:
+    // never a repeat, the same rule as the widget's ThemeArtSlots.piece).
+    const preparing = stale || (sync.syncing !== null && list.length < g.count);
+    const rows: { n: number; p: WidgetArtPiece | null; preparing: boolean; size: WidgetArtSize }[] =
+      preparing || list.length ? Array.from({ length: g.count }, (_, i) => ({ n: g.first + i, p: list[i] ?? null, preparing, size: g.size })) : [];
+    return { ...g, rows };
+  });
+  // A size with no pieces at all (an older pack before its medium / large art) is left out once the
+  // small section shows; the empty note appears only when no size has anything.
+  const shown = sections.filter((s) => s.rows.length);
+  const rows = shown.flatMap((s) => s.rows);
+  const sizeName = (s: WidgetArtSize) => (s === 'small' ? t('ui.seamless.sizes.small') : s === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large'));
 
   const openActions = (n: number, uri: string) => openArtworkActions(n, uri, t as never, toast, customLocked ? onCustomLocked ?? (() => undefined) : undefined);
 
@@ -129,8 +149,15 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
           {t('ui.seamless.library.empty')}
         </Text>
       )}
-      {rows.map(({ n, p }) => {
+      {shown.map((section) => (
+        <View key={section.size} style={styles.section}>
+          {/* Owner 2026-11-27: "Medium · 6-7" over its rows, so each number reads with its size. */}
+          <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.sectionTitle, { color: c.inkSecondary }]}>
+            {`${sizeName(section.size)} · ${section.first}–${section.first + section.count - 1}`}
+          </Text>
+          {section.rows.map(({ n, p, preparing, size }) => {
         const col = artworkSlotColour(n);
+        const thumbSize = THUMB_SIZE[size];
         if (!p && !preparing) {
           // 1.0.39: no piece for this slot yet: the calm theme-colour design, as on the Home Screen.
           return (
@@ -144,7 +171,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
               <View style={[styles.number, { backgroundColor: col.fill }]}>
                 <Text allowFontScaling={false} style={[styles.numberText, { color: col.ink }]}>{n}</Text>
               </View>
-              <View style={[styles.thumb, styles.placeholder, { backgroundColor: palette?.bg ?? c.fill }]}>
+              <View style={[styles.thumb, thumbSize, styles.placeholder, { backgroundColor: palette?.bg ?? c.fill }]}>
                 <View style={[styles.designDot, { backgroundColor: palette?.accent ?? c.inkSecondary }]} />
               </View>
               <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), styles.text, { color: c.inkSecondary }]}>
@@ -166,7 +193,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
               <View style={[styles.number, { backgroundColor: col.fill }]}>
                 <Text allowFontScaling={false} style={[styles.numberText, { color: col.ink }]}>{n}</Text>
               </View>
-              <View style={[styles.thumb, styles.placeholder, { backgroundColor: c.fill }]}>
+              <View style={[styles.thumb, thumbSize, styles.placeholder, { backgroundColor: c.fill }]}>
                 <ActivityIndicator color={c.inkSecondary} />
               </View>
               <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), styles.text, { color: c.inkSecondary }]}>
@@ -197,7 +224,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
                 recyclingKey={`${p.id}-${p.created}`}
                 cachePolicy="none"
                 contentFit="contain"
-                style={[styles.thumb, { backgroundColor: c.surfaceRaised }]}
+                style={[styles.thumb, thumbSize, { backgroundColor: c.surfaceRaised }]}
                 accessibilityIgnoresInvertColors
               />
             ) : null}
@@ -217,13 +244,17 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, cu
             ) : null}
           </View>
         );
-      })}
+          })}
+        </View>
+      ))}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrap: { gap: spaceV2.sm, marginTop: spaceV2.lg },
+  section: { gap: spaceV2.sm },
+  sectionTitle: { marginTop: spaceV2.sm, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.4 },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
   number: { width: NUMBER, height: NUMBER, borderRadius: circleRadius(NUMBER), alignItems: 'center', justifyContent: 'center' },
   numberText: { ...textV2.largeTitle, fontWeight: '800' },

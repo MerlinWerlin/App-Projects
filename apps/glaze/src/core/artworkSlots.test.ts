@@ -11,30 +11,36 @@ const W = (f: string) => readFileSync(join(process.cwd(), 'targets', 'widget', f
 const slots = W('ThemeArtWidgets.swift');
 const code = slots.replace(/^\s*\/\/.*$/gm, '');
 
-test('Artwork widgets: numbered names, small only, five in the gallery', () => {
+// Owner 2026-11-27: the numbers go on up through the sizes: 1-5 small, 6-7 medium, 8-9 large.
+test('Artwork widgets: numbered names 1-9, small 1-5, medium 6-7, large 8-9, all in the gallery', () => {
   // Owner 2026-11-13: six fixed localised names, never an interpolated display name.
   assert.ok(code.includes('.configurationDisplayName(displayName(slot: slot))'), 'Artwork n name');
   assert.ok(!code.includes('configurationDisplayName("Artwork \\('), 'no interpolated display name');
-  for (let n = 1; n <= 6; n++) {
+  for (let n = 1; n <= 9; n++) {
     assert.ok(code.includes(`return "Artwork ${n}"`), `Artwork ${n}`);
     for (const lang of ['en', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt-BR', 'zh-Hans']) {
       assert.ok(W(`${lang}.lproj/Localizable.strings`).split(/\r?\n/).some((l) => l.startsWith(`"Artwork ${n}" = "`)), `${lang} Artwork ${n}`);
     }
   }
-  assert.match(code, /\.supportedFamilies\(\[\.systemSmall\]\)/);
-  assert.doesNotMatch(code, /systemMedium|systemLarge/);
+  assert.match(code, /\.supportedFamilies\(\[family\]\)/);
+  assert.match(code, /if legacy \|\| slot <= 5 \{ return \(\.systemSmall, slot\) \}\s*if slot <= 7 \{ return \(\.systemMedium, slot - 5\) \}\s*return \(\.systemLarge, slot - 7\)/);
   assert.match(code, /static let gallerySmallSlots = 5/);
-  assert.match(code, /slot > gallerySmallSlots \? \[\.systemSmall\] : \[\]/);
+  // The same table as the app.
+  assert.deepEqual(ARTWORK_GROUPS.map((g) => [g.size, g.first, g.count]), [['small', 1, 5], ['medium', 6, 2], ['large', 8, 2]]);
+  assert.deepEqual([1, 5, 6, 7, 8, 9, 10].map(sizeOfArtworkNumber), ['small', 'small', 'medium', 'medium', 'large', 'large', null]);
+  assert.deepEqual(artworkNumbersOf('medium'), [6, 7]);
+  assert.deepEqual(artworkNumbersOf('large'), [8, 9]);
   for (const lang of ['en', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt-BR', 'zh-Hans']) {
     assert.match(W(`${lang}.lproj/Localizable.strings`), /^"Artwork %lld" = ".*%lld.*";$/m, lang);
   }
 });
 
-test('Artwork n: small plain art (no live pictures, no designs); past the count the theme design, never a repeat', () => {
+test('Artwork n: plain art of its size (no live pictures, no designs); past the count the theme design, never a repeat', () => {
   const pieces = code.slice(code.indexOf('static func pieces(family:'), code.indexOf('static func piece(slot:'));
-  assert.match(pieces, /\$0\.size == "small" && !\$0\.design/);
-  assert.match(pieces, /small\.filter \{ !\$0\.live \}/);
-  assert.match(pieces, /\(art\.isEmpty \? small : art\)/);
+  assert.match(pieces, /snap\.artworkList\(size: size\)/);
+  assert.match(pieces, /\$0\.size == size && !\$0\.design/);
+  assert.match(pieces, /mine\.filter \{ !\$0\.live \}/);
+  assert.match(pieces, /\(art\.isEmpty \? mine : art\)/);
   const piece = code.slice(code.indexOf('static func piece(slot:'), code.indexOf('struct ThemeArtEntry'));
   // 1.0.39: no cycling; nil draws ThemedFallbackArt in the theme's colours.
   assert.match(piece, /guard slot >= 1, slot <= list\.count else \{ return nil \}\s*return list\[slot - 1\]/);
@@ -54,13 +60,13 @@ test('slot model (1.0.39): slot n shows piece n once; slots past the count show 
 });
 
 // Owner 2026-11-12 ("like colour code them"): one colour per slot, the same in the widget and the app.
-import { ARTWORK_SLOT_COLOURS, artworkNumbers, artworkSlotColour } from './artworkSlots.ts';
+import { ARTWORK_GROUPS, ARTWORK_SLOT_COLOURS, artworkNumbers, artworkNumbersOf, artworkSlotColour, sizeOfArtworkNumber } from './artworkSlots.ts';
 import type { WidgetArtPiece } from './widgetArtLibrary.ts';
 
-test('slot colours: the widget table equals the app table, six distinct colours', () => {
+test('slot colours: the widget table equals the app table, nine distinct colours', () => {
   const swift = [...slots.matchAll(/\("(#[0-9A-F]{6})", "(#[0-9A-F]{6})"\)/g)].map((m) => [m[1], m[2]]);
   assert.deepEqual(swift, ARTWORK_SLOT_COLOURS.map((c) => [c.fill, c.ink]));
-  assert.equal(new Set(ARTWORK_SLOT_COLOURS.map((c) => c.fill)).size, 6);
+  assert.equal(new Set(ARTWORK_SLOT_COLOURS.map((c) => c.fill)).size, 9);
   assert.equal(artworkSlotColour(1).name, 'coral');
   assert.equal(artworkSlotColour(4).name, 'blue');
 });
@@ -97,7 +103,7 @@ test('app numbering matches the widget: current theme, small plain art in shelf 
   assert.deepEqual(Object.fromEntries(artworkNumbers([pieces[2]], 't')), { clock: [1] });
   // The art list shows the badges.
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
-  assert.match(list, /artworkPieces\(pieces, activeThemeId, artwork\)/);
+  assert.match(list, /artworkPieces\(pieces, activeThemeId, artwork\[g\.size\], g\.size\)/);
   assert.match(list, /backgroundColor: col\.fill/);
   assert.match(list, /t\('ui\.seamless\.library\.artworkA11y', \{ n \}\)/);
 });
@@ -107,10 +113,11 @@ test('app numbering matches the widget: current theme, small plain art in shelf 
 test('gallery Artwork 1-5 are fresh kinds; the old GlazeThemeArt kinds stay registered but leave the gallery', () => {
   assert.ok(code.includes('legacy ? "GlazeThemeArt\\(slot)" : "GlazeArtwork\\(slot)"'), 'kind names');
   assert.match(code, /\.disfavoredLocations\(\[\.homeScreen\], for: legacy \? \[\.systemSmall\] : galleryHidden\(slot: slot\)\)/);
-  for (let i = 1; i <= 5; i++) assert.ok(code.includes(`struct ArtworkWidget${i}: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: ${i}) } }`), `ArtworkWidget${i}`);
+  for (let i = 1; i <= 9; i++) assert.ok(code.includes(`struct ArtworkWidget${i}: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: ${i}) } }`), `ArtworkWidget${i}`);
   for (let i = 1; i <= 6; i++) assert.ok(code.includes(`struct ThemeArtWidget${i}: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: ${i}, legacy: true) } }`), `ThemeArtWidget${i}`);
   const art = code.slice(code.indexOf('struct GlazeThemeArtBundle'));
-  assert.deepEqual([...art.matchAll(/(ArtworkWidget\d)\(\)/g)].map((m) => m[1]), ['ArtworkWidget1', 'ArtworkWidget2', 'ArtworkWidget3', 'ArtworkWidget4', 'ArtworkWidget5']);
+  assert.deepEqual([...art.matchAll(/(ArtworkWidget\d)\(\)/g)].map((m) => m[1]), [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => `ArtworkWidget${i}`));
+  assert.doesNotMatch(art, /WidgetBundle \{[^}]*\.body/, 'Artwork 1-9 listed directly (9 entries)');
   const legacy = W('GlazeWidgetsBundle.swift');
   for (let i = 1; i <= 6; i++) assert.ok(legacy.split(/\r?\n/).some((l) => l.trim() === `ThemeArtWidget${i}()`), `legacy ThemeArtWidget${i}`);
 });

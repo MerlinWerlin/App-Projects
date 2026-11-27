@@ -19,13 +19,17 @@ async function permissionDenied(): Promise<boolean> {
   }
 }
 
-export async function pickCustomArtPhoto(): Promise<PickCustomArtResult> {
+/**
+ * Owner 2026-11-27: Custom 6-9 are medium / large. iOS's picker crop is square only, so those skip it
+ * and the bridge centre-cuts the picture to the widget's own shape (CustomArtSlots.shape).
+ */
+export async function pickCustomArtPhoto(shape: 'square' | 'widget' = 'square'): Promise<PickCustomArtResult> {
   let res: ImagePicker.ImagePickerResult;
   try {
     res = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
-      // The square crop / position step before the picture is saved.
-      allowsEditing: true,
+      // The square crop / position step before the picture is saved (small slots).
+      allowsEditing: shape === 'square',
       aspect: [1, 1],
       allowsMultipleSelection: false,
       quality: 1,

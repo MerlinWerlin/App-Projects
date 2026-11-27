@@ -66,6 +66,9 @@
 "Artwork 4" = "कलाकृति 4";
 "Artwork 5" = "कलाकृति 5";
 "Artwork 6" = "कलाकृति 6";
+"Artwork 7" = "कलाकृति 7";
+"Artwork 8" = "कलाकृति 8";
+"Artwork 9" = "कलाकृति 9";
 "Widget art" = "विजेट कला";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
@@ -172,6 +175,10 @@
 "Custom 3" = "कस्टम 3";
 "Custom 4" = "कस्टम 4";
 "Custom 5" = "कस्टम 5";
+"Custom 6" = "कस्टम 6";
+"Custom 7" = "कस्टम 7";
+"Custom 8" = "कस्टम 8";
+"Custom 9" = "कस्टम 9";
 "Your own picture, added in Glaze." = "आपकी अपनी तस्वीर, Glaze में जोड़ी गई।";
 "Add a picture in Glaze" = "Glaze में एक तस्वीर जोड़ें";
 "Your picture" = "आपकी तस्वीर";

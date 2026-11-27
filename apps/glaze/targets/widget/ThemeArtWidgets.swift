@@ -25,16 +25,27 @@ enum ThemeArtSlots {
   static func pieces(family: WidgetFamily) -> [String] {
     // One read of index.json per tile (the flags are parsed with it), not one per piece.
     let snap = WidgetArtStore.snapshot()
+    // Owner 2026-11-27: medium (Artwork 6-7) and large (Artwork 8-9) read their own lists.
+    let size = sizeName(family)
     // Owner 2026-11-13: the app's ordered Artwork list (pure illustrations), the same list My widget
     // art shows, so Home Screen Artwork n = in-app Artwork n.
-    if let list = snap.artwork { return list.filter { snap.has($0) } }
-    let small = snap.currentThemeRecords().filter { $0.size == "small" && !$0.design }
-    let art = small.filter { !$0.live }
-    return (art.isEmpty ? small : art).map { $0.id }
+    if let list = snap.artworkList(size: size) { return list.filter { snap.has($0) } }
+    let mine = snap.currentThemeRecords().filter { $0.size == size && !$0.design }
+    let art = mine.filter { !$0.live }
+    if size != "small" { return art.map { $0.id } }
+    return (art.isEmpty ? mine : art).map { $0.id }
   }
 
-  /// The piece Artwork `slot` (1-based) shows when nothing is chosen in Edit Widget: the theme's
-  /// slot-th piece, or nil past the theme's count. 1.0.39 (owner TestFlight 1.0.37: one copper moon in
+  static func sizeName(_ family: WidgetFamily) -> String {
+    switch family {
+    case .systemMedium: return "medium"
+    case .systemLarge, .systemExtraLarge: return "large"
+    default: return "small"
+    }
+  }
+
+  /// The piece Artwork `slot` (1-based within its size: Artwork 6 is medium slot 1) shows when
+  /// nothing is chosen in Edit Widget: the theme's slot-th piece, or nil past the theme's count. 1.0.39 (owner TestFlight 1.0.37: one copper moon in
   /// all five Starry Night slots): nil draws the calm theme-coloured scene (ThemedFallbackArt), so a
   /// theme with fewer pieces never shows the same image twice.
   static func piece(slot: Int, family: WidgetFamily) -> String? {
@@ -48,10 +59,11 @@ enum ThemeArtSlots {
 // same in every theme; the app shows the same colour and number on each piece (src/core/artworkSlots.ts
 // ARTWORK_SLOT_COLOURS, kept equal by artworkSlots.test.ts).
 enum ArtworkSlotColour {
-  /// (fill, ink) for slots 1...6: coral, amber, mint, blue, violet, rose.
+  /// (fill, ink) for numbers 1...9: coral, amber, mint, blue, violet, rose, teal, rust, slate.
   static let table: [(fill: String, ink: String)] = [
     ("#E5533D", "#FFFFFF"), ("#F2A91D", "#2A1A00"), ("#2FBF8F", "#062A1E"),
     ("#2F7BEA", "#FFFFFF"), ("#8A5CF0", "#FFFFFF"), ("#E04F8E", "#FFFFFF"),
+    ("#1A9AAE", "#FFFFFF"), ("#C4512A", "#FFFFFF"), ("#4E5D78", "#FFFFFF"),
   ]
 
   static func of(_ slot: Int) -> (fill: Color, ink: Color) {
@@ -110,12 +122,13 @@ struct ThemeArtEntry: TimelineEntry {
 @available(iOS 17.0, *)
 struct ThemeArtProvider: AppIntentTimelineProvider {
   let slot: Int
+  var legacy: Bool = false
 
   private func entry(_ configuration: ChooseWidgetArtIntent?, family: WidgetFamily, preview: Bool = false) -> ThemeArtEntry {
     let chosen = configuration?.art?.id
     let piece = chosen != nil
       ? WidgetArtStore.resolvedID(chosen, family: family)
-      : ThemeArtSlots.piece(slot: slot, family: family)
+      : ThemeArtSlots.piece(slot: ThemeArtKind.group(slot: slot, legacy: legacy).index, family: family)
     return ThemeArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration?.layout, preview: preview, sample: slot - 1)
   }
 
@@ -175,14 +188,25 @@ enum ThemeArtKind {
     legacy ? "GlazeThemeArt\(slot)" : "GlazeArtwork\(slot)"
   }
 
+  /// Owner 2026-11-27 ("make the number scheme for the galary increase ... for large and medium as
+  /// well"): one numbering up through the sizes, the same as the app (src/core/artworkSlots.ts
+  /// ARTWORK_GROUPS), the own-picture widgets too: 1-5 small, 6-7 medium, 8-9 large. `index` is 1-based within the size.
+  /// The legacy GlazeThemeArt1-6 kinds stay small (their slot 6 is the old sixth small slot).
+  static func group(slot: Int, legacy: Bool = false) -> (family: WidgetFamily, index: Int) {
+    if legacy || slot <= 5 { return (.systemSmall, slot) }
+    if slot <= 7 { return (.systemMedium, slot - 5) }
+    return (.systemLarge, slot - 7)
+  }
+
   @MainActor static func configuration(slot: Int, legacy: Bool = false) -> some WidgetConfiguration {
-    AppIntentConfiguration(kind: kind(slot: slot, legacy: legacy), intent: ChooseWidgetArtIntent.self, provider: ThemeArtProvider(slot: slot)) { entry in
+    let family = group(slot: slot, legacy: legacy).family
+    return AppIntentConfiguration(kind: kind(slot: slot, legacy: legacy), intent: ChooseWidgetArtIntent.self, provider: ThemeArtProvider(slot: slot, legacy: legacy)) { entry in
       ThemeArtSlotView(entry: entry)
         .widgetURL(URL(string: "glaze://widgets"))
     }
     .configurationDisplayName(displayName(slot: slot))
     .description("Shows your Glaze theme's art once added.")
-    .supportedFamilies([.systemSmall])
+    .supportedFamilies([family])
     .contentMarginsDisabled()
     .disfavoredLocations([.homeScreen], for: legacy ? [.systemSmall] : galleryHidden(slot: slot))
   }
@@ -205,11 +229,16 @@ enum ThemeArtKind {
     case 3: return "Artwork 3"
     case 4: return "Artwork 4"
     case 5: return "Artwork 5"
+    case 7: return "Artwork 7"
+    case 8: return "Artwork 8"
+    case 9: return "Artwork 9"
     default: return "Artwork 6"
     }
   }
+  /// The fresh kinds are all in the gallery: Artwork 1-5 small, 6-7 medium, 8-9 large (the legacy
+  /// GlazeThemeArt kinds are hidden by `legacy` above).
   static func galleryHidden(slot: Int) -> [WidgetFamily] {
-    slot > gallerySmallSlots ? [.systemSmall] : []
+    []
   }
 }
 
@@ -225,6 +254,11 @@ enum ThemeArtKind {
 @available(iOS 17.0, *) struct ArtworkWidget3: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 3) } }
 @available(iOS 17.0, *) struct ArtworkWidget4: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 4) } }
 @available(iOS 17.0, *) struct ArtworkWidget5: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 5) } }
+// Owner 2026-11-27: Artwork 6-7 (medium) and 8-9 (large), fresh kinds GlazeArtwork6-9.
+@available(iOS 17.0, *) struct ArtworkWidget6: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 6) } }
+@available(iOS 17.0, *) struct ArtworkWidget7: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 7) } }
+@available(iOS 17.0, *) struct ArtworkWidget8: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 8) } }
+@available(iOS 17.0, *) struct ArtworkWidget9: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 9) } }
 
 /// The theme's art pages in the gallery, after its Clock, Battery and Calendar: Artwork 1-5 (fresh
 /// kinds, 2026-11-13). The older GlazeThemeArt1-6 kinds are in GlazeLegacyArtBundle.
@@ -235,5 +269,10 @@ struct GlazeThemeArtBundle: WidgetBundle {
     ArtworkWidget3()
     ArtworkWidget4()
     ArtworkWidget5()
+    // Owner 2026-11-27: Artwork 6-7 (medium) and 8-9 (large). Nine entries, the builder's limit.
+    ArtworkWidget6()
+    ArtworkWidget7()
+    ArtworkWidget8()
+    ArtworkWidget9()
   }
 }

@@ -3,7 +3,7 @@
 // (resized natively, device only), after a confirm when the slot already has a picture. Pure UI glue:
 // the list calls openArtworkActions with the piece's file:// URI.
 import { ActionSheetIOS, Alert } from 'react-native';
-import { CUSTOM_ART_SLOT_COUNT } from '../core/customArtSlots';
+import { artworkNumbersOf, sizeOfArtworkNumber } from '../core/artworkSlots';
 import { customArt } from '../native/customArt';
 import { saveFileToPhotos } from '../store/myWallpapers';
 import { haptic } from './haptics';
@@ -36,18 +36,20 @@ export async function addArtworkToCustom(slot: number, uri: string, t: T, toast:
 }
 
 /**
- * The menu for Artwork `n`: Save to Photos, Add to Custom 1-5, Cancel. 1.0.41: `onLocked` set (a premium
+ * The menu for Artwork `n`: Save to Photos, Add to Custom n (the Custom slots of the same size:
+ * small Artwork 1-5 -> Custom 1-5, medium 6-7 -> Custom 6-7, large 8-9 -> Custom 8-9), Cancel. 1.0.41: `onLocked` set (a premium
  * theme without Glaze Plus) makes Add to Custom open the paywall instead.
  */
 export function openArtworkActions(n: number, uri: string, t: T, toast: Toast, onLocked?: () => void): void {
   haptic('select');
-  const custom = Array.from({ length: CUSTOM_ART_SLOT_COUNT }, (_, i) => t('ui.seamless.library.addCustom', { n: i + 1 }));
+  const slots = artworkNumbersOf(sizeOfArtworkNumber(n) ?? 'small');
+  const custom = slots.map((slot) => t('ui.seamless.library.addCustom', { n: slot }));
   const options = [t('ui.seamless.library.savePhotos'), ...custom, t('ui.seamless.library.cancel')];
   ActionSheetIOS.showActionSheetWithOptions({ title: t('ui.seamless.library.artworkA11y', { n }), options, cancelButtonIndex: options.length - 1 }, (i) => {
     if (i === 0) void savePiece(uri, t, toast);
-    else if (i >= 1 && i <= CUSTOM_ART_SLOT_COUNT) {
+    else if (i >= 1 && i <= slots.length) {
       if (onLocked) onLocked();
-      else void addArtworkToCustom(i, uri, t, toast);
+      else void addArtworkToCustom(slots[i - 1], uri, t, toast);
     }
   });
 }

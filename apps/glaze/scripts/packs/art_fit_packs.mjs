@@ -2,7 +2,15 @@
 // Glaze art-fit (owner 24 Nov 2026: "every artwork must belong in its theme's wallpaper world"): new
 // versions of EXISTING themes whose small widget art was redrawn, for catalog-v2.json only (1.0.44+).
 //
-//   node scripts/packs/art_fit_packs.mjs --base <public pack URL> [--fit pack-artwork-fit] [--out dist/art-fit] [--cache dist/art-fit-cache]
+//   node scripts/packs/art_fit_packs.mjs --base <public pack URL> [--fit pack-artwork-fit,pack-artwork-sizes] [--out dist/art-fit] [--cache dist/art-fit-cache]
+//
+// Stages (owner 2026-11-27, medium / large art): --fit takes folders in order. Each stage builds on the
+// version the stage before it made for that theme (its fit.json base = that version), so a theme
+// art-fitted on 24 Nov (v8 -> v9) gets its medium / large art as v9 -> v10. Every stage's version is
+// rebuilt each run (the same bytes, immutable on R2) and the last stage of a theme is what
+// catalog-v2.json serves. A fit.json may `add` new art options as well as `replace` existing ones:
+//   "add": [{ "id": "comet", "size": "medium", "label": "Comet", "file": "medium-comet.webp" }]
+// `replace` of hero-medium / hero-large keeps that role (widget-medium / widget-large).
 //
 // pack-artwork-fit/<id>/fit.json names the live base pack (packVersion + the manifest's SHA-256) and the
 // widget options it replaces; the new art sits beside it as transparent WebP cutouts (the phone puts them
@@ -53,8 +61,19 @@ export function readFits(dir) {
     assert.equal(fit.theme, id, `${f}: theme must be the folder name`);
     assert.ok(Number.isInteger(fit.base?.packVersion), `${id}: base.packVersion`);
     assert.match(fit.base?.manifestSha256 ?? '', /^[0-9a-f]{64}$/, `${id}: base.manifestSha256`);
-    assert.ok(Array.isArray(fit.replace) && fit.replace.length > 0, `${id}: nothing to replace`);
+    fit.replace ??= [];
+    fit.add ??= [];
+    assert.ok(Array.isArray(fit.replace) && Array.isArray(fit.add), `${id}: replace / add must be lists`);
+    assert.ok(fit.replace.length + fit.add.length > 0, `${id}: nothing to replace or add`);
     const ids = new Set();
+    for (const r of fit.add) {
+      assert.match(r.id ?? '', /^[a-z0-9-]+$/, `${id}: add.id`);
+      assert.ok(['small', 'medium', 'large'].includes(r.size), `${id}/${r.id}: add.size`);
+      assert.match(r.file ?? '', /^[a-z0-9-]+\.webp$/, `${id}: add.file`);
+      assert.ok(!ids.has(r.id), `${id}: ${r.id} twice`);
+      ids.add(r.id);
+      assert.ok(existsSync(join(dir, id, r.file)), `${id}: ${r.file} missing`);
+    }
     for (const r of fit.replace) {
       assert.match(r.from ?? '', /^[a-z0-9-]+$/, `${id}: replace.from`);
       assert.match(r.id ?? '', /^[a-z0-9-]+$/, `${id}: replace.id`);
@@ -85,13 +104,24 @@ export function buildFit(fit, base, baseFiles, readArt = (f) => readFileSync(joi
     assert.equal(m.widgets[i].kind, 'art', `${fit.theme}/${r.from}: only art is replaced`);
     const bytes = readArt(r.file);
     const { width, height } = webpSize(bytes);
-    const hero = r.from === 'hero-small';
-    const path = `${hero ? 'widget-small' : `widget-${r.id}`}.${sha256(bytes).slice(0, 8)}.webp`;
+    // A hero keeps its role (widget-small / widget-medium / widget-large) so v1 readers still find it.
+    const heroRole = /^hero-(small|medium|large)$/.test(r.from) ? `widget-${r.from.slice(5)}` : null;
+    const path = `${heroRole ?? `widget-${r.id}`}.${sha256(bytes).slice(0, 8)}.webp`;
     files.set(path, bytes);
-    newAssets.push({ path, role: hero ? 'widget-small' : 'widget-art', width, height, bytes: bytes.length, sha256: sha256(bytes), mime: 'image/webp' });
+    newAssets.push({ path, role: heroRole ?? 'widget-art', width, height, bytes: bytes.length, sha256: sha256(bytes), mime: 'image/webp' });
     const old = m.widgets[i];
     m.widgets[i] = { ...old, id: r.id, image: path, fit: 'fit', background: 'wallpaper', ...(r.label ? { label: r.label } : {}) };
-    if (hero) m.assets = m.assets.filter((a) => a.role !== 'widget-small');
+    if (heroRole) m.assets = m.assets.filter((a) => a.role !== heroRole);
+  }
+  // Owner 2026-11-27: new art options (the second medium / large piece), drawn for one size.
+  for (const r of fit.add ?? []) {
+    assert.ok(!m.widgets.some((w) => w.id === r.id), `${fit.theme}: add ${r.id} is already a widget`);
+    const bytes = readArt(r.file);
+    const { width, height } = webpSize(bytes);
+    const path = `widget-${r.id}.${sha256(bytes).slice(0, 8)}.webp`;
+    files.set(path, bytes);
+    newAssets.push({ path, role: 'widget-art', width, height, bytes: bytes.length, sha256: sha256(bytes), mime: 'image/webp' });
+    m.widgets.push({ id: r.id, kind: 'art', image: path, sizes: [r.size], fit: 'fit', background: 'wallpaper', ...(r.label ? { label: r.label } : {}) });
   }
   assert.equal(new Set(m.widgets.map((w) => w.id)).size, m.widgets.length, `${fit.theme}: duplicate widget id`);
   // Keep every base asset something still uses; drop replaced art.
@@ -113,16 +143,26 @@ export function buildFit(fit, base, baseFiles, readArt = (f) => readFileSync(joi
   return { manifest: m, files };
 }
 
-export async function buildAll({ base, fitDir, outDir, cacheDir, fetcher = fetch, log = console.log }) {
-  const fits = readFits(fitDir);
+export async function buildAll({ base, fitDir, fitDirs, outDir, cacheDir, fetcher = fetch, log = console.log }) {
+  const stages = (fitDirs ?? [fitDir]).filter((d) => d && existsSync(d)).map((d) => readFits(d));
   const v2 = JSON.parse((await fetchBytes(`${base}/${APP_CATALOG_FILE}?artFit=${Date.now()}`, fetcher)).toString('utf8'));
-  const overrides = [];
-  for (const fit of fits) {
+  // Per theme, every version its stages start from or make, in order; a later stage must start
+  // from the version the stage before made, and catalog-v2.json must serve one of them.
+  const chain = new Map();
+  for (const fits of stages) {
+    for (const fit of fits) {
+      const seen = chain.get(fit.theme) ?? [];
+      if (seen.length) assert.equal(fit.base.packVersion, seen[seen.length - 1], `${fit.theme}: a stage must build on the previous stage's v${seen[seen.length - 1]}`);
+      chain.set(fit.theme, [...seen.filter((v) => v !== fit.base.packVersion), fit.base.packVersion, fit.base.packVersion + 1]);
+    }
+  }
+  const byTheme = new Map();
+  for (const fit of stages.flat()) {
     const entry = v2.packs.find((p) => p.id === fit.theme);
     assert.ok(entry, `${fit.theme}: not in catalog-v2.json`);
     const baseManifest = manifestPath(fit.theme, fit.base.packVersion);
-    const target = manifestPath(fit.theme, fit.base.packVersion + 1);
-    assert.ok(entry.manifest === baseManifest || entry.manifest === target, `${fit.theme}: catalog-v2.json serves ${entry.manifest}, fit.json expects ${baseManifest}`);
+    const known = chain.get(fit.theme).map((v) => manifestPath(fit.theme, v));
+    assert.ok(known.includes(entry.manifest), `${fit.theme}: catalog-v2.json serves ${entry.manifest}, the fit stages expect one of ${known.join(', ')}`);
     const cache = (rel) => join(cacheDir, rel);
     const get = async (rel, sha) => {
       const p = cache(rel);
@@ -144,9 +184,11 @@ export async function buildAll({ base, fitDir, outDir, cacheDir, fetcher = fetch
     for (const [p, b] of files) writeFileSync(join(folder, p), b);
     writeFileSync(join(outDir, manifestPath(fit.theme, manifest.packVersion)), JSON.stringify(manifest, null, 2) + '\n');
     const thumb = manifest.assets.find((a) => a.role === 'thumb');
-    overrides.push({ id: fit.theme, packVersion: manifest.packVersion, bytes: manifest.totalBytes, manifest: manifestPath(fit.theme, manifest.packVersion), thumb: `${packFolder(fit.theme, manifest.packVersion)}/${thumb.path}` });
-    log(`${fit.theme}: v${bm.packVersion} -> v${manifest.packVersion} (${fit.replace.map((r) => `${r.from}->${r.id}`).join(', ')})`);
+    // The last stage of a theme wins (stages run in order).
+    byTheme.set(fit.theme, { id: fit.theme, packVersion: manifest.packVersion, bytes: manifest.totalBytes, manifest: manifestPath(fit.theme, manifest.packVersion), thumb: `${packFolder(fit.theme, manifest.packVersion)}/${thumb.path}` });
+    log(`${fit.theme}: v${bm.packVersion} -> v${manifest.packVersion} (${[...fit.replace.map((r) => `${r.from}->${r.id}`), ...(fit.add ?? []).map((r) => `+${r.id} (${r.size})`)].join(', ')})`);
   }
+  const overrides = [...byTheme.values()].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
   writeFileSync(join(outDir, 'overrides.json'), JSON.stringify(overrides, null, 2) + '\n');
   return overrides;
 }
@@ -160,7 +202,8 @@ if (isMain) {
     assert.match(base, /^https?:\/\//, '--base <public pack URL> is required');
     const outDir = resolve(value('--out', join(APP_ROOT, 'dist', 'art-fit')));
     mkdirSync(outDir, { recursive: true });
-    await buildAll({ base, fitDir: resolve(value('--fit', join(APP_ROOT, 'pack-artwork-fit'))), outDir, cacheDir: resolve(value('--cache', join(APP_ROOT, 'dist', 'art-fit-cache'))) });
+    const fitDirs = String(value('--fit', ['pack-artwork-fit', 'pack-artwork-sizes'].map((d) => join(APP_ROOT, d)).join(','))).split(',').map((d) => resolve(d));
+    await buildAll({ base, fitDirs, outDir, cacheDir: resolve(value('--cache', join(APP_ROOT, 'dist', 'art-fit-cache'))) });
   } catch (e) {
     console.error(`error: ${e instanceof Error ? e.message : e}`);
     process.exit(1);

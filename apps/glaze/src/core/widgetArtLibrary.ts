@@ -89,6 +89,13 @@ export type WidgetArtIndex = {
    * written by commitThemeArt. Artwork n (app list and Home Screen widget) = artwork[(n - 1) % length].
    */
   artwork?: string[];
+  /**
+   * Owner 2026-11-27 ("make the number scheme for the galary increase ... for large and medium as
+   * well"): the medium and large Artwork lists (Artwork 6-7 and 8-9, src/core/artworkSlots.ts
+   * ARTWORK_GROUPS), written the same way as `artwork`. Absent on older indexes.
+   */
+  artworkMedium?: string[];
+  artworkLarge?: string[];
 };
 
 /** T259: per size, the piece an unpinned widget follows (null = the theme's plain background). */
@@ -206,7 +213,7 @@ export function parseLibrary(raw: string | null | undefined): WidgetArtIndex {
   return { ...lib, ...meta };
 }
 
-type IndexMeta = Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired' | 'unpinned' | 'artwork'>;
+type IndexMeta = Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired' | 'unpinned' | 'artwork' | 'artworkMedium' | 'artworkLarge'>;
 
 function readUnpinned(raw: unknown): UnpinnedMap | undefined {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
@@ -232,8 +239,9 @@ function readMeta(r: Record<string, unknown>): IndexMeta {
   if (retired) out.retired = retired;
   const unpinned = readUnpinned(r.unpinned);
   if (unpinned) out.unpinned = unpinned;
-  if (Array.isArray(r.artwork)) {
-    out.artwork = r.artwork.filter((id): id is string => typeof id === 'string' && WIDGET_ART_ID_RE.test(id)).slice(0, 20);
+  for (const key of ['artwork', 'artworkMedium', 'artworkLarge'] as const) {
+    const list = r[key];
+    if (Array.isArray(list)) out[key] = list.filter((id): id is string => typeof id === 'string' && WIDGET_ART_ID_RE.test(id)).slice(0, 20);
   }
   return out;
 }
