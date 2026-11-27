@@ -32,13 +32,13 @@
     "ar"
    ],
    "screenshots": [
-    "apps/linework/store/jpg/a/01-trace.jpg",
-    "apps/linework/store/jpg/a/02-made-for.jpg",
-    "apps/linework/store/jpg/a/03-workshop.jpg",
-    "apps/linework/store/jpg/a/04-photo-sketch.jpg",
-    "apps/linework/store/jpg/a/05-templates.jpg",
-    "apps/linework/store/jpg/a/06-letters.jpg",
-    "apps/linework/store/jpg/a/07-lock.jpg",
+    "apps/linework/store/jpg/a/01-home.jpg",
+    "apps/linework/store/jpg/a/02-templates.jpg",
+    "apps/linework/store/jpg/a/03-letters.jpg",
+    "apps/linework/store/jpg/a/04-workshop.jpg",
+    "apps/linework/store/jpg/a/05-photo-sketch.jpg",
+    "apps/linework/store/jpg/a/06-lightbox.jpg",
+    "apps/linework/store/jpg/a/07-dark.jpg",
     "apps/linework/store/jpg/a/08-plus.jpg"
    ],
    "free": [
@@ -462,11 +462,13 @@
    "platformNote": "Not yet on iPhone or the App Store.",
    "screenshots": [
     "apps/backspin/store/jpg/ios/01-score.jpg",
-    "apps/backspin/store/jpg/ios/02-say-it.jpg",
-    "apps/backspin/store/jpg/ios/03-backwards.jpg",
-    "apps/backspin/store/jpg/ios/04-copy-it.jpg",
+    "apps/backspin/store/jpg/ios/02-say.jpg",
+    "apps/backspin/store/jpg/ios/03-listen.jpg",
+    "apps/backspin/store/jpg/ios/04-copy.jpg",
     "apps/backspin/store/jpg/ios/05-party.jpg",
-    "apps/backspin/store/jpg/ios/06-daily.jpg"
+    "apps/backspin/store/jpg/ios/06-home.jpg",
+    "apps/backspin/store/jpg/ios/07-packs.jpg",
+    "apps/backspin/store/jpg/ios/08-plus.jpg"
    ],
    "free": [
     "10 scored rounds with every pack, effect and party size switched on",
@@ -662,12 +664,12 @@
    "platformNote": "iPhone only (iOS 16.4 or later). Not on Android or Google Play.",
    "os": "iOS",
    "screenshots": [
-    "apps/couch/store/jpg/ios/01-every-tv.jpg",
-    "apps/couch/store/jpg/ios/03-find-tv.jpg",
-    "apps/couch/store/jpg/ios/04-search.jpg",
-    "apps/couch/store/jpg/ios/05-apps.jpg",
-    "apps/couch/store/jpg/ios/06-multi-tv.jpg",
-    "apps/couch/store/jpg/ios/02-trial.jpg"
+    "apps/couch/store/jpg/ios/01-remote.jpg",
+    "apps/couch/store/jpg/ios/02-remote-keys.jpg",
+    "apps/couch/store/jpg/ios/03-apps.jpg",
+    "apps/couch/store/jpg/ios/04-cast.jpg",
+    "apps/couch/store/jpg/ios/05-tvs.jpg",
+    "apps/couch/store/jpg/ios/06-themes.jpg"
    ],
    "free": [
     "Download and set-up",
@@ -858,14 +860,14 @@
    ]
   },
   "glaze": {
-   "checked": "17 November 2026",
+   "checked": "28 November 2026",
    "category": "Home Screen theme app",
    "schemaCategory": "LifestyleApplication",
    "accentDark": "#B9A2FF",
    "h1": "wallpaper, icons and widgets that match",
    "titleTail": "aesthetic Home Screen themes for iPhone",
-   "oneLine": "Glaze gives your iPhone a Home Screen that fits together: over 140 original themes, each with a wallpaper, matching app icons and five artworks for your widgets.",
-   "metaDesc": "Aesthetic Home Screen themes for iPhone: over 140 original themes, each with a wallpaper, matching icons and five widget artworks. 10 premium themes free; Glaze Plus is A$2.99 a year. No ads, no account.",
+   "oneLine": "Glaze gives your iPhone a Home Screen that fits together: over 250 original themes, each with a wallpaper, matching app icons and five artworks for your widgets.",
+   "metaDesc": "Aesthetic Home Screen themes for iPhone: over 250 original themes, each with a wallpaper, matching icons and five widget artworks. 10 premium themes free; Glaze Plus is A$2.99 a year. No ads, no account.",
    "priceLine": "Free download with 10 premium themes free to keep. Glaze Plus unlocks every theme for A$2.99 a year (the App Store shows your local price). No ads, no weekly plan.",
    "platformNote": "iPhone only. Not on Android or Google Play.",
    "os": "iOS",
@@ -891,7 +893,7 @@
     "priceAUD": "2.99",
     "priceText": "A$2.99 a year in Australia; the App Store shows your local price",
     "features": [
-     "Every theme, over 140, plus new themes as they're added",
+     "Every theme, over 250, plus new themes as they're added",
      "All widget artwork: Artwork 1 to 5 for every theme"
     ]
    },
@@ -900,7 +902,7 @@
     "No account, no ads and no tracking.",
     "Your photos and videos never leave your iPhone."
    ],
-   "notClaimed": "Glaze 1.0.42 has small Home Screen widgets only (Artwork 1 to 5 and Custom 1 to 5): no Medium, Large or Lock Screen widgets. Its icons are Home Screen shortcuts that open your apps; the original apps are not changed. iPhone only. Glaze is an independent app.",
+   "notClaimed": "The App Store listing for Glaze 1.0.44 describes small Home Screen widgets (Artwork 1 to 5 and Custom 1 to 5). Its icons are Home Screen shortcuts that open your apps; the original apps are not changed. iPhone only. Glaze is an independent app.",
    "lead": [
     [
      "A whole look from one theme",
@@ -955,12 +957,11 @@
     "method": [
      "We read the App Store listings, in-app purchase lists and recent reviews of about 15 iPhone icon, widget and wallpaper theme apps (October 2026).",
      "The 'typical app' column describes patterns across those apps, not one named app. Some charge once, some are free with ads, and many sell weekly or yearly plans.",
-     "Glaze's column comes from its App Store listing (version 1.0.42)."
+     "Glaze's column comes from its App Store listing (version 1.0.44)."
     ],
     "notFor": [
      "You use Android: Glaze is iPhone only.",
-     "You want Medium, Large or Lock Screen widgets: Glaze has small Home Screen widgets.",
-     "You want a widget builder with clocks, data and layouts you design yourself: Glaze widgets show theme artwork and your own pictures.",
+     "You want a widget builder with data and layouts you design yourself: Glaze widgets show theme artwork and your own pictures.",
      "You'd rather not have any subscription: Glaze Plus is yearly, though the 10 free themes need none."
     ]
    },
@@ -998,7 +999,7 @@
      "Does it show how to undo the icons?",
      "Does it need an account, and what data does it collect?"
     ],
-    "fit": "Glaze is an all-in-one Home Screen theme app for iPhone: over 140 original themes, each with a wallpaper, matching icons and five widget artworks. 10 premium themes are free to keep; Glaze Plus is A$2.99 a year for every theme. No ads, no account, no tracking."
+    "fit": "Glaze is an all-in-one Home Screen theme app for iPhone: over 250 original themes, each with a wallpaper, matching icons and five widget artworks. 10 premium themes are free to keep; Glaze Plus is A$2.99 a year for every theme. No ads, no account, no tracking."
    },
    "faqTitleTail": "aesthetic Home Screen themes for iPhone",
    "faqDesc": "Answers about Glaze for iPhone: price, what's free, matching icons, widgets, wallpapers, privacy and Android availability.",
@@ -1033,7 +1034,7 @@
     ],
     [
      "How many themes are there?",
-     "Over 140 original themes: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro."
+     "Over 250 original themes: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro."
     ],
     [
      "Does Glaze have ads or need an account?",
